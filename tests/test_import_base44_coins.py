@@ -3,7 +3,7 @@ import unittest
 from unittest.mock import patch
 from urllib.error import URLError
 
-import import_base44_coins
+from scripts import import_base44_coins
 
 
 class ImportBase44CoinsTests(unittest.TestCase):
@@ -104,7 +104,7 @@ class ImportBase44CoinsTests(unittest.TestCase):
             rate_limit_delay_seconds=0,
             max_retries=0,
         )
-        with patch("import_base44_coins.urlopen", side_effect=URLError(OSError(101, "Network is unreachable"))):
+        with patch("scripts.import_base44_coins.urlopen", side_effect=URLError(OSError(101, "Network is unreachable"))):
             with self.assertRaisesRegex(RuntimeError, "Network is unreachable"):
                 client.bulk_create([{"name": "5 cêntimos"}])
 

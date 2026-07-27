@@ -1,0 +1,109 @@
+{
+  "country": "Bielorrússia",
+  "periods": [
+    {
+      "title": "Bielorrússia › República da Bielorrússia › 1992 - 2026",
+      "ruler": "República da Bielorrússia",
+      "startYear": 1992,
+      "endYear": 2026,
+      "coins": [
+        {
+          "denomination": "1 kopek",
+          "value": 1.0,
+          "unit": "kopek",
+          "issuePeriod": "2009",
+          "startYear": 2009,
+          "endYear": 2009,
+          "availability": "circulating",
+          "detailUrl": "https://pt.ucoin.net/coin/belarus-1-kopek-2009/?tid=59333",
+          "obverseImage": "[https://i.ucoin.net/coin/80/191/80191423-1s/belarus-1-kopek-2009.jpg](https://i.ucoin.net/coin/80/191/80191423-1s/belarus-1-kopek-2009.jpg)",
+          "reverseImage": "[https://i.ucoin.net/coin/80/191/80191423-2s/belarus-1-kopek-2009.jpg](https://i.ucoin.net/coin/80/191/80191423-2s/belarus-1-kopek-2009.jpg)"
+        },
+        {
+          "denomination": "2 kopeks",
+          "value": 2.0,
+          "unit": "kopeks",
+          "issuePeriod": "2009",
+          "startYear": 2009,
+          "endYear": 2009,
+          "availability": "circulating",
+          "detailUrl": "https://pt.ucoin.net/coin/belarus-2-kopeks-2009/?tid=59334",
+          "obverseImage": "[https://i.ucoin.net/coin/68/359/68359967-1s/belarus-2-kopeks-2009.jpg](https://i.ucoin.net/coin/68/359/68359967-1s/belarus-2-kopeks-2009.jpg)",
+          "reverseImage": "[https://i.ucoin.net/coin/68/359/68359967-2s/belarus-2-kopeks-2009.jpg](https://i.ucoin.net/coin/68/359/68359967-2s/belarus-2-kopeks-2009.jpg)"
+        },
+        {
+          "denomination": "5 kopeks",
+          "value": 5.0,
+          "unit": "kopeks",
+          "issuePeriod": "2009",
+          "startYear": 2009,
+          "endYear": 2009,
+          "availability": "circulating",
+          "detailUrl": "https://pt.ucoin.net/coin/belarus-5-kopeks-2009/?tid=59335",
+          "obverseImage": "[https://i.ucoin.net/coin/41/809/41809431-1s/belarus-5-kopeks-2009.jpg](https://i.ucoin.net/coin/41/809/41809431-1s/belarus-5-kopeks-2009.jpg)",
+          "reverseImage": "[https://i.ucoin.net/coin/41/809/41809431-2s/belarus-5-kopeks-2009.jpg](https://i.ucoin.net/coin/41/809/41809431-2s/belarus-5-kopeks-2009.jpg)"
+        },
+        {
+          "denomination": "10 kopeks",
+          "value": 10.0,
+          "unit": "kopeks",
+          "issuePeriod": "2009",
+          "startYear": 2009,
+          "endYear": 2009,
+          "availability": "circulating",
+          "detailUrl": "https://pt.ucoin.net/coin/belarus-10-kopeks-2009/?tid=59336",
+          "obverseImage": "[https://i.ucoin.net/coin/41/809/41809434-1s/belarus-10-kopeks-2009.jpg](https://i.ucoin.net/coin/41/809/41809434-1s/belarus-10-kopeks-2009.jpg)",
+          "reverseImage": "[https://i.ucoin.net/coin/41/809/41809434-2s/belarus-10-kopeks-2009.jpg](https://i.ucoin.net/coin/41/809/41809434-2s/belarus-10-kopeks-2009.jpg)"
+        },
+        {
+          "denomination": "20 kopeks",
+          "value": 20.0,
+          "unit": "kopeks",
+          "issuePeriod": "2009",
+          "startYear": 2009,
+          "endYear": 2009,
+          "availability": "circulating",
+          "detailUrl": "https://pt.ucoin.net/coin/belarus-20-kopeks-2009/?tid=59337",
+          "obverseImage": "[https://i.ucoin.net/coin/41/809/41809439-1s/belarus-20-kopeks-2009.jpg](https://i.ucoin.net/coin/41/809/41809439-1s/belarus-20-kopeks-2009.jpg)",
+          "reverseImage": "[https://i.ucoin.net/coin/41/809/41809439-2s/belarus-20-kopeks-2009.jpg](https://i.ucoin.net/coin/41/809/41809439-2s/belarus-20-kopeks-2009.jpg)"
+        },
+        {
+          "denomination": "50 kopeks",
+          "value": 50.0,
+          "unit": "kopeks",
+          "issuePeriod": "2009",
+          "startYear": 2009,
+          "endYear": 2009,
+          "availability": "circulating",
+          "detailUrl": "https://pt.ucoin.net/coin/belarus-50-kopeks-2009/?tid=59338",
+          "obverseImage": "[https://i.ucoin.net/coin/68/339/68339346-1s/belarus-50-kopeks-2009.jpg](https://i.ucoin.net/coin/68/339/68339346-1s/belarus-50-kopeks-2009.jpg)",
+          "reverseImage": "[https://i.ucoin.net/coin/68/339/68339346-2s/belarus-50-kopeks-2009.jpg](https://i.ucoin.net/coin/68/339/68339346-2s/belarus-50-kopeks-2009.jpg)"
+        },
+        {
+          "denomination": "1 rublo",
+          "value": 1.0,
+          "unit": "rublo",
+          "issuePeriod": "2009",
+          "startYear": 2009,
+          "endYear": 2009,
+          "availability": "circulating",
+          "detailUrl": "https://pt.ucoin.net/coin/belarus-1-ruble-2009/?tid=59339",
+          "obverseImage": "[https://i.ucoin.net/coin/41/809/41809447-1s/belarus-1-ruble-2009.jpg](https://i.ucoin.net/coin/41/809/41809447-1s/belarus-1-ruble-2009.jpg)",
+          "reverseImage": "[https://i.ucoin.net/coin/41/809/41809447-2s/belarus-1-ruble-2009.jpg](https://i.ucoin.net/coin/41/809/41809447-2s/belarus-1-ruble-2009.jpg)"
+        },
+        {
+          "denomination": "2 rublos",
+          "value": 2.0,
+          "unit": "rublos",
+          "issuePeriod": "2009",
+          "startYear": 2009,
+          "endYear": 2009,
+          "availability": "circulating",
+          "detailUrl": "https://pt.ucoin.net/coin/belarus-2-rubles-2009/?tid=59340",
+          "obverseImage": "[https://i.ucoin.net/coin/41/809/41809451-1s/belarus-2-rubles-2009.jpg](https://i.ucoin.net/coin/41/809/41809451-1s/belarus-2-rubles-2009.jpg)",
+          "reverseImage": "[https://i.ucoin.net/coin/41/809/41809451-2s/belarus-2-rubles-2009.jpg](https://i.ucoin.net/coin/41/809/41809451-2s/belarus-2-rubles-2009.jpg)"
+        }
+      ]
+    }
+  ]
+}

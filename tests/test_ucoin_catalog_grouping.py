@@ -3,7 +3,7 @@ from __future__ import annotations
 import unittest
 
 from tests.test_ucoin_catalog_parser import coin
-from ucoin_catalog import filter_periods_by_start_year
+from scripts.ucoin_catalog import filter_periods_by_start_year
 from ucoin_to_mysite.catalog_parser import crawl_ucoin_catalogue, parse_catalogue_page
 
 

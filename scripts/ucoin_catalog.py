@@ -13,9 +13,14 @@ import argparse
 import json
 import re
 import unicodedata
+import sys
 from pathlib import Path
 from shutil import which
 from urllib.parse import quote, urljoin
+
+PROJECT_ROOT = Path(__file__).resolve().parent.parent
+if str(PROJECT_ROOT) not in sys.path:
+    sys.path.insert(0, str(PROJECT_ROOT))
 
 from ucoin_to_mysite.catalog_parser import CatalogueFetchError, CatalogueFetchResponse, coin_start_year, crawl_ucoin_catalogue
 
@@ -40,6 +45,11 @@ def parse_args() -> argparse.Namespace:
         help="Época/intervalo/ano a filtrar, ex.: 1901-1910, 1990, Era da Federação.",
     )
     parser.add_argument("--base-url", default=DEFAULT_BASE_URL, help="URL base do catálogo do uCoin.")
+    parser.add_argument(
+        "--country-link-name",
+        default="",
+        help="Nome do país usado no parâmetro country= da URL (quando diferente do nome do país).",
+    )
     parser.add_argument("--json", action="store_true", help="Imprime o resultado em JSON.")
     parser.add_argument("--output", help="Guarda o resultado num ficheiro JSON.")
     parser.add_argument(
@@ -101,8 +111,9 @@ def resolve_browser_executable(chrome_path: str) -> str | None:
     return None
 
 
-def build_country_url(base_url: str, country: str) -> str:
-    country_slug = quote(slugify(country))
+def build_country_url(base_url: str, country: str, country_link_name: str = "") -> str:
+    link_source = country_link_name.strip() or country
+    country_slug = quote(slugify(link_source))
     separator = "&" if "?" in base_url else "?"
     if "country=" in base_url:
         return base_url
@@ -213,7 +224,7 @@ def scrape_catalog(args: argparse.Namespace, output_dir: Path) -> dict[str, obje
     if manual_session and args.headless:
         raise RuntimeError("--headless não pode ser usado com sessão manual ativa. Usa --no-manual-session.")
 
-    page_url = build_country_url(args.base_url, args.country)
+    page_url = build_country_url(args.base_url, args.country, args.country_link_name)
     report: dict[str, object] = {
         "country": args.country,
         "period": args.period,
@@ -303,7 +314,7 @@ def write_output(path: str, payload: dict[str, object]) -> None:
 
 
 def default_output_dir(country: str, period: str | None) -> Path:
-    return Path(slugify(country))
+    return Path("paises") / slugify(country)
 
 
 def default_output_path(args: argparse.Namespace) -> Path:

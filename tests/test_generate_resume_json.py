@@ -236,5 +236,41 @@ class GenerateResumeJsonTests(unittest.TestCase):
                     os.environ[key] = value
 
 
+    def test_normalize_detail_url_accepts_markdown_link(self) -> None:
+        value = "[https://pt.ucoin.net/coin/belarus-1-kopek-2009/?tid=59333](https://pt.ucoin.net/coin/belarus-1-kopek-2009/?tid=59333)"
+        self.assertEqual(
+            generate_resume_json.normalize_detail_url(value),
+            "https://pt.ucoin.net/coin/belarus-1-kopek-2009/?tid=59333",
+        )
+
+    def test_validate_resume_catalogue_normalizes_markdown_detail_url(self) -> None:
+        catalogue = {
+            "country": "Bielorrussia",
+            "periods": [
+                {
+                    "title": "Bielorrussia",
+                    "coins": [
+                        {
+                            "denomination": "1 kopek",
+                            "value": 1.0,
+                            "unit": "kopek",
+                            "issuePeriod": "2009",
+                            "startYear": 2009,
+                            "endYear": 2009,
+                            "availability": "circulating",
+                            "detailUrl": "[https://pt.ucoin.net/coin/belarus-1-kopek-2009/?tid=59333](https://pt.ucoin.net/coin/belarus-1-kopek-2009/?tid=59333)",
+                            "obverseImage": "https://i.ucoin.net/coin/1.jpg",
+                            "reverseImage": "https://i.ucoin.net/coin/2.jpg",
+                        }
+                    ],
+                }
+            ],
+        }
+        generate_resume_json.validate_resume_catalogue(catalogue, 1)
+        self.assertEqual(
+            catalogue["periods"][0]["coins"][0]["detailUrl"],
+            "https://pt.ucoin.net/coin/belarus-1-kopek-2009/?tid=59333",
+        )
+
 if __name__ == "__main__":
     unittest.main()

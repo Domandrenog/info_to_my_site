@@ -111,7 +111,11 @@ def normalize_text(value: Any) -> str:
 
 
 def normalize_detail_url(value: str) -> str:
-    parsed = urlparse(value)
+    raw_value = str(value or "").strip()
+    markdown_match = re.fullmatch(r"\[[^\]]+\]\((https?://[^)]+)\)", raw_value, flags=re.IGNORECASE)
+    if markdown_match:
+        raw_value = markdown_match.group(1).strip()
+    parsed = urlparse(raw_value)
     if not parsed.scheme or not parsed.netloc:
         raise ValueError(f"Invalid detailUrl: {value}")
     return urlunparse((parsed.scheme, parsed.netloc, parsed.path, parsed.params, parsed.query, ""))
@@ -776,7 +780,7 @@ def validate_resume_catalogue(value: Any, expected_coin_count: int) -> None:
                 raise ValueError("resume coin contains nested denomination or issuePeriod")
             if coin.get("availability") not in RESUME_AVAILABILITIES:
                 raise ValueError(f"invalid availability: {coin.get('availability')}")
-            normalize_detail_url(coin["detailUrl"])
+            coin["detailUrl"] = normalize_detail_url(coin["detailUrl"])
     if coin_count != expected_coin_count:
         raise ValueError(f"Resume coin count mismatch: expected={expected_coin_count} actual={coin_count}")
 

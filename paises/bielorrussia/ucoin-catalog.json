@@ -1,0 +1,286 @@
+{
+  "country": "Bielorrússia",
+  "period": null,
+  "page_url": "https://pt.ucoin.net/catalog/?country=belarus",
+  "periods": [
+    {
+      "periodId": 122,
+      "fullTitle": "Bielorrússia › República da Bielorrússia › 1992 - 2026",
+      "country": "Bielorrússia",
+      "rulerOrPeriodName": "República da Bielorrússia",
+      "startYear": 1992,
+      "endYear": 2026,
+      "currencyDescription": "1 rublo = 100 kopecs",
+      "coins": [
+        {
+          "denomination": {
+            "displayName": "1 kopek",
+            "value": 1.0,
+            "unit": "kopek"
+          },
+          "issuePeriod": {
+            "displayValue": "2009",
+            "startYear": 2009,
+            "endYear": 2009
+          },
+          "imageExampleYear": 2009,
+          "subject": null,
+          "composition": "Aço com revestimento de Cobre",
+          "weightGrams": 1.55,
+          "diameterMm": 15.0,
+          "catalogue": {
+            "type": "KM",
+            "number": "561",
+            "displayValue": "KM# 561"
+          },
+          "circulationType": "Circulação normal",
+          "ucoinTypeId": 59333,
+          "ucoinPeriodId": 122,
+          "detailPath": "/coin/belarus-1-kopek-2009/?tid=59333",
+          "detailUrl": "https://pt.ucoin.net/coin/belarus-1-kopek-2009/?tid=59333",
+          "images": {
+            "obverse": "https://i.ucoin.net/coin/80/191/80191423-1s/belarus-1-kopek-2009.jpg",
+            "reverse": "https://i.ucoin.net/coin/80/191/80191423-2s/belarus-1-kopek-2009.jpg"
+          }
+        },
+        {
+          "denomination": {
+            "displayName": "2 kopeks",
+            "value": 2.0,
+            "unit": "kopeks"
+          },
+          "issuePeriod": {
+            "displayValue": "2009",
+            "startYear": 2009,
+            "endYear": 2009
+          },
+          "imageExampleYear": 2009,
+          "subject": null,
+          "composition": "Aço com revestimento de Cobre",
+          "weightGrams": 2.1,
+          "diameterMm": 17.5,
+          "catalogue": {
+            "type": "KM",
+            "number": "562",
+            "displayValue": "KM# 562"
+          },
+          "circulationType": "Circulação normal",
+          "ucoinTypeId": 59334,
+          "ucoinPeriodId": 122,
+          "detailPath": "/coin/belarus-2-kopeks-2009/?tid=59334",
+          "detailUrl": "https://pt.ucoin.net/coin/belarus-2-kopeks-2009/?tid=59334",
+          "images": {
+            "obverse": "https://i.ucoin.net/coin/68/359/68359967-1s/belarus-2-kopeks-2009.jpg",
+            "reverse": "https://i.ucoin.net/coin/68/359/68359967-2s/belarus-2-kopeks-2009.jpg"
+          }
+        },
+        {
+          "denomination": {
+            "displayName": "5 kopeks",
+            "value": 5.0,
+            "unit": "kopeks"
+          },
+          "issuePeriod": {
+            "displayValue": "2009",
+            "startYear": 2009,
+            "endYear": 2009
+          },
+          "imageExampleYear": 2009,
+          "subject": null,
+          "composition": "Aço com revestimento de Cobre",
+          "weightGrams": 2.7,
+          "diameterMm": 19.8,
+          "catalogue": {
+            "type": "KM",
+            "number": "563",
+            "displayValue": "KM# 563"
+          },
+          "circulationType": "Circulação normal",
+          "ucoinTypeId": 59335,
+          "ucoinPeriodId": 122,
+          "detailPath": "/coin/belarus-5-kopeks-2009/?tid=59335",
+          "detailUrl": "https://pt.ucoin.net/coin/belarus-5-kopeks-2009/?tid=59335",
+          "images": {
+            "obverse": "https://i.ucoin.net/coin/41/809/41809431-1s/belarus-5-kopeks-2009.jpg",
+            "reverse": "https://i.ucoin.net/coin/41/809/41809431-2s/belarus-5-kopeks-2009.jpg"
+          }
+        },
+        {
+          "denomination": {
+            "displayName": "10 kopeks",
+            "value": 10.0,
+            "unit": "kopeks"
+          },
+          "issuePeriod": {
+            "displayValue": "2009",
+            "startYear": 2009,
+            "endYear": 2009
+          },
+          "imageExampleYear": 2009,
+          "subject": null,
+          "composition": "Aço com revestimento de Cobre-Latão",
+          "weightGrams": 2.8,
+          "diameterMm": 17.7,
+          "catalogue": {
+            "type": "KM",
+            "number": "564",
+            "displayValue": "KM# 564"
+          },
+          "circulationType": "Circulação normal",
+          "ucoinTypeId": 59336,
+          "ucoinPeriodId": 122,
+          "detailPath": "/coin/belarus-10-kopeks-2009/?tid=59336",
+          "detailUrl": "https://pt.ucoin.net/coin/belarus-10-kopeks-2009/?tid=59336",
+          "images": {
+            "obverse": "https://i.ucoin.net/coin/41/809/41809434-1s/belarus-10-kopeks-2009.jpg",
+            "reverse": "https://i.ucoin.net/coin/41/809/41809434-2s/belarus-10-kopeks-2009.jpg"
+          }
+        },
+        {
+          "denomination": {
+            "displayName": "20 kopeks",
+            "value": 20.0,
+            "unit": "kopeks"
+          },
+          "issuePeriod": {
+            "displayValue": "2009",
+            "startYear": 2009,
+            "endYear": 2009
+          },
+          "imageExampleYear": 2009,
+          "subject": null,
+          "composition": "Aço com revestimento de Cobre-Latão",
+          "weightGrams": 3.7,
+          "diameterMm": 20.35,
+          "catalogue": {
+            "type": "KM",
+            "number": "565",
+            "displayValue": "KM# 565"
+          },
+          "circulationType": "Circulação normal",
+          "ucoinTypeId": 59337,
+          "ucoinPeriodId": 122,
+          "detailPath": "/coin/belarus-20-kopeks-2009/?tid=59337",
+          "detailUrl": "https://pt.ucoin.net/coin/belarus-20-kopeks-2009/?tid=59337",
+          "images": {
+            "obverse": "https://i.ucoin.net/coin/41/809/41809439-1s/belarus-20-kopeks-2009.jpg",
+            "reverse": "https://i.ucoin.net/coin/41/809/41809439-2s/belarus-20-kopeks-2009.jpg"
+          }
+        },
+        {
+          "denomination": {
+            "displayName": "50 kopeks",
+            "value": 50.0,
+            "unit": "kopeks"
+          },
+          "issuePeriod": {
+            "displayValue": "2009",
+            "startYear": 2009,
+            "endYear": 2009
+          },
+          "imageExampleYear": 2009,
+          "subject": null,
+          "composition": "Aço com revestimento de Cobre-Latão",
+          "weightGrams": 3.95,
+          "diameterMm": 22.25,
+          "catalogue": {
+            "type": "KM",
+            "number": "566",
+            "displayValue": "KM# 566"
+          },
+          "circulationType": "Circulação normal",
+          "ucoinTypeId": 59338,
+          "ucoinPeriodId": 122,
+          "detailPath": "/coin/belarus-50-kopeks-2009/?tid=59338",
+          "detailUrl": "https://pt.ucoin.net/coin/belarus-50-kopeks-2009/?tid=59338",
+          "images": {
+            "obverse": "https://i.ucoin.net/coin/68/339/68339346-1s/belarus-50-kopeks-2009.jpg",
+            "reverse": "https://i.ucoin.net/coin/68/339/68339346-2s/belarus-50-kopeks-2009.jpg"
+          }
+        },
+        {
+          "denomination": {
+            "displayName": "1 rublo",
+            "value": 1.0,
+            "unit": "rublo"
+          },
+          "issuePeriod": {
+            "displayValue": "2009",
+            "startYear": 2009,
+            "endYear": 2009
+          },
+          "imageExampleYear": 2009,
+          "subject": null,
+          "composition": "Aço com revestimento de Cupro-Níquel",
+          "weightGrams": 5.6,
+          "diameterMm": 21.25,
+          "catalogue": {
+            "type": "KM",
+            "number": "567",
+            "displayValue": "KM# 567"
+          },
+          "circulationType": "Circulação normal",
+          "ucoinTypeId": 59339,
+          "ucoinPeriodId": 122,
+          "detailPath": "/coin/belarus-1-ruble-2009/?tid=59339",
+          "detailUrl": "https://pt.ucoin.net/coin/belarus-1-ruble-2009/?tid=59339",
+          "images": {
+            "obverse": "https://i.ucoin.net/coin/41/809/41809447-1s/belarus-1-ruble-2009.jpg",
+            "reverse": "https://i.ucoin.net/coin/41/809/41809447-2s/belarus-1-ruble-2009.jpg"
+          }
+        },
+        {
+          "denomination": {
+            "displayName": "2 rublos",
+            "value": 2.0,
+            "unit": "rublos"
+          },
+          "issuePeriod": {
+            "displayValue": "2009",
+            "startYear": 2009,
+            "endYear": 2009
+          },
+          "imageExampleYear": 2009,
+          "subject": null,
+          "composition": "Bimetálica",
+          "weightGrams": 5.81,
+          "diameterMm": 23.5,
+          "catalogue": {
+            "type": "KM",
+            "number": "568",
+            "displayValue": "KM# 568"
+          },
+          "circulationType": "Circulação normal",
+          "ucoinTypeId": 59340,
+          "ucoinPeriodId": 122,
+          "detailPath": "/coin/belarus-2-rubles-2009/?tid=59340",
+          "detailUrl": "https://pt.ucoin.net/coin/belarus-2-rubles-2009/?tid=59340",
+          "images": {
+            "obverse": "https://i.ucoin.net/coin/41/809/41809451-1s/belarus-2-rubles-2009.jpg",
+            "reverse": "https://i.ucoin.net/coin/41/809/41809451-2s/belarus-2-rubles-2009.jpg"
+          }
+        }
+      ],
+      "sourcePages": [
+        "https://pt.ucoin.net/catalog/?country=belarus"
+      ]
+    }
+  ],
+  "warnings": [],
+  "title": "Bielorrússia - Catálogo de Moedas - uCoin.net",
+  "final_url": "https://pt.ucoin.net/catalog/?country=belarus",
+  "startYearFilter": null,
+  "pagination": {
+    "initialUrl": "https://pt.ucoin.net/catalog/?country=belarus",
+    "visitedPages": [
+      "https://pt.ucoin.net/catalog/?country=belarus"
+    ],
+    "pagesProcessed": 1,
+    "discoveredPages": 1,
+    "failedPages": [],
+    "stoppedEarly": false,
+    "stoppedEarlyReason": null
+  },
+  "count": 8,
+  "output_path": "bielorrussia/ucoin-catalog.json"
+}
