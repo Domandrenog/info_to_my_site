@@ -1,0 +1,17 @@
+# Local secrets
+.env
+
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+
+# JavaScript
+node_modules/
+.tools/
+
+# Browser/session state
+.ucoin-profile/
+
+# Atomic write temporary files
+*.tmp

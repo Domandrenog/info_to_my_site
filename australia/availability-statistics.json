@@ -1,0 +1,26 @@
+{
+  "statistics": {
+    "availability": {
+      "circulating": {
+        "count": 34,
+        "earliestIssueYear": 1966,
+        "latestIssueYear": 2026
+      },
+      "scarce": {
+        "count": 2,
+        "earliestIssueYear": 2006,
+        "latestIssueYear": 2016
+      },
+      "withdrawn": {
+        "count": 5,
+        "earliestIssueYear": 1966,
+        "latestIssueYear": 1991
+      },
+      "historical": {
+        "count": 12,
+        "earliestIssueYear": 1953,
+        "latestIssueYear": 1964
+      }
+    }
+  }
+}

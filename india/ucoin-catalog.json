@@ -1,0 +1,2845 @@
+{
+  "country": "Índia",
+  "period": null,
+  "page_url": "https://pt.ucoin.net/catalog/?country=india",
+  "periods": [
+    {
+      "periodId": 121,
+      "fullTitle": "Índia › República da Índia › 1957 - 2026",
+      "country": "Índia",
+      "rulerOrPeriodName": "República da Índia",
+      "startYear": 1957,
+      "endYear": 2026,
+      "currencyDescription": "1 rúpia = 100 paise",
+      "coins": [
+        {
+          "denomination": {
+            "displayName": "1 naya paisa",
+            "value": 1.0,
+            "unit": "naya paisa"
+          },
+          "issuePeriod": {
+            "displayValue": "1957-1961",
+            "startYear": 1957,
+            "endYear": 1961
+          },
+          "imageExampleYear": 1961,
+          "subject": null,
+          "composition": "Bronze",
+          "weightGrams": 1.5,
+          "diameterMm": 16.04,
+          "catalogue": {
+            "type": "KM",
+            "number": "8",
+            "displayValue": "KM# 8"
+          },
+          "circulationType": "Circulação normal",
+          "ucoinTypeId": 15326,
+          "ucoinPeriodId": 121,
+          "detailPath": "/coin/india-1-naya-paisa-1957-1961/?tid=15326",
+          "detailUrl": "https://pt.ucoin.net/coin/india-1-naya-paisa-1957-1961/?tid=15326",
+          "images": {
+            "obverse": "https://i.ucoin.net/coin/83/867/83867628-1s/india-1-naya-paisa-1961.jpg",
+            "reverse": "https://i.ucoin.net/coin/83/867/83867628-2s/india-1-naya-paisa-1961.jpg"
+          }
+        },
+        {
+          "denomination": {
+            "displayName": "1 naya paisa",
+            "value": 1.0,
+            "unit": "naya paisa"
+          },
+          "issuePeriod": {
+            "displayValue": "1962-1963",
+            "startYear": 1962,
+            "endYear": 1963
+          },
+          "imageExampleYear": 1963,
+          "subject": null,
+          "composition": "Níquel-Latão",
+          "weightGrams": 1.51,
+          "diameterMm": 16.0,
+          "catalogue": {
+            "type": "KM",
+            "number": "8a",
+            "displayValue": "KM# 8a"
+          },
+          "circulationType": "Circulação normal",
+          "ucoinTypeId": 15331,
+          "ucoinPeriodId": 121,
+          "detailPath": "/coin/india-1-naya-paisa-1962-1963/?tid=15331",
+          "detailUrl": "https://pt.ucoin.net/coin/india-1-naya-paisa-1962-1963/?tid=15331",
+          "images": {
+            "obverse": "https://i.ucoin.net/coin/3/309/3309075-1s/india-1-naya-paisa-1963.jpg",
+            "reverse": "https://i.ucoin.net/coin/3/309/3309075-2s/india-1-naya-paisa-1963.jpg"
+          }
+        },
+        {
+          "denomination": {
+            "displayName": "1 paisa",
+            "value": 1.0,
+            "unit": "paisa"
+          },
+          "issuePeriod": {
+            "displayValue": "1964",
+            "startYear": 1964,
+            "endYear": 1964
+          },
+          "imageExampleYear": 1964,
+          "subject": null,
+          "composition": "Níquel-Latão",
+          "weightGrams": 1.48,
+          "diameterMm": 16.0,
+          "catalogue": {
+            "type": "KM",
+            "number": "9",
+            "displayValue": "KM# 9"
+          },
+          "circulationType": "Circulação normal",
+          "ucoinTypeId": 15333,
+          "ucoinPeriodId": 121,
+          "detailPath": "/coin/india-1-paisa-1964/?tid=15333",
+          "detailUrl": "https://pt.ucoin.net/coin/india-1-paisa-1964/?tid=15333",
+          "images": {
+            "obverse": "https://i.ucoin.net/coin/17/880/17880184-1s/india-1-paisa-1964.jpg",
+            "reverse": "https://i.ucoin.net/coin/17/880/17880184-2s/india-1-paisa-1964.jpg"
+          }
+        },
+        {
+          "denomination": {
+            "displayName": "1 paisa",
+            "value": 1.0,
+            "unit": "paisa"
+          },
+          "issuePeriod": {
+            "displayValue": "1965-1981",
+            "startYear": 1965,
+            "endYear": 1981
+          },
+          "imageExampleYear": 1967,
+          "subject": null,
+          "composition": "Alumínio",
+          "weightGrams": 0.75,
+          "diameterMm": 17.0,
+          "catalogue": {
+            "type": "KM",
+            "number": "10.1",
+            "displayValue": "KM# 10.1"
+          },
+          "circulationType": "Circulação normal",
+          "ucoinTypeId": 15360,
+          "ucoinPeriodId": 121,
+          "detailPath": "/coin/india-1-paisa-1965-1981/?tid=15360",
+          "detailUrl": "https://pt.ucoin.net/coin/india-1-paisa-1965-1981/?tid=15360",
+          "images": {
+            "obverse": "https://i.ucoin.net/coin/60/211/60211811-1s/india-1-paisa-1967.jpg",
+            "reverse": "https://i.ucoin.net/coin/60/211/60211811-2s/india-1-paisa-1967.jpg"
+          }
+        },
+        {
+          "denomination": {
+            "displayName": "2 naye paise",
+            "value": 2.0,
+            "unit": "naye paise"
+          },
+          "issuePeriod": {
+            "displayValue": "1957-1963",
+            "startYear": 1957,
+            "endYear": 1963
+          },
+          "imageExampleYear": 1962,
+          "subject": null,
+          "composition": "Cupro-Níquel",
+          "weightGrams": 2.95,
+          "diameterMm": 18.0,
+          "catalogue": {
+            "type": "KM",
+            "number": "11",
+            "displayValue": "KM# 11"
+          },
+          "circulationType": "Circulação normal",
+          "ucoinTypeId": 15335,
+          "ucoinPeriodId": 121,
+          "detailPath": "/coin/india-2-naye-paise-1957-1963/?tid=15335",
+          "detailUrl": "https://pt.ucoin.net/coin/india-2-naye-paise-1957-1963/?tid=15335",
+          "images": {
+            "obverse": "https://i.ucoin.net/coin/19/566/19566110-1s/india-2-naye-paise-1962.jpg",
+            "reverse": "https://i.ucoin.net/coin/19/566/19566110-2s/india-2-naye-paise-1962.jpg"
+          }
+        },
+        {
+          "denomination": {
+            "displayName": "2 paise",
+            "value": 2.0,
+            "unit": "paise"
+          },
+          "issuePeriod": {
+            "displayValue": "1964",
+            "startYear": 1964,
+            "endYear": 1964
+          },
+          "imageExampleYear": 1964,
+          "subject": null,
+          "composition": "Cupro-Níquel",
+          "weightGrams": 2.95,
+          "diameterMm": 18.0,
+          "catalogue": {
+            "type": "KM",
+            "number": "12",
+            "displayValue": "KM# 12"
+          },
+          "circulationType": "Circulação normal",
+          "ucoinTypeId": 15342,
+          "ucoinPeriodId": 121,
+          "detailPath": "/coin/india-2-paise-1964/?tid=15342",
+          "detailUrl": "https://pt.ucoin.net/coin/india-2-paise-1964/?tid=15342",
+          "images": {
+            "obverse": "https://i.ucoin.net/coin/60/189/60189840-1s/india-2-paise-1964.jpg",
+            "reverse": "https://i.ucoin.net/coin/60/189/60189840-2s/india-2-paise-1964.jpg"
+          }
+        },
+        {
+          "denomination": {
+            "displayName": "2 paise",
+            "value": 2.0,
+            "unit": "paise"
+          },
+          "issuePeriod": {
+            "displayValue": "1965-1967",
+            "startYear": 1965,
+            "endYear": 1967
+          },
+          "imageExampleYear": 1966,
+          "subject": null,
+          "composition": "Alumínio",
+          "weightGrams": 1.0,
+          "diameterMm": 20.0,
+          "catalogue": {
+            "type": "KM",
+            "number": "13.1",
+            "displayValue": "KM# 13.1"
+          },
+          "circulationType": "Circulação normal",
+          "ucoinTypeId": 15343,
+          "ucoinPeriodId": 121,
+          "detailPath": "/coin/india-2-paise-1965-1967/?tid=15343",
+          "detailUrl": "https://pt.ucoin.net/coin/india-2-paise-1965-1967/?tid=15343",
+          "images": {
+            "obverse": "https://i.ucoin.net/coin/41/431/41431071-1s/india-2-paise-1966.jpg",
+            "reverse": "https://i.ucoin.net/coin/41/431/41431071-2s/india-2-paise-1966.jpg"
+          }
+        },
+        {
+          "denomination": {
+            "displayName": "2 paise",
+            "value": 2.0,
+            "unit": "paise"
+          },
+          "issuePeriod": {
+            "displayValue": "1968-1971",
+            "startYear": 1968,
+            "endYear": 1971
+          },
+          "imageExampleYear": 1970,
+          "subject": null,
+          "composition": "Alumínio",
+          "weightGrams": 1.0,
+          "diameterMm": 20.0,
+          "catalogue": {
+            "type": "KM",
+            "number": "13.5",
+            "displayValue": "KM# 13.5"
+          },
+          "circulationType": "Circulação normal",
+          "ucoinTypeId": 15346,
+          "ucoinPeriodId": 121,
+          "detailPath": "/coin/india-2-paise-1968-1971/?tid=15346",
+          "detailUrl": "https://pt.ucoin.net/coin/india-2-paise-1968-1971/?tid=15346",
+          "images": {
+            "obverse": "https://i.ucoin.net/coin/69/338/69338322-1s/india-2-paise-1970.jpg",
+            "reverse": "https://i.ucoin.net/coin/69/338/69338322-2s/india-2-paise-1970.jpg"
+          }
+        },
+        {
+          "denomination": {
+            "displayName": "2 paise",
+            "value": 2.0,
+            "unit": "paise"
+          },
+          "issuePeriod": {
+            "displayValue": "1972-1981",
+            "startYear": 1972,
+            "endYear": 1981
+          },
+          "imageExampleYear": 1976,
+          "subject": null,
+          "composition": "Alumínio",
+          "weightGrams": 1.0,
+          "diameterMm": 20.0,
+          "catalogue": {
+            "type": "KM",
+            "number": "13.6",
+            "displayValue": "KM# 13.6"
+          },
+          "circulationType": "Circulação normal",
+          "ucoinTypeId": 15350,
+          "ucoinPeriodId": 121,
+          "detailPath": "/coin/india-2-paise-1972-1981/?tid=15350",
+          "detailUrl": "https://pt.ucoin.net/coin/india-2-paise-1972-1981/?tid=15350",
+          "images": {
+            "obverse": "https://i.ucoin.net/coin/60/132/60132559-1s/india-2-paise-1976.jpg",
+            "reverse": "https://i.ucoin.net/coin/60/132/60132559-2s/india-2-paise-1976.jpg"
+          }
+        },
+        {
+          "denomination": {
+            "displayName": "3 paise",
+            "value": 3.0,
+            "unit": "paise"
+          },
+          "issuePeriod": {
+            "displayValue": "1964-1967",
+            "startYear": 1964,
+            "endYear": 1967
+          },
+          "imageExampleYear": 1965,
+          "subject": null,
+          "composition": "Alumínio",
+          "weightGrams": 1.23,
+          "diameterMm": 21.3,
+          "catalogue": {
+            "type": "KM",
+            "number": "14.1",
+            "displayValue": "KM# 14.1"
+          },
+          "circulationType": "Circulação normal",
+          "ucoinTypeId": 15377,
+          "ucoinPeriodId": 121,
+          "detailPath": "/coin/india-3-paise-1964-1967/?tid=15377",
+          "detailUrl": "https://pt.ucoin.net/coin/india-3-paise-1964-1967/?tid=15377",
+          "images": {
+            "obverse": "https://i.ucoin.net/coin/69/840/69840777-1s/india-3-paise-1965.jpg",
+            "reverse": "https://i.ucoin.net/coin/69/840/69840777-2s/india-3-paise-1965.jpg"
+          }
+        },
+        {
+          "denomination": {
+            "displayName": "3 paise",
+            "value": 3.0,
+            "unit": "paise"
+          },
+          "issuePeriod": {
+            "displayValue": "1968-1971",
+            "startYear": 1968,
+            "endYear": 1971
+          },
+          "imageExampleYear": 1971,
+          "subject": null,
+          "composition": "Alumínio",
+          "weightGrams": 1.23,
+          "diameterMm": 21.3,
+          "catalogue": {
+            "type": "KM",
+            "number": "14.2",
+            "displayValue": "KM# 14.2"
+          },
+          "circulationType": "Circulação normal",
+          "ucoinTypeId": 15381,
+          "ucoinPeriodId": 121,
+          "detailPath": "/coin/india-3-paise-1968-1971/?tid=15381",
+          "detailUrl": "https://pt.ucoin.net/coin/india-3-paise-1968-1971/?tid=15381",
+          "images": {
+            "obverse": "https://i.ucoin.net/coin/76/312/76312904-1s/india-3-paise-1971.jpg",
+            "reverse": "https://i.ucoin.net/coin/76/312/76312904-2s/india-3-paise-1971.jpg"
+          }
+        },
+        {
+          "denomination": {
+            "displayName": "3 paise",
+            "value": 3.0,
+            "unit": "paise"
+          },
+          "issuePeriod": {
+            "displayValue": "1972-1981",
+            "startYear": 1972,
+            "endYear": 1981
+          },
+          "imageExampleYear": 1973,
+          "subject": null,
+          "composition": "Alumínio",
+          "weightGrams": 1.23,
+          "diameterMm": 21.3,
+          "catalogue": {
+            "type": "KM",
+            "number": "15",
+            "displayValue": "KM# 15"
+          },
+          "circulationType": "Circulação normal",
+          "ucoinTypeId": 19996,
+          "ucoinPeriodId": 121,
+          "detailPath": "/coin/india-3-paise-1972-1981/?tid=19996",
+          "detailUrl": "https://pt.ucoin.net/coin/india-3-paise-1972-1981/?tid=19996",
+          "images": {
+            "obverse": "https://i.ucoin.net/coin/68/488/68488771-1s/india-3-paise-1973.jpg",
+            "reverse": "https://i.ucoin.net/coin/68/488/68488771-2s/india-3-paise-1973.jpg"
+          }
+        },
+        {
+          "denomination": {
+            "displayName": "5 naye paise",
+            "value": 5.0,
+            "unit": "naye paise"
+          },
+          "issuePeriod": {
+            "displayValue": "1957-1963",
+            "startYear": 1957,
+            "endYear": 1963
+          },
+          "imageExampleYear": 1962,
+          "subject": null,
+          "composition": "Cupro-Níquel",
+          "weightGrams": 4.05,
+          "diameterMm": 22.0,
+          "catalogue": {
+            "type": "KM",
+            "number": "16",
+            "displayValue": "KM# 16"
+          },
+          "circulationType": "Circulação normal",
+          "ucoinTypeId": 15385,
+          "ucoinPeriodId": 121,
+          "detailPath": "/coin/india-5-naye-paise-1957-1963/?tid=15385",
+          "detailUrl": "https://pt.ucoin.net/coin/india-5-naye-paise-1957-1963/?tid=15385",
+          "images": {
+            "obverse": "https://i.ucoin.net/coin/77/789/77789513-1s/india-5-naye-paise-1962.jpg",
+            "reverse": "https://i.ucoin.net/coin/77/789/77789513-2s/india-5-naye-paise-1962.jpg"
+          }
+        },
+        {
+          "denomination": {
+            "displayName": "5 paise",
+            "value": 5.0,
+            "unit": "paise"
+          },
+          "issuePeriod": {
+            "displayValue": "1964-1966",
+            "startYear": 1964,
+            "endYear": 1966
+          },
+          "imageExampleYear": 1965,
+          "subject": null,
+          "composition": "Cupro-Níquel",
+          "weightGrams": 4.05,
+          "diameterMm": 22.0,
+          "catalogue": {
+            "type": "KM",
+            "number": "17",
+            "displayValue": "KM# 17"
+          },
+          "circulationType": "Circulação normal",
+          "ucoinTypeId": 15392,
+          "ucoinPeriodId": 121,
+          "detailPath": "/coin/india-5-paise-1964-1966/?tid=15392",
+          "detailUrl": "https://pt.ucoin.net/coin/india-5-paise-1964-1966/?tid=15392",
+          "images": {
+            "obverse": "https://i.ucoin.net/coin/25/433/25433771-1s/india-5-paise-1965.jpg",
+            "reverse": "https://i.ucoin.net/coin/25/433/25433771-2s/india-5-paise-1965.jpg"
+          }
+        },
+        {
+          "denomination": {
+            "displayName": "5 paise",
+            "value": 5.0,
+            "unit": "paise"
+          },
+          "issuePeriod": {
+            "displayValue": "1967",
+            "startYear": 1967,
+            "endYear": 1967
+          },
+          "imageExampleYear": 1967,
+          "subject": null,
+          "composition": "Alumínio",
+          "weightGrams": 1.6,
+          "diameterMm": 22.0,
+          "catalogue": {
+            "type": "KM",
+            "number": "18.1",
+            "displayValue": "KM# 18.1"
+          },
+          "circulationType": "Circulação normal",
+          "ucoinTypeId": 15397,
+          "ucoinPeriodId": 121,
+          "detailPath": "/coin/india-5-paise-1967/?tid=15397",
+          "detailUrl": "https://pt.ucoin.net/coin/india-5-paise-1967/?tid=15397",
+          "images": {
+            "obverse": "https://i.ucoin.net/coin/69/335/69335140-1s/india-5-paise-1967.jpg",
+            "reverse": "https://i.ucoin.net/coin/69/335/69335140-2s/india-5-paise-1967.jpg"
+          }
+        },
+        {
+          "denomination": {
+            "displayName": "5 paise",
+            "value": 5.0,
+            "unit": "paise"
+          },
+          "issuePeriod": {
+            "displayValue": "1968-1971",
+            "startYear": 1968,
+            "endYear": 1971
+          },
+          "imageExampleYear": 1968,
+          "subject": null,
+          "composition": "Alumínio",
+          "weightGrams": 1.6,
+          "diameterMm": 22.04,
+          "catalogue": {
+            "type": "KM",
+            "number": "18.2",
+            "displayValue": "KM# 18.2"
+          },
+          "circulationType": "Circulação normal",
+          "ucoinTypeId": 15398,
+          "ucoinPeriodId": 121,
+          "detailPath": "/coin/india-5-paise-1968-1971/?tid=15398",
+          "detailUrl": "https://pt.ucoin.net/coin/india-5-paise-1968-1971/?tid=15398",
+          "images": {
+            "obverse": "https://i.ucoin.net/coin/1/102/1102581-1s/india-5-paise-1968.jpg",
+            "reverse": "https://i.ucoin.net/coin/1/102/1102581-2s/india-5-paise-1968.jpg"
+          }
+        },
+        {
+          "denomination": {
+            "displayName": "5 paise",
+            "value": 5.0,
+            "unit": "paise"
+          },
+          "issuePeriod": {
+            "displayValue": "1969-1970",
+            "startYear": 1969,
+            "endYear": 1970
+          },
+          "imageExampleYear": 1970,
+          "subject": null,
+          "composition": "Alumínio",
+          "weightGrams": 1.6,
+          "diameterMm": 22.04,
+          "catalogue": {
+            "type": "KM",
+            "number": "18.3",
+            "displayValue": "KM# 18.3"
+          },
+          "circulationType": "Circulação normal",
+          "ucoinTypeId": 15399,
+          "ucoinPeriodId": 121,
+          "detailPath": "/coin/india-5-paise-1969-1970/?tid=15399",
+          "detailUrl": "https://pt.ucoin.net/coin/india-5-paise-1969-1970/?tid=15399",
+          "images": {
+            "obverse": "https://i.ucoin.net/coin/66/857/66857833-1s/india-5-paise-1970.jpg",
+            "reverse": "https://i.ucoin.net/coin/66/857/66857833-2s/india-5-paise-1970.jpg"
+          }
+        },
+        {
+          "denomination": {
+            "displayName": "5 paise",
+            "value": 5.0,
+            "unit": "paise"
+          },
+          "issuePeriod": {
+            "displayValue": "1972",
+            "startYear": 1972,
+            "endYear": 1972
+          },
+          "imageExampleYear": 1972,
+          "subject": null,
+          "composition": "Alumínio",
+          "weightGrams": 1.6,
+          "diameterMm": 22.04,
+          "catalogue": {
+            "type": "KM",
+            "number": "18.4",
+            "displayValue": "KM# 18.4"
+          },
+          "circulationType": "Circulação normal",
+          "ucoinTypeId": 15457,
+          "ucoinPeriodId": 121,
+          "detailPath": "/coin/india-5-paise-1972/?tid=15457",
+          "detailUrl": "https://pt.ucoin.net/coin/india-5-paise-1972/?tid=15457",
+          "images": {
+            "obverse": "https://i.ucoin.net/coin/77/291/77291881-1s/india-5-paise-1972.jpg",
+            "reverse": "https://i.ucoin.net/coin/77/291/77291881-2s/india-5-paise-1972.jpg"
+          }
+        },
+        {
+          "denomination": {
+            "displayName": "5 paise",
+            "value": 5.0,
+            "unit": "paise"
+          },
+          "issuePeriod": {
+            "displayValue": "1973-1984",
+            "startYear": 1973,
+            "endYear": 1984
+          },
+          "imageExampleYear": 1978,
+          "subject": null,
+          "composition": "Alumínio",
+          "weightGrams": 1.6,
+          "diameterMm": 22.0,
+          "catalogue": {
+            "type": "KM",
+            "number": "18.6",
+            "displayValue": "KM# 18.6"
+          },
+          "circulationType": "Circulação normal",
+          "ucoinTypeId": 15458,
+          "ucoinPeriodId": 121,
+          "detailPath": "/coin/india-5-paise-1973-1984/?tid=15458",
+          "detailUrl": "https://pt.ucoin.net/coin/india-5-paise-1973-1984/?tid=15458",
+          "images": {
+            "obverse": "https://i.ucoin.net/coin/60/576/60576923-1s/india-5-paise-1978.jpg",
+            "reverse": "https://i.ucoin.net/coin/60/576/60576923-2s/india-5-paise-1978.jpg"
+          }
+        },
+        {
+          "denomination": {
+            "displayName": "5 paise",
+            "value": 5.0,
+            "unit": "paise"
+          },
+          "issuePeriod": {
+            "displayValue": "1985-1994",
+            "startYear": 1985,
+            "endYear": 1994
+          },
+          "imageExampleYear": 1991,
+          "subject": null,
+          "composition": "Alumínio",
+          "weightGrams": 1.03,
+          "diameterMm": 22.0,
+          "catalogue": {
+            "type": "KM",
+            "number": "23",
+            "displayValue": "KM# 23"
+          },
+          "circulationType": "Circulação normal",
+          "ucoinTypeId": 15478,
+          "ucoinPeriodId": 121,
+          "detailPath": "/coin/india-5-paise-1985-1994/?tid=15478",
+          "detailUrl": "https://pt.ucoin.net/coin/india-5-paise-1985-1994/?tid=15478",
+          "images": {
+            "obverse": "https://i.ucoin.net/coin/75/490/75490230-1s/india-5-paise-1991.jpg",
+            "reverse": "https://i.ucoin.net/coin/75/490/75490230-2s/india-5-paise-1991.jpg"
+          }
+        },
+        {
+          "denomination": {
+            "displayName": "10 naye paise",
+            "value": 10.0,
+            "unit": "naye paise"
+          },
+          "issuePeriod": {
+            "displayValue": "1957",
+            "startYear": 1957,
+            "endYear": 1957
+          },
+          "imageExampleYear": 1957,
+          "subject": null,
+          "composition": "Cupro-Níquel",
+          "weightGrams": 4.85,
+          "diameterMm": 23.0,
+          "catalogue": {
+            "type": "KM",
+            "number": "24.1",
+            "displayValue": "KM# 24.1"
+          },
+          "circulationType": "Circulação normal",
+          "ucoinTypeId": 15496,
+          "ucoinPeriodId": 121,
+          "detailPath": "/coin/india-10-naye-paise-1957/?tid=15496",
+          "detailUrl": "https://pt.ucoin.net/coin/india-10-naye-paise-1957/?tid=15496",
+          "images": {
+            "obverse": "https://i.ucoin.net/coin/0/920/920550-1s/india-10-naye-paise-1957.jpg",
+            "reverse": "https://i.ucoin.net/coin/0/920/920550-2s/india-10-naye-paise-1957.jpg"
+          }
+        },
+        {
+          "denomination": {
+            "displayName": "10 naye paise",
+            "value": 10.0,
+            "unit": "naye paise"
+          },
+          "issuePeriod": {
+            "displayValue": "1958-1963",
+            "startYear": 1958,
+            "endYear": 1963
+          },
+          "imageExampleYear": 1961,
+          "subject": null,
+          "composition": "Cupro-Níquel",
+          "weightGrams": 5.0,
+          "diameterMm": 23.0,
+          "catalogue": {
+            "type": "KM",
+            "number": "24.2",
+            "displayValue": "KM# 24.2"
+          },
+          "circulationType": "Circulação normal",
+          "ucoinTypeId": 15497,
+          "ucoinPeriodId": 121,
+          "detailPath": "/coin/india-10-naye-paise-1958-1963/?tid=15497",
+          "detailUrl": "https://pt.ucoin.net/coin/india-10-naye-paise-1958-1963/?tid=15497",
+          "images": {
+            "obverse": "https://i.ucoin.net/coin/3/202/3202621-1s/india-10-naye-paise-1961.jpg",
+            "reverse": "https://i.ucoin.net/coin/3/202/3202621-2s/india-10-naye-paise-1961.jpg"
+          }
+        },
+        {
+          "denomination": {
+            "displayName": "10 paise",
+            "value": 10.0,
+            "unit": "paise"
+          },
+          "issuePeriod": {
+            "displayValue": "1964-1967",
+            "startYear": 1964,
+            "endYear": 1967
+          },
+          "imageExampleYear": 1965,
+          "subject": null,
+          "composition": "Cupro-Níquel",
+          "weightGrams": 5.0,
+          "diameterMm": 23.0,
+          "catalogue": {
+            "type": "KM",
+            "number": "25",
+            "displayValue": "KM# 25"
+          },
+          "circulationType": "Circulação normal",
+          "ucoinTypeId": 15503,
+          "ucoinPeriodId": 121,
+          "detailPath": "/coin/india-10-paise-1964-1967/?tid=15503",
+          "detailUrl": "https://pt.ucoin.net/coin/india-10-paise-1964-1967/?tid=15503",
+          "images": {
+            "obverse": "https://i.ucoin.net/coin/60/096/60096819-1s/india-10-paise-1965.jpg",
+            "reverse": "https://i.ucoin.net/coin/60/096/60096819-2s/india-10-paise-1965.jpg"
+          }
+        },
+        {
+          "denomination": {
+            "displayName": "10 paise",
+            "value": 10.0,
+            "unit": "paise"
+          },
+          "issuePeriod": {
+            "displayValue": "1968",
+            "startYear": 1968,
+            "endYear": 1968
+          },
+          "imageExampleYear": 1968,
+          "subject": null,
+          "composition": "Níquel-Latão",
+          "weightGrams": 4.3,
+          "diameterMm": 23.0,
+          "catalogue": {
+            "type": "KM",
+            "number": "26.2",
+            "displayValue": "KM# 26.2"
+          },
+          "circulationType": "Circulação normal",
+          "ucoinTypeId": 15507,
+          "ucoinPeriodId": 121,
+          "detailPath": "/coin/india-10-paise-1968/?tid=15507",
+          "detailUrl": "https://pt.ucoin.net/coin/india-10-paise-1968/?tid=15507",
+          "images": {
+            "obverse": "https://i.ucoin.net/coin/69/244/69244393-1s/india-10-paise-1968.jpg",
+            "reverse": "https://i.ucoin.net/coin/69/244/69244393-2s/india-10-paise-1968.jpg"
+          }
+        },
+        {
+          "denomination": {
+            "displayName": "10 paise",
+            "value": 10.0,
+            "unit": "paise"
+          },
+          "issuePeriod": {
+            "displayValue": "1969-1971",
+            "startYear": 1969,
+            "endYear": 1971
+          },
+          "imageExampleYear": 1970,
+          "subject": null,
+          "composition": "Níquel-Latão",
+          "weightGrams": 4.3,
+          "diameterMm": 23.0,
+          "catalogue": {
+            "type": "KM",
+            "number": "26.3",
+            "displayValue": "KM# 26.3"
+          },
+          "circulationType": "Circulação normal",
+          "ucoinTypeId": 15508,
+          "ucoinPeriodId": 121,
+          "detailPath": "/coin/india-10-paise-1969-1971/?tid=15508",
+          "detailUrl": "https://pt.ucoin.net/coin/india-10-paise-1969-1971/?tid=15508",
+          "images": {
+            "obverse": "https://i.ucoin.net/coin/70/642/70642621-1s/india-10-paise-1970.jpg",
+            "reverse": "https://i.ucoin.net/coin/70/642/70642621-2s/india-10-paise-1970.jpg"
+          }
+        },
+        {
+          "denomination": {
+            "displayName": "10 paise",
+            "value": 10.0,
+            "unit": "paise"
+          },
+          "issuePeriod": {
+            "displayValue": "1971-1978",
+            "startYear": 1971,
+            "endYear": 1978
+          },
+          "imageExampleYear": 1972,
+          "subject": null,
+          "composition": "Alumínio",
+          "weightGrams": 2.3,
+          "diameterMm": 26.0,
+          "catalogue": {
+            "type": "KM",
+            "number": "27.1",
+            "displayValue": "KM# 27.1"
+          },
+          "circulationType": "Circulação normal",
+          "ucoinTypeId": 15511,
+          "ucoinPeriodId": 121,
+          "detailPath": "/coin/india-10-paise-1971-1978/?tid=15511",
+          "detailUrl": "https://pt.ucoin.net/coin/india-10-paise-1971-1978/?tid=15511",
+          "images": {
+            "obverse": "https://i.ucoin.net/coin/23/603/23603234-1s/india-10-paise-1972.jpg",
+            "reverse": "https://i.ucoin.net/coin/23/603/23603234-2s/india-10-paise-1972.jpg"
+          }
+        },
+        {
+          "denomination": {
+            "displayName": "10 paise",
+            "value": 10.0,
+            "unit": "paise"
+          },
+          "issuePeriod": {
+            "displayValue": "1979",
+            "startYear": 1979,
+            "endYear": 1979
+          },
+          "imageExampleYear": 1979,
+          "subject": null,
+          "composition": "Alumínio",
+          "weightGrams": 2.3,
+          "diameterMm": 26.0,
+          "catalogue": {
+            "type": "KM",
+            "number": "27.2",
+            "displayValue": "KM# 27.2"
+          },
+          "circulationType": "Circulação normal",
+          "ucoinTypeId": 15518,
+          "ucoinPeriodId": 121,
+          "detailPath": "/coin/india-10-paise-1979/?tid=15518",
+          "detailUrl": "https://pt.ucoin.net/coin/india-10-paise-1979/?tid=15518",
+          "images": {
+            "obverse": "https://i.ucoin.net/coin/79/993/79993138-1s/india-10-paise-1979.jpg",
+            "reverse": "https://i.ucoin.net/coin/79/993/79993138-2s/india-10-paise-1979.jpg"
+          }
+        },
+        {
+          "denomination": {
+            "displayName": "10 paise",
+            "value": 10.0,
+            "unit": "paise"
+          },
+          "issuePeriod": {
+            "displayValue": "1980-1982",
+            "startYear": 1980,
+            "endYear": 1982
+          },
+          "imageExampleYear": 1980,
+          "subject": null,
+          "composition": "Alumínio",
+          "weightGrams": 2.3,
+          "diameterMm": 26.0,
+          "catalogue": {
+            "type": "KM",
+            "number": "27.3",
+            "displayValue": "KM# 27.3"
+          },
+          "circulationType": "Circulação normal",
+          "ucoinTypeId": 15520,
+          "ucoinPeriodId": 121,
+          "detailPath": "/coin/india-10-paise-1980-1982/?tid=15520",
+          "detailUrl": "https://pt.ucoin.net/coin/india-10-paise-1980-1982/?tid=15520",
+          "images": {
+            "obverse": "https://i.ucoin.net/coin/76/567/76567132-1s/india-10-paise-1980.jpg",
+            "reverse": "https://i.ucoin.net/coin/76/567/76567132-2s/india-10-paise-1980.jpg"
+          }
+        },
+        {
+          "denomination": {
+            "displayName": "10 paise",
+            "value": 10.0,
+            "unit": "paise"
+          },
+          "issuePeriod": {
+            "displayValue": "1983-1993",
+            "startYear": 1983,
+            "endYear": 1993
+          },
+          "imageExampleYear": 1986,
+          "subject": null,
+          "composition": "Alumínio",
+          "weightGrams": 1.76,
+          "diameterMm": 24.0,
+          "catalogue": {
+            "type": "KM",
+            "number": "39",
+            "displayValue": "KM# 39"
+          },
+          "circulationType": "Circulação normal",
+          "ucoinTypeId": 15523,
+          "ucoinPeriodId": 121,
+          "detailPath": "/coin/india-10-paise-1983-1993/?tid=15523",
+          "detailUrl": "https://pt.ucoin.net/coin/india-10-paise-1983-1993/?tid=15523",
+          "images": {
+            "obverse": "https://i.ucoin.net/coin/81/622/81622239-1s/india-10-paise-1986.jpg",
+            "reverse": "https://i.ucoin.net/coin/81/622/81622239-2s/india-10-paise-1986.jpg"
+          }
+        },
+        {
+          "denomination": {
+            "displayName": "10 paise",
+            "value": 10.0,
+            "unit": "paise"
+          },
+          "issuePeriod": {
+            "displayValue": "1988-1998",
+            "startYear": 1988,
+            "endYear": 1998
+          },
+          "imageExampleYear": 1990,
+          "subject": null,
+          "composition": "Aço inoxidável",
+          "weightGrams": 2.0,
+          "diameterMm": 16.0,
+          "catalogue": {
+            "type": "KM",
+            "number": "40.1",
+            "displayValue": "KM# 40.1"
+          },
+          "circulationType": "Circulação normal",
+          "ucoinTypeId": 15532,
+          "ucoinPeriodId": 121,
+          "detailPath": "/coin/india-10-paise-1988-1998/?tid=15532",
+          "detailUrl": "https://pt.ucoin.net/coin/india-10-paise-1988-1998/?tid=15532",
+          "images": {
+            "obverse": "https://i.ucoin.net/coin/46/931/46931171-1s/india-10-paise-1990.jpg",
+            "reverse": "https://i.ucoin.net/coin/46/931/46931171-2s/india-10-paise-1990.jpg"
+          }
+        },
+        {
+          "denomination": {
+            "displayName": "20 paise",
+            "value": 20.0,
+            "unit": "paise"
+          },
+          "issuePeriod": {
+            "displayValue": "1968-1971",
+            "startYear": 1968,
+            "endYear": 1971
+          },
+          "imageExampleYear": 1970,
+          "subject": null,
+          "composition": "Níquel-Latão",
+          "weightGrams": 4.6,
+          "diameterMm": 22.0,
+          "catalogue": {
+            "type": "KM",
+            "number": "41",
+            "displayValue": "KM# 41"
+          },
+          "circulationType": "Circulação normal",
+          "ucoinTypeId": 15564,
+          "ucoinPeriodId": 121,
+          "detailPath": "/coin/india-20-paise-1968-1971/?tid=15564",
+          "detailUrl": "https://pt.ucoin.net/coin/india-20-paise-1968-1971/?tid=15564",
+          "images": {
+            "obverse": "https://i.ucoin.net/coin/10/965/10965500-1s/india-20-paise-1970.jpg",
+            "reverse": "https://i.ucoin.net/coin/10/965/10965500-2s/india-20-paise-1970.jpg"
+          }
+        },
+        {
+          "denomination": {
+            "displayName": "20 paise",
+            "value": 20.0,
+            "unit": "paise"
+          },
+          "issuePeriod": {
+            "displayValue": "1982-1997",
+            "startYear": 1982,
+            "endYear": 1997
+          },
+          "imageExampleYear": 1983,
+          "subject": null,
+          "composition": "Alumínio",
+          "weightGrams": 2.2,
+          "diameterMm": 26.0,
+          "catalogue": {
+            "type": "KM",
+            "number": "44",
+            "displayValue": "KM# 44"
+          },
+          "circulationType": "Circulação normal",
+          "ucoinTypeId": 15571,
+          "ucoinPeriodId": 121,
+          "detailPath": "/coin/india-20-paise-1982-1997/?tid=15571",
+          "detailUrl": "https://pt.ucoin.net/coin/india-20-paise-1982-1997/?tid=15571",
+          "images": {
+            "obverse": "https://i.ucoin.net/coin/85/102/85102965-1s/india-20-paise-1983.jpg",
+            "reverse": "https://i.ucoin.net/coin/85/102/85102965-2s/india-20-paise-1983.jpg"
+          }
+        },
+        {
+          "denomination": {
+            "displayName": "25 naye paise",
+            "value": 25.0,
+            "unit": "naye paise"
+          },
+          "issuePeriod": {
+            "displayValue": "1957-1960",
+            "startYear": 1957,
+            "endYear": 1960
+          },
+          "imageExampleYear": 1959,
+          "subject": null,
+          "composition": "Níquel",
+          "weightGrams": 2.42,
+          "diameterMm": 19.0,
+          "catalogue": {
+            "type": "KM",
+            "number": "47.1",
+            "displayValue": "KM# 47.1"
+          },
+          "circulationType": "Circulação normal",
+          "ucoinTypeId": 15605,
+          "ucoinPeriodId": 121,
+          "detailPath": "/coin/india-25-naye-paise-1957-1960/?tid=15605",
+          "detailUrl": "https://pt.ucoin.net/coin/india-25-naye-paise-1957-1960/?tid=15605",
+          "images": {
+            "obverse": "https://i.ucoin.net/coin/60/577/60577699-1s/india-25-naye-paise-1959.jpg",
+            "reverse": "https://i.ucoin.net/coin/60/577/60577699-2s/india-25-naye-paise-1959.jpg"
+          }
+        },
+        {
+          "denomination": {
+            "displayName": "25 naye paise",
+            "value": 25.0,
+            "unit": "naye paise"
+          },
+          "issuePeriod": {
+            "displayValue": "1961-1963",
+            "startYear": 1961,
+            "endYear": 1963
+          },
+          "imageExampleYear": 1962,
+          "subject": null,
+          "composition": "Níquel",
+          "weightGrams": 2.5,
+          "diameterMm": 19.0,
+          "catalogue": {
+            "type": "KM",
+            "number": "47.2",
+            "displayValue": "KM# 47.2"
+          },
+          "circulationType": "Circulação normal",
+          "ucoinTypeId": 15616,
+          "ucoinPeriodId": 121,
+          "detailPath": "/coin/india-25-naye-paise-1961-1963/?tid=15616",
+          "detailUrl": "https://pt.ucoin.net/coin/india-25-naye-paise-1961-1963/?tid=15616",
+          "images": {
+            "obverse": "https://i.ucoin.net/coin/2/479/2479130-1s/india-25-naye-paise-1962.jpg",
+            "reverse": "https://i.ucoin.net/coin/2/479/2479130-2s/india-25-naye-paise-1962.jpg"
+          }
+        },
+        {
+          "denomination": {
+            "displayName": "25 paise",
+            "value": 25.0,
+            "unit": "paise"
+          },
+          "issuePeriod": {
+            "displayValue": "1964",
+            "startYear": 1964,
+            "endYear": 1964
+          },
+          "imageExampleYear": 1964,
+          "subject": null,
+          "composition": "Níquel",
+          "weightGrams": 2.5,
+          "diameterMm": 19.0,
+          "catalogue": {
+            "type": "KM",
+            "number": "48.1",
+            "displayValue": "KM# 48.1"
+          },
+          "circulationType": "Circulação normal",
+          "ucoinTypeId": 15619,
+          "ucoinPeriodId": 121,
+          "detailPath": "/coin/india-25-paise-1964/?tid=15619",
+          "detailUrl": "https://pt.ucoin.net/coin/india-25-paise-1964/?tid=15619",
+          "images": {
+            "obverse": "https://i.ucoin.net/coin/2/861/2861482-1s/india-25-paise-1964.jpg",
+            "reverse": "https://i.ucoin.net/coin/2/861/2861482-2s/india-25-paise-1964.jpg"
+          }
+        },
+        {
+          "denomination": {
+            "displayName": "25 paise",
+            "value": 25.0,
+            "unit": "paise"
+          },
+          "issuePeriod": {
+            "displayValue": "1965-1967",
+            "startYear": 1965,
+            "endYear": 1967
+          },
+          "imageExampleYear": 1967,
+          "subject": null,
+          "composition": "Níquel",
+          "weightGrams": 2.55,
+          "diameterMm": 19.0,
+          "catalogue": {
+            "type": "KM",
+            "number": "48.2",
+            "displayValue": "KM# 48.2"
+          },
+          "circulationType": "Circulação normal",
+          "ucoinTypeId": 15620,
+          "ucoinPeriodId": 121,
+          "detailPath": "/coin/india-25-paise-1965-1967/?tid=15620",
+          "detailUrl": "https://pt.ucoin.net/coin/india-25-paise-1965-1967/?tid=15620",
+          "images": {
+            "obverse": "https://i.ucoin.net/coin/7/393/7393415-1s/india-25-paise-1967.jpg",
+            "reverse": "https://i.ucoin.net/coin/7/393/7393415-2s/india-25-paise-1967.jpg"
+          }
+        },
+        {
+          "denomination": {
+            "displayName": "25 paise",
+            "value": 25.0,
+            "unit": "paise"
+          },
+          "issuePeriod": {
+            "displayValue": "1968",
+            "startYear": 1968,
+            "endYear": 1968
+          },
+          "imageExampleYear": 1968,
+          "subject": null,
+          "composition": "Níquel",
+          "weightGrams": 2.55,
+          "diameterMm": 19.0,
+          "catalogue": {
+            "type": "KM",
+            "number": "48.3",
+            "displayValue": "KM# 48.3"
+          },
+          "circulationType": "Circulação normal",
+          "ucoinTypeId": 15623,
+          "ucoinPeriodId": 121,
+          "detailPath": "/coin/india-25-paise-1968/?tid=15623",
+          "detailUrl": "https://pt.ucoin.net/coin/india-25-paise-1968/?tid=15623",
+          "images": {
+            "obverse": "https://i.ucoin.net/coin/12/357/12357631-1s/india-25-paise-1968.jpg",
+            "reverse": "https://i.ucoin.net/coin/12/357/12357631-2s/india-25-paise-1968.jpg"
+          }
+        },
+        {
+          "denomination": {
+            "displayName": "25 paise",
+            "value": 25.0,
+            "unit": "paise"
+          },
+          "issuePeriod": {
+            "displayValue": "1972-1990",
+            "startYear": 1972,
+            "endYear": 1990
+          },
+          "imageExampleYear": 1975,
+          "subject": null,
+          "composition": "Cupro-Níquel",
+          "weightGrams": 2.5,
+          "diameterMm": 19.0,
+          "catalogue": {
+            "type": "KM",
+            "number": "49.1",
+            "displayValue": "KM# 49.1"
+          },
+          "circulationType": "Circulação normal",
+          "ucoinTypeId": 15624,
+          "ucoinPeriodId": 121,
+          "detailPath": "/coin/india-25-paise-1972-1990/?tid=15624",
+          "detailUrl": "https://pt.ucoin.net/coin/india-25-paise-1972-1990/?tid=15624",
+          "images": {
+            "obverse": "https://i.ucoin.net/coin/56/985/56985275-1s/india-25-paise-1975.jpg",
+            "reverse": "https://i.ucoin.net/coin/56/985/56985275-2s/india-25-paise-1975.jpg"
+          }
+        },
+        {
+          "denomination": {
+            "displayName": "25 paise",
+            "value": 25.0,
+            "unit": "paise"
+          },
+          "issuePeriod": {
+            "displayValue": "1988-2002",
+            "startYear": 1988,
+            "endYear": 2002
+          },
+          "imageExampleYear": 1994,
+          "subject": null,
+          "composition": "Aço inoxidável",
+          "weightGrams": 2.83,
+          "diameterMm": 19.0,
+          "catalogue": {
+            "type": "KM",
+            "number": "54",
+            "displayValue": "KM# 54"
+          },
+          "circulationType": "Circulação normal",
+          "ucoinTypeId": 15643,
+          "ucoinPeriodId": 121,
+          "detailPath": "/coin/india-25-paise-1988-2002/?tid=15643",
+          "detailUrl": "https://pt.ucoin.net/coin/india-25-paise-1988-2002/?tid=15643",
+          "images": {
+            "obverse": "https://i.ucoin.net/coin/51/625/51625661-1s/india-25-paise-1994.jpg",
+            "reverse": "https://i.ucoin.net/coin/51/625/51625661-2s/india-25-paise-1994.jpg"
+          }
+        },
+        {
+          "denomination": {
+            "displayName": "50 naye paise",
+            "value": 50.0,
+            "unit": "naye paise"
+          },
+          "issuePeriod": {
+            "displayValue": "1960-1963",
+            "startYear": 1960,
+            "endYear": 1963
+          },
+          "imageExampleYear": 1963,
+          "subject": null,
+          "composition": "Níquel",
+          "weightGrams": 5.0,
+          "diameterMm": 24.0,
+          "catalogue": {
+            "type": "KM",
+            "number": "55",
+            "displayValue": "KM# 55"
+          },
+          "circulationType": "Circulação normal",
+          "ucoinTypeId": 15661,
+          "ucoinPeriodId": 121,
+          "detailPath": "/coin/india-50-naye-paise-1960-1963/?tid=15661",
+          "detailUrl": "https://pt.ucoin.net/coin/india-50-naye-paise-1960-1963/?tid=15661",
+          "images": {
+            "obverse": "https://i.ucoin.net/coin/66/857/66857527-1s/india-50-naye-paise-1963.jpg",
+            "reverse": "https://i.ucoin.net/coin/66/857/66857527-2s/india-50-naye-paise-1963.jpg"
+          }
+        },
+        {
+          "denomination": {
+            "displayName": "50 paise",
+            "value": 50.0,
+            "unit": "paise"
+          },
+          "issuePeriod": {
+            "displayValue": "1964-1967",
+            "startYear": 1964,
+            "endYear": 1967
+          },
+          "imageExampleYear": 1967,
+          "subject": null,
+          "composition": "Níquel",
+          "weightGrams": 5.0,
+          "diameterMm": 24.0,
+          "catalogue": {
+            "type": "KM",
+            "number": "58.1",
+            "displayValue": "KM# 58.1"
+          },
+          "circulationType": "Circulação normal",
+          "ucoinTypeId": 15666,
+          "ucoinPeriodId": 121,
+          "detailPath": "/coin/india-50-paise-1964-1967/?tid=15666",
+          "detailUrl": "https://pt.ucoin.net/coin/india-50-paise-1964-1967/?tid=15666",
+          "images": {
+            "obverse": "https://i.ucoin.net/coin/48/091/48091419-1s/india-50-paise-1967.jpg",
+            "reverse": "https://i.ucoin.net/coin/48/091/48091419-2s/india-50-paise-1967.jpg"
+          }
+        },
+        {
+          "denomination": {
+            "displayName": "50 paise",
+            "value": 50.0,
+            "unit": "paise"
+          },
+          "issuePeriod": {
+            "displayValue": "1968-1971",
+            "startYear": 1968,
+            "endYear": 1971
+          },
+          "imageExampleYear": 1970,
+          "subject": null,
+          "composition": "Níquel",
+          "weightGrams": 5.0,
+          "diameterMm": 24.0,
+          "catalogue": {
+            "type": "KM",
+            "number": "58.2",
+            "displayValue": "KM# 58.2"
+          },
+          "circulationType": "Circulação normal",
+          "ucoinTypeId": 15668,
+          "ucoinPeriodId": 121,
+          "detailPath": "/coin/india-50-paise-1968-1971/?tid=15668",
+          "detailUrl": "https://pt.ucoin.net/coin/india-50-paise-1968-1971/?tid=15668",
+          "images": {
+            "obverse": "https://i.ucoin.net/coin/19/566/19566162-1s/india-50-paise-1970.jpg",
+            "reverse": "https://i.ucoin.net/coin/19/566/19566162-2s/india-50-paise-1970.jpg"
+          }
+        },
+        {
+          "denomination": {
+            "displayName": "50 paise",
+            "value": 50.0,
+            "unit": "paise"
+          },
+          "issuePeriod": {
+            "displayValue": "1972-1973",
+            "startYear": 1972,
+            "endYear": 1973
+          },
+          "imageExampleYear": 1972,
+          "subject": null,
+          "composition": "Cupro-Níquel",
+          "weightGrams": 4.95,
+          "diameterMm": 24.0,
+          "catalogue": {
+            "type": "KM",
+            "number": "61",
+            "displayValue": "KM# 61"
+          },
+          "circulationType": "Circulação normal",
+          "ucoinTypeId": 15674,
+          "ucoinPeriodId": 121,
+          "detailPath": "/coin/india-50-paise-1972-1973/?tid=15674",
+          "detailUrl": "https://pt.ucoin.net/coin/india-50-paise-1972-1973/?tid=15674",
+          "images": {
+            "obverse": "https://i.ucoin.net/coin/8/936/8936046-1s/india-50-paise-1972.jpg",
+            "reverse": "https://i.ucoin.net/coin/8/936/8936046-2s/india-50-paise-1972.jpg"
+          }
+        },
+        {
+          "denomination": {
+            "displayName": "50 paise",
+            "value": 50.0,
+            "unit": "paise"
+          },
+          "issuePeriod": {
+            "displayValue": "1974-1983",
+            "startYear": 1974,
+            "endYear": 1983
+          },
+          "imageExampleYear": 1975,
+          "subject": null,
+          "composition": "Cupro-Níquel",
+          "weightGrams": 4.95,
+          "diameterMm": 24.0,
+          "catalogue": {
+            "type": "KM",
+            "number": "63",
+            "displayValue": "KM# 63"
+          },
+          "circulationType": "Circulação normal",
+          "ucoinTypeId": 15676,
+          "ucoinPeriodId": 121,
+          "detailPath": "/coin/india-50-paise-1974-1983/?tid=15676",
+          "detailUrl": "https://pt.ucoin.net/coin/india-50-paise-1974-1983/?tid=15676",
+          "images": {
+            "obverse": "https://i.ucoin.net/coin/69/335/69335342-1s/india-50-paise-1975.jpg",
+            "reverse": "https://i.ucoin.net/coin/69/335/69335342-2s/india-50-paise-1975.jpg"
+          }
+        },
+        {
+          "denomination": {
+            "displayName": "50 paise",
+            "value": 50.0,
+            "unit": "paise"
+          },
+          "issuePeriod": {
+            "displayValue": "1984-1990",
+            "startYear": 1984,
+            "endYear": 1990
+          },
+          "imageExampleYear": 1984,
+          "subject": null,
+          "composition": "Cupro-Níquel",
+          "weightGrams": 5.09,
+          "diameterMm": 24.0,
+          "catalogue": {
+            "type": "KM",
+            "number": "65",
+            "displayValue": "KM# 65"
+          },
+          "circulationType": "Circulação normal",
+          "ucoinTypeId": 15687,
+          "ucoinPeriodId": 121,
+          "detailPath": "/coin/india-50-paise-1984-1990/?tid=15687",
+          "detailUrl": "https://pt.ucoin.net/coin/india-50-paise-1984-1990/?tid=15687",
+          "images": {
+            "obverse": "https://i.ucoin.net/coin/69/356/69356069-1s/india-50-paise-1984.jpg",
+            "reverse": "https://i.ucoin.net/coin/69/356/69356069-2s/india-50-paise-1984.jpg"
+          }
+        },
+        {
+          "denomination": {
+            "displayName": "50 paise",
+            "value": 50.0,
+            "unit": "paise"
+          },
+          "issuePeriod": {
+            "displayValue": "1988-2007",
+            "startYear": 1988,
+            "endYear": 2007
+          },
+          "imageExampleYear": 1988,
+          "subject": null,
+          "composition": "Aço inoxidável",
+          "weightGrams": 3.79,
+          "diameterMm": 22.0,
+          "catalogue": {
+            "type": "KM",
+            "number": "69",
+            "displayValue": "KM# 69"
+          },
+          "circulationType": "Circulação normal",
+          "ucoinTypeId": 15703,
+          "ucoinPeriodId": 121,
+          "detailPath": "/coin/india-50-paise-1988-2007/?tid=15703",
+          "detailUrl": "https://pt.ucoin.net/coin/india-50-paise-1988-2007/?tid=15703",
+          "images": {
+            "obverse": "https://i.ucoin.net/coin/2/861/2861731-1s/india-50-paise-1988.jpg",
+            "reverse": "https://i.ucoin.net/coin/2/861/2861731-2s/india-50-paise-1988.jpg"
+          }
+        },
+        {
+          "denomination": {
+            "displayName": "50 paise",
+            "value": 50.0,
+            "unit": "paise"
+          },
+          "issuePeriod": {
+            "displayValue": "2008-2010",
+            "startYear": 2008,
+            "endYear": 2010
+          },
+          "imageExampleYear": 2008,
+          "subject": null,
+          "composition": "Aço inoxidável",
+          "weightGrams": 3.8,
+          "diameterMm": 23.0,
+          "catalogue": {
+            "type": "KM",
+            "number": "374",
+            "displayValue": "KM# 374"
+          },
+          "circulationType": "Circulação normal",
+          "ucoinTypeId": 15717,
+          "ucoinPeriodId": 121,
+          "detailPath": "/coin/india-50-paise-2008-2010/?tid=15717",
+          "detailUrl": "https://pt.ucoin.net/coin/india-50-paise-2008-2010/?tid=15717",
+          "images": {
+            "obverse": "https://i.ucoin.net/coin/60/260/60260418-1s/india-50-paise-2008.jpg",
+            "reverse": "https://i.ucoin.net/coin/60/260/60260418-2s/india-50-paise-2008.jpg"
+          }
+        },
+        {
+          "denomination": {
+            "displayName": "50 paise",
+            "value": 50.0,
+            "unit": "paise"
+          },
+          "issuePeriod": {
+            "displayValue": "2011-2016",
+            "startYear": 2011,
+            "endYear": 2016
+          },
+          "imageExampleYear": 2015,
+          "subject": null,
+          "composition": "Aço inoxidável",
+          "weightGrams": 2.9,
+          "diameterMm": 19.0,
+          "catalogue": {
+            "type": "KM",
+            "number": "398",
+            "displayValue": "KM# 398"
+          },
+          "circulationType": "Circulação normal",
+          "ucoinTypeId": 15720,
+          "ucoinPeriodId": 121,
+          "detailPath": "/coin/india-50-paise-2011-2016/?tid=15720",
+          "detailUrl": "https://pt.ucoin.net/coin/india-50-paise-2011-2016/?tid=15720",
+          "images": {
+            "obverse": "https://i.ucoin.net/coin/79/431/79431737-1s/india-50-paise-2015.jpg",
+            "reverse": "https://i.ucoin.net/coin/79/431/79431737-2s/india-50-paise-2015.jpg"
+          }
+        },
+        {
+          "denomination": {
+            "displayName": "1 rúpia",
+            "value": 1.0,
+            "unit": "rúpia"
+          },
+          "issuePeriod": {
+            "displayValue": "1962",
+            "startYear": 1962,
+            "endYear": 1962
+          },
+          "imageExampleYear": 1962,
+          "subject": null,
+          "composition": "Níquel",
+          "weightGrams": 10.0,
+          "diameterMm": 28.0,
+          "catalogue": {
+            "type": "KM",
+            "number": "75.1",
+            "displayValue": "KM# 75.1"
+          },
+          "circulationType": "Circulação normal",
+          "ucoinTypeId": 15725,
+          "ucoinPeriodId": 121,
+          "detailPath": "/coin/india-1-rupee-1962/?tid=15725",
+          "detailUrl": "https://pt.ucoin.net/coin/india-1-rupee-1962/?tid=15725",
+          "images": {
+            "obverse": "https://i.ucoin.net/coin/80/401/80401582-1s/india-1-rupee-1962.jpg",
+            "reverse": "https://i.ucoin.net/coin/80/401/80401582-2s/india-1-rupee-1962.jpg"
+          }
+        },
+        {
+          "denomination": {
+            "displayName": "1 rúpia",
+            "value": 1.0,
+            "unit": "rúpia"
+          },
+          "issuePeriod": {
+            "displayValue": "1970-1974",
+            "startYear": 1970,
+            "endYear": 1974
+          },
+          "imageExampleYear": 1970,
+          "subject": null,
+          "composition": "Níquel",
+          "weightGrams": 10.0,
+          "diameterMm": 28.0,
+          "catalogue": {
+            "type": "KM",
+            "number": "75.2",
+            "displayValue": "KM# 75.2"
+          },
+          "circulationType": "Circulação normal",
+          "ucoinTypeId": 15726,
+          "ucoinPeriodId": 121,
+          "detailPath": "/coin/india-1-rupee-1970-1974/?tid=15726",
+          "detailUrl": "https://pt.ucoin.net/coin/india-1-rupee-1970-1974/?tid=15726",
+          "images": {
+            "obverse": "https://i.ucoin.net/coin/67/243/67243322-1s/india-1-rupee-1970.jpg",
+            "reverse": "https://i.ucoin.net/coin/67/243/67243322-2s/india-1-rupee-1970.jpg"
+          }
+        },
+        {
+          "denomination": {
+            "displayName": "1 rúpia",
+            "value": 1.0,
+            "unit": "rúpia"
+          },
+          "issuePeriod": {
+            "displayValue": "1975-1979",
+            "startYear": 1975,
+            "endYear": 1979
+          },
+          "imageExampleYear": 1977,
+          "subject": null,
+          "composition": "Cupro-Níquel",
+          "weightGrams": 8.0,
+          "diameterMm": 28.0,
+          "catalogue": {
+            "type": "KM",
+            "number": "78.1",
+            "displayValue": "KM# 78.1"
+          },
+          "circulationType": "Circulação normal",
+          "ucoinTypeId": 15733,
+          "ucoinPeriodId": 121,
+          "detailPath": "/coin/india-1-rupee-1975-1979/?tid=15733",
+          "detailUrl": "https://pt.ucoin.net/coin/india-1-rupee-1975-1979/?tid=15733",
+          "images": {
+            "obverse": "https://i.ucoin.net/coin/69/380/69380772-1s/india-1-rupee-1977.jpg",
+            "reverse": "https://i.ucoin.net/coin/69/380/69380772-2s/india-1-rupee-1977.jpg"
+          }
+        },
+        {
+          "denomination": {
+            "displayName": "1 rúpia",
+            "value": 1.0,
+            "unit": "rúpia"
+          },
+          "issuePeriod": {
+            "displayValue": "1980-1982",
+            "startYear": 1980,
+            "endYear": 1982
+          },
+          "imageExampleYear": 1981,
+          "subject": null,
+          "composition": "Cupro-Níquel",
+          "weightGrams": 8.0,
+          "diameterMm": 28.0,
+          "catalogue": {
+            "type": "KM",
+            "number": "78.3",
+            "displayValue": "KM# 78.3"
+          },
+          "circulationType": "Circulação normal",
+          "ucoinTypeId": 15738,
+          "ucoinPeriodId": 121,
+          "detailPath": "/coin/india-1-rupee-1980-1982/?tid=15738",
+          "detailUrl": "https://pt.ucoin.net/coin/india-1-rupee-1980-1982/?tid=15738",
+          "images": {
+            "obverse": "https://i.ucoin.net/coin/5/995/5995530-1s/india-1-rupee-1981.jpg",
+            "reverse": "https://i.ucoin.net/coin/5/995/5995530-2s/india-1-rupee-1981.jpg"
+          }
+        },
+        {
+          "denomination": {
+            "displayName": "1 rúpia",
+            "value": 1.0,
+            "unit": "rúpia"
+          },
+          "issuePeriod": {
+            "displayValue": "1982-1990",
+            "startYear": 1982,
+            "endYear": 1990
+          },
+          "imageExampleYear": 1989,
+          "subject": null,
+          "composition": "Cupro-Níquel",
+          "weightGrams": 6.0,
+          "diameterMm": 26.0,
+          "catalogue": {
+            "type": "KM",
+            "number": "79.1",
+            "displayValue": "KM# 79.1"
+          },
+          "circulationType": "Circulação normal",
+          "ucoinTypeId": 15741,
+          "ucoinPeriodId": 121,
+          "detailPath": "/coin/india-1-rupee-1982-1990/?tid=15741",
+          "detailUrl": "https://pt.ucoin.net/coin/india-1-rupee-1982-1990/?tid=15741",
+          "images": {
+            "obverse": "https://i.ucoin.net/coin/81/202/81202903-1s/india-1-rupee-1989.jpg",
+            "reverse": "https://i.ucoin.net/coin/81/202/81202903-2s/india-1-rupee-1989.jpg"
+          }
+        },
+        {
+          "denomination": {
+            "displayName": "1 rúpia",
+            "value": 1.0,
+            "unit": "rúpia"
+          },
+          "issuePeriod": {
+            "displayValue": "1988-1990",
+            "startYear": 1988,
+            "endYear": 1990
+          },
+          "imageExampleYear": 1989,
+          "subject": "Borda serrilhada",
+          "composition": "Cupro-Níquel",
+          "weightGrams": 6.0,
+          "diameterMm": 26.0,
+          "catalogue": {
+            "type": "KM",
+            "number": "79.4",
+            "displayValue": "KM# 79.4"
+          },
+          "circulationType": "Circulação normal",
+          "ucoinTypeId": 15746,
+          "ucoinPeriodId": 121,
+          "detailPath": "/coin/india-1-rupee-1988-1990/?tid=15746",
+          "detailUrl": "https://pt.ucoin.net/coin/india-1-rupee-1988-1990/?tid=15746",
+          "images": {
+            "obverse": "https://i.ucoin.net/coin/5/077/5077145-1s/india-1-rupee-1989.jpg",
+            "reverse": "https://i.ucoin.net/coin/5/077/5077145-2s/india-1-rupee-1989.jpg"
+          }
+        },
+        {
+          "denomination": {
+            "displayName": "1 rúpia",
+            "value": 1.0,
+            "unit": "rúpia"
+          },
+          "issuePeriod": {
+            "displayValue": "1991",
+            "startYear": 1991,
+            "endYear": 1991
+          },
+          "imageExampleYear": 1991,
+          "subject": null,
+          "composition": "Cupro-Níquel",
+          "weightGrams": 6.0,
+          "diameterMm": 26.0,
+          "catalogue": {
+            "type": "KM",
+            "number": "79.5",
+            "displayValue": "KM# 79.5"
+          },
+          "circulationType": "Circulação normal",
+          "ucoinTypeId": 15749,
+          "ucoinPeriodId": 121,
+          "detailPath": "/coin/india-1-rupee-1991/?tid=15749",
+          "detailUrl": "https://pt.ucoin.net/coin/india-1-rupee-1991/?tid=15749",
+          "images": {
+            "obverse": "https://i.ucoin.net/coin/22/822/22822969-1s/india-1-rupee-1991.jpg",
+            "reverse": "https://i.ucoin.net/coin/22/822/22822969-2s/india-1-rupee-1991.jpg"
+          }
+        },
+        {
+          "denomination": {
+            "displayName": "1 rúpia",
+            "value": 1.0,
+            "unit": "rúpia"
+          },
+          "issuePeriod": {
+            "displayValue": "1992-1995",
+            "startYear": 1992,
+            "endYear": 1995
+          },
+          "imageExampleYear": 1993,
+          "subject": null,
+          "composition": "Aço inoxidável",
+          "weightGrams": 4.85,
+          "diameterMm": 25.0,
+          "catalogue": {
+            "type": "KM",
+            "number": "92.1",
+            "displayValue": "KM# 92.1"
+          },
+          "circulationType": "Circulação normal",
+          "ucoinTypeId": 15763,
+          "ucoinPeriodId": 121,
+          "detailPath": "/coin/india-1-rupee-1992-1995/?tid=15763",
+          "detailUrl": "https://pt.ucoin.net/coin/india-1-rupee-1992-1995/?tid=15763",
+          "images": {
+            "obverse": "https://i.ucoin.net/coin/3/202/3202622-1s/india-1-rupee-1993.jpg",
+            "reverse": "https://i.ucoin.net/coin/3/202/3202622-2s/india-1-rupee-1993.jpg"
+          }
+        },
+        {
+          "denomination": {
+            "displayName": "1 rúpia",
+            "value": 1.0,
+            "unit": "rúpia"
+          },
+          "issuePeriod": {
+            "displayValue": "1995-2004",
+            "startYear": 1995,
+            "endYear": 2004
+          },
+          "imageExampleYear": 1996,
+          "subject": null,
+          "composition": "Aço inoxidável",
+          "weightGrams": 4.9,
+          "diameterMm": 25.0,
+          "catalogue": {
+            "type": "KM",
+            "number": "92.2",
+            "displayValue": "KM# 92.2"
+          },
+          "circulationType": "Circulação normal",
+          "ucoinTypeId": 15766,
+          "ucoinPeriodId": 121,
+          "detailPath": "/coin/india-1-rupee-1995-2004/?tid=15766",
+          "detailUrl": "https://pt.ucoin.net/coin/india-1-rupee-1995-2004/?tid=15766",
+          "images": {
+            "obverse": "https://i.ucoin.net/coin/56/987/56987591-1s/india-1-rupee-1996.jpg",
+            "reverse": "https://i.ucoin.net/coin/56/987/56987591-2s/india-1-rupee-1996.jpg"
+          }
+        },
+        {
+          "denomination": {
+            "displayName": "1 rúpia",
+            "value": 1.0,
+            "unit": "rúpia"
+          },
+          "issuePeriod": {
+            "displayValue": "2004-2006",
+            "startYear": 2004,
+            "endYear": 2006
+          },
+          "imageExampleYear": 2005,
+          "subject": null,
+          "composition": "Aço inoxidável",
+          "weightGrams": 4.95,
+          "diameterMm": 25.0,
+          "catalogue": {
+            "type": "KM",
+            "number": "322",
+            "displayValue": "KM# 322"
+          },
+          "circulationType": "Circulação normal",
+          "ucoinTypeId": 24626,
+          "ucoinPeriodId": 121,
+          "detailPath": "/coin/india-1-rupee-2004-2006/?tid=24626",
+          "detailUrl": "https://pt.ucoin.net/coin/india-1-rupee-2004-2006/?tid=24626",
+          "images": {
+            "obverse": "https://i.ucoin.net/coin/28/670/28670991-1s/india-1-rupee-2005.jpg",
+            "reverse": "https://i.ucoin.net/coin/28/670/28670991-2s/india-1-rupee-2005.jpg"
+          }
+        },
+        {
+          "denomination": {
+            "displayName": "1 rúpia",
+            "value": 1.0,
+            "unit": "rúpia"
+          },
+          "issuePeriod": {
+            "displayValue": "2007-2011",
+            "startYear": 2007,
+            "endYear": 2011
+          },
+          "imageExampleYear": 2010,
+          "subject": null,
+          "composition": "Aço inoxidável",
+          "weightGrams": 4.9,
+          "diameterMm": 25.0,
+          "catalogue": {
+            "type": "KM",
+            "number": "331",
+            "displayValue": "KM# 331"
+          },
+          "circulationType": "Circulação normal",
+          "ucoinTypeId": 15776,
+          "ucoinPeriodId": 121,
+          "detailPath": "/coin/india-1-rupee-2007-2011/?tid=15776",
+          "detailUrl": "https://pt.ucoin.net/coin/india-1-rupee-2007-2011/?tid=15776",
+          "images": {
+            "obverse": "https://i.ucoin.net/coin/6/676/6676467-1s/india-1-rupee-2010.jpg",
+            "reverse": "https://i.ucoin.net/coin/6/676/6676467-2s/india-1-rupee-2010.jpg"
+          }
+        },
+        {
+          "denomination": {
+            "displayName": "1 rúpia",
+            "value": 1.0,
+            "unit": "rúpia"
+          },
+          "issuePeriod": {
+            "displayValue": "2011-2019",
+            "startYear": 2011,
+            "endYear": 2019
+          },
+          "imageExampleYear": 2017,
+          "subject": null,
+          "composition": "Aço inoxidável",
+          "weightGrams": 3.76,
+          "diameterMm": 22.0,
+          "catalogue": {
+            "type": "KM",
+            "number": "394",
+            "displayValue": "KM# 394"
+          },
+          "circulationType": "Circulação normal",
+          "ucoinTypeId": 15780,
+          "ucoinPeriodId": 121,
+          "detailPath": "/coin/india-1-rupee-2011-2019/?tid=15780",
+          "detailUrl": "https://pt.ucoin.net/coin/india-1-rupee-2011-2019/?tid=15780",
+          "images": {
+            "obverse": "https://i.ucoin.net/coin/73/707/73707896-1s/india-1-rupee-2017.jpg",
+            "reverse": "https://i.ucoin.net/coin/73/707/73707896-2s/india-1-rupee-2017.jpg"
+          }
+        },
+        {
+          "denomination": {
+            "displayName": "1 rúpia",
+            "value": 1.0,
+            "unit": "rúpia"
+          },
+          "issuePeriod": {
+            "displayValue": "2022-2025",
+            "startYear": 2022,
+            "endYear": 2025
+          },
+          "imageExampleYear": 2023,
+          "subject": "75º Aniversário da Independência",
+          "composition": "Aço inoxidável",
+          "weightGrams": 3.09,
+          "diameterMm": 20.0,
+          "catalogue": {
+            "type": "UC",
+            "number": "252",
+            "displayValue": "UC# 252"
+          },
+          "circulationType": "Circulação normal",
+          "ucoinTypeId": 146073,
+          "ucoinPeriodId": 121,
+          "detailPath": "/coin/india-1-rupee-2022-2025/?tid=146073",
+          "detailUrl": "https://pt.ucoin.net/coin/india-1-rupee-2022-2025/?tid=146073",
+          "images": {
+            "obverse": "https://i.ucoin.net/coin/75/366/75366436-1s/india-1-rupee-2023.jpg",
+            "reverse": "https://i.ucoin.net/coin/75/366/75366436-2s/india-1-rupee-2023.jpg"
+          }
+        },
+        {
+          "denomination": {
+            "displayName": "2 rúpias",
+            "value": 2.0,
+            "unit": "rúpias"
+          },
+          "issuePeriod": {
+            "displayValue": "1982",
+            "startYear": 1982,
+            "endYear": 1982
+          },
+          "imageExampleYear": 1982,
+          "subject": null,
+          "composition": "Cupro-Níquel",
+          "weightGrams": 8.0,
+          "diameterMm": 28.0,
+          "catalogue": {
+            "type": "KM",
+            "number": "121.1",
+            "displayValue": "KM# 121.1"
+          },
+          "circulationType": "Circulação normal",
+          "ucoinTypeId": 28893,
+          "ucoinPeriodId": 121,
+          "detailPath": "/coin/india-2-rupees-1982/?tid=28893",
+          "detailUrl": "https://pt.ucoin.net/coin/india-2-rupees-1982/?tid=28893",
+          "images": {
+            "obverse": "https://i.ucoin.net/coin/69/369/69369273-1s/india-2-rupees-1982.jpg",
+            "reverse": "https://i.ucoin.net/coin/69/369/69369273-2s/india-2-rupees-1982.jpg"
+          }
+        },
+        {
+          "denomination": {
+            "displayName": "2 rúpias",
+            "value": 2.0,
+            "unit": "rúpias"
+          },
+          "issuePeriod": {
+            "displayValue": "1990",
+            "startYear": 1990,
+            "endYear": 1990
+          },
+          "imageExampleYear": 1990,
+          "subject": null,
+          "composition": "Cupro-Níquel",
+          "weightGrams": 8.0,
+          "diameterMm": 28.0,
+          "catalogue": {
+            "type": "KM",
+            "number": "121.2",
+            "displayValue": "KM# 121.2"
+          },
+          "circulationType": "Circulação normal",
+          "ucoinTypeId": 28898,
+          "ucoinPeriodId": 121,
+          "detailPath": "/coin/india-2-rupees-1990/?tid=28898",
+          "detailUrl": "https://pt.ucoin.net/coin/india-2-rupees-1990/?tid=28898",
+          "images": {
+            "obverse": "https://i.ucoin.net/coin/40/966/40966211-1s/india-2-rupees-1990.jpg",
+            "reverse": "https://i.ucoin.net/coin/40/966/40966211-2s/india-2-rupees-1990.jpg"
+          }
+        },
+        {
+          "denomination": {
+            "displayName": "2 rúpias",
+            "value": 2.0,
+            "unit": "rúpias"
+          },
+          "issuePeriod": {
+            "displayValue": "1992-2004",
+            "startYear": 1992,
+            "endYear": 2004
+          },
+          "imageExampleYear": 2003,
+          "subject": "Integração nacional",
+          "composition": "Cupro-Níquel",
+          "weightGrams": 6.0,
+          "diameterMm": 26.0,
+          "catalogue": {
+            "type": "KM",
+            "number": "121.3",
+            "displayValue": "KM# 121.3"
+          },
+          "circulationType": "Circulação normal",
+          "ucoinTypeId": 25236,
+          "ucoinPeriodId": 121,
+          "detailPath": "/coin/india-2-rupees-1992-2004/?tid=25236",
+          "detailUrl": "https://pt.ucoin.net/coin/india-2-rupees-1992-2004/?tid=25236",
+          "images": {
+            "obverse": "https://i.ucoin.net/coin/75/576/75576355-1s/india-2-rupees-2003.jpg",
+            "reverse": "https://i.ucoin.net/coin/75/576/75576355-2s/india-2-rupees-2003.jpg"
+          }
+        },
+        {
+          "denomination": {
+            "displayName": "2 rúpias",
+            "value": 2.0,
+            "unit": "rúpias"
+          },
+          "issuePeriod": {
+            "displayValue": "2005-2007",
+            "startYear": 2005,
+            "endYear": 2007
+          },
+          "imageExampleYear": 2006,
+          "subject": null,
+          "composition": "Aço inoxidável",
+          "weightGrams": 5.8,
+          "diameterMm": 27.0,
+          "catalogue": {
+            "type": "KM",
+            "number": "326",
+            "displayValue": "KM# 326"
+          },
+          "circulationType": "Circulação normal",
+          "ucoinTypeId": 15781,
+          "ucoinPeriodId": 121,
+          "detailPath": "/coin/india-2-rupees-2005-2007/?tid=15781",
+          "detailUrl": "https://pt.ucoin.net/coin/india-2-rupees-2005-2007/?tid=15781",
+          "images": {
+            "obverse": "https://i.ucoin.net/coin/39/127/39127013-1s/india-2-rupees-2006.jpg",
+            "reverse": "https://i.ucoin.net/coin/39/127/39127013-2s/india-2-rupees-2006.jpg"
+          }
+        },
+        {
+          "denomination": {
+            "displayName": "2 rúpias",
+            "value": 2.0,
+            "unit": "rúpias"
+          },
+          "issuePeriod": {
+            "displayValue": "2007-2011",
+            "startYear": 2007,
+            "endYear": 2011
+          },
+          "imageExampleYear": 2010,
+          "subject": null,
+          "composition": "Aço inoxidável",
+          "weightGrams": 5.8,
+          "diameterMm": 27.0,
+          "catalogue": {
+            "type": "KM",
+            "number": "327",
+            "displayValue": "KM# 327"
+          },
+          "circulationType": "Circulação normal",
+          "ucoinTypeId": 15782,
+          "ucoinPeriodId": 121,
+          "detailPath": "/coin/india-2-rupees-2007-2011/?tid=15782",
+          "detailUrl": "https://pt.ucoin.net/coin/india-2-rupees-2007-2011/?tid=15782",
+          "images": {
+            "obverse": "https://i.ucoin.net/coin/85/296/85296144-1s/india-2-rupees-2010.jpg",
+            "reverse": "https://i.ucoin.net/coin/85/296/85296144-2s/india-2-rupees-2010.jpg"
+          }
+        },
+        {
+          "denomination": {
+            "displayName": "2 rúpias",
+            "value": 2.0,
+            "unit": "rúpias"
+          },
+          "issuePeriod": {
+            "displayValue": "2011-2019",
+            "startYear": 2011,
+            "endYear": 2019
+          },
+          "imageExampleYear": 2013,
+          "subject": null,
+          "composition": "Aço inoxidável",
+          "weightGrams": 4.9,
+          "diameterMm": 25.0,
+          "catalogue": {
+            "type": "KM",
+            "number": "395",
+            "displayValue": "KM# 395"
+          },
+          "circulationType": "Circulação normal",
+          "ucoinTypeId": 15786,
+          "ucoinPeriodId": 121,
+          "detailPath": "/coin/india-2-rupees-2011-2019/?tid=15786",
+          "detailUrl": "https://pt.ucoin.net/coin/india-2-rupees-2011-2019/?tid=15786",
+          "images": {
+            "obverse": "https://i.ucoin.net/coin/59/824/59824564-1s/india-2-rupees-2013.jpg",
+            "reverse": "https://i.ucoin.net/coin/59/824/59824564-2s/india-2-rupees-2013.jpg"
+          }
+        },
+        {
+          "denomination": {
+            "displayName": "2 rúpias",
+            "value": 2.0,
+            "unit": "rúpias"
+          },
+          "issuePeriod": {
+            "displayValue": "2019-2021",
+            "startYear": 2019,
+            "endYear": 2021
+          },
+          "imageExampleYear": 2019,
+          "subject": null,
+          "composition": "Aço inoxidável",
+          "weightGrams": 4.1,
+          "diameterMm": 23.0,
+          "catalogue": {
+            "type": "UC",
+            "number": "2",
+            "displayValue": "UC# 2"
+          },
+          "circulationType": "Circulação normal",
+          "ucoinTypeId": 88946,
+          "ucoinPeriodId": 121,
+          "detailPath": "/coin/india-2-rupees-2019-2021/?tid=88946",
+          "detailUrl": "https://pt.ucoin.net/coin/india-2-rupees-2019-2021/?tid=88946",
+          "images": {
+            "obverse": "https://i.ucoin.net/coin/59/561/59561481-1s/india-2-rupees-2019.jpg",
+            "reverse": "https://i.ucoin.net/coin/59/561/59561481-2s/india-2-rupees-2019.jpg"
+          }
+        },
+        {
+          "denomination": {
+            "displayName": "2 rúpias",
+            "value": 2.0,
+            "unit": "rúpias"
+          },
+          "issuePeriod": {
+            "displayValue": "2021-2025",
+            "startYear": 2021,
+            "endYear": 2025
+          },
+          "imageExampleYear": 2022,
+          "subject": "75º Aniversário da Independência",
+          "composition": "Aço inoxidável",
+          "weightGrams": 4.1,
+          "diameterMm": 23.0,
+          "catalogue": {
+            "type": "UC",
+            "number": "127",
+            "displayValue": "UC# 127"
+          },
+          "circulationType": "Circulação normal",
+          "ucoinTypeId": 134761,
+          "ucoinPeriodId": 121,
+          "detailPath": "/coin/india-2-rupees-2021-2025/?tid=134761",
+          "detailUrl": "https://pt.ucoin.net/coin/india-2-rupees-2021-2025/?tid=134761",
+          "images": {
+            "obverse": "https://i.ucoin.net/coin/75/596/75596067-1s/india-2-rupees-2022.jpg",
+            "reverse": "https://i.ucoin.net/coin/75/596/75596067-2s/india-2-rupees-2022.jpg"
+          }
+        },
+        {
+          "denomination": {
+            "displayName": "5 rúpias",
+            "value": 5.0,
+            "unit": "rúpias"
+          },
+          "issuePeriod": {
+            "displayValue": "1992-2004",
+            "startYear": 1992,
+            "endYear": 2004
+          },
+          "imageExampleYear": 1998,
+          "subject": "Borda nervurada com uma ranhura dentro",
+          "composition": "Cupro-Níquel",
+          "weightGrams": 9.0,
+          "diameterMm": 23.0,
+          "catalogue": {
+            "type": "KM",
+            "number": "154.1",
+            "displayValue": "KM# 154.1"
+          },
+          "circulationType": "Circulação normal",
+          "ucoinTypeId": 25620,
+          "ucoinPeriodId": 121,
+          "detailPath": "/coin/india-5-rupees-1992-2004/?tid=25620",
+          "detailUrl": "https://pt.ucoin.net/coin/india-5-rupees-1992-2004/?tid=25620",
+          "images": {
+            "obverse": "https://i.ucoin.net/coin/75/601/75601327-1s/india-5-rupees-1998.jpg",
+            "reverse": "https://i.ucoin.net/coin/75/601/75601327-2s/india-5-rupees-1998.jpg"
+          }
+        },
+        {
+          "denomination": {
+            "displayName": "5 rúpias",
+            "value": 5.0,
+            "unit": "rúpias"
+          },
+          "issuePeriod": {
+            "displayValue": "1992-2003",
+            "startYear": 1992,
+            "endYear": 2003
+          },
+          "imageExampleYear": 1994,
+          "subject": "Borda serrilhada",
+          "composition": "Cupro-Níquel",
+          "weightGrams": 9.0,
+          "diameterMm": 23.0,
+          "catalogue": {
+            "type": "KM",
+            "number": "154.2",
+            "displayValue": "KM# 154.2"
+          },
+          "circulationType": "Circulação normal",
+          "ucoinTypeId": 25619,
+          "ucoinPeriodId": 121,
+          "detailPath": "/coin/india-5-rupees-1992-2003/?tid=25619",
+          "detailUrl": "https://pt.ucoin.net/coin/india-5-rupees-1992-2003/?tid=25619",
+          "images": {
+            "obverse": "https://i.ucoin.net/coin/75/366/75366398-1s/india-5-rupees-1994.jpg",
+            "reverse": "https://i.ucoin.net/coin/75/366/75366398-2s/india-5-rupees-1994.jpg"
+          }
+        },
+        {
+          "denomination": {
+            "displayName": "5 rúpias",
+            "value": 5.0,
+            "unit": "rúpias"
+          },
+          "issuePeriod": {
+            "displayValue": "2007-2008",
+            "startYear": 2007,
+            "endYear": 2008
+          },
+          "imageExampleYear": 2007,
+          "subject": null,
+          "composition": "Aço inoxidável",
+          "weightGrams": 6.0,
+          "diameterMm": 23.0,
+          "catalogue": {
+            "type": "KM",
+            "number": "330",
+            "displayValue": "KM# 330"
+          },
+          "circulationType": "Circulação normal",
+          "ucoinTypeId": 15801,
+          "ucoinPeriodId": 121,
+          "detailPath": "/coin/india-5-rupees-2007-2008/?tid=15801",
+          "detailUrl": "https://pt.ucoin.net/coin/india-5-rupees-2007-2008/?tid=15801",
+          "images": {
+            "obverse": "https://i.ucoin.net/coin/71/550/71550010-1s/india-5-rupees-2007.jpg",
+            "reverse": "https://i.ucoin.net/coin/71/550/71550010-2s/india-5-rupees-2007.jpg"
+          }
+        },
+        {
+          "denomination": {
+            "displayName": "5 rúpias",
+            "value": 5.0,
+            "unit": "rúpias"
+          },
+          "issuePeriod": {
+            "displayValue": "2007",
+            "startYear": 2007,
+            "endYear": 2007
+          },
+          "imageExampleYear": 2007,
+          "subject": null,
+          "composition": "Aço inoxidável",
+          "weightGrams": 6.0,
+          "diameterMm": 23.0,
+          "catalogue": {
+            "type": "KM",
+            "number": "390",
+            "displayValue": "KM# 390"
+          },
+          "circulationType": "Circulação normal",
+          "ucoinTypeId": 94979,
+          "ucoinPeriodId": 121,
+          "detailPath": "/coin/india-5-rupees-2007/?tid=94979",
+          "detailUrl": "https://pt.ucoin.net/coin/india-5-rupees-2007/?tid=94979",
+          "images": {
+            "obverse": "https://i.ucoin.net/coin/33/943/33943242-1s/india-5-rupees-2007.jpg",
+            "reverse": "https://i.ucoin.net/coin/33/943/33943242-2s/india-5-rupees-2007.jpg"
+          }
+        },
+        {
+          "denomination": {
+            "displayName": "5 rúpias",
+            "value": 5.0,
+            "unit": "rúpias"
+          },
+          "issuePeriod": {
+            "displayValue": "2009-2010",
+            "startYear": 2009,
+            "endYear": 2010
+          },
+          "imageExampleYear": 2009,
+          "subject": null,
+          "composition": "Níquel-Latão",
+          "weightGrams": 6.0,
+          "diameterMm": 23.0,
+          "catalogue": {
+            "type": "KM",
+            "number": "373",
+            "displayValue": "KM# 373"
+          },
+          "circulationType": "Circulação normal",
+          "ucoinTypeId": 15803,
+          "ucoinPeriodId": 121,
+          "detailPath": "/coin/india-5-rupees-2009-2010/?tid=15803",
+          "detailUrl": "https://pt.ucoin.net/coin/india-5-rupees-2009-2010/?tid=15803",
+          "images": {
+            "obverse": "https://i.ucoin.net/coin/75/605/75605174-1s/india-5-rupees-2009.jpg",
+            "reverse": "https://i.ucoin.net/coin/75/605/75605174-2s/india-5-rupees-2009.jpg"
+          }
+        },
+        {
+          "denomination": {
+            "displayName": "5 rúpias",
+            "value": 5.0,
+            "unit": "rúpias"
+          },
+          "issuePeriod": {
+            "displayValue": "2011-2019",
+            "startYear": 2011,
+            "endYear": 2019
+          },
+          "imageExampleYear": 2015,
+          "subject": null,
+          "composition": "Níquel-Latão",
+          "weightGrams": 6.1,
+          "diameterMm": 23.0,
+          "catalogue": {
+            "type": "KM",
+            "number": "399",
+            "displayValue": "KM# 399"
+          },
+          "circulationType": "Circulação normal",
+          "ucoinTypeId": 15805,
+          "ucoinPeriodId": 121,
+          "detailPath": "/coin/india-5-rupees-2011-2019/?tid=15805",
+          "detailUrl": "https://pt.ucoin.net/coin/india-5-rupees-2011-2019/?tid=15805",
+          "images": {
+            "obverse": "https://i.ucoin.net/coin/72/594/72594304-1s/india-5-rupees-2015.jpg",
+            "reverse": "https://i.ucoin.net/coin/72/594/72594304-2s/india-5-rupees-2015.jpg"
+          }
+        },
+        {
+          "denomination": {
+            "displayName": "5 rúpias",
+            "value": 5.0,
+            "unit": "rúpias"
+          },
+          "issuePeriod": {
+            "displayValue": "2019-2022",
+            "startYear": 2019,
+            "endYear": 2022
+          },
+          "imageExampleYear": 2021,
+          "subject": null,
+          "composition": "Níquel-Latão",
+          "weightGrams": 6.74,
+          "diameterMm": 25.0,
+          "catalogue": {
+            "type": "UC",
+            "number": "1",
+            "displayValue": "UC# 1"
+          },
+          "circulationType": "Circulação normal",
+          "ucoinTypeId": 88555,
+          "ucoinPeriodId": 121,
+          "detailPath": "/coin/india-5-rupees-2019-2022/?tid=88555",
+          "detailUrl": "https://pt.ucoin.net/coin/india-5-rupees-2019-2022/?tid=88555",
+          "images": {
+            "obverse": "https://i.ucoin.net/coin/67/488/67488062-1s/india-5-rupees-2021.jpg",
+            "reverse": "https://i.ucoin.net/coin/67/488/67488062-2s/india-5-rupees-2021.jpg"
+          }
+        },
+        {
+          "denomination": {
+            "displayName": "5 rúpias",
+            "value": 5.0,
+            "unit": "rúpias"
+          },
+          "issuePeriod": {
+            "displayValue": "2021-2026",
+            "startYear": 2021,
+            "endYear": 2026
+          },
+          "imageExampleYear": 2024,
+          "subject": "75º Aniversário da Independência",
+          "composition": "Níquel-Latão",
+          "weightGrams": 6.74,
+          "diameterMm": 25.0,
+          "catalogue": {
+            "type": "UC",
+            "number": "128",
+            "displayValue": "UC# 128"
+          },
+          "circulationType": "Circulação normal",
+          "ucoinTypeId": 134762,
+          "ucoinPeriodId": 121,
+          "detailPath": "/coin/india-5-rupees-2021-2026/?tid=134762",
+          "detailUrl": "https://pt.ucoin.net/coin/india-5-rupees-2021-2026/?tid=134762",
+          "images": {
+            "obverse": "https://i.ucoin.net/coin/77/018/77018056-1s/india-5-rupees-2024.jpg",
+            "reverse": "https://i.ucoin.net/coin/77/018/77018056-2s/india-5-rupees-2024.jpg"
+          }
+        },
+        {
+          "denomination": {
+            "displayName": "10 rúpias",
+            "value": 10.0,
+            "unit": "rúpias"
+          },
+          "issuePeriod": {
+            "displayValue": "2005-2007",
+            "startYear": 2005,
+            "endYear": 2007
+          },
+          "imageExampleYear": 2006,
+          "subject": "Unidade na diversidade",
+          "composition": "Bimetálica",
+          "weightGrams": 7.7,
+          "diameterMm": 27.0,
+          "catalogue": {
+            "type": "KM",
+            "number": "353",
+            "displayValue": "KM# 353"
+          },
+          "circulationType": "Circulação normal",
+          "ucoinTypeId": 15807,
+          "ucoinPeriodId": 121,
+          "detailPath": "/coin/india-10-rupees-2005-2007/?tid=15807",
+          "detailUrl": "https://pt.ucoin.net/coin/india-10-rupees-2005-2007/?tid=15807",
+          "images": {
+            "obverse": "https://i.ucoin.net/coin/69/303/69303212-1s/india-10-rupees-2006.jpg",
+            "reverse": "https://i.ucoin.net/coin/69/303/69303212-2s/india-10-rupees-2006.jpg"
+          }
+        },
+        {
+          "denomination": {
+            "displayName": "10 rúpias",
+            "value": 10.0,
+            "unit": "rúpias"
+          },
+          "issuePeriod": {
+            "displayValue": "2008-2010",
+            "startYear": 2008,
+            "endYear": 2010
+          },
+          "imageExampleYear": 2010,
+          "subject": "Conectividade e Tecnologia",
+          "composition": "Bimetálica",
+          "weightGrams": 7.7,
+          "diameterMm": 27.0,
+          "catalogue": {
+            "type": "KM",
+            "number": "363",
+            "displayValue": "KM# 363"
+          },
+          "circulationType": "Circulação normal",
+          "ucoinTypeId": 15810,
+          "ucoinPeriodId": 121,
+          "detailPath": "/coin/india-10-rupees-2008-2010/?tid=15810",
+          "detailUrl": "https://pt.ucoin.net/coin/india-10-rupees-2008-2010/?tid=15810",
+          "images": {
+            "obverse": "https://i.ucoin.net/coin/85/749/85749092-1s/india-10-rupees-2010.jpg",
+            "reverse": "https://i.ucoin.net/coin/85/749/85749092-2s/india-10-rupees-2010.jpg"
+          }
+        },
+        {
+          "denomination": {
+            "displayName": "10 rúpias",
+            "value": 10.0,
+            "unit": "rúpias"
+          },
+          "issuePeriod": {
+            "displayValue": "2011-2019",
+            "startYear": 2011,
+            "endYear": 2019
+          },
+          "imageExampleYear": 2012,
+          "subject": null,
+          "composition": "Bimetálica",
+          "weightGrams": 7.0,
+          "diameterMm": 27.0,
+          "catalogue": {
+            "type": "KM",
+            "number": "400",
+            "displayValue": "KM# 400"
+          },
+          "circulationType": "Circulação normal",
+          "ucoinTypeId": 15806,
+          "ucoinPeriodId": 121,
+          "detailPath": "/coin/india-10-rupees-2011-2019/?tid=15806",
+          "detailUrl": "https://pt.ucoin.net/coin/india-10-rupees-2011-2019/?tid=15806",
+          "images": {
+            "obverse": "https://i.ucoin.net/coin/80/730/80730169-1s/india-10-rupees-2012.jpg",
+            "reverse": "https://i.ucoin.net/coin/80/730/80730169-2s/india-10-rupees-2012.jpg"
+          }
+        },
+        {
+          "denomination": {
+            "displayName": "10 rúpias",
+            "value": 10.0,
+            "unit": "rúpias"
+          },
+          "issuePeriod": {
+            "displayValue": "2019-2022",
+            "startYear": 2019,
+            "endYear": 2022
+          },
+          "imageExampleYear": 2020,
+          "subject": null,
+          "composition": "Bimetálica",
+          "weightGrams": 7.0,
+          "diameterMm": 27.0,
+          "catalogue": {
+            "type": "KM",
+            "number": "514",
+            "displayValue": "KM# 514"
+          },
+          "circulationType": "Circulação normal",
+          "ucoinTypeId": 89524,
+          "ucoinPeriodId": 121,
+          "detailPath": "/coin/india-10-rupees-2019-2022/?tid=89524",
+          "detailUrl": "https://pt.ucoin.net/coin/india-10-rupees-2019-2022/?tid=89524",
+          "images": {
+            "obverse": "https://i.ucoin.net/coin/79/585/79585073-1s/india-10-rupees-2020.jpg",
+            "reverse": "https://i.ucoin.net/coin/79/585/79585073-2s/india-10-rupees-2020.jpg"
+          }
+        },
+        {
+          "denomination": {
+            "displayName": "10 rúpias",
+            "value": 10.0,
+            "unit": "rúpias"
+          },
+          "issuePeriod": {
+            "displayValue": "2021-2026",
+            "startYear": 2021,
+            "endYear": 2026
+          },
+          "imageExampleYear": 2022,
+          "subject": "75º Aniversário da Independência",
+          "composition": "Bimetálica",
+          "weightGrams": 7.715,
+          "diameterMm": 27.1,
+          "catalogue": {
+            "type": "KM",
+            "number": "526",
+            "displayValue": "KM# 526"
+          },
+          "circulationType": "Circulação normal",
+          "ucoinTypeId": 134763,
+          "ucoinPeriodId": 121,
+          "detailPath": "/coin/india-10-rupees-2021-2026/?tid=134763",
+          "detailUrl": "https://pt.ucoin.net/coin/india-10-rupees-2021-2026/?tid=134763",
+          "images": {
+            "obverse": "https://i.ucoin.net/coin/75/622/75622388-1s/india-10-rupees-2022.jpg",
+            "reverse": "https://i.ucoin.net/coin/75/622/75622388-2s/india-10-rupees-2022.jpg"
+          }
+        },
+        {
+          "denomination": {
+            "displayName": "20 rúpias",
+            "value": 20.0,
+            "unit": "rúpias"
+          },
+          "issuePeriod": {
+            "displayValue": "2019-2022",
+            "startYear": 2019,
+            "endYear": 2022
+          },
+          "imageExampleYear": 2020,
+          "subject": null,
+          "composition": "Bimetálica",
+          "weightGrams": 8.65,
+          "diameterMm": 27.0,
+          "catalogue": {
+            "type": "UC",
+            "number": "4",
+            "displayValue": "UC# 4"
+          },
+          "circulationType": "Circulação normal",
+          "ucoinTypeId": 103174,
+          "ucoinPeriodId": 121,
+          "detailPath": "/coin/india-20-rupees-2019-2022/?tid=103174",
+          "detailUrl": "https://pt.ucoin.net/coin/india-20-rupees-2019-2022/?tid=103174",
+          "images": {
+            "obverse": "https://i.ucoin.net/coin/79/584/79584771-1s/india-20-rupees-2020.jpg",
+            "reverse": "https://i.ucoin.net/coin/79/584/79584771-2s/india-20-rupees-2020.jpg"
+          }
+        },
+        {
+          "denomination": {
+            "displayName": "20 rúpias",
+            "value": 20.0,
+            "unit": "rúpias"
+          },
+          "issuePeriod": {
+            "displayValue": "2021-2026",
+            "startYear": 2021,
+            "endYear": 2026
+          },
+          "imageExampleYear": 2023,
+          "subject": "75º Aniversário da Independência",
+          "composition": "Bimetálica",
+          "weightGrams": 8.65,
+          "diameterMm": 27.0,
+          "catalogue": {
+            "type": "UC",
+            "number": "130",
+            "displayValue": "UC# 130"
+          },
+          "circulationType": "Circulação normal",
+          "ucoinTypeId": 134764,
+          "ucoinPeriodId": 121,
+          "detailPath": "/coin/india-20-rupees-2021-2026/?tid=134764",
+          "detailUrl": "https://pt.ucoin.net/coin/india-20-rupees-2021-2026/?tid=134764",
+          "images": {
+            "obverse": "https://i.ucoin.net/coin/74/740/74740224-1s/india-20-rupees-2023.jpg",
+            "reverse": "https://i.ucoin.net/coin/74/740/74740224-2s/india-20-rupees-2023.jpg"
+          }
+        }
+      ],
+      "sourcePages": [
+        "https://pt.ucoin.net/catalog/?country=india",
+        "https://pt.ucoin.net/catalog/?country=india&page=2"
+      ]
+    },
+    {
+      "periodId": 540,
+      "fullTitle": "Índia Portuguesa › Escudo › 1958 - 1961",
+      "country": "Índia Portuguesa",
+      "rulerOrPeriodName": "Escudo",
+      "startYear": 1958,
+      "endYear": 1961,
+      "currencyDescription": "1 escudo = 100 centavos",
+      "coins": [
+        {
+          "denomination": {
+            "displayName": "10 centavos",
+            "value": 10.0,
+            "unit": "centavos"
+          },
+          "issuePeriod": {
+            "displayValue": "1958-1961",
+            "startYear": 1958,
+            "endYear": 1961
+          },
+          "imageExampleYear": 1958,
+          "subject": null,
+          "composition": "Bronze",
+          "weightGrams": 2.0,
+          "diameterMm": 18.0,
+          "catalogue": {
+            "type": "KM",
+            "number": "30",
+            "displayValue": "KM# 30"
+          },
+          "circulationType": "Circulação normal",
+          "ucoinTypeId": 63071,
+          "ucoinPeriodId": 540,
+          "detailPath": "/coin/portuguese_india-10-centavos-1958-1961/?tid=63071",
+          "detailUrl": "https://pt.ucoin.net/coin/portuguese_india-10-centavos-1958-1961/?tid=63071",
+          "images": {
+            "obverse": "https://i.ucoin.net/coin/41/143/41143699-1s/portuguese_india-10-centavos-1958.jpg",
+            "reverse": "https://i.ucoin.net/coin/41/143/41143699-2s/portuguese_india-10-centavos-1958.jpg"
+          }
+        },
+        {
+          "denomination": {
+            "displayName": "30 centavos",
+            "value": 30.0,
+            "unit": "centavos"
+          },
+          "issuePeriod": {
+            "displayValue": "1958-1959",
+            "startYear": 1958,
+            "endYear": 1959
+          },
+          "imageExampleYear": 1958,
+          "subject": null,
+          "composition": "Bronze",
+          "weightGrams": 4.0,
+          "diameterMm": 22.0,
+          "catalogue": {
+            "type": "KM",
+            "number": "31",
+            "displayValue": "KM# 31"
+          },
+          "circulationType": "Circulação normal",
+          "ucoinTypeId": 63074,
+          "ucoinPeriodId": 540,
+          "detailPath": "/coin/portuguese_india-30-centavos-1958-1959/?tid=63074",
+          "detailUrl": "https://pt.ucoin.net/coin/portuguese_india-30-centavos-1958-1959/?tid=63074",
+          "images": {
+            "obverse": "https://i.ucoin.net/coin/41/208/41208106-1s/portuguese_india-30-centavos-1958.jpg",
+            "reverse": "https://i.ucoin.net/coin/41/208/41208106-2s/portuguese_india-30-centavos-1958.jpg"
+          }
+        },
+        {
+          "denomination": {
+            "displayName": "60 centavos",
+            "value": 60.0,
+            "unit": "centavos"
+          },
+          "issuePeriod": {
+            "displayValue": "1958-1959",
+            "startYear": 1958,
+            "endYear": 1959
+          },
+          "imageExampleYear": 1958,
+          "subject": null,
+          "composition": "Cupro-Níquel",
+          "weightGrams": 3.5,
+          "diameterMm": 20.0,
+          "catalogue": {
+            "type": "KM",
+            "number": "32",
+            "displayValue": "KM# 32"
+          },
+          "circulationType": "Circulação normal",
+          "ucoinTypeId": 63076,
+          "ucoinPeriodId": 540,
+          "detailPath": "/coin/portuguese_india-60-centavos-1958-1959/?tid=63076",
+          "detailUrl": "https://pt.ucoin.net/coin/portuguese_india-60-centavos-1958-1959/?tid=63076",
+          "images": {
+            "obverse": "https://i.ucoin.net/coin/21/618/21618800-1s/portuguese_india-60-centavos-1958.jpg",
+            "reverse": "https://i.ucoin.net/coin/21/618/21618800-2s/portuguese_india-60-centavos-1958.jpg"
+          }
+        },
+        {
+          "denomination": {
+            "displayName": "1 escudo",
+            "value": 1.0,
+            "unit": "escudo"
+          },
+          "issuePeriod": {
+            "displayValue": "1958-1959",
+            "startYear": 1958,
+            "endYear": 1959
+          },
+          "imageExampleYear": 1958,
+          "subject": null,
+          "composition": "Cupro-Níquel",
+          "weightGrams": 5.6,
+          "diameterMm": 23.0,
+          "catalogue": {
+            "type": "KM",
+            "number": "33",
+            "displayValue": "KM# 33"
+          },
+          "circulationType": "Circulação normal",
+          "ucoinTypeId": 63078,
+          "ucoinPeriodId": 540,
+          "detailPath": "/coin/portuguese_india-1-escudo-1958-1959/?tid=63078",
+          "detailUrl": "https://pt.ucoin.net/coin/portuguese_india-1-escudo-1958-1959/?tid=63078",
+          "images": {
+            "obverse": "https://i.ucoin.net/coin/85/351/85351500-1s/portuguese_india-1-escudo-1958.jpg",
+            "reverse": "https://i.ucoin.net/coin/85/351/85351500-2s/portuguese_india-1-escudo-1958.jpg"
+          }
+        },
+        {
+          "denomination": {
+            "displayName": "3 escudos",
+            "value": 3.0,
+            "unit": "escudos"
+          },
+          "issuePeriod": {
+            "displayValue": "1958-1959",
+            "startYear": 1958,
+            "endYear": 1959
+          },
+          "imageExampleYear": 1959,
+          "subject": null,
+          "composition": "Cupro-Níquel",
+          "weightGrams": 8.0,
+          "diameterMm": 26.8,
+          "catalogue": {
+            "type": "KM",
+            "number": "34",
+            "displayValue": "KM# 34"
+          },
+          "circulationType": "Circulação normal",
+          "ucoinTypeId": 63080,
+          "ucoinPeriodId": 540,
+          "detailPath": "/coin/portuguese_india-3-escudos-1958-1959/?tid=63080",
+          "detailUrl": "https://pt.ucoin.net/coin/portuguese_india-3-escudos-1958-1959/?tid=63080",
+          "images": {
+            "obverse": "https://i.ucoin.net/coin/42/262/42262238-1s/portuguese_india-3-escudos-1959.jpg",
+            "reverse": "https://i.ucoin.net/coin/42/262/42262238-2s/portuguese_india-3-escudos-1959.jpg"
+          }
+        },
+        {
+          "denomination": {
+            "displayName": "6 escudos",
+            "value": 6.0,
+            "unit": "escudos"
+          },
+          "issuePeriod": {
+            "displayValue": "1959",
+            "startYear": 1959,
+            "endYear": 1959
+          },
+          "imageExampleYear": 1959,
+          "subject": null,
+          "composition": "Cupro-Níquel",
+          "weightGrams": 14.0,
+          "diameterMm": 31.2,
+          "catalogue": {
+            "type": "KM",
+            "number": "35",
+            "displayValue": "KM# 35"
+          },
+          "circulationType": "Circulação normal",
+          "ucoinTypeId": 63082,
+          "ucoinPeriodId": 540,
+          "detailPath": "/coin/portuguese_india-6-escudos-1959/?tid=63082",
+          "detailUrl": "https://pt.ucoin.net/coin/portuguese_india-6-escudos-1959/?tid=63082",
+          "images": {
+            "obverse": "https://i.ucoin.net/coin/86/402/86402093-1s/portuguese_india-6-escudos-1959.jpg",
+            "reverse": "https://i.ucoin.net/coin/86/402/86402093-2s/portuguese_india-6-escudos-1959.jpg"
+          }
+        }
+      ],
+      "sourcePages": [
+        "https://pt.ucoin.net/catalog/?country=india&page=2"
+      ]
+    }
+  ],
+  "warnings": [],
+  "title": "Índia - Catálogo de Moedas - uCoin.net",
+  "final_url": "https://pt.ucoin.net/catalog/?country=india",
+  "startYearFilter": 1957,
+  "pagination": {
+    "initialUrl": "https://pt.ucoin.net/catalog/?country=india",
+    "visitedPages": [
+      "https://pt.ucoin.net/catalog/?country=india",
+      "https://pt.ucoin.net/catalog/?country=india&page=2",
+      "https://pt.ucoin.net/catalog/?country=india&page=3"
+    ],
+    "pagesProcessed": 3,
+    "discoveredPages": 11,
+    "failedPages": [],
+    "stoppedEarly": true,
+    "stoppedEarlyReason": "Stopped after 3 consecutive periods with no coins starting at or after 1957."
+  },
+  "count": 90,
+  "output_path": "india/ucoin-catalog.json"
+}

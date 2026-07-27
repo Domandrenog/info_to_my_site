@@ -1,0 +1,309 @@
+# uCoin to MySite
+
+Pipeline em Python para recolher moedas do uCoin por país, transformar o catálogo num JSON simples para a app, classificar a disponibilidade com ajuda externa e importar os resultados para a Base44.
+
+```mermaid
+flowchart LR
+	subgraph S1["1. Abrir browser"]
+		A["Chromium com CDP<br/>Cloudflare resolvido manualmente<br/><code>chromium --remote-debugging-port=9222</code>"]
+	end
+
+	subgraph S2["2. Extrair moedas do uCoin"]
+		B["Lê país, páginas, períodos, imagens e URLs<br/><code>ucoin_catalog.py</code>"]
+	end
+
+	subgraph S3["3. Guardar catálogo bruto"]
+		C["JSON técnico agrupado por períodos<br/><code>country/ucoin-catalog.json</code>"]
+	end
+
+	subgraph S4["4. Preparar catálogo para IA"]
+		D["Cria moedas planas com availability por preencher<br/><code>generate_resume_json.py</code>"]
+	end
+
+	subgraph S5["5. Classificar disponibilidade"]
+		E["IA externa preenche availability<br/><code>app-catalog-final.json</code>"]
+	end
+
+	subgraph S6["6. Gerar outputs finais"]
+		F["Catálogo da app, estatísticas e Excel<br/><code>generate_resume_json.py</code>"]
+	end
+
+	subgraph S7["7. Importar para Base44"]
+		G["Cria ou atualiza Coin por country + url_ucoin<br/><code>import_base44_coins.py</code>"]
+	end
+
+	A --> B --> C --> D --> E --> F --> G
+
+	style S1 stroke-dasharray: 8 6,stroke-width:2px
+	style S2 stroke-dasharray: 8 6,stroke-width:2px
+	style S3 stroke-dasharray: 8 6,stroke-width:2px
+	style S4 stroke-dasharray: 8 6,stroke-width:2px
+	style S5 stroke-dasharray: 8 6,stroke-width:2px
+	style S6 stroke-dasharray: 8 6,stroke-width:2px
+	style S7 stroke-dasharray: 8 6,stroke-width:2px
+	style A width:260px,max-width:260px,min-height:95px
+	style B width:260px,max-width:260px,min-height:95px
+	style C width:260px,max-width:260px,min-height:95px
+	style D width:260px,max-width:260px,min-height:95px
+	style E width:260px,max-width:260px,min-height:95px
+	style F width:260px,max-width:260px,min-height:95px
+	style G width:260px,max-width:260px,min-height:95px
+```
+
+## Fluxo Rápido
+
+1. **Abrir o Chromium em modo CDP e entrar no uCoin.**
+
+```bash
+chromium --remote-debugging-port=9222 --user-data-dir=/tmp/ucoin-human-session
+```
+
+Na janela aberta, entra no uCoin e resolve o Cloudflare manualmente.
+
+2. **Executar o pipeline do uCoin até aos ficheiros finais.**
+
+```bash
+python3 ucoin_pipeline.py India --start-year 1957 --attach-cdp --manual-session
+```
+
+Este comando cobre os pontos 2 a 6 do diagrama: extrai moedas, guarda `ucoin-catalog.json`, gera `app-catalog-pending.json`, espera pelo `app-catalog-final.json` e cria:
+
+- `india/app-catalog.json`
+- `india/availability-statistics.json`
+- `india/coins-availability.xlsx`
+
+Se quiseres parar depois de gerar o ficheiro para a IA:
+
+```bash
+python3 ucoin_pipeline.py India --start-year 1957 --attach-cdp --manual-session --no-wait-for-final
+```
+
+3. **Validar o payload antes de escrever na Base44.**
+
+```bash
+python3 import_base44_coins.py --input india/app-catalog.json --continent Ásia --dry-run
+```
+
+4. **Importar para a Base44 sem criar duplicados.**
+
+Confirma que o `.env` tem `BASE44_APP_ID` e `BASE44_API_KEY`, depois corre:
+
+```bash
+python3 import_base44_coins.py --input india/app-catalog.json --continent Ásia --create-only --missing-only --batch-size 2 --request-delay 3 --rate-limit-delay 60 --max-retries 6
+```
+
+Este comando adiciona apenas moedas que ainda não existem para esse país, usando `country + url_ucoin` para evitar duplicados.
+
+## 1. Abrir Browser
+
+O uCoin pode bloquear pedidos automáticos com Cloudflare. Por isso, o scraper usa um browser real via CDP.
+
+Abre Chromium/Chrome com debug remoto:
+
+```bash
+chromium --remote-debugging-port=9222 --user-data-dir=/tmp/ucoin-human-session
+```
+
+Nessa janela, abre o uCoin e resolve o Cloudflare manualmente. Depois deixa a janela aberta: o scraper vai ligar-se a essa sessão quando usares `--attach-cdp`.
+
+## 2. Extrair Moedas do uCoin
+
+O script `ucoin_catalog.py` recolhe o catálogo técnico do uCoin. Ele percorre as páginas de paginação, agrupa moedas por período histórico e guarda imagens, URLs, anos, avisos de parsing e metadados de paginação.
+
+Exemplo:
+
+```bash
+python3 ucoin_catalog.py India --start-year 1957 --attach-cdp --manual-session --json
+```
+
+### Filtro por ano inicial
+
+Usa `--start-year` para manter apenas moedas cujo período de emissão começa nesse ano ou depois:
+
+```bash
+python3 ucoin_catalog.py India --start-year 1957 --attach-cdp --manual-session --json
+```
+
+Exemplos com `--start-year 1957`:
+
+- `1957-2020` entra
+- `1958-2000` entra
+- `1943-1957` fica fora
+
+Depois de encontrar um período sem moedas que cumpram o filtro, o scraper tenta no máximo mais dois períodos. Se esses também não tiverem moedas válidas, para o crawl para evitar percorrer páginas antigas desnecessárias.
+
+## 3. Guardar Catálogo Bruto
+
+O resultado do scrape é guardado como JSON técnico. Este ficheiro ainda não é o formato final da app: ele mantém a estrutura completa vinda do uCoin, incluindo períodos históricos, moedas, imagens, URLs, avisos e paginação.
+
+Output principal:
+
+```text
+india/ucoin-catalog.json
+```
+
+A pasta de output é o nome do país em formato slug. Por exemplo, `India` e `Índia` geram a pasta `india/`.
+
+## 4. Preparar Catálogo Para a IA
+
+O script `generate_resume_json.py` transforma o catálogo técnico num JSON simples, com moedas planas e um campo `availability` ainda por preencher.
+
+```bash
+python3 generate_resume_json.py --input india/ucoin-catalog.json --wait-for-final
+```
+
+Output inicial:
+
+```text
+india/app-catalog-pending.json
+```
+
+Cada moeda fica com:
+
+```json
+"availability": "still needed to calculate"
+```
+
+Com `--wait-for-final`, o script cria `india/app-catalog-final.json` vazio se ainda não existir e fica à espera. Cola nesse ficheiro o JSON devolvido pela IA externa e carrega Enter no terminal.
+
+## 5. Classificar Disponibilidade
+
+Usa este prompt para pedir à IA externa que preencha o campo `availability` no `app-catalog-pending.json`:
+
+```text
+Vou enviar um JSON de catalogo de moedas. Quero que devolvas o mesmo JSON, preservando exatamente a mesma estrutura, a mesma ordem dos arrays e todos os campos existentes.
+
+Tarefa: substituir apenas os valores do campo "availability" que estao como "still needed to calculate".
+
+Valores permitidos para "availability":
+- "circulating": moeda ainda em circulacao normal ou facilmente encontrada em troco/uso comum.
+- "scarce": moeda valida ou recente, mas rara, comemorativa, pouco circulante ou dificil de encontrar em uso comum.
+- "withdrawn": moeda do sistema monetario atual ou moderno, mas retirada/descontinuada e ja nao usada normalmente.
+- "historical": moeda de um sistema monetario historico, periodo politico antigo, entidade extinta, colonia, territorio antigo, ou moeda anterior a uma grande reforma monetaria.
+
+Regras obrigatorias:
+- Nao alteres nomes de campos.
+- Nao removas campos.
+- Nao adiciones campos.
+- Nao mudes URLs, imagens, denominacoes, anos ou periodos.
+- Nao agrupes nem reordenes moedas.
+- Nao escrevas explicacoes fora do JSON.
+- Devolve apenas JSON valido.
+- Se nao tiveres certeza, usa o melhor valor provavel com base no pais, periodo historico, anos da moeda e denominacao.
+
+JSON:
+<colar aqui o conteudo completo de india/app-catalog-pending.json>
+```
+
+O ficheiro `app-catalog-final.json` é input temporário: deve conter a resposta da IA com `availability` preenchido. Ele não é igual ao catálogo final da app.
+
+Se fechares o terminal antes de carregar Enter, podes terminar depois com:
+
+```bash
+python3 generate_resume_json.py --input india/ucoin-catalog.json --final-input india/app-catalog-final.json
+```
+
+## 6. Gerar Outputs Finais
+
+Depois de ler `app-catalog-final.json`, o script gera três ficheiros finais:
+
+- `app-catalog.json`: catálogo limpo para a app
+- `availability-statistics.json`: estatísticas por disponibilidade
+- `coins-availability.xlsx`: Excel simples e filtrável
+
+Exemplo para terminar manualmente:
+
+```bash
+python3 generate_resume_json.py --input india/ucoin-catalog.json --final-input india/app-catalog-final.json
+```
+
+## 7. Importar Para Base44
+
+O importador `import_base44_coins.py` envia o `app-catalog.json` para a entidade `Coin` da Base44.
+
+Guarda as credenciais num ficheiro `.env` local:
+
+```bash
+BASE44_APP_ID=...
+BASE44_API_KEY=...
+```
+
+Confirma primeiro o payload sem escrever nada na app:
+
+```bash
+python3 import_base44_coins.py --input india/app-catalog.json --continent Ásia --dry-run
+```
+
+Para criar ou atualizar apenas uma moeda de teste:
+
+```bash
+python3 import_base44_coins.py --input india/app-catalog.json --continent Ásia --create-only --limit 1
+```
+
+Para adicionar apenas moedas que faltam, sem apagar nada, e com pausas para evitar rate limit:
+
+```bash
+python3 import_base44_coins.py --input india/app-catalog.json --continent Ásia --create-only --missing-only --batch-size 2 --request-delay 3 --rate-limit-delay 60 --max-retries 6
+```
+
+Para substituir todas as moedas desse país na entidade `Coin`:
+
+```bash
+python3 import_base44_coins.py --input india/app-catalog.json --continent Ásia --replace
+```
+
+O `--replace` apaga apenas registos `Coin` com `country` igual ao país do JSON e recria as moedas a partir do ficheiro final.
+
+### Mapeamento Base44
+
+O importador envia objetos neste formato:
+
+```json
+{
+	"name": "1 naya paisa",
+	"country": "Índia",
+	"continent": "Ásia",
+	"years": "1957-1961",
+	"condition": "Não Tenho",
+	"rarity": "Retirada",
+	"has_variants": false,
+	"image_frente": "https://i.ucoin.net/coin/83/867/83867628-1s/india-1-naya-paisa-1961.jpg",
+	"image_verso": "https://i.ucoin.net/coin/83/867/83867628-2s/india-1-naya-paisa-1961.jpg",
+	"url_ucoin": "https://pt.ucoin.net/coin/india-1-naya-paisa-1957-1961/?tid=15326",
+	"url_numista": "",
+	"notes": "República da Índia",
+	"ordem": 1
+}
+```
+
+Conversão de disponibilidade para raridade:
+
+- `circulating` -> `Circulante`
+- `scarce` -> `Escassa`
+- `withdrawn` -> `Retirada`
+- `historical` -> `Histórica`
+
+O campo `name` fica apenas com a denominação da moeda. O campo `years` guarda o período de emissão. O campo `notes` guarda o período histórico limpo. O link original do uCoin fica em `url_ucoin`.
+
+Campos como `url_numista`, `local_compra`, `valor_pago`, `moeda_valor`, `adquirida_por` e `data_aquisicao` ficam vazios no import inicial, porque são dados da tua coleção e não do catálogo uCoin.
+
+Como `name` não é único, moedas com a mesma denominação e anos diferentes são distinguidas por `country + url_ucoin`.
+
+## Ficheiros Principais
+
+- `ucoin_pipeline.py`: comando que encadeia scrape, geração do pending e finalização
+- `ucoin_catalog.py`: scraper do catálogo do uCoin
+- `generate_resume_json.py`: wrapper para gerar o catálogo simplificado
+- `import_base44_coins.py`: importador Python para a Base44
+- `ucoin_to_mysite/`: implementação interna
+- `tests/`: testes automatizados
+- `country/ucoin-catalog.json`: catálogo técnico vindo do uCoin
+- `country/app-catalog-pending.json`: catálogo para enviar à IA externa
+- `country/app-catalog-final.json`: resposta da IA externa
+- `country/app-catalog.json`: catálogo final para a app
+- `country/availability-statistics.json`: estatísticas finais
+- `country/coins-availability.xlsx`: Excel final
+
+## Nota Cloudflare
+
+Se o resultado vier com `title = Just a moment...` e `count = 0`, o Cloudflare bloqueou a extração dessa tentativa. Resolve o challenge na janela do Chromium e volta a correr o comando com `--attach-cdp --manual-session`.

@@ -1,0 +1,12 @@
+{
+  "name": "ucoin-to-mysite",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "import:base44": "node import_base44_coins.mjs"
+  },
+  "dependencies": {
+    "@base44/sdk": "latest"
+  }
+}

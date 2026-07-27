@@ -1,0 +1,1711 @@
+{
+  "country": "Austrália",
+  "period": null,
+  "page_url": "https://pt.ucoin.net/catalog/?country=australia",
+  "periods": [
+    {
+      "periodId": 2936,
+      "fullTitle": "Austrália › Rei Charles III › 2023 - 2026",
+      "country": "Austrália",
+      "rulerOrPeriodName": "Rei Charles III",
+      "startYear": 2023,
+      "endYear": 2026,
+      "currencyDescription": "1 dólar = 100 cêntimos",
+      "coins": [
+        {
+          "denomination": {
+            "displayName": "5 cêntimos",
+            "value": 5.0,
+            "unit": "cêntimos"
+          },
+          "issuePeriod": {
+            "displayValue": "2024-2026",
+            "startYear": 2024,
+            "endYear": 2026
+          },
+          "imageExampleYear": 2024,
+          "subject": null,
+          "composition": "Cupro-Níquel",
+          "weightGrams": 2.83,
+          "diameterMm": 19.41,
+          "catalogue": {
+            "type": "UC",
+            "number": "14",
+            "displayValue": "UC# 14"
+          },
+          "circulationType": "Circulação normal",
+          "ucoinTypeId": 167502,
+          "ucoinPeriodId": 2936,
+          "detailPath": "/coin/australia-5-cents-2024-2026/?tid=167502",
+          "detailUrl": "https://pt.ucoin.net/coin/australia-5-cents-2024-2026/?tid=167502",
+          "images": {
+            "obverse": "https://i.ucoin.net/coin/68/910/68910906-1s/australia-5-cents-2024.jpg",
+            "reverse": "https://i.ucoin.net/coin/68/910/68910906-2s/australia-5-cents-2024.jpg"
+          }
+        },
+        {
+          "denomination": {
+            "displayName": "10 cêntimos",
+            "value": 10.0,
+            "unit": "cêntimos"
+          },
+          "issuePeriod": {
+            "displayValue": "2024-2026",
+            "startYear": 2024,
+            "endYear": 2026
+          },
+          "imageExampleYear": 2024,
+          "subject": null,
+          "composition": "Cupro-Níquel",
+          "weightGrams": 5.65,
+          "diameterMm": 23.6,
+          "catalogue": {
+            "type": "UC",
+            "number": "15",
+            "displayValue": "UC# 15"
+          },
+          "circulationType": "Circulação normal",
+          "ucoinTypeId": 170421,
+          "ucoinPeriodId": 2936,
+          "detailPath": "/coin/australia-10-cents-2024-2026/?tid=170421",
+          "detailUrl": "https://pt.ucoin.net/coin/australia-10-cents-2024-2026/?tid=170421",
+          "images": {
+            "obverse": "https://i.ucoin.net/coin/79/943/79943681-1s/australia-10-cents-2024.jpg",
+            "reverse": "https://i.ucoin.net/coin/79/943/79943681-2s/australia-10-cents-2024.jpg"
+          }
+        },
+        {
+          "denomination": {
+            "displayName": "20 cêntimos",
+            "value": 20.0,
+            "unit": "cêntimos"
+          },
+          "issuePeriod": {
+            "displayValue": "2024-2026",
+            "startYear": 2024,
+            "endYear": 2026
+          },
+          "imageExampleYear": 2024,
+          "subject": null,
+          "composition": "Cupro-Níquel",
+          "weightGrams": 11.3,
+          "diameterMm": 28.5,
+          "catalogue": {
+            "type": "UC",
+            "number": "16",
+            "displayValue": "UC# 16"
+          },
+          "circulationType": "Circulação normal",
+          "ucoinTypeId": 170422,
+          "ucoinPeriodId": 2936,
+          "detailPath": "/coin/australia-20-cents-2024-2026/?tid=170422",
+          "detailUrl": "https://pt.ucoin.net/coin/australia-20-cents-2024-2026/?tid=170422",
+          "images": {
+            "obverse": "https://i.ucoin.net/coin/79/943/79943696-1s/australia-20-cents-2024.jpg",
+            "reverse": "https://i.ucoin.net/coin/79/943/79943696-2s/australia-20-cents-2024.jpg"
+          }
+        },
+        {
+          "denomination": {
+            "displayName": "50 cêntimos",
+            "value": 50.0,
+            "unit": "cêntimos"
+          },
+          "issuePeriod": {
+            "displayValue": "2024-2026",
+            "startYear": 2024,
+            "endYear": 2026
+          },
+          "imageExampleYear": 2024,
+          "subject": null,
+          "composition": "Cupro-Níquel",
+          "weightGrams": 15.55,
+          "diameterMm": 31.5,
+          "catalogue": {
+            "type": "UC",
+            "number": "17",
+            "displayValue": "UC# 17"
+          },
+          "circulationType": "Circulação normal",
+          "ucoinTypeId": 170423,
+          "ucoinPeriodId": 2936,
+          "detailPath": "/coin/australia-50-cents-2024-2026/?tid=170423",
+          "detailUrl": "https://pt.ucoin.net/coin/australia-50-cents-2024-2026/?tid=170423",
+          "images": {
+            "obverse": "https://i.ucoin.net/coin/79/943/79943713-1s/australia-50-cents-2024.jpg",
+            "reverse": "https://i.ucoin.net/coin/79/943/79943713-2s/australia-50-cents-2024.jpg"
+          }
+        },
+        {
+          "denomination": {
+            "displayName": "1 dólar",
+            "value": 1.0,
+            "unit": "dólar"
+          },
+          "issuePeriod": {
+            "displayValue": "2023-2026",
+            "startYear": 2023,
+            "endYear": 2026
+          },
+          "imageExampleYear": 2023,
+          "subject": null,
+          "composition": "Alumínio-Bronze",
+          "weightGrams": 9.0,
+          "diameterMm": 25.0,
+          "catalogue": {
+            "type": "UC",
+            "number": "7",
+            "displayValue": "UC# 7"
+          },
+          "circulationType": "Circulação normal",
+          "ucoinTypeId": 161134,
+          "ucoinPeriodId": 2936,
+          "detailPath": "/coin/australia-1-dollar-2023-2026/?tid=161134",
+          "detailUrl": "https://pt.ucoin.net/coin/australia-1-dollar-2023-2026/?tid=161134",
+          "images": {
+            "obverse": "https://i.ucoin.net/coin/66/015/66015792-1s/australia-1-dollar-2023.jpg",
+            "reverse": "https://i.ucoin.net/coin/66/015/66015792-2s/australia-1-dollar-2023.jpg"
+          }
+        },
+        {
+          "denomination": {
+            "displayName": "2 dólares",
+            "value": 2.0,
+            "unit": "dólares"
+          },
+          "issuePeriod": {
+            "displayValue": "2024-2026",
+            "startYear": 2024,
+            "endYear": 2026
+          },
+          "imageExampleYear": 2024,
+          "subject": null,
+          "composition": "Alumínio-Bronze",
+          "weightGrams": 6.6,
+          "diameterMm": 20.5,
+          "catalogue": {
+            "type": "UC",
+            "number": "13",
+            "displayValue": "UC# 13"
+          },
+          "circulationType": "Circulação normal",
+          "ucoinTypeId": 165480,
+          "ucoinPeriodId": 2936,
+          "detailPath": "/coin/australia-2-dollars-2024-2026/?tid=165480",
+          "detailUrl": "https://pt.ucoin.net/coin/australia-2-dollars-2024-2026/?tid=165480",
+          "images": {
+            "obverse": "https://i.ucoin.net/coin/79/943/79943742-1s/australia-2-dollars-2024.jpg",
+            "reverse": "https://i.ucoin.net/coin/79/943/79943742-2s/australia-2-dollars-2024.jpg"
+          }
+        }
+      ],
+      "sourcePages": [
+        "https://pt.ucoin.net/catalog/?country=australia"
+      ]
+    },
+    {
+      "periodId": 104,
+      "fullTitle": "Austrália › Rainha Isabel II › 1966 - 2024",
+      "country": "Austrália",
+      "rulerOrPeriodName": "Rainha Isabel II",
+      "startYear": 1966,
+      "endYear": 2024,
+      "currencyDescription": "1 dólar = 100 cêntimos",
+      "coins": [
+        {
+          "denomination": {
+            "displayName": "1 cêntimo",
+            "value": 1.0,
+            "unit": "cêntimo"
+          },
+          "issuePeriod": {
+            "displayValue": "1966-1984",
+            "startYear": 1966,
+            "endYear": 1984
+          },
+          "imageExampleYear": 1978,
+          "subject": null,
+          "composition": "Bronze",
+          "weightGrams": 2.6,
+          "diameterMm": 17.51,
+          "catalogue": {
+            "type": "KM",
+            "number": "62",
+            "displayValue": "KM# 62"
+          },
+          "circulationType": "Circulação normal",
+          "ucoinTypeId": 13243,
+          "ucoinPeriodId": 104,
+          "detailPath": "/coin/australia-1-cent-1966-1984/?tid=13243",
+          "detailUrl": "https://pt.ucoin.net/coin/australia-1-cent-1966-1984/?tid=13243",
+          "images": {
+            "obverse": "https://i.ucoin.net/coin/85/329/85329641-1s/australia-1-cent-1978.jpg",
+            "reverse": "https://i.ucoin.net/coin/85/329/85329641-2s/australia-1-cent-1978.jpg"
+          }
+        },
+        {
+          "denomination": {
+            "displayName": "1 cêntimo",
+            "value": 1.0,
+            "unit": "cêntimo"
+          },
+          "issuePeriod": {
+            "displayValue": "1985-1991",
+            "startYear": 1985,
+            "endYear": 1991
+          },
+          "imageExampleYear": 1990,
+          "subject": null,
+          "composition": "Bronze",
+          "weightGrams": 2.6,
+          "diameterMm": 17.51,
+          "catalogue": {
+            "type": "KM",
+            "number": "78",
+            "displayValue": "KM# 78"
+          },
+          "circulationType": "Circulação normal",
+          "ucoinTypeId": 13272,
+          "ucoinPeriodId": 104,
+          "detailPath": "/coin/australia-1-cent-1985-1991/?tid=13272",
+          "detailUrl": "https://pt.ucoin.net/coin/australia-1-cent-1985-1991/?tid=13272",
+          "images": {
+            "obverse": "https://i.ucoin.net/coin/29/556/29556790-1s/australia-1-cent-1990.jpg",
+            "reverse": "https://i.ucoin.net/coin/29/556/29556790-2s/australia-1-cent-1990.jpg"
+          }
+        },
+        {
+          "denomination": {
+            "displayName": "1 cêntimo",
+            "value": 1.0,
+            "unit": "cêntimo"
+          },
+          "issuePeriod": {
+            "displayValue": "2006-2016",
+            "startYear": 2006,
+            "endYear": 2016
+          },
+          "imageExampleYear": 2006,
+          "subject": null,
+          "composition": "Bronze",
+          "weightGrams": 2.59,
+          "diameterMm": 17.53,
+          "catalogue": {
+            "type": "KM",
+            "number": "767",
+            "displayValue": "KM# 767"
+          },
+          "circulationType": "Circulação normal",
+          "ucoinTypeId": 58377,
+          "ucoinPeriodId": 104,
+          "detailPath": "/coin/australia-1-cent-2006-2016/?tid=58377",
+          "detailUrl": "https://pt.ucoin.net/coin/australia-1-cent-2006-2016/?tid=58377",
+          "images": {
+            "obverse": "https://i.ucoin.net/coin/23/253/23253379-1s/australia-1-cent-2006.jpg",
+            "reverse": "https://i.ucoin.net/coin/23/253/23253379-2s/australia-1-cent-2006.jpg"
+          }
+        },
+        {
+          "denomination": {
+            "displayName": "2 cêntimos",
+            "value": 2.0,
+            "unit": "cêntimos"
+          },
+          "issuePeriod": {
+            "displayValue": "1966-1984",
+            "startYear": 1966,
+            "endYear": 1984
+          },
+          "imageExampleYear": 1978,
+          "subject": null,
+          "composition": "Bronze",
+          "weightGrams": 5.2,
+          "diameterMm": 21.6,
+          "catalogue": {
+            "type": "KM",
+            "number": "63",
+            "displayValue": "KM# 63"
+          },
+          "circulationType": "Circulação normal",
+          "ucoinTypeId": 13288,
+          "ucoinPeriodId": 104,
+          "detailPath": "/coin/australia-2-cents-1966-1984/?tid=13288",
+          "detailUrl": "https://pt.ucoin.net/coin/australia-2-cents-1966-1984/?tid=13288",
+          "images": {
+            "obverse": "https://i.ucoin.net/coin/85/329/85329545-1s/australia-2-cents-1978.jpg",
+            "reverse": "https://i.ucoin.net/coin/85/329/85329545-2s/australia-2-cents-1978.jpg"
+          }
+        },
+        {
+          "denomination": {
+            "displayName": "2 cêntimos",
+            "value": 2.0,
+            "unit": "cêntimos"
+          },
+          "issuePeriod": {
+            "displayValue": "1985-1991",
+            "startYear": 1985,
+            "endYear": 1991
+          },
+          "imageExampleYear": 1986,
+          "subject": null,
+          "composition": "Bronze",
+          "weightGrams": 5.2,
+          "diameterMm": 21.6,
+          "catalogue": {
+            "type": "KM",
+            "number": "79",
+            "displayValue": "KM# 79"
+          },
+          "circulationType": "Circulação normal",
+          "ucoinTypeId": 13307,
+          "ucoinPeriodId": 104,
+          "detailPath": "/coin/australia-2-cents-1985-1991/?tid=13307",
+          "detailUrl": "https://pt.ucoin.net/coin/australia-2-cents-1985-1991/?tid=13307",
+          "images": {
+            "obverse": "https://i.ucoin.net/coin/23/252/23252800-1s/australia-2-cents-1986.jpg",
+            "reverse": "https://i.ucoin.net/coin/23/252/23252800-2s/australia-2-cents-1986.jpg"
+          }
+        },
+        {
+          "denomination": {
+            "displayName": "2 cêntimos",
+            "value": 2.0,
+            "unit": "cêntimos"
+          },
+          "issuePeriod": {
+            "displayValue": "2006-2016",
+            "startYear": 2006,
+            "endYear": 2016
+          },
+          "imageExampleYear": 2016,
+          "subject": null,
+          "composition": "Bronze",
+          "weightGrams": 5.18,
+          "diameterMm": 21.59,
+          "catalogue": {
+            "type": "KM",
+            "number": "768",
+            "displayValue": "KM# 768"
+          },
+          "circulationType": "Circulação normal",
+          "ucoinTypeId": 58378,
+          "ucoinPeriodId": 104,
+          "detailPath": "/coin/australia-2-cents-2006-2016/?tid=58378",
+          "detailUrl": "https://pt.ucoin.net/coin/australia-2-cents-2006-2016/?tid=58378",
+          "images": {
+            "obverse": "https://i.ucoin.net/coin/23/252/23252811-1s/australia-2-cents-2016.jpg",
+            "reverse": "https://i.ucoin.net/coin/23/252/23252811-2s/australia-2-cents-2016.jpg"
+          }
+        },
+        {
+          "denomination": {
+            "displayName": "5 cêntimos",
+            "value": 5.0,
+            "unit": "cêntimos"
+          },
+          "issuePeriod": {
+            "displayValue": "1966-1984",
+            "startYear": 1966,
+            "endYear": 1984
+          },
+          "imageExampleYear": 1982,
+          "subject": null,
+          "composition": "Cupro-Níquel",
+          "weightGrams": 2.8,
+          "diameterMm": 19.4,
+          "catalogue": {
+            "type": "KM",
+            "number": "64",
+            "displayValue": "KM# 64"
+          },
+          "circulationType": "Circulação normal",
+          "ucoinTypeId": 13316,
+          "ucoinPeriodId": 104,
+          "detailPath": "/coin/australia-5-cents-1966-1984/?tid=13316",
+          "detailUrl": "https://pt.ucoin.net/coin/australia-5-cents-1966-1984/?tid=13316",
+          "images": {
+            "obverse": "https://i.ucoin.net/coin/23/252/23252986-1s/australia-5-cents-1982.jpg",
+            "reverse": "https://i.ucoin.net/coin/23/252/23252986-2s/australia-5-cents-1982.jpg"
+          }
+        },
+        {
+          "denomination": {
+            "displayName": "5 cêntimos",
+            "value": 5.0,
+            "unit": "cêntimos"
+          },
+          "issuePeriod": {
+            "displayValue": "1985-1998",
+            "startYear": 1985,
+            "endYear": 1998
+          },
+          "imageExampleYear": 1997,
+          "subject": null,
+          "composition": "Cupro-Níquel",
+          "weightGrams": 2.8,
+          "diameterMm": 19.4,
+          "catalogue": {
+            "type": "KM",
+            "number": "80",
+            "displayValue": "KM# 80"
+          },
+          "circulationType": "Circulação normal",
+          "ucoinTypeId": 13344,
+          "ucoinPeriodId": 104,
+          "detailPath": "/coin/australia-5-cents-1985-1998/?tid=13344",
+          "detailUrl": "https://pt.ucoin.net/coin/australia-5-cents-1985-1998/?tid=13344",
+          "images": {
+            "obverse": "https://i.ucoin.net/coin/29/554/29554366-1s/australia-5-cents-1997.jpg",
+            "reverse": "https://i.ucoin.net/coin/29/554/29554366-2s/australia-5-cents-1997.jpg"
+          }
+        },
+        {
+          "denomination": {
+            "displayName": "5 cêntimos",
+            "value": 5.0,
+            "unit": "cêntimos"
+          },
+          "issuePeriod": {
+            "displayValue": "1999-2019",
+            "startYear": 1999,
+            "endYear": 2019
+          },
+          "imageExampleYear": 2010,
+          "subject": null,
+          "composition": "Cupro-Níquel",
+          "weightGrams": 2.8,
+          "diameterMm": 19.4,
+          "catalogue": {
+            "type": "KM",
+            "number": "401",
+            "displayValue": "KM# 401"
+          },
+          "circulationType": "Circulação normal",
+          "ucoinTypeId": 13358,
+          "ucoinPeriodId": 104,
+          "detailPath": "/coin/australia-5-cents-1999-2019/?tid=13358",
+          "detailUrl": "https://pt.ucoin.net/coin/australia-5-cents-1999-2019/?tid=13358",
+          "images": {
+            "obverse": "https://i.ucoin.net/coin/29/554/29554335-1s/australia-5-cents-2010.jpg",
+            "reverse": "https://i.ucoin.net/coin/29/554/29554335-2s/australia-5-cents-2010.jpg"
+          }
+        },
+        {
+          "denomination": {
+            "displayName": "5 cêntimos",
+            "value": 5.0,
+            "unit": "cêntimos"
+          },
+          "issuePeriod": {
+            "displayValue": "2019-2023",
+            "startYear": 2019,
+            "endYear": 2023
+          },
+          "imageExampleYear": 2021,
+          "subject": null,
+          "composition": "Cupro-Níquel",
+          "weightGrams": 2.8,
+          "diameterMm": 19.4,
+          "catalogue": {
+            "type": "UC",
+            "number": "1",
+            "displayValue": "UC# 1"
+          },
+          "circulationType": "Circulação normal",
+          "ucoinTypeId": 90513,
+          "ucoinPeriodId": 104,
+          "detailPath": "/coin/australia-5-cents-2019-2023/?tid=90513",
+          "detailUrl": "https://pt.ucoin.net/coin/australia-5-cents-2019-2023/?tid=90513",
+          "images": {
+            "obverse": "https://i.ucoin.net/coin/39/305/39305174-1s/australia-5-cents-2021.jpg",
+            "reverse": "https://i.ucoin.net/coin/39/305/39305174-2s/australia-5-cents-2021.jpg"
+          }
+        },
+        {
+          "denomination": {
+            "displayName": "5 cêntimos",
+            "value": 5.0,
+            "unit": "cêntimos"
+          },
+          "issuePeriod": {
+            "displayValue": "2023",
+            "startYear": 2023,
+            "endYear": 2023
+          },
+          "imageExampleYear": 2023,
+          "subject": null,
+          "composition": "Cupro-Níquel",
+          "weightGrams": 2.8,
+          "diameterMm": 19.4,
+          "catalogue": {
+            "type": "UC",
+            "number": "8",
+            "displayValue": "UC# 8"
+          },
+          "circulationType": "Circulação normal",
+          "ucoinTypeId": 161723,
+          "ucoinPeriodId": 104,
+          "detailPath": "/coin/australia-5-cents-2023/?tid=161723",
+          "detailUrl": "https://pt.ucoin.net/coin/australia-5-cents-2023/?tid=161723",
+          "images": {
+            "obverse": "https://i.ucoin.net/coin/69/265/69265463-1s/australia-5-cents-2023.jpg",
+            "reverse": "https://i.ucoin.net/coin/69/265/69265463-2s/australia-5-cents-2023.jpg"
+          }
+        },
+        {
+          "denomination": {
+            "displayName": "10 cêntimos",
+            "value": 10.0,
+            "unit": "cêntimos"
+          },
+          "issuePeriod": {
+            "displayValue": "1966-1984",
+            "startYear": 1966,
+            "endYear": 1984
+          },
+          "imageExampleYear": 1982,
+          "subject": null,
+          "composition": "Cupro-Níquel",
+          "weightGrams": 5.65,
+          "diameterMm": 23.6,
+          "catalogue": {
+            "type": "KM",
+            "number": "65",
+            "displayValue": "KM# 65"
+          },
+          "circulationType": "Circulação normal",
+          "ucoinTypeId": 13371,
+          "ucoinPeriodId": 104,
+          "detailPath": "/coin/australia-10-cents-1966-1984/?tid=13371",
+          "detailUrl": "https://pt.ucoin.net/coin/australia-10-cents-1966-1984/?tid=13371",
+          "images": {
+            "obverse": "https://i.ucoin.net/coin/23/233/23233408-1s/australia-10-cents-1982.jpg",
+            "reverse": "https://i.ucoin.net/coin/23/233/23233408-2s/australia-10-cents-1982.jpg"
+          }
+        },
+        {
+          "denomination": {
+            "displayName": "10 cêntimos",
+            "value": 10.0,
+            "unit": "cêntimos"
+          },
+          "issuePeriod": {
+            "displayValue": "1985-1998",
+            "startYear": 1985,
+            "endYear": 1998
+          },
+          "imageExampleYear": 1990,
+          "subject": null,
+          "composition": "Cupro-Níquel",
+          "weightGrams": 5.65,
+          "diameterMm": 23.6,
+          "catalogue": {
+            "type": "KM",
+            "number": "81",
+            "displayValue": "KM# 81"
+          },
+          "circulationType": "Circulação normal",
+          "ucoinTypeId": 13423,
+          "ucoinPeriodId": 104,
+          "detailPath": "/coin/australia-10-cents-1985-1998/?tid=13423",
+          "detailUrl": "https://pt.ucoin.net/coin/australia-10-cents-1985-1998/?tid=13423",
+          "images": {
+            "obverse": "https://i.ucoin.net/coin/29/557/29557246-1s/australia-10-cents-1990.jpg",
+            "reverse": "https://i.ucoin.net/coin/29/557/29557246-2s/australia-10-cents-1990.jpg"
+          }
+        },
+        {
+          "denomination": {
+            "displayName": "10 cêntimos",
+            "value": 10.0,
+            "unit": "cêntimos"
+          },
+          "issuePeriod": {
+            "displayValue": "1999-2019",
+            "startYear": 1999,
+            "endYear": 2019
+          },
+          "imageExampleYear": 2006,
+          "subject": null,
+          "composition": "Cupro-Níquel",
+          "weightGrams": 5.65,
+          "diameterMm": 23.6,
+          "catalogue": {
+            "type": "KM",
+            "number": "402",
+            "displayValue": "KM# 402"
+          },
+          "circulationType": "Circulação normal",
+          "ucoinTypeId": 13437,
+          "ucoinPeriodId": 104,
+          "detailPath": "/coin/australia-10-cents-1999-2019/?tid=13437",
+          "detailUrl": "https://pt.ucoin.net/coin/australia-10-cents-1999-2019/?tid=13437",
+          "images": {
+            "obverse": "https://i.ucoin.net/coin/29/557/29557310-1s/australia-10-cents-2006.jpg",
+            "reverse": "https://i.ucoin.net/coin/29/557/29557310-2s/australia-10-cents-2006.jpg"
+          }
+        },
+        {
+          "denomination": {
+            "displayName": "10 cêntimos",
+            "value": 10.0,
+            "unit": "cêntimos"
+          },
+          "issuePeriod": {
+            "displayValue": "2019-2023",
+            "startYear": 2019,
+            "endYear": 2023
+          },
+          "imageExampleYear": 2021,
+          "subject": null,
+          "composition": "Cupro-Níquel",
+          "weightGrams": 5.65,
+          "diameterMm": 23.6,
+          "catalogue": {
+            "type": "UC",
+            "number": "2",
+            "displayValue": "UC# 2"
+          },
+          "circulationType": "Circulação normal",
+          "ucoinTypeId": 90514,
+          "ucoinPeriodId": 104,
+          "detailPath": "/coin/australia-10-cents-2019-2023/?tid=90514",
+          "detailUrl": "https://pt.ucoin.net/coin/australia-10-cents-2019-2023/?tid=90514",
+          "images": {
+            "obverse": "https://i.ucoin.net/coin/39/305/39305165-1s/australia-10-cents-2021.jpg",
+            "reverse": "https://i.ucoin.net/coin/39/305/39305165-2s/australia-10-cents-2021.jpg"
+          }
+        },
+        {
+          "denomination": {
+            "displayName": "10 cêntimos",
+            "value": 10.0,
+            "unit": "cêntimos"
+          },
+          "issuePeriod": {
+            "displayValue": "2023",
+            "startYear": 2023,
+            "endYear": 2023
+          },
+          "imageExampleYear": 2023,
+          "subject": null,
+          "composition": "Cupro-Níquel",
+          "weightGrams": 5.65,
+          "diameterMm": 23.6,
+          "catalogue": {
+            "type": "UC",
+            "number": "9",
+            "displayValue": "UC# 9"
+          },
+          "circulationType": "Circulação normal",
+          "ucoinTypeId": 161724,
+          "ucoinPeriodId": 104,
+          "detailPath": "/coin/australia-10-cents-2023/?tid=161724",
+          "detailUrl": "https://pt.ucoin.net/coin/australia-10-cents-2023/?tid=161724",
+          "images": {
+            "obverse": "https://i.ucoin.net/coin/70/075/70075599-1s/australia-10-cents-2023.jpg",
+            "reverse": "https://i.ucoin.net/coin/70/075/70075599-2s/australia-10-cents-2023.jpg"
+          }
+        },
+        {
+          "denomination": {
+            "displayName": "20 cêntimos",
+            "value": 20.0,
+            "unit": "cêntimos"
+          },
+          "issuePeriod": {
+            "displayValue": "1966-1984",
+            "startYear": 1966,
+            "endYear": 1984
+          },
+          "imageExampleYear": 1974,
+          "subject": null,
+          "composition": "Cupro-Níquel",
+          "weightGrams": 11.3,
+          "diameterMm": 28.5,
+          "catalogue": {
+            "type": "KM",
+            "number": "66",
+            "displayValue": "KM# 66"
+          },
+          "circulationType": "Circulação normal",
+          "ucoinTypeId": 13450,
+          "ucoinPeriodId": 104,
+          "detailPath": "/coin/australia-20-cents-1966-1984/?tid=13450",
+          "detailUrl": "https://pt.ucoin.net/coin/australia-20-cents-1966-1984/?tid=13450",
+          "images": {
+            "obverse": "https://i.ucoin.net/coin/70/795/70795795-1s/australia-20-cents-1974.jpg",
+            "reverse": "https://i.ucoin.net/coin/70/795/70795795-2s/australia-20-cents-1974.jpg"
+          }
+        },
+        {
+          "denomination": {
+            "displayName": "20 cêntimos",
+            "value": 20.0,
+            "unit": "cêntimos"
+          },
+          "issuePeriod": {
+            "displayValue": "1985-1998",
+            "startYear": 1985,
+            "endYear": 1998
+          },
+          "imageExampleYear": 1997,
+          "subject": null,
+          "composition": "Cupro-Níquel",
+          "weightGrams": 11.3,
+          "diameterMm": 28.5,
+          "catalogue": {
+            "type": "KM",
+            "number": "82",
+            "displayValue": "KM# 82"
+          },
+          "circulationType": "Circulação normal",
+          "ucoinTypeId": 13483,
+          "ucoinPeriodId": 104,
+          "detailPath": "/coin/australia-20-cents-1985-1998/?tid=13483",
+          "detailUrl": "https://pt.ucoin.net/coin/australia-20-cents-1985-1998/?tid=13483",
+          "images": {
+            "obverse": "https://i.ucoin.net/coin/29/560/29560958-1s/australia-20-cents-1997.jpg",
+            "reverse": "https://i.ucoin.net/coin/29/560/29560958-2s/australia-20-cents-1997.jpg"
+          }
+        },
+        {
+          "denomination": {
+            "displayName": "20 cêntimos",
+            "value": 20.0,
+            "unit": "cêntimos"
+          },
+          "issuePeriod": {
+            "displayValue": "1999-2019",
+            "startYear": 1999,
+            "endYear": 2019
+          },
+          "imageExampleYear": 1999,
+          "subject": null,
+          "composition": "Cupro-Níquel",
+          "weightGrams": 11.3,
+          "diameterMm": 28.5,
+          "catalogue": {
+            "type": "KM",
+            "number": "403",
+            "displayValue": "KM# 403"
+          },
+          "circulationType": "Circulação normal",
+          "ucoinTypeId": 13497,
+          "ucoinPeriodId": 104,
+          "detailPath": "/coin/australia-20-cents-1999-2019/?tid=13497",
+          "detailUrl": "https://pt.ucoin.net/coin/australia-20-cents-1999-2019/?tid=13497",
+          "images": {
+            "obverse": "https://i.ucoin.net/coin/29/561/29561473-1s/australia-20-cents-1999.jpg",
+            "reverse": "https://i.ucoin.net/coin/29/561/29561473-2s/australia-20-cents-1999.jpg"
+          }
+        },
+        {
+          "denomination": {
+            "displayName": "20 cêntimos",
+            "value": 20.0,
+            "unit": "cêntimos"
+          },
+          "issuePeriod": {
+            "displayValue": "2019-2023",
+            "startYear": 2019,
+            "endYear": 2023
+          },
+          "imageExampleYear": 2019,
+          "subject": null,
+          "composition": "Cupro-Níquel",
+          "weightGrams": 11.3,
+          "diameterMm": 28.5,
+          "catalogue": {
+            "type": "UC",
+            "number": "3",
+            "displayValue": "UC# 3"
+          },
+          "circulationType": "Circulação normal",
+          "ucoinTypeId": 90515,
+          "ucoinPeriodId": 104,
+          "detailPath": "/coin/australia-20-cents-2019-2023/?tid=90515",
+          "detailUrl": "https://pt.ucoin.net/coin/australia-20-cents-2019-2023/?tid=90515",
+          "images": {
+            "obverse": "https://i.ucoin.net/coin/71/670/71670212-1s/australia-20-cents-2019.jpg",
+            "reverse": "https://i.ucoin.net/coin/71/670/71670212-2s/australia-20-cents-2019.jpg"
+          }
+        },
+        {
+          "denomination": {
+            "displayName": "20 cêntimos",
+            "value": 20.0,
+            "unit": "cêntimos"
+          },
+          "issuePeriod": {
+            "displayValue": "2023",
+            "startYear": 2023,
+            "endYear": 2023
+          },
+          "imageExampleYear": 2023,
+          "subject": null,
+          "composition": "Cupro-Níquel",
+          "weightGrams": 11.3,
+          "diameterMm": 28.5,
+          "catalogue": {
+            "type": "UC",
+            "number": "10",
+            "displayValue": "UC# 10"
+          },
+          "circulationType": "Circulação normal",
+          "ucoinTypeId": 161725,
+          "ucoinPeriodId": 104,
+          "detailPath": "/coin/australia-20-cents-2023/?tid=161725",
+          "detailUrl": "https://pt.ucoin.net/coin/australia-20-cents-2023/?tid=161725",
+          "images": {
+            "obverse": "https://i.ucoin.net/coin/70/075/70075614-1s/australia-20-cents-2023.jpg",
+            "reverse": "https://i.ucoin.net/coin/70/075/70075614-2s/australia-20-cents-2023.jpg"
+          }
+        },
+        {
+          "denomination": {
+            "displayName": "50 cêntimos",
+            "value": 50.0,
+            "unit": "cêntimos"
+          },
+          "issuePeriod": {
+            "displayValue": "1966",
+            "startYear": 1966,
+            "endYear": 1966
+          },
+          "imageExampleYear": 1966,
+          "subject": null,
+          "composition": "AgPrata 0.800",
+          "weightGrams": 13.28,
+          "diameterMm": 31.5,
+          "catalogue": {
+            "type": "KM",
+            "number": "67",
+            "displayValue": "KM# 67"
+          },
+          "circulationType": "Circulação normal",
+          "ucoinTypeId": 13533,
+          "ucoinPeriodId": 104,
+          "detailPath": "/coin/australia-50-cents-1966/?tid=13533",
+          "detailUrl": "https://pt.ucoin.net/coin/australia-50-cents-1966/?tid=13533",
+          "images": {
+            "obverse": "https://i.ucoin.net/coin/0/948/948698-1s/australia-50-cents-1966.jpg",
+            "reverse": "https://i.ucoin.net/coin/0/948/948698-2s/australia-50-cents-1966.jpg"
+          }
+        },
+        {
+          "denomination": {
+            "displayName": "50 cêntimos",
+            "value": 50.0,
+            "unit": "cêntimos"
+          },
+          "issuePeriod": {
+            "displayValue": "1969-1984",
+            "startYear": 1969,
+            "endYear": 1984
+          },
+          "imageExampleYear": 1975,
+          "subject": null,
+          "composition": "Cupro-Níquel",
+          "weightGrams": 15.55,
+          "diameterMm": 31.5,
+          "catalogue": {
+            "type": "KM",
+            "number": "68",
+            "displayValue": "KM# 68"
+          },
+          "circulationType": "Circulação normal",
+          "ucoinTypeId": 13534,
+          "ucoinPeriodId": 104,
+          "detailPath": "/coin/australia-50-cents-1969-1984/?tid=13534",
+          "detailUrl": "https://pt.ucoin.net/coin/australia-50-cents-1969-1984/?tid=13534",
+          "images": {
+            "obverse": "https://i.ucoin.net/coin/23/253/23253066-1s/australia-50-cents-1975.jpg",
+            "reverse": "https://i.ucoin.net/coin/23/253/23253066-2s/australia-50-cents-1975.jpg"
+          }
+        },
+        {
+          "denomination": {
+            "displayName": "50 cêntimos",
+            "value": 50.0,
+            "unit": "cêntimos"
+          },
+          "issuePeriod": {
+            "displayValue": "1985-1997",
+            "startYear": 1985,
+            "endYear": 1997
+          },
+          "imageExampleYear": 1997,
+          "subject": null,
+          "composition": "Cupro-Níquel",
+          "weightGrams": 15.55,
+          "diameterMm": 31.5,
+          "catalogue": {
+            "type": "KM",
+            "number": "83",
+            "displayValue": "KM# 83"
+          },
+          "circulationType": "Circulação normal",
+          "ucoinTypeId": 13547,
+          "ucoinPeriodId": 104,
+          "detailPath": "/coin/australia-50-cents-1985-1997/?tid=13547",
+          "detailUrl": "https://pt.ucoin.net/coin/australia-50-cents-1985-1997/?tid=13547",
+          "images": {
+            "obverse": "https://i.ucoin.net/coin/29/561/29561757-1s/australia-50-cents-1997.jpg",
+            "reverse": "https://i.ucoin.net/coin/29/561/29561757-2s/australia-50-cents-1997.jpg"
+          }
+        },
+        {
+          "denomination": {
+            "displayName": "50 cêntimos",
+            "value": 50.0,
+            "unit": "cêntimos"
+          },
+          "issuePeriod": {
+            "displayValue": "1999-2019",
+            "startYear": 1999,
+            "endYear": 2019
+          },
+          "imageExampleYear": 2015,
+          "subject": null,
+          "composition": "Cupro-Níquel",
+          "weightGrams": 15.55,
+          "diameterMm": 31.5,
+          "catalogue": {
+            "type": "KM",
+            "number": "404",
+            "displayValue": "KM# 404"
+          },
+          "circulationType": "Circulação normal",
+          "ucoinTypeId": 13556,
+          "ucoinPeriodId": 104,
+          "detailPath": "/coin/australia-50-cents-1999-2019/?tid=13556",
+          "detailUrl": "https://pt.ucoin.net/coin/australia-50-cents-1999-2019/?tid=13556",
+          "images": {
+            "obverse": "https://i.ucoin.net/coin/29/561/29561811-1s/australia-50-cents-2015.jpg",
+            "reverse": "https://i.ucoin.net/coin/29/561/29561811-2s/australia-50-cents-2015.jpg"
+          }
+        },
+        {
+          "denomination": {
+            "displayName": "50 cêntimos",
+            "value": 50.0,
+            "unit": "cêntimos"
+          },
+          "issuePeriod": {
+            "displayValue": "2019-2023",
+            "startYear": 2019,
+            "endYear": 2023
+          },
+          "imageExampleYear": 2021,
+          "subject": null,
+          "composition": "Cupro-Níquel",
+          "weightGrams": 15.55,
+          "diameterMm": 31.5,
+          "catalogue": {
+            "type": "UC",
+            "number": "4",
+            "displayValue": "UC# 4"
+          },
+          "circulationType": "Circulação normal",
+          "ucoinTypeId": 90516,
+          "ucoinPeriodId": 104,
+          "detailPath": "/coin/australia-50-cents-2019-2023/?tid=90516",
+          "detailUrl": "https://pt.ucoin.net/coin/australia-50-cents-2019-2023/?tid=90516",
+          "images": {
+            "obverse": "https://i.ucoin.net/coin/39/305/39305151-1s/australia-50-cents-2021.jpg",
+            "reverse": "https://i.ucoin.net/coin/39/305/39305151-2s/australia-50-cents-2021.jpg"
+          }
+        },
+        {
+          "denomination": {
+            "displayName": "50 cêntimos",
+            "value": 50.0,
+            "unit": "cêntimos"
+          },
+          "issuePeriod": {
+            "displayValue": "2023",
+            "startYear": 2023,
+            "endYear": 2023
+          },
+          "imageExampleYear": 2023,
+          "subject": null,
+          "composition": "Cupro-Níquel",
+          "weightGrams": 15.55,
+          "diameterMm": 31.5,
+          "catalogue": {
+            "type": "UC",
+            "number": "11",
+            "displayValue": "UC# 11"
+          },
+          "circulationType": "Circulação normal",
+          "ucoinTypeId": 161726,
+          "ucoinPeriodId": 104,
+          "detailPath": "/coin/australia-50-cents-2023/?tid=161726",
+          "detailUrl": "https://pt.ucoin.net/coin/australia-50-cents-2023/?tid=161726",
+          "images": {
+            "obverse": "https://i.ucoin.net/coin/69/265/69265461-1s/australia-50-cents-2023.jpg",
+            "reverse": "https://i.ucoin.net/coin/69/265/69265461-2s/australia-50-cents-2023.jpg"
+          }
+        },
+        {
+          "denomination": {
+            "displayName": "1 dólar",
+            "value": 1.0,
+            "unit": "dólar"
+          },
+          "issuePeriod": {
+            "displayValue": "1984",
+            "startYear": 1984,
+            "endYear": 1984
+          },
+          "imageExampleYear": 1984,
+          "subject": null,
+          "composition": "Alumínio-Bronze",
+          "weightGrams": 9.0,
+          "diameterMm": 25.0,
+          "catalogue": {
+            "type": "KM",
+            "number": "77",
+            "displayValue": "KM# 77"
+          },
+          "circulationType": "Circulação normal",
+          "ucoinTypeId": 13586,
+          "ucoinPeriodId": 104,
+          "detailPath": "/coin/australia-1-dollar-1984/?tid=13586",
+          "detailUrl": "https://pt.ucoin.net/coin/australia-1-dollar-1984/?tid=13586",
+          "images": {
+            "obverse": "https://i.ucoin.net/coin/23/253/23253440-1s/australia-1-dollar-1984.jpg",
+            "reverse": "https://i.ucoin.net/coin/23/253/23253440-2s/australia-1-dollar-1984.jpg"
+          }
+        },
+        {
+          "denomination": {
+            "displayName": "1 dólar",
+            "value": 1.0,
+            "unit": "dólar"
+          },
+          "issuePeriod": {
+            "displayValue": "1985-1998",
+            "startYear": 1985,
+            "endYear": 1998
+          },
+          "imageExampleYear": 1987,
+          "subject": null,
+          "composition": "Alumínio-Bronze",
+          "weightGrams": 9.0,
+          "diameterMm": 25.0,
+          "catalogue": {
+            "type": "KM",
+            "number": "84",
+            "displayValue": "KM# 84"
+          },
+          "circulationType": "Circulação normal",
+          "ucoinTypeId": 13587,
+          "ucoinPeriodId": 104,
+          "detailPath": "/coin/australia-1-dollar-1985-1998/?tid=13587",
+          "detailUrl": "https://pt.ucoin.net/coin/australia-1-dollar-1985-1998/?tid=13587",
+          "images": {
+            "obverse": "https://i.ucoin.net/coin/29/562/29562361-1s/australia-1-dollar-1987.jpg",
+            "reverse": "https://i.ucoin.net/coin/29/562/29562361-2s/australia-1-dollar-1987.jpg"
+          }
+        },
+        {
+          "denomination": {
+            "displayName": "1 dólar",
+            "value": 1.0,
+            "unit": "dólar"
+          },
+          "issuePeriod": {
+            "displayValue": "2000-2019",
+            "startYear": 2000,
+            "endYear": 2019
+          },
+          "imageExampleYear": 2013,
+          "subject": null,
+          "composition": "Alumínio-Bronze",
+          "weightGrams": 9.0,
+          "diameterMm": 25.0,
+          "catalogue": {
+            "type": "KM",
+            "number": "489",
+            "displayValue": "KM# 489"
+          },
+          "circulationType": "Circulação normal",
+          "ucoinTypeId": 13595,
+          "ucoinPeriodId": 104,
+          "detailPath": "/coin/australia-1-dollar-2000-2019/?tid=13595",
+          "detailUrl": "https://pt.ucoin.net/coin/australia-1-dollar-2000-2019/?tid=13595",
+          "images": {
+            "obverse": "https://i.ucoin.net/coin/29/562/29562723-1s/australia-1-dollar-2013.jpg",
+            "reverse": "https://i.ucoin.net/coin/29/562/29562723-2s/australia-1-dollar-2013.jpg"
+          }
+        },
+        {
+          "denomination": {
+            "displayName": "1 dólar",
+            "value": 1.0,
+            "unit": "dólar"
+          },
+          "issuePeriod": {
+            "displayValue": "2019-2022",
+            "startYear": 2019,
+            "endYear": 2022
+          },
+          "imageExampleYear": 2022,
+          "subject": null,
+          "composition": "Alumínio-Bronze",
+          "weightGrams": 9.0,
+          "diameterMm": 25.0,
+          "catalogue": {
+            "type": "UC",
+            "number": "5",
+            "displayValue": "UC# 5"
+          },
+          "circulationType": "Circulação normal",
+          "ucoinTypeId": 90517,
+          "ucoinPeriodId": 104,
+          "detailPath": "/coin/australia-1-dollar-2019-2022/?tid=90517",
+          "detailUrl": "https://pt.ucoin.net/coin/australia-1-dollar-2019-2022/?tid=90517",
+          "images": {
+            "obverse": "https://i.ucoin.net/coin/57/938/57938084-1s/australia-1-dollar-2022.jpg",
+            "reverse": "https://i.ucoin.net/coin/57/938/57938084-2s/australia-1-dollar-2022.jpg"
+          }
+        },
+        {
+          "denomination": {
+            "displayName": "2 dólares",
+            "value": 2.0,
+            "unit": "dólares"
+          },
+          "issuePeriod": {
+            "displayValue": "1988-1998",
+            "startYear": 1988,
+            "endYear": 1998
+          },
+          "imageExampleYear": 1989,
+          "subject": null,
+          "composition": "Alumínio-Bronze",
+          "weightGrams": 6.6,
+          "diameterMm": 20.5,
+          "catalogue": {
+            "type": "KM",
+            "number": "101",
+            "displayValue": "KM# 101"
+          },
+          "circulationType": "Circulação normal",
+          "ucoinTypeId": 13605,
+          "ucoinPeriodId": 104,
+          "detailPath": "/coin/australia-2-dollars-1988-1998/?tid=13605",
+          "detailUrl": "https://pt.ucoin.net/coin/australia-2-dollars-1988-1998/?tid=13605",
+          "images": {
+            "obverse": "https://i.ucoin.net/coin/29/562/29562931-1s/australia-2-dollars-1989.jpg",
+            "reverse": "https://i.ucoin.net/coin/29/562/29562931-2s/australia-2-dollars-1989.jpg"
+          }
+        },
+        {
+          "denomination": {
+            "displayName": "2 dólares",
+            "value": 2.0,
+            "unit": "dólares"
+          },
+          "issuePeriod": {
+            "displayValue": "1999-2019",
+            "startYear": 1999,
+            "endYear": 2019
+          },
+          "imageExampleYear": 2019,
+          "subject": null,
+          "composition": "Alumínio-Bronze",
+          "weightGrams": 6.6,
+          "diameterMm": 20.5,
+          "catalogue": {
+            "type": "KM",
+            "number": "406",
+            "displayValue": "KM# 406"
+          },
+          "circulationType": "Circulação normal",
+          "ucoinTypeId": 13616,
+          "ucoinPeriodId": 104,
+          "detailPath": "/coin/australia-2-dollars-1999-2019/?tid=13616",
+          "detailUrl": "https://pt.ucoin.net/coin/australia-2-dollars-1999-2019/?tid=13616",
+          "images": {
+            "obverse": "https://i.ucoin.net/coin/29/563/29563259-1s/australia-2-dollars-2019.jpg",
+            "reverse": "https://i.ucoin.net/coin/29/563/29563259-2s/australia-2-dollars-2019.jpg"
+          }
+        },
+        {
+          "denomination": {
+            "displayName": "2 dólares",
+            "value": 2.0,
+            "unit": "dólares"
+          },
+          "issuePeriod": {
+            "displayValue": "2019-2023",
+            "startYear": 2019,
+            "endYear": 2023
+          },
+          "imageExampleYear": 2021,
+          "subject": null,
+          "composition": "Alumínio-Bronze",
+          "weightGrams": 6.6,
+          "diameterMm": 20.5,
+          "catalogue": {
+            "type": "UC",
+            "number": "6",
+            "displayValue": "UC# 6"
+          },
+          "circulationType": "Circulação normal",
+          "ucoinTypeId": 96859,
+          "ucoinPeriodId": 104,
+          "detailPath": "/coin/australia-2-dollars-2019-2023/?tid=96859",
+          "detailUrl": "https://pt.ucoin.net/coin/australia-2-dollars-2019-2023/?tid=96859",
+          "images": {
+            "obverse": "https://i.ucoin.net/coin/73/853/73853054-1s/australia-2-dollars-2021.jpg",
+            "reverse": "https://i.ucoin.net/coin/73/853/73853054-2s/australia-2-dollars-2021.jpg"
+          }
+        },
+        {
+          "denomination": {
+            "displayName": "2 dólares",
+            "value": 2.0,
+            "unit": "dólares"
+          },
+          "issuePeriod": {
+            "displayValue": "2023",
+            "startYear": 2023,
+            "endYear": 2023
+          },
+          "imageExampleYear": 2023,
+          "subject": null,
+          "composition": "Alumínio-Bronze",
+          "weightGrams": 6.6,
+          "diameterMm": 20.5,
+          "catalogue": {
+            "type": "UC",
+            "number": "12",
+            "displayValue": "UC# 12"
+          },
+          "circulationType": "Circulação normal",
+          "ucoinTypeId": 161727,
+          "ucoinPeriodId": 104,
+          "detailPath": "/coin/australia-2-dollars-2023/?tid=161727",
+          "detailUrl": "https://pt.ucoin.net/coin/australia-2-dollars-2023/?tid=161727",
+          "images": {
+            "obverse": "https://i.ucoin.net/coin/69/265/69265456-1s/australia-2-dollars-2023.jpg",
+            "reverse": "https://i.ucoin.net/coin/69/265/69265456-2s/australia-2-dollars-2023.jpg"
+          }
+        }
+      ],
+      "sourcePages": [
+        "https://pt.ucoin.net/catalog/?country=australia"
+      ]
+    },
+    {
+      "periodId": 236,
+      "fullTitle": "Austrália › Rainha Isabel II › 1953 - 1965",
+      "country": "Austrália",
+      "rulerOrPeriodName": "Rainha Isabel II",
+      "startYear": 1953,
+      "endYear": 1965,
+      "currencyDescription": "1 libra = 4 coroas = 10 florins = 20 shillings = 240 pence = 960 farthings",
+      "coins": [
+        {
+          "denomination": {
+            "displayName": "½ pence",
+            "value": null,
+            "unit": null
+          },
+          "issuePeriod": {
+            "displayValue": "1953-1955",
+            "startYear": 1953,
+            "endYear": 1955
+          },
+          "imageExampleYear": 1954,
+          "subject": null,
+          "composition": "Bronze",
+          "weightGrams": 5.67,
+          "diameterMm": 25.5,
+          "catalogue": {
+            "type": "KM",
+            "number": "49",
+            "displayValue": "KM# 49"
+          },
+          "circulationType": "Circulação normal",
+          "ucoinTypeId": 32648,
+          "ucoinPeriodId": 236,
+          "detailPath": "/coin/australia-1-2-penny-1953-1955/?tid=32648",
+          "detailUrl": "https://pt.ucoin.net/coin/australia-1-2-penny-1953-1955/?tid=32648",
+          "images": {
+            "obverse": "https://i.ucoin.net/coin/29/554/29554005-1s/australia-1-2-penny-1954.jpg",
+            "reverse": "https://i.ucoin.net/coin/29/554/29554005-2s/australia-1-2-penny-1954.jpg"
+          }
+        },
+        {
+          "denomination": {
+            "displayName": "½ pence",
+            "value": null,
+            "unit": null
+          },
+          "issuePeriod": {
+            "displayValue": "1959-1964",
+            "startYear": 1959,
+            "endYear": 1964
+          },
+          "imageExampleYear": 1962,
+          "subject": null,
+          "composition": "Bronze",
+          "weightGrams": 5.9,
+          "diameterMm": 25.5,
+          "catalogue": {
+            "type": "KM",
+            "number": "61",
+            "displayValue": "KM# 61"
+          },
+          "circulationType": "Circulação normal",
+          "ucoinTypeId": 32652,
+          "ucoinPeriodId": 236,
+          "detailPath": "/coin/australia-1-2-penny-1959-1964/?tid=32652",
+          "detailUrl": "https://pt.ucoin.net/coin/australia-1-2-penny-1959-1964/?tid=32652",
+          "images": {
+            "obverse": "https://i.ucoin.net/coin/29/532/29532795-1s/australia-1-2-penny-1962.jpg",
+            "reverse": "https://i.ucoin.net/coin/29/532/29532795-2s/australia-1-2-penny-1962.jpg"
+          }
+        },
+        {
+          "denomination": {
+            "displayName": "1 penny",
+            "value": 1.0,
+            "unit": "penny"
+          },
+          "issuePeriod": {
+            "displayValue": "1953",
+            "startYear": 1953,
+            "endYear": 1953
+          },
+          "imageExampleYear": 1953,
+          "subject": null,
+          "composition": "Bronze",
+          "weightGrams": 9.44,
+          "diameterMm": 31.0,
+          "catalogue": {
+            "type": "KM",
+            "number": "50",
+            "displayValue": "KM# 50"
+          },
+          "circulationType": "Circulação normal",
+          "ucoinTypeId": 32658,
+          "ucoinPeriodId": 236,
+          "detailPath": "/coin/australia-1-penny-1953/?tid=32658",
+          "detailUrl": "https://pt.ucoin.net/coin/australia-1-penny-1953/?tid=32658",
+          "images": {
+            "obverse": "https://i.ucoin.net/coin/29/553/29553947-1s/australia-1-penny-1953.jpg",
+            "reverse": "https://i.ucoin.net/coin/29/553/29553947-2s/australia-1-penny-1953.jpg"
+          }
+        },
+        {
+          "denomination": {
+            "displayName": "1 penny",
+            "value": 1.0,
+            "unit": "penny"
+          },
+          "issuePeriod": {
+            "displayValue": "1955-1964",
+            "startYear": 1955,
+            "endYear": 1964
+          },
+          "imageExampleYear": 1959,
+          "subject": null,
+          "composition": "Bronze",
+          "weightGrams": 9.44,
+          "diameterMm": 31.0,
+          "catalogue": {
+            "type": "KM",
+            "number": "56",
+            "displayValue": "KM# 56"
+          },
+          "circulationType": "Circulação normal",
+          "ucoinTypeId": 32659,
+          "ucoinPeriodId": 236,
+          "detailPath": "/coin/australia-1-penny-1955-1964/?tid=32659",
+          "detailUrl": "https://pt.ucoin.net/coin/australia-1-penny-1955-1964/?tid=32659",
+          "images": {
+            "obverse": "https://i.ucoin.net/coin/29/531/29531556-1s/australia-1-penny-1959.jpg",
+            "reverse": "https://i.ucoin.net/coin/29/531/29531556-2s/australia-1-penny-1959.jpg"
+          }
+        },
+        {
+          "denomination": {
+            "displayName": "3 pence",
+            "value": 3.0,
+            "unit": "pence"
+          },
+          "issuePeriod": {
+            "displayValue": "1953-1954",
+            "startYear": 1953,
+            "endYear": 1954
+          },
+          "imageExampleYear": 1953,
+          "subject": null,
+          "composition": "AgPrata 0.500",
+          "weightGrams": 1.41,
+          "diameterMm": 16.0,
+          "catalogue": {
+            "type": "KM",
+            "number": "51",
+            "displayValue": "KM# 51"
+          },
+          "circulationType": "Circulação normal",
+          "ucoinTypeId": 32775,
+          "ucoinPeriodId": 236,
+          "detailPath": "/coin/australia-3-pence-1953-1954/?tid=32775",
+          "detailUrl": "https://pt.ucoin.net/coin/australia-3-pence-1953-1954/?tid=32775",
+          "images": {
+            "obverse": "https://i.ucoin.net/coin/29/537/29537656-1s/australia-3-pence-1953.jpg",
+            "reverse": "https://i.ucoin.net/coin/29/537/29537656-2s/australia-3-pence-1953.jpg"
+          }
+        },
+        {
+          "denomination": {
+            "displayName": "3 pence",
+            "value": 3.0,
+            "unit": "pence"
+          },
+          "issuePeriod": {
+            "displayValue": "1955-1964",
+            "startYear": 1955,
+            "endYear": 1964
+          },
+          "imageExampleYear": 1960,
+          "subject": null,
+          "composition": "AgPrata 0.500",
+          "weightGrams": 1.41,
+          "diameterMm": 16.0,
+          "catalogue": {
+            "type": "KM",
+            "number": "57",
+            "displayValue": "KM# 57"
+          },
+          "circulationType": "Circulação normal",
+          "ucoinTypeId": 32777,
+          "ucoinPeriodId": 236,
+          "detailPath": "/coin/australia-3-pence-1955-1964/?tid=32777",
+          "detailUrl": "https://pt.ucoin.net/coin/australia-3-pence-1955-1964/?tid=32777",
+          "images": {
+            "obverse": "https://i.ucoin.net/coin/29/531/29531610-1s/australia-3-pence-1960.jpg",
+            "reverse": "https://i.ucoin.net/coin/29/531/29531610-2s/australia-3-pence-1960.jpg"
+          }
+        },
+        {
+          "denomination": {
+            "displayName": "6 pence",
+            "value": 6.0,
+            "unit": "pence"
+          },
+          "issuePeriod": {
+            "displayValue": "1953-1954",
+            "startYear": 1953,
+            "endYear": 1954
+          },
+          "imageExampleYear": 1954,
+          "subject": null,
+          "composition": "AgPrata 0.500",
+          "weightGrams": 2.83,
+          "diameterMm": 19.5,
+          "catalogue": {
+            "type": "KM",
+            "number": "52",
+            "displayValue": "KM# 52"
+          },
+          "circulationType": "Circulação normal",
+          "ucoinTypeId": 32787,
+          "ucoinPeriodId": 236,
+          "detailPath": "/coin/australia-6-pence-1953-1954/?tid=32787",
+          "detailUrl": "https://pt.ucoin.net/coin/australia-6-pence-1953-1954/?tid=32787",
+          "images": {
+            "obverse": "https://i.ucoin.net/coin/29/531/29531105-1s/australia-6-pence-1954.jpg",
+            "reverse": "https://i.ucoin.net/coin/29/531/29531105-2s/australia-6-pence-1954.jpg"
+          }
+        },
+        {
+          "denomination": {
+            "displayName": "6 pence",
+            "value": 6.0,
+            "unit": "pence"
+          },
+          "issuePeriod": {
+            "displayValue": "1955-1963",
+            "startYear": 1955,
+            "endYear": 1963
+          },
+          "imageExampleYear": 1963,
+          "subject": null,
+          "composition": "AgPrata 0.500",
+          "weightGrams": 2.83,
+          "diameterMm": 19.3,
+          "catalogue": {
+            "type": "KM",
+            "number": "58",
+            "displayValue": "KM# 58"
+          },
+          "circulationType": "Circulação normal",
+          "ucoinTypeId": 32789,
+          "ucoinPeriodId": 236,
+          "detailPath": "/coin/australia-6-pence-1955-1963/?tid=32789",
+          "detailUrl": "https://pt.ucoin.net/coin/australia-6-pence-1955-1963/?tid=32789",
+          "images": {
+            "obverse": "https://i.ucoin.net/coin/80/027/80027396-1s/australia-6-pence-1963.jpg",
+            "reverse": "https://i.ucoin.net/coin/80/027/80027396-2s/australia-6-pence-1963.jpg"
+          }
+        },
+        {
+          "denomination": {
+            "displayName": "1 shilling",
+            "value": 1.0,
+            "unit": "shilling"
+          },
+          "issuePeriod": {
+            "displayValue": "1953-1954",
+            "startYear": 1953,
+            "endYear": 1954
+          },
+          "imageExampleYear": 1954,
+          "subject": null,
+          "composition": "AgPrata 0.500",
+          "weightGrams": 5.65,
+          "diameterMm": 24.0,
+          "catalogue": {
+            "type": "KM",
+            "number": "53",
+            "displayValue": "KM# 53"
+          },
+          "circulationType": "Circulação normal",
+          "ucoinTypeId": 32798,
+          "ucoinPeriodId": 236,
+          "detailPath": "/coin/australia-1-shilling-1953-1954/?tid=32798",
+          "detailUrl": "https://pt.ucoin.net/coin/australia-1-shilling-1953-1954/?tid=32798",
+          "images": {
+            "obverse": "https://i.ucoin.net/coin/5/603/5603671-1s/australia-1-shilling-1954.jpg",
+            "reverse": "https://i.ucoin.net/coin/5/603/5603671-2s/australia-1-shilling-1954.jpg"
+          }
+        },
+        {
+          "denomination": {
+            "displayName": "1 shilling",
+            "value": 1.0,
+            "unit": "shilling"
+          },
+          "issuePeriod": {
+            "displayValue": "1955-1963",
+            "startYear": 1955,
+            "endYear": 1963
+          },
+          "imageExampleYear": 1960,
+          "subject": null,
+          "composition": "AgPrata 0.500",
+          "weightGrams": 5.65,
+          "diameterMm": 24.0,
+          "catalogue": {
+            "type": "KM",
+            "number": "59",
+            "displayValue": "KM# 59"
+          },
+          "circulationType": "Circulação normal",
+          "ucoinTypeId": 32800,
+          "ucoinPeriodId": 236,
+          "detailPath": "/coin/australia-1-shilling-1955-1963/?tid=32800",
+          "detailUrl": "https://pt.ucoin.net/coin/australia-1-shilling-1955-1963/?tid=32800",
+          "images": {
+            "obverse": "https://i.ucoin.net/coin/23/059/23059893-1s/australia-1-shilling-1960.jpg",
+            "reverse": "https://i.ucoin.net/coin/23/059/23059893-2s/australia-1-shilling-1960.jpg"
+          }
+        },
+        {
+          "denomination": {
+            "displayName": "2 shillings (florin)",
+            "value": 2.0,
+            "unit": "shillings (florin)"
+          },
+          "issuePeriod": {
+            "displayValue": "1953-1954",
+            "startYear": 1953,
+            "endYear": 1954
+          },
+          "imageExampleYear": 1953,
+          "subject": null,
+          "composition": "AgPrata 0.500",
+          "weightGrams": 11.31,
+          "diameterMm": 28.5,
+          "catalogue": {
+            "type": "KM",
+            "number": "54",
+            "displayValue": "KM# 54"
+          },
+          "circulationType": "Circulação normal",
+          "ucoinTypeId": 32809,
+          "ucoinPeriodId": 236,
+          "detailPath": "/coin/australia-2-shillings-1953-1954/?tid=32809",
+          "detailUrl": "https://pt.ucoin.net/coin/australia-2-shillings-1953-1954/?tid=32809",
+          "images": {
+            "obverse": "https://i.ucoin.net/coin/29/484/29484717-1s/australia-2-shillings-1953.jpg",
+            "reverse": "https://i.ucoin.net/coin/29/484/29484717-2s/australia-2-shillings-1953.jpg"
+          }
+        },
+        {
+          "denomination": {
+            "displayName": "2 shillings (florin)",
+            "value": 2.0,
+            "unit": "shillings (florin)"
+          },
+          "issuePeriod": {
+            "displayValue": "1956-1963",
+            "startYear": 1956,
+            "endYear": 1963
+          },
+          "imageExampleYear": 1961,
+          "subject": null,
+          "composition": "AgPrata 0.500",
+          "weightGrams": 11.31,
+          "diameterMm": 28.5,
+          "catalogue": {
+            "type": "KM",
+            "number": "60",
+            "displayValue": "KM# 60"
+          },
+          "circulationType": "Circulação normal",
+          "ucoinTypeId": 32812,
+          "ucoinPeriodId": 236,
+          "detailPath": "/coin/australia-2-shillings-1956-1963/?tid=32812",
+          "detailUrl": "https://pt.ucoin.net/coin/australia-2-shillings-1956-1963/?tid=32812",
+          "images": {
+            "obverse": "https://i.ucoin.net/coin/23/253/23253719-1s/australia-2-shillings-1961.jpg",
+            "reverse": "https://i.ucoin.net/coin/23/253/23253719-2s/australia-2-shillings-1961.jpg"
+          }
+        }
+      ],
+      "sourcePages": [
+        "https://pt.ucoin.net/catalog/?country=australia",
+        "https://pt.ucoin.net/catalog/?country=australia&page=2"
+      ]
+    }
+  ],
+  "warnings": [],
+  "title": "Austrália - Catálogo de Moedas - uCoin.net",
+  "final_url": "https://pt.ucoin.net/catalog/?country=australia",
+  "startYearFilter": 1952,
+  "pagination": {
+    "initialUrl": "https://pt.ucoin.net/catalog/?country=australia",
+    "visitedPages": [
+      "https://pt.ucoin.net/catalog/?country=australia",
+      "https://pt.ucoin.net/catalog/?country=australia&page=2"
+    ],
+    "pagesProcessed": 2,
+    "discoveredPages": 7,
+    "failedPages": [],
+    "stoppedEarly": true,
+    "stoppedEarlyReason": "Stopped after 3 consecutive periods with no coins starting at or after 1952."
+  },
+  "count": 53,
+  "output_path": "australia/ucoin-catalog.json"
+}
