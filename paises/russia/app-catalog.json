@@ -1,0 +1,253 @@
+{
+  "country": "Rússia",
+  "periods": [
+    {
+      "title": "Rússia › Federação Russa › 1997 - 2026",
+      "ruler": "Federação Russa",
+      "startYear": 1997,
+      "endYear": 2026,
+      "coins": [
+        {
+          "denomination": "1 kopek",
+          "value": 1.0,
+          "unit": "kopek",
+          "issuePeriod": "1997-2026",
+          "startYear": 1997,
+          "endYear": 2026,
+          "availability": "scarce",
+          "detailUrl": "https://pt.ucoin.net/coin/russia-1-kopek-1997-2026/?tid=1928",
+          "obverseImage": "https://i.ucoin.net/coin/86/229/86229728-1s/russia-1-kopek-2023.jpg",
+          "reverseImage": "https://i.ucoin.net/coin/86/229/86229728-2s/russia-1-kopek-2023.jpg"
+        },
+        {
+          "denomination": "5 kopeks",
+          "value": 5.0,
+          "unit": "kopeks",
+          "issuePeriod": "1997-2026",
+          "startYear": 1997,
+          "endYear": 2026,
+          "availability": "scarce",
+          "detailUrl": "https://pt.ucoin.net/coin/russia-5-kopeks-1997-2026/?tid=1949",
+          "obverseImage": "https://i.ucoin.net/coin/43/529/43529393-1s/russia-5-kopeks-2003.jpg",
+          "reverseImage": "https://i.ucoin.net/coin/43/529/43529393-2s/russia-5-kopeks-2003.jpg"
+        },
+        {
+          "denomination": "10 kopeks",
+          "value": 10.0,
+          "unit": "kopeks",
+          "issuePeriod": "1997-2006",
+          "startYear": 1997,
+          "endYear": 2006,
+          "availability": "scarce",
+          "detailUrl": "https://pt.ucoin.net/coin/russia-10-kopeks-1997-2006/?tid=1971",
+          "obverseImage": "https://i.ucoin.net/coin/39/022/39022089-1s/russia-10-kopeks-2006.jpg",
+          "reverseImage": "https://i.ucoin.net/coin/39/022/39022089-2s/russia-10-kopeks-2006.jpg"
+        },
+        {
+          "denomination": "10 kopeks",
+          "value": 10.0,
+          "unit": "kopeks",
+          "issuePeriod": "2006-2026",
+          "startYear": 2006,
+          "endYear": 2026,
+          "availability": "scarce",
+          "detailUrl": "https://pt.ucoin.net/coin/russia-10-kopeks-2006-2026/?tid=1961",
+          "obverseImage": "https://i.ucoin.net/coin/27/013/27013261-1s/russia-10-kopeks-2006.jpg",
+          "reverseImage": "https://i.ucoin.net/coin/27/013/27013261-2s/russia-10-kopeks-2006.jpg"
+        },
+        {
+          "denomination": "50 kopeks",
+          "value": 50.0,
+          "unit": "kopeks",
+          "issuePeriod": "1997-2006",
+          "startYear": 1997,
+          "endYear": 2006,
+          "availability": "scarce",
+          "detailUrl": "https://pt.ucoin.net/coin/russia-50-kopeks-1997-2006/?tid=1994",
+          "obverseImage": "https://i.ucoin.net/coin/42/581/42581183-1s/russia-50-kopeks-1999.jpg",
+          "reverseImage": "https://i.ucoin.net/coin/42/581/42581183-2s/russia-50-kopeks-1999.jpg"
+        },
+        {
+          "denomination": "50 kopeks",
+          "value": 50.0,
+          "unit": "kopeks",
+          "issuePeriod": "2006-2026",
+          "startYear": 2006,
+          "endYear": 2026,
+          "availability": "scarce",
+          "detailUrl": "https://pt.ucoin.net/coin/russia-50-kopeks-2006-2026/?tid=2001",
+          "obverseImage": "https://i.ucoin.net/coin/42/643/42643333-1s/russia-50-kopeks-2013.jpg",
+          "reverseImage": "https://i.ucoin.net/coin/42/643/42643333-2s/russia-50-kopeks-2013.jpg"
+        },
+        {
+          "denomination": "1 rublo",
+          "value": 1.0,
+          "unit": "rublo",
+          "issuePeriod": "1997-2001",
+          "startYear": 1997,
+          "endYear": 2001,
+          "availability": "circulating",
+          "detailUrl": "https://pt.ucoin.net/coin/russia-1-ruble-1997-2001/?tid=2004",
+          "obverseImage": "https://i.ucoin.net/coin/27/891/27891654-1s/russia-1-ruble-1999.jpg",
+          "reverseImage": "https://i.ucoin.net/coin/27/891/27891654-2s/russia-1-ruble-1999.jpg"
+        },
+        {
+          "denomination": "1 rublo",
+          "value": 1.0,
+          "unit": "rublo",
+          "issuePeriod": "2002-2009",
+          "startYear": 2002,
+          "endYear": 2009,
+          "availability": "circulating",
+          "detailUrl": "https://pt.ucoin.net/coin/russia-1-ruble-2002-2009/?tid=2009",
+          "obverseImage": "https://i.ucoin.net/coin/43/427/43427738-1s/russia-1-ruble-2009.jpg",
+          "reverseImage": "https://i.ucoin.net/coin/43/427/43427738-2s/russia-1-ruble-2009.jpg"
+        },
+        {
+          "denomination": "1 rublo",
+          "value": 1.0,
+          "unit": "rublo",
+          "issuePeriod": "2009-2015",
+          "startYear": 2009,
+          "endYear": 2015,
+          "availability": "circulating",
+          "detailUrl": "https://pt.ucoin.net/coin/russia-1-ruble-2009-2015/?tid=3769",
+          "obverseImage": "https://i.ucoin.net/coin/12/495/12495513-1s/russia-1-ruble-2013.jpg",
+          "reverseImage": "https://i.ucoin.net/coin/12/495/12495513-2s/russia-1-ruble-2013.jpg"
+        },
+        {
+          "denomination": "1 rublo",
+          "value": 1.0,
+          "unit": "rublo",
+          "issuePeriod": "2016-2026",
+          "startYear": 2016,
+          "endYear": 2026,
+          "availability": "circulating",
+          "detailUrl": "https://pt.ucoin.net/coin/russia-1-ruble-2016-2026/?tid=52731",
+          "obverseImage": "https://i.ucoin.net/coin/47/957/47957938-1s/russia-1-ruble-2021.jpg",
+          "reverseImage": "https://i.ucoin.net/coin/47/957/47957938-2s/russia-1-ruble-2021.jpg"
+        },
+        {
+          "denomination": "2 rublos",
+          "value": 2.0,
+          "unit": "rublos",
+          "issuePeriod": "1997-2001",
+          "startYear": 1997,
+          "endYear": 2001,
+          "availability": "circulating",
+          "detailUrl": "https://pt.ucoin.net/coin/russia-2-rubles-1997-2001/?tid=2005",
+          "obverseImage": "https://i.ucoin.net/coin/36/882/36882469-1s/russia-2-rubles-1999.jpg",
+          "reverseImage": "https://i.ucoin.net/coin/36/882/36882469-2s/russia-2-rubles-1999.jpg"
+        },
+        {
+          "denomination": "2 rublos",
+          "value": 2.0,
+          "unit": "rublos",
+          "issuePeriod": "2002-2009",
+          "startYear": 2002,
+          "endYear": 2009,
+          "availability": "circulating",
+          "detailUrl": "https://pt.ucoin.net/coin/russia-2-rubles-2002-2009/?tid=2016",
+          "obverseImage": "https://i.ucoin.net/coin/27/868/27868496-1s/russia-2-rubles-2002.jpg",
+          "reverseImage": "https://i.ucoin.net/coin/27/868/27868496-2s/russia-2-rubles-2002.jpg"
+        },
+        {
+          "denomination": "2 rublos",
+          "value": 2.0,
+          "unit": "rublos",
+          "issuePeriod": "2009-2015",
+          "startYear": 2009,
+          "endYear": 2015,
+          "availability": "circulating",
+          "detailUrl": "https://pt.ucoin.net/coin/russia-2-rubles-2009-2015/?tid=3770",
+          "obverseImage": "https://i.ucoin.net/coin/27/466/27466311-1s/russia-2-rubles-2014.jpg",
+          "reverseImage": "https://i.ucoin.net/coin/27/466/27466311-2s/russia-2-rubles-2014.jpg"
+        },
+        {
+          "denomination": "2 rublos",
+          "value": 2.0,
+          "unit": "rublos",
+          "issuePeriod": "2016-2026",
+          "startYear": 2016,
+          "endYear": 2026,
+          "availability": "circulating",
+          "detailUrl": "https://pt.ucoin.net/coin/russia-2-rubles-2016-2026/?tid=52732",
+          "obverseImage": "https://i.ucoin.net/coin/43/438/43438624-1s/russia-2-rubles-2016.jpg",
+          "reverseImage": "https://i.ucoin.net/coin/43/438/43438624-2s/russia-2-rubles-2016.jpg"
+        },
+        {
+          "denomination": "5 rublos",
+          "value": 5.0,
+          "unit": "rublos",
+          "issuePeriod": "1997-1999",
+          "startYear": 1997,
+          "endYear": 1999,
+          "availability": "circulating",
+          "detailUrl": "https://pt.ucoin.net/coin/russia-5-rubles-1997-1999/?tid=2006",
+          "obverseImage": "https://i.ucoin.net/coin/39/022/39022004-1s/russia-5-rubles-1998.jpg",
+          "reverseImage": "https://i.ucoin.net/coin/39/022/39022004-2s/russia-5-rubles-1998.jpg"
+        },
+        {
+          "denomination": "5 rublos",
+          "value": 5.0,
+          "unit": "rublos",
+          "issuePeriod": "2002-2009",
+          "startYear": 2002,
+          "endYear": 2009,
+          "availability": "circulating",
+          "detailUrl": "https://pt.ucoin.net/coin/russia-5-rubles-2002-2009/?tid=2021",
+          "obverseImage": "https://i.ucoin.net/coin/43/786/43786950-1s/russia-5-rubles-2008.jpg",
+          "reverseImage": "https://i.ucoin.net/coin/43/786/43786950-2s/russia-5-rubles-2008.jpg"
+        },
+        {
+          "denomination": "5 rublos",
+          "value": 5.0,
+          "unit": "rublos",
+          "issuePeriod": "2009-2015",
+          "startYear": 2009,
+          "endYear": 2015,
+          "availability": "circulating",
+          "detailUrl": "https://pt.ucoin.net/coin/russia-5-rubles-2009-2015/?tid=3771",
+          "obverseImage": "https://i.ucoin.net/coin/44/693/44693775-1s/russia-5-rubles-2012.jpg",
+          "reverseImage": "https://i.ucoin.net/coin/44/693/44693775-2s/russia-5-rubles-2012.jpg"
+        },
+        {
+          "denomination": "5 rublos",
+          "value": 5.0,
+          "unit": "rublos",
+          "issuePeriod": "2016-2026",
+          "startYear": 2016,
+          "endYear": 2026,
+          "availability": "circulating",
+          "detailUrl": "https://pt.ucoin.net/coin/russia-5-rubles-2016-2026/?tid=52733",
+          "obverseImage": "https://i.ucoin.net/coin/43/432/43432988-1s/russia-5-rubles-2026.jpg",
+          "reverseImage": "https://i.ucoin.net/coin/43/432/43432988-2s/russia-5-rubles-2026.jpg"
+        },
+        {
+          "denomination": "10 rublos",
+          "value": 10.0,
+          "unit": "rublos",
+          "issuePeriod": "2009-2015",
+          "startYear": 2009,
+          "endYear": 2015,
+          "availability": "circulating",
+          "detailUrl": "https://pt.ucoin.net/coin/russia-10-rubles-2009-2015/?tid=5226",
+          "obverseImage": "https://i.ucoin.net/coin/27/013/27013093-1s/russia-10-rubles-2012.jpg",
+          "reverseImage": "https://i.ucoin.net/coin/27/013/27013093-2s/russia-10-rubles-2012.jpg"
+        },
+        {
+          "denomination": "10 rublos",
+          "value": 10.0,
+          "unit": "rublos",
+          "issuePeriod": "2016-2026",
+          "startYear": 2016,
+          "endYear": 2026,
+          "availability": "circulating",
+          "detailUrl": "https://pt.ucoin.net/coin/russia-10-rubles-2016-2026/?tid=52734",
+          "obverseImage": "https://i.ucoin.net/coin/18/432/18432003-1s/russia-10-rubles-2019.jpg",
+          "reverseImage": "https://i.ucoin.net/coin/18/432/18432003-2s/russia-10-rubles-2019.jpg"
+        }
+      ]
+    }
+  ]
+}

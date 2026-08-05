@@ -2,6 +2,7 @@
 from __future__ import annotations
 
 import asyncio
+import json
 import sys
 from pathlib import Path
 
@@ -13,4 +14,16 @@ from ucoin_to_mysite.generate_resume_json import main
 
 
 if __name__ == "__main__":
-    asyncio.run(main())
+    try:
+        asyncio.run(main())
+    except FileNotFoundError as exc:
+        print(f"Erro: ficheiro nao encontrado: {exc.filename}")
+        print("Confirma o caminho de --final-input ou gera primeiro app-catalog-final.json.")
+        raise SystemExit(1)
+    except json.JSONDecodeError as exc:
+        if exc.pos == 0:
+            print("Erro: app-catalog-final.json esta vazio ou nao contem JSON.")
+        else:
+            print(f"Erro: JSON invalido na linha {exc.lineno}, coluna {exc.colno}.")
+        print("Preenche ou corrige app-catalog-final.json antes de gerar os outputs finais.")
+        raise SystemExit(1)

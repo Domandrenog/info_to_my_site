@@ -1,0 +1,109 @@
+{
+  "country": "Roménia",
+  "periods": [
+    {
+      "title": "Roménia › República da Roménia › 2005 - 2026",
+      "ruler": "República da Roménia",
+      "startYear": 2005,
+      "endYear": 2026,
+      "coins": [
+        {
+          "denomination": "1 ban",
+          "value": 1.0,
+          "unit": "ban",
+          "issuePeriod": "2005-2017",
+          "startYear": 2005,
+          "endYear": 2017,
+          "availability": "scarce",
+          "detailUrl": "https://pt.ucoin.net/coin/romania-1-ban-2005-2017/?tid=14348",
+          "obverseImage": "[https://i.ucoin.net/coin/27/168/27168173-1s/romania-1-ban-2005.jpg](https://i.ucoin.net/coin/27/168/27168173-1s/romania-1-ban-2005.jpg)",
+          "reverseImage": "[https://i.ucoin.net/coin/27/168/27168173-2s/romania-1-ban-2005.jpg](https://i.ucoin.net/coin/27/168/27168173-2s/romania-1-ban-2005.jpg)"
+        },
+        {
+          "denomination": "1 ban",
+          "value": 1.0,
+          "unit": "ban",
+          "issuePeriod": "2018-2026",
+          "startYear": 2018,
+          "endYear": 2026,
+          "availability": "scarce",
+          "detailUrl": "https://pt.ucoin.net/coin/romania-1-ban-2018-2026/?tid=79615",
+          "obverseImage": "[https://i.ucoin.net/coin/52/641/52641936-1s/romania-1-ban-2019.jpg](https://i.ucoin.net/coin/52/641/52641936-1s/romania-1-ban-2019.jpg)",
+          "reverseImage": "[https://i.ucoin.net/coin/52/641/52641936-2s/romania-1-ban-2019.jpg](https://i.ucoin.net/coin/52/641/52641936-2s/romania-1-ban-2019.jpg)"
+        },
+        {
+          "denomination": "5 bani",
+          "value": 5.0,
+          "unit": "bani",
+          "issuePeriod": "2005-2017",
+          "startYear": 2005,
+          "endYear": 2017,
+          "availability": "circulating",
+          "detailUrl": "https://pt.ucoin.net/coin/romania-5-bani-2005-2017/?tid=14354",
+          "obverseImage": "[https://i.ucoin.net/coin/3/392/3392056-1s/romania-5-bani-2014.jpg](https://i.ucoin.net/coin/3/392/3392056-1s/romania-5-bani-2014.jpg)",
+          "reverseImage": "[https://i.ucoin.net/coin/3/392/3392056-2s/romania-5-bani-2014.jpg](https://i.ucoin.net/coin/3/392/3392056-2s/romania-5-bani-2014.jpg)"
+        },
+        {
+          "denomination": "5 bani",
+          "value": 5.0,
+          "unit": "bani",
+          "issuePeriod": "2018-2026",
+          "startYear": 2018,
+          "endYear": 2026,
+          "availability": "circulating",
+          "detailUrl": "https://pt.ucoin.net/coin/romania-5-bani-2018-2026/?tid=79616",
+          "obverseImage": "[https://i.ucoin.net/coin/31/631/31631239-1s/romania-5-bani-2018.jpg](https://i.ucoin.net/coin/31/631/31631239-1s/romania-5-bani-2018.jpg)",
+          "reverseImage": "[https://i.ucoin.net/coin/31/631/31631239-2s/romania-5-bani-2018.jpg](https://i.ucoin.net/coin/31/631/31631239-2s/romania-5-bani-2018.jpg)"
+        },
+        {
+          "denomination": "10 bani",
+          "value": 10.0,
+          "unit": "bani",
+          "issuePeriod": "2005-2017",
+          "startYear": 2005,
+          "endYear": 2017,
+          "availability": "circulating",
+          "detailUrl": "https://pt.ucoin.net/coin/romania-10-bani-2005-2017/?tid=14360",
+          "obverseImage": "[https://i.ucoin.net/coin/31/630/31630749-1s/romania-10-bani-2012.jpg](https://i.ucoin.net/coin/31/630/31630749-1s/romania-10-bani-2012.jpg)",
+          "reverseImage": "[https://i.ucoin.net/coin/31/630/31630749-2s/romania-10-bani-2012.jpg](https://i.ucoin.net/coin/31/630/31630749-2s/romania-10-bani-2012.jpg)"
+        },
+        {
+          "denomination": "10 bani",
+          "value": 10.0,
+          "unit": "bani",
+          "issuePeriod": "2018-2026",
+          "startYear": 2018,
+          "endYear": 2026,
+          "availability": "circulating",
+          "detailUrl": "https://pt.ucoin.net/coin/romania-10-bani-2018-2026/?tid=79617",
+          "obverseImage": "[https://i.ucoin.net/coin/31/631/31631245-1s/romania-10-bani-2020.jpg](https://i.ucoin.net/coin/31/631/31631245-1s/romania-10-bani-2020.jpg)",
+          "reverseImage": "[https://i.ucoin.net/coin/31/631/31631245-2s/romania-10-bani-2020.jpg](https://i.ucoin.net/coin/31/631/31631245-2s/romania-10-bani-2020.jpg)"
+        },
+        {
+          "denomination": "50 bani",
+          "value": 50.0,
+          "unit": "bani",
+          "issuePeriod": "2005-2017",
+          "startYear": 2005,
+          "endYear": 2017,
+          "availability": "circulating",
+          "detailUrl": "https://pt.ucoin.net/coin/romania-50-bani-2005-2017/?tid=14368",
+          "obverseImage": "[https://i.ucoin.net/coin/31/630/31630757-1s/romania-50-bani-2012.jpg](https://i.ucoin.net/coin/31/630/31630757-1s/romania-50-bani-2012.jpg)",
+          "reverseImage": "[https://i.ucoin.net/coin/31/630/31630757-2s/romania-50-bani-2012.jpg](https://i.ucoin.net/coin/31/630/31630757-2s/romania-50-bani-2012.jpg)"
+        },
+        {
+          "denomination": "50 bani",
+          "value": 50.0,
+          "unit": "bani",
+          "issuePeriod": "2018-2026",
+          "startYear": 2018,
+          "endYear": 2026,
+          "availability": "circulating",
+          "detailUrl": "https://pt.ucoin.net/coin/romania-50-bani-2018-2026/?tid=79618",
+          "obverseImage": "[https://i.ucoin.net/coin/28/825/28825002-1s/romania-50-bani-2018.jpg](https://i.ucoin.net/coin/28/825/28825002-1s/romania-50-bani-2018.jpg)",
+          "reverseImage": "[https://i.ucoin.net/coin/28/825/28825002-2s/romania-50-bani-2018.jpg](https://i.ucoin.net/coin/28/825/28825002-2s/romania-50-bani-2018.jpg)"
+        }
+      ]
+    }
+  ]
+}

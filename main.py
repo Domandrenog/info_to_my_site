@@ -1,6 +1,8 @@
 #!/usr/bin/env python3
 from __future__ import annotations
 
+import json
+import os
 import subprocess
 import sys
 from pathlib import Path
@@ -15,6 +17,7 @@ def line() -> None:
 
 
 def title(text: str) -> None:
+    os.system("cls" if os.name == "nt" else "clear")
     line()
     print(text)
     line()
@@ -65,19 +68,21 @@ def ask_yes_no(prompt: str, default: bool = True) -> bool:
         print("Responde com y ou n.")
 
 
-def run_step(step_name: str, command: list[str]) -> None:
+def run_step(step_name: str, command: list[str]) -> int | None:
     title(f"Executar: {step_name}")
     print("Comando:")
     print(" ".join(command))
     if not ask_yes_no("Queres executar agora?", default=True):
         print("Execucao cancelada pelo utilizador.")
-        return
+        return None
 
     try:
         subprocess.run(command, cwd=PROJECT_DIR, check=True)
         print("Concluido com sucesso.")
+        return 0
     except subprocess.CalledProcessError as exc:
         print(f"Falhou com codigo de saida {exc.returncode}.")
+        return exc.returncode
 
 
 def explain_prerequisites() -> None:
@@ -222,6 +227,38 @@ def action_generate_final() -> None:
 
     country = ask_text("Pais (para sugerir caminho default)", "India")
     final_input_path = ask_text("Input app-catalog-final.json", default_final_input_path(country))
+    final_input = Path(final_input_path)
+
+    recovering_from_app_catalogue = False
+    if not final_input.exists():
+        app_catalogue = final_input.with_name("app-catalog.json")
+        if app_catalogue.exists():
+            print(f"Ficheiro final nao encontrado: {final_input}")
+            print(f"A regenerar stats e Excel a partir de: {app_catalogue}")
+            final_input = app_catalogue
+            final_input_path = str(app_catalogue)
+            recovering_from_app_catalogue = True
+        else:
+            print(f"Ficheiro nao encontrado: {final_input}")
+            available = sorted(Path("paises").glob("*/app-catalog-final.json"))
+            if available:
+                print("Ficheiros final disponiveis:")
+                for path in available:
+                    print(f"- {path}")
+            print("Dica: primeiro gera pending e preenche o app-catalog-final.json desse pais.")
+            return
+
+    if final_input.stat().st_size == 0:
+        print(f"Ficheiro vazio: {final_input}")
+        print("Preenche app-catalog-final.json com o resultado final baseado no app-catalog-pending.json.")
+        return
+
+    try:
+        json.loads(final_input.read_text(encoding="utf-8"))
+    except json.JSONDecodeError as exc:
+        print(f"JSON invalido em {final_input}: linha {exc.lineno}, coluna {exc.colno}.")
+        print("Corrige o JSON antes de gerar os outputs finais.")
+        return
 
     command = [
         sys.executable,
@@ -230,6 +267,8 @@ def action_generate_final() -> None:
         "--final-input",
         final_input_path,
     ]
+    if not recovering_from_app_catalogue and ask_yes_no("Apagar ficheiros intermédios e deixar só os finais?", default=True):
+        command.append("--cleanup-intermediate")
     run_step("Gerar outputs finais", command)
 
 
@@ -294,30 +333,164 @@ def action_import_base44() -> None:
     run_step("Import Base44", command)
 
 
+def action_check_differences() -> None:
+    title("Verificar diferencas do site")
+    print("Compara app-catalog com All_Coins e API para listar inconsistencias por moeda.")
+
+    country = ask_text("Pais (opcional, ex: bielorrussia; vazio = todos)", "")
+    include_warnings = ask_yes_no("Incluir warnings no relatorio?", default=False)
+
+    if country:
+        country_slug = slugify(country)
+        default_output = str(Path("paises") / country_slug / f"{country_slug}-differences.json")
+    else:
+        default_output = str(Path("paises") / "all-differences.json")
+    save_report = ask_yes_no("Guardar ficheiro de diferencas em paises/?", default=True)
+    output_path = ask_text("Ficheiro de output", default_output) if save_report else ""
+
+    command = [
+        sys.executable,
+        "-m",
+        "scripts.check_site_coin_differences",
+        "--max-issues",
+        str(999999),
+    ]
+    if country:
+        command.extend(["--country", country])
+    if include_warnings:
+        command.append("--include-warnings")
+    if output_path:
+        command.extend(["--output", output_path])
+
+    result = run_step("Check diferencas", command)
+    if result != 1 or not country:
+        return
+
+    country_slug = slugify(country)
+    reconcile_command = [
+        sys.executable,
+        "-m",
+        "scripts.fix_site_issues_api",
+        "--country",
+        country,
+        "--output",
+        str(Path("paises") / country_slug / f"{country_slug}-autofix-plan.json"),
+        "--skip-create-missing",
+        "--reconcile-missing-interactive",
+    ]
+    print("\nConfirmar equivalencias que nao foram encontradas pelas imagens:", flush=True)
+    subprocess.run(reconcile_command, cwd=PROJECT_DIR, check=False)
+
+
+def action_autofix_issues() -> None:
+    title("Atualizar API com issues detectadas")
+    print("Corrige notes/url_ucoin na API e mostra entradas missing no terminal.")
+    print("Neste fluxo nao criamos registos em falta.")
+
+    country = ask_text("Pais (obrigatorio, ex: bielorrussia)", "")
+    if not country:
+        print("Pais obrigatorio.")
+        return
+
+    update_fields = []
+    if ask_yes_no("Modificar url_ucoin?", default=True):
+        update_fields.append("url_ucoin")
+    if ask_yes_no("Modificar notes?", default=True):
+        update_fields.append("notes")
+    if not update_fields:
+        print("Nenhum parametro selecionado. Operacao cancelada.")
+        return
+
+    apply_changes = ask_yes_no("Aplicar correcoes na API agora?", default=False)
+    reconcile_missing = ask_yes_no("Tentar associar missing por nome/anos (com confirmacao)?", default=True)
+
+    default_output = str(Path("paises") / slugify(country) / f"{slugify(country)}-autofix-plan.json")
+    output_path = ask_text("Ficheiro de plano/output", default_output)
+
+    command = [
+        sys.executable,
+        "-m",
+        "scripts.fix_site_issues_api",
+        "--country",
+        country,
+        "--output",
+        output_path,
+        "--update-fields",
+        *update_fields,
+        "--skip-create-missing",
+    ]
+    if reconcile_missing:
+        command.append("--reconcile-missing-interactive")
+    if apply_changes:
+        command.append("--apply")
+
+    run_step("Auto-fix API (updates only)", command)
+
+
+def menu_importar_ucoin() -> None:
+    while True:
+        title("Importar Data de uCoin")
+        print("1) Pipeline completo (scrape + pending/final)")
+        print("2) Extrair catalogo do uCoin (scrape apenas)")
+        print("3) Gerar app-catalog-pending.json")
+        print("4) Gerar outputs finais do site")
+        print("5) Importar app-catalog.json para Base44")
+        print("6) Voltar")
+
+        choice = ask_text("Escolhe uma opcao", "1")
+        if choice == "1":
+            action_pipeline()
+        elif choice == "2":
+            action_scrape_only()
+        elif choice == "3":
+            action_generate_pending()
+        elif choice == "4":
+            action_generate_final()
+        elif choice == "5":
+            action_import_base44()
+        elif choice == "6":
+            return
+        else:
+            print("Opcao invalida.")
+
+        input("\nCarrega Enter para continuar...")
+
+
+def menu_atualizar_site() -> None:
+    while True:
+        title("Atualizar data existente no site")
+        print("1) Verificar diferencas (site vs All_Coins)")
+        print("2) Atualizar API com issues (sem criar missing)")
+        print("3) Voltar")
+
+        choice = ask_text("Escolhe uma opcao", "1")
+        if choice == "1":
+            action_check_differences()
+        elif choice == "2":
+            action_autofix_issues()
+        elif choice == "3":
+            return
+        else:
+            print("Opcao invalida.")
+
+        input("\nCarrega Enter para continuar...")
+
+
 def menu() -> None:
     while True:
-        title("uCoin to MySite - Menu")
+        title("uCoin to MySite - Menu principal")
         print("1) Ver guia de pre-requisitos")
-        print("2) Pipeline completo")
-        print("3) Scrape apenas (ucoin-catalog.json)")
-        print("4) Gerar app-catalog-pending.json")
-        print("5) Gerar outputs finais (app-catalog.json/stats/excel)")
-        print("6) Importar para Base44")
+        print("2) Importar Data de uCoin")
+        print("3) Atualizar data existente no site")
         print("0) Sair")
 
         choice = ask_text("Escolhe uma opcao", "1")
         if choice == "1":
             explain_prerequisites()
         elif choice == "2":
-            action_pipeline()
+            menu_importar_ucoin()
         elif choice == "3":
-            action_scrape_only()
-        elif choice == "4":
-            action_generate_pending()
-        elif choice == "5":
-            action_generate_final()
-        elif choice == "6":
-            action_import_base44()
+            menu_atualizar_site()
         elif choice == "0":
             print("A sair.")
             return

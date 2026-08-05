@@ -272,5 +272,38 @@ class GenerateResumeJsonTests(unittest.TestCase):
             "https://pt.ucoin.net/coin/belarus-1-kopek-2009/?tid=59333",
         )
 
+    def test_validate_resume_catalogue_normalizes_markdown_image_urls(self) -> None:
+        image_url = "https://i.ucoin.net/coin/86/229/86229728-1s/russia-1-kopek-2023.jpg"
+        reverse_url = "https://i.ucoin.net/coin/86/229/86229728-2s/russia-1-kopek-2023.jpg"
+        catalogue = {
+            "country": "Russia",
+            "periods": [
+                {
+                    "title": "Russia",
+                    "coins": [
+                        {
+                            "denomination": "1 kopek",
+                            "value": 1.0,
+                            "unit": "kopek",
+                            "issuePeriod": "1997-2026",
+                            "startYear": 1997,
+                            "endYear": 2026,
+                            "availability": "scarce",
+                            "detailUrl": "https://pt.ucoin.net/coin/russia-1-kopek-1997-2026/?tid=1928",
+                            "obverseImage": f"[{image_url}]({image_url})",
+                            "reverseImage": f"[{reverse_url}]({reverse_url})",
+                        }
+                    ],
+                }
+            ],
+        }
+
+        generate_resume_json.validate_resume_catalogue(catalogue, 1)
+
+        coin = catalogue["periods"][0]["coins"][0]
+        self.assertEqual(coin["obverseImage"], image_url)
+        self.assertEqual(coin["reverseImage"], reverse_url)
+
+
 if __name__ == "__main__":
     unittest.main()

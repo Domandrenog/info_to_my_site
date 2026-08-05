@@ -1,0 +1,506 @@
+[
+  {
+    "country": "russia",
+    "summary": {
+      "coins": [
+        {
+          "coin": "1 kopek",
+          "issue_count": 1,
+          "types": [
+            "Not found"
+          ]
+        },
+        {
+          "coin": "5 kopeks",
+          "issue_count": 2,
+          "types": [
+            "notes",
+            "url_ucoin"
+          ]
+        },
+        {
+          "coin": "10 kopeks",
+          "issue_count": 1,
+          "types": [
+            "url_ucoin"
+          ]
+        },
+        {
+          "coin": "10 kopeks",
+          "issue_count": 1,
+          "types": [
+            "url_ucoin"
+          ]
+        },
+        {
+          "coin": "50 kopeks",
+          "issue_count": 1,
+          "types": [
+            "url_ucoin"
+          ]
+        },
+        {
+          "coin": "50 kopeks",
+          "issue_count": 1,
+          "types": [
+            "url_ucoin"
+          ]
+        },
+        {
+          "coin": "1 rublo",
+          "issue_count": 2,
+          "types": [
+            "notes",
+            "url_ucoin"
+          ]
+        },
+        {
+          "coin": "1 rublo",
+          "issue_count": 1,
+          "types": [
+            "url_ucoin"
+          ]
+        },
+        {
+          "coin": "1 rublo",
+          "issue_count": 1,
+          "types": [
+            "url_ucoin"
+          ]
+        },
+        {
+          "coin": "1 rublo",
+          "issue_count": 2,
+          "types": [
+            "notes",
+            "url_ucoin"
+          ]
+        },
+        {
+          "coin": "2 rublos",
+          "issue_count": 2,
+          "types": [
+            "notes",
+            "url_ucoin"
+          ]
+        },
+        {
+          "coin": "2 rublos",
+          "issue_count": 1,
+          "types": [
+            "url_ucoin"
+          ]
+        },
+        {
+          "coin": "2 rublos",
+          "issue_count": 1,
+          "types": [
+            "url_ucoin"
+          ]
+        },
+        {
+          "coin": "2 rublos",
+          "issue_count": 2,
+          "types": [
+            "notes",
+            "url_ucoin"
+          ]
+        },
+        {
+          "coin": "5 rublos",
+          "issue_count": 2,
+          "types": [
+            "notes",
+            "url_ucoin"
+          ]
+        },
+        {
+          "coin": "5 rublos",
+          "issue_count": 1,
+          "types": [
+            "url_ucoin"
+          ]
+        },
+        {
+          "coin": "5 rublos",
+          "issue_count": 1,
+          "types": [
+            "url_ucoin"
+          ]
+        },
+        {
+          "coin": "5 rublos",
+          "issue_count": 1,
+          "types": [
+            "Not found"
+          ]
+        },
+        {
+          "coin": "10 rublos",
+          "issue_count": 2,
+          "types": [
+            "notes",
+            "url_ucoin"
+          ]
+        },
+        {
+          "coin": "10 rublos",
+          "issue_count": 2,
+          "types": [
+            "notes",
+            "url_ucoin"
+          ]
+        }
+      ],
+      "total_coins": 20,
+      "total_issues": 28,
+      "by_type": {
+        "missing_api_coin_record": 2,
+        "missing_notes": 8,
+        "missing_url_ucoin": 18
+      }
+    },
+    "coins_with_issues": [
+      {
+        "denomination": "1 kopek",
+        "issuePeriod": "1997-2026",
+        "ucoinUrl": "https://pt.ucoin.net/coin/russia-1-kopek-1997-2026/?tid=1928",
+        "siteUrl": "https://base44.app/api/apps/69f12d4bf0bb6ef2f9eaa84e/entities/Coin/6a00b0ea15e9875ef1cd19cd",
+        "issue_count": 1,
+        "issues": [
+          {
+            "field": "api",
+            "value": "",
+            "missing_value": "Not found"
+          }
+        ]
+      },
+      {
+        "denomination": "5 kopeks",
+        "issuePeriod": "1997-2026",
+        "ucoinUrl": "https://pt.ucoin.net/coin/russia-5-kopeks-1997-2026/?tid=1949",
+        "siteUrl": "https://base44.app/api/apps/69f12d4bf0bb6ef2f9eaa84e/entities/Coin/6a00b0d93af2c6ab4d5c3238",
+        "issue_count": 2,
+        "issues": [
+          {
+            "field": "notes",
+            "value": "",
+            "missing_value": "Federação Russa"
+          },
+          {
+            "field": "url_ucoin",
+            "value": "",
+            "missing_value": "https://pt.ucoin.net/coin/russia-5-kopeks-1997-2026/?tid=1949"
+          }
+        ]
+      },
+      {
+        "denomination": "10 kopeks",
+        "issuePeriod": "1997-2006",
+        "ucoinUrl": "https://pt.ucoin.net/coin/russia-10-kopeks-1997-2006/?tid=1971",
+        "siteUrl": "https://base44.app/api/apps/69f12d4bf0bb6ef2f9eaa84e/entities/Coin/6a00b0bdf42a87535be112f4",
+        "issue_count": 1,
+        "issues": [
+          {
+            "field": "url_ucoin",
+            "value": "",
+            "missing_value": "https://pt.ucoin.net/coin/russia-10-kopeks-1997-2006/?tid=1971"
+          }
+        ]
+      },
+      {
+        "denomination": "10 kopeks",
+        "issuePeriod": "2006-2026",
+        "ucoinUrl": "https://pt.ucoin.net/coin/russia-10-kopeks-2006-2026/?tid=1961",
+        "siteUrl": "https://base44.app/api/apps/69f12d4bf0bb6ef2f9eaa84e/entities/Coin/6a00b0a27b574857d5eadcac",
+        "issue_count": 1,
+        "issues": [
+          {
+            "field": "url_ucoin",
+            "value": "",
+            "missing_value": "https://pt.ucoin.net/coin/russia-10-kopeks-2006-2026/?tid=1961"
+          }
+        ]
+      },
+      {
+        "denomination": "50 kopeks",
+        "issuePeriod": "1997-2006",
+        "ucoinUrl": "https://pt.ucoin.net/coin/russia-50-kopeks-1997-2006/?tid=1994",
+        "siteUrl": "https://base44.app/api/apps/69f12d4bf0bb6ef2f9eaa84e/entities/Coin/6a00b072a8bdf5fa0a47971e",
+        "issue_count": 1,
+        "issues": [
+          {
+            "field": "url_ucoin",
+            "value": "",
+            "missing_value": "https://pt.ucoin.net/coin/russia-50-kopeks-1997-2006/?tid=1994"
+          }
+        ]
+      },
+      {
+        "denomination": "50 kopeks",
+        "issuePeriod": "2006-2026",
+        "ucoinUrl": "https://pt.ucoin.net/coin/russia-50-kopeks-2006-2026/?tid=2001",
+        "siteUrl": "https://base44.app/api/apps/69f12d4bf0bb6ef2f9eaa84e/entities/Coin/6a00b0583c3e76be598ea5c2",
+        "issue_count": 1,
+        "issues": [
+          {
+            "field": "url_ucoin",
+            "value": "",
+            "missing_value": "https://pt.ucoin.net/coin/russia-50-kopeks-2006-2026/?tid=2001"
+          }
+        ]
+      },
+      {
+        "denomination": "1 rublo",
+        "issuePeriod": "1997-2001",
+        "ucoinUrl": "https://pt.ucoin.net/coin/russia-1-ruble-1997-2001/?tid=2004",
+        "siteUrl": "https://base44.app/api/apps/69f12d4bf0bb6ef2f9eaa84e/entities/Coin/6a00af4f76b12e996ac94da1",
+        "issue_count": 2,
+        "issues": [
+          {
+            "field": "notes",
+            "value": "",
+            "missing_value": "Federação Russa"
+          },
+          {
+            "field": "url_ucoin",
+            "value": "",
+            "missing_value": "https://pt.ucoin.net/coin/russia-1-ruble-1997-2001/?tid=2004"
+          }
+        ]
+      },
+      {
+        "denomination": "1 rublo",
+        "issuePeriod": "2002-2009",
+        "ucoinUrl": "https://pt.ucoin.net/coin/russia-1-ruble-2002-2009/?tid=2009",
+        "siteUrl": "https://base44.app/api/apps/69f12d4bf0bb6ef2f9eaa84e/entities/Coin/6a00af3e36589b9d3c67b0a9",
+        "issue_count": 1,
+        "issues": [
+          {
+            "field": "url_ucoin",
+            "value": "",
+            "missing_value": "https://pt.ucoin.net/coin/russia-1-ruble-2002-2009/?tid=2009"
+          }
+        ]
+      },
+      {
+        "denomination": "1 rublo",
+        "issuePeriod": "2009-2015",
+        "ucoinUrl": "https://pt.ucoin.net/coin/russia-1-ruble-2009-2015/?tid=3769",
+        "siteUrl": "https://base44.app/api/apps/69f12d4bf0bb6ef2f9eaa84e/entities/Coin/6a00af2f967148e460efd05d",
+        "issue_count": 1,
+        "issues": [
+          {
+            "field": "url_ucoin",
+            "value": "",
+            "missing_value": "https://pt.ucoin.net/coin/russia-1-ruble-2009-2015/?tid=3769"
+          }
+        ]
+      },
+      {
+        "denomination": "1 rublo",
+        "issuePeriod": "2016-2026",
+        "ucoinUrl": "https://pt.ucoin.net/coin/russia-1-ruble-2016-2026/?tid=52731",
+        "siteUrl": "https://base44.app/api/apps/69f12d4bf0bb6ef2f9eaa84e/entities/Coin/6a00af197f7c6dd939cc9314",
+        "issue_count": 2,
+        "issues": [
+          {
+            "field": "notes",
+            "value": "",
+            "missing_value": "Federação Russa"
+          },
+          {
+            "field": "url_ucoin",
+            "value": "",
+            "missing_value": "https://pt.ucoin.net/coin/russia-1-ruble-2016-2026/?tid=52731"
+          }
+        ]
+      },
+      {
+        "denomination": "2 rublos",
+        "issuePeriod": "1997-2001",
+        "ucoinUrl": "https://pt.ucoin.net/coin/russia-2-rubles-1997-2001/?tid=2005",
+        "siteUrl": "https://base44.app/api/apps/69f12d4bf0bb6ef2f9eaa84e/entities/Coin/6a00af03e03b182015e090fa",
+        "issue_count": 2,
+        "issues": [
+          {
+            "field": "notes",
+            "value": "",
+            "missing_value": "Federação Russa"
+          },
+          {
+            "field": "url_ucoin",
+            "value": "",
+            "missing_value": "https://pt.ucoin.net/coin/russia-2-rubles-1997-2001/?tid=2005"
+          }
+        ]
+      },
+      {
+        "denomination": "2 rublos",
+        "issuePeriod": "2002-2009",
+        "ucoinUrl": "https://pt.ucoin.net/coin/russia-2-rubles-2002-2009/?tid=2016",
+        "siteUrl": "https://base44.app/api/apps/69f12d4bf0bb6ef2f9eaa84e/entities/Coin/6a00aef149d568dc8eda425a",
+        "issue_count": 1,
+        "issues": [
+          {
+            "field": "url_ucoin",
+            "value": "",
+            "missing_value": "https://pt.ucoin.net/coin/russia-2-rubles-2002-2009/?tid=2016"
+          }
+        ]
+      },
+      {
+        "denomination": "2 rublos",
+        "issuePeriod": "2009-2015",
+        "ucoinUrl": "https://pt.ucoin.net/coin/russia-2-rubles-2009-2015/?tid=3770",
+        "siteUrl": "https://base44.app/api/apps/69f12d4bf0bb6ef2f9eaa84e/entities/Coin/6a00aee04df758ff8b1034e0",
+        "issue_count": 1,
+        "issues": [
+          {
+            "field": "url_ucoin",
+            "value": "",
+            "missing_value": "https://pt.ucoin.net/coin/russia-2-rubles-2009-2015/?tid=3770"
+          }
+        ]
+      },
+      {
+        "denomination": "2 rublos",
+        "issuePeriod": "2016-2026",
+        "ucoinUrl": "https://pt.ucoin.net/coin/russia-2-rubles-2016-2026/?tid=52732",
+        "siteUrl": "https://base44.app/api/apps/69f12d4bf0bb6ef2f9eaa84e/entities/Coin/6a00aecf3e043d16b9d97669",
+        "issue_count": 2,
+        "issues": [
+          {
+            "field": "notes",
+            "value": "",
+            "missing_value": "Federação Russa"
+          },
+          {
+            "field": "url_ucoin",
+            "value": "",
+            "missing_value": "https://pt.ucoin.net/coin/russia-2-rubles-2016-2026/?tid=52732"
+          }
+        ]
+      },
+      {
+        "denomination": "5 rublos",
+        "issuePeriod": "1997-1999",
+        "ucoinUrl": "https://pt.ucoin.net/coin/russia-5-rubles-1997-1999/?tid=2006",
+        "siteUrl": "https://base44.app/api/apps/69f12d4bf0bb6ef2f9eaa84e/entities/Coin/6a00ae98015ab7d42c39625f",
+        "issue_count": 2,
+        "issues": [
+          {
+            "field": "notes",
+            "value": "",
+            "missing_value": "Federação Russa"
+          },
+          {
+            "field": "url_ucoin",
+            "value": "",
+            "missing_value": "https://pt.ucoin.net/coin/russia-5-rubles-1997-1999/?tid=2006"
+          }
+        ]
+      },
+      {
+        "denomination": "5 rublos",
+        "issuePeriod": "2002-2009",
+        "ucoinUrl": "https://pt.ucoin.net/coin/russia-5-rubles-2002-2009/?tid=2021",
+        "siteUrl": "https://base44.app/api/apps/69f12d4bf0bb6ef2f9eaa84e/entities/Coin/6a00ae5ed91ac27bd3dc0728",
+        "issue_count": 1,
+        "issues": [
+          {
+            "field": "url_ucoin",
+            "value": "",
+            "missing_value": "https://pt.ucoin.net/coin/russia-5-rubles-2002-2009/?tid=2021"
+          }
+        ]
+      },
+      {
+        "denomination": "5 rublos",
+        "issuePeriod": "2009-2015",
+        "ucoinUrl": "https://pt.ucoin.net/coin/russia-5-rubles-2009-2015/?tid=3771",
+        "siteUrl": "https://base44.app/api/apps/69f12d4bf0bb6ef2f9eaa84e/entities/Coin/6a00ae4fef0ffa64bc1233aa",
+        "issue_count": 1,
+        "issues": [
+          {
+            "field": "url_ucoin",
+            "value": "",
+            "missing_value": "https://pt.ucoin.net/coin/russia-5-rubles-2009-2015/?tid=3771"
+          }
+        ]
+      },
+      {
+        "denomination": "5 rublos",
+        "issuePeriod": "2016-2026",
+        "ucoinUrl": "https://pt.ucoin.net/coin/russia-5-rubles-2016-2026/?tid=52733",
+        "siteUrl": "https://base44.app/api/apps/69f12d4bf0bb6ef2f9eaa84e/entities/Coin/6a00ae2be2c094f246b99d7b",
+        "issue_count": 1,
+        "issues": [
+          {
+            "field": "api",
+            "value": "",
+            "missing_value": "Not found"
+          }
+        ]
+      },
+      {
+        "denomination": "10 rublos",
+        "issuePeriod": "2009-2015",
+        "ucoinUrl": "https://pt.ucoin.net/coin/russia-10-rubles-2009-2015/?tid=5226",
+        "siteUrl": "https://base44.app/api/apps/69f12d4bf0bb6ef2f9eaa84e/entities/Coin/6a00ae21e4153b409d01e55b",
+        "issue_count": 2,
+        "issues": [
+          {
+            "field": "notes",
+            "value": "",
+            "missing_value": "Federação Russa"
+          },
+          {
+            "field": "url_ucoin",
+            "value": "",
+            "missing_value": "https://pt.ucoin.net/coin/russia-10-rubles-2009-2015/?tid=5226"
+          }
+        ]
+      },
+      {
+        "denomination": "10 rublos",
+        "issuePeriod": "2016-2026",
+        "ucoinUrl": "https://pt.ucoin.net/coin/russia-10-rubles-2016-2026/?tid=52734",
+        "siteUrl": "https://base44.app/api/apps/69f12d4bf0bb6ef2f9eaa84e/entities/Coin/6a00ae1b8e87c5fd36953135",
+        "issue_count": 2,
+        "issues": [
+          {
+            "field": "notes",
+            "value": "",
+            "missing_value": "Federação Russa"
+          },
+          {
+            "field": "url_ucoin",
+            "value": "",
+            "missing_value": "https://pt.ucoin.net/coin/russia-10-rubles-2016-2026/?tid=52734"
+          }
+        ]
+      }
+    ],
+    "image_matched_ucoin_urls": [
+      "https://pt.ucoin.net/coin/russia-5-kopeks-1997-2026/?tid=1949",
+      "https://pt.ucoin.net/coin/russia-10-kopeks-1997-2006/?tid=1971",
+      "https://pt.ucoin.net/coin/russia-10-kopeks-2006-2026/?tid=1961",
+      "https://pt.ucoin.net/coin/russia-50-kopeks-1997-2006/?tid=1994",
+      "https://pt.ucoin.net/coin/russia-50-kopeks-2006-2026/?tid=2001",
+      "https://pt.ucoin.net/coin/russia-1-ruble-1997-2001/?tid=2004",
+      "https://pt.ucoin.net/coin/russia-1-ruble-2002-2009/?tid=2009",
+      "https://pt.ucoin.net/coin/russia-1-ruble-2009-2015/?tid=3769",
+      "https://pt.ucoin.net/coin/russia-1-ruble-2016-2026/?tid=52731",
+      "https://pt.ucoin.net/coin/russia-2-rubles-1997-2001/?tid=2005",
+      "https://pt.ucoin.net/coin/russia-2-rubles-2002-2009/?tid=2016",
+      "https://pt.ucoin.net/coin/russia-2-rubles-2009-2015/?tid=3770",
+      "https://pt.ucoin.net/coin/russia-2-rubles-2016-2026/?tid=52732",
+      "https://pt.ucoin.net/coin/russia-5-rubles-1997-1999/?tid=2006",
+      "https://pt.ucoin.net/coin/russia-5-rubles-2002-2009/?tid=2021",
+      "https://pt.ucoin.net/coin/russia-5-rubles-2009-2015/?tid=3771",
+      "https://pt.ucoin.net/coin/russia-10-rubles-2009-2015/?tid=5226",
+      "https://pt.ucoin.net/coin/russia-10-rubles-2016-2026/?tid=52734"
+    ]
+  }
+]

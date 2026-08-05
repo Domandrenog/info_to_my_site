@@ -49,6 +49,7 @@ AVAILABILITY_STATISTICS_FILENAME = "availability-statistics.json"
 COINS_AVAILABILITY_EXCEL_FILENAME = "coins-availability.xlsx"
 AVAILABILITY_RESEARCH_FILENAME = "availability-research.json"
 AVAILABILITY_RESEARCH_ERRORS_FILENAME = "availability-research-errors.json"
+PENDING_DIFFERENCES_FILENAME = "differences-pending.json"
 
 
 class ResearchFailure(Exception):
@@ -118,6 +119,17 @@ def normalize_detail_url(value: str) -> str:
     parsed = urlparse(raw_value)
     if not parsed.scheme or not parsed.netloc:
         raise ValueError(f"Invalid detailUrl: {value}")
+    return urlunparse((parsed.scheme, parsed.netloc, parsed.path, parsed.params, parsed.query, ""))
+
+
+def normalize_image_url(value: str) -> str:
+    raw_value = str(value or "").strip()
+    markdown_match = re.fullmatch(r"\[[^\]]+\]\((https?://[^)]+)\)", raw_value, flags=re.IGNORECASE)
+    if markdown_match:
+        raw_value = markdown_match.group(1).strip()
+    parsed = urlparse(raw_value)
+    if not parsed.scheme or not parsed.netloc:
+        raise ValueError(f"Invalid image URL: {value}")
     return urlunparse((parsed.scheme, parsed.netloc, parsed.path, parsed.params, parsed.query, ""))
 
 
@@ -781,6 +793,8 @@ def validate_resume_catalogue(value: Any, expected_coin_count: int) -> None:
             if coin.get("availability") not in RESUME_AVAILABILITIES:
                 raise ValueError(f"invalid availability: {coin.get('availability')}")
             coin["detailUrl"] = normalize_detail_url(coin["detailUrl"])
+            coin["obverseImage"] = normalize_image_url(coin["obverseImage"])
+            coin["reverseImage"] = normalize_image_url(coin["reverseImage"])
     if coin_count != expected_coin_count:
         raise ValueError(f"Resume coin count mismatch: expected={expected_coin_count} actual={coin_count}")
 
@@ -804,6 +818,67 @@ def sha256_file(path: str) -> str:
     return hashlib.sha256(Path(path).read_bytes()).hexdigest()
 
 
+def cleanup_intermediate_files(final_input_path: str) -> None:
+    folder = Path(final_input_path).parent
+    for filename in (UCOIN_CATALOG_FILENAME, PENDING_APP_CATALOG_FILENAME, FINAL_APP_CATALOG_INPUT_FILENAME, PENDING_DIFFERENCES_FILENAME):
+        target = folder / filename
+        if not target.exists():
+            continue
+        target.unlink()
+        print(f"Deleted {target}")
+
+
+def generate_pending_differences_report(
+    pending_catalog_path: str,
+    *,
+    source_catalog_path: str = "",
+    precheck_output: str = "",
+    include_markdown_as_issue: bool = False,
+) -> str | None:
+    pending_path = Path(pending_catalog_path).resolve()
+    source_path = Path(source_catalog_path).resolve() if source_catalog_path else pending_path
+    country_dir = source_path.parent
+    country_slug = country_dir.name
+    paises_dir = country_dir.parent
+    project_root = Path(__file__).resolve().parent.parent
+    all_coins_dir = project_root.parent / "All_Coins"
+
+    try:
+        from scripts import check_site_coin_differences as checker
+
+        report = checker.compare_country(
+            paises_dir,
+            all_coins_dir,
+            country_slug,
+            pending_path.name,
+            include_markdown_as_issue,
+            True,
+            False,
+        )
+    except Exception as exc:  # noqa: BLE001
+        print(f"Warning: failed to generate pending differences report: {exc}")
+        return None
+
+    output_path = Path(precheck_output) if precheck_output else country_dir / PENDING_DIFFERENCES_FILENAME
+    output_path.parent.mkdir(parents=True, exist_ok=True)
+    output_path.write_text(json.dumps([report], ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+
+    summary = report.get("summary", {}) if isinstance(report, dict) else {}
+    by_type = summary.get("by_type", {}) if isinstance(summary, dict) else {}
+    print(f"Generated {output_path}")
+    print(
+        "Pending precheck summary: "
+        f"issues={summary.get('total_issues', 0)} "
+        f"missing_notes={by_type.get('missing_notes', 0)} "
+        f"missing_url_ucoin={by_type.get('missing_url_ucoin', 0)} "
+        f"missing_api_coin_record={by_type.get('missing_api_coin_record', 0)}"
+    )
+    api_error = summary.get("api_error", "") if isinstance(summary, dict) else ""
+    if api_error:
+        print(f"Pending precheck API warning: {api_error}")
+    return str(output_path)
+
+
 def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(description="Generate simplified coin catalogue with placeholder availability values.")
     parser.add_argument("--input", default=UCOIN_CATALOG_FILENAME)
@@ -818,6 +893,9 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--use-ai-research", action="store_true", help="Use the configured AI provider instead of placeholder availability values.")
     parser.add_argument("--max-cache-age-days", type=int, default=AVAILABILITY_RESEARCH_MAX_AGE_DAYS)
     parser.add_argument("--concurrency", type=int, default=int(os.environ.get("AVAILABILITY_RESEARCH_CONCURRENCY", RESEARCH_CONCURRENCY)))
+    parser.add_argument("--cleanup-intermediate", action="store_true", help="After generating final outputs, remove intermediate files (ucoin-catalog, pending and final input).")
+    parser.add_argument("--skip-pending-precheck", action="store_true", help="Do not generate differences-pending.json after creating app-catalog-pending.json.")
+    parser.add_argument("--pending-precheck-output", default="", help="Optional output path for pending differences report JSON.")
     return parser.parse_args()
 
 
@@ -829,17 +907,19 @@ async def generate_final_outputs(args: argparse.Namespace, final_input_path: str
     validate_resume_catalogue(final_catalogue, expected_coin_count)
     validate_final_availability_catalogue(final_catalogue)
     app_catalogue = without_statistics(final_catalogue)
-    statistics = statistics_document(final_catalogue)
     validate_resume_catalogue(app_catalogue, expected_coin_count)
     output_path = resolve_output_path(args.output, final_input_path, APP_CATALOG_FILENAME)
     statistics_output_path = resolve_output_path(args.statistics_output, final_input_path, AVAILABILITY_STATISTICS_FILENAME)
     excel_output_path = resolve_output_path(args.excel_output, final_input_path, COINS_AVAILABILITY_EXCEL_FILENAME)
     await write_json_atomic(output_path, app_catalogue)
+    statistics = statistics_document(load_json(Path(output_path)))
     await write_json_atomic(statistics_output_path, statistics)
     write_coins_excel(excel_output_path, app_catalogue)
     print(f"Generated {output_path}")
     print(f"Generated {statistics_output_path}")
     print(f"Generated {excel_output_path}")
+    if args.cleanup_intermediate:
+        cleanup_intermediate_files(final_input_path)
 
 
 async def main() -> None:
@@ -883,6 +963,13 @@ async def main() -> None:
     if args.use_ai_research:
         print(f"Generated {research_output_path}")
     print(f"Generated {output_path}")
+    if not args.skip_pending_precheck:
+        generate_pending_differences_report(
+            output_path,
+            source_catalog_path=args.input,
+            precheck_output=args.pending_precheck_output,
+            include_markdown_as_issue=False,
+        )
     if args.wait_for_final:
         final_input_path = default_final_input_path(args.input)
         final_target = Path(final_input_path)

@@ -1,0 +1,16 @@
+{
+  "updatedAt": "2026-07-27T20:39:06Z",
+  "country": "bielorrussia",
+  "missing": [
+    {
+      "status": "connected",
+      "source": "interactive",
+      "denomination": "1 kopek",
+      "issuePeriod": "2009",
+      "ucoinUrl": "https://pt.ucoin.net/coin/belarus-1-kopek-2009/?tid=59333",
+      "apiUrl": "https://base44.app/api/apps/69f12d4bf0bb6ef2f9eaa84e/entities/Coin/6a00eab02319fd8f64f60ce8",
+      "record_name": "1 kopek",
+      "record_years": "2009"
+    }
+  ]
+}

@@ -1,0 +1,365 @@
+{
+  "country": "Croácia",
+  "periods": [
+    {
+      "title": "Croácia › União Europeia (Euro) › 2023 - 2026",
+      "ruler": "União Europeia (Euro)",
+      "startYear": 2023,
+      "endYear": 2026,
+      "coins": [
+        {
+          "denomination": "1 cêntimo de euro",
+          "value": 1.0,
+          "unit": "cêntimo de euro",
+          "issuePeriod": "2023-2026",
+          "startYear": 2023,
+          "endYear": 2026,
+          "availability": "circulating",
+          "detailUrl": "https://pt.ucoin.net/coin/croatia-1-euro-cent-2023-2026/?tid=137234",
+          "obverseImage": "https://i.ucoin.net/coin/85/129/85129588-1s/croatia-1-euro-cent-2025.jpg",
+          "reverseImage": "https://i.ucoin.net/coin/85/129/85129588-2s/croatia-1-euro-cent-2025.jpg"
+        },
+        {
+          "denomination": "2 cêntimos de euro",
+          "value": 2.0,
+          "unit": "cêntimos de euro",
+          "issuePeriod": "2023-2026",
+          "startYear": 2023,
+          "endYear": 2026,
+          "availability": "circulating",
+          "detailUrl": "https://pt.ucoin.net/coin/croatia-2-euro-cent-2023-2026/?tid=137237",
+          "obverseImage": "https://i.ucoin.net/coin/59/929/59929082-1s/croatia-2-euro-cent-2023.jpg",
+          "reverseImage": "https://i.ucoin.net/coin/59/929/59929082-2s/croatia-2-euro-cent-2023.jpg"
+        },
+        {
+          "denomination": "5 cêntimos de euro",
+          "value": 5.0,
+          "unit": "cêntimos de euro",
+          "issuePeriod": "2023-2026",
+          "startYear": 2023,
+          "endYear": 2026,
+          "availability": "circulating",
+          "detailUrl": "https://pt.ucoin.net/coin/croatia-5-euro-cent-2023-2026/?tid=137238",
+          "obverseImage": "https://i.ucoin.net/coin/75/527/75527801-1s/croatia-5-euro-cent-2023.jpg",
+          "reverseImage": "https://i.ucoin.net/coin/75/527/75527801-2s/croatia-5-euro-cent-2023.jpg"
+        },
+        {
+          "denomination": "10 cêntimos de euro",
+          "value": 10.0,
+          "unit": "cêntimos de euro",
+          "issuePeriod": "2023-2026",
+          "startYear": 2023,
+          "endYear": 2026,
+          "availability": "circulating",
+          "detailUrl": "https://pt.ucoin.net/coin/croatia-10-euro-cent-2023-2026/?tid=137239",
+          "obverseImage": "https://i.ucoin.net/coin/68/873/68873718-1s/croatia-10-euro-cent-2024.jpg",
+          "reverseImage": "https://i.ucoin.net/coin/68/873/68873718-2s/croatia-10-euro-cent-2024.jpg"
+        },
+        {
+          "denomination": "20 cêntimos de euro",
+          "value": 20.0,
+          "unit": "cêntimos de euro",
+          "issuePeriod": "2023-2026",
+          "startYear": 2023,
+          "endYear": 2026,
+          "availability": "circulating",
+          "detailUrl": "https://pt.ucoin.net/coin/croatia-20-euro-cent-2023-2026/?tid=137241",
+          "obverseImage": "https://i.ucoin.net/coin/72/205/72205814-1s/croatia-20-euro-cent-2024.jpg",
+          "reverseImage": "https://i.ucoin.net/coin/72/205/72205814-2s/croatia-20-euro-cent-2024.jpg"
+        },
+        {
+          "denomination": "50 cêntimos de euro",
+          "value": 50.0,
+          "unit": "cêntimos de euro",
+          "issuePeriod": "2023-2026",
+          "startYear": 2023,
+          "endYear": 2026,
+          "availability": "circulating",
+          "detailUrl": "https://pt.ucoin.net/coin/croatia-50-euro-cent-2023-2026/?tid=137242",
+          "obverseImage": "https://i.ucoin.net/coin/61/757/61757840-1s/croatia-50-euro-cent-2023.jpg",
+          "reverseImage": "https://i.ucoin.net/coin/61/757/61757840-2s/croatia-50-euro-cent-2023.jpg"
+        },
+        {
+          "denomination": "1 euro",
+          "value": 1.0,
+          "unit": "euro",
+          "issuePeriod": "2023-2026",
+          "startYear": 2023,
+          "endYear": 2026,
+          "availability": "circulating",
+          "detailUrl": "https://pt.ucoin.net/coin/croatia-1-euro-2023-2026/?tid=137243",
+          "obverseImage": "https://i.ucoin.net/coin/68/873/68873755-1s/croatia-1-euro-2024.jpg",
+          "reverseImage": "https://i.ucoin.net/coin/68/873/68873755-2s/croatia-1-euro-2024.jpg"
+        },
+        {
+          "denomination": "2 euro",
+          "value": 2.0,
+          "unit": "euro",
+          "issuePeriod": "2023-2026",
+          "startYear": 2023,
+          "endYear": 2026,
+          "availability": "circulating",
+          "detailUrl": "https://pt.ucoin.net/coin/croatia-2-euro-2023-2026/?tid=137244",
+          "obverseImage": "https://i.ucoin.net/coin/61/757/61757829-1s/croatia-2-euro-2023.jpg",
+          "reverseImage": "https://i.ucoin.net/coin/61/757/61757829-2s/croatia-2-euro-2023.jpg"
+        }
+      ]
+    },
+    {
+      "title": "Croácia › República da Croácia › 1993 - 2022",
+      "ruler": "República da Croácia",
+      "startYear": 1993,
+      "endYear": 2022,
+      "coins": [
+        {
+          "denomination": "1 lipa",
+          "value": 1.0,
+          "unit": "lipa",
+          "issuePeriod": "1993-2021",
+          "startYear": 1993,
+          "endYear": 2021,
+          "availability": "withdrawn",
+          "detailUrl": "https://pt.ucoin.net/coin/croatia-1-lipa-1993-2021/?tid=3584",
+          "obverseImage": "https://i.ucoin.net/coin/31/459/31459023-1s/croatia-1-lipa-1997.jpg",
+          "reverseImage": "https://i.ucoin.net/coin/31/459/31459023-2s/croatia-1-lipa-1997.jpg"
+        },
+        {
+          "denomination": "1 lipa",
+          "value": 1.0,
+          "unit": "lipa",
+          "issuePeriod": "1994-2022",
+          "startYear": 1994,
+          "endYear": 2022,
+          "availability": "withdrawn",
+          "detailUrl": "https://pt.ucoin.net/coin/croatia-1-lipa-1994-2022/?tid=3585",
+          "obverseImage": "https://i.ucoin.net/coin/66/144/66144648-1s/croatia-1-lipa-2022.jpg",
+          "reverseImage": "https://i.ucoin.net/coin/66/144/66144648-2s/croatia-1-lipa-2022.jpg"
+        },
+        {
+          "denomination": "2 lipa",
+          "value": 2.0,
+          "unit": "lipa",
+          "issuePeriod": "1993-2021",
+          "startYear": 1993,
+          "endYear": 2021,
+          "availability": "withdrawn",
+          "detailUrl": "https://pt.ucoin.net/coin/croatia-2-lipa-1993-2021/?tid=3601",
+          "obverseImage": "https://i.ucoin.net/coin/39/099/39099828-1s/croatia-2-lipa-1995.jpg",
+          "reverseImage": "https://i.ucoin.net/coin/39/099/39099828-2s/croatia-2-lipa-1995.jpg"
+        },
+        {
+          "denomination": "2 lipa",
+          "value": 2.0,
+          "unit": "lipa",
+          "issuePeriod": "1994-2022",
+          "startYear": 1994,
+          "endYear": 2022,
+          "availability": "withdrawn",
+          "detailUrl": "https://pt.ucoin.net/coin/croatia-2-lipa-1994-2022/?tid=3602",
+          "obverseImage": "https://i.ucoin.net/coin/48/033/48033294-1s/croatia-2-lipa-1998.jpg",
+          "reverseImage": "https://i.ucoin.net/coin/48/033/48033294-2s/croatia-2-lipa-1998.jpg"
+        },
+        {
+          "denomination": "5 lipa",
+          "value": 5.0,
+          "unit": "lipa",
+          "issuePeriod": "1993-2021",
+          "startYear": 1993,
+          "endYear": 2021,
+          "availability": "withdrawn",
+          "detailUrl": "https://pt.ucoin.net/coin/croatia-5-lipa-1993-2021/?tid=3620",
+          "obverseImage": "https://i.ucoin.net/coin/46/300/46300397-1s/croatia-5-lipa-2007.jpg",
+          "reverseImage": "https://i.ucoin.net/coin/46/300/46300397-2s/croatia-5-lipa-2007.jpg"
+        },
+        {
+          "denomination": "5 lipa",
+          "value": 5.0,
+          "unit": "lipa",
+          "issuePeriod": "1994-2022",
+          "startYear": 1994,
+          "endYear": 2022,
+          "availability": "withdrawn",
+          "detailUrl": "https://pt.ucoin.net/coin/croatia-5-lipa-1994-2022/?tid=3621",
+          "obverseImage": "https://i.ucoin.net/coin/66/144/66144686-1s/croatia-5-lipa-2010.jpg",
+          "reverseImage": "https://i.ucoin.net/coin/66/144/66144686-2s/croatia-5-lipa-2010.jpg"
+        },
+        {
+          "denomination": "10 lipa",
+          "value": 10.0,
+          "unit": "lipa",
+          "issuePeriod": "1993-2021",
+          "startYear": 1993,
+          "endYear": 2021,
+          "availability": "withdrawn",
+          "detailUrl": "https://pt.ucoin.net/coin/croatia-10-lipa-1993-2021/?tid=3639",
+          "obverseImage": "https://i.ucoin.net/coin/46/218/46218137-1s/croatia-10-lipa-2003.jpg",
+          "reverseImage": "https://i.ucoin.net/coin/46/218/46218137-2s/croatia-10-lipa-2003.jpg"
+        },
+        {
+          "denomination": "10 lipa",
+          "value": 10.0,
+          "unit": "lipa",
+          "issuePeriod": "1994-2022",
+          "startYear": 1994,
+          "endYear": 2022,
+          "availability": "withdrawn",
+          "detailUrl": "https://pt.ucoin.net/coin/croatia-10-lipa-1994-2022/?tid=3640",
+          "obverseImage": "https://i.ucoin.net/coin/0/331/331212-1s/croatia-10-lipa-2006.jpg",
+          "reverseImage": "https://i.ucoin.net/coin/0/331/331212-2s/croatia-10-lipa-2006.jpg"
+        },
+        {
+          "denomination": "20 lipa",
+          "value": 20.0,
+          "unit": "lipa",
+          "issuePeriod": "1993-2021",
+          "startYear": 1993,
+          "endYear": 2021,
+          "availability": "withdrawn",
+          "detailUrl": "https://pt.ucoin.net/coin/croatia-20-lipa-1993-2021/?tid=3656",
+          "obverseImage": "https://i.ucoin.net/coin/46/270/46270427-1s/croatia-20-lipa-2015.jpg",
+          "reverseImage": "https://i.ucoin.net/coin/46/270/46270427-2s/croatia-20-lipa-2015.jpg"
+        },
+        {
+          "denomination": "20 lipa",
+          "value": 20.0,
+          "unit": "lipa",
+          "issuePeriod": "1994-2022",
+          "startYear": 1994,
+          "endYear": 2022,
+          "availability": "withdrawn",
+          "detailUrl": "https://pt.ucoin.net/coin/croatia-20-lipa-1994-2022/?tid=3657",
+          "obverseImage": "https://i.ucoin.net/coin/53/983/53983944-1s/croatia-20-lipa-1996.jpg",
+          "reverseImage": "https://i.ucoin.net/coin/53/983/53983944-2s/croatia-20-lipa-1996.jpg"
+        },
+        {
+          "denomination": "50 lipa",
+          "value": 50.0,
+          "unit": "lipa",
+          "issuePeriod": "1993-2021",
+          "startYear": 1993,
+          "endYear": 2021,
+          "availability": "withdrawn",
+          "detailUrl": "https://pt.ucoin.net/coin/croatia-50-lipa-1993-2021/?tid=3673",
+          "obverseImage": "https://i.ucoin.net/coin/39/110/39110222-1s/croatia-50-lipa-1993.jpg",
+          "reverseImage": "https://i.ucoin.net/coin/39/110/39110222-2s/croatia-50-lipa-1993.jpg"
+        },
+        {
+          "denomination": "50 lipa",
+          "value": 50.0,
+          "unit": "lipa",
+          "issuePeriod": "1994-2022",
+          "startYear": 1994,
+          "endYear": 2022,
+          "availability": "withdrawn",
+          "detailUrl": "https://pt.ucoin.net/coin/croatia-50-lipa-1994-2022/?tid=3674",
+          "obverseImage": "https://i.ucoin.net/coin/66/308/66308571-1s/croatia-50-lipa-2004.jpg",
+          "reverseImage": "https://i.ucoin.net/coin/66/308/66308571-2s/croatia-50-lipa-2004.jpg"
+        },
+        {
+          "denomination": "1 kuna",
+          "value": 1.0,
+          "unit": "kuna",
+          "issuePeriod": "1993-2021",
+          "startYear": 1993,
+          "endYear": 2021,
+          "availability": "withdrawn",
+          "detailUrl": "https://pt.ucoin.net/coin/croatia-1-kuna-1993-2021/?tid=3690",
+          "obverseImage": "https://i.ucoin.net/coin/39/120/39120107-1s/croatia-1-kuna-2015.jpg",
+          "reverseImage": "https://i.ucoin.net/coin/39/120/39120107-2s/croatia-1-kuna-2015.jpg"
+        },
+        {
+          "denomination": "1 kuna",
+          "value": 1.0,
+          "unit": "kuna",
+          "issuePeriod": "1994",
+          "startYear": 1994,
+          "endYear": 1994,
+          "availability": "withdrawn",
+          "detailUrl": "https://pt.ucoin.net/coin/croatia-1-kuna-1994/?tid=3691",
+          "obverseImage": "https://i.ucoin.net/coin/76/404/76404098-1s/croatia-1-kuna-1994.jpg",
+          "reverseImage": "https://i.ucoin.net/coin/76/404/76404098-2s/croatia-1-kuna-1994.jpg"
+        },
+        {
+          "denomination": "1 kuna",
+          "value": 1.0,
+          "unit": "kuna",
+          "issuePeriod": "1996-2022",
+          "startYear": 1996,
+          "endYear": 2022,
+          "availability": "withdrawn",
+          "detailUrl": "https://pt.ucoin.net/coin/croatia-1-kuna-1996-2022/?tid=3693",
+          "obverseImage": "https://i.ucoin.net/coin/66/145/66145241-1s/croatia-1-kuna-2022.jpg",
+          "reverseImage": "https://i.ucoin.net/coin/66/145/66145241-2s/croatia-1-kuna-2022.jpg"
+        },
+        {
+          "denomination": "2 kunas",
+          "value": 2.0,
+          "unit": "kunas",
+          "issuePeriod": "1993-2021",
+          "startYear": 1993,
+          "endYear": 2021,
+          "availability": "withdrawn",
+          "detailUrl": "https://pt.ucoin.net/coin/croatia-2-kune-1993-2021/?tid=3707",
+          "obverseImage": "https://i.ucoin.net/coin/46/270/46270234-1s/croatia-2-kune-2003.jpg",
+          "reverseImage": "https://i.ucoin.net/coin/46/270/46270234-2s/croatia-2-kune-2003.jpg"
+        },
+        {
+          "denomination": "2 kunas",
+          "value": 2.0,
+          "unit": "kunas",
+          "issuePeriod": "1994-2022",
+          "startYear": 1994,
+          "endYear": 2022,
+          "availability": "withdrawn",
+          "detailUrl": "https://pt.ucoin.net/coin/croatia-2-kune-1994-2022/?tid=3708",
+          "obverseImage": "https://i.ucoin.net/coin/66/145/66145254-1s/croatia-2-kune-2022.jpg",
+          "reverseImage": "https://i.ucoin.net/coin/66/145/66145254-2s/croatia-2-kune-2022.jpg"
+        },
+        {
+          "denomination": "5 kunas",
+          "value": 5.0,
+          "unit": "kunas",
+          "issuePeriod": "1993-2021",
+          "startYear": 1993,
+          "endYear": 2021,
+          "availability": "withdrawn",
+          "detailUrl": "https://pt.ucoin.net/coin/croatia-5-kuna-1993-2021/?tid=3725",
+          "obverseImage": "https://i.ucoin.net/coin/77/016/77016173-1s/croatia-5-kuna-2019.jpg",
+          "reverseImage": "https://i.ucoin.net/coin/77/016/77016173-2s/croatia-5-kuna-2019.jpg"
+        },
+        {
+          "denomination": "5 kunas",
+          "value": 5.0,
+          "unit": "kunas",
+          "issuePeriod": "1994-2022",
+          "startYear": 1994,
+          "endYear": 2022,
+          "availability": "withdrawn",
+          "detailUrl": "https://pt.ucoin.net/coin/croatia-5-kuna-1994-2022/?tid=3726",
+          "obverseImage": "https://i.ucoin.net/coin/46/226/46226058-1s/croatia-5-kuna-2000.jpg",
+          "reverseImage": "https://i.ucoin.net/coin/46/226/46226058-2s/croatia-5-kuna-2000.jpg"
+        }
+      ]
+    },
+    {
+      "title": "Croácia › Estado Independente da Croácia › 1941 - 1945",
+      "ruler": "Estado Independente da Croácia",
+      "startYear": 1941,
+      "endYear": 1945,
+      "coins": [
+        {
+          "denomination": "2 kunas",
+          "value": 2.0,
+          "unit": "kunas",
+          "issuePeriod": "1941",
+          "startYear": 1941,
+          "endYear": 1941,
+          "availability": "historical",
+          "detailUrl": "https://pt.ucoin.net/coin/croatia-2-kune-1941/?tid=64673",
+          "obverseImage": "https://i.ucoin.net/coin/78/049/78049722-1s/croatia-2-kune-1941.jpg",
+          "reverseImage": "https://i.ucoin.net/coin/78/049/78049722-2s/croatia-2-kune-1941.jpg"
+        }
+      ]
+    }
+  ]
+}

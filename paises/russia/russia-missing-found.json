@@ -1,0 +1,26 @@
+{
+  "updatedAt": "2026-07-28T08:45:15Z",
+  "country": "russia",
+  "missing": [
+    {
+      "status": "connected",
+      "source": "interactive",
+      "denomination": "1 kopek",
+      "issuePeriod": "1997-2026",
+      "ucoinUrl": "https://pt.ucoin.net/coin/russia-1-kopek-1997-2026/?tid=1928",
+      "apiUrl": "https://base44.app/api/apps/69f12d4bf0bb6ef2f9eaa84e/entities/Coin/6a00b0ea15e9875ef1cd19cd",
+      "record_name": "1 kopek",
+      "record_years": "1997-2026"
+    },
+    {
+      "status": "connected",
+      "source": "interactive",
+      "denomination": "5 rublos",
+      "issuePeriod": "2016-2026",
+      "ucoinUrl": "https://pt.ucoin.net/coin/russia-5-rubles-2016-2026/?tid=52733",
+      "apiUrl": "https://base44.app/api/apps/69f12d4bf0bb6ef2f9eaa84e/entities/Coin/6a00ae2be2c094f246b99d7b",
+      "record_name": "5 Rublos",
+      "record_years": "2016-2026"
+    }
+  ]
+}
