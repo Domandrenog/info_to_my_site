@@ -304,6 +304,36 @@ class GenerateResumeJsonTests(unittest.TestCase):
         self.assertEqual(coin["obverseImage"], image_url)
         self.assertEqual(coin["reverseImage"], reverse_url)
 
+    def test_validate_resume_catalogue_allows_missing_ucoin_images(self) -> None:
+        catalogue = {
+            "country": "Nova Zelândia",
+            "periods": [
+                {
+                    "title": "Nova Zelândia",
+                    "coins": [
+                        {
+                            "denomination": "10 cêntimos",
+                            "value": 10.0,
+                            "unit": "cêntimos",
+                            "issuePeriod": "2024",
+                            "startYear": 2024,
+                            "endYear": 2024,
+                            "availability": "still needed to calculate",
+                            "detailUrl": "https://pt.ucoin.net/coin/new_zealand-10-cents-2024/?tid=194930",
+                            "obverseImage": None,
+                            "reverseImage": None,
+                        }
+                    ],
+                }
+            ],
+        }
+
+        generate_resume_json.validate_resume_catalogue(catalogue, 1)
+
+        coin = catalogue["periods"][0]["coins"][0]
+        self.assertEqual(coin["obverseImage"], "")
+        self.assertEqual(coin["reverseImage"], "")
+
 
 if __name__ == "__main__":
     unittest.main()

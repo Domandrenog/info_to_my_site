@@ -3,7 +3,7 @@ from __future__ import annotations
 import unittest
 
 from tests.test_ucoin_catalog_parser import coin
-from scripts.ucoin_catalog import filter_periods_by_start_year
+from scripts.ucoin_catalog import build_country_url, filter_periods_by_start_year
 from ucoin_to_mysite.catalog_parser import crawl_ucoin_catalogue, parse_catalogue_page
 
 
@@ -51,6 +51,12 @@ def grouped_coin(tid: int, pid: str = "24", value: str | None = None) -> str:
 
 
 class UCoinCatalogueGroupingTests(unittest.TestCase):
+    def test_explicit_country_link_name_preserves_underscores(self) -> None:
+        self.assertEqual(
+            build_country_url("https://pt.ucoin.net/catalog/", "Sri Lanka", "sri_lanka"),
+            "https://pt.ucoin.net/catalog/?country=sri_lanka",
+        )
+
     def crawl(self, pages_by_url: dict[str, str], initial_url: str = BASE) -> dict[str, object]:
         return crawl_ucoin_catalogue(initial_url, lambda url: pages_by_url[url], retry_backoff_seconds=0)
 

@@ -124,6 +124,10 @@ def normalize_detail_url(value: str) -> str:
 
 def normalize_image_url(value: str) -> str:
     raw_value = str(value or "").strip()
+    # Some valid uCoin entries have no image yet.  Keep those records in the
+    # app catalogue with an empty image field instead of aborting the country.
+    if not raw_value:
+        return ""
     markdown_match = re.fullmatch(r"\[[^\]]+\]\((https?://[^)]+)\)", raw_value, flags=re.IGNORECASE)
     if markdown_match:
         raw_value = markdown_match.group(1).strip()

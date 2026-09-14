@@ -5,6 +5,7 @@ import json
 import os
 import subprocess
 import sys
+from difflib import get_close_matches
 from pathlib import Path
 
 from scripts.ucoin_catalog import slugify
@@ -107,6 +108,14 @@ def default_app_catalog_path(country: str) -> str:
     return str(Path("paises") / slugify(country) / "app-catalog.json")
 
 
+def suggest_app_catalog_paths(input_path: str) -> list[Path]:
+    """Return nearby local app catalogue paths for a misspelled country folder."""
+    catalogues = sorted((PROJECT_DIR / "paises").glob("*/app-catalog.json"))
+    requested_folder = Path(input_path).parent.name
+    matches = get_close_matches(requested_folder, [path.parent.name for path in catalogues], n=3, cutoff=0.6)
+    return [path for path in catalogues if path.parent.name in matches]
+
+
 def default_final_input_path(country: str) -> str:
     return str(Path("paises") / slugify(country) / "app-catalog-final.json")
 
@@ -138,21 +147,9 @@ def action_pipeline() -> None:
     if start_year is not None:
         command.extend(["--start-year", str(start_year)])
 
-    attach_cdp = ask_yes_no("Usar sessao CDP aberta no browser?", default=True)
-    if attach_cdp:
-        cdp_url = ask_text("CDP URL", "http://127.0.0.1:9222")
-        command.extend(["--attach-cdp", "--cdp-url", cdp_url])
-
-    manual_session = ask_yes_no("Pausar para confirmacao manual (Cloudflare/login)?", default=True)
-    if manual_session:
-        command.append("--manual-session")
-    else:
-        command.append("--no-manual-session")
-
-    timeout = ask_int("Timeout (segundos)", default=60, allow_empty=False)
-    max_pages = ask_int("Max pages", default=50, allow_empty=False)
-    retries = ask_int("Retries por pagina", default=2, allow_empty=False)
-    command.extend(["--timeout", str(timeout), "--max-pages", str(max_pages), "--retries", str(retries)])
+    # Always reuse the browser started with --remote-debugging-port=9222.
+    # Cloudflare/login is already resolved in that session.
+    command.extend(["--attach-cdp", "--cdp-url", "http://127.0.0.1:9222", "--no-manual-session"])
 
     if ask_yes_no("Parar apos gerar app-catalog-pending.json (sem esperar final)?", default=False):
         command.append("--no-wait-for-final")
@@ -187,21 +184,9 @@ def action_scrape_only() -> None:
     if output_dir:
         command.extend(["--output-dir", output_dir])
 
-    attach_cdp = ask_yes_no("Usar sessao CDP aberta no browser?", default=True)
-    if attach_cdp:
-        cdp_url = ask_text("CDP URL", "http://127.0.0.1:9222")
-        command.extend(["--attach-cdp", "--cdp-url", cdp_url])
-
-    manual_session = ask_yes_no("Pausar para confirmacao manual (Cloudflare/login)?", default=True)
-    if manual_session:
-        command.append("--manual-session")
-    else:
-        command.append("--no-manual-session")
-
-    timeout = ask_int("Timeout (segundos)", default=60, allow_empty=False)
-    max_pages = ask_int("Max pages", default=50, allow_empty=False)
-    retries = ask_int("Retries por pagina", default=2, allow_empty=False)
-    command.extend(["--timeout", str(timeout), "--max-pages", str(max_pages), "--retries", str(retries)])
+    # Always reuse the browser started with --remote-debugging-port=9222.
+    # Cloudflare/login is already resolved in that session.
+    command.extend(["--attach-cdp", "--cdp-url", "http://127.0.0.1:9222", "--no-manual-session"])
 
     run_step("Scrape uCoin", command)
 
@@ -279,37 +264,20 @@ def action_import_base44() -> None:
 
     country = ask_text("Pais (para sugerir caminho default)", "India")
     input_path = ask_text("Input app-catalog.json", default_app_catalog_path(country))
+    if not Path(input_path).is_file():
+        print(f"Ficheiro nao encontrado: {input_path}")
+        suggestions = suggest_app_catalog_paths(input_path)
+        if suggestions:
+            print("Quiseste dizer:")
+            for path in suggestions:
+                print(f"- {path.relative_to(PROJECT_DIR)}")
+        return
 
     command = [sys.executable, "-m", "scripts.import_base44_coins", "--input", input_path]
 
     continent = ask_text("Continente (opcional: Europa|America|Asia|Africa|Oceania)", "")
     if continent:
         command.extend(["--continent", continent])
-
-    condition = ask_text("Condition default", "Nao Tenho")
-    if condition:
-        command.extend(["--condition", condition])
-
-    limit = ask_int("Limitar aos primeiros N (0 = sem limite)", default=0, allow_empty=False)
-    if limit and limit > 0:
-        command.extend(["--limit", str(limit)])
-
-    batch_size = ask_int("Batch size", default=10, allow_empty=False)
-    request_delay = ask_float("Request delay (segundos)", default=3.0)
-    rate_limit_delay = ask_float("Rate limit delay (segundos)", default=60.0)
-    max_retries = ask_int("Max retries", default=6, allow_empty=False)
-    command.extend(
-        [
-            "--batch-size",
-            str(batch_size),
-            "--request-delay",
-            str(request_delay),
-            "--rate-limit-delay",
-            str(rate_limit_delay),
-            "--max-retries",
-            str(max_retries),
-        ]
-    )
 
     print("Modo de execucao:")
     print("1) Dry run (so validar, nao escreve)")

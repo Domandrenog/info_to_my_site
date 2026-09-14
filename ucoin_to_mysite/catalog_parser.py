@@ -413,9 +413,19 @@ def parse_coin_table(
     if not value_link:
         warning(warnings, page_url, detail_path, "detailPath", "Missing td.coin-info > a.value")
 
-    parsed_value = parse_denomination_and_years(value_link.text() if value_link else "")
-
     subject_node = coin_info.find("div", "subject") if coin_info else None
+    subject = normalize_text(subject_node.text()) if subject_node else None
+    parsed_value = parse_denomination_and_years(value_link.text() if value_link else "")
+    issue_period = parsed_value["issuePeriod"]
+    if issue_period["startYear"] is None and subject:
+        subject_start_year, subject_end_year = parse_years(subject)
+        if subject_start_year is not None:
+            issue_period = {
+                "displayValue": subject,
+                "startYear": subject_start_year,
+                "endYear": subject_end_year,
+            }
+
     info_node = coin_info.find("div", "info") if coin_info else None
     technical = parse_technical_information(info_node.text() if info_node else "")
     if not info_node:
@@ -450,9 +460,9 @@ def parse_coin_table(
 
     return {
         "denomination": parsed_value["denomination"],
-        "issuePeriod": parsed_value["issuePeriod"],
+        "issuePeriod": issue_period,
         "imageExampleYear": image_example_year,
-        "subject": subject_node.text() if subject_node else None,
+        "subject": subject,
         "composition": technical["composition"],
         "weightGrams": technical["weightGrams"],
         "diameterMm": technical["diameterMm"],

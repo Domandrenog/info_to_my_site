@@ -88,6 +88,23 @@ class UCoinCatalogueParserTests(unittest.TestCase):
         parsed = self.parse_one(page(coin(subject="125 anos do Canadá")))
         self.assertEqual(parsed["subject"], "125 anos do Canadá")
 
+    def test_subject_years_are_used_when_the_value_has_no_issue_period(self) -> None:
+        parsed = self.parse_one(
+            page(
+                coin(
+                    value="1 millim",
+                    subject="1956 - 1969",
+                    detail="/coin/sudan-1-millim-1956-1969/?tid=55210",
+                    tid="55210",
+                )
+            )
+        )
+        self.assertEqual(parsed["issuePeriod"], {"displayValue": "1956 - 1969", "startYear": 1956, "endYear": 1969})
+
+    def test_value_issue_period_takes_precedence_over_subject_years(self) -> None:
+        parsed = self.parse_one(page(coin(value="5 cêntimos, 1982-1989", subject="Comemora 1967")))
+        self.assertEqual(parsed["issuePeriod"], {"displayValue": "1982-1989", "startYear": 1982, "endYear": 1989})
+
     def test_nested_silver_composition(self) -> None:
         parsed = self.parse_one(page(coin(info='<span class="Ag">Ag</span>Prata 0.800, 2.33g, ø 18.03mm<br>KM# 51 · Circulação normal')))
         self.assertEqual(parsed["composition"], "AgPrata 0.800")

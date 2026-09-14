@@ -112,8 +112,11 @@ def resolve_browser_executable(chrome_path: str) -> str | None:
 
 
 def build_country_url(base_url: str, country: str, country_link_name: str = "") -> str:
-    link_source = country_link_name.strip() or country
-    country_slug = quote(slugify(link_source))
+    # ``--country-link-name`` is an explicit uCoin URL value.  It must not be
+    # passed through the filesystem-friendly slugifier: e.g. uCoin uses
+    # ``sri_lanka``, while the local country folder is ``sri-lanka``.
+    country_parameter = country_link_name.strip() or slugify(country)
+    country_slug = quote(country_parameter, safe="_")
     separator = "&" if "?" in base_url else "?"
     if "country=" in base_url:
         return base_url

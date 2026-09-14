@@ -1,0 +1,593 @@
+{
+  "country": "Maurícias",
+  "periods": [
+    {
+      "title": "Maurícias › Ilhas Mauritius › 1987 - 2023",
+      "ruler": "Ilhas Mauritius",
+      "startYear": 1987,
+      "endYear": 2023,
+      "coins": [
+        {
+          "denomination": "1 cêntimo",
+          "value": 1.0,
+          "unit": "cêntimo",
+          "issuePeriod": "1987",
+          "startYear": 1987,
+          "endYear": 1987,
+          "availability": "scarce",
+          "detailUrl": "https://pt.ucoin.net/coin/mauritius-1-cent-1987/?tid=25252",
+          "obverseImage": "https://i.ucoin.net/coin/36/914/36914610-1s/mauritius-1-cent-1987.jpg",
+          "reverseImage": "https://i.ucoin.net/coin/36/914/36914610-2s/mauritius-1-cent-1987.jpg"
+        },
+        {
+          "denomination": "5 cêntimos",
+          "value": 5.0,
+          "unit": "cêntimos",
+          "issuePeriod": "1987 - 2023",
+          "startYear": 1987,
+          "endYear": 2023,
+          "availability": "circulating",
+          "detailUrl": "https://pt.ucoin.net/coin/mauritius-5-cents-1987-2023/?tid=25253",
+          "obverseImage": "https://i.ucoin.net/coin/69/125/69125487-1s/mauritius-5-cents-1999.jpg",
+          "reverseImage": "https://i.ucoin.net/coin/69/125/69125487-2s/mauritius-5-cents-1999.jpg"
+        },
+        {
+          "denomination": "20 cêntimos",
+          "value": 20.0,
+          "unit": "cêntimos",
+          "issuePeriod": "1987 - 2022",
+          "startYear": 1987,
+          "endYear": 2022,
+          "availability": "circulating",
+          "detailUrl": "https://pt.ucoin.net/coin/mauritius-20-cents-1987-2022/?tid=25267",
+          "obverseImage": "https://i.ucoin.net/coin/62/840/62840856-1s/mauritius-20-cents-1991.jpg",
+          "reverseImage": "https://i.ucoin.net/coin/62/840/62840856-2s/mauritius-20-cents-1991.jpg"
+        },
+        {
+          "denomination": "½ rúpia",
+          "value": null,
+          "unit": null,
+          "issuePeriod": "1987 - 2022",
+          "startYear": 1987,
+          "endYear": 2022,
+          "availability": "circulating",
+          "detailUrl": "https://pt.ucoin.net/coin/mauritius-1-2-rupee-1987-2022/?tid=25282",
+          "obverseImage": "https://i.ucoin.net/coin/74/175/74175707-1s/mauritius-1-2-rupee-2010.jpg",
+          "reverseImage": "https://i.ucoin.net/coin/74/175/74175707-2s/mauritius-1-2-rupee-2010.jpg"
+        },
+        {
+          "denomination": "1 rúpia",
+          "value": 1.0,
+          "unit": "rúpia",
+          "issuePeriod": "1987 - 2010",
+          "startYear": 1987,
+          "endYear": 2010,
+          "availability": "circulating",
+          "detailUrl": "https://pt.ucoin.net/coin/mauritius-1-rupee-1987-2010/?tid=25294",
+          "obverseImage": "https://i.ucoin.net/coin/69/159/69159247-1s/mauritius-1-rupee-1993.jpg",
+          "reverseImage": "https://i.ucoin.net/coin/69/159/69159247-2s/mauritius-1-rupee-1993.jpg"
+        },
+        {
+          "denomination": "1 rúpia",
+          "value": 1.0,
+          "unit": "rúpia",
+          "issuePeriod": "2012 - 2023",
+          "startYear": 2012,
+          "endYear": 2023,
+          "availability": "circulating",
+          "detailUrl": "https://pt.ucoin.net/coin/mauritius-1-rupee-2012-2023/?tid=26638",
+          "obverseImage": "https://i.ucoin.net/coin/27/093/27093573-1s/mauritius-1-rupee-2012.jpg",
+          "reverseImage": "https://i.ucoin.net/coin/27/093/27093573-2s/mauritius-1-rupee-2012.jpg"
+        },
+        {
+          "denomination": "5 rúpias",
+          "value": 5.0,
+          "unit": "rúpias",
+          "issuePeriod": "1987 - 2010",
+          "startYear": 1987,
+          "endYear": 2010,
+          "availability": "circulating",
+          "detailUrl": "https://pt.ucoin.net/coin/mauritius-5-rupees-1987-2010/?tid=25309",
+          "obverseImage": "https://i.ucoin.net/coin/56/079/56079706-1s/mauritius-5-rupees-1987.jpg",
+          "reverseImage": "https://i.ucoin.net/coin/56/079/56079706-2s/mauritius-5-rupees-1987.jpg"
+        },
+        {
+          "denomination": "5 rúpias",
+          "value": 5.0,
+          "unit": "rúpias",
+          "issuePeriod": "2012 - 2018",
+          "startYear": 2012,
+          "endYear": 2018,
+          "availability": "circulating",
+          "detailUrl": "https://pt.ucoin.net/coin/mauritius-5-rupees-2012-2018/?tid=80242",
+          "obverseImage": "https://i.ucoin.net/coin/36/927/36927581-1s/mauritius-5-rupees-2012.jpg",
+          "reverseImage": "https://i.ucoin.net/coin/36/927/36927581-2s/mauritius-5-rupees-2012.jpg"
+        },
+        {
+          "denomination": "10 rúpias",
+          "value": 10.0,
+          "unit": "rúpias",
+          "issuePeriod": "1997 - 2000",
+          "startYear": 1997,
+          "endYear": 2000,
+          "availability": "scarce",
+          "detailUrl": "https://pt.ucoin.net/coin/mauritius-10-rupees-1997-2000/?tid=25315",
+          "obverseImage": "https://i.ucoin.net/coin/58/954/58954126-1s/mauritius-10-rupees-2000.jpg",
+          "reverseImage": "https://i.ucoin.net/coin/58/954/58954126-2s/mauritius-10-rupees-2000.jpg"
+        },
+        {
+          "denomination": "10 rúpias",
+          "value": 10.0,
+          "unit": "rúpias",
+          "issuePeriod": "2016 - 2023",
+          "startYear": 2016,
+          "endYear": 2023,
+          "availability": "circulating",
+          "detailUrl": "https://pt.ucoin.net/coin/mauritius-10-rupees-2016-2023/?tid=70772",
+          "obverseImage": "https://i.ucoin.net/coin/85/777/85777999-1s/mauritius-10-rupees-2016.jpg",
+          "reverseImage": "https://i.ucoin.net/coin/85/777/85777999-2s/mauritius-10-rupees-2016.jpg"
+        },
+        {
+          "denomination": "20 rúpias",
+          "value": 20.0,
+          "unit": "rúpias",
+          "issuePeriod": "2007 - 2022",
+          "startYear": 2007,
+          "endYear": 2022,
+          "availability": "circulating",
+          "detailUrl": "https://pt.ucoin.net/coin/mauritius-20-rupees-2007-2022/?tid=25317",
+          "obverseImage": "https://i.ucoin.net/coin/74/175/74175724-1s/mauritius-20-rupees-2020.jpg",
+          "reverseImage": "https://i.ucoin.net/coin/74/175/74175724-2s/mauritius-20-rupees-2020.jpg"
+        }
+      ]
+    },
+    {
+      "title": "Maurícias › Rainha Isabel II › 1953 - 1986",
+      "ruler": "Rainha Isabel II",
+      "startYear": 1953,
+      "endYear": 1986,
+      "coins": [
+        {
+          "denomination": "1 cêntimo",
+          "value": 1.0,
+          "unit": "cêntimo",
+          "issuePeriod": "1953 - 1978",
+          "startYear": 1953,
+          "endYear": 1978,
+          "availability": "scarce",
+          "detailUrl": "https://pt.ucoin.net/coin/mauritius-1-cent-1953-1978/?tid=55405",
+          "obverseImage": "https://i.ucoin.net/coin/37/102/37102564-1s/mauritius-1-cent-1971.jpg",
+          "reverseImage": "https://i.ucoin.net/coin/37/102/37102564-2s/mauritius-1-cent-1971.jpg"
+        },
+        {
+          "denomination": "2 cêntimos",
+          "value": 2.0,
+          "unit": "cêntimos",
+          "issuePeriod": "1953 - 1978",
+          "startYear": 1953,
+          "endYear": 1978,
+          "availability": "scarce",
+          "detailUrl": "https://pt.ucoin.net/coin/mauritius-2-cents-1953-1978/?tid=55404",
+          "obverseImage": "https://i.ucoin.net/coin/37/102/37102189-1s/mauritius-2-cents-1971.jpg",
+          "reverseImage": "https://i.ucoin.net/coin/37/102/37102189-2s/mauritius-2-cents-1971.jpg"
+        },
+        {
+          "denomination": "5 cêntimos",
+          "value": 5.0,
+          "unit": "cêntimos",
+          "issuePeriod": "1956 - 1978",
+          "startYear": 1956,
+          "endYear": 1978,
+          "availability": "scarce",
+          "detailUrl": "https://pt.ucoin.net/coin/mauritius-5-cents-1956-1978/?tid=55438",
+          "obverseImage": "https://i.ucoin.net/coin/69/125/69125591-1s/mauritius-5-cents-1978.jpg",
+          "reverseImage": "https://i.ucoin.net/coin/69/125/69125591-2s/mauritius-5-cents-1978.jpg"
+        },
+        {
+          "denomination": "10 cêntimos",
+          "value": 10.0,
+          "unit": "cêntimos",
+          "issuePeriod": "1954 - 1978",
+          "startYear": 1954,
+          "endYear": 1978,
+          "availability": "scarce",
+          "detailUrl": "https://pt.ucoin.net/coin/mauritius-10-cents-1954-1978/?tid=55452",
+          "obverseImage": "https://i.ucoin.net/coin/37/349/37349825-1s/mauritius-10-cents-1971.jpg",
+          "reverseImage": "https://i.ucoin.net/coin/37/349/37349825-2s/mauritius-10-cents-1971.jpg"
+        },
+        {
+          "denomination": "¼ rúpia",
+          "value": null,
+          "unit": null,
+          "issuePeriod": "1960 - 1978",
+          "startYear": 1960,
+          "endYear": 1978,
+          "availability": "scarce",
+          "detailUrl": "https://pt.ucoin.net/coin/mauritius-1-4-rupee-1960-1978/?tid=55465",
+          "obverseImage": "https://i.ucoin.net/coin/83/477/83477247-1s/mauritius-1-4-rupee-1975.jpg",
+          "reverseImage": "https://i.ucoin.net/coin/83/477/83477247-2s/mauritius-1-4-rupee-1975.jpg"
+        },
+        {
+          "denomination": "½ rúpia",
+          "value": null,
+          "unit": null,
+          "issuePeriod": "1965 - 1978",
+          "startYear": 1965,
+          "endYear": 1978,
+          "availability": "scarce",
+          "detailUrl": "https://pt.ucoin.net/coin/mauritius-1-2-rupee-1965-1978/?tid=55472",
+          "obverseImage": "https://i.ucoin.net/coin/6/879/6879916-1s/mauritius-1-2-rupee-1971.jpg",
+          "reverseImage": "https://i.ucoin.net/coin/6/879/6879916-2s/mauritius-1-2-rupee-1971.jpg"
+        },
+        {
+          "denomination": "1 rúpia",
+          "value": 1.0,
+          "unit": "rúpia",
+          "issuePeriod": "1956 - 1978",
+          "startYear": 1956,
+          "endYear": 1978,
+          "availability": "scarce",
+          "detailUrl": "https://pt.ucoin.net/coin/mauritius-1-rupee-1956-1978/?tid=55478",
+          "obverseImage": "https://i.ucoin.net/coin/24/480/24480031-1s/mauritius-1-rupee-1971.jpg",
+          "reverseImage": "https://i.ucoin.net/coin/24/480/24480031-2s/mauritius-1-rupee-1971.jpg"
+        }
+      ]
+    },
+    {
+      "title": "Maurícias › Rei Jorge VI › 1937 - 1952",
+      "ruler": "Rei Jorge VI",
+      "startYear": 1937,
+      "endYear": 1952,
+      "coins": [
+        {
+          "denomination": "1 cêntimo",
+          "value": 1.0,
+          "unit": "cêntimo",
+          "issuePeriod": "1943 - 1947",
+          "startYear": 1943,
+          "endYear": 1947,
+          "availability": "historical",
+          "detailUrl": "https://pt.ucoin.net/coin/mauritius-1-cent-1943-1947/?tid=55500",
+          "obverseImage": "https://i.ucoin.net/coin/37/102/37102517-1s/mauritius-1-cent-1946.jpg",
+          "reverseImage": "https://i.ucoin.net/coin/37/102/37102517-2s/mauritius-1-cent-1946.jpg"
+        },
+        {
+          "denomination": "1 cêntimo",
+          "value": 1.0,
+          "unit": "cêntimo",
+          "issuePeriod": "1949 - 1952",
+          "startYear": 1949,
+          "endYear": 1952,
+          "availability": "historical",
+          "detailUrl": "https://pt.ucoin.net/coin/mauritius-1-cent-1949-1952/?tid=56000",
+          "obverseImage": "https://i.ucoin.net/coin/36/927/36927604-1s/mauritius-1-cent-1949.jpg",
+          "reverseImage": "https://i.ucoin.net/coin/36/927/36927604-2s/mauritius-1-cent-1949.jpg"
+        },
+        {
+          "denomination": "2 cêntimos",
+          "value": 2.0,
+          "unit": "cêntimos",
+          "issuePeriod": "1943 - 1947",
+          "startYear": 1943,
+          "endYear": 1947,
+          "availability": "historical",
+          "detailUrl": "https://pt.ucoin.net/coin/mauritius-2-cents-1943-1947/?tid=56002",
+          "obverseImage": "https://i.ucoin.net/coin/41/390/41390538-1s/mauritius-2-cents-1947.jpg",
+          "reverseImage": "https://i.ucoin.net/coin/41/390/41390538-2s/mauritius-2-cents-1947.jpg"
+        },
+        {
+          "denomination": "2 cêntimos",
+          "value": 2.0,
+          "unit": "cêntimos",
+          "issuePeriod": "1949 - 1952",
+          "startYear": 1949,
+          "endYear": 1952,
+          "availability": "historical",
+          "detailUrl": "https://pt.ucoin.net/coin/mauritius-2-cents-1949-1952/?tid=56007",
+          "obverseImage": "https://i.ucoin.net/coin/22/840/22840131-1s/mauritius-2-cents-1952.jpg",
+          "reverseImage": "https://i.ucoin.net/coin/22/840/22840131-2s/mauritius-2-cents-1952.jpg"
+        },
+        {
+          "denomination": "5 cêntimos",
+          "value": 5.0,
+          "unit": "cêntimos",
+          "issuePeriod": "1942 - 1945",
+          "startYear": 1942,
+          "endYear": 1945,
+          "availability": "historical",
+          "detailUrl": "https://pt.ucoin.net/coin/mauritius-5-cents-1942-1945/?tid=56009",
+          "obverseImage": "https://i.ucoin.net/coin/71/063/71063478-1s/mauritius-5-cents-1942.jpg",
+          "reverseImage": "https://i.ucoin.net/coin/71/063/71063478-2s/mauritius-5-cents-1942.jpg"
+        },
+        {
+          "denomination": "10 cêntimos",
+          "value": 10.0,
+          "unit": "cêntimos",
+          "issuePeriod": "1947",
+          "startYear": 1947,
+          "endYear": 1947,
+          "availability": "historical",
+          "detailUrl": "https://pt.ucoin.net/coin/mauritius-10-cents-1947/?tid=56012",
+          "obverseImage": "https://i.ucoin.net/coin/74/251/74251087-1s/mauritius-10-cents-1947.jpg",
+          "reverseImage": "https://i.ucoin.net/coin/74/251/74251087-2s/mauritius-10-cents-1947.jpg"
+        },
+        {
+          "denomination": "10 cêntimos",
+          "value": 10.0,
+          "unit": "cêntimos",
+          "issuePeriod": "1952",
+          "startYear": 1952,
+          "endYear": 1952,
+          "availability": "historical",
+          "detailUrl": "https://pt.ucoin.net/coin/mauritius-10-cents-1952/?tid=56013",
+          "obverseImage": "https://i.ucoin.net/coin/37/102/37102037-1s/mauritius-10-cents-1952.jpg",
+          "reverseImage": "https://i.ucoin.net/coin/37/102/37102037-2s/mauritius-10-cents-1952.jpg"
+        },
+        {
+          "denomination": "¼ rúpia",
+          "value": null,
+          "unit": null,
+          "issuePeriod": "1938",
+          "startYear": 1938,
+          "endYear": 1938,
+          "availability": "historical",
+          "detailUrl": "https://pt.ucoin.net/coin/mauritius-1-4-rupee-1938/?tid=56414",
+          "obverseImage": "https://i.ucoin.net/coin/67/433/67433215-1s/mauritius-1-4-rupee-1938.jpg",
+          "reverseImage": "https://i.ucoin.net/coin/67/433/67433215-2s/mauritius-1-4-rupee-1938.jpg"
+        },
+        {
+          "denomination": "¼ rúpia",
+          "value": null,
+          "unit": null,
+          "issuePeriod": "1946",
+          "startYear": 1946,
+          "endYear": 1946,
+          "availability": "historical",
+          "detailUrl": "https://pt.ucoin.net/coin/mauritius-1-4-rupee-1946/?tid=56415",
+          "obverseImage": "https://i.ucoin.net/coin/68/386/68386105-1s/mauritius-1-4-rupee-1946.jpg",
+          "reverseImage": "https://i.ucoin.net/coin/68/386/68386105-2s/mauritius-1-4-rupee-1946.jpg"
+        },
+        {
+          "denomination": "¼ rúpia",
+          "value": null,
+          "unit": null,
+          "issuePeriod": "1950 - 1951",
+          "startYear": 1950,
+          "endYear": 1951,
+          "availability": "historical",
+          "detailUrl": "https://pt.ucoin.net/coin/mauritius-1-4-rupee-1950-1951/?tid=56416",
+          "obverseImage": "https://i.ucoin.net/coin/37/101/37101989-1s/mauritius-1-4-rupee-1951.jpg",
+          "reverseImage": "https://i.ucoin.net/coin/37/101/37101989-2s/mauritius-1-4-rupee-1951.jpg"
+        },
+        {
+          "denomination": "½ rúpia",
+          "value": null,
+          "unit": null,
+          "issuePeriod": "1946",
+          "startYear": 1946,
+          "endYear": 1946,
+          "availability": "historical",
+          "detailUrl": "https://pt.ucoin.net/coin/mauritius-1-2-rupee-1946/?tid=56418",
+          "obverseImage": "https://i.ucoin.net/coin/68/740/68740273-1s/mauritius-1-2-rupee-1946.jpg",
+          "reverseImage": "https://i.ucoin.net/coin/68/740/68740273-2s/mauritius-1-2-rupee-1946.jpg"
+        },
+        {
+          "denomination": "½ rúpia",
+          "value": null,
+          "unit": null,
+          "issuePeriod": "1950 - 1951",
+          "startYear": 1950,
+          "endYear": 1951,
+          "availability": "historical",
+          "detailUrl": "https://pt.ucoin.net/coin/mauritius-1-2-rupee-1950-1951/?tid=56419",
+          "obverseImage": "https://i.ucoin.net/coin/37/101/37101967-1s/mauritius-1-2-rupee-1950.jpg",
+          "reverseImage": "https://i.ucoin.net/coin/37/101/37101967-2s/mauritius-1-2-rupee-1950.jpg"
+        },
+        {
+          "denomination": "1 rúpia",
+          "value": 1.0,
+          "unit": "rúpia",
+          "issuePeriod": "1938",
+          "startYear": 1938,
+          "endYear": 1938,
+          "availability": "historical",
+          "detailUrl": "https://pt.ucoin.net/coin/mauritius-1-rupee-1938/?tid=56421",
+          "obverseImage": "https://i.ucoin.net/coin/67/433/67433223-1s/mauritius-1-rupee-1938.jpg",
+          "reverseImage": "https://i.ucoin.net/coin/67/433/67433223-2s/mauritius-1-rupee-1938.jpg"
+        },
+        {
+          "denomination": "1 rúpia",
+          "value": 1.0,
+          "unit": "rúpia",
+          "issuePeriod": "1950 - 1951",
+          "startYear": 1950,
+          "endYear": 1951,
+          "availability": "historical",
+          "detailUrl": "https://pt.ucoin.net/coin/mauritius-1-rupee-1950-1951/?tid=56422",
+          "obverseImage": "https://i.ucoin.net/coin/6/870/6870933-1s/mauritius-1-rupee-1951.jpg",
+          "reverseImage": "https://i.ucoin.net/coin/6/870/6870933-2s/mauritius-1-rupee-1951.jpg"
+        }
+      ]
+    },
+    {
+      "title": "Maurícias › Rei Jorge V › 1911 - 1936",
+      "ruler": "Rei Jorge V",
+      "startYear": 1911,
+      "endYear": 1936,
+      "coins": [
+        {
+          "denomination": "1 cêntimo",
+          "value": 1.0,
+          "unit": "cêntimo",
+          "issuePeriod": "1911 - 1924",
+          "startYear": 1911,
+          "endYear": 1924,
+          "availability": "historical",
+          "detailUrl": "https://pt.ucoin.net/coin/mauritius-1-cent-1911-1924/?tid=56424",
+          "obverseImage": "https://i.ucoin.net/coin/37/102/37102492-1s/mauritius-1-cent-1924.jpg",
+          "reverseImage": "https://i.ucoin.net/coin/37/102/37102492-2s/mauritius-1-cent-1924.jpg"
+        },
+        {
+          "denomination": "2 cêntimos",
+          "value": 2.0,
+          "unit": "cêntimos",
+          "issuePeriod": "1911 - 1924",
+          "startYear": 1911,
+          "endYear": 1924,
+          "availability": "historical",
+          "detailUrl": "https://pt.ucoin.net/coin/mauritius-2-cents-1911-1924/?tid=56432",
+          "obverseImage": "https://i.ucoin.net/coin/71/602/71602028-1s/mauritius-2-cents-1924.jpg",
+          "reverseImage": "https://i.ucoin.net/coin/71/602/71602028-2s/mauritius-2-cents-1924.jpg"
+        },
+        {
+          "denomination": "5 cêntimos",
+          "value": 5.0,
+          "unit": "cêntimos",
+          "issuePeriod": "1917 - 1924",
+          "startYear": 1917,
+          "endYear": 1924,
+          "availability": "historical",
+          "detailUrl": "https://pt.ucoin.net/coin/mauritius-5-cents-1917-1924/?tid=56441",
+          "obverseImage": "https://i.ucoin.net/coin/73/304/73304054-1s/mauritius-5-cents-1917.jpg",
+          "reverseImage": "https://i.ucoin.net/coin/73/304/73304054-2s/mauritius-5-cents-1917.jpg"
+        },
+        {
+          "denomination": "¼ rúpia",
+          "value": null,
+          "unit": null,
+          "issuePeriod": "1934 - 1936",
+          "startYear": 1934,
+          "endYear": 1936,
+          "availability": "historical",
+          "detailUrl": "https://pt.ucoin.net/coin/mauritius-1-4-rupee-1934-1936/?tid=56447",
+          "obverseImage": "https://i.ucoin.net/coin/82/748/82748642-1s/mauritius-1-4-rupee-1935.jpg",
+          "reverseImage": "https://i.ucoin.net/coin/82/748/82748642-2s/mauritius-1-4-rupee-1935.jpg"
+        },
+        {
+          "denomination": "½ rúpia",
+          "value": null,
+          "unit": null,
+          "issuePeriod": "1934",
+          "startYear": 1934,
+          "endYear": 1934,
+          "availability": "historical",
+          "detailUrl": "https://pt.ucoin.net/coin/mauritius-1-2-rupee-1934/?tid=56450",
+          "obverseImage": "https://i.ucoin.net/coin/37/101/37101949-1s/mauritius-1-2-rupee-1934.jpg",
+          "reverseImage": "https://i.ucoin.net/coin/37/101/37101949-2s/mauritius-1-2-rupee-1934.jpg"
+        },
+        {
+          "denomination": "1 rúpia",
+          "value": 1.0,
+          "unit": "rúpia",
+          "issuePeriod": "1934",
+          "startYear": 1934,
+          "endYear": 1934,
+          "availability": "historical",
+          "detailUrl": "https://pt.ucoin.net/coin/mauritius-1-rupee-1934/?tid=56451",
+          "obverseImage": "https://i.ucoin.net/coin/85/675/85675556-1s/mauritius-1-rupee-1934.jpg",
+          "reverseImage": "https://i.ucoin.net/coin/85/675/85675556-2s/mauritius-1-rupee-1934.jpg"
+        }
+      ]
+    },
+    {
+      "title": "Maurícias › Rainha Victoria › 1877 - 1901",
+      "ruler": "Rainha Victoria",
+      "startYear": 1877,
+      "endYear": 1901,
+      "coins": [
+        {
+          "denomination": "1 cêntimo",
+          "value": 1.0,
+          "unit": "cêntimo",
+          "issuePeriod": "1877 - 1897",
+          "startYear": 1877,
+          "endYear": 1897,
+          "availability": "historical",
+          "detailUrl": "https://pt.ucoin.net/coin/mauritius-1-cent-1877-1897/?tid=56452",
+          "obverseImage": "https://i.ucoin.net/coin/37/102/37102471-1s/mauritius-1-cent-1897.jpg",
+          "reverseImage": "https://i.ucoin.net/coin/37/102/37102471-2s/mauritius-1-cent-1897.jpg"
+        },
+        {
+          "denomination": "2 cêntimos",
+          "value": 2.0,
+          "unit": "cêntimos",
+          "issuePeriod": "1877 - 1897",
+          "startYear": 1877,
+          "endYear": 1897,
+          "availability": "historical",
+          "detailUrl": "https://pt.ucoin.net/coin/mauritius-2-cents-1877-1897/?tid=56461",
+          "obverseImage": "https://i.ucoin.net/coin/37/102/37102135-1s/mauritius-2-cents-1883.jpg",
+          "reverseImage": "https://i.ucoin.net/coin/37/102/37102135-2s/mauritius-2-cents-1883.jpg"
+        },
+        {
+          "denomination": "5 cêntimos",
+          "value": 5.0,
+          "unit": "cêntimos",
+          "issuePeriod": "1877 - 1897",
+          "startYear": 1877,
+          "endYear": 1897,
+          "availability": "historical",
+          "detailUrl": "https://pt.ucoin.net/coin/mauritius-5-cents-1877-1897/?tid=56470",
+          "obverseImage": "https://i.ucoin.net/coin/37/102/37102319-1s/mauritius-5-cents-1882.jpg",
+          "reverseImage": "https://i.ucoin.net/coin/37/102/37102319-2s/mauritius-5-cents-1882.jpg"
+        },
+        {
+          "denomination": "10 cêntimos",
+          "value": 10.0,
+          "unit": "cêntimos",
+          "issuePeriod": "1877 - 1897",
+          "startYear": 1877,
+          "endYear": 1897,
+          "availability": "historical",
+          "detailUrl": "https://pt.ucoin.net/coin/mauritius-10-cents-1877-1897/?tid=56478",
+          "obverseImage": "https://i.ucoin.net/coin/37/102/37102014-1s/mauritius-10-cents-1889.jpg",
+          "reverseImage": "https://i.ucoin.net/coin/37/102/37102014-2s/mauritius-10-cents-1889.jpg"
+        },
+        {
+          "denomination": "20 cêntimos",
+          "value": 20.0,
+          "unit": "cêntimos",
+          "issuePeriod": "1877 - 1899",
+          "startYear": 1877,
+          "endYear": 1899,
+          "availability": "historical",
+          "detailUrl": "https://pt.ucoin.net/coin/mauritius-20-cents-1877-1899/?tid=56486",
+          "obverseImage": "https://i.ucoin.net/coin/37/102/37102223-1s/mauritius-20-cents-1877.jpg",
+          "reverseImage": "https://i.ucoin.net/coin/37/102/37102223-2s/mauritius-20-cents-1877.jpg"
+        }
+      ]
+    },
+    {
+      "title": "Maurícias › Rei George IV › 1822 - 1822",
+      "ruler": "Rei George IV",
+      "startYear": 1822,
+      "endYear": 1822,
+      "coins": [
+        {
+          "denomination": "25 Sous",
+          "value": 25.0,
+          "unit": "Sous",
+          "issuePeriod": "1822",
+          "startYear": 1822,
+          "endYear": 1822,
+          "availability": "historical",
+          "detailUrl": "https://pt.ucoin.net/login/?ref=/coin/mauritius-25-sous-1822/?tid=131865",
+          "obverseImage": "https://i.ucoin.net/coin/65/190/65190365-1s/mauritius-25-sous-1822.jpg",
+          "reverseImage": "https://i.ucoin.net/coin/65/190/65190365-2s/mauritius-25-sous-1822.jpg"
+        },
+        {
+          "denomination": "50 Sous",
+          "value": 50.0,
+          "unit": "Sous",
+          "issuePeriod": "1822",
+          "startYear": 1822,
+          "endYear": 1822,
+          "availability": "historical",
+          "detailUrl": "https://pt.ucoin.net/login/?ref=/coin/mauritius-50-sous-1822/?tid=131866",
+          "obverseImage": "https://i.ucoin.net/coin/65/393/65393663-1s/mauritius-50-sous-1822.jpg",
+          "reverseImage": "https://i.ucoin.net/coin/65/393/65393663-2s/mauritius-50-sous-1822.jpg"
+        }
+      ]
+    }
+  ]
+}
