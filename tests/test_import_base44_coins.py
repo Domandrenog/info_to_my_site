@@ -1,5 +1,7 @@
 import argparse
+import io
 import unittest
+from contextlib import redirect_stdout
 from unittest.mock import patch
 from urllib.error import URLError
 
@@ -107,6 +109,30 @@ class ImportBase44CoinsTests(unittest.TestCase):
         with patch("scripts.import_base44_coins.urlopen", side_effect=URLError(OSError(101, "Network is unreachable"))):
             with self.assertRaisesRegex(RuntimeError, "Network is unreachable"):
                 client.bulk_create([{"name": "5 cêntimos"}])
+
+    def test_create_only_prints_progress_for_each_record(self) -> None:
+        class FakeClient:
+            def filter(self, query, limit=1):
+                return []
+
+            def bulk_create(self, records):
+                pass
+
+        records = [
+            {"country": "Índia", "name": "1 paisa", "url_ucoin": "https://example.com/1"},
+            {"country": "Índia", "name": "2 paisa", "url_ucoin": "https://example.com/2"},
+        ]
+        output = io.StringIO()
+        with redirect_stdout(output):
+            imported = import_base44_coins.create_only(FakeClient(), records, allow_duplicates=False)
+
+        self.assertEqual(imported, 2)
+        self.assertIn("Created: 1/2 — 1 paisa", output.getvalue())
+        self.assertIn("Created: 2/2 — 2 paisa", output.getvalue())
+
+    def test_format_duration_uses_readable_portuguese_style(self) -> None:
+        self.assertEqual(import_base44_coins.format_duration(1.75, precise=True), "1,8 s")
+        self.assertEqual(import_base44_coins.format_duration(102), "1m 42s")
 
 
 if __name__ == "__main__":

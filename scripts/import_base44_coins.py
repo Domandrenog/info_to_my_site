@@ -268,10 +268,32 @@ def matching_existing_record(client: Base44Client, record: dict[str, Any]) -> di
     return None
 
 
+def format_duration(seconds: float, *, precise: bool = False) -> str:
+    """Format a duration for the import progress output."""
+    seconds = max(0.0, seconds)
+    if precise and seconds < 60:
+        return f"{seconds:.1f}".replace(".", ",") + " s"
+
+    total_seconds = round(seconds)
+    minutes, remaining_seconds = divmod(total_seconds, 60)
+    hours, remaining_minutes = divmod(minutes, 60)
+    if hours:
+        return f"{hours}h {remaining_minutes:02d}m {remaining_seconds:02d}s"
+    if minutes:
+        return f"{minutes}m {remaining_seconds:02d}s"
+    return f"{remaining_seconds}s"
+
+
 def create_only(client: Base44Client, records: list[dict[str, Any]], allow_duplicates: bool) -> int:
     created = 0
     updated = 0
-    for record in records:
+    total = len(records)
+    import_started_at = time.monotonic()
+    total_record_duration = 0.0
+    for index, record in enumerate(records, start=1):
+        progress = f"{index}/{total}"
+        record_started_at = time.monotonic()
+        operation = "Created"
         if not allow_duplicates:
             existing = matching_existing_record(client, record)
             if existing is not None:
@@ -279,13 +301,27 @@ def create_only(client: Base44Client, records: list[dict[str, Any]], allow_dupli
                 if isinstance(record_id, str) and record_id:
                     client.update(record_id, record)
                     updated += 1
-                    print(f"Updated: {record['name']}")
-                    continue
-                print(f"Skipped existing without id: {record['name']}")
-                continue
-        client.bulk_create([record])
-        created += 1
-        print(f"Created: {record['name']}")
+                    operation = "Updated"
+                else:
+                    operation = "Skipped existing without id"
+            else:
+                client.bulk_create([record])
+                created += 1
+        else:
+            client.bulk_create([record])
+            created += 1
+
+        record_duration = time.monotonic() - record_started_at
+        total_record_duration += record_duration
+        elapsed = time.monotonic() - import_started_at
+        remaining = total - index
+        estimated_remaining = (total_record_duration / index) * remaining
+        remaining_text = "concluído" if not remaining else f"~{format_duration(estimated_remaining)}"
+        print(
+            f"{operation}: {progress} — {record['name']} "
+            f"[demorou nesta: {format_duration(record_duration, precise=True)} "
+            f"| decorrido: {format_duration(elapsed)} | restante: {remaining_text}]"
+        )
     print(f"Create-only summary: created={created}, updated={updated}")
     return created + updated
 

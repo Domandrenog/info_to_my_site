@@ -23,6 +23,7 @@ def args(**overrides):
         "retries": 2,
         "sequential_fallback": False,
         "no_wait_for_final": False,
+        "cleanup_intermediate": False,
     }
     values.update(overrides)
     return argparse.Namespace(**values)
@@ -51,6 +52,10 @@ class UCoinPipelineTests(unittest.TestCase):
     def test_generate_command_can_stop_after_pending_catalogue(self) -> None:
         command = ucoin_pipeline.build_generate_command(args(no_wait_for_final=True), Path("paises/india/ucoin-catalog.json"))
         self.assertNotIn("--wait-for-final", command)
+
+    def test_generate_command_can_clean_intermediate_files(self) -> None:
+        command = ucoin_pipeline.build_generate_command(args(cleanup_intermediate=True), Path("paises/india/ucoin-catalog.json"))
+        self.assertIn("--cleanup-intermediate", command)
 
 
 if __name__ == "__main__":

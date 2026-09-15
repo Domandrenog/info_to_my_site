@@ -128,9 +128,8 @@ def ask_country_link_name() -> str:
 
 
 def action_pipeline() -> None:
-    title("Pipeline completo (scrape + pending/final)")
-    print("Este passo executa o scrape do uCoin e chama generate_resume_json.py.")
-    print("Se nao ativares 'no-wait-for-final', ele vai esperar o app-catalog-final.json.")
+    title("Pipeline completo")
+    print("Executa scrape, pending/final, outputs finais e prepara a importacao Base44.")
 
     country = ask_text("Pais (ex: India, Canada)")
     if not country:
@@ -151,10 +150,11 @@ def action_pipeline() -> None:
     # Cloudflare/login is already resolved in that session.
     command.extend(["--attach-cdp", "--cdp-url", "http://127.0.0.1:9222", "--no-manual-session"])
 
-    if ask_yes_no("Parar apos gerar app-catalog-pending.json (sem esperar final)?", default=False):
-        command.append("--no-wait-for-final")
+    if ask_yes_no("Apagar ficheiros intermédios e deixar só os outputs finais?", default=True):
+        command.append("--cleanup-intermediate")
 
-    run_step("Pipeline completo", command)
+    if run_step("Pipeline completo", command) == 0:
+        action_import_base44(country=country, input_path=default_app_catalog_path(country))
 
 
 def action_scrape_only() -> None:
@@ -257,13 +257,15 @@ def action_generate_final() -> None:
     run_step("Gerar outputs finais", command)
 
 
-def action_import_base44() -> None:
+def action_import_base44(*, country: str | None = None, input_path: str | None = None) -> None:
     title("Importar para Base44")
     print("Este passo envia app-catalog.json para a entidade Coin na Base44.")
     print("Escolhe modo com cuidado para evitar escrita indevida.")
 
-    country = ask_text("Pais (para sugerir caminho default)", "India")
-    input_path = ask_text("Input app-catalog.json", default_app_catalog_path(country))
+    if country is None:
+        country = ask_text("Pais (para sugerir caminho default)", "India")
+    if input_path is None:
+        input_path = ask_text("Input app-catalog.json", default_app_catalog_path(country))
     if not Path(input_path).is_file():
         print(f"Ficheiro nao encontrado: {input_path}")
         suggestions = suggest_app_catalog_paths(input_path)
@@ -398,25 +400,43 @@ def action_autofix_issues() -> None:
 def menu_importar_ucoin() -> None:
     while True:
         title("Importar Data de uCoin")
-        print("1) Pipeline completo (scrape + pending/final)")
-        print("2) Extrair catalogo do uCoin (scrape apenas)")
-        print("3) Gerar app-catalog-pending.json")
-        print("4) Gerar outputs finais do site")
-        print("5) Importar app-catalog.json para Base44")
-        print("6) Voltar")
+        print("1) Pipeline Completo")
+        print("2) Specific Stage")
+        print("3) Voltar")
 
         choice = ask_text("Escolhe uma opcao", "1")
         if choice == "1":
             action_pipeline()
         elif choice == "2":
-            action_scrape_only()
+            menu_specific_stage()
+            continue
         elif choice == "3":
+            return
+        else:
+            print("Opcao invalida.")
+
+        input("\nCarrega Enter para continuar...")
+
+
+def menu_specific_stage() -> None:
+    while True:
+        title("Specific Stage")
+        print("1) Extrair catalogo do uCoin (scrape apenas)")
+        print("2) Gerar app-catalog-pending.json")
+        print("3) Gerar outputs finais do site")
+        print("4) Importar app-catalog.json para Base44")
+        print("5) Voltar")
+
+        choice = ask_text("Escolhe uma opcao", "1")
+        if choice == "1":
+            action_scrape_only()
+        elif choice == "2":
             action_generate_pending()
-        elif choice == "4":
+        elif choice == "3":
             action_generate_final()
-        elif choice == "5":
+        elif choice == "4":
             action_import_base44()
-        elif choice == "6":
+        elif choice == "5":
             return
         else:
             print("Opcao invalida.")

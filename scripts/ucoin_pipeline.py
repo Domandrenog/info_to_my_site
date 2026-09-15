@@ -37,6 +37,11 @@ def parse_args() -> argparse.Namespace:
         action="store_true",
         help="Only create app-catalog-pending.json and do not wait for app-catalog-final.json.",
     )
+    parser.add_argument(
+        "--cleanup-intermediate",
+        action="store_true",
+        help="After final outputs are generated, delete the uCoin, pending and final intermediate files.",
+    )
     return parser.parse_args()
 
 
@@ -77,6 +82,8 @@ def build_generate_command(args: argparse.Namespace, catalog_path: Path) -> list
     command = [sys.executable, "-m", "scripts.generate_resume_json", "--input", str(catalog_path)]
     if not args.no_wait_for_final:
         command.append("--wait-for-final")
+    if args.cleanup_intermediate:
+        command.append("--cleanup-intermediate")
     return command
 
 
