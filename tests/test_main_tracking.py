@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import io
+import subprocess
 import unittest
 from contextlib import redirect_stdout
 from unittest.mock import patch
@@ -25,6 +26,17 @@ PLANS = [
 
 
 class MainTrackingActionTests(unittest.TestCase):
+    @patch("main.subprocess.run", return_value=subprocess.CompletedProcess([], 1))
+    @patch("main.ask_yes_no", return_value=True)
+    @patch("main.title")
+    def test_run_step_accepts_difference_exit_code(self, _title, _confirm, run) -> None:
+        with redirect_stdout(io.StringIO()) as output:
+            result = main.run_step("Check diferenças", ["checker"], accepted_exit_codes={0, 1})
+
+        self.assertEqual(result, 1)
+        self.assertIn("foram encontradas diferencas", output.getvalue())
+        run.assert_called_once_with(["checker"], cwd=main.PROJECT_DIR, check=False)
+
     @patch("main.subprocess.run")
     @patch("main.ask_yes_no", return_value=False)
     @patch("main.add_browser_mode", side_effect=lambda args: args.append("--attach-cdp"))

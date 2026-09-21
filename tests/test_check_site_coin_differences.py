@@ -10,12 +10,14 @@ from scripts.check_site_coin_differences import (
     api_country_name,
     api_tracking_report,
     build_reverse_map,
+    country_slugs_with_catalog,
     detail_stem,
     find_all_coins_country_folder,
     group_api_records_by_country,
     print_text_report,
     report_for_output,
     untracked_api_countries,
+    write_output_report,
 )
 
 
@@ -202,6 +204,28 @@ class ApiCountryTrackingTests(unittest.TestCase):
 
         self.assertNotIn("image_matched_ucoin_urls", public_report)
         self.assertIn("image_matched_ucoin_urls", report)
+
+    def test_global_country_list_ignores_pending_only_directories(self) -> None:
+        with tempfile.TemporaryDirectory() as temp_dir:
+            paises_dir = Path(temp_dir)
+            tracked = paises_dir / "america" / "canada"
+            pending = paises_dir / "america" / "bahamas"
+            tracked.mkdir(parents=True)
+            pending.mkdir(parents=True)
+            (tracked / "app-catalog.json").write_text("{}", encoding="utf-8")
+            (pending / "app-catalog-pending.json").write_text("{}", encoding="utf-8")
+
+            self.assertEqual(country_slugs_with_catalog(paises_dir, "app-catalog.json"), ["canada"])
+
+    def test_output_report_preserves_existing_file_when_errors_exist(self) -> None:
+        with tempfile.TemporaryDirectory() as temp_dir:
+            output_path = Path(temp_dir) / "all-differences.json"
+            output_path.write_text("previous report\n", encoding="utf-8")
+
+            with redirect_stdout(io.StringIO()):
+                write_output_report(output_path, [], total_issues=5, has_errors=True)
+
+            self.assertEqual(output_path.read_text(encoding="utf-8"), "previous report\n")
 
 
 if __name__ == "__main__":

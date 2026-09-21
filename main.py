@@ -81,7 +81,12 @@ def ask_yes_no(prompt: str, default: bool = True) -> bool:
         print("Responde com y ou n.")
 
 
-def run_step(step_name: str, command: list[str]) -> int | None:
+def run_step(
+    step_name: str,
+    command: list[str],
+    *,
+    accepted_exit_codes: set[int] | None = None,
+) -> int | None:
     title(f"Executar: {step_name}")
     print("Comando:")
     print(" ".join(command))
@@ -89,11 +94,22 @@ def run_step(step_name: str, command: list[str]) -> int | None:
         print("Execucao cancelada pelo utilizador.")
         return None
 
+    accepted = accepted_exit_codes or {0}
     try:
-        subprocess.run(command, cwd=PROJECT_DIR, check=True)
-        print("Concluido com sucesso.")
-        return 0
+        result = subprocess.run(command, cwd=PROJECT_DIR, check=False)
+        if result.returncode not in accepted:
+            print(f"Falhou com codigo de saida {result.returncode}.")
+            return result.returncode
+        if result.returncode == 1:
+            print("Concluido: foram encontradas diferencas.")
+        else:
+            print("Concluido com sucesso.")
+        return result.returncode
     except subprocess.CalledProcessError as exc:
+        # Compatibilidade com mocks/callers que ainda possam levantar este erro.
+        if exc.returncode in accepted:
+            print("Concluido: foram encontradas diferencas.")
+            return exc.returncode
         print(f"Falhou com codigo de saida {exc.returncode}.")
         return exc.returncode
 
@@ -442,7 +458,7 @@ def action_check_differences() -> None:
     if output_path:
         command.extend(["--output", output_path])
 
-    result = run_step("Check diferencas", command)
+    result = run_step("Check diferencas", command, accepted_exit_codes={0, 1})
     if result != 1 or not country:
         return
 

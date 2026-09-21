@@ -720,6 +720,35 @@ def report_for_output(report: dict[str, object]) -> dict[str, object]:
     return {key: value for key, value in report.items() if key != "image_matched_ucoin_urls"}
 
 
+def country_slugs_with_catalog(paises_dir: Path, catalog_filename: str) -> list[str]:
+    return sorted(
+        path.name
+        for path in iter_country_directories(paises_dir)
+        if (path / catalog_filename).is_file()
+    )
+
+
+def write_output_report(
+    output_path: Path,
+    reports: list[dict[str, object]],
+    *,
+    total_issues: int,
+    has_errors: bool,
+) -> None:
+    if has_errors:
+        state = "preserved" if output_path.exists() else "not created"
+        print(f"Report contains errors. Existing output was {state}: {output_path}")
+    elif total_issues > 0:
+        output_path.parent.mkdir(parents=True, exist_ok=True)
+        output_path.write_text(json.dumps(reports, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+        print(f"Saved {output_path}")
+    elif output_path.exists():
+        output_path.unlink()
+        print(f"No differences found. Removed stale file: {output_path}")
+    else:
+        print("No differences found. Output file was not created.")
+
+
 def main() -> int:
     args = parse_args()
     paises_dir = Path(args.paises_dir)
@@ -728,7 +757,7 @@ def main() -> int:
     if args.country:
         countries = [slugify(args.country)]
     else:
-        countries = sorted(path.name for path in iter_country_directories(paises_dir))
+        countries = country_slugs_with_catalog(paises_dir, args.catalog_file)
 
     check_api = not args.no_check_api
     api_records_by_country: dict[str, list[dict[str, object]]] | None = None
@@ -787,15 +816,7 @@ def main() -> int:
 
     if args.output:
         output_path = Path(args.output)
-        if total_issues > 0 and not has_errors:
-            output_path.parent.mkdir(parents=True, exist_ok=True)
-            output_path.write_text(json.dumps(output_reports, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
-            print(f"Saved {output_path}")
-        elif output_path.exists():
-            output_path.unlink()
-            print(f"No differences found. Removed stale file: {output_path}")
-        else:
-            print("No differences found. Output file was not created.")
+        write_output_report(output_path, output_reports, total_issues=total_issues, has_errors=has_errors)
 
     if args.json:
         print(json.dumps(output_reports, ensure_ascii=False, indent=2))
