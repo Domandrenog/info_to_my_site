@@ -15,6 +15,30 @@ from scripts import import_base44_coins
 from scripts.catalog_paths import CATALOG_ROOT, continent_label_for_country, find_country_directory
 
 
+SAFE_UPDATE_FIELDS = ("url_ucoin", "notes")
+PRESERVED_API_FIELDS = {
+    "name",
+    "country",
+    "continent",
+    "years",
+    "condition",
+    "rarity",
+    "has_variants",
+    "image_frente",
+    "image_verso",
+    "url_ucoin",
+    "url_numista",
+    "notes",
+    "ordem",
+}
+PHOTO_ISSUE_TYPES = {
+    "detail_image_slug_mismatch",
+    "missing_image_url",
+    "side_mismatch",
+    "url_not_in_all_coins_map",
+}
+
+
 def parse_args() -> argparse.Namespace:
     project_root = Path(__file__).resolve().parent.parent
     parser = argparse.ArgumentParser(
@@ -181,6 +205,7 @@ def build_fix_plan(report: dict[str, Any], catalog_index: dict[str, tuple[dict[s
             issues = []
 
         update_fields: dict[str, str] = {}
+        current_fields: dict[str, str] = {}
         has_missing_api = False
 
         for issue in issues:
@@ -190,8 +215,10 @@ def build_fix_plan(report: dict[str, Any], catalog_index: dict[str, tuple[dict[s
             missing_value = str(issue.get("missing_value") or "")
             if field == "notes" and missing_value:
                 update_fields["notes"] = missing_value
+                current_fields["notes"] = str(issue.get("value") or "")
             elif field == "url_ucoin" and missing_value:
                 update_fields["url_ucoin"] = missing_value
+                current_fields["url_ucoin"] = str(issue.get("value") or "")
             elif field == "api" and missing_value == "Not found":
                 has_missing_api = True
 
@@ -199,8 +226,10 @@ def build_fix_plan(report: dict[str, Any], catalog_index: dict[str, tuple[dict[s
             updates.append(
                 {
                     "denomination": coin.get("denomination", ""),
+                    "issuePeriod": coin.get("issuePeriod", ""),
                     "record_id": record_id,
                     "siteUrl": site_url,
+                    "current": current_fields,
                     "set": update_fields,
                 }
             )
@@ -212,6 +241,7 @@ def build_fix_plan(report: dict[str, Any], catalog_index: dict[str, tuple[dict[s
                 creates.append(
                     {
                         "denomination": coin.get("denomination", ""),
+                        "issuePeriod": coin.get("issuePeriod", ""),
                         "ucoinUrl": ucoin_url,
                         "period": period,
                         "coin": coin_data,
@@ -220,6 +250,102 @@ def build_fix_plan(report: dict[str, Any], catalog_index: dict[str, tuple[dict[s
                 )
 
     return {"updates": updates, "creates": creates}
+
+
+def collect_global_fix_plan(
+    paises_dir: Path,
+    all_coins_dir: Path,
+    catalog_filename: str = "app-catalog.json",
+) -> dict[str, Any]:
+    """Build one read-only update plan for every locally tracked country."""
+    api_records, api_error = checker.api_records_for_all_countries()
+    if api_records is None:
+        raise RuntimeError(api_error or "Erro desconhecido ao consultar a API Base44.")
+
+    api_records_by_country = checker.group_api_records_by_country(api_records)
+    updates: list[dict[str, Any]] = []
+    missing: list[dict[str, Any]] = []
+    errors: list[dict[str, str]] = []
+    manual_counts = {"photos": 0}
+
+    for country_slug in checker.country_slugs_with_catalog(paises_dir, catalog_filename):
+        report = checker.compare_country(
+            paises_dir,
+            all_coins_dir,
+            country_slug,
+            catalog_filename,
+            include_markdown_as_issue=False,
+            check_api=True,
+            include_warnings=False,
+            api_records_by_country=api_records_by_country,
+        )
+        country_name = str(report.get("country_name") or country_slug)
+        if report.get("error"):
+            errors.append({"country": country_name, "error": str(report["error"])})
+            continue
+
+        country_dir = find_country_directory(paises_dir, country_slug)
+        catalog_index, catalog_data = load_catalog_index(country_dir / catalog_filename)
+        country_name = str(catalog_data.get("country") or country_name)
+        country_plan = build_fix_plan(report, catalog_index)
+
+        for item in country_plan.get("updates", []):
+            updates.append({**item, "country": country_name, "country_slug": country_slug})
+        for item in country_plan.get("creates", []):
+            missing.append(
+                {
+                    "country": country_name,
+                    "country_slug": country_slug,
+                    "denomination": item.get("denomination", ""),
+                    "issuePeriod": item.get("issuePeriod", ""),
+                    "ucoinUrl": item.get("ucoinUrl", ""),
+                }
+            )
+
+        summary = report.get("summary", {})
+        by_type = summary.get("by_type", {}) if isinstance(summary, dict) else {}
+        if isinstance(by_type, dict):
+            manual_counts["photos"] += sum(int(by_type.get(issue_type, 0)) for issue_type in PHOTO_ISSUE_TYPES)
+
+    return {
+        "updates": updates,
+        "missing": missing,
+        "errors": errors,
+        "manual_counts": manual_counts,
+    }
+
+
+def update_field_counts(plan: dict[str, Any]) -> dict[str, int]:
+    counts = {field: 0 for field in SAFE_UPDATE_FIELDS}
+    for item in plan.get("updates", []):
+        set_fields = item.get("set", {})
+        if not isinstance(set_fields, dict):
+            continue
+        for field in SAFE_UPDATE_FIELDS:
+            if field in set_fields:
+                counts[field] += 1
+    return {field: count for field, count in counts.items() if count}
+
+
+def select_update_fields(plan: dict[str, Any], selected_fields: list[str] | tuple[str, ...]) -> dict[str, Any]:
+    """Return a plan containing only explicitly selected safe API fields."""
+    allowed = set(selected_fields) & set(SAFE_UPDATE_FIELDS)
+    updates: list[dict[str, Any]] = []
+    for item in plan.get("updates", []):
+        raw_set = item.get("set", {})
+        raw_current = item.get("current", {})
+        if not isinstance(raw_set, dict):
+            continue
+        selected_set = {field: raw_set[field] for field in SAFE_UPDATE_FIELDS if field in allowed and field in raw_set}
+        if not selected_set:
+            continue
+        selected_current = {
+            field: raw_current.get(field, "")
+            for field in selected_set
+            if isinstance(raw_current, dict)
+        }
+        updates.append({**item, "current": selected_current, "set": selected_set})
+    return {**plan, "updates": updates}
 
 
 def default_associations_path(country_dir: Path, country_slug: str) -> Path:
@@ -700,36 +826,104 @@ def apply_plan(args: argparse.Namespace, country_name: str, plan: dict[str, Any]
 
     updated = 0
     created = 0
+    skipped = 0
 
     for item in plan.get("updates", []):
         record_id = str(item.get("record_id") or "")
         if not record_id:
             continue
+        set_fields = {
+            field: value
+            for field, value in item.get("set", {}).items()
+            if field in SAFE_UPDATE_FIELDS
+        }
+        if not set_fields:
+            continue
         current = client.request("GET", f"{client.base_url}/{record_id}")
         if not isinstance(current, dict):
+            skipped += 1
+            print(f"Ignorado {item.get('denomination', '')}: resposta atual inválida da API.")
             continue
-        current.update(item.get("set", {}))
-        client.update(record_id, current)
+
+        expected_current = item.get("current", {})
+        changed_since_preview = [
+            field
+            for field in set_fields
+            if isinstance(expected_current, dict)
+            and field in expected_current
+            and str(current.get(field) or "").strip() != str(expected_current.get(field) or "").strip()
+            and str(current.get(field) or "").strip() != str(set_fields[field] or "").strip()
+        ]
+        if changed_since_preview:
+            skipped += 1
+            print(
+                f"Ignorado {item.get('denomination', '')}: mudou desde a pré-visualização "
+                f"({', '.join(changed_since_preview)})."
+            )
+            continue
+
+        fields_to_write = {
+            field: value
+            for field, value in set_fields.items()
+            if str(current.get(field) or "").strip() != str(value or "").strip()
+        }
+        if not fields_to_write:
+            skipped += 1
+            print(f"Já estava correto: {item.get('denomination', '')}")
+            continue
+
+        before_preserved = {
+            field: current.get(field)
+            for field in PRESERVED_API_FIELDS - set(fields_to_write)
+            if field in current
+        }
+        payload = dict(current)
+        payload.update(fields_to_write)
+        client.update(record_id, payload)
+
+        verified = client.request("GET", f"{client.base_url}/{record_id}")
+        if not isinstance(verified, dict):
+            raise RuntimeError(f"Não foi possível verificar a atualização de {item.get('denomination', '')}.")
+        incorrect = [
+            field
+            for field, value in fields_to_write.items()
+            if str(verified.get(field) or "").strip() != str(value or "").strip()
+        ]
+        changed_unselected = [
+            field
+            for field, value in before_preserved.items()
+            if verified.get(field) != value
+        ]
+        if incorrect or changed_unselected:
+            details = []
+            if incorrect:
+                details.append(f"campos não confirmados: {', '.join(incorrect)}")
+            if changed_unselected:
+                details.append(f"campos não selecionados alterados: {', '.join(changed_unselected)}")
+            raise RuntimeError(f"Verificação falhou para {item.get('denomination', '')}: {'; '.join(details)}")
+
         updated += 1
-        print(f"Updated {item.get('denomination', '')}: {item.get('set', {})}")
+        print(f"Atualizado {item.get('denomination', '')}: {', '.join(fields_to_write)}")
 
-    continent = args.continent or continent_label_for_country(country_name)
-    if not continent:
-        raise ValueError(f"Missing continent for {country_name}. Pass --continent.")
-    options = {
-        "country": country_name,
-        "continent": continent,
-        "condition": args.condition,
-    }
+    creates = list(plan.get("creates", []))
+    if creates:
+        continent = args.continent or continent_label_for_country(country_name)
+        if not continent:
+            raise ValueError(f"Missing continent for {country_name}. Pass --continent.")
+        options = {
+            "country": country_name,
+            "continent": continent,
+            "condition": args.condition,
+        }
 
-    for item in plan.get("creates", []):
-        entry = (item["period"], item["coin"])
-        record = import_base44_coins.to_coin_record(entry, options, int(item.get("ordem", 1)))
-        client.bulk_create([record])
-        created += 1
-        print(f"Created {item.get('denomination', '')}: {record.get('url_ucoin', '')}")
+        for item in creates:
+            entry = (item["period"], item["coin"])
+            record = import_base44_coins.to_coin_record(entry, options, int(item.get("ordem", 1)))
+            client.bulk_create([record])
+            created += 1
+            print(f"Created {item.get('denomination', '')}: {record.get('url_ucoin', '')}")
 
-    return {"updated": updated, "created": created}
+    return {"updated": updated, "created": created, "skipped": skipped}
 
 
 def filter_summary_coins(coins: Any, update_fields: list[str] | tuple[str, ...]) -> list[dict[str, Any]]:

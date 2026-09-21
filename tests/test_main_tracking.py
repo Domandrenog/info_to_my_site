@@ -115,6 +115,42 @@ class MainTrackingActionTests(unittest.TestCase):
             check=True,
         )
 
+    @patch("main.fix_site_issues_api.apply_plan", return_value={"updated": 1, "created": 0, "skipped": 0})
+    @patch("main.ask_yes_no", return_value=True)
+    @patch("main.ask_text", return_value="1")
+    @patch("main.fix_site_issues_api.collect_global_fix_plan")
+    @patch("main.title")
+    def test_autofix_only_applies_the_selected_available_field(
+        self,
+        _title,
+        collect,
+        _ask_text,
+        _confirm,
+        apply_plan,
+    ) -> None:
+        collect.return_value = {
+            "updates": [
+                {
+                    "country": "Portugal",
+                    "denomination": "1 escudo",
+                    "issuePeriod": "1950",
+                    "record_id": "record-1",
+                    "current": {"url_ucoin": "", "notes": ""},
+                    "set": {"url_ucoin": "https://pt.ucoin.net/coin/example", "notes": "República"},
+                }
+            ],
+            "missing": [],
+            "errors": [],
+            "manual_counts": {"photos": 0},
+        }
+
+        with redirect_stdout(io.StringIO()) as output:
+            main.action_autofix_issues()
+
+        applied_plan = apply_plan.call_args.args[2]
+        self.assertEqual(applied_plan["updates"][0]["set"], {"url_ucoin": "https://pt.ucoin.net/coin/example"})
+        self.assertNotIn("fotografias a rever", output.getvalue().lower())
+
 
 if __name__ == "__main__":
     unittest.main()

@@ -7,7 +7,9 @@ import subprocess
 import sys
 from difflib import get_close_matches
 from pathlib import Path
+from types import SimpleNamespace
 
+from scripts import fix_site_issues_api
 from scripts.catalog_paths import (
     CATALOG_ROOT,
     continent_label_for_country,
@@ -558,48 +560,142 @@ def action_check_differences() -> None:
 
 
 def action_autofix_issues() -> None:
-    title("Atualizar API com issues detectadas")
-    print("Corrige notes/url_ucoin na API e mostra entradas missing no terminal.")
-    print("Neste fluxo nao criamos registos em falta.")
+    title("Corrigir dados no Site Base44")
+    print("Analisa todos os países e só permite alterar os campos escolhidos.")
+    print("Neste fluxo não criamos registos nem alteramos fotografias.")
+    print("A recolher o estado atual da API e dos catálogos...", flush=True)
 
-    country = ask_text("Pais (obrigatorio, ex: bielorrussia)", "")
-    if not country:
-        print("Pais obrigatorio.")
+    try:
+        plan = fix_site_issues_api.collect_global_fix_plan(
+            PROJECT_DIR / CATALOG_ROOT,
+            PROJECT_DIR.parent / "All_Coins",
+        )
+    except Exception as exc:  # noqa: BLE001
+        print(f"Não foi possível preparar as correções: {exc}")
         return
 
-    update_fields = []
-    if ask_yes_no("Modificar url_ucoin?", default=True):
-        update_fields.append("url_ucoin")
-    if ask_yes_no("Modificar notes?", default=True):
-        update_fields.append("notes")
-    if not update_fields:
-        print("Nenhum parametro selecionado. Operacao cancelada.")
+    errors = plan.get("errors", [])
+    if errors:
+        print("\nPaíses que não foi possível analisar:")
+        for item in errors:
+            print(f"- {item.get('country', '')}: {item.get('error', '')}")
+        print("\nOperação bloqueada: o diagnóstico global ficou incompleto.")
         return
 
-    apply_changes = ask_yes_no("Aplicar correcoes na API agora?", default=False)
-    reconcile_missing = ask_yes_no("Tentar associar missing por nome/anos (com confirmacao)?", default=True)
+    missing = plan.get("missing", [])
+    if missing:
+        print(f"\nEntradas sem associação confirmada na API: {len(missing)}")
+        print("Estas entradas serão apenas mostradas; não serão criadas nem alteradas.")
+        current_country = ""
+        for item in sorted(
+            missing,
+            key=lambda value: (
+                str(value.get("country") or ""),
+                str(value.get("denomination") or ""),
+                str(value.get("issuePeriod") or ""),
+            ),
+        ):
+            country = str(item.get("country") or "")
+            if country != current_country:
+                print(f"\n{country}:")
+                current_country = country
+            years = str(item.get("issuePeriod") or "")
+            years_text = f" ({years})" if years else ""
+            print(f"- {item.get('denomination', '')}{years_text}")
 
-    default_output = str(country_directory(country) / f"{slugify(country)}-autofix-plan.json")
-    output_path = ask_text("Ficheiro de plano/output", default_output)
+    photo_issues = int(plan.get("manual_counts", {}).get("photos", 0))
+    if photo_issues:
+        print(f"\nFotografias a rever manualmente: {photo_issues} ocorrências")
+        print("Não aparecem como opção porque este diagnóstico não permite uma correção segura na API.")
 
-    command = [
-        sys.executable,
-        "-m",
-        "scripts.fix_site_issues_api",
-        "--country",
-        country,
-        "--output",
-        output_path,
-        "--update-fields",
-        *update_fields,
-        "--skip-create-missing",
-    ]
-    if reconcile_missing:
-        command.append("--reconcile-missing-interactive")
-    if apply_changes:
-        command.append("--apply")
+    counts = fix_site_issues_api.update_field_counts(plan)
+    if not counts:
+        print("\nNão existem correções automáticas disponíveis para notes ou URL do uCoin.")
+        return
 
-    run_step("Auto-fix API (updates only)", command)
+    field_labels = {
+        "url_ucoin": "Corrigir URL do uCoin",
+        "notes": "Preencher notes",
+    }
+    available_fields = [field for field in fix_site_issues_api.SAFE_UPDATE_FIELDS if field in counts]
+    print("\nCorreções disponíveis:")
+    for index, field in enumerate(available_fields, start=1):
+        print(f"{index}) {field_labels[field]} — {counts[field]} moedas")
+    if len(available_fields) > 1:
+        print(f"{len(available_fields) + 1}) Todas as opções acima")
+    print("0) Cancelar")
+
+    while True:
+        choice = ask_text("Escolhe o que queres corrigir", "0")
+        if choice == "0":
+            print("Operação cancelada. A API não foi alterada.")
+            return
+        if len(available_fields) > 1 and choice == str(len(available_fields) + 1):
+            selected_fields = available_fields
+            break
+        try:
+            selected_index = int(choice) - 1
+            if selected_index < 0 or selected_index >= len(available_fields):
+                raise IndexError
+            selected_fields = [available_fields[selected_index]]
+            break
+        except (ValueError, IndexError):
+            print("Escolhe uma das opções apresentadas.")
+
+    selected_plan = fix_site_issues_api.select_update_fields(plan, selected_fields)
+    updates = selected_plan.get("updates", [])
+    total_changes = sum(len(item.get("set", {})) for item in updates)
+    print(f"\nAlterações propostas: {total_changes} campos em {len(updates)} moedas")
+
+    current_country = ""
+    for item in sorted(
+        updates,
+        key=lambda value: (
+            str(value.get("country") or ""),
+            str(value.get("denomination") or ""),
+            str(value.get("issuePeriod") or ""),
+        ),
+    ):
+        country = str(item.get("country") or "")
+        if country != current_country:
+            print(f"\n{country}:")
+            current_country = country
+        years = str(item.get("issuePeriod") or "")
+        years_text = f" ({years})" if years else ""
+        print(f"- {item.get('denomination', '')}{years_text}")
+        current_values = item.get("current", {})
+        for field, new_value in item.get("set", {}).items():
+            old_value = str(current_values.get(field) or "(vazio)")
+            print(f"  {field}: {old_value} -> {new_value}")
+
+    if not ask_yes_no(
+        f"Aplicar exatamente estes {total_changes} campos na API?",
+        default=False,
+    ):
+        print("Operação cancelada. A API não foi alterada.")
+        return
+
+    args = SimpleNamespace(
+        request_delay=1.5,
+        rate_limit_delay=30.0,
+        max_retries=5,
+        continent="",
+        condition="Nao Tenho",
+    )
+    try:
+        result = fix_site_issues_api.apply_plan(
+            args,
+            "",
+            {"updates": updates, "creates": []},
+        )
+    except Exception as exc:  # noqa: BLE001
+        print(f"A atualização parou: {exc}")
+        return
+
+    print(
+        "\nAtualização concluída e verificada: "
+        f"{result['updated']} moedas atualizadas; {result['skipped']} ignoradas."
+    )
 
 
 def menu_importar_ucoin() -> None:
