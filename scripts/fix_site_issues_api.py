@@ -924,14 +924,39 @@ def reconcile_missing(
     api_records = [record for record in (api_records_raw or []) if isinstance(record, dict)]
     by_record_id = {str(record.get("id") or ""): record for record in api_records if str(record.get("id") or "")}
 
-    associations: dict[str, dict[str, str]] = {}
+    associations = load_associations(associations_path)
     known_from_missing_found: dict[str, dict[str, str]] = {}
+    record_owners: dict[str, set[str]] = {}
+
+    def reserve_record(record_id: str, owner_ucoin_url: str) -> None:
+        if record_id and owner_ucoin_url:
+            record_owners.setdefault(record_id, set()).add(owner_ucoin_url)
+
+    for record in api_records:
+        reserve_record(
+            str(record.get("id") or ""),
+            normalize_url(str(record.get("url_ucoin") or "")),
+        )
+
+    for associated_ucoin_url, association in associations.items():
+        reserve_record(
+            str(association.get("record_id") or ""),
+            associated_ucoin_url,
+        )
+
     for entry in load_missing_found(missing_found_path):
-        if str(entry.get("status") or "") != "connected":
+        if str(entry.get("status") or "") not in {
+            "connected",
+            "connected_pending_name_update",
+            "connected_pending_metadata_update",
+            "created",
+            "already_exists",
+        }:
             continue
         key = normalize_url(str(entry.get("ucoinUrl") or ""))
         record_id = parse_association_record_id(entry)
         if key and record_id:
+            reserve_record(record_id, key)
             known_from_missing_found[key] = {
                 "record_id": record_id,
                 "api_url": str(entry.get("siteUrl") or "") or checker.build_site_url(record_id),
@@ -956,6 +981,16 @@ def reconcile_missing(
         same_coin_decision = ""
         create_decision = False
 
+        associated = associations.get(ucoin_url)
+        if associated:
+            associated_record_id = str(associated.get("record_id") or "")
+            associated_record = by_record_id.get(associated_record_id)
+            if associated_record is not None and record_owners.get(associated_record_id) == {ucoin_url}:
+                resolved_record = associated_record
+                resolved_source = "associations_file"
+                candidate_for_decision = resolved_record
+                same_coin_decision = "yes"
+
         if resolved_record is None:
             known_missing = known_from_missing_found.get(ucoin_url)
             if known_missing:
@@ -972,6 +1007,30 @@ def reconcile_missing(
                     }
                     associations_changed = True
 
+        if resolved_record is None and ucoin_url:
+            direct_url_matches = [
+                record
+                for record in api_records
+                if normalize_url(str(record.get("url_ucoin") or "")) == ucoin_url
+                and (
+                    not record_owners.get(str(record.get("id") or ""))
+                    or record_owners[str(record.get("id") or "")] == {ucoin_url}
+                )
+            ]
+            if len(direct_url_matches) == 1:
+                resolved_record = direct_url_matches[0]
+                resolved_source = "site_ucoin_url"
+                candidate_for_decision = resolved_record
+                same_coin_decision = "yes"
+
+        available_api_records = [
+            record
+            for record in api_records
+            if not str(record.get("id") or "")
+            or not record_owners.get(str(record.get("id") or ""))
+            or record_owners[str(record.get("id") or "")] == {ucoin_url}
+        ]
+
         if resolved_record is None and interactive:
             print("\n" + "-" * 72)
             print("MOEDA SEM ASSOCIAÇÃO CONFIRMADA")
@@ -981,7 +1040,7 @@ def reconcile_missing(
 
             exact_candidates = [
                 record
-                for record in api_records
+                for record in available_api_records
                 if normalize_key(str(record.get("name") or "")) == normalize_key(denomination)
                 and normalize_key(str(record.get("years") or "")) == normalize_key(issue_period)
             ]
@@ -1012,7 +1071,7 @@ def reconcile_missing(
                     else:
                         same_coin_decision = "no"
             else:
-                candidates = best_candidates(item, api_records, max_candidates)
+                candidates = best_candidates(item, available_api_records, max_candidates)
                 if not candidates:
                     print("Sem candidatos por nome e anos.")
                     print("  1) Não existe no Site Base44 — criar moeda nova")
@@ -1138,6 +1197,7 @@ def reconcile_missing(
             unresolved.append({"denomination": denomination, "ucoinUrl": ucoin_url})
             continue
 
+        reserve_record(str(resolved_record.get("id") or ""), ucoin_url)
         current_url = normalize_url(str(resolved_record.get("url_ucoin") or ""))
         current_notes = str(resolved_record.get("notes") or "").strip()
         current_name = str(resolved_record.get("name") or "").strip()

@@ -350,6 +350,222 @@ class FixSiteIssuesPlanTests(unittest.TestCase):
         self.assertEqual(decisions["decisions"][0]["createRecord"], "yes")
         self.assertEqual(decisions["decisions"][0]["applyStatus"], "pending_create")
 
+    def test_reconcile_uses_exact_site_ucoin_url_without_asking(self) -> None:
+        detail_url = "https://pt.ucoin.net/coin/china-1-jiao-1980-1986"
+        missing = [
+            {
+                "denomination": "1 jiao",
+                "ucoinUrl": detail_url,
+                "period": {"title": "China › República Popular › 1980-1986"},
+                "coin": {"issuePeriod": "1980 - 1986"},
+            }
+        ]
+        site_record = {
+            "id": "record-1",
+            "name": "1 jiao",
+            "years": "1980-1986",
+            "url_ucoin": detail_url,
+            "notes": "República Popular",
+        }
+
+        with tempfile.TemporaryDirectory() as temp_dir:
+            with (
+                patch.object(
+                    fix_site_issues_api.checker,
+                    "api_records_for_country",
+                    return_value=([site_record], None),
+                ),
+                patch("builtins.input", side_effect=AssertionError("não devia perguntar")),
+                redirect_stdout(io.StringIO()) as output,
+            ):
+                result = fix_site_issues_api.reconcile_missing(
+                    country_name="China",
+                    missing_creates=missing,
+                    plan_updates=[],
+                    associations_path=Path(temp_dir) / "associations.json",
+                    missing_found_path=Path(temp_dir) / "missing-found.json",
+                    interactive=True,
+                    max_candidates=5,
+                )
+
+        self.assertEqual(result["unresolved"], [])
+        self.assertEqual(result["all"][0]["status"], "connected")
+        self.assertEqual(result["all"][0]["source"], "site_ucoin_url")
+        self.assertNotIn("MOEDA SEM ASSOCIAÇÃO CONFIRMADA", output.getvalue())
+
+    def test_reconcile_uses_saved_association_without_asking(self) -> None:
+        detail_url = "https://pt.ucoin.net/coin/china-1-jiao-1980-1986"
+        missing = [
+            {
+                "denomination": "1 jiao",
+                "ucoinUrl": detail_url,
+                "period": {"title": "China › República Popular › 1980-1986"},
+                "coin": {"issuePeriod": "1980 - 1986"},
+            }
+        ]
+        site_record = {
+            "id": "record-1",
+            "name": "1 jiao",
+            "years": "1980-1986",
+            "url_ucoin": "",
+            "notes": "República Popular",
+        }
+
+        with tempfile.TemporaryDirectory() as temp_dir:
+            associations_path = Path(temp_dir) / "associations.json"
+            associations_path.write_text(
+                json.dumps(
+                    {
+                        "associations": [
+                            {
+                                "ucoinUrl": detail_url,
+                                "record_id": "record-1",
+                                "apiUrl": fix_site_issues_api.checker.build_site_url("record-1"),
+                                "name": "1 jiao",
+                                "years": "1980-1986",
+                            }
+                        ]
+                    }
+                ),
+                encoding="utf-8",
+            )
+            with (
+                patch.object(
+                    fix_site_issues_api.checker,
+                    "api_records_for_country",
+                    return_value=([site_record], None),
+                ),
+                patch("builtins.input", side_effect=AssertionError("não devia perguntar")),
+                redirect_stdout(io.StringIO()) as output,
+            ):
+                result = fix_site_issues_api.reconcile_missing(
+                    country_name="China",
+                    missing_creates=missing,
+                    plan_updates=[],
+                    associations_path=associations_path,
+                    missing_found_path=Path(temp_dir) / "missing-found.json",
+                    interactive=True,
+                    max_candidates=5,
+                )
+
+        self.assertEqual(result["unresolved"], [])
+        self.assertEqual(result["all"][0]["status"], "connected")
+        self.assertEqual(result["all"][0]["source"], "associations_file")
+        self.assertNotIn("MOEDA SEM ASSOCIAÇÃO CONFIRMADA", output.getvalue())
+
+    def test_reconcile_does_not_offer_record_reserved_for_another_coin(self) -> None:
+        current_url = "https://pt.ucoin.net/coin/china-1-jiao-1980-1986"
+        occupied_url = "https://pt.ucoin.net/coin/china-1-jiao-1979"
+        missing = [
+            {
+                "denomination": "1 jiao",
+                "ucoinUrl": current_url,
+                "period": {"title": "China › República Popular › 1980-1986"},
+                "coin": {"issuePeriod": "1980 - 1986"},
+            }
+        ]
+        occupied_record = {
+            "id": "record-occupied",
+            "name": "1 jiao",
+            "years": "1980-1986",
+            "url_ucoin": "",
+        }
+        free_record = {
+            "id": "record-free",
+            "name": "1 jiao",
+            "years": "2019-2025",
+            "url_ucoin": "",
+        }
+
+        with tempfile.TemporaryDirectory() as temp_dir:
+            missing_found_path = Path(temp_dir) / "missing-found.json"
+            missing_found_path.write_text(
+                json.dumps(
+                    {
+                        "country": "china",
+                        "missing": [
+                            {
+                                "status": "connected",
+                                "ucoinUrl": occupied_url,
+                                "record_id": "record-occupied",
+                            }
+                        ],
+                    }
+                ),
+                encoding="utf-8",
+            )
+            with (
+                patch.object(
+                    fix_site_issues_api.checker,
+                    "api_records_for_country",
+                    return_value=([occupied_record, free_record], None),
+                ),
+                patch("builtins.input", return_value="0"),
+                redirect_stdout(io.StringIO()) as output,
+            ):
+                result = fix_site_issues_api.reconcile_missing(
+                    country_name="China",
+                    missing_creates=missing,
+                    plan_updates=[],
+                    associations_path=Path(temp_dir) / "associations.json",
+                    missing_found_path=missing_found_path,
+                    interactive=True,
+                    max_candidates=5,
+                )
+
+        rendered = output.getvalue()
+        self.assertEqual(result["unresolved"], [{"denomination": "1 jiao", "ucoinUrl": current_url}])
+        self.assertIn("1) 1 jiao (2019-2025)", rendered)
+        self.assertNotIn("1) 1 jiao (1980-1986)", rendered)
+
+    def test_reconcile_reserves_selected_record_for_rest_of_current_run(self) -> None:
+        missing = [
+            {
+                "denomination": "1 jiao",
+                "ucoinUrl": "https://pt.ucoin.net/coin/china-1-jiao-a",
+                "period": {},
+                "coin": {"issuePeriod": "1980"},
+            },
+            {
+                "denomination": "1 jiao",
+                "ucoinUrl": "https://pt.ucoin.net/coin/china-1-jiao-b",
+                "period": {},
+                "coin": {"issuePeriod": "1981"},
+            },
+        ]
+        site_record = {
+            "id": "record-1",
+            "name": "1 jiao",
+            "years": "2000",
+            "url_ucoin": "",
+            "notes": "",
+        }
+
+        with tempfile.TemporaryDirectory() as temp_dir:
+            with (
+                patch.object(
+                    fix_site_issues_api.checker,
+                    "api_records_for_country",
+                    return_value=([site_record], None),
+                ),
+                patch("builtins.input", side_effect=["1", "n", "0"]),
+                redirect_stdout(io.StringIO()) as output,
+            ):
+                result = fix_site_issues_api.reconcile_missing(
+                    country_name="China",
+                    missing_creates=missing,
+                    plan_updates=[],
+                    associations_path=Path(temp_dir) / "associations.json",
+                    missing_found_path=Path(temp_dir) / "missing-found.json",
+                    interactive=True,
+                    max_candidates=5,
+                )
+
+        self.assertEqual(result["all"][0]["status"], "connected")
+        self.assertEqual(len(result["unresolved"]), 1)
+        self.assertEqual(output.getvalue().count("1) 1 jiao (2000)"), 1)
+        self.assertIn("Sem candidatos por nome e anos.", output.getvalue())
+
     def test_rejected_match_is_also_saved_in_decisions_json(self) -> None:
         missing = [
             {
