@@ -19,6 +19,60 @@ class FixSiteIssuesPlanTests(unittest.TestCase):
 
         self.assertEqual(args.condition, "Não Tenho")
 
+    def test_main_uses_base44_country_alias_when_reconciling(self) -> None:
+        with tempfile.TemporaryDirectory() as temp_dir:
+            root = Path(temp_dir)
+            country_dir = root / "africa" / "seychelles"
+            country_dir.mkdir(parents=True)
+            (country_dir / "app-catalog.json").write_text(
+                json.dumps({"country": "Seicheles", "periods": []}),
+                encoding="utf-8",
+            )
+            args = argparse.Namespace(
+                country="seychelles",
+                paises_dir=str(root),
+                all_coins_dir=str(root / "All_Coins"),
+                catalog_file="app-catalog.json",
+                continent="",
+                condition="Não Tenho",
+                output="",
+                apply=False,
+                update_fields=("notes", "url_ucoin"),
+                skip_create_missing=True,
+                reconcile_missing_interactive=True,
+                associations_file="",
+                max_match_candidates=5,
+                request_delay=0.0,
+                rate_limit_delay=0.0,
+                max_retries=0,
+            )
+            report = {
+                "country": "seychelles",
+                "country_name": "Seicheles",
+                "summary": {"coins": []},
+                "coins_with_issues": [],
+            }
+
+            with (
+                patch.object(fix_site_issues_api, "parse_args", return_value=args),
+                patch.object(fix_site_issues_api.checker, "compare_country", return_value=report),
+                patch.object(
+                    fix_site_issues_api,
+                    "build_fix_plan",
+                    return_value={"updates": [], "creates": []},
+                ),
+                patch.object(
+                    fix_site_issues_api,
+                    "reconcile_missing",
+                    return_value={"unresolved": [], "all": [], "creates": []},
+                ) as reconcile,
+                redirect_stdout(io.StringIO()),
+            ):
+                result = fix_site_issues_api.main()
+
+        self.assertEqual(result, 0)
+        self.assertEqual(reconcile.call_args.kwargs["country_name"], "Seychelles")
+
     def test_verified_creation_updates_decision_and_missing_found_json(self) -> None:
         detail_url = "https://pt.ucoin.net/coin/china-1-jiao-1980-1986"
         with tempfile.TemporaryDirectory() as temp_dir:

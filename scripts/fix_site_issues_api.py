@@ -1718,6 +1718,7 @@ def main() -> int:
 
     catalog_index, catalog_data = load_catalog_index(catalog_path)
     country_name = str(catalog_data.get("country") or country_slug)
+    api_country_name = checker.api_country_name(country_slug, country_name)
 
     full_plan = build_fix_plan(report, catalog_index)
     plan_updates = list(full_plan.get("updates", []))
@@ -1729,7 +1730,7 @@ def main() -> int:
 
     if args.skip_create_missing:
         reconcile_result = reconcile_missing(
-            country_name=country_name,
+            country_name=api_country_name,
             missing_creates=list(full_plan.get("creates", [])),
             plan_updates=plan_updates,
             associations_path=associations_path,
