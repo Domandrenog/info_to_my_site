@@ -31,29 +31,74 @@ class CheckSiteCoinDifferencesOutputTests(unittest.TestCase):
             print_text_report(report, include_warnings)
         return output.getvalue().strip()
 
-    def test_text_report_is_aggregated_by_issue_type(self) -> None:
+    def test_text_report_separates_analyzed_coins_from_issue_occurrences(self) -> None:
+        coins = [
+            {
+                "denomination": f"moeda {index}",
+                "issuePeriod": "2000",
+                "issues": [
+                    {
+                        "type": "missing_api_coin_record",
+                        "field": "api",
+                        "value": "",
+                        "missing_value": "Not found",
+                    }
+                ],
+            }
+            for index in range(1, 21)
+        ]
+        coins.append(
+            {
+                "denomination": "10 piso",
+                "issuePeriod": "2025",
+                "issues": [
+                    {
+                        "type": "missing_api_coin_record",
+                        "field": "api",
+                        "value": "",
+                        "missing_value": "Not found",
+                    },
+                    {
+                        "type": "missing_image_url",
+                        "field": "obverseImage",
+                        "value": "",
+                        "missing_value": "image_url",
+                    },
+                    {
+                        "type": "missing_image_url",
+                        "field": "reverseImage",
+                        "value": "",
+                        "missing_value": "image_url",
+                    },
+                ],
+            }
+        )
         report = {
-            "country": "portugal",
-            "country_name": "Portugal",
+            "country": "filipinas",
+            "country_name": "Filipinas",
             "summary": {
-                "total_issues": 60,
+                "analyzed_coins": 21,
+                "api_coin_count": 19,
+                "total_issues": 23,
                 "by_type": {
-                    "missing_api_coin_record": 17,
-                    "missing_image_url": 43,
+                    "missing_api_coin_record": 21,
+                    "missing_image_url": 2,
                 },
             },
-            "coins_with_issues": [
-                {
-                    "denomination": "1 euro",
-                    "ucoinUrl": "https://example.test/ucoin",
-                    "siteUrl": "https://example.test/site",
-                }
-            ],
+            "coins_with_issues": coins,
         }
 
         self.assertEqual(
             self.render(report),
-            "Portugal: 60 issues\n- No photo: 43 issues\n- Not found: 17 issues",
+            "Filipinas: 21 moedas analisadas\n"
+            "\n"
+            "- Sem associação confirmada: 21 moedas\n"
+            "- Possivelmente em falta na API: 2 moedas\n"
+            "- Sem fotografia: 1 moeda\n"
+            "  - 10 piso (2025): frente e verso em falta\n"
+            "\n"
+            "API Base44: 19 moedas\n"
+            "Catálogo local: 21 moedas",
         )
 
     def test_text_report_uses_singular_and_compact_warnings(self) -> None:
@@ -61,16 +106,38 @@ class CheckSiteCoinDifferencesOutputTests(unittest.TestCase):
             "country": "sri-lanka",
             "country_name": "Sri Lanka",
             "summary": {
+                "analyzed_coins": 1,
+                "api_coin_count": 1,
                 "total_issues": 1,
                 "by_type": {"missing_notes": 1},
                 "total_warnings": 2,
                 "warnings_by_type": {"multiple_api_matches": 2},
             },
+            "coins_with_issues": [
+                {
+                    "denomination": "1 cêntimo",
+                    "issues": [
+                        {
+                            "type": "missing_notes",
+                            "field": "notes",
+                            "value": "",
+                            "missing_value": "República",
+                        }
+                    ],
+                }
+            ],
         }
 
         self.assertEqual(
             self.render(report, include_warnings=True),
-            "Sri Lanka: 1 issue\n- Missing notes: 1 issue\nWarnings: 2\n- Multiple API matches: 2 warnings",
+            "Sri Lanka: 1 moeda analisada\n"
+            "\n"
+            "- Sem notes: 1 moeda\n"
+            "\n"
+            "API Base44: 1 moeda\n"
+            "Catálogo local: 1 moeda\n"
+            "Warnings: 2\n"
+            "- Multiple API matches: 2 warnings",
         )
 
     def test_text_report_shows_errors_without_coin_details(self) -> None:

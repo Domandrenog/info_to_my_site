@@ -24,6 +24,17 @@ ISSUE_TYPE_LABELS = {
     "url_not_in_all_coins_map": "Photo not mapped",
 }
 
+TEXT_REPORT_ISSUE_LABELS = {
+    "detail_image_slug_mismatch": "Fotografia incorreta",
+    "markdown_url": "URL em formato Markdown",
+    "mismatched_url_ucoin": "URL do uCoin incorreto",
+    "missing_notes": "Sem notes",
+    "missing_url_ucoin": "Sem URL do uCoin",
+    "multiple_api_matches": "Várias associações possíveis na API",
+    "side_mismatch": "Lado da fotografia incorreto",
+    "url_not_in_all_coins_map": "Fotografia sem mapeamento",
+}
+
 
 def normalize_url(value: str) -> tuple[str, bool]:
     raw = str(value or "").strip()
@@ -203,6 +214,7 @@ def count_label(count: int, singular: str, plural: str) -> str:
 def compact_findings(findings: list[dict[str, str]]) -> list[dict[str, str]]:
     return [
         {
+            "type": str(finding.get("type", "")),
             "field": str(finding.get("field", "")),
             "value": str(finding.get("value", "")),
             "missing_value": str(finding.get("missing_value", "")),
@@ -545,8 +557,10 @@ def compare_country(
     coins_with_issues: list[dict[str, object]] = []
     coins_with_warnings: list[dict[str, object]] = []
     image_matched_ucoin_urls: list[str] = []
+    analyzed_coin_count = 0
 
     for period, coin in iter_coins(data):
+        analyzed_coin_count += 1
         ucoin_url = str(coin.get("detailUrl") or "")
         detail_norm = normalize_url(ucoin_url)[0]
         expected_detail_slug = detail_stem(ucoin_url)
@@ -674,9 +688,12 @@ def compare_country(
     summary: dict[str, object] = {
         "coins": summary_coins,
         "total_coins": len(summary_coins),
+        "analyzed_coins": analyzed_coin_count,
         "total_issues": len(all_issues),
         "by_type": type_counts(all_issues),
     }
+    if api_records is not None:
+        summary["api_coin_count"] = len(api_records)
     if include_warnings:
         summary["total_warnings"] = len(all_warnings)
         summary["warnings_by_type"] = type_counts(all_warnings)
@@ -732,6 +749,47 @@ def print_count_breakdown(counts: object, *, singular: str, plural: str) -> None
         print(f"- {issue_type_label(issue_type)}: {count} {count_label(count, singular, plural)}")
 
 
+def coin_issue_counts(report: dict[str, object]) -> dict[str, int]:
+    counts: dict[str, int] = {}
+    coins = report.get("coins_with_issues", [])
+    for coin in coins if isinstance(coins, list) else []:
+        if not isinstance(coin, dict):
+            continue
+        issue_types = {
+            str(issue.get("type") or "")
+            for issue in coin.get("issues", [])
+            if isinstance(issue, dict) and str(issue.get("type") or "")
+        }
+        for issue_type in issue_types:
+            counts[issue_type] = counts.get(issue_type, 0) + 1
+    return counts
+
+
+def missing_photo_details(report: dict[str, object]) -> list[str]:
+    details: list[str] = []
+    coins = report.get("coins_with_issues", [])
+    for coin in coins if isinstance(coins, list) else []:
+        if not isinstance(coin, dict):
+            continue
+        missing_sides = {
+            "frente" if issue.get("field") == "obverseImage" else "verso"
+            for issue in coin.get("issues", [])
+            if isinstance(issue, dict)
+            and issue.get("type") == "missing_image_url"
+            and issue.get("field") in {"obverseImage", "reverseImage"}
+        }
+        if not missing_sides:
+            continue
+        if missing_sides == {"frente", "verso"}:
+            missing_text = "frente e verso em falta"
+        else:
+            missing_text = f"{next(iter(missing_sides))} em falta"
+        period = str(coin.get("issuePeriod") or "")
+        period_text = f" ({period})" if period else ""
+        details.append(f"  - {coin.get('denomination', '')}{period_text}: {missing_text}")
+    return details
+
+
 def print_text_report(report: dict[str, object], include_warnings: bool) -> None:
     summary = report.get("summary", {})
     country_slug = str(report.get("country", ""))
@@ -775,8 +833,52 @@ def print_text_report(report: dict[str, object], include_warnings: bool) -> None
         return
 
     if total_issues:
-        print(f"\n{country}: {total_issues} {count_label(total_issues, 'issue', 'issues')}")
-        print_count_breakdown(summary.get("by_type", {}), singular="issue", plural="issues")
+        analyzed_coins = int(summary.get("analyzed_coins", summary.get("total_coins", 0)))
+        api_coin_count_raw = summary.get("api_coin_count")
+        api_coin_count = int(api_coin_count_raw) if isinstance(api_coin_count_raw, int) else None
+        issue_counts = coin_issue_counts(report)
+        print(
+            f"\n{country}: {analyzed_coins} "
+            f"{count_label(analyzed_coins, 'moeda analisada', 'moedas analisadas')}"
+        )
+        print()
+
+        unconfirmed = issue_counts.get("missing_api_coin_record", 0)
+        if unconfirmed:
+            print(
+                f"- Sem associação confirmada: {unconfirmed} "
+                f"{count_label(unconfirmed, 'moeda', 'moedas')}"
+            )
+
+        if api_coin_count is not None:
+            possibly_missing = max(0, analyzed_coins - api_coin_count)
+            if possibly_missing:
+                print(
+                    f"- Possivelmente em falta na API: {possibly_missing} "
+                    f"{count_label(possibly_missing, 'moeda', 'moedas')}"
+                )
+
+        missing_photos = issue_counts.get("missing_image_url", 0)
+        if missing_photos:
+            print(
+                f"- Sem fotografia: {missing_photos} "
+                f"{count_label(missing_photos, 'moeda', 'moedas')}"
+            )
+            for detail in missing_photo_details(report):
+                print(detail)
+
+        hidden_types = {"missing_api_coin_record", "missing_image_url"}
+        for issue_type, count in sorted(
+            ((key, value) for key, value in issue_counts.items() if key not in hidden_types),
+            key=lambda item: (-item[1], TEXT_REPORT_ISSUE_LABELS.get(item[0], issue_type_label(item[0]))),
+        ):
+            label = TEXT_REPORT_ISSUE_LABELS.get(issue_type, issue_type_label(issue_type))
+            print(f"- {label}: {count} {count_label(count, 'moeda', 'moedas')}")
+
+        print()
+        if api_coin_count is not None:
+            print(f"API Base44: {api_coin_count} {count_label(api_coin_count, 'moeda', 'moedas')}")
+        print(f"Catálogo local: {analyzed_coins} {count_label(analyzed_coins, 'moeda', 'moedas')}")
     else:
         print(f"\n{country}: {total_warnings} {count_label(total_warnings, 'warning', 'warnings')}")
 
