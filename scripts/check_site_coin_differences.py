@@ -694,6 +694,10 @@ def compare_country(
     }
     if api_records is not None:
         summary["api_coin_count"] = len(api_records)
+        summary["site_missing_fields"] = {
+            "url_ucoin": sum(1 for record in api_records if not normalize_url(str(record.get("url_ucoin") or ""))[0]),
+            "notes": sum(1 for record in api_records if not str(record.get("notes") or "").strip()),
+        }
     if include_warnings:
         summary["total_warnings"] = len(all_warnings)
         summary["warnings_by_type"] = type_counts(all_warnings)
@@ -845,19 +849,44 @@ def print_text_report(report: dict[str, object], include_warnings: bool) -> None
 
         unconfirmed = issue_counts.get("missing_api_coin_record", 0)
         if unconfirmed:
+            print("Associação:")
             print(
                 f"- Sem associação confirmada: {unconfirmed} "
                 f"{count_label(unconfirmed, 'moeda', 'moedas')}"
             )
-
-        if api_coin_count is not None:
-            possibly_missing = max(0, analyzed_coins - api_coin_count)
+            possibly_missing = max(0, analyzed_coins - api_coin_count) if api_coin_count is not None else 0
             if possibly_missing:
                 print(
-                    f"- Possivelmente em falta no Site Base44: {possibly_missing} "
+                    f"  - Possivelmente em falta no Site Base44: {possibly_missing} "
                     f"{count_label(possibly_missing, 'moeda', 'moedas')}"
                 )
+            possibly_existing = max(0, unconfirmed - possibly_missing)
+            if possibly_existing:
+                print(
+                    f"  - Possivelmente existentes, mas sem correspondência: {possibly_existing} "
+                    f"{count_label(possibly_existing, 'moeda', 'moedas')}"
+                )
+            print()
 
+        if api_coin_count is not None:
+            print(f"Site Base44: {api_coin_count} {count_label(api_coin_count, 'moeda', 'moedas')}")
+            site_missing_fields = summary.get("site_missing_fields", {})
+            if isinstance(site_missing_fields, dict):
+                missing_url = int(site_missing_fields.get("url_ucoin", 0))
+                missing_notes = int(site_missing_fields.get("notes", 0))
+                if missing_url:
+                    print(f"- Sem URL do uCoin: {missing_url} {count_label(missing_url, 'moeda', 'moedas')}")
+                if missing_notes:
+                    print(f"- Sem notes: {missing_notes} {count_label(missing_notes, 'moeda', 'moedas')}")
+            mismatched_urls = issue_counts.get("mismatched_url_ucoin", 0)
+            if mismatched_urls:
+                print(
+                    f"- URL do uCoin diferente do catálogo: {mismatched_urls} "
+                    f"{count_label(mismatched_urls, 'moeda', 'moedas')}"
+                )
+            print()
+
+        print(f"Catálogo local: {analyzed_coins} {count_label(analyzed_coins, 'moeda', 'moedas')}")
         missing_photos = issue_counts.get("missing_image_url", 0)
         if missing_photos:
             print(
@@ -867,7 +896,13 @@ def print_text_report(report: dict[str, object], include_warnings: bool) -> None
             for detail in missing_photo_details(report):
                 print(detail)
 
-        hidden_types = {"missing_api_coin_record", "missing_image_url"}
+        hidden_types = {
+            "missing_api_coin_record",
+            "missing_image_url",
+            "missing_notes",
+            "missing_url_ucoin",
+            "mismatched_url_ucoin",
+        }
         for issue_type, count in sorted(
             ((key, value) for key, value in issue_counts.items() if key not in hidden_types),
             key=lambda item: (-item[1], TEXT_REPORT_ISSUE_LABELS.get(item[0], issue_type_label(item[0]))),
@@ -875,17 +910,6 @@ def print_text_report(report: dict[str, object], include_warnings: bool) -> None
             label = TEXT_REPORT_ISSUE_LABELS.get(issue_type, issue_type_label(issue_type))
             print(f"- {label}: {count} {count_label(count, 'moeda', 'moedas')}")
 
-        print()
-        if api_coin_count == analyzed_coins:
-            print(
-                f"Site Base44 e catálogo local: {analyzed_coins} "
-                f"{count_label(analyzed_coins, 'moeda', 'moedas')}"
-            )
-        elif api_coin_count is not None:
-            print(f"Site Base44: {api_coin_count} {count_label(api_coin_count, 'moeda', 'moedas')}")
-            print(f"Catálogo local: {analyzed_coins} {count_label(analyzed_coins, 'moeda', 'moedas')}")
-        else:
-            print(f"Catálogo local: {analyzed_coins} {count_label(analyzed_coins, 'moeda', 'moedas')}")
     else:
         print(f"\n{country}: {total_warnings} {count_label(total_warnings, 'warning', 'warnings')}")
 

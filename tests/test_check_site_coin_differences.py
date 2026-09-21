@@ -39,6 +39,7 @@ class CheckSiteCoinDifferencesOutputTests(unittest.TestCase):
                 "summary": {
                     "analyzed_coins": 1,
                     "api_coin_count": 1,
+                    "site_missing_fields": {"url_ucoin": 0, "notes": 0},
                     "total_issues": 1,
                     "by_type": {"missing_api_coin_record": 1},
                 },
@@ -62,7 +63,7 @@ class CheckSiteCoinDifferencesOutputTests(unittest.TestCase):
             print_text_reports(reports, include_warnings=False)
 
         self.assertIn(
-            "Site Base44 e catálogo local: 1 moeda\n\n"
+            "Catálogo local: 1 moeda\n\n"
             + "-" * 72
             + "\n\nSingapura: 1 moeda analisada",
             output.getvalue(),
@@ -116,6 +117,7 @@ class CheckSiteCoinDifferencesOutputTests(unittest.TestCase):
             "summary": {
                 "analyzed_coins": 21,
                 "api_coin_count": 19,
+                "site_missing_fields": {"url_ucoin": 19, "notes": 19},
                 "total_issues": 23,
                 "by_type": {
                     "missing_api_coin_record": 21,
@@ -129,13 +131,18 @@ class CheckSiteCoinDifferencesOutputTests(unittest.TestCase):
             self.render(report),
             "Filipinas: 21 moedas analisadas\n"
             "\n"
+            "Associação:\n"
             "- Sem associação confirmada: 21 moedas\n"
-            "- Possivelmente em falta no Site Base44: 2 moedas\n"
-            "- Sem fotografia: 1 moeda\n"
-            "  - 10 piso (2025): frente e verso em falta\n"
+            "  - Possivelmente em falta no Site Base44: 2 moedas\n"
+            "  - Possivelmente existentes, mas sem correspondência: 19 moedas\n"
             "\n"
             "Site Base44: 19 moedas\n"
-            "Catálogo local: 21 moedas",
+            "- Sem URL do uCoin: 19 moedas\n"
+            "- Sem notes: 19 moedas\n"
+            "\n"
+            "Catálogo local: 21 moedas\n"
+            "- Sem fotografia: 1 moeda\n"
+            "  - 10 piso (2025): frente e verso em falta",
         )
 
     def test_text_report_uses_singular_and_compact_warnings(self) -> None:
@@ -145,6 +152,7 @@ class CheckSiteCoinDifferencesOutputTests(unittest.TestCase):
             "summary": {
                 "analyzed_coins": 1,
                 "api_coin_count": 1,
+                "site_missing_fields": {"url_ucoin": 0, "notes": 1},
                 "total_issues": 1,
                 "by_type": {"missing_notes": 1},
                 "total_warnings": 2,
@@ -169,9 +177,10 @@ class CheckSiteCoinDifferencesOutputTests(unittest.TestCase):
             self.render(report, include_warnings=True),
             "Sri Lanka: 1 moeda analisada\n"
             "\n"
+            "Site Base44: 1 moeda\n"
             "- Sem notes: 1 moeda\n"
             "\n"
-            "Site Base44 e catálogo local: 1 moeda\n"
+            "Catálogo local: 1 moeda\n"
             "Warnings: 2\n"
             "- Multiple API matches: 2 warnings",
         )
@@ -183,6 +192,7 @@ class CheckSiteCoinDifferencesOutputTests(unittest.TestCase):
             "summary": {
                 "analyzed_coins": 28,
                 "api_coin_count": 28,
+                "site_missing_fields": {"url_ucoin": 0, "notes": 0},
                 "total_issues": 1,
                 "by_type": {"missing_api_coin_record": 1},
             },
@@ -206,9 +216,13 @@ class CheckSiteCoinDifferencesOutputTests(unittest.TestCase):
             self.render(report),
             "Seicheles: 28 moedas analisadas\n"
             "\n"
+            "Associação:\n"
             "- Sem associação confirmada: 1 moeda\n"
+            "  - Possivelmente existentes, mas sem correspondência: 1 moeda\n"
             "\n"
-            "Site Base44 e catálogo local: 28 moedas",
+            "Site Base44: 28 moedas\n"
+            "\n"
+            "Catálogo local: 28 moedas",
         )
 
     def test_text_report_shows_errors_without_coin_details(self) -> None:
