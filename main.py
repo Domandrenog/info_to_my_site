@@ -565,27 +565,120 @@ def action_check_differences() -> None:
             current_report_state = (stat.st_mtime_ns, stat.st_size)
         report_was_refreshed = current_report_state is not None and current_report_state != previous_report_state
 
-        if country:
-            country_slug = slugify(country)
-            reconcile_command = [
-                sys.executable,
-                "-m",
-                "scripts.fix_site_issues_api",
-                "--country",
-                country,
-                "--output",
-                str(country_directory(country) / f"{country_slug}-autofix-plan.json"),
-                "--skip-create-missing",
-                "--reconcile-missing-interactive",
-            ]
-            print("\nConfirmar equivalencias que nao foram encontradas pelas imagens:", flush=True)
-            subprocess.run(reconcile_command, cwd=PROJECT_DIR, check=False)
-
         if report_was_refreshed:
+            offer_unconfirmed_association_review(report_path)
             offer_ucoin_photo_recheck(report_path)
     finally:
         if temporary_output:
             report_path.unlink(missing_ok=True)
+
+
+def unconfirmed_association_countries(report_path: Path) -> list[dict[str, object]]:
+    payload = json.loads(report_path.read_text(encoding="utf-8"))
+    reports = payload if isinstance(payload, list) else [payload]
+    countries: list[dict[str, object]] = []
+    for report in reports:
+        if not isinstance(report, dict) or report.get("error"):
+            continue
+        affected_coins = []
+        for coin in report.get("coins_with_issues", []):
+            if not isinstance(coin, dict):
+                continue
+            has_missing_association = any(
+                isinstance(issue, dict) and issue.get("type") == "missing_api_coin_record"
+                for issue in coin.get("issues", [])
+            )
+            if has_missing_association:
+                affected_coins.append(coin)
+        if affected_coins:
+            countries.append(
+                {
+                    "country": str(report.get("country") or ""),
+                    "country_name": str(report.get("country_name") or report.get("country") or ""),
+                    "coin_count": len(affected_coins),
+                }
+            )
+    return countries
+
+
+def select_association_countries(countries: list[dict[str, object]]) -> list[dict[str, object]]:
+    if len(countries) <= 1:
+        return countries
+
+    print("\nPaíses com associações por rever:")
+    for index, item in enumerate(countries, start=1):
+        count = int(item.get("coin_count", 0))
+        coin_label = "moeda" if count == 1 else "moedas"
+        print(f"{index}) {item.get('country_name', '')} — {count} {coin_label}")
+    print("Escreve 'todos' ou os números separados por vírgulas.")
+
+    while True:
+        selection = ask_text("Países a rever", "todos").casefold()
+        if selection in {"todos", "all"}:
+            return countries
+        try:
+            indexes = [int(value.strip()) for value in selection.split(",") if value.strip()]
+        except ValueError:
+            indexes = []
+        if indexes and all(1 <= index <= len(countries) for index in indexes):
+            selected_indexes = set(indexes)
+            return [item for index, item in enumerate(countries, start=1) if index in selected_indexes]
+        print("Indica 'todos' ou números válidos da lista.")
+
+
+def run_association_review(country: str) -> int:
+    country_slug = slugify(country)
+    command = [
+        sys.executable,
+        "-m",
+        "scripts.fix_site_issues_api",
+        "--country",
+        country_slug,
+        "--output",
+        str(country_directory(country_slug) / f"{country_slug}-autofix-plan.json"),
+        "--skip-create-missing",
+        "--reconcile-missing-interactive",
+        "--update-fields",
+        "name",
+        "--apply",
+    ]
+    print("\n" + "#" * 72)
+    print(f"REVER ASSOCIAÇÕES — {country.replace('-', ' ').title()}")
+    print("#" * 72, flush=True)
+    result = subprocess.run(command, cwd=PROJECT_DIR, check=False)
+    if result.returncode:
+        print(f"A revisão terminou com código {result.returncode}.")
+    return result.returncode
+
+
+def offer_unconfirmed_association_review(report_path: Path) -> None:
+    try:
+        countries = unconfirmed_association_countries(report_path)
+    except (OSError, ValueError, json.JSONDecodeError) as exc:
+        print(f"\nNão foi possível preparar a revisão das associações: {exc}")
+        return
+    if not countries:
+        return
+
+    total_coins = sum(int(item.get("coin_count", 0)) for item in countries)
+    coin_label = "moeda" if total_coins == 1 else "moedas"
+    country_label = "país" if len(countries) == 1 else "países"
+    print("\nPróximo passo opcional:")
+    print(
+        f"1) Rever nomes semelhantes no Site Base44 — "
+        f"{total_coins} {coin_label} em {len(countries)} {country_label}"
+    )
+    print("0) Ignorar por agora")
+    while True:
+        choice = ask_text("Escolhe uma opção", "0")
+        if choice == "0":
+            return
+        if choice == "1":
+            break
+        print("Escolhe 1 ou 0.")
+
+    for item in select_association_countries(countries):
+        run_association_review(str(item.get("country") or ""))
 
 
 def offer_ucoin_photo_recheck(report_path: Path) -> None:
@@ -797,6 +890,7 @@ def action_autofix_issues() -> None:
     field_labels = {
         "url_ucoin": "Corrigir URL do uCoin",
         "notes": "Preencher notes",
+        "name": "Corrigir nome",
     }
     available_fields = [field for field in fix_site_issues_api.SAFE_UPDATE_FIELDS if field in counts]
     print("\nCorreções disponíveis:")

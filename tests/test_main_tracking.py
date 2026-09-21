@@ -1,9 +1,12 @@
 from __future__ import annotations
 
 import io
+import json
 import subprocess
+import tempfile
 import unittest
 from contextlib import redirect_stdout
+from pathlib import Path
 from unittest.mock import patch
 
 import main
@@ -26,6 +29,83 @@ PLANS = [
 
 
 class MainTrackingActionTests(unittest.TestCase):
+    def test_unconfirmed_associations_are_grouped_by_country(self) -> None:
+        payload = [
+            {
+                "country": "filipinas",
+                "country_name": "Filipinas",
+                "coins_with_issues": [
+                    {
+                        "denomination": "10 piso",
+                        "issues": [{"type": "missing_api_coin_record"}],
+                    },
+                    {
+                        "denomination": "20 piso",
+                        "issues": [{"type": "missing_image_url"}],
+                    },
+                ],
+            },
+            {
+                "country": "bahamas",
+                "country_name": "Bahamas",
+                "coins_with_issues": [
+                    {
+                        "denomination": "1 cent",
+                        "issues": [{"type": "missing_api_coin_record"}],
+                    }
+                ],
+            },
+        ]
+        with tempfile.TemporaryDirectory() as temp_dir:
+            report_path = Path(temp_dir) / "differences.json"
+            report_path.write_text(json.dumps(payload), encoding="utf-8")
+
+            countries = main.unconfirmed_association_countries(report_path)
+
+        self.assertEqual(
+            countries,
+            [
+                {"country": "filipinas", "country_name": "Filipinas", "coin_count": 1},
+                {"country": "bahamas", "country_name": "Bahamas", "coin_count": 1},
+            ],
+        )
+
+    @patch("main.run_association_review", return_value=0)
+    @patch("main.ask_text", side_effect=["1", "todos"])
+    @patch(
+        "main.unconfirmed_association_countries",
+        return_value=[
+            {"country": "filipinas", "country_name": "Filipinas", "coin_count": 2},
+            {"country": "bahamas", "country_name": "Bahamas", "coin_count": 1},
+        ],
+    )
+    def test_association_review_can_process_all_countries(
+        self,
+        _countries,
+        _ask_text,
+        run_review,
+    ) -> None:
+        with redirect_stdout(io.StringIO()) as output:
+            main.offer_unconfirmed_association_review(Path("differences.json"))
+
+        self.assertIn("3 moedas em 2 países", output.getvalue())
+        self.assertEqual(
+            [call.args[0] for call in run_review.call_args_list],
+            ["filipinas", "bahamas"],
+        )
+
+    @patch("main.subprocess.run", return_value=subprocess.CompletedProcess([], 0))
+    def test_association_review_applies_only_confirmed_name_updates(self, run) -> None:
+        with redirect_stdout(io.StringIO()):
+            result = main.run_association_review("filipinas")
+
+        self.assertEqual(result, 0)
+        command = run.call_args.args[0]
+        self.assertIn("--reconcile-missing-interactive", command)
+        self.assertEqual(command[command.index("--update-fields") + 1], "name")
+        self.assertIn("--apply", command)
+        self.assertIn("--skip-create-missing", command)
+
     @patch("main.run_step", return_value=0)
     @patch("main.add_browser_mode", side_effect=lambda command: command.append("--attach-cdp"))
     @patch("main.ask_text", return_value="1")

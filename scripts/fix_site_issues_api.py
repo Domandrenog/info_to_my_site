@@ -3,7 +3,9 @@ from __future__ import annotations
 
 import argparse
 import json
+import re
 import time
+import unicodedata
 from datetime import datetime, timezone
 from difflib import SequenceMatcher
 from pathlib import Path
@@ -16,7 +18,7 @@ from scripts import import_base44_coins
 from scripts.catalog_paths import CATALOG_ROOT, continent_label_for_country, find_country_directory
 
 
-SAFE_UPDATE_FIELDS = ("url_ucoin", "notes")
+SAFE_UPDATE_FIELDS = ("url_ucoin", "notes", "name")
 PRESERVED_API_FIELDS = {
     "name",
     "country",
@@ -56,9 +58,9 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument(
         "--update-fields",
         nargs="+",
-        choices=("notes", "url_ucoin"),
+        choices=("notes", "url_ucoin", "name"),
         default=("notes", "url_ucoin"),
-        help="Fields allowed in API updates. Defaults to both notes and url_ucoin.",
+        help="Fields allowed in API updates. Defaults to notes and url_ucoin.",
     )
     parser.add_argument("--skip-create-missing", action="store_true", help="Do not create records when API issue is Not found")
     parser.add_argument(
@@ -92,7 +94,37 @@ def normalize_url(value: str) -> str:
 
 
 def normalize_key(value: str) -> str:
-    return str(value or "").strip().lower()
+    normalized = unicodedata.normalize("NFKD", str(value or "").strip().casefold())
+    normalized = "".join(character for character in normalized if not unicodedata.combining(character))
+    tokens = re.findall(r"\d+(?:[.,]\d+)?|[a-zø]+|[½¼¾]", normalized)
+    unit_aliases = {
+        "c": "cent",
+        "ct": "cent",
+        "cts": "cent",
+        "cent": "cent",
+        "cents": "cent",
+        "centimo": "cent",
+        "centimos": "cent",
+        "dolar": "dollar",
+        "dolares": "dollar",
+        "dollar": "dollar",
+        "dollars": "dollar",
+        "euro": "euro",
+        "euros": "euro",
+        "escudo": "escudo",
+        "escudos": "escudo",
+        "kopek": "kopek",
+        "kopeks": "kopek",
+        "ore": "ore",
+        "øre": "ore",
+        "pence": "penny",
+        "pennies": "penny",
+        "penny": "penny",
+        "rand": "rand",
+        "rupee": "rupee",
+        "rupees": "rupee",
+    }
+    return " ".join(unit_aliases.get(token, token) for token in tokens)
 
 
 def parse_association_record_id(entry: dict[str, Any]) -> str:
@@ -619,7 +651,13 @@ def best_candidates(item: dict[str, Any], api_records: list[dict[str, Any]], lim
     return [{"score": score, "record": record} for score, record in scored[: max(1, limit)]]
 
 
-def merge_update(plan_updates: list[dict[str, Any]], denomination: str, record: dict[str, Any], set_fields: dict[str, str]) -> None:
+def merge_update(
+    plan_updates: list[dict[str, Any]],
+    denomination: str,
+    issue_period: str,
+    record: dict[str, Any],
+    set_fields: dict[str, str],
+) -> None:
     if not set_fields:
         return
 
@@ -634,13 +672,24 @@ def merge_update(plan_updates: list[dict[str, Any]], denomination: str, record: 
                 current_set.update(set_fields)
             else:
                 item["set"] = dict(set_fields)
+            current_fields = item.get("current", {})
+            if not isinstance(current_fields, dict):
+                current_fields = {}
+                item["current"] = current_fields
+            for field in set_fields:
+                current_fields.setdefault(field, str(record.get(field) or ""))
             return
 
     plan_updates.append(
         {
             "denomination": denomination,
+            "issuePeriod": issue_period,
             "record_id": record_id,
             "siteUrl": checker.build_site_url(record_id),
+            "current": {
+                field: str(record.get(field) or "")
+                for field in set_fields
+            },
             "set": dict(set_fields),
         }
     )
@@ -703,10 +752,10 @@ def reconcile_missing(
                     associations_changed = True
 
         if resolved_record is None and interactive:
-            print("\nMissing encontrado:")
-            print(f"- moeda: {denomination}")
-            print(f"- anos: {issue_period}")
-            print(f"- ucoin: {ucoin_url}")
+            print("\n" + "-" * 72)
+            print("MOEDA SEM ASSOCIAÇÃO CONFIRMADA")
+            print("-" * 72)
+            print(f"Catálogo local: {denomination} ({issue_period})")
 
             exact_candidates = [
                 record
@@ -716,14 +765,10 @@ def reconcile_missing(
             ]
             if len(exact_candidates) == 1:
                 candidate = exact_candidates[0]
-                candidate_id = str(candidate.get("id") or "")
-                print("Possivel equivalencia por nome e anos:")
-                print(
-                    f"- api: {checker.build_site_url(candidate_id)} | "
-                    f"name={candidate.get('name', '')} | years={candidate.get('years', '')}"
-                )
+                print("Possível correspondência no Site Base44:")
+                print(f"- {candidate.get('name', '')} ({candidate.get('years', '')})")
                 try:
-                    choice = input("Confirmar que e a mesma moeda? [s/N]: ").strip().lower()
+                    choice = input("Confirmar que é a mesma moeda? [s/N]: ").strip().lower()
                 except EOFError:
                     choice = ""
                 if choice in {"y", "yes", "s", "sim"}:
@@ -734,15 +779,13 @@ def reconcile_missing(
                 if not candidates:
                     print("Sem candidatos por nome e anos.")
                 else:
-                    print("Candidatos por nome e anos:")
+                    print("Possíveis correspondências no Site Base44:")
                     for idx, candidate in enumerate(candidates, start=1):
                         record = candidate["record"]
                         print(
-                            f"  {idx}) score={candidate['score']:.2f} | "
-                            f"api={checker.build_site_url(str(record.get('id') or ''))} | "
-                            f"name={record.get('name', '')} | years={record.get('years', '')}"
+                            f"  {idx}) {record.get('name', '')} ({record.get('years', '')})"
                         )
-                    print("  0) Nao associar")
+                    print("  0) Não associar")
 
                     while True:
                         choice = input("Escolhe candidato: ").strip()
@@ -751,10 +794,10 @@ def reconcile_missing(
                         try:
                             idx = int(choice)
                         except ValueError:
-                            print("Escreve um numero valido.")
+                            print("Escreve um número válido.")
                             continue
                         if idx < 1 or idx > len(candidates):
-                            print("Opcao invalida.")
+                            print("Opção inválida.")
                             continue
                         resolved_record = candidates[idx - 1]["record"]
                         resolved_source = "interactive"
@@ -766,14 +809,25 @@ def reconcile_missing(
 
         current_url = normalize_url(str(resolved_record.get("url_ucoin") or ""))
         current_notes = str(resolved_record.get("notes") or "").strip()
+        current_name = str(resolved_record.get("name") or "").strip()
         set_fields: dict[str, str] = {}
 
         if current_url != ucoin_url:
             set_fields["url_ucoin"] = ucoin_url
         if not current_notes and expected_notes:
             set_fields["notes"] = expected_notes
+        if interactive and denomination and current_name.casefold() != denomination.strip().casefold():
+            print("\nNome diferente:")
+            print(f"- Site Base44 agora: {current_name or '(vazio)'}")
+            print(f"- Nome completo do catálogo: {denomination}")
+            try:
+                rename_choice = input("Corrigir apenas o nome no Site Base44? [s/N]: ").strip().lower()
+            except EOFError:
+                rename_choice = ""
+            if rename_choice in {"y", "yes", "s", "sim"}:
+                set_fields["name"] = denomination
 
-        merge_update(plan_updates, denomination, resolved_record, set_fields)
+        merge_update(plan_updates, denomination, issue_period, resolved_record, set_fields)
 
         all_entries.append(
             {
@@ -783,7 +837,7 @@ def reconcile_missing(
                 "issuePeriod": issue_period,
                 "ucoinUrl": ucoin_url,
                 "apiUrl": checker.build_site_url(str(resolved_record.get("id") or "")),
-                "record_name": str(resolved_record.get("name") or ""),
+                "record_name": str(set_fields.get("name") or resolved_record.get("name") or ""),
                 "record_years": str(resolved_record.get("years") or ""),
             }
         )

@@ -13,6 +13,55 @@ from scripts import fix_site_issues_api
 
 
 class FixSiteIssuesPlanTests(unittest.TestCase):
+    def test_abbreviated_denomination_units_are_equivalent_for_matching(self) -> None:
+        self.assertEqual(fix_site_issues_api.normalize_key("10 cents"), "10 cent")
+        self.assertEqual(fix_site_issues_api.normalize_key("10 cêntimos"), "10 cent")
+        self.assertEqual(fix_site_issues_api.normalize_key("10 cent"), "10 cent")
+
+    def test_reconcile_can_confirm_abbreviated_name_and_propose_full_name(self) -> None:
+        missing = [
+            {
+                "denomination": "10 cêntimos",
+                "ucoinUrl": "https://pt.ucoin.net/coin/example",
+                "period": {"title": "País › República › 2020"},
+                "coin": {"issuePeriod": "2020"},
+            }
+        ]
+        site_record = {
+            "id": "record-1",
+            "name": "10 cents",
+            "years": "2020",
+            "url_ucoin": "",
+            "notes": "República",
+        }
+        updates: list[dict[str, object]] = []
+
+        with tempfile.TemporaryDirectory() as temp_dir:
+            with (
+                patch.object(
+                    fix_site_issues_api.checker,
+                    "api_records_for_country",
+                    return_value=([site_record], None),
+                ),
+                patch("builtins.input", side_effect=["s", "s"]),
+                redirect_stdout(io.StringIO()) as output,
+            ):
+                result = fix_site_issues_api.reconcile_missing(
+                    country_name="País",
+                    missing_creates=missing,
+                    plan_updates=updates,
+                    associations_path=Path(temp_dir) / "associations.json",
+                    missing_found_path=Path(temp_dir) / "missing-found.json",
+                    interactive=True,
+                    max_candidates=5,
+                )
+
+        self.assertEqual(result["unresolved"], [])
+        self.assertEqual(updates[0]["current"]["name"], "10 cents")
+        self.assertEqual(updates[0]["set"]["name"], "10 cêntimos")
+        self.assertIn("Catálogo local: 10 cêntimos (2020)", output.getvalue())
+        self.assertIn("Site Base44 agora: 10 cents", output.getvalue())
+
     def test_consolidate_updates_merges_duplicates_and_excludes_conflicting_fields(self) -> None:
         duplicate_updates = [
             {
@@ -195,6 +244,53 @@ class FixSiteIssuesPlanTests(unittest.TestCase):
 
 
 class FixSiteIssuesApplyTests(unittest.TestCase):
+    def test_apply_can_change_only_the_confirmed_name(self) -> None:
+        class FakeClient:
+            base_url = "https://base44.test/entities/Coin"
+
+            def __init__(self) -> None:
+                self.record = {
+                    "id": "record-1",
+                    "name": "10 cents",
+                    "notes": "República",
+                    "image_frente": "https://images.test/front.jpg",
+                    "image_verso": "https://images.test/back.jpg",
+                }
+
+            def request(self, method, url):
+                return dict(self.record)
+
+            def update(self, record_id, payload):
+                self.record = dict(payload)
+
+        client = FakeClient()
+        args = argparse.Namespace(request_delay=0, rate_limit_delay=0, max_retries=0, continent="", condition="")
+        plan = {
+            "updates": [
+                {
+                    "country": "País",
+                    "denomination": "10 cêntimos",
+                    "issuePeriod": "2020",
+                    "record_id": "record-1",
+                    "current": {"name": "10 cents"},
+                    "set": {"name": "10 cêntimos"},
+                }
+            ],
+            "creates": [],
+        }
+
+        with (
+            patch.object(fix_site_issues_api.import_base44_coins, "create_client", return_value=client),
+            redirect_stdout(io.StringIO()),
+        ):
+            result = fix_site_issues_api.apply_plan(args, "", plan)
+
+        self.assertEqual(result, {"updated": 1, "created": 0, "skipped": 0})
+        self.assertEqual(client.record["name"], "10 cêntimos")
+        self.assertEqual(client.record["notes"], "República")
+        self.assertEqual(client.record["image_frente"], "https://images.test/front.jpg")
+        self.assertEqual(client.record["image_verso"], "https://images.test/back.jpg")
+
     def test_apply_changes_selected_field_and_verifies_preserved_fields(self) -> None:
         class FakeClient:
             base_url = "https://base44.test/entities/Coin"
