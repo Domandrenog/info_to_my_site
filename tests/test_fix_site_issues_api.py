@@ -259,7 +259,7 @@ class FixSiteIssuesPlanTests(unittest.TestCase):
                     "api_records_for_country",
                     return_value=([site_record], None),
                 ),
-                patch("builtins.input", side_effect=["s", "s"]),
+                patch("builtins.input", side_effect=["s", ""]) as user_input,
                 redirect_stdout(io.StringIO()) as output,
             ):
                 result = fix_site_issues_api.reconcile_missing(
@@ -282,6 +282,7 @@ class FixSiteIssuesPlanTests(unittest.TestCase):
         self.assertIn("Catálogo local: 10 cêntimos (2020)", output.getvalue())
         self.assertIn("uCoin: https://pt.ucoin.net/coin/example", output.getvalue())
         self.assertIn("Site Base44 agora: 10 cents", output.getvalue())
+        user_input.assert_any_call("Corrigir apenas o nome no Site Base44? [S/n]: ")
         self.assertEqual(decisions["country"], "pais")
         self.assertEqual(decisions["decisions"][0]["sameCoin"], "yes")
         self.assertEqual(decisions["decisions"][0]["rename"], "yes")
@@ -314,7 +315,7 @@ class FixSiteIssuesPlanTests(unittest.TestCase):
                     "api_records_for_country",
                     return_value=([site_record], None),
                 ),
-                patch("builtins.input", side_effect=["1", "s"]),
+                patch("builtins.input", side_effect=["1", ""]) as user_input,
                 redirect_stdout(io.StringIO()) as output,
             ):
                 result = fix_site_issues_api.reconcile_missing(
@@ -340,6 +341,7 @@ class FixSiteIssuesPlanTests(unittest.TestCase):
             output.getvalue(),
         )
         self.assertIn("Site Base44 agora: 1983-2025", output.getvalue())
+        user_input.assert_any_call("Corrigir os anos no Site Base44? [S/n]: ")
         self.assertEqual(decisions["decisions"][0]["rename"], "not_needed")
         self.assertEqual(decisions["decisions"][0]["updateYears"], "yes")
         self.assertEqual(decisions["decisions"][0]["proposedYears"], "1983 - 2026")

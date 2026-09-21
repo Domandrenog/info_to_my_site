@@ -1215,10 +1215,10 @@ def reconcile_missing(
             print(f"- Site Base44 agora: {current_name or '(vazio)'}")
             print(f"- Nome completo do catálogo: {denomination}")
             try:
-                rename_choice = input("Corrigir apenas o nome no Site Base44? [s/N]: ").strip().lower()
+                rename_choice = input("Corrigir apenas o nome no Site Base44? [S/n]: ").strip().lower()
             except EOFError:
-                rename_choice = ""
-            if rename_choice in {"y", "yes", "s", "sim"}:
+                rename_choice = "n"
+            if rename_choice in {"", "y", "yes", "s", "sim"}:
                 set_fields["name"] = denomination
                 rename_decision = "yes"
             else:
@@ -1229,10 +1229,10 @@ def reconcile_missing(
             print(f"- Site Base44 agora: {current_years or '(vazio)'}")
             print(f"- Período completo do catálogo: {issue_period}")
             try:
-                years_choice = input("Corrigir os anos no Site Base44? [s/N]: ").strip().lower()
+                years_choice = input("Corrigir os anos no Site Base44? [S/n]: ").strip().lower()
             except EOFError:
-                years_choice = ""
-            if years_choice in {"y", "yes", "s", "sim"}:
+                years_choice = "n"
+            if years_choice in {"", "y", "yes", "s", "sim"}:
                 set_fields["years"] = issue_period
                 years_decision = "yes"
             else:
