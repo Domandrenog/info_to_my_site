@@ -3,6 +3,7 @@ from __future__ import annotations
 
 import argparse
 import json
+import time
 from datetime import datetime, timezone
 from difflib import SequenceMatcher
 from pathlib import Path
@@ -827,83 +828,124 @@ def apply_plan(args: argparse.Namespace, country_name: str, plan: dict[str, Any]
     updated = 0
     created = 0
     skipped = 0
+    updates = list(plan.get("updates", []))
+    total_updates = len(updates)
+    update_started_at = time.monotonic()
+    total_item_duration = 0.0
 
-    for item in plan.get("updates", []):
+    for index, item in enumerate(updates, start=1):
+        item_started_at = time.monotonic()
+        operation = "Ignorado"
+        operation_detail = ""
         record_id = str(item.get("record_id") or "")
+        raw_set_fields = item.get("set", {})
+        set_fields = (
+            {
+                field: value
+                for field, value in raw_set_fields.items()
+                if field in SAFE_UPDATE_FIELDS
+            }
+            if isinstance(raw_set_fields, dict)
+            else {}
+        )
+
         if not record_id:
-            continue
-        set_fields = {
-            field: value
-            for field, value in item.get("set", {}).items()
-            if field in SAFE_UPDATE_FIELDS
-        }
-        if not set_fields:
-            continue
-        current = client.request("GET", f"{client.base_url}/{record_id}")
-        if not isinstance(current, dict):
             skipped += 1
-            print(f"Ignorado {item.get('denomination', '')}: resposta atual inválida da API.")
-            continue
-
-        expected_current = item.get("current", {})
-        changed_since_preview = [
-            field
-            for field in set_fields
-            if isinstance(expected_current, dict)
-            and field in expected_current
-            and str(current.get(field) or "").strip() != str(expected_current.get(field) or "").strip()
-            and str(current.get(field) or "").strip() != str(set_fields[field] or "").strip()
-        ]
-        if changed_since_preview:
+            operation_detail = "sem id do registo"
+        elif not set_fields:
             skipped += 1
-            print(
-                f"Ignorado {item.get('denomination', '')}: mudou desde a pré-visualização "
-                f"({', '.join(changed_since_preview)})."
-            )
-            continue
+            operation_detail = "sem campos selecionados válidos"
+        else:
+            current = client.request("GET", f"{client.base_url}/{record_id}")
+            if not isinstance(current, dict):
+                skipped += 1
+                operation_detail = "resposta atual inválida da API"
+            else:
+                expected_current = item.get("current", {})
+                changed_since_preview = [
+                    field
+                    for field in set_fields
+                    if isinstance(expected_current, dict)
+                    and field in expected_current
+                    and str(current.get(field) or "").strip() != str(expected_current.get(field) or "").strip()
+                    and str(current.get(field) or "").strip() != str(set_fields[field] or "").strip()
+                ]
+                if changed_since_preview:
+                    skipped += 1
+                    operation_detail = f"mudou desde a pré-visualização: {', '.join(changed_since_preview)}"
+                else:
+                    fields_to_write = {
+                        field: value
+                        for field, value in set_fields.items()
+                        if str(current.get(field) or "").strip() != str(value or "").strip()
+                    }
+                    if not fields_to_write:
+                        skipped += 1
+                        operation = "Já correto"
+                        operation_detail = ", ".join(set_fields)
+                    else:
+                        before_preserved = {
+                            field: current.get(field)
+                            for field in PRESERVED_API_FIELDS - set(fields_to_write)
+                            if field in current
+                        }
+                        payload = dict(current)
+                        payload.update(fields_to_write)
+                        client.update(record_id, payload)
 
-        fields_to_write = {
-            field: value
-            for field, value in set_fields.items()
-            if str(current.get(field) or "").strip() != str(value or "").strip()
-        }
-        if not fields_to_write:
-            skipped += 1
-            print(f"Já estava correto: {item.get('denomination', '')}")
-            continue
+                        verified = client.request("GET", f"{client.base_url}/{record_id}")
+                        if not isinstance(verified, dict):
+                            raise RuntimeError(
+                                f"Não foi possível verificar a atualização de {item.get('denomination', '')}."
+                            )
+                        incorrect = [
+                            field
+                            for field, value in fields_to_write.items()
+                            if str(verified.get(field) or "").strip() != str(value or "").strip()
+                        ]
+                        changed_unselected = [
+                            field
+                            for field, value in before_preserved.items()
+                            if verified.get(field) != value
+                        ]
+                        if incorrect or changed_unselected:
+                            details = []
+                            if incorrect:
+                                details.append(f"campos não confirmados: {', '.join(incorrect)}")
+                            if changed_unselected:
+                                details.append(f"campos não selecionados alterados: {', '.join(changed_unselected)}")
+                            raise RuntimeError(
+                                f"Verificação falhou para {item.get('denomination', '')}: {'; '.join(details)}"
+                            )
 
-        before_preserved = {
-            field: current.get(field)
-            for field in PRESERVED_API_FIELDS - set(fields_to_write)
-            if field in current
-        }
-        payload = dict(current)
-        payload.update(fields_to_write)
-        client.update(record_id, payload)
+                        updated += 1
+                        operation = "Atualizado"
+                        operation_detail = ", ".join(fields_to_write)
 
-        verified = client.request("GET", f"{client.base_url}/{record_id}")
-        if not isinstance(verified, dict):
-            raise RuntimeError(f"Não foi possível verificar a atualização de {item.get('denomination', '')}.")
-        incorrect = [
-            field
-            for field, value in fields_to_write.items()
-            if str(verified.get(field) or "").strip() != str(value or "").strip()
-        ]
-        changed_unselected = [
-            field
-            for field, value in before_preserved.items()
-            if verified.get(field) != value
-        ]
-        if incorrect or changed_unselected:
-            details = []
-            if incorrect:
-                details.append(f"campos não confirmados: {', '.join(incorrect)}")
-            if changed_unselected:
-                details.append(f"campos não selecionados alterados: {', '.join(changed_unselected)}")
-            raise RuntimeError(f"Verificação falhou para {item.get('denomination', '')}: {'; '.join(details)}")
-
-        updated += 1
-        print(f"Atualizado {item.get('denomination', '')}: {', '.join(fields_to_write)}")
+        item_duration = time.monotonic() - item_started_at
+        total_item_duration += item_duration
+        elapsed = time.monotonic() - update_started_at
+        remaining = total_updates - index
+        estimated_remaining = (total_item_duration / index) * remaining
+        remaining_text = (
+            "concluído"
+            if not remaining
+            else f"~{import_base44_coins.format_duration(estimated_remaining)}"
+        )
+        percentage = f"{(index / total_updates) * 100:.1f}".replace(".", ",")
+        item_country = str(item.get("country") or country_name or "País desconhecido")
+        issue_period = str(item.get("issuePeriod") or "")
+        period_text = f" ({issue_period})" if issue_period else ""
+        detail_text = f" — {operation_detail}" if operation_detail else ""
+        print(
+            f"{operation}: {index}/{total_updates} ({percentage}%) — {item_country} — "
+            f"{item.get('denomination', '')}{period_text} "
+            f"[faltam: {remaining} | "
+            f"demorou nesta: {import_base44_coins.format_duration(item_duration, precise=True)} | "
+            f"decorrido: {import_base44_coins.format_duration(elapsed)} | restante: {remaining_text}]"
+            f"{detail_text}",
+            flush=True,
+        )
 
     creates = list(plan.get("creates", []))
     if creates:

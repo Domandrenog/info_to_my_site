@@ -143,7 +143,9 @@ class FixSiteIssuesApplyTests(unittest.TestCase):
         plan = {
             "updates": [
                 {
+                    "country": "Portugal",
                     "denomination": "1 escudo",
+                    "issuePeriod": "1950",
                     "record_id": "record-1",
                     "current": {"notes": ""},
                     "set": {"notes": "República"},
@@ -152,7 +154,10 @@ class FixSiteIssuesApplyTests(unittest.TestCase):
             "creates": [],
         }
 
-        with patch.object(fix_site_issues_api.import_base44_coins, "create_client", return_value=client):
+        with (
+            patch.object(fix_site_issues_api.import_base44_coins, "create_client", return_value=client),
+            redirect_stdout(io.StringIO()) as output,
+        ):
             result = fix_site_issues_api.apply_plan(args, "", plan)
 
         self.assertEqual(result, {"updated": 1, "created": 0, "skipped": 0})
@@ -160,6 +165,9 @@ class FixSiteIssuesApplyTests(unittest.TestCase):
         self.assertEqual(client.payloads[0]["url_ucoin"], "https://old.test")
         self.assertEqual(client.payloads[0]["image_frente"], "https://images.test/front.jpg")
         self.assertEqual(client.payloads[0]["image_verso"], "https://images.test/back.jpg")
+        self.assertIn("Atualizado: 1/1 (100,0%) — Portugal — 1 escudo (1950)", output.getvalue())
+        self.assertIn("faltam: 0", output.getvalue())
+        self.assertIn("restante: concluído", output.getvalue())
 
     def test_apply_skips_record_changed_since_preview(self) -> None:
         class FakeClient:
