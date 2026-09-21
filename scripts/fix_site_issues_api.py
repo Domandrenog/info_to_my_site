@@ -18,7 +18,7 @@ from scripts import import_base44_coins
 from scripts.catalog_paths import CATALOG_ROOT, continent_label_for_country, find_country_directory
 
 
-SAFE_UPDATE_FIELDS = ("url_ucoin", "notes", "name")
+SAFE_UPDATE_FIELDS = ("url_ucoin", "notes", "name", "years")
 PRESERVED_API_FIELDS = {
     "name",
     "country",
@@ -45,7 +45,10 @@ PHOTO_ISSUE_TYPES = {
 def parse_args() -> argparse.Namespace:
     project_root = Path(__file__).resolve().parent.parent
     parser = argparse.ArgumentParser(
-        description="Build and optionally apply automatic fixes for API issues (notes/url_ucoin/missing record)."
+        description=(
+            "Build and optionally apply Base44 fixes "
+            "(notes/url_ucoin/name/years/missing record)."
+        )
     )
     parser.add_argument("--country", required=True, help="Country slug inside info/paises/<continent>/, e.g. bielorrussia")
     parser.add_argument("--paises-dir", default=str(project_root / CATALOG_ROOT))
@@ -58,7 +61,7 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument(
         "--update-fields",
         nargs="+",
-        choices=("notes", "url_ucoin", "name"),
+        choices=("notes", "url_ucoin", "name", "years"),
         default=("notes", "url_ucoin"),
         help="Fields allowed in API updates. Defaults to notes and url_ucoin.",
     )
@@ -66,7 +69,10 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument(
         "--reconcile-missing-interactive",
         action="store_true",
-        help="Try to match missing entries against API records by name/years and confirm in terminal.",
+        help=(
+            "Try to match missing entries against Base44 records, confirm them in the terminal, "
+            "and optionally correct name/years."
+        ),
     )
     parser.add_argument(
         "--associations-file",
@@ -565,12 +571,18 @@ def update_name_match_application_status(
     results_by_record_id = {
         str(item.get("record_id") or ""): item
         for item in application_results
-        if str(item.get("record_id") or "") and "name" in item.get("fields", [])
+        if str(item.get("record_id") or "")
     }
     changed = False
     for decision in decisions:
+        requested_fields = set()
+        if decision.get("rename") == "yes":
+            requested_fields.add("name")
+        if decision.get("updateYears") == "yes":
+            requested_fields.add("years")
         result = results_by_record_id.get(str(decision.get("siteRecordId") or ""))
-        if result is None or decision.get("rename") != "yes":
+        result_fields = set(result.get("fields", [])) if result is not None else set()
+        if result is None or not requested_fields or not requested_fields.issubset(result_fields):
             continue
         decision["applyStatus"] = str(result.get("status") or "not_applied")
         decision["applyMessage"] = str(result.get("message") or "")
@@ -602,11 +614,14 @@ def confirm_applied_name_matches(
         str(item.get("record_id") or "")
         for item in application_results
         if str(item.get("status") or "") in {"applied", "already_correct"}
-        and "name" in item.get("fields", [])
+        and {"name", "years"}.intersection(item.get("fields", []))
     }
     changed = False
     for entry in entries:
-        if entry.get("status") != "connected_pending_name_update":
+        if entry.get("status") not in {
+            "connected_pending_name_update",
+            "connected_pending_metadata_update",
+        }:
             continue
         if parse_association_record_id(entry) not in successful_record_ids:
             continue
@@ -880,6 +895,7 @@ def reconcile_missing(
             print("MOEDA SEM ASSOCIAÇÃO CONFIRMADA")
             print("-" * 72)
             print(f"Catálogo local: {denomination} ({issue_period})")
+            print(f"uCoin: {ucoin_url or '(sem link)'}")
 
             exact_candidates = [
                 record
@@ -952,6 +968,8 @@ def reconcile_missing(
                         "sameCoin": same_coin_decision or "no",
                         "rename": "not_asked",
                         "proposedName": denomination,
+                        "updateYears": "not_asked",
+                        "proposedYears": issue_period,
                         "applyStatus": "not_requested",
                     },
                 )
@@ -974,8 +992,10 @@ def reconcile_missing(
         current_url = normalize_url(str(resolved_record.get("url_ucoin") or ""))
         current_notes = str(resolved_record.get("notes") or "").strip()
         current_name = str(resolved_record.get("name") or "").strip()
+        current_years = str(resolved_record.get("years") or "").strip()
         set_fields: dict[str, str] = {}
         rename_decision = "not_needed"
+        years_decision = "not_needed"
 
         if current_url != ucoin_url:
             set_fields["url_ucoin"] = ucoin_url
@@ -995,6 +1015,22 @@ def reconcile_missing(
             else:
                 rename_decision = "no"
 
+        if interactive and issue_period and normalize_key(current_years) != normalize_key(issue_period):
+            print("\nAnos diferentes:")
+            print(f"- Site Base44 agora: {current_years or '(vazio)'}")
+            print(f"- Período completo do catálogo: {issue_period}")
+            try:
+                years_choice = input("Corrigir os anos no Site Base44? [s/N]: ").strip().lower()
+            except EOFError:
+                years_choice = ""
+            if years_choice in {"y", "yes", "s", "sim"}:
+                set_fields["years"] = issue_period
+                years_decision = "yes"
+            else:
+                years_decision = "no"
+
+        has_pending_metadata_update = rename_decision == "yes" or years_decision == "yes"
+
         if interactive and name_decisions_path is not None:
             save_name_match_decision(
                 name_decisions_path,
@@ -1010,7 +1046,9 @@ def reconcile_missing(
                     "sameCoin": same_coin_decision or "yes",
                     "rename": rename_decision,
                     "proposedName": denomination,
-                    "applyStatus": "pending" if rename_decision == "yes" else "not_requested",
+                    "updateYears": years_decision,
+                    "proposedYears": issue_period,
+                    "applyStatus": "pending" if has_pending_metadata_update else "not_requested",
                 },
             )
 
@@ -1018,14 +1056,14 @@ def reconcile_missing(
 
         all_entries.append(
             {
-                "status": "connected_pending_name_update" if rename_decision == "yes" else "connected",
+                "status": "connected_pending_metadata_update" if has_pending_metadata_update else "connected",
                 "source": resolved_source,
                 "denomination": denomination,
                 "issuePeriod": issue_period,
                 "ucoinUrl": ucoin_url,
                 "apiUrl": checker.build_site_url(str(resolved_record.get("id") or "")),
                 "record_name": str(set_fields.get("name") or resolved_record.get("name") or ""),
-                "record_years": str(resolved_record.get("years") or ""),
+                "record_years": str(set_fields.get("years") or resolved_record.get("years") or ""),
             }
         )
 
@@ -1520,23 +1558,32 @@ def main() -> int:
         print("Nothing to apply.")
         return 0
 
-    name_updates = [
+    metadata_updates = [
         item
         for item in plan.get("updates", [])
-        if isinstance(item.get("set"), dict) and "name" in item.get("set", {})
+        if isinstance(item.get("set"), dict)
+        and {"name", "years"}.intersection(item.get("set", {}))
     ]
-    if name_updates and args.reconcile_missing_interactive:
-        print("\nAlterações de nome confirmadas:")
-        for item in name_updates:
-            current_name = str(item.get("current", {}).get("name") or "")
-            proposed_name = str(item.get("set", {}).get("name") or "")
-            period = str(item.get("issuePeriod") or "")
-            period_text = f" ({period})" if period else ""
-            print(f"- {current_name} → {proposed_name}{period_text}")
-        change_text = "esta 1 alteração" if len(name_updates) == 1 else f"estas {len(name_updates)} alterações"
+    if metadata_updates and args.reconcile_missing_interactive:
+        print("\nAlterações confirmadas de nome/anos:")
+        change_count = 0
+        for item in metadata_updates:
+            current_fields = item.get("current", {})
+            proposed_fields = item.get("set", {})
+            print(f"- {item.get('denomination', '')} — {item.get('siteUrl', '')}")
+            for field, label in (("name", "Nome"), ("years", "Anos")):
+                if field not in proposed_fields:
+                    continue
+                change_count += 1
+                current_value = str(current_fields.get(field) or "(vazio)")
+                proposed_value = str(proposed_fields.get(field) or "(vazio)")
+                print(f"  - {label}: {current_value} → {proposed_value}")
+        change_label = "alteração" if change_count == 1 else "alterações"
+        coin_label = "moeda" if len(metadata_updates) == 1 else "moedas"
         try:
             apply_choice = input(
-                f"Aplicar exatamente {change_text} de nome no Site Base44? [s/N]: "
+                f"Aplicar exatamente {change_count} {change_label} em "
+                f"{len(metadata_updates)} {coin_label} no Site Base44? [s/N]: "
             ).strip().lower()
         except EOFError:
             apply_choice = ""
@@ -1544,11 +1591,11 @@ def main() -> int:
             cancelled_results = [
                 {
                     "record_id": str(item.get("record_id") or ""),
-                    "fields": ["name"],
+                    "fields": sorted({"name", "years"}.intersection(item.get("set", {}))),
                     "status": "approved_not_applied",
                     "message": "aplicação final cancelada",
                 }
-                for item in name_updates
+                for item in metadata_updates
             ]
             update_name_match_application_status(name_decisions_path, cancelled_results)
             print("Aplicação cancelada. As decisões ficaram guardadas no JSON.")

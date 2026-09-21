@@ -95,14 +95,15 @@ class MainTrackingActionTests(unittest.TestCase):
         )
 
     @patch("main.subprocess.run", return_value=subprocess.CompletedProcess([], 0))
-    def test_association_review_applies_only_confirmed_name_updates(self, run) -> None:
+    def test_association_review_applies_only_confirmed_name_and_year_updates(self, run) -> None:
         with redirect_stdout(io.StringIO()):
             result = main.run_association_review("filipinas")
 
         self.assertEqual(result, 0)
         command = run.call_args.args[0]
         self.assertIn("--reconcile-missing-interactive", command)
-        self.assertEqual(command[command.index("--update-fields") + 1], "name")
+        update_fields_index = command.index("--update-fields")
+        self.assertEqual(command[update_fields_index + 1 : update_fields_index + 3], ["name", "years"])
         self.assertIn("--apply", command)
         self.assertIn("--skip-create-missing", command)
 

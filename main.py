@@ -639,6 +639,7 @@ def run_association_review(country: str) -> int:
         "--reconcile-missing-interactive",
         "--update-fields",
         "name",
+        "years",
         "--apply",
     ]
     print("\n" + "#" * 72)
@@ -949,7 +950,7 @@ def action_autofix_issues() -> None:
 
     counts = fix_site_issues_api.update_field_counts(plan)
     if not counts:
-        print("\nNão existem correções automáticas disponíveis para notes ou URL do uCoin.")
+        print("\nNão existem correções automáticas disponíveis para os campos suportados.")
         return
 
     if "notes" in counts:
@@ -959,6 +960,7 @@ def action_autofix_issues() -> None:
         "url_ucoin": "Corrigir URL do uCoin",
         "notes": "Preencher notes",
         "name": "Corrigir nome",
+        "years": "Corrigir anos/período",
     }
     available_fields = [field for field in fix_site_issues_api.SAFE_UPDATE_FIELDS if field in counts]
     print("\nCorreções disponíveis:")

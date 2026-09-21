@@ -27,6 +27,8 @@ class FixSiteIssuesPlanTests(unittest.TestCase):
                     "sameCoin": "yes",
                     "rename": "yes",
                     "proposedName": "10 cêntimos",
+                    "updateYears": "yes",
+                    "proposedYears": "2020",
                     "applyStatus": "pending",
                 },
             )
@@ -36,16 +38,16 @@ class FixSiteIssuesPlanTests(unittest.TestCase):
                 [
                     {
                         "record_id": "record-1",
-                        "fields": ["name"],
+                        "fields": ["name", "years"],
                         "status": "applied",
-                        "message": "name",
+                        "message": "name, years",
                     }
                 ],
             )
             payload = json.loads(path.read_text(encoding="utf-8"))
 
         self.assertEqual(payload["decisions"][0]["applyStatus"], "applied")
-        self.assertEqual(payload["decisions"][0]["applyMessage"], "name")
+        self.assertEqual(payload["decisions"][0]["applyMessage"], "name, years")
         self.assertIn("appliedAt", payload["decisions"][0])
 
     def test_successful_name_update_confirms_pending_association(self) -> None:
@@ -73,6 +75,39 @@ class FixSiteIssuesPlanTests(unittest.TestCase):
                     {
                         "record_id": "record-1",
                         "fields": ["name"],
+                        "status": "applied",
+                    }
+                ],
+            )
+            payload = json.loads(path.read_text(encoding="utf-8"))
+
+        self.assertEqual(payload["missing"][0]["status"], "connected")
+
+    def test_successful_year_update_confirms_pending_metadata_association(self) -> None:
+        with tempfile.TemporaryDirectory() as temp_dir:
+            path = Path(temp_dir) / "missing-found.json"
+            path.write_text(
+                json.dumps(
+                    {
+                        "country": "coreia-do-sul",
+                        "missing": [
+                            {
+                                "status": "connected_pending_metadata_update",
+                                "ucoinUrl": "https://pt.ucoin.net/coin/example",
+                                "apiUrl": "https://base44.test/entities/Coin/record-1",
+                            }
+                        ],
+                    }
+                ),
+                encoding="utf-8",
+            )
+
+            fix_site_issues_api.confirm_applied_name_matches(
+                path,
+                [
+                    {
+                        "record_id": "record-1",
+                        "fields": ["years"],
                         "status": "applied",
                     }
                 ],
@@ -129,14 +164,73 @@ class FixSiteIssuesPlanTests(unittest.TestCase):
             decisions = json.loads(decisions_path.read_text(encoding="utf-8"))
 
         self.assertEqual(result["unresolved"], [])
-        self.assertEqual(result["all"][0]["status"], "connected_pending_name_update")
+        self.assertEqual(result["all"][0]["status"], "connected_pending_metadata_update")
         self.assertEqual(updates[0]["current"]["name"], "10 cents")
         self.assertEqual(updates[0]["set"]["name"], "10 cêntimos")
         self.assertIn("Catálogo local: 10 cêntimos (2020)", output.getvalue())
+        self.assertIn("uCoin: https://pt.ucoin.net/coin/example", output.getvalue())
         self.assertIn("Site Base44 agora: 10 cents", output.getvalue())
         self.assertEqual(decisions["country"], "pais")
         self.assertEqual(decisions["decisions"][0]["sameCoin"], "yes")
         self.assertEqual(decisions["decisions"][0]["rename"], "yes")
+        self.assertEqual(decisions["decisions"][0]["updateYears"], "not_needed")
+        self.assertEqual(decisions["decisions"][0]["applyStatus"], "pending")
+
+    def test_reconcile_can_confirm_match_and_propose_updated_years(self) -> None:
+        missing = [
+            {
+                "denomination": "1 won",
+                "ucoinUrl": "https://pt.ucoin.net/coin/south-korea-1-won-1983-2026",
+                "period": {"title": "Coreia do Sul › República › 1983-2026"},
+                "coin": {"issuePeriod": "1983 - 2026"},
+            }
+        ]
+        site_record = {
+            "id": "record-1",
+            "name": "1 won",
+            "years": "1983-2025",
+            "url_ucoin": "",
+            "notes": "República",
+        }
+        updates: list[dict[str, object]] = []
+
+        with tempfile.TemporaryDirectory() as temp_dir:
+            decisions_path = Path(temp_dir) / "name-match-decisions.json"
+            with (
+                patch.object(
+                    fix_site_issues_api.checker,
+                    "api_records_for_country",
+                    return_value=([site_record], None),
+                ),
+                patch("builtins.input", side_effect=["1", "s"]),
+                redirect_stdout(io.StringIO()) as output,
+            ):
+                result = fix_site_issues_api.reconcile_missing(
+                    country_name="Coreia do Sul",
+                    missing_creates=missing,
+                    plan_updates=updates,
+                    associations_path=Path(temp_dir) / "associations.json",
+                    missing_found_path=Path(temp_dir) / "missing-found.json",
+                    interactive=True,
+                    max_candidates=5,
+                    name_decisions_path=decisions_path,
+                    decision_country_slug="coreia-do-sul",
+                )
+            decisions = json.loads(decisions_path.read_text(encoding="utf-8"))
+
+        self.assertEqual(result["unresolved"], [])
+        self.assertEqual(result["all"][0]["status"], "connected_pending_metadata_update")
+        self.assertEqual(updates[0]["current"]["years"], "1983-2025")
+        self.assertEqual(updates[0]["set"]["years"], "1983 - 2026")
+        self.assertNotIn("name", updates[0]["set"])
+        self.assertIn(
+            "uCoin: https://pt.ucoin.net/coin/south-korea-1-won-1983-2026",
+            output.getvalue(),
+        )
+        self.assertIn("Site Base44 agora: 1983-2025", output.getvalue())
+        self.assertEqual(decisions["decisions"][0]["rename"], "not_needed")
+        self.assertEqual(decisions["decisions"][0]["updateYears"], "yes")
+        self.assertEqual(decisions["decisions"][0]["proposedYears"], "1983 - 2026")
         self.assertEqual(decisions["decisions"][0]["applyStatus"], "pending")
 
     def test_rejected_match_is_also_saved_in_decisions_json(self) -> None:
@@ -361,7 +455,7 @@ class FixSiteIssuesPlanTests(unittest.TestCase):
 
 
 class FixSiteIssuesApplyTests(unittest.TestCase):
-    def test_apply_can_change_only_the_confirmed_name(self) -> None:
+    def test_apply_can_change_only_the_confirmed_name_and_years(self) -> None:
         class FakeClient:
             base_url = "https://base44.test/entities/Coin"
 
@@ -369,6 +463,7 @@ class FixSiteIssuesApplyTests(unittest.TestCase):
                 self.record = {
                     "id": "record-1",
                     "name": "10 cents",
+                    "years": "2019",
                     "notes": "República",
                     "image_frente": "https://images.test/front.jpg",
                     "image_verso": "https://images.test/back.jpg",
@@ -389,8 +484,8 @@ class FixSiteIssuesApplyTests(unittest.TestCase):
                     "denomination": "10 cêntimos",
                     "issuePeriod": "2020",
                     "record_id": "record-1",
-                    "current": {"name": "10 cents"},
-                    "set": {"name": "10 cêntimos"},
+                    "current": {"name": "10 cents", "years": "2019"},
+                    "set": {"name": "10 cêntimos", "years": "2020"},
                 }
             ],
             "creates": [],
@@ -405,6 +500,7 @@ class FixSiteIssuesApplyTests(unittest.TestCase):
 
         self.assertEqual(result, {"updated": 1, "created": 0, "skipped": 0})
         self.assertEqual(client.record["name"], "10 cêntimos")
+        self.assertEqual(client.record["years"], "2020")
         self.assertEqual(client.record["notes"], "República")
         self.assertEqual(client.record["image_frente"], "https://images.test/front.jpg")
         self.assertEqual(client.record["image_verso"], "https://images.test/back.jpg")
@@ -413,9 +509,9 @@ class FixSiteIssuesApplyTests(unittest.TestCase):
             [
                 {
                     "record_id": "record-1",
-                    "fields": ["name"],
+                    "fields": ["name", "years"],
                     "status": "applied",
-                    "message": "name",
+                    "message": "name, years",
                 }
             ],
         )

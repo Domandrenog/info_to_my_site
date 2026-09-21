@@ -472,6 +472,7 @@ def load_confirmed_equivalences(country_dir: Path) -> dict[str, str]:
                 if str(entry.get("status") or "") not in {
                     "connected",
                     "connected_pending_name_update",
+                    "connected_pending_metadata_update",
                 }:
                     continue
                 ucoin_url = normalize_url(str(entry.get("ucoinUrl") or ""))[0]
