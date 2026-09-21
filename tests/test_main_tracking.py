@@ -169,6 +169,7 @@ class MainTrackingActionTests(unittest.TestCase):
         countries = [
             {"country": "filipinas", "country_name": "Filipinas", "coin_count": 2},
         ]
+        review_associations.return_value = ["filipinas"]
 
         with redirect_stdout(io.StringIO()) as output:
             main.offer_difference_followups(Path("differences.json"))
@@ -179,6 +180,39 @@ class MainTrackingActionTests(unittest.TestCase):
         self.assertIn("0) Terminar", displayed)
         recheck_photos.assert_called_once_with(Path("differences.json"))
         review_associations.assert_called_once_with(countries)
+
+    @patch("main.review_unconfirmed_association_countries", side_effect=[["coreia-do-sul"], ["bahamas"]])
+    @patch("main.ask_text", side_effect=["1", "1"])
+    @patch("main.load_missing_photo_entries", return_value=[])
+    @patch(
+        "main.unconfirmed_association_countries",
+        return_value=[
+            {"country": "coreia-do-sul", "country_name": "Coreia do Sul", "coin_count": 6},
+            {"country": "bahamas", "country_name": "Bahamas", "coin_count": 2},
+        ],
+    )
+    def test_difference_followups_offer_remaining_countries_after_each_review(
+        self,
+        _countries,
+        _photo_entries,
+        _ask_text,
+        review_associations,
+    ) -> None:
+        with redirect_stdout(io.StringIO()) as output:
+            main.offer_difference_followups(Path("differences.json"))
+
+        first_countries = review_associations.call_args_list[0].args[0]
+        second_countries = review_associations.call_args_list[1].args[0]
+        self.assertEqual(
+            [item["country"] for item in first_countries],
+            ["coreia-do-sul", "bahamas"],
+        )
+        self.assertEqual(
+            [item["country"] for item in second_countries],
+            ["bahamas"],
+        )
+        self.assertIn("8 moedas em 2 países", output.getvalue())
+        self.assertIn("2 moedas em 1 país", output.getvalue())
 
     @patch("main.subprocess.run", return_value=subprocess.CompletedProcess([], 1))
     @patch("main.ask_yes_no", return_value=True)

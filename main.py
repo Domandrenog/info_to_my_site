@@ -680,9 +680,14 @@ def offer_unconfirmed_association_review(report_path: Path) -> None:
     review_unconfirmed_association_countries(countries)
 
 
-def review_unconfirmed_association_countries(countries: list[dict[str, object]]) -> None:
-    for item in select_association_countries(countries):
-        run_association_review(str(item.get("country") or ""))
+def review_unconfirmed_association_countries(countries: list[dict[str, object]]) -> list[str]:
+    selected_countries = select_association_countries(countries)
+    reviewed_country_slugs: list[str] = []
+    for item in selected_countries:
+        country_slug = str(item.get("country") or "")
+        reviewed_country_slugs.append(country_slug)
+        run_association_review(country_slug)
+    return reviewed_country_slugs
 
 
 def offer_ucoin_photo_recheck(report_path: Path) -> None:
@@ -775,8 +780,14 @@ def offer_difference_followups(report_path: Path) -> None:
 
         action = actions[selected_index][0]
         if action == "associations":
-            review_unconfirmed_association_countries(association_countries)
-            association_countries = []
+            reviewed_country_slugs = set(
+                review_unconfirmed_association_countries(association_countries)
+            )
+            association_countries = [
+                item
+                for item in association_countries
+                if str(item.get("country") or "") not in reviewed_country_slugs
+            ]
         else:
             run_ucoin_photo_recheck(report_path)
             photo_entries = []
