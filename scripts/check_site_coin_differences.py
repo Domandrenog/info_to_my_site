@@ -30,7 +30,7 @@ TEXT_REPORT_ISSUE_LABELS = {
     "mismatched_url_ucoin": "URL do uCoin incorreto",
     "missing_notes": "Sem notes",
     "missing_url_ucoin": "Sem URL do uCoin",
-    "multiple_api_matches": "Várias associações possíveis na API",
+    "multiple_api_matches": "Várias associações possíveis no Site Base44",
     "side_mismatch": "Lado da fotografia incorreto",
     "url_not_in_all_coins_map": "Fotografia sem mapeamento",
 }
@@ -420,7 +420,7 @@ def api_tracking_report(countries: list[dict[str, object]]) -> dict[str, object]
     return {
         "report_type": "api_country_tracking",
         "country": "api-country-tracking",
-        "country_name": "Países na API sem tracking local",
+        "country_name": "Países no Site Base44 sem tracking local",
         "summary": {
             "total_countries": len(countries),
             "total_issues": len(countries),
@@ -733,7 +733,7 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--output", default="", help="Caminho para guardar o relatorio em JSON.")
     parser.add_argument("--include-markdown-as-issue", action="store_true", help="Conta markdown_url como diferenca real.")
     parser.add_argument("--include-warnings", action="store_true", help="Inclui warnings no relatorio (desligado por defeito).")
-    parser.add_argument("--no-check-api", action="store_true", help="Nao verifica notes/url_ucoin na API do site.")
+    parser.add_argument("--no-check-api", action="store_true", help="Nao verifica notes/url_ucoin no Site Base44.")
     return parser.parse_args()
 
 
@@ -820,7 +820,7 @@ def print_text_report(report: dict[str, object], include_warnings: bool) -> None
                     print(
                         f"- {item.get('country', '')}: {missing_rarity}/{type_count} "
                         f"{count_label(missing_rarity, 'tipo sem raridade', 'tipos sem raridade')} "
-                        f"({coin_count} {count_label(coin_count, 'moeda', 'moedas')} na API)"
+                        f"({coin_count} {count_label(coin_count, 'moeda', 'moedas')} no Site Base44)"
                     )
                 else:
                     print(f"- {item.get('country', '')}: raridade preenchida; falta gerar o catálogo final")
@@ -854,7 +854,7 @@ def print_text_report(report: dict[str, object], include_warnings: bool) -> None
             possibly_missing = max(0, analyzed_coins - api_coin_count)
             if possibly_missing:
                 print(
-                    f"- Possivelmente em falta na API: {possibly_missing} "
+                    f"- Possivelmente em falta no Site Base44: {possibly_missing} "
                     f"{count_label(possibly_missing, 'moeda', 'moedas')}"
                 )
 
@@ -878,11 +878,11 @@ def print_text_report(report: dict[str, object], include_warnings: bool) -> None
         print()
         if api_coin_count == analyzed_coins:
             print(
-                f"API Base44 e catálogo local: {analyzed_coins} "
+                f"Site Base44 e catálogo local: {analyzed_coins} "
                 f"{count_label(analyzed_coins, 'moeda', 'moedas')}"
             )
         elif api_coin_count is not None:
-            print(f"API Base44: {api_coin_count} {count_label(api_coin_count, 'moeda', 'moedas')}")
+            print(f"Site Base44: {api_coin_count} {count_label(api_coin_count, 'moeda', 'moedas')}")
             print(f"Catálogo local: {analyzed_coins} {count_label(analyzed_coins, 'moeda', 'moedas')}")
         else:
             print(f"Catálogo local: {analyzed_coins} {count_label(analyzed_coins, 'moeda', 'moedas')}")
@@ -963,7 +963,7 @@ def main() -> int:
     if check_api and not args.country:
         all_api_records, api_error = api_records_for_all_countries()
         if all_api_records is None:
-            api_tracking_error = api_error or "Erro desconhecido ao consultar a API Base44."
+            api_tracking_error = api_error or "Erro desconhecido ao consultar o Site Base44."
             check_api = False
         else:
             api_records_by_country = group_api_records_by_country(all_api_records)
@@ -1002,7 +1002,7 @@ def main() -> int:
             {
                 "report_type": "api_country_tracking",
                 "country": "api-country-tracking",
-                "country_name": "Tracking de países da API",
+                "country_name": "Tracking de países do Site Base44",
                 "summary": {"total_issues": 0, "by_type": {}},
                 "countries": [],
                 "coins_with_issues": [],

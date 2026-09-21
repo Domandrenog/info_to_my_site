@@ -62,7 +62,7 @@ class CheckSiteCoinDifferencesOutputTests(unittest.TestCase):
             print_text_reports(reports, include_warnings=False)
 
         self.assertIn(
-            "API Base44 e catálogo local: 1 moeda\n\n"
+            "Site Base44 e catálogo local: 1 moeda\n\n"
             + "-" * 72
             + "\n\nSingapura: 1 moeda analisada",
             output.getvalue(),
@@ -130,11 +130,11 @@ class CheckSiteCoinDifferencesOutputTests(unittest.TestCase):
             "Filipinas: 21 moedas analisadas\n"
             "\n"
             "- Sem associação confirmada: 21 moedas\n"
-            "- Possivelmente em falta na API: 2 moedas\n"
+            "- Possivelmente em falta no Site Base44: 2 moedas\n"
             "- Sem fotografia: 1 moeda\n"
             "  - 10 piso (2025): frente e verso em falta\n"
             "\n"
-            "API Base44: 19 moedas\n"
+            "Site Base44: 19 moedas\n"
             "Catálogo local: 21 moedas",
         )
 
@@ -171,7 +171,7 @@ class CheckSiteCoinDifferencesOutputTests(unittest.TestCase):
             "\n"
             "- Sem notes: 1 moeda\n"
             "\n"
-            "API Base44 e catálogo local: 1 moeda\n"
+            "Site Base44 e catálogo local: 1 moeda\n"
             "Warnings: 2\n"
             "- Multiple API matches: 2 warnings",
         )
@@ -208,7 +208,7 @@ class CheckSiteCoinDifferencesOutputTests(unittest.TestCase):
             "\n"
             "- Sem associação confirmada: 1 moeda\n"
             "\n"
-            "API Base44 e catálogo local: 28 moedas",
+            "Site Base44 e catálogo local: 28 moedas",
         )
 
     def test_text_report_shows_errors_without_coin_details(self) -> None:
@@ -256,7 +256,7 @@ class CheckSiteCoinDifferencesOutputTests(unittest.TestCase):
 
         self.assertEqual(
             self.render(report),
-            "Países na API sem tracking local: 2\n- Portugal: 60 moedas\n- Alemanha: 1 moeda",
+            "Países no Site Base44 sem tracking local: 2\n- Portugal: 60 moedas\n- Alemanha: 1 moeda",
         )
 
     def test_text_report_lists_pending_catalogues_as_missing_rarity(self) -> None:
@@ -274,7 +274,7 @@ class CheckSiteCoinDifferencesOutputTests(unittest.TestCase):
         self.assertEqual(
             self.render(report),
             "Países recolhidos ainda sem raridade: 1\n"
-            "- Bahamas: 3/3 tipos sem raridade (24 moedas na API)",
+            "- Bahamas: 3/3 tipos sem raridade (24 moedas no Site Base44)",
         )
 
 

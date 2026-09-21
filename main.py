@@ -280,7 +280,7 @@ def action_collect_country_pending() -> None:
 
 
 def action_collect_missing_country_tracking() -> None:
-    title("Adicionar países da API sem catálogo local")
+    title("Adicionar países do Site Base44 sem catálogo local")
     print("Consulta a Base44, recolhe os catálogos em falta e conclui a classificação das raridades.")
     print("No fim gera os outputs finais e limpa os ficheiros intermédios de cada país.")
     print("Este fluxo não escreve nem apaga registos na Base44.\n")
@@ -295,7 +295,7 @@ def action_collect_missing_country_tracking() -> None:
             print(f"Não há países novos para recolher; existem {len(pending)} catálogos a aguardar raridade.")
             complete_pending_rarities()
         else:
-            print("Todos os países da API já têm catálogo final.")
+            print("Todos os países do Site Base44 já têm catálogo final.")
         return
 
     print_tracking_plans(plans)
@@ -321,7 +321,7 @@ def action_collect_missing_country_tracking() -> None:
         print(" ".join(command))
 
     print("\nSerão criados ucoin-catalog.json e app-catalog-pending.json para cada país.")
-    print("Cada recolha começa no primeiro ano já coberto pela API, para não omitir séries em continuação.")
+    print("Cada recolha começa no primeiro ano já coberto pelo Site Base44, para não omitir séries em continuação.")
     print("Nenhuma moeda será importada para a Base44 nesta etapa.")
     if not ask_yes_no("Confirmas a recolha de todos os países selecionados?", default=False):
         print("Recolha cancelada; nenhuma alteração efetuada.")
@@ -512,7 +512,7 @@ def action_import_base44(
 
 def action_check_differences() -> None:
     title("Verificar diferencas do site")
-    print("Compara app-catalog com All_Coins e API para listar inconsistencias por moeda.")
+    print("Compara app-catalog com All_Coins e Site Base44 para listar inconsistencias por moeda.")
 
     country = ask_text("Pais (opcional, ex: bielorrussia; vazio = todos)", "")
     include_warnings = ask_yes_no("Incluir warnings no relatorio?", default=False)
@@ -669,7 +669,7 @@ def action_autofix_issues() -> None:
     title("Corrigir dados no Site Base44")
     print("Analisa todos os países e só permite alterar os campos escolhidos.")
     print("Neste fluxo não criamos registos nem alteramos fotografias.")
-    print("A recolher o estado atual da API e dos catálogos...", flush=True)
+    print("A recolher o estado atual do Site Base44 e dos catálogos...", flush=True)
 
     try:
         plan = fix_site_issues_api.collect_global_fix_plan(
@@ -701,7 +701,7 @@ def action_autofix_issues() -> None:
 
     missing = plan.get("missing", [])
     if missing:
-        print(f"\nEntradas sem associação confirmada na API: {len(missing)}")
+        print(f"\nEntradas sem associação confirmada no Site Base44: {len(missing)}")
         print("Estas entradas serão apenas mostradas; não serão criadas nem alteradas.")
         current_country = ""
         for item in sorted(
@@ -723,7 +723,7 @@ def action_autofix_issues() -> None:
     photo_issues = int(plan.get("manual_counts", {}).get("photos", 0))
     if photo_issues:
         print(f"\nFotografias a rever manualmente: {photo_issues} ocorrências")
-        print("Não aparecem como opção porque este diagnóstico não permite uma correção segura na API.")
+        print("Não aparecem como opção porque este diagnóstico não permite uma correção segura no Site Base44.")
 
     counts = fix_site_issues_api.update_field_counts(plan)
     if not counts:
@@ -748,7 +748,7 @@ def action_autofix_issues() -> None:
     while True:
         choice = ask_text("Escolhe o que queres corrigir", "0")
         if choice == "0":
-            print("Operação cancelada. A API não foi alterada.")
+            print("Operação cancelada. O Site Base44 não foi alterado.")
             return
         if len(available_fields) > 1 and choice == str(len(available_fields) + 1):
             selected_fields = available_fields
@@ -766,7 +766,7 @@ def action_autofix_issues() -> None:
     if "notes" in selected_fields:
         selected_note_countries = choose_notes_country_scope(selected_plan)
         if selected_note_countries is None:
-            print("Operação cancelada. A API não foi alterada.")
+            print("Operação cancelada. O Site Base44 não foi alterado.")
             return
         selected_plan = fix_site_issues_api.restrict_update_field_to_countries(
             selected_plan,
@@ -775,7 +775,7 @@ def action_autofix_issues() -> None:
         )
     updates = selected_plan.get("updates", [])
     if not updates:
-        print("Não existem alterações seguras dentro do âmbito escolhido. A API não foi alterada.")
+        print("Não existem alterações seguras dentro do âmbito escolhido. O Site Base44 não foi alterado.")
         return
     total_changes = sum(len(item.get("set", {})) for item in updates)
     print(f"\nAlterações propostas: {total_changes} campos em {len(updates)} moedas")
@@ -802,10 +802,10 @@ def action_autofix_issues() -> None:
             print(f"  {field}: {old_value} -> {new_value}")
 
     if not ask_yes_no(
-        f"Aplicar exatamente estes {total_changes} campos na API?",
+        f"Aplicar exatamente estes {total_changes} campos no Site Base44?",
         default=False,
     ):
-        print("Operação cancelada. A API não foi alterada.")
+        print("Operação cancelada. O Site Base44 não foi alterado.")
         return
 
     args = SimpleNamespace(
