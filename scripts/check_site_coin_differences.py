@@ -21,6 +21,7 @@ ISSUE_TYPE_LABELS = {
     "missing_notes": "Missing notes",
     "missing_url_ucoin": "Missing uCoin URL",
     "multiple_api_matches": "Multiple API matches",
+    "ucoin_url_identity_mismatch": "uCoin URL does not match coin identity",
     "non_ucoin_external_image": "External photo source is not uCoin",
     "side_mismatch": "Wrong photo side",
     "url_not_in_all_coins_map": "Photo not mapped",
@@ -33,6 +34,7 @@ TEXT_REPORT_ISSUE_LABELS = {
     "missing_notes": "Sem notes",
     "missing_url_ucoin": "Sem URL do uCoin",
     "multiple_api_matches": "Várias associações possíveis no Site Base44",
+    "ucoin_url_identity_mismatch": "URL do uCoin não corresponde ao nome/anos",
     "non_ucoin_external_image": "Fonte externa da fotografia não é uCoin",
     "side_mismatch": "Lado da fotografia incorreto",
     "url_not_in_all_coins_map": "Fotografia sem mapeamento",
@@ -270,7 +272,11 @@ def summarize_issue_labels(issues: list[dict[str, str]]) -> list[str]:
     for issue in issues:
         field = str(issue.get("field", ""))
         missing_value = str(issue.get("missing_value", ""))
-        label = "Not found" if field == "api" and missing_value == "Not found" else field
+        issue_type = str(issue.get("type") or "")
+        if issue_type == "ucoin_url_identity_mismatch":
+            label = ISSUE_TYPE_LABELS[issue_type]
+        else:
+            label = "Not found" if field == "api" and missing_value == "Not found" else field
         if label and label not in seen:
             seen.add(label)
             labels.append(label)
@@ -298,6 +304,8 @@ def iter_coins(catalogue: dict[str, object]):
 def normalize_key(value: str) -> str:
     normalized = unicodedata.normalize("NFKD", str(value or "").strip().casefold())
     normalized = "".join(character for character in normalized if not unicodedata.combining(character))
+    for fraction, expanded in {"½": " 1 2 ", "¼": " 1 4 ", "¾": " 3 4 "}.items():
+        normalized = normalized.replace(fraction, expanded)
     tokens = re.findall(r"\d+(?:[.,]\d+)?|[a-zø]+|[½¼¾]", normalized)
     unit_aliases = {
         "c": "cent",
@@ -307,21 +315,44 @@ def normalize_key(value: str) -> str:
         "cents": "cent",
         "centimo": "cent",
         "centimos": "cent",
+        "centavo": "cent",
+        "centavos": "cent",
         "dolar": "dollar",
         "dolares": "dollar",
         "dollar": "dollar",
         "dollars": "dollar",
+        "dinar": "dinar",
+        "dinars": "dinar",
         "euro": "euro",
         "euros": "euro",
+        "florim": "forint",
+        "florins": "forint",
+        "forint": "forint",
+        "forints": "forint",
+        "franco": "franc",
+        "francos": "franc",
+        "franc": "franc",
+        "francs": "franc",
         "escudo": "escudo",
         "escudos": "escudo",
         "kopek": "kopek",
         "kopeks": "kopek",
+        "coroa": "crown",
+        "coroas": "crown",
+        "krona": "crown",
+        "kronor": "crown",
+        "korona": "crown",
+        "krone": "crown",
+        "kroner": "crown",
         "milim": "millime",
         "milims": "millime",
         "millim": "millime",
         "millime": "millime",
         "millimes": "millime",
+        "milesimo": "millieme",
+        "milesimos": "millieme",
+        "millieme": "millieme",
+        "milliemes": "millieme",
         "ore": "ore",
         "øre": "ore",
         "pence": "penny",
@@ -330,8 +361,137 @@ def normalize_key(value: str) -> str:
         "rand": "rand",
         "rupee": "rupee",
         "rupees": "rupee",
+        "rupia": "rupee",
+        "rupias": "rupee",
+        "iene": "yen",
+        "ienes": "yen",
+        "yen": "yen",
+        "libra": "pound",
+        "libras": "pound",
+        "pound": "pound",
+        "pounds": "pound",
+        "rublo": "ruble",
+        "rublos": "ruble",
+        "ruble": "ruble",
+        "rubles": "ruble",
+        "shilling": "shilling",
+        "shillings": "shilling",
+        "kuna": "kuna",
+        "kunas": "kuna",
+        "kune": "kuna",
+        "korun": "crown",
+        "koruna": "crown",
+        "koruny": "crown",
+        "pataca": "pataca",
+        "patacas": "pataca",
+        "sat": "satang",
+        "satang": "satang",
+        "zloty": "zloty",
+        "zlotych": "zloty",
+        "grosz": "grosz",
+        "grosze": "grosz",
+        "groszy": "grosz",
     }
     return " ".join(unit_aliases.get(token, token) for token in tokens)
+
+
+def contains_token_sequence(tokens: list[str], expected: list[str]) -> bool:
+    if not expected:
+        return True
+    width = len(expected)
+    return any(tokens[index : index + width] == expected for index in range(len(tokens) - width + 1))
+
+
+DENOMINATION_UNITS = {
+    "baht",
+    "cent",
+    "crown",
+    "dinar",
+    "dollar",
+    "escudo",
+    "euro",
+    "fen",
+    "forint",
+    "franc",
+    "grosz",
+    "jiao",
+    "kopek",
+    "kuna",
+    "lira",
+    "millime",
+    "millieme",
+    "ore",
+    "pataca",
+    "pence",
+    "penny",
+    "peso",
+    "piso",
+    "pound",
+    "rand",
+    "real",
+    "ringgit",
+    "ruble",
+    "rupee",
+    "satang",
+    "sen",
+    "shilling",
+    "won",
+    "yen",
+    "yuan",
+    "zloty",
+}
+
+
+def denomination_amount_variants(value: str) -> list[list[str]]:
+    raw = str(value or "").strip().casefold()
+    fraction_match = re.match(r"^(\d+)?\s*([½¼¾])", raw)
+    if fraction_match:
+        whole = fraction_match.group(1) or ""
+        numerator, denominator = {"½": ("1", "2"), "¼": ("1", "4"), "¾": ("3", "4")}[fraction_match.group(2)]
+        if not whole:
+            return [[numerator, denominator]]
+        decimal_digit = {"½": "5", "¼": "25", "¾": "75"}[fraction_match.group(2)]
+        return [[whole, decimal_digit], [whole, numerator, denominator]]
+
+    number_match = re.match(r"^(\d[\d.,]*)", raw)
+    if not number_match:
+        return []
+    number = number_match.group(1)
+    compact = number.replace(".", "").replace(",", "")
+    variants = [[compact]]
+    if number != compact:
+        variants.append([number])
+        variants.append([part for part in re.split(r"[.,]", number) if part])
+    return variants
+
+
+def denomination_identity_matches(name: str, slug_tokens: list[str]) -> bool:
+    amount_variants = denomination_amount_variants(name)
+    if not amount_variants:
+        return True
+    if not any(contains_token_sequence(slug_tokens, variant) for variant in amount_variants):
+        return False
+
+    name_tokens = normalize_key(name).split()
+    units = [token for token in name_tokens if token in DENOMINATION_UNITS]
+    return not units or units[0] in slug_tokens
+
+
+def ucoin_url_identity_mismatches(record: dict[str, object]) -> list[str]:
+    url_ucoin = normalize_url(str(record.get("url_ucoin") or ""))[0]
+    if not url_ucoin:
+        return []
+    hostname = (urlparse(url_ucoin).hostname or "").casefold()
+    slug_tokens = normalize_key(detail_stem(url_ucoin)).split()
+    year_tokens = normalize_key(str(record.get("years") or "")).split()
+    mismatches: list[str] = []
+    if hostname != "ucoin.net" and not hostname.endswith(".ucoin.net"):
+        mismatches.append("host")
+    if not denomination_identity_matches(str(record.get("name") or ""), slug_tokens):
+        mismatches.append("name")
+    if year_tokens and not contains_token_sequence(slug_tokens, year_tokens):
+        mismatches.append("years")
+    return mismatches
 
 
 def name_year_matches(
@@ -548,6 +708,67 @@ def pending_rarity_report(countries: list[dict[str, object]]) -> dict[str, objec
     }
 
 
+def api_url_identity_report(
+    country_key: str,
+    records: list[dict[str, object]],
+) -> dict[str, object] | None:
+    coins_with_issues: list[dict[str, object]] = []
+    country_names = {
+        str(record.get("country") or "").strip()
+        for record in records
+        if str(record.get("country") or "").strip()
+    }
+    for record in records:
+        mismatches = ucoin_url_identity_mismatches(record)
+        if not mismatches:
+            continue
+        url_ucoin = normalize_url(str(record.get("url_ucoin") or ""))[0]
+        issue = make_finding(
+            "ucoin_url_identity_mismatch",
+            "url_ucoin_identity",
+            value=url_ucoin,
+            missing_value=",".join(mismatches),
+        )
+        coins_with_issues.append(
+            {
+                "denomination": str(record.get("name") or ""),
+                "issuePeriod": str(record.get("years") or ""),
+                "ucoinUrl": url_ucoin,
+                "siteUrl": build_site_url(str(record.get("id") or "")),
+                "issue_count": 1,
+                "issues": [issue],
+            }
+        )
+    if not coins_with_issues:
+        return None
+    country_name = sorted(country_names, key=slugify)[0] if country_names else country_key
+    issue_count = len(coins_with_issues)
+    return {
+        "country": country_key,
+        "country_name": country_name,
+        "summary": {
+            "coins": [
+                {
+                    "coin": item["denomination"],
+                    "issue_count": 1,
+                    "types": [ISSUE_TYPE_LABELS["ucoin_url_identity_mismatch"]],
+                }
+                for item in coins_with_issues
+            ],
+            "total_coins": issue_count,
+            "analyzed_coins": len(records),
+            "api_coin_count": len(records),
+            "total_issues": issue_count,
+            "by_type": {"ucoin_url_identity_mismatch": issue_count},
+            "site_missing_fields": {
+                "url_ucoin": sum(1 for record in records if not normalize_url(str(record.get("url_ucoin") or ""))[0]),
+                "notes": sum(1 for record in records if not str(record.get("notes") or "").strip()),
+            },
+        },
+        "coins_with_issues": coins_with_issues,
+    }
+
+
 def association_record_id(entry: dict[str, object]) -> str:
     record_id = str(entry.get("record_id") or "")
     if record_id:
@@ -663,6 +884,7 @@ def compare_country(
     coins_with_issues: list[dict[str, object]] = []
     coins_with_warnings: list[dict[str, object]] = []
     image_matched_ucoin_urls: list[str] = []
+    audited_api_record_ids: set[str] = set()
     analyzed_coin_count = 0
 
     for period, coin in iter_coins(data):
@@ -750,7 +972,8 @@ def compare_country(
                 if len(matches) > 1 and include_warnings:
                     coin_warnings.append(make_finding("multiple_api_matches", "api", value=str(len(matches)), missing_value="single_api_match"))
                 record = matches[0]
-                site_url = build_site_url(str(record.get("id") or ""))
+                record_id = str(record.get("id") or "")
+                site_url = build_site_url(record_id)
                 notes = str(record.get("notes") or "").strip()
                 url_ucoin = normalize_url(str(record.get("url_ucoin") or ""))[0]
                 coin_issues.extend(
@@ -768,6 +991,19 @@ def compare_country(
                     coin_issues.append(make_finding("missing_url_ucoin", "url_ucoin", value="", missing_value=detail_norm or "url_ucoin"))
                 elif detail_norm and url_ucoin != detail_norm:
                     coin_issues.append(make_finding("mismatched_url_ucoin", "url_ucoin", value=url_ucoin, missing_value=detail_norm))
+                elif record_id not in audited_api_record_ids:
+                    identity_mismatches = ucoin_url_identity_mismatches(record)
+                    if identity_mismatches:
+                        coin_issues.append(
+                            make_finding(
+                                "ucoin_url_identity_mismatch",
+                                "url_ucoin_identity",
+                                value=url_ucoin,
+                                missing_value=",".join(identity_mismatches),
+                            )
+                        )
+                if record_id:
+                    audited_api_record_ids.add(record_id)
 
         if coin_issues:
             compact_issues = compact_findings(coin_issues)
@@ -801,6 +1037,40 @@ def compare_country(
                     "siteUrl": site_url,
                     "warning_count": len(coin_warnings),
                     "warnings": compact_findings(coin_warnings),
+                }
+            )
+
+    if api_records is not None:
+        for record in api_records:
+            record_id = str(record.get("id") or "")
+            if record_id in audited_api_record_ids:
+                continue
+            identity_mismatches = ucoin_url_identity_mismatches(record)
+            if not identity_mismatches:
+                continue
+            url_ucoin = normalize_url(str(record.get("url_ucoin") or ""))[0]
+            identity_issue = make_finding(
+                "ucoin_url_identity_mismatch",
+                "url_ucoin_identity",
+                value=url_ucoin,
+                missing_value=",".join(identity_mismatches),
+            )
+            all_issues.append(identity_issue)
+            summary_coins.append(
+                {
+                    "coin": str(record.get("name") or ""),
+                    "issue_count": 1,
+                    "types": [ISSUE_TYPE_LABELS["ucoin_url_identity_mismatch"]],
+                }
+            )
+            coins_with_issues.append(
+                {
+                    "denomination": str(record.get("name") or ""),
+                    "issuePeriod": str(record.get("years") or ""),
+                    "ucoinUrl": url_ucoin,
+                    "siteUrl": build_site_url(record_id),
+                    "issue_count": 1,
+                    "issues": [identity_issue],
                 }
             )
 
@@ -939,6 +1209,49 @@ def external_image_source_details(report: dict[str, object]) -> list[str]:
     return details
 
 
+def ucoin_url_identity_details(report: dict[str, object]) -> list[str]:
+    details: list[str] = []
+    labels = {"host": "domínio", "name": "nome", "years": "anos"}
+    coins = report.get("coins_with_issues", [])
+    for coin in coins if isinstance(coins, list) else []:
+        if not isinstance(coin, dict):
+            continue
+        for issue in coin.get("issues", []):
+            if not isinstance(issue, dict) or issue.get("type") != "ucoin_url_identity_mismatch":
+                continue
+            mismatch_fields = [
+                labels.get(value, value)
+                for value in str(issue.get("missing_value") or "").split(",")
+                if value
+            ]
+            reason = " e ".join(mismatch_fields) or "identidade"
+            verb = "não corresponde" if len(mismatch_fields) == 1 else "não correspondem"
+            years = str(coin.get("issuePeriod") or "")
+            years_text = f" ({years})" if years else ""
+            details.append(
+                f"  - {coin.get('denomination', '')}{years_text}: "
+                f"{reason} {verb} — {issue.get('value', '')}"
+            )
+    return details
+
+
+def mismatched_ucoin_url_details(report: dict[str, object]) -> list[str]:
+    details: list[str] = []
+    coins = report.get("coins_with_issues", [])
+    for coin in coins if isinstance(coins, list) else []:
+        if not isinstance(coin, dict):
+            continue
+        for issue in coin.get("issues", []):
+            if not isinstance(issue, dict) or issue.get("type") != "mismatched_url_ucoin":
+                continue
+            years = str(coin.get("issuePeriod") or "")
+            years_text = f" ({years})" if years else ""
+            details.append(f"  - {coin.get('denomination', '')}{years_text}")
+            details.append(f"    Atual: {issue.get('value', '')}")
+            details.append(f"    Esperado: {issue.get('missing_value', '')}")
+    return details
+
+
 def print_text_report(report: dict[str, object], include_warnings: bool) -> None:
     summary = report.get("summary", {})
     country_slug = str(report.get("country", ""))
@@ -1029,6 +1342,16 @@ def print_text_report(report: dict[str, object], include_warnings: bool) -> None
                     f"- URL do uCoin diferente do catálogo: {mismatched_urls} "
                     f"{count_label(mismatched_urls, 'moeda', 'moedas')}"
                 )
+                for detail in mismatched_ucoin_url_details(report):
+                    print(detail)
+            identity_mismatches = issue_counts.get("ucoin_url_identity_mismatch", 0)
+            if identity_mismatches:
+                print(
+                    f"- URL do uCoin incoerente com nome/anos: {identity_mismatches} "
+                    f"{count_label(identity_mismatches, 'moeda', 'moedas')}"
+                )
+                for detail in ucoin_url_identity_details(report):
+                    print(detail)
             print()
 
         print(f"Catálogo local: {analyzed_coins} {count_label(analyzed_coins, 'moeda', 'moedas')}")
@@ -1039,6 +1362,7 @@ def print_text_report(report: dict[str, object], include_warnings: bool) -> None
             "missing_url_ucoin",
             "mismatched_url_ucoin",
             "non_ucoin_external_image",
+            "ucoin_url_identity_mismatch",
         }
         for issue_type, count in sorted(
             ((key, value) for key, value in issue_counts.items() if key not in hidden_types),
@@ -1214,6 +1538,13 @@ def main() -> int:
         )
         if missing_tracking:
             reports.append(api_tracking_report(missing_tracking))
+        for country_key in sorted(set(api_records_by_country) - tracked_country_keys):
+            identity_report = api_url_identity_report(
+                country_key,
+                api_records_by_country[country_key],
+            )
+            if identity_report is not None:
+                reports.append(identity_report)
     elif api_tracking_error:
         reports.append(
             {

@@ -11,6 +11,7 @@ from unittest.mock import patch
 from scripts.check_site_coin_differences import (
     api_country_name,
     api_tracking_report,
+    api_url_identity_report,
     build_reverse_map,
     compare_country,
     country_slugs_with_catalog,
@@ -19,6 +20,7 @@ from scripts.check_site_coin_differences import (
     external_image_source_suggestions,
     find_all_coins_country_folder,
     group_api_records_by_country,
+    mismatched_ucoin_url_details,
     name_year_matches,
     normalize_key,
     pending_catalogue_api_countries,
@@ -27,6 +29,8 @@ from scripts.check_site_coin_differences import (
     print_text_reports,
     report_for_output,
     untracked_api_countries,
+    ucoin_url_identity_mismatches,
+    ucoin_url_identity_details,
     write_output_report,
 )
 
@@ -683,6 +687,117 @@ class AllCoinsPathTests(unittest.TestCase):
         matches = disambiguate_image_matches(records, "100 millimes", "1960 - 2018")
 
         self.assertEqual(matches, [])
+
+    def test_ucoin_url_identity_accepts_translated_units_and_spacing(self) -> None:
+        record = {
+            "name": "100 milim",
+            "years": "1960 - 2018",
+            "url_ucoin": "https://pt.ucoin.net/coin/tunisia-100-millimes-1960-2018/?tid=13806",
+        }
+
+        self.assertEqual(ucoin_url_identity_mismatches(record), [])
+
+    def test_ucoin_url_identity_reports_wrong_name_and_years(self) -> None:
+        record = {
+            "name": "100 milim",
+            "years": "1960-2018",
+            "url_ucoin": "https://pt.ucoin.net/coin/tunisia-50-millimes-2013-2024/?tid=25550",
+        }
+
+        self.assertEqual(ucoin_url_identity_mismatches(record), ["name", "years"])
+
+    def test_ucoin_url_identity_reports_non_ucoin_domain(self) -> None:
+        record = {
+            "name": "100 milim",
+            "years": "1960-2018",
+            "url_ucoin": "https://example.test/coin/tunisia-100-millimes-1960-2018",
+        }
+
+        self.assertEqual(ucoin_url_identity_mismatches(record), ["host"])
+
+    def test_ucoin_url_identity_accepts_fraction_slug(self) -> None:
+        record = {
+            "name": "½ penny",
+            "years": "1837",
+            "url_ucoin": "https://pt.ucoin.net/coin/canada-1-2-penny-1837/?tid=1",
+        }
+
+        self.assertEqual(ucoin_url_identity_mismatches(record), [])
+
+    def test_ucoin_url_identity_details_explain_name_and_year_mismatch(self) -> None:
+        report = {
+            "coins_with_issues": [
+                {
+                    "denomination": "100 milim",
+                    "issuePeriod": "1960-2018",
+                    "issues": [
+                        {
+                            "type": "ucoin_url_identity_mismatch",
+                            "field": "url_ucoin_identity",
+                            "value": "https://pt.ucoin.net/coin/tunisia-50-millimes-2013-2024",
+                            "missing_value": "name,years",
+                        }
+                    ],
+                }
+            ]
+        }
+
+        self.assertEqual(
+            ucoin_url_identity_details(report),
+            [
+                "  - 100 milim (1960-2018): nome e anos não correspondem — "
+                "https://pt.ucoin.net/coin/tunisia-50-millimes-2013-2024"
+            ],
+        )
+
+    def test_api_url_identity_report_audits_country_without_local_catalogue(self) -> None:
+        report = api_url_identity_report(
+            "pais-sem-tracking",
+            [
+                {
+                    "id": "record-1",
+                    "country": "País sem tracking",
+                    "name": "10 cent",
+                    "years": "2000-2001",
+                    "url_ucoin": "https://pt.ucoin.net/coin/example-20-cents-1990-1991",
+                    "notes": "",
+                }
+            ],
+        )
+
+        self.assertIsNotNone(report)
+        assert report is not None
+        self.assertEqual(report["summary"]["total_issues"], 1)
+        self.assertEqual(
+            report["coins_with_issues"][0]["issues"][0]["missing_value"],
+            "name,years",
+        )
+
+    def test_mismatched_ucoin_url_details_show_current_and_expected_urls(self) -> None:
+        report = {
+            "coins_with_issues": [
+                {
+                    "denomination": "100 millimes",
+                    "issuePeriod": "1960-2018",
+                    "issues": [
+                        {
+                            "type": "mismatched_url_ucoin",
+                            "value": "https://pt.ucoin.net/coin/tunisia-50-millimes-2013-2024",
+                            "missing_value": "https://pt.ucoin.net/coin/tunisia-100-millimes-1960-2018",
+                        }
+                    ],
+                }
+            ]
+        }
+
+        self.assertEqual(
+            mismatched_ucoin_url_details(report),
+            [
+                "  - 100 millimes (1960-2018)",
+                "    Atual: https://pt.ucoin.net/coin/tunisia-50-millimes-2013-2024",
+                "    Esperado: https://pt.ucoin.net/coin/tunisia-100-millimes-1960-2018",
+            ],
+        )
 
     def test_finds_normal_country_folder_below_continent(self) -> None:
         with tempfile.TemporaryDirectory() as temp_dir:
