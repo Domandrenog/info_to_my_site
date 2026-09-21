@@ -10,7 +10,7 @@ import json
 from pathlib import Path
 from typing import Any
 
-from scripts.catalog_paths import CATALOG_ROOT, iter_country_directories
+from scripts.catalog_paths import CATALOG_ROOT, iter_country_directories, slugify
 from ucoin_to_mysite.generate_resume_json import (
     APP_CATALOG_FILENAME,
     AVAILABILITY_STATISTICS_FILENAME,
@@ -57,8 +57,9 @@ def count_catalogue_coins(catalogue: dict[str, Any]) -> int:
     )
 
 
-def discover_pending_catalogues(paises_dir: Path) -> list[dict[str, Any]]:
+def discover_pending_catalogues(paises_dir: Path, country: str = "") -> list[dict[str, Any]]:
     pending: list[dict[str, Any]] = []
+    requested_country = slugify(country)
     for country_dir in iter_country_directories(paises_dir):
         pending_path = country_dir / PENDING_APP_CATALOG_FILENAME
         if not pending_path.is_file() or (country_dir / APP_CATALOG_FILENAME).is_file():
@@ -66,6 +67,9 @@ def discover_pending_catalogues(paises_dir: Path) -> list[dict[str, Any]]:
         catalogue = load_json(pending_path)
         if not isinstance(catalogue, dict):
             raise ValueError(f"Catálogo inválido: {pending_path}")
+        country_keys = {slugify(country_dir.name), slugify(str(catalogue.get("country") or ""))}
+        if requested_country and requested_country not in country_keys:
+            continue
 
         missing_count = sum(
             1
@@ -251,6 +255,13 @@ def write_country_outputs(
             cleanup_intermediate_files(str(country_dir / FINAL_APP_CATALOG_INPUT_FILENAME))
 
 
+def write_final_catalogues(results: list[tuple[Path, dict[str, Any]]]) -> None:
+    for country_dir, final_catalogue in results:
+        final_input_path = country_dir / FINAL_APP_CATALOG_INPUT_FILENAME
+        write_json_atomic(final_input_path, final_catalogue)
+        print(f"Raridades definidas: {final_catalogue.get('country')} -> {final_input_path}")
+
+
 def cleanup_batch_files(*paths: Path) -> None:
     for path in paths:
         if path.exists():
@@ -261,10 +272,16 @@ def cleanup_batch_files(*paths: Path) -> None:
 def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(description="Prepara e aplica raridades para todos os catálogos pendentes.")
     parser.add_argument("--paises-dir", default=str(PROJECT_ROOT / CATALOG_ROOT))
+    parser.add_argument("--country", default="", help="Processa apenas o slug deste país.")
     parser.add_argument("--output", default=str(PROJECT_ROOT / DEFAULT_PENDING_OUTPUT))
     parser.add_argument("--prompt-output", default=str(PROJECT_ROOT / DEFAULT_PROMPT_OUTPUT))
     parser.add_argument("--final-input", default="")
     parser.add_argument("--wait-for-final", action="store_true")
+    parser.add_argument(
+        "--rarities-only",
+        action="store_true",
+        help="Guarda app-catalog-final.json sem gerar os outputs finais nem limpar os ficheiros do país.",
+    )
     parser.add_argument(
         "--cleanup-intermediate",
         action="store_true",
@@ -275,7 +292,7 @@ def parse_args() -> argparse.Namespace:
 
 def run(args: argparse.Namespace) -> int:
     paises_dir = Path(args.paises_dir)
-    entries = discover_pending_catalogues(paises_dir)
+    entries = discover_pending_catalogues(paises_dir, args.country)
     if not entries:
         print("Não existem catálogos pendentes sem raridade.")
         return 0
@@ -289,8 +306,12 @@ def run(args: argparse.Namespace) -> int:
     if args.final_input:
         final_batch = load_json(final_input_path)
         results = apply_rarity_batch(final_batch, entries)
-        write_country_outputs(results, cleanup_intermediate=args.cleanup_intermediate)
-        if args.cleanup_intermediate:
+        if args.rarities_only:
+            write_final_catalogues(results)
+            cleanup_batch_files(output_path, prompt_path, final_input_path)
+        else:
+            write_country_outputs(results, cleanup_intermediate=args.cleanup_intermediate)
+        if args.cleanup_intermediate and not args.rarities_only:
             cleanup_batch_files(output_path, prompt_path, final_input_path)
         print(f"Raridades aplicadas: {total_coins} tipos em {len(results)} países.")
         return 0
@@ -315,8 +336,12 @@ def run(args: argparse.Namespace) -> int:
         raise ValueError(f"O ficheiro final continua vazio: {final_input_path}")
     final_batch = load_json(final_input_path)
     results = apply_rarity_batch(final_batch, entries)
-    write_country_outputs(results, cleanup_intermediate=args.cleanup_intermediate)
-    if args.cleanup_intermediate:
+    if args.rarities_only:
+        write_final_catalogues(results)
+        cleanup_batch_files(output_path, prompt_path, final_input_path)
+    else:
+        write_country_outputs(results, cleanup_intermediate=args.cleanup_intermediate)
+    if args.cleanup_intermediate and not args.rarities_only:
         cleanup_batch_files(output_path, prompt_path, final_input_path)
     print(f"Raridades aplicadas: {total_coins} tipos em {len(results)} países.")
     return 0

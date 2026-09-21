@@ -243,9 +243,9 @@ def action_pipeline() -> None:
         )
 
 
-def action_scrape_only() -> None:
-    title("Scrape apenas (ucoin-catalog.json)")
-    print("Este passo recolhe o catalogo tecnico do uCoin sem gerar ficheiros finais da app.")
+def action_collect_country_pending() -> None:
+    title("Recolher dados do uCoin e criar catálogo pendente")
+    print("Recolhe o catálogo técnico e prepara o app-catalog-pending.json para definir raridades.")
 
     country = ask_text("Pais (ex: India, Canada)")
     if not country:
@@ -254,27 +254,27 @@ def action_scrape_only() -> None:
 
     continent = ask_continent(country)
 
-    command = [sys.executable, "-m", "scripts.ucoin_catalog", country, "--json", "--continent", continent]
+    command = [
+        sys.executable,
+        "-m",
+        "scripts.ucoin_pipeline",
+        country,
+        "--continent",
+        continent,
+        "--no-wait-for-final",
+    ]
 
     country_link_name = ask_country_link_name()
     if country_link_name:
         command.extend(["--country-link-name", country_link_name])
 
-    period = ask_text("Periodo (opcional, ex: 1957-2020)", "")
-    if period:
-        command.append(period)
-
     start_year = ask_int("Start year (opcional)", default=None, allow_empty=True)
     if start_year is not None:
         command.extend(["--start-year", str(start_year)])
 
-    output_dir = ask_text("Output dir (opcional)", "")
-    if output_dir:
-        command.extend(["--output-dir", output_dir])
-
     add_browser_mode(command)
 
-    run_step("Scrape uCoin", command)
+    run_step("Recolher dados e criar catálogo pendente", command)
 
 
 def action_collect_missing_country_tracking() -> None:
@@ -340,14 +340,46 @@ def action_collect_missing_country_tracking() -> None:
     complete_pending_rarities()
 
 
-def action_manage_pending_rarities() -> None:
-    title("Classificar raridades pendentes de todos os países")
-    print("Reúne todos os países pendentes num único JSON, valida a resposta e gera os catálogos finais.")
-    print("Nenhum dado é enviado automaticamente para a Base44.\n")
-    command = [sys.executable, "-m", "scripts.manage_pending_rarities", "--wait-for-final"]
-    if ask_yes_no("Apagar os ficheiros intermédios depois de gerar os outputs finais?", default=True):
-        command.append("--cleanup-intermediate")
-    run_step("Classificar raridades pendentes", command)
+def action_define_pending_rarities(country: str = "") -> None:
+    title("Definir raridades")
+    command = [
+        sys.executable,
+        "-m",
+        "scripts.manage_pending_rarities",
+        "--wait-for-final",
+        "--rarities-only",
+    ]
+    if country:
+        command.extend(["--country", country])
+        print(f"Será preparado apenas o país: {country}.")
+    else:
+        print("Serão preparados todos os países que ainda aguardam raridade.")
+    print("No fim é criado app-catalog-final.json; os outputs finais são gerados na etapa seguinte.\n")
+    run_step("Definir raridades", command)
+
+
+def menu_define_rarities() -> None:
+    while True:
+        title("Definir raridades")
+        print("1) Todos os países pendentes")
+        print("2) Um país específico")
+        print("3) Voltar")
+
+        choice = ask_text("Escolhe uma opção", "1")
+        if choice == "1":
+            action_define_pending_rarities()
+        elif choice == "2":
+            country = ask_text("País")
+            if not country:
+                print("País obrigatório.")
+            else:
+                action_define_pending_rarities(slugify(country))
+        elif choice == "3":
+            return
+        else:
+            print("Opção inválida.")
+
+        input("\nCarrega Enter para continuar...")
 
 
 def action_generate_pending() -> None:
@@ -571,10 +603,10 @@ def action_autofix_issues() -> None:
 
 def menu_importar_ucoin() -> None:
     while True:
-        title("Importar dados do uCoin")
-        print("1) Importar um país — processo completo")
-        print("2) Adicionar todos os países em falta — recolha e raridades")
-        print("3) Executar apenas uma etapa")
+        title("Importar do uCoin")
+        print("1) Importar um país do uCoin para o Site Base44")
+        print("2) Recolher países do Site sem tracking local")
+        print("3) Executar uma etapa específica")
         print("4) Voltar")
 
         choice = ask_text("Escolhe uma opcao", "1")
@@ -595,26 +627,24 @@ def menu_importar_ucoin() -> None:
 
 def menu_specific_stage() -> None:
     while True:
-        title("Executar apenas uma etapa")
-        print("1) Recolher catálogo técnico do uCoin")
-        print("2) Criar catálogo pendente de raridade")
-        print("3) Classificar raridades pendentes de todos os países")
-        print("4) Gerar ficheiros finais de um país")
-        print("5) Importar catálogo final para a Base44")
-        print("6) Voltar")
+        title("Executar uma etapa específica")
+        print("1) Recolher dados do uCoin e criar catálogo pendente")
+        print("2) Definir raridades")
+        print("3) Gerar outputs finais (raridade já definida)")
+        print("4) Importar dados para o Site Base44")
+        print("5) Voltar")
 
         choice = ask_text("Escolhe uma opcao", "1")
         if choice == "1":
-            action_scrape_only()
+            action_collect_country_pending()
         elif choice == "2":
-            action_generate_pending()
+            menu_define_rarities()
+            continue
         elif choice == "3":
-            action_manage_pending_rarities()
-        elif choice == "4":
             action_generate_final()
-        elif choice == "5":
+        elif choice == "4":
             action_import_base44()
-        elif choice == "6":
+        elif choice == "5":
             return
         else:
             print("Opcao invalida.")
@@ -624,9 +654,9 @@ def menu_specific_stage() -> None:
 
 def menu_atualizar_site() -> None:
     while True:
-        title("Atualizar data existente no site")
-        print("1) Verificar diferencas (site vs All_Coins)")
-        print("2) Atualizar API com issues (sem criar missing)")
+        title("Atualizar Site Base44")
+        print("1) Verificar diferenças: Site Base44 vs info local e All_Coins")
+        print("2) Corrigir dados no Site Base44 (sem criar moedas novas)")
         print("3) Voltar")
 
         choice = ask_text("Escolhe uma opcao", "1")
@@ -645,9 +675,9 @@ def menu_atualizar_site() -> None:
 def menu() -> None:
     while True:
         title("uCoin to MySite - Menu principal")
-        print("1) Ver guia de pre-requisitos")
-        print("2) Importar e preparar catálogos do uCoin")
-        print("3) Verificar e corrigir dados existentes")
+        print("1) Pré-requisitos")
+        print("2) Importar do uCoin")
+        print("3) Atualizar Site Base44")
         print("0) Sair")
 
         choice = ask_text("Escolhe uma opcao", "1")

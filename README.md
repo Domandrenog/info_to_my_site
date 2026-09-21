@@ -113,7 +113,7 @@ Este comando adiciona apenas moedas que ainda não existem para esse país, usan
 
 ## Adicionar países da API sem catálogo local
 
-O menu principal inclui `Importar e preparar catálogos do uCoin > Adicionar todos os países em falta — recolha e raridades`.
+O menu principal inclui `Importar do uCoin > Recolher países do Site sem tracking local`.
 Este fluxo:
 
 1. Consulta todas as moedas da Base44 sem alterar dados.
@@ -135,7 +135,7 @@ O ano inicial sugerido é o primeiro ano já coberto pela API. Isto evita perder
 
 ## Classificar todas as raridades pendentes
 
-O menu `Importar e preparar catálogos do uCoin > Adicionar todos os países em falta — recolha e raridades` prepara um único lote com todas as moedas ainda sem raridade depois de terminar a recolha:
+O menu `Importar do uCoin > Recolher países do Site sem tracking local` prepara um único lote com todas as moedas ainda sem raridade depois de terminar a recolha:
 
 - `info/paises/all-rarities-pending.json`: JSON que deve ser classificado;
 - `info/paises/all-rarities-prompt.txt`: instruções prontas para enviar juntamente com o JSON;
@@ -143,7 +143,7 @@ O menu `Importar e preparar catálogos do uCoin > Adicionar todos os países em 
 
 O menu espera pelo ficheiro final e, depois de carregares Enter, valida que todos os países e moedas continuam presentes e que os catálogos de origem não mudaram. Apenas os valores de `availability` são aplicados. Para cada país são então gerados `app-catalog.json`, `availability-statistics.json` e `coins-availability.xlsx`. Tal como no pipeline completo de um país, `ucoin-catalog.json`, `app-catalog-pending.json`, `app-catalog-final.json` e `differences-pending.json` são apagados apenas depois de todos os outputs finais terem sido gerados com sucesso.
 
-Para executar apenas esta classificação sem voltar a recolher os países, usa `Importar e preparar catálogos do uCoin > Executar apenas uma etapa > Classificar raridades pendentes de todos os países`.
+Para executar apenas esta classificação sem voltar a recolher os países, usa `Importar do uCoin > Executar uma etapa específica > Definir raridades`. Aí podes escolher todos os países pendentes ou apenas um país específico. Esta etapa cria os `app-catalog-final.json`; usa depois `Gerar outputs finais (raridade já definida)`.
 
 Também podes executar as duas fases manualmente:
 
