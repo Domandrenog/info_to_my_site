@@ -3,9 +3,7 @@ from __future__ import annotations
 
 import argparse
 import json
-import re
 import time
-import unicodedata
 from datetime import datetime, timezone
 from difflib import SequenceMatcher
 from pathlib import Path
@@ -101,37 +99,7 @@ def normalize_url(value: str) -> str:
 
 
 def normalize_key(value: str) -> str:
-    normalized = unicodedata.normalize("NFKD", str(value or "").strip().casefold())
-    normalized = "".join(character for character in normalized if not unicodedata.combining(character))
-    tokens = re.findall(r"\d+(?:[.,]\d+)?|[a-zø]+|[½¼¾]", normalized)
-    unit_aliases = {
-        "c": "cent",
-        "ct": "cent",
-        "cts": "cent",
-        "cent": "cent",
-        "cents": "cent",
-        "centimo": "cent",
-        "centimos": "cent",
-        "dolar": "dollar",
-        "dolares": "dollar",
-        "dollar": "dollar",
-        "dollars": "dollar",
-        "euro": "euro",
-        "euros": "euro",
-        "escudo": "escudo",
-        "escudos": "escudo",
-        "kopek": "kopek",
-        "kopeks": "kopek",
-        "ore": "ore",
-        "øre": "ore",
-        "pence": "penny",
-        "pennies": "penny",
-        "penny": "penny",
-        "rand": "rand",
-        "rupee": "rupee",
-        "rupees": "rupee",
-    }
-    return " ".join(unit_aliases.get(token, token) for token in tokens)
+    return checker.normalize_key(value)
 
 
 def parse_association_record_id(entry: dict[str, Any]) -> str:

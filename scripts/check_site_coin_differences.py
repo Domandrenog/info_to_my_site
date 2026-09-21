@@ -5,6 +5,7 @@ import argparse
 import json
 import os
 import re
+import unicodedata
 from pathlib import Path
 from urllib.parse import parse_qs, quote, unquote, urlparse
 
@@ -295,9 +296,68 @@ def iter_coins(catalogue: dict[str, object]):
 
 
 def normalize_key(value: str) -> str:
-    normalized = str(value or "").strip().casefold()
-    normalized = re.sub(r"\s*-\s*", "-", normalized)
-    return re.sub(r"\s+", " ", normalized)
+    normalized = unicodedata.normalize("NFKD", str(value or "").strip().casefold())
+    normalized = "".join(character for character in normalized if not unicodedata.combining(character))
+    tokens = re.findall(r"\d+(?:[.,]\d+)?|[a-zø]+|[½¼¾]", normalized)
+    unit_aliases = {
+        "c": "cent",
+        "ct": "cent",
+        "cts": "cent",
+        "cent": "cent",
+        "cents": "cent",
+        "centimo": "cent",
+        "centimos": "cent",
+        "dolar": "dollar",
+        "dolares": "dollar",
+        "dollar": "dollar",
+        "dollars": "dollar",
+        "euro": "euro",
+        "euros": "euro",
+        "escudo": "escudo",
+        "escudos": "escudo",
+        "kopek": "kopek",
+        "kopeks": "kopek",
+        "milim": "millime",
+        "milims": "millime",
+        "millim": "millime",
+        "millime": "millime",
+        "millimes": "millime",
+        "ore": "ore",
+        "øre": "ore",
+        "pence": "penny",
+        "pennies": "penny",
+        "penny": "penny",
+        "rand": "rand",
+        "rupee": "rupee",
+        "rupees": "rupee",
+    }
+    return " ".join(unit_aliases.get(token, token) for token in tokens)
+
+
+def name_year_matches(
+    records: list[dict[str, object]],
+    denomination: str,
+    issue_period: str,
+) -> list[dict[str, object]]:
+    expected_name = normalize_key(denomination)
+    expected_years = normalize_key(issue_period)
+    return [
+        record
+        for record in records
+        if normalize_key(str(record.get("name") or "")) == expected_name
+        and normalize_key(str(record.get("years") or "")) == expected_years
+    ]
+
+
+def disambiguate_image_matches(
+    records: list[dict[str, object]],
+    denomination: str,
+    issue_period: str,
+) -> list[dict[str, object]]:
+    if len(records) <= 1:
+        return records
+    exact_matches = name_year_matches(records, denomination, issue_period)
+    return exact_matches if len(exact_matches) == 1 else []
 
 
 def expected_notes_from_period(period: dict[str, object]) -> str:
@@ -662,6 +722,12 @@ def compare_country(
             ]
             confirmed_record_id = confirmed_equivalences.get(detail_norm, "") if detail_norm else ""
 
+            matches = disambiguate_image_matches(
+                matches,
+                str(coin.get("denomination") or ""),
+                str(coin.get("issuePeriod") or ""),
+            )
+
             if matches:
                 if detail_norm:
                     image_matched_ucoin_urls.append(detail_norm)
@@ -670,15 +736,11 @@ def compare_country(
                 matches = [confirmed_record] if confirmed_record is not None else []
 
             if not matches:
-                name_year_candidates = [
-                    record
-                    for record in api_records
-                    if isinstance(record, dict)
-                    and normalize_key(str(record.get("name") or ""))
-                    == normalize_key(str(coin.get("denomination") or ""))
-                    and normalize_key(str(record.get("years") or ""))
-                    == normalize_key(str(coin.get("issuePeriod") or ""))
-                ]
+                name_year_candidates = name_year_matches(
+                    api_records,
+                    str(coin.get("denomination") or ""),
+                    str(coin.get("issuePeriod") or ""),
+                )
                 if len(name_year_candidates) == 1:
                     matches = name_year_candidates
                 else:

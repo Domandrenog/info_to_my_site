@@ -15,9 +15,11 @@ from scripts.check_site_coin_differences import (
     compare_country,
     country_slugs_with_catalog,
     detail_stem,
+    disambiguate_image_matches,
     external_image_source_suggestions,
     find_all_coins_country_folder,
     group_api_records_by_country,
+    name_year_matches,
     normalize_key,
     pending_catalogue_api_countries,
     pending_rarity_report,
@@ -657,6 +659,30 @@ class AllCoinsPathTests(unittest.TestCase):
         self.assertEqual(api_country_name("eua", "Estados Unidos da América"), "EUA")
         self.assertEqual(api_country_name("seychelles", "Seicheles"), "Seychelles")
         self.assertEqual(api_country_name("sri-lanka", "Sri Lanka"), "Sri Lanka")
+
+    def test_millime_name_variants_are_equivalent(self) -> None:
+        self.assertEqual(normalize_key("100 millimes"), "100 millime")
+        self.assertEqual(normalize_key("100 milim"), "100 millime")
+
+    def test_name_and_year_disambiguate_duplicate_image_matches(self) -> None:
+        records = [
+            {"id": "wrong", "name": "100 milim", "years": "1960-2018"},
+            {"id": "right", "name": "50 milim", "years": "2013-2024"},
+        ]
+
+        matches = name_year_matches(records, "50 millimes", "2013 - 2024")
+
+        self.assertEqual([record["id"] for record in matches], ["right"])
+
+    def test_ambiguous_images_without_exact_metadata_are_not_auto_matched(self) -> None:
+        records = [
+            {"id": "first", "name": "5 dinar", "years": "2002"},
+            {"id": "second", "name": "5 dinar", "years": "2021"},
+        ]
+
+        matches = disambiguate_image_matches(records, "100 millimes", "1960 - 2018")
+
+        self.assertEqual(matches, [])
 
     def test_finds_normal_country_folder_below_continent(self) -> None:
         with tempfile.TemporaryDirectory() as temp_dir:
