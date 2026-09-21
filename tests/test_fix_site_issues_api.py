@@ -232,6 +232,41 @@ class FixSiteIssuesPlanTests(unittest.TestCase):
         self.assertEqual(fix_site_issues_api.normalize_key("10 cents"), "10 cent")
         self.assertEqual(fix_site_issues_api.normalize_key("10 cêntimos"), "10 cent")
         self.assertEqual(fix_site_issues_api.normalize_key("10 cent"), "10 cent")
+        self.assertEqual(fix_site_issues_api.normalize_key("5 Sat"), "5 satang")
+
+    def test_sat_candidates_require_the_same_value(self) -> None:
+        item = {
+            "denomination": "5 satang",
+            "coin": {"issuePeriod": "2018 - 2025"},
+        }
+        records = [
+            {"id": "wrong-value", "name": "25 Sat", "years": "2008-2017"},
+            {"id": "wrong-unit", "name": "5 Baht", "years": "1998-2008"},
+            {"id": "right", "name": "5 Sat", "years": "2018-2025"},
+        ]
+
+        candidates = fix_site_issues_api.best_candidates(item, records, limit=5)
+
+        self.assertEqual(
+            [candidate["record"]["id"] for candidate in candidates],
+            ["right"],
+        )
+
+    def test_similar_wrong_name_with_same_value_remains_reviewable(self) -> None:
+        item = {
+            "denomination": "5 piso",
+            "coin": {"issuePeriod": "2017 - 2019"},
+        }
+        records = [
+            {"id": "peso", "name": "5 peso", "years": "2017-2019"},
+        ]
+
+        candidates = fix_site_issues_api.best_candidates(item, records, limit=5)
+
+        self.assertEqual(
+            [candidate["record"]["id"] for candidate in candidates],
+            ["peso"],
+        )
 
     def test_reconcile_can_confirm_abbreviated_name_and_propose_full_name(self) -> None:
         missing = [
@@ -381,7 +416,7 @@ class FixSiteIssuesPlanTests(unittest.TestCase):
                     "api_records_for_country",
                     return_value=(site_records, None),
                 ),
-                patch("builtins.input", return_value="6"),
+                patch("builtins.input", return_value="5"),
                 redirect_stdout(io.StringIO()) as output,
             ):
                 result = fix_site_issues_api.reconcile_missing(
@@ -400,7 +435,7 @@ class FixSiteIssuesPlanTests(unittest.TestCase):
         self.assertEqual(result["unresolved"], [])
         self.assertEqual(result["creates"], [missing_item])
         self.assertEqual(result["all"][0]["status"], "confirmed_create")
-        self.assertIn("6) Não existe no Site Base44 — criar moeda nova", output.getvalue())
+        self.assertIn("5) Não existe no Site Base44 — criar moeda nova", output.getvalue())
         self.assertIn("0) Não associar por agora", output.getvalue())
         self.assertEqual(decisions["decisions"][0]["sameCoin"], "new_record")
         self.assertEqual(decisions["decisions"][0]["createRecord"], "yes")

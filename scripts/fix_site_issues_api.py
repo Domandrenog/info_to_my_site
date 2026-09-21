@@ -3,6 +3,7 @@ from __future__ import annotations
 
 import argparse
 import json
+import re
 import time
 from datetime import datetime, timezone
 from difflib import SequenceMatcher
@@ -802,8 +803,20 @@ def score_candidate(item: dict[str, Any], record: dict[str, Any]) -> float:
     rec_name = normalize_key(str(record.get("name") or ""))
     rec_years = normalize_key(str(record.get("years") or ""))
 
-    score = 0.0
     name_ratio = SequenceMatcher(None, item_name, rec_name).ratio() if item_name and rec_name else 0.0
+    item_amount_match = re.match(r"^(\d+(?:[.,]\d+)?)\b", item_name)
+    record_amount_match = re.match(r"^(\d+(?:[.,]\d+)?)\b", rec_name)
+    item_amount = item_amount_match.group(1) if item_amount_match else ""
+    record_amount = record_amount_match.group(1) if record_amount_match else ""
+
+    # A denomination suggestion must never silently change its numeric value.
+    # Also discard weak textual similarities such as "5 satang" -> "5 baht".
+    if item_amount and record_amount and item_amount != record_amount:
+        return 0.0
+    if item_name != rec_name and name_ratio < 0.7:
+        return 0.0
+
+    score = 0.0
 
     if item_name and rec_name and item_name == rec_name:
         score += 5.0
