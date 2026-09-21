@@ -11,6 +11,20 @@ from urllib.parse import quote, unquote, urlparse
 from scripts.catalog_paths import CATALOG_ROOT, find_country_directory, iter_country_directories, slugify
 
 
+ISSUE_TYPE_LABELS = {
+    "detail_image_slug_mismatch": "Wrong photo",
+    "markdown_url": "Markdown URL",
+    "mismatched_url_ucoin": "Wrong uCoin URL",
+    "missing_api_coin_record": "Not found",
+    "missing_image_url": "No photo",
+    "missing_notes": "Missing notes",
+    "missing_url_ucoin": "Missing uCoin URL",
+    "multiple_api_matches": "Multiple API matches",
+    "side_mismatch": "Wrong photo side",
+    "url_not_in_all_coins_map": "Photo not mapped",
+}
+
+
 def normalize_url(value: str) -> tuple[str, bool]:
     raw = str(value or "").strip()
     markdown_match = re.fullmatch(r"\[[^\]]+\]\((https?://[^)]+)\)", raw, flags=re.IGNORECASE)
@@ -123,6 +137,14 @@ def type_counts(findings: list[dict[str, str]]) -> dict[str, int]:
         key = finding.get("type", "unknown")
         counts[key] = counts.get(key, 0) + 1
     return dict(sorted(counts.items()))
+
+
+def issue_type_label(issue_type: str) -> str:
+    return ISSUE_TYPE_LABELS.get(issue_type, issue_type.replace("_", " ").capitalize())
+
+
+def count_label(count: int, singular: str, plural: str) -> str:
+    return singular if count == 1 else plural
 
 
 def compact_findings(findings: list[dict[str, str]]) -> list[dict[str, str]]:
@@ -435,6 +457,7 @@ def compare_country(
 
     result: dict[str, object] = {
         "country": country_slug,
+        "country_name": country_name,
         "summary": summary,
         "coins_with_issues": coins_with_issues,
         "image_matched_ucoin_urls": image_matched_ucoin_urls,
@@ -457,7 +480,12 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--paises-dir", default=str(project_root / CATALOG_ROOT), help="Pasta com os catalogos do site.")
     parser.add_argument("--all-coins-dir", default=str(project_root.parent / "All_Coins"), help="Pasta raiz do repo All_Coins.")
     parser.add_argument("--catalog-file", default="app-catalog.json", help="Nome do ficheiro de catalogo por pais.")
-    parser.add_argument("--max-issues", type=int, default=50, help="Limite de moedas com issues mostradas por pais em modo texto.")
+    parser.add_argument(
+        "--max-issues",
+        type=int,
+        default=50,
+        help="Mantido por compatibilidade; o modo texto mostra agora apenas totais agregados.",
+    )
     parser.add_argument("--json", action="store_true", help="Imprime o relatorio completo em JSON.")
     parser.add_argument("--output", default="", help="Caminho para guardar o relatorio em JSON.")
     parser.add_argument("--include-markdown-as-issue", action="store_true", help="Conta markdown_url como diferenca real.")
@@ -466,41 +494,39 @@ def parse_args() -> argparse.Namespace:
     return parser.parse_args()
 
 
-def print_text_report(report: dict[str, object], max_issues: int, include_warnings: bool) -> None:
+def print_count_breakdown(counts: object, *, singular: str, plural: str) -> None:
+    if not isinstance(counts, dict):
+        return
+    normalized_counts = [
+        (str(issue_type), int(count))
+        for issue_type, count in counts.items()
+        if isinstance(count, int) and count > 0
+    ]
+    for issue_type, count in sorted(normalized_counts, key=lambda item: (-item[1], issue_type_label(item[0]))):
+        print(f"- {issue_type_label(issue_type)}: {count} {count_label(count, singular, plural)}")
+
+
+def print_text_report(report: dict[str, object], include_warnings: bool) -> None:
     summary = report.get("summary", {})
-    coins_with_issues = report.get("coins_with_issues", [])
-    country = report.get("country", "")
+    country_slug = str(report.get("country", ""))
+    country = str(report.get("country_name") or country_slug.replace("-", " ").title())
 
     if report.get("error"):
-        print(f"\n[{country}] ERROR: {report['error']}")
+        print(f"\n{country}: error")
+        print(f"- {report['error']}")
         return
 
-    print(f"\n[{country}]")
-    for coin_summary in summary.get("coins", []):
-        if not isinstance(coin_summary, dict):
-            continue
-        print(
-            f"- {coin_summary.get('coin', '')}: "
-            f"{coin_summary.get('issue_count', 0)} issues -> "
-            f"{', '.join(coin_summary.get('types', []))}"
-        )
+    if not isinstance(summary, dict):
+        summary = {}
+    total_issues = int(summary.get("total_issues", 0))
+    print(f"\n{country}: {total_issues} {count_label(total_issues, 'issue', 'issues')}")
+    print_count_breakdown(summary.get("by_type", {}), singular="issue", plural="issues")
 
-    shown = 0
-    for coin in coins_with_issues:
-        if shown >= max_issues:
-            break
-        shown += 1
-        print(f"  moeda={coin.get('denomination')} | ucoinUrl={coin.get('ucoinUrl')} | siteUrl={coin.get('siteUrl')}")
-        for issue in coin.get("issues", []):
-            print(
-                "    * "
-                f"field={issue.get('field', '')} "
-                f"value={issue.get('value', '')} "
-                f"missing_value={issue.get('missing_value', '')}"
-            )
-
-    if include_warnings and report.get("coins_with_warnings"):
-        print(f"warnings_em_moedas={len(report.get('coins_with_warnings', []))}")
+    if include_warnings:
+        total_warnings = int(summary.get("total_warnings", 0))
+        if total_warnings:
+            print(f"Warnings: {total_warnings}")
+            print_count_breakdown(summary.get("warnings_by_type", {}), singular="warning", plural="warnings")
 
 
 def main() -> int:
@@ -551,7 +577,7 @@ def main() -> int:
         print(json.dumps(reports, ensure_ascii=False, indent=2))
     else:
         for report in reports:
-            print_text_report(report, args.max_issues, args.include_warnings)
+            print_text_report(report, args.include_warnings)
 
     return 1 if total_issues else 0
 
