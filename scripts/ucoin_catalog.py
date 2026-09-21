@@ -12,27 +12,25 @@ from __future__ import annotations
 import argparse
 import json
 import re
-import unicodedata
+import subprocess
+import time
 import sys
 from pathlib import Path
 from shutil import which
-from urllib.parse import quote, urljoin
+from urllib.error import URLError
+from urllib.parse import quote, urljoin, urlparse
+from urllib.request import urlopen
 
 PROJECT_ROOT = Path(__file__).resolve().parent.parent
 if str(PROJECT_ROOT) not in sys.path:
     sys.path.insert(0, str(PROJECT_ROOT))
 
+from scripts.catalog_paths import country_directory, slugify
 from ucoin_to_mysite.catalog_parser import CatalogueFetchError, CatalogueFetchResponse, coin_start_year, crawl_ucoin_catalogue
 
 
 DEFAULT_BASE_URL = "https://pt.ucoin.net/catalog/"
 UCOIN_CATALOG_FILENAME = "ucoin-catalog.json"
-
-
-def slugify(value: str) -> str:
-    normalized = unicodedata.normalize("NFKD", value)
-    ascii_value = normalized.encode("ascii", "ignore").decode("ascii")
-    return re.sub(r"[^a-z0-9]+", "-", ascii_value.lower()).strip("-")
 
 
 def parse_args() -> argparse.Namespace:
@@ -53,6 +51,11 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--json", action="store_true", help="Imprime o resultado em JSON.")
     parser.add_argument("--output", help="Guarda o resultado num ficheiro JSON.")
     parser.add_argument(
+        "--continent",
+        default="",
+        help="Continente usado na pasta info/paises/<continente>/<pais> quando não for reconhecido automaticamente.",
+    )
+    parser.add_argument(
         "--output-dir",
         help="Pasta de destino para guardar o resultado. Se omitida, é criada uma pasta automática.",
     )
@@ -69,10 +72,16 @@ def parse_args() -> argparse.Namespace:
         help="Desativa a espera manual antes da extração.",
     )
     parser.add_argument("--manual-login", action="store_true", help="Pausa para login manual antes de extrair.")
-    parser.add_argument(
+    browser_mode = parser.add_mutually_exclusive_group()
+    browser_mode.add_argument(
         "--attach-cdp",
         action="store_true",
         help="Liga a um browser ja aberto com remote debugging, em vez de abrir outro browser.",
+    )
+    browser_mode.add_argument(
+        "--incognito",
+        action="store_true",
+        help="Abre automaticamente Chromium em modo incognito e liga-se a essa janela.",
     )
     parser.add_argument(
         "--cdp-url",
@@ -109,6 +118,49 @@ def resolve_browser_executable(chrome_path: str) -> str | None:
         if resolved:
             return resolved
     return None
+
+
+def cdp_is_available(cdp_url: str) -> bool:
+    try:
+        with urlopen(f"{cdp_url.rstrip('/')}/json/version", timeout=0.5):
+            return True
+    except (OSError, URLError):
+        return False
+
+
+def launch_incognito_chromium(args: argparse.Namespace) -> subprocess.Popen[bytes]:
+    if cdp_is_available(args.cdp_url):
+        raise RuntimeError(
+            f"Ja existe um browser CDP em {args.cdp_url}. Fecha-o ou escolhe a opcao de ligar ao browser aberto."
+        )
+
+    parsed_cdp_url = urlparse(args.cdp_url)
+    if parsed_cdp_url.hostname not in {"127.0.0.1", "localhost"} or parsed_cdp_url.port is None:
+        raise RuntimeError("--incognito requer um --cdp-url local com porta, por exemplo http://127.0.0.1:9222.")
+
+    executable = resolve_browser_executable(args.chrome_path)
+    if not executable:
+        raise RuntimeError("Chromium/Chrome nao encontrado. Indica --chrome-path com o executavel do browser.")
+
+    command = [
+        executable,
+        "--incognito",
+        f"--remote-debugging-address={parsed_cdp_url.hostname}",
+        f"--remote-debugging-port={parsed_cdp_url.port}",
+        f"--user-data-dir={Path(args.user_data_dir).resolve()}",
+        "--no-first-run",
+        "--no-default-browser-check",
+    ]
+    process = subprocess.Popen(command)
+    for _ in range(50):
+        if cdp_is_available(args.cdp_url):
+            return process
+        if process.poll() is not None:
+            raise RuntimeError("Chromium fechou antes de ativar o modo incognito com CDP.")
+        time.sleep(0.2)
+
+    process.terminate()
+    raise RuntimeError(f"Chromium nao ativou CDP em {args.cdp_url} dentro de 10 segundos.")
 
 
 def build_country_url(base_url: str, country: str, country_link_name: str = "") -> str:
@@ -239,12 +291,17 @@ def scrape_catalog(args: argparse.Namespace, output_dir: Path) -> dict[str, obje
     with sync_playwright() as playwright:
         browser = None
         context = None
-        if args.attach_cdp:
+        incognito_process = None
+        if args.incognito:
+            incognito_process = launch_incognito_chromium(args)
+        if args.attach_cdp or args.incognito:
             try:
                 browser = playwright.chromium.connect_over_cdp(args.cdp_url)
             except Exception as exc:  # noqa: BLE001
+                if incognito_process is not None and incognito_process.poll() is None:
+                    incognito_process.terminate()
                 raise RuntimeError(
-                    "Falha ao ligar ao browser aberto via CDP. Inicia o browser com "
+                    "Falha ao ligar ao browser via CDP. Inicia o browser com "
                     "--remote-debugging-port=9222 e usa --attach-cdp."
                 ) from exc
             context = browser.contexts[0] if browser.contexts else browser.new_context(viewport={"width": 1600, "height": 1200})
@@ -264,7 +321,7 @@ def scrape_catalog(args: argparse.Namespace, output_dir: Path) -> dict[str, obje
                 viewport={"width": 1600, "height": 1200},
             )
         try:
-            page = context.new_page() if args.attach_cdp else (context.pages[0] if context.pages else context.new_page())
+            page = context.new_page() if (args.attach_cdp or args.incognito) else (context.pages[0] if context.pages else context.new_page())
             page.goto(page_url, wait_until="domcontentloaded", timeout=args.timeout * 1000)
             page.wait_for_timeout(2500)
 
@@ -308,6 +365,8 @@ def scrape_catalog(args: argparse.Namespace, output_dir: Path) -> dict[str, obje
         finally:
             if context is not None and browser is None:
                 context.close()
+            if incognito_process is not None and incognito_process.poll() is None:
+                incognito_process.terminate()
 
 
 def write_output(path: str, payload: dict[str, object]) -> None:
@@ -316,12 +375,12 @@ def write_output(path: str, payload: dict[str, object]) -> None:
     target.write_text(json.dumps(payload, ensure_ascii=False, indent=2), encoding="utf-8")
 
 
-def default_output_dir(country: str, period: str | None) -> Path:
-    return Path("paises") / slugify(country)
+def default_output_dir(country: str, period: str | None, continent: str = "") -> Path:
+    return country_directory(country, continent)
 
 
 def default_output_path(args: argparse.Namespace) -> Path:
-    folder = Path(args.output_dir) if args.output_dir else default_output_dir(args.country, args.period)
+    folder = Path(args.output_dir) if args.output_dir else default_output_dir(args.country, args.period, args.continent)
     folder.mkdir(parents=True, exist_ok=True)
     return folder / UCOIN_CATALOG_FILENAME
 

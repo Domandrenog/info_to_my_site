@@ -5,15 +5,10 @@ import argparse
 import json
 import os
 import re
-import unicodedata
 from pathlib import Path
 from urllib.parse import quote, unquote, urlparse
 
-
-def slugify(value: str) -> str:
-    normalized = unicodedata.normalize("NFKD", str(value or ""))
-    ascii_value = normalized.encode("ascii", "ignore").decode("ascii")
-    return re.sub(r"[^a-z0-9]+", "-", ascii_value.lower()).strip("-")
+from scripts.catalog_paths import CATALOG_ROOT, find_country_directory, iter_country_directories, slugify
 
 
 def normalize_url(value: str) -> tuple[str, bool]:
@@ -251,7 +246,20 @@ def compare_country(
     check_api: bool,
     include_warnings: bool,
 ) -> dict[str, object]:
-    country_catalog = paises_dir / country_slug / catalog_filename
+    try:
+        country_dir = find_country_directory(paises_dir, country_slug)
+    except ValueError as exc:
+        result = {
+            "country": country_slug,
+            "summary": {"coins": []},
+            "coins_with_issues": [],
+            "error": str(exc),
+        }
+        if include_warnings:
+            result["coins_with_warnings"] = []
+        return result
+
+    country_catalog = country_dir / catalog_filename
     if not country_catalog.exists():
         result = {
             "country": country_slug,
@@ -265,7 +273,6 @@ def compare_country(
 
     country_folder = all_coins_dir / expected_country_folder(country_slug)
     reverse = build_reverse_map(country_folder)
-    country_dir = paises_dir / country_slug
     confirmed_equivalences = load_confirmed_equivalences(country_dir)
 
     data = json.loads(country_catalog.read_text(encoding="utf-8"))
@@ -442,8 +449,12 @@ def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(
         description="Compara moedas do site com mapeamento All_Coins e API para encontrar divergencias reais.",
     )
-    parser.add_argument("--country", default="", help="Slug do pais em paises/, ex.: bielorrussia. Sem isto processa todos.")
-    parser.add_argument("--paises-dir", default=str(project_root / "paises"), help="Pasta com os catalogos do site.")
+    parser.add_argument(
+        "--country",
+        default="",
+        help="Slug do pais em info/paises/<continente>/, ex.: bielorrussia. Sem isto processa todos.",
+    )
+    parser.add_argument("--paises-dir", default=str(project_root / CATALOG_ROOT), help="Pasta com os catalogos do site.")
     parser.add_argument("--all-coins-dir", default=str(project_root.parent / "All_Coins"), help="Pasta raiz do repo All_Coins.")
     parser.add_argument("--catalog-file", default="app-catalog.json", help="Nome do ficheiro de catalogo por pais.")
     parser.add_argument("--max-issues", type=int, default=50, help="Limite de moedas com issues mostradas por pais em modo texto.")
@@ -500,7 +511,7 @@ def main() -> int:
     if args.country:
         countries = [slugify(args.country)]
     else:
-        countries = sorted(path.name for path in paises_dir.iterdir() if path.is_dir())
+        countries = sorted(path.name for path in iter_country_directories(paises_dir))
 
     reports = [
         compare_country(

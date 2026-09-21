@@ -45,10 +45,38 @@ class ImportBase44CoinsTests(unittest.TestCase):
         )
         self.assertEqual(record["notes"], "República da Índia")
 
+    def test_notes_prefer_coin_specific_legend(self) -> None:
+        record = import_base44_coins.to_coin_record(
+            (
+                {"title": "África do Sul › República da África do Sul › 1961 - 2026", "ruler": "República da África do Sul"},
+                {
+                    "denomination": "2 rand",
+                    "availability": "circulating",
+                    "notes": "República da África do Sul - iSewula Afrika – iNingizimu Afrika",
+                },
+            ),
+            {"country": "África do Sul", "continent": "África", "condition": "Não Tenho"},
+            1,
+        )
+        self.assertEqual(record["notes"], "República da África do Sul - iSewula Afrika – iNingizimu Afrika")
+
+    def test_coin_specific_order_is_preserved_for_a_partial_update(self) -> None:
+        record = import_base44_coins.to_coin_record(
+            ({}, {"denomination": "2 rand", "availability": "circulating", "ordem": 84}),
+            {"country": "África do Sul", "continent": "África", "condition": "Não Tenho"},
+            1,
+        )
+        self.assertEqual(record["ordem"], 84)
+
     def test_resolve_options_detects_india_continent(self) -> None:
         args = argparse.Namespace(country="", continent="", condition="Não Tenho")
         options = import_base44_coins.resolve_options(args, {"country": "Índia"})
         self.assertEqual(options["continent"], "Ásia")
+
+    def test_resolve_options_detects_existing_country_continent(self) -> None:
+        args = argparse.Namespace(country="", continent="", condition="Não Tenho")
+        options = import_base44_coins.resolve_options(args, {"country": "Austrália"})
+        self.assertEqual(options["continent"], "Oceânia")
 
     def test_unsupported_availability_fails(self) -> None:
         with self.assertRaises(ValueError):

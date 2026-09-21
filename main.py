@@ -8,7 +8,13 @@ import sys
 from difflib import get_close_matches
 from pathlib import Path
 
-from scripts.ucoin_catalog import slugify
+from scripts.catalog_paths import (
+    CATALOG_ROOT,
+    continent_label_for_country,
+    country_directory,
+    normalize_continent,
+    slugify,
+)
 
 PROJECT_DIR = Path(__file__).resolve().parent
 
@@ -100,24 +106,24 @@ def explain_prerequisites() -> None:
     print("   Menu 2 (pipeline completo) -> preencher app-catalog-final.json -> Enter no terminal")
 
 
-def default_catalog_path(country: str) -> str:
-    return str(Path("paises") / slugify(country) / "ucoin-catalog.json")
+def default_catalog_path(country: str, continent: str = "") -> str:
+    return str(country_directory(country, continent) / "ucoin-catalog.json")
 
 
-def default_app_catalog_path(country: str) -> str:
-    return str(Path("paises") / slugify(country) / "app-catalog.json")
+def default_app_catalog_path(country: str, continent: str = "") -> str:
+    return str(country_directory(country, continent) / "app-catalog.json")
 
 
 def suggest_app_catalog_paths(input_path: str) -> list[Path]:
     """Return nearby local app catalogue paths for a misspelled country folder."""
-    catalogues = sorted((PROJECT_DIR / "paises").glob("*/app-catalog.json"))
+    catalogues = sorted((PROJECT_DIR / CATALOG_ROOT).glob("*/*/app-catalog.json"))
     requested_folder = Path(input_path).parent.name
     matches = get_close_matches(requested_folder, [path.parent.name for path in catalogues], n=3, cutoff=0.6)
     return [path for path in catalogues if path.parent.name in matches]
 
 
-def default_final_input_path(country: str) -> str:
-    return str(Path("paises") / slugify(country) / "app-catalog-final.json")
+def default_final_input_path(country: str, continent: str = "") -> str:
+    return str(country_directory(country, continent) / "app-catalog-final.json")
 
 
 def ask_country_link_name() -> str:
@@ -125,6 +131,32 @@ def ask_country_link_name() -> str:
     if not ask_yes_no("O nome do link e diferente?", default=False):
         return ""
     return ask_text("Nome do link no uCoin (ex: belarus)", "")
+
+
+def ask_continent(country: str) -> str:
+    default = continent_label_for_country(country)
+    while True:
+        continent = ask_text("Continente (Europa|America|Asia|Africa|Oceania)", default)
+        try:
+            normalize_continent(continent)
+            return continent
+        except ValueError as exc:
+            print(exc)
+
+
+def add_browser_mode(command: list[str]) -> None:
+    print("Browser para uCoin:")
+    print("  1) Ligar ao Chromium aberto com remote debugging (porta 9222)")
+    print("  2) Abrir automaticamente Chromium em modo incognito")
+    while True:
+        mode = ask_text("Escolha", "1")
+        if mode == "1":
+            command.extend(["--attach-cdp", "--cdp-url", "http://127.0.0.1:9222", "--no-manual-session"])
+            return
+        if mode == "2":
+            command.extend(["--incognito", "--cdp-url", "http://127.0.0.1:9222", "--manual-session"])
+            return
+        print("Escolhe 1 ou 2.")
 
 
 def action_pipeline() -> None:
@@ -136,7 +168,9 @@ def action_pipeline() -> None:
         print("Pais obrigatorio.")
         return
 
-    command = [sys.executable, "-m", "scripts.ucoin_pipeline", country]
+    continent = ask_continent(country)
+
+    command = [sys.executable, "-m", "scripts.ucoin_pipeline", country, "--continent", continent]
 
     country_link_name = ask_country_link_name()
     if country_link_name:
@@ -146,15 +180,17 @@ def action_pipeline() -> None:
     if start_year is not None:
         command.extend(["--start-year", str(start_year)])
 
-    # Always reuse the browser started with --remote-debugging-port=9222.
-    # Cloudflare/login is already resolved in that session.
-    command.extend(["--attach-cdp", "--cdp-url", "http://127.0.0.1:9222", "--no-manual-session"])
+    add_browser_mode(command)
 
     if ask_yes_no("Apagar ficheiros intermédios e deixar só os outputs finais?", default=True):
         command.append("--cleanup-intermediate")
 
     if run_step("Pipeline completo", command) == 0:
-        action_import_base44(country=country, input_path=default_app_catalog_path(country))
+        action_import_base44(
+            country=country,
+            continent=continent,
+            input_path=default_app_catalog_path(country, continent),
+        )
 
 
 def action_scrape_only() -> None:
@@ -166,7 +202,9 @@ def action_scrape_only() -> None:
         print("Pais obrigatorio.")
         return
 
-    command = [sys.executable, "-m", "scripts.ucoin_catalog", country, "--json"]
+    continent = ask_continent(country)
+
+    command = [sys.executable, "-m", "scripts.ucoin_catalog", country, "--json", "--continent", continent]
 
     country_link_name = ask_country_link_name()
     if country_link_name:
@@ -184,9 +222,7 @@ def action_scrape_only() -> None:
     if output_dir:
         command.extend(["--output-dir", output_dir])
 
-    # Always reuse the browser started with --remote-debugging-port=9222.
-    # Cloudflare/login is already resolved in that session.
-    command.extend(["--attach-cdp", "--cdp-url", "http://127.0.0.1:9222", "--no-manual-session"])
+    add_browser_mode(command)
 
     run_step("Scrape uCoin", command)
 
@@ -196,7 +232,8 @@ def action_generate_pending() -> None:
     print("Este passo transforma ucoin-catalog.json no formato simplificado para classificacao.")
 
     country = ask_text("Pais (para sugerir caminho default)", "India")
-    default_input = default_catalog_path(country)
+    continent = ask_continent(country)
+    default_input = default_catalog_path(country, continent)
     input_path = ask_text("Input ucoin-catalog.json", default_input)
 
     command = [sys.executable, "-m", "scripts.generate_resume_json", "--input", input_path]
@@ -211,7 +248,8 @@ def action_generate_final() -> None:
     print("Este passo le app-catalog-final.json e gera app-catalog.json, stats e Excel.")
 
     country = ask_text("Pais (para sugerir caminho default)", "India")
-    final_input_path = ask_text("Input app-catalog-final.json", default_final_input_path(country))
+    continent = ask_continent(country)
+    final_input_path = ask_text("Input app-catalog-final.json", default_final_input_path(country, continent))
     final_input = Path(final_input_path)
 
     recovering_from_app_catalogue = False
@@ -225,7 +263,7 @@ def action_generate_final() -> None:
             recovering_from_app_catalogue = True
         else:
             print(f"Ficheiro nao encontrado: {final_input}")
-            available = sorted(Path("paises").glob("*/app-catalog-final.json"))
+            available = sorted(CATALOG_ROOT.glob("*/*/app-catalog-final.json"))
             if available:
                 print("Ficheiros final disponiveis:")
                 for path in available:
@@ -257,15 +295,22 @@ def action_generate_final() -> None:
     run_step("Gerar outputs finais", command)
 
 
-def action_import_base44(*, country: str | None = None, input_path: str | None = None) -> None:
+def action_import_base44(
+    *,
+    country: str | None = None,
+    continent: str | None = None,
+    input_path: str | None = None,
+) -> None:
     title("Importar para Base44")
     print("Este passo envia app-catalog.json para a entidade Coin na Base44.")
     print("Escolhe modo com cuidado para evitar escrita indevida.")
 
     if country is None:
         country = ask_text("Pais (para sugerir caminho default)", "India")
+    if continent is None:
+        continent = ask_continent(country)
     if input_path is None:
-        input_path = ask_text("Input app-catalog.json", default_app_catalog_path(country))
+        input_path = ask_text("Input app-catalog.json", default_app_catalog_path(country, continent))
     if not Path(input_path).is_file():
         print(f"Ficheiro nao encontrado: {input_path}")
         suggestions = suggest_app_catalog_paths(input_path)
@@ -275,11 +320,15 @@ def action_import_base44(*, country: str | None = None, input_path: str | None =
                 print(f"- {path.relative_to(PROJECT_DIR)}")
         return
 
-    command = [sys.executable, "-m", "scripts.import_base44_coins", "--input", input_path]
-
-    continent = ask_text("Continente (opcional: Europa|America|Asia|Africa|Oceania)", "")
-    if continent:
-        command.extend(["--continent", continent])
+    command = [
+        sys.executable,
+        "-m",
+        "scripts.import_base44_coins",
+        "--input",
+        input_path,
+        "--continent",
+        continent,
+    ]
 
     print("Modo de execucao:")
     print("1) Dry run (so validar, nao escreve)")
@@ -312,10 +361,10 @@ def action_check_differences() -> None:
 
     if country:
         country_slug = slugify(country)
-        default_output = str(Path("paises") / country_slug / f"{country_slug}-differences.json")
+        default_output = str(country_directory(country) / f"{country_slug}-differences.json")
     else:
-        default_output = str(Path("paises") / "all-differences.json")
-    save_report = ask_yes_no("Guardar ficheiro de diferencas em paises/?", default=True)
+        default_output = str(CATALOG_ROOT / "all-differences.json")
+    save_report = ask_yes_no("Guardar ficheiro de diferencas em info/paises/?", default=True)
     output_path = ask_text("Ficheiro de output", default_output) if save_report else ""
 
     command = [
@@ -344,7 +393,7 @@ def action_check_differences() -> None:
         "--country",
         country,
         "--output",
-        str(Path("paises") / country_slug / f"{country_slug}-autofix-plan.json"),
+        str(country_directory(country) / f"{country_slug}-autofix-plan.json"),
         "--skip-create-missing",
         "--reconcile-missing-interactive",
     ]
@@ -374,7 +423,7 @@ def action_autofix_issues() -> None:
     apply_changes = ask_yes_no("Aplicar correcoes na API agora?", default=False)
     reconcile_missing = ask_yes_no("Tentar associar missing por nome/anos (com confirmacao)?", default=True)
 
-    default_output = str(Path("paises") / slugify(country) / f"{slugify(country)}-autofix-plan.json")
+    default_output = str(country_directory(country) / f"{slugify(country)}-autofix-plan.json")
     output_path = ask_text("Ficheiro de plano/output", default_output)
 
     command = [

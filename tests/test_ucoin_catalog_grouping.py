@@ -1,9 +1,11 @@
 from __future__ import annotations
 
+import argparse
 import unittest
+from unittest.mock import Mock, patch
 
 from tests.test_ucoin_catalog_parser import coin
-from scripts.ucoin_catalog import build_country_url, filter_periods_by_start_year
+from scripts.ucoin_catalog import build_country_url, filter_periods_by_start_year, launch_incognito_chromium
 from ucoin_to_mysite.catalog_parser import crawl_ucoin_catalogue, parse_catalogue_page
 
 
@@ -51,6 +53,23 @@ def grouped_coin(tid: int, pid: str = "24", value: str | None = None) -> str:
 
 
 class UCoinCatalogueGroupingTests(unittest.TestCase):
+    @patch("scripts.ucoin_catalog.time.sleep")
+    @patch("scripts.ucoin_catalog.subprocess.Popen")
+    @patch("scripts.ucoin_catalog.resolve_browser_executable", return_value="/usr/bin/chromium")
+    @patch("scripts.ucoin_catalog.cdp_is_available", side_effect=[False, True])
+    def test_incognito_mode_launches_chromium_with_cdp(self, available, executable, popen, sleep) -> None:
+        process = Mock()
+        popen.return_value = process
+
+        result = launch_incognito_chromium(
+            argparse.Namespace(cdp_url="http://127.0.0.1:9222", chrome_path="", user_data_dir=".ucoin-profile")
+        )
+
+        self.assertIs(result, process)
+        command = popen.call_args.args[0]
+        self.assertIn("--incognito", command)
+        self.assertIn("--remote-debugging-port=9222", command)
+
     def test_explicit_country_link_name_preserves_underscores(self) -> None:
         self.assertEqual(
             build_country_url("https://pt.ucoin.net/catalog/", "Sri Lanka", "sri_lanka"),

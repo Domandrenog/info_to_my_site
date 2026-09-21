@@ -12,7 +12,8 @@ PROJECT_ROOT = Path(__file__).resolve().parent.parent
 if str(PROJECT_ROOT) not in sys.path:
     sys.path.insert(0, str(PROJECT_ROOT))
 
-from scripts.ucoin_catalog import UCOIN_CATALOG_FILENAME, slugify
+from scripts.catalog_paths import country_directory
+from scripts.ucoin_catalog import UCOIN_CATALOG_FILENAME
 
 
 def parse_args() -> argparse.Namespace:
@@ -20,10 +21,17 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("country", help="Country to scrape, e.g. India or Canada.")
     parser.add_argument("period", nargs="?", default=None, help="Optional period filter passed to scripts.ucoin_catalog.")
     parser.add_argument("--country-link-name", default="", help="Country name/slug to use in uCoin country= URL parameter when different.")
+    parser.add_argument(
+        "--continent",
+        default="",
+        help="Continent used in info/paises/<continent>/<country> when it cannot be inferred.",
+    )
     parser.add_argument("--start-year", type=int, help="Keep only coins whose issue start year is at least this year.")
-    parser.add_argument("--output-dir", default="", help="Destination folder. Defaults to paises/<country-slug>.")
+    parser.add_argument("--output-dir", default="", help="Destination folder. Defaults to info/paises/<continent>/<country-slug>.")
     parser.add_argument("--catalog-output", default="", help="Explicit ucoin-catalog.json output path.")
-    parser.add_argument("--attach-cdp", action="store_true", help="Use an already-open Chromium/Chrome CDP session.")
+    browser_mode = parser.add_mutually_exclusive_group()
+    browser_mode.add_argument("--attach-cdp", action="store_true", help="Use an already-open Chromium/Chrome CDP session.")
+    browser_mode.add_argument("--incognito", action="store_true", help="Open Chromium automatically in a temporary incognito session.")
     parser.add_argument("--cdp-url", default="http://127.0.0.1:9222", help="CDP URL used with --attach-cdp.")
     parser.add_argument("--manual-session", action="store_true", help="Pause for manual Cloudflare/login confirmation.")
     parser.add_argument("--no-manual-session", action="store_true", help="Do not pause before scraping.")
@@ -48,7 +56,7 @@ def parse_args() -> argparse.Namespace:
 def default_catalog_path(args: argparse.Namespace) -> Path:
     if args.catalog_output:
         return Path(args.catalog_output)
-    output_dir = Path(args.output_dir) if args.output_dir else Path("paises") / slugify(args.country)
+    output_dir = Path(args.output_dir) if args.output_dir else country_directory(args.country, args.continent)
     return output_dir / UCOIN_CATALOG_FILENAME
 
 
@@ -59,6 +67,8 @@ def build_scrape_command(args: argparse.Namespace) -> list[str]:
     command.extend(["--json", "--timeout", str(args.timeout), "--max-pages", str(args.max_pages), "--retries", str(args.retries)])
     if args.country_link_name:
         command.extend(["--country-link-name", args.country_link_name])
+    if args.continent:
+        command.extend(["--continent", args.continent])
     if args.start_year is not None:
         command.extend(["--start-year", str(args.start_year)])
     if args.output_dir:
@@ -67,6 +77,8 @@ def build_scrape_command(args: argparse.Namespace) -> list[str]:
         command.extend(["--output", args.catalog_output])
     if args.attach_cdp:
         command.extend(["--attach-cdp", "--cdp-url", args.cdp_url])
+    if args.incognito:
+        command.extend(["--incognito", "--cdp-url", args.cdp_url])
     if args.manual_session:
         command.append("--manual-session")
     if args.no_manual_session:

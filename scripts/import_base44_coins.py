@@ -14,6 +14,8 @@ from urllib.error import HTTPError, URLError
 from urllib.parse import quote, urlencode
 from urllib.request import Request, urlopen
 
+from scripts.catalog_paths import continent_label_for_country
+
 
 AVAILABILITY_TO_RARITY = {
     "circulating": "Circulante",
@@ -89,7 +91,11 @@ def build_name(coin: dict[str, Any]) -> str:
     return str(coin.get("denomination") or "Moeda")
 
 
-def build_notes(period: dict[str, Any]) -> str:
+def build_notes(period: dict[str, Any], coin: dict[str, Any] | None = None) -> str:
+    if coin is not None:
+        notes = coin.get("notes")
+        if isinstance(notes, str) and notes.strip():
+            return notes.strip()
     ruler = period.get("ruler")
     if isinstance(ruler, str) and ruler:
         return ruler
@@ -104,7 +110,7 @@ def resolve_options(args: argparse.Namespace, catalogue: dict[str, Any]) -> dict
     country = args.country or catalogue.get("country")
     if not isinstance(country, str) or not country:
         raise ValueError("Country missing in JSON. Pass --country.")
-    continent = args.continent or COUNTRY_TO_CONTINENT.get(country, "")
+    continent = args.continent or COUNTRY_TO_CONTINENT.get(country, "") or continent_label_for_country(country)
     if continent not in VALID_CONTINENTS:
         raise ValueError(f"Invalid or missing continent for {country}. Pass --continent Europa|América|Ásia|África|Oceânia.")
     return {"country": country, "continent": continent, "condition": args.condition}
@@ -117,6 +123,7 @@ def to_coin_record(entry: tuple[dict[str, Any], dict[str, Any]], options: dict[s
     if rarity is None:
         raise ValueError(f"Unsupported availability value: {availability}")
     detail_url = coin.get("detailUrl")
+    stored_order = coin.get("ordem")
     return {
         "name": build_name(coin),
         "country": options["country"],
@@ -129,8 +136,8 @@ def to_coin_record(entry: tuple[dict[str, Any], dict[str, Any]], options: dict[s
         "image_verso": coin.get("reverseImage") or "",
         "url_ucoin": detail_url or "",
         "url_numista": "",
-        "notes": build_notes(period),
-        "ordem": ordem,
+        "notes": build_notes(period, coin),
+        "ordem": stored_order if isinstance(stored_order, int) else ordem,
     }
 
 

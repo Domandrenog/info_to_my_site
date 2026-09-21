@@ -12,6 +12,7 @@ from urllib.parse import urlparse
 
 from scripts import check_site_coin_differences as checker
 from scripts import import_base44_coins
+from scripts.catalog_paths import CATALOG_ROOT, continent_label_for_country, find_country_directory
 
 
 def parse_args() -> argparse.Namespace:
@@ -19,11 +20,11 @@ def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(
         description="Build and optionally apply automatic fixes for API issues (notes/url_ucoin/missing record)."
     )
-    parser.add_argument("--country", required=True, help="Country slug inside paises/, e.g. bielorrussia")
-    parser.add_argument("--paises-dir", default=str(project_root / "paises"))
+    parser.add_argument("--country", required=True, help="Country slug inside info/paises/<continent>/, e.g. bielorrussia")
+    parser.add_argument("--paises-dir", default=str(project_root / CATALOG_ROOT))
     parser.add_argument("--all-coins-dir", default=str(project_root.parent / "All_Coins"))
     parser.add_argument("--catalog-file", default="app-catalog.json")
-    parser.add_argument("--continent", default="Europa", help="Used when creating missing API records")
+    parser.add_argument("--continent", default="", help="Used when creating missing API records; inferred from the country by default")
     parser.add_argument("--condition", default="Nao Tenho", help="Used when creating missing API records")
     parser.add_argument("--output", default="", help="Optional path to save fix plan/report JSON")
     parser.add_argument("--apply", action="store_true", help="Apply changes to Base44 API. Without this, only dry-run plan is generated.")
@@ -221,12 +222,12 @@ def build_fix_plan(report: dict[str, Any], catalog_index: dict[str, tuple[dict[s
     return {"updates": updates, "creates": creates}
 
 
-def default_associations_path(paises_dir: Path, country_slug: str) -> Path:
-    return paises_dir / country_slug / f"{country_slug}-missing-associations.json"
+def default_associations_path(country_dir: Path, country_slug: str) -> Path:
+    return country_dir / f"{country_slug}-missing-associations.json"
 
 
-def default_missing_found_path(paises_dir: Path, country_slug: str) -> Path:
-    return paises_dir / country_slug / f"{country_slug}-missing-found.json"
+def default_missing_found_path(country_dir: Path, country_slug: str) -> Path:
+    return country_dir / f"{country_slug}-missing-found.json"
 
 
 def load_missing_found(path: Path) -> list[dict[str, str]]:
@@ -712,9 +713,12 @@ def apply_plan(args: argparse.Namespace, country_name: str, plan: dict[str, Any]
         updated += 1
         print(f"Updated {item.get('denomination', '')}: {item.get('set', {})}")
 
+    continent = args.continent or continent_label_for_country(country_name)
+    if not continent:
+        raise ValueError(f"Missing continent for {country_name}. Pass --continent.")
     options = {
         "country": country_name,
-        "continent": args.continent,
+        "continent": continent,
         "condition": args.condition,
     }
 
@@ -745,7 +749,8 @@ def main() -> int:
     country_slug = checker.slugify(args.country)
     paises_dir = Path(args.paises_dir)
     all_coins_dir = Path(args.all_coins_dir)
-    catalog_path = paises_dir / country_slug / args.catalog_file
+    country_dir = find_country_directory(paises_dir, country_slug)
+    catalog_path = country_dir / args.catalog_file
 
     report = checker.compare_country(
         paises_dir,
@@ -771,8 +776,8 @@ def main() -> int:
     full_plan = build_fix_plan(report, catalog_index)
     plan_updates = list(full_plan.get("updates", []))
 
-    associations_path = Path(args.associations_file) if args.associations_file else default_associations_path(paises_dir, country_slug)
-    missing_found_path = default_missing_found_path(paises_dir, country_slug)
+    associations_path = Path(args.associations_file) if args.associations_file else default_associations_path(country_dir, country_slug)
+    missing_found_path = default_missing_found_path(country_dir, country_slug)
     association_ucoin_filter = collect_image_issue_ucoin_urls(report)
 
     if args.skip_create_missing:
@@ -874,7 +879,7 @@ def main() -> int:
     if args.output:
         output_path = Path(args.output)
     else:
-        output_path = paises_dir / country_slug / f"{country_slug}-autofix-plan.json"
+        output_path = country_dir / f"{country_slug}-autofix-plan.json"
 
     has_any_action = bool(plan.get("updates")) or bool(plan.get("creates")) or bool(missing_entries)
     if has_any_action:

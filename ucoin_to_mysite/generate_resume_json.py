@@ -843,7 +843,7 @@ def generate_pending_differences_report(
     source_path = Path(source_catalog_path).resolve() if source_catalog_path else pending_path
     country_dir = source_path.parent
     country_slug = country_dir.name
-    paises_dir = country_dir.parent
+    paises_dir = country_dir.parent.parent
     project_root = Path(__file__).resolve().parent.parent
     all_coins_dir = project_root.parent / "All_Coins"
 

@@ -13,7 +13,7 @@ flowchart LR
 	end
 
 	subgraph S3["3. Guardar catálogo bruto"]
-		C["JSON técnico agrupado por períodos<br/><code>country/ucoin-catalog.json</code>"]
+		C["JSON técnico agrupado por períodos<br/><code>info/paises/continente/pais/ucoin-catalog.json</code>"]
 	end
 
 	subgraph S4["4. Preparar catálogo para IA"]
@@ -50,6 +50,23 @@ flowchart LR
 	style G width:260px,max-width:260px,min-height:95px
 ```
 
+## Organização dos Catálogos
+
+Todos os dados dos países ficam agrupados por continente:
+
+```text
+info/
+└── paises/
+    ├── africa/
+    ├── america/
+    ├── asia/
+    │   └── india/
+    ├── europa/
+    └── oceania/
+```
+
+Os nomes das pastas usam slugs sem acentos. Quando o país já é conhecido, o continente é escolhido automaticamente. Para um país novo, usa `--continent`, por exemplo `--continent Ásia`.
+
 ## Fluxo Rápido
 
 1. **Abrir o Chromium em modo CDP e entrar no uCoin.**
@@ -63,25 +80,25 @@ Na janela aberta, entra no uCoin e resolve o Cloudflare manualmente.
 2. **Executar o pipeline do uCoin até aos ficheiros finais.**
 
 ```bash
-python3 ucoin_pipeline.py India --start-year 1957 --attach-cdp --manual-session
+python3 -m scripts.ucoin_pipeline India --start-year 1957 --attach-cdp --manual-session
 ```
 
 Este comando cobre os pontos 2 a 6 do diagrama: extrai moedas, guarda `ucoin-catalog.json`, gera `app-catalog-pending.json`, espera pelo `app-catalog-final.json` e cria:
 
-- `india/app-catalog.json`
-- `india/availability-statistics.json`
-- `india/coins-availability.xlsx`
+- `info/paises/asia/india/app-catalog.json`
+- `info/paises/asia/india/availability-statistics.json`
+- `info/paises/asia/india/coins-availability.xlsx`
 
 Se quiseres parar depois de gerar o ficheiro para a IA:
 
 ```bash
-python3 ucoin_pipeline.py India --start-year 1957 --attach-cdp --manual-session --no-wait-for-final
+python3 -m scripts.ucoin_pipeline India --start-year 1957 --attach-cdp --manual-session --no-wait-for-final
 ```
 
 3. **Validar o payload antes de escrever na Base44.**
 
 ```bash
-python3 import_base44_coins.py --input india/app-catalog.json --continent Ásia --dry-run
+python3 -m scripts.import_base44_coins --input info/paises/asia/india/app-catalog.json --continent Ásia --dry-run
 ```
 
 4. **Importar para a Base44 sem criar duplicados.**
@@ -89,7 +106,7 @@ python3 import_base44_coins.py --input india/app-catalog.json --continent Ásia 
 Confirma que o `.env` tem `BASE44_APP_ID` e `BASE44_API_KEY`, depois corre:
 
 ```bash
-python3 import_base44_coins.py --input india/app-catalog.json --continent Ásia --create-only --missing-only --batch-size 2 --request-delay 3 --rate-limit-delay 60 --max-retries 6
+python3 -m scripts.import_base44_coins --input info/paises/asia/india/app-catalog.json --continent Ásia --create-only --missing-only --batch-size 2 --request-delay 3 --rate-limit-delay 60 --max-retries 6
 ```
 
 Este comando adiciona apenas moedas que ainda não existem para esse país, usando `country + url_ucoin` para evitar duplicados.
@@ -106,6 +123,14 @@ chromium --remote-debugging-port=9222 --user-data-dir=/tmp/ucoin-human-session
 
 Nessa janela, abre o uCoin e resolve o Cloudflare manualmente. Depois deixa a janela aberta: o scraper vai ligar-se a essa sessão quando usares `--attach-cdp`.
 
+Em alternativa, pede ao scraper para abrir automaticamente uma janela temporaria sem cookies nem login guardados:
+
+```bash
+python3 -m scripts.ucoin_catalog India --incognito --manual-session --json
+```
+
+O modo incognito pode evitar uma sessao/cookie bloqueado, mas nao muda o IP publico. Se o bloqueio for mesmo do IP, sera necessario usar outra rede ou aguardar antes de tentar de novo.
+
 ## 2. Extrair Moedas do uCoin
 
 O script `ucoin_catalog.py` recolhe o catálogo técnico do uCoin. Ele percorre as páginas de paginação, agrupa moedas por período histórico e guarda imagens, URLs, anos, avisos de parsing e metadados de paginação.
@@ -113,7 +138,7 @@ O script `ucoin_catalog.py` recolhe o catálogo técnico do uCoin. Ele percorre 
 Exemplo:
 
 ```bash
-python3 ucoin_catalog.py India --start-year 1957 --attach-cdp --manual-session --json
+python3 -m scripts.ucoin_catalog India --start-year 1957 --attach-cdp --manual-session --json
 ```
 
 ### Filtro por ano inicial
@@ -121,7 +146,7 @@ python3 ucoin_catalog.py India --start-year 1957 --attach-cdp --manual-session -
 Usa `--start-year` para manter apenas moedas cujo período de emissão começa nesse ano ou depois:
 
 ```bash
-python3 ucoin_catalog.py India --start-year 1957 --attach-cdp --manual-session --json
+python3 -m scripts.ucoin_catalog India --start-year 1957 --attach-cdp --manual-session --json
 ```
 
 Exemplos com `--start-year 1957`:
@@ -139,23 +164,23 @@ O resultado do scrape é guardado como JSON técnico. Este ficheiro ainda não �
 Output principal:
 
 ```text
-india/ucoin-catalog.json
+info/paises/asia/india/ucoin-catalog.json
 ```
 
-A pasta de output é o nome do país em formato slug. Por exemplo, `India` e `Índia` geram a pasta `india/`.
+A pasta de output segue `info/paises/<continente>/<pais>/`. Por exemplo, `India` e `Índia` geram `info/paises/asia/india/`.
 
 ## 4. Preparar Catálogo Para a IA
 
 O script `generate_resume_json.py` transforma o catálogo técnico num JSON simples, com moedas planas e um campo `availability` ainda por preencher.
 
 ```bash
-python3 generate_resume_json.py --input india/ucoin-catalog.json --wait-for-final
+python3 -m scripts.generate_resume_json --input info/paises/asia/india/ucoin-catalog.json --wait-for-final
 ```
 
 Output inicial:
 
 ```text
-india/app-catalog-pending.json
+info/paises/asia/india/app-catalog-pending.json
 ```
 
 Cada moeda fica com:
@@ -164,7 +189,7 @@ Cada moeda fica com:
 "availability": "still needed to calculate"
 ```
 
-Com `--wait-for-final`, o script cria `india/app-catalog-final.json` vazio se ainda não existir e fica à espera. Cola nesse ficheiro o JSON devolvido pela IA externa e carrega Enter no terminal.
+Com `--wait-for-final`, o script cria `info/paises/asia/india/app-catalog-final.json` vazio se ainda não existir e fica à espera. Cola nesse ficheiro o JSON devolvido pela IA externa e carrega Enter no terminal.
 
 ## 5. Classificar Disponibilidade
 
@@ -192,7 +217,7 @@ Regras obrigatorias:
 - Se nao tiveres certeza, usa o melhor valor provavel com base no pais, periodo historico, anos da moeda e denominacao.
 
 JSON:
-<colar aqui o conteudo completo de india/app-catalog-pending.json>
+<colar aqui o conteudo completo de info/paises/asia/india/app-catalog-pending.json>
 ```
 
 O ficheiro `app-catalog-final.json` é input temporário: deve conter a resposta da IA com `availability` preenchido. Ele não é igual ao catálogo final da app.
@@ -200,7 +225,7 @@ O ficheiro `app-catalog-final.json` é input temporário: deve conter a resposta
 Se fechares o terminal antes de carregar Enter, podes terminar depois com:
 
 ```bash
-python3 generate_resume_json.py --input india/ucoin-catalog.json --final-input india/app-catalog-final.json
+python3 -m scripts.generate_resume_json --input info/paises/asia/india/ucoin-catalog.json --final-input info/paises/asia/india/app-catalog-final.json
 ```
 
 ## 6. Gerar Outputs Finais
@@ -214,7 +239,7 @@ Depois de ler `app-catalog-final.json`, o script gera três ficheiros finais:
 Exemplo para terminar manualmente:
 
 ```bash
-python3 generate_resume_json.py --input india/ucoin-catalog.json --final-input india/app-catalog-final.json
+python3 -m scripts.generate_resume_json --input info/paises/asia/india/ucoin-catalog.json --final-input info/paises/asia/india/app-catalog-final.json
 ```
 
 ## 7. Importar Para Base44
@@ -231,25 +256,25 @@ BASE44_API_KEY=...
 Confirma primeiro o payload sem escrever nada na app:
 
 ```bash
-python3 import_base44_coins.py --input india/app-catalog.json --continent Ásia --dry-run
+python3 -m scripts.import_base44_coins --input info/paises/asia/india/app-catalog.json --continent Ásia --dry-run
 ```
 
 Para criar ou atualizar apenas uma moeda de teste:
 
 ```bash
-python3 import_base44_coins.py --input india/app-catalog.json --continent Ásia --create-only --limit 1
+python3 -m scripts.import_base44_coins --input info/paises/asia/india/app-catalog.json --continent Ásia --create-only --limit 1
 ```
 
 Para adicionar apenas moedas que faltam, sem apagar nada, e com pausas para evitar rate limit:
 
 ```bash
-python3 import_base44_coins.py --input india/app-catalog.json --continent Ásia --create-only --missing-only --batch-size 2 --request-delay 3 --rate-limit-delay 60 --max-retries 6
+python3 -m scripts.import_base44_coins --input info/paises/asia/india/app-catalog.json --continent Ásia --create-only --missing-only --batch-size 2 --request-delay 3 --rate-limit-delay 60 --max-retries 6
 ```
 
 Para substituir todas as moedas desse país na entidade `Coin`:
 
 ```bash
-python3 import_base44_coins.py --input india/app-catalog.json --continent Ásia --replace
+python3 -m scripts.import_base44_coins --input info/paises/asia/india/app-catalog.json --continent Ásia --replace
 ```
 
 O `--replace` apaga apenas registos `Coin` com `country` igual ao país do JSON e recria as moedas a partir do ficheiro final.
@@ -291,18 +316,18 @@ Como `name` não é único, moedas com a mesma denominação e anos diferentes s
 
 ## Ficheiros Principais
 
-- `ucoin_pipeline.py`: comando que encadeia scrape, geração do pending e finalização
-- `ucoin_catalog.py`: scraper do catálogo do uCoin
-- `generate_resume_json.py`: wrapper para gerar o catálogo simplificado
-- `import_base44_coins.py`: importador Python para a Base44
+- `scripts/ucoin_pipeline.py`: comando que encadeia scrape, geração do pending e finalização
+- `scripts/ucoin_catalog.py`: scraper do catálogo do uCoin
+- `scripts/generate_resume_json.py`: wrapper para gerar o catálogo simplificado
+- `scripts/import_base44_coins.py`: importador Python para a Base44
 - `ucoin_to_mysite/`: implementação interna
 - `tests/`: testes automatizados
-- `country/ucoin-catalog.json`: catálogo técnico vindo do uCoin
-- `country/app-catalog-pending.json`: catálogo para enviar à IA externa
-- `country/app-catalog-final.json`: resposta da IA externa
-- `country/app-catalog.json`: catálogo final para a app
-- `country/availability-statistics.json`: estatísticas finais
-- `country/coins-availability.xlsx`: Excel final
+- `info/paises/<continente>/<pais>/ucoin-catalog.json`: catálogo técnico vindo do uCoin
+- `info/paises/<continente>/<pais>/app-catalog-pending.json`: catálogo para enviar à IA externa
+- `info/paises/<continente>/<pais>/app-catalog-final.json`: resposta da IA externa
+- `info/paises/<continente>/<pais>/app-catalog.json`: catálogo final para a app
+- `info/paises/<continente>/<pais>/availability-statistics.json`: estatísticas finais
+- `info/paises/<continente>/<pais>/coins-availability.xlsx`: Excel final
 
 ## Nota Cloudflare
 

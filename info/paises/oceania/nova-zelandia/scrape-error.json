@@ -1,6 +1,6 @@
 {
   "country": "Nova Zelândia",
   "period": null,
-  "output_path": "paises/nova-zelandia/ucoin-catalog.json",
+  "output_path": "info/paises/oceania/nova-zelandia/ucoin-catalog.json",
   "error": "Page.goto: Target page, context or browser has been closed"
 }
