@@ -64,11 +64,89 @@ class CheckSiteCoinDifferencesOutputTests(unittest.TestCase):
         with redirect_stdout(io.StringIO()) as output:
             print_text_reports(reports, include_warnings=False)
 
+        self.assertTrue(
+            output.getvalue().startswith(
+                "#" * 72
+                + "\nPAÍSES COM PROBLEMAS A REVER\n"
+                + "#" * 72
+                + "\n\nSeicheles: 1 moeda analisada"
+            )
+        )
         self.assertIn(
             "Catálogo local: 1 moeda\n\n"
             + "-" * 72
             + "\n\nSingapura: 1 moeda analisada",
             output.getvalue(),
+        )
+
+    def test_photo_only_countries_are_grouped_before_other_problems(self) -> None:
+        problem_report = {
+            "country_name": "Bahamas",
+            "summary": {
+                "analyzed_coins": 1,
+                "api_coin_count": 0,
+                "site_missing_fields": {"url_ucoin": 0, "notes": 0},
+                "total_issues": 1,
+                "by_type": {"missing_api_coin_record": 1},
+            },
+            "coins_with_issues": [
+                {
+                    "denomination": "1 dólar",
+                    "issues": [
+                        {
+                            "type": "missing_api_coin_record",
+                            "field": "api",
+                            "missing_value": "Not found",
+                        }
+                    ],
+                }
+            ],
+        }
+        photo_only_report = {
+            "country_name": "África do Sul",
+            "summary": {
+                "analyzed_coins": 1,
+                "api_coin_count": 1,
+                "site_missing_fields": {"url_ucoin": 0, "notes": 0},
+                "total_issues": 2,
+                "by_type": {"missing_image_url": 2},
+            },
+            "coins_with_issues": [
+                {
+                    "denomination": "10 cêntimos",
+                    "issuePeriod": "2026",
+                    "issues": [
+                        {
+                            "type": "missing_image_url",
+                            "field": "obverseImage",
+                            "missing_value": "image_url",
+                        },
+                        {
+                            "type": "missing_image_url",
+                            "field": "reverseImage",
+                            "missing_value": "image_url",
+                        },
+                    ],
+                }
+            ],
+        }
+
+        with redirect_stdout(io.StringIO()) as output:
+            print_text_reports(
+                [problem_report, photo_only_report], include_warnings=False
+            )
+
+        rendered = output.getvalue()
+        photo_heading = "PAÍSES APENAS COM FOTOGRAFIAS INDISPONÍVEIS NO uCoin"
+        problem_heading = "PAÍSES COM PROBLEMAS A REVER"
+        self.assertLess(rendered.index(photo_heading), rendered.index("África do Sul"))
+        self.assertLess(rendered.index("África do Sul"), rendered.index(problem_heading))
+        self.assertLess(rendered.index(problem_heading), rendered.index("Bahamas"))
+        self.assertIn(
+            "Fonte uCoin:\n"
+            "- Sem fotografia disponível: 1 moeda\n"
+            "  - 10 cêntimos (2026): frente e verso não disponíveis",
+            rendered,
         )
 
     def test_text_report_separates_analyzed_coins_from_issue_occurrences(self) -> None:

@@ -925,10 +925,44 @@ def print_text_report(report: dict[str, object], include_warnings: bool) -> None
 
 
 def print_text_reports(reports: list[dict[str, object]], include_warnings: bool) -> None:
-    for index, report in enumerate(reports):
-        if index:
-            print("\n" + "-" * 72)
-        print_text_report(report, include_warnings)
+    if len(reports) <= 1:
+        for report in reports:
+            print_text_report(report, include_warnings)
+        return
+
+    source_photo_only: list[dict[str, object]] = []
+    problems_to_review: list[dict[str, object]] = []
+    for report in reports:
+        summary = report.get("summary", {})
+        by_type = summary.get("by_type", {}) if isinstance(summary, dict) else {}
+        active_types = {
+            str(issue_type)
+            for issue_type, count in by_type.items()
+            if isinstance(count, int) and count > 0
+        }
+        if not report.get("error") and active_types == {"missing_image_url"}:
+            source_photo_only.append(report)
+        else:
+            problems_to_review.append(report)
+
+    groups = [
+        ("PAÍSES APENAS COM FOTOGRAFIAS INDISPONÍVEIS NO uCoin", source_photo_only),
+        ("PAÍSES COM PROBLEMAS A REVER", problems_to_review),
+    ]
+    printed_group = False
+    for heading, group_reports in groups:
+        if not group_reports:
+            continue
+        if printed_group:
+            print()
+        print("#" * 72)
+        print(heading)
+        print("#" * 72)
+        for index, report in enumerate(group_reports):
+            if index:
+                print("\n" + "-" * 72)
+            print_text_report(report, include_warnings)
+        printed_group = True
 
 
 def report_has_output(report: dict[str, object], include_warnings: bool) -> bool:
