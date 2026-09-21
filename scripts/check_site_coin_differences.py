@@ -876,9 +876,16 @@ def print_text_report(report: dict[str, object], include_warnings: bool) -> None
             print(f"- {label}: {count} {count_label(count, 'moeda', 'moedas')}")
 
         print()
-        if api_coin_count is not None:
+        if api_coin_count == analyzed_coins:
+            print(
+                f"API Base44 e catálogo local: {analyzed_coins} "
+                f"{count_label(analyzed_coins, 'moeda', 'moedas')}"
+            )
+        elif api_coin_count is not None:
             print(f"API Base44: {api_coin_count} {count_label(api_coin_count, 'moeda', 'moedas')}")
-        print(f"Catálogo local: {analyzed_coins} {count_label(analyzed_coins, 'moeda', 'moedas')}")
+            print(f"Catálogo local: {analyzed_coins} {count_label(analyzed_coins, 'moeda', 'moedas')}")
+        else:
+            print(f"Catálogo local: {analyzed_coins} {count_label(analyzed_coins, 'moeda', 'moedas')}")
     else:
         print(f"\n{country}: {total_warnings} {count_label(total_warnings, 'warning', 'warnings')}")
 

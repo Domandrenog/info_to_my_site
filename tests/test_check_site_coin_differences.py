@@ -134,10 +134,44 @@ class CheckSiteCoinDifferencesOutputTests(unittest.TestCase):
             "\n"
             "- Sem notes: 1 moeda\n"
             "\n"
-            "API Base44: 1 moeda\n"
-            "Catálogo local: 1 moeda\n"
+            "API Base44 e catálogo local: 1 moeda\n"
             "Warnings: 2\n"
             "- Multiple API matches: 2 warnings",
+        )
+
+    def test_text_report_combines_equal_api_and_catalog_counts(self) -> None:
+        report = {
+            "country": "seychelles",
+            "country_name": "Seicheles",
+            "summary": {
+                "analyzed_coins": 28,
+                "api_coin_count": 28,
+                "total_issues": 1,
+                "by_type": {"missing_api_coin_record": 1},
+            },
+            "coins_with_issues": [
+                {
+                    "denomination": "50 cêntimos",
+                    "issuePeriod": "1977",
+                    "issues": [
+                        {
+                            "type": "missing_api_coin_record",
+                            "field": "api",
+                            "value": "",
+                            "missing_value": "Not found",
+                        }
+                    ],
+                }
+            ],
+        }
+
+        self.assertEqual(
+            self.render(report),
+            "Seicheles: 28 moedas analisadas\n"
+            "\n"
+            "- Sem associação confirmada: 1 moeda\n"
+            "\n"
+            "API Base44 e catálogo local: 28 moedas",
         )
 
     def test_text_report_shows_errors_without_coin_details(self) -> None:
