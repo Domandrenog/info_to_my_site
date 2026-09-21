@@ -144,6 +144,41 @@ class MainTrackingActionTests(unittest.TestCase):
 
         run_step.assert_not_called()
 
+    @patch("main.run_ucoin_photo_recheck")
+    @patch("main.review_unconfirmed_association_countries")
+    @patch("main.ask_text", side_effect=["2", "1"])
+    @patch(
+        "main.load_missing_photo_entries",
+        return_value=[{"denomination": "10 cêntimos"}],
+    )
+    @patch(
+        "main.unconfirmed_association_countries",
+        return_value=[
+            {"country": "filipinas", "country_name": "Filipinas", "coin_count": 2},
+        ],
+    )
+    def test_difference_followups_keep_name_and_photo_reviews_available(
+        self,
+        _countries,
+        _photo_entries,
+        _ask_text,
+        review_associations,
+        recheck_photos,
+    ) -> None:
+        countries = [
+            {"country": "filipinas", "country_name": "Filipinas", "coin_count": 2},
+        ]
+
+        with redirect_stdout(io.StringIO()) as output:
+            main.offer_difference_followups(Path("differences.json"))
+
+        displayed = output.getvalue()
+        self.assertIn("1) Rever nomes semelhantes no Site Base44 — 2 moedas em 1 país", displayed)
+        self.assertIn("2) Rever fotografias indisponíveis no uCoin — 1 moeda", displayed)
+        self.assertIn("0) Terminar", displayed)
+        recheck_photos.assert_called_once_with(Path("differences.json"))
+        review_associations.assert_called_once_with(countries)
+
     @patch("main.subprocess.run", return_value=subprocess.CompletedProcess([], 1))
     @patch("main.ask_yes_no", return_value=True)
     @patch("main.title")

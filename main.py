@@ -566,8 +566,7 @@ def action_check_differences() -> None:
         report_was_refreshed = current_report_state is not None and current_report_state != previous_report_state
 
         if report_was_refreshed:
-            offer_unconfirmed_association_review(report_path)
-            offer_ucoin_photo_recheck(report_path)
+            offer_difference_followups(report_path)
     finally:
         if temporary_output:
             report_path.unlink(missing_ok=True)
@@ -677,6 +676,10 @@ def offer_unconfirmed_association_review(report_path: Path) -> None:
             break
         print("Escolhe 1 ou 0.")
 
+    review_unconfirmed_association_countries(countries)
+
+
+def review_unconfirmed_association_countries(countries: list[dict[str, object]]) -> None:
     for item in select_association_countries(countries):
         run_association_review(str(item.get("country") or ""))
 
@@ -702,6 +705,10 @@ def offer_ucoin_photo_recheck(report_path: Path) -> None:
             break
         print("Escolhe 1 ou 0.")
 
+    run_ucoin_photo_recheck(report_path)
+
+
+def run_ucoin_photo_recheck(report_path: Path) -> None:
     command = [
         sys.executable,
         "-m",
@@ -711,6 +718,67 @@ def offer_ucoin_photo_recheck(report_path: Path) -> None:
     ]
     add_browser_mode(command)
     run_step("Rever fotografias no uCoin", command)
+
+
+def offer_difference_followups(report_path: Path) -> None:
+    try:
+        association_countries = unconfirmed_association_countries(report_path)
+    except (OSError, ValueError, json.JSONDecodeError) as exc:
+        print(f"\nNão foi possível preparar a revisão das associações: {exc}")
+        association_countries = []
+    try:
+        photo_entries = load_missing_photo_entries(report_path)
+    except (OSError, ValueError, json.JSONDecodeError) as exc:
+        print(f"\nNão foi possível preparar a revisão das fotografias: {exc}")
+        photo_entries = []
+
+    while association_countries or photo_entries:
+        actions: list[tuple[str, str]] = []
+        if association_countries:
+            total_coins = sum(int(item.get("coin_count", 0)) for item in association_countries)
+            coin_label = "moeda" if total_coins == 1 else "moedas"
+            country_label = "país" if len(association_countries) == 1 else "países"
+            actions.append(
+                (
+                    "associations",
+                    "Rever nomes semelhantes no Site Base44 — "
+                    f"{total_coins} {coin_label} em {len(association_countries)} {country_label}",
+                )
+            )
+        if photo_entries:
+            coin_label = "moeda" if len(photo_entries) == 1 else "moedas"
+            actions.append(
+                (
+                    "photos",
+                    f"Rever fotografias indisponíveis no uCoin — {len(photo_entries)} {coin_label}",
+                )
+            )
+
+        print("\nPróximos passos opcionais:")
+        for index, (_, label) in enumerate(actions, start=1):
+            print(f"{index}) {label}")
+        print("0) Terminar")
+
+        while True:
+            choice = ask_text("Escolhe uma opção", "0")
+            if choice == "0":
+                return
+            try:
+                selected_index = int(choice) - 1
+                if selected_index < 0 or selected_index >= len(actions):
+                    raise IndexError
+            except (ValueError, IndexError):
+                print("Escolhe uma das opções apresentadas.")
+                continue
+            break
+
+        action = actions[selected_index][0]
+        if action == "associations":
+            review_unconfirmed_association_countries(association_countries)
+            association_countries = []
+        else:
+            run_ucoin_photo_recheck(report_path)
+            photo_entries = []
 
 
 def print_notes_status(plan: dict[str, object]) -> None:

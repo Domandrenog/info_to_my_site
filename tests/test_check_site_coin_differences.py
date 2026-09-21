@@ -379,6 +379,84 @@ class CheckSiteCoinDifferencesOutputTests(unittest.TestCase):
 
 
 class AllCoinsPathTests(unittest.TestCase):
+    def test_confirmed_name_association_exposes_missing_site_metadata(self) -> None:
+        with tempfile.TemporaryDirectory() as temp_dir:
+            root = Path(temp_dir)
+            paises_dir = root / "paises"
+            country_dir = paises_dir / "asia" / "filipinas"
+            country_dir.mkdir(parents=True)
+            detail_url = "https://pt.ucoin.net/coin/philippines-10-piso-2025"
+            (country_dir / "app-catalog.json").write_text(
+                json.dumps(
+                    {
+                        "country": "Filipinas",
+                        "periods": [
+                            {
+                                "title": "Filipinas › República › 2025",
+                                "coins": [
+                                    {
+                                        "denomination": "10 piso",
+                                        "issuePeriod": "2025",
+                                        "detailUrl": detail_url,
+                                        "obverseImage": "",
+                                        "reverseImage": "",
+                                    }
+                                ],
+                            }
+                        ],
+                    }
+                ),
+                encoding="utf-8",
+            )
+            (country_dir / "filipinas-missing-found.json").write_text(
+                json.dumps(
+                    {
+                        "missing": [
+                            {
+                                "status": "connected",
+                                "ucoinUrl": detail_url,
+                                "apiUrl": "https://base44.test/entities/Coin/record-1",
+                            }
+                        ]
+                    }
+                ),
+                encoding="utf-8",
+            )
+            all_coins_dir = root / "All_Coins"
+            image_dir = all_coins_dir / "fotos" / "paises" / "Asia" / "Filipinas" / "normal"
+            image_dir.mkdir(parents=True)
+            (image_dir / "links-internos.txt").write_text("", encoding="utf-8")
+            (image_dir / "links-externos.txt").write_text("", encoding="utf-8")
+            api_record = {
+                "id": "record-1",
+                "country": "Filipinas",
+                "name": "10 pesos",
+                "years": "2025",
+                "notes": "",
+                "url_ucoin": "",
+                "image_frente": "",
+                "image_verso": "",
+            }
+
+            with patch.dict("os.environ", {"BASE44_APP_ID": "app-id"}):
+                report = compare_country(
+                    paises_dir,
+                    all_coins_dir,
+                    "filipinas",
+                    "app-catalog.json",
+                    include_markdown_as_issue=False,
+                    check_api=True,
+                    include_warnings=False,
+                    api_records_by_country={"filipinas": [api_record]},
+                )
+
+        coin = report["coins_with_issues"][0]
+        self.assertTrue(coin["siteUrl"].endswith("/record-1"))
+        issue_types = [issue["type"] for issue in coin["issues"]]
+        self.assertNotIn("missing_api_coin_record", issue_types)
+        self.assertIn("missing_notes", issue_types)
+        self.assertIn("missing_url_ucoin", issue_types)
+
     def test_unique_name_and_year_associate_coin_without_source_photos(self) -> None:
         with tempfile.TemporaryDirectory() as temp_dir:
             root = Path(temp_dir)
