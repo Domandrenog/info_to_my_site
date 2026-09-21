@@ -711,6 +711,10 @@ def report_has_output(report: dict[str, object], include_warnings: bool) -> bool
     return include_warnings and int(summary.get("total_warnings", 0)) > 0
 
 
+def report_for_output(report: dict[str, object]) -> dict[str, object]:
+    return {key: value for key, value in report.items() if key != "image_matched_ucoin_urls"}
+
+
 def main() -> int:
     args = parse_args()
     paises_dir = Path(args.paises_dir)
@@ -774,12 +778,13 @@ def main() -> int:
             total_issues += int(summary.get("total_issues", 0))
 
     visible_reports = [report for report in reports if report_has_output(report, args.include_warnings)]
+    output_reports = [report_for_output(report) for report in visible_reports]
 
     if args.output:
         output_path = Path(args.output)
         if total_issues > 0 and not has_errors:
             output_path.parent.mkdir(parents=True, exist_ok=True)
-            output_path.write_text(json.dumps(visible_reports, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+            output_path.write_text(json.dumps(output_reports, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
             print(f"Saved {output_path}")
         elif output_path.exists():
             output_path.unlink()
@@ -788,7 +793,7 @@ def main() -> int:
             print("No differences found. Output file was not created.")
 
     if args.json:
-        print(json.dumps(visible_reports, ensure_ascii=False, indent=2))
+        print(json.dumps(output_reports, ensure_ascii=False, indent=2))
     else:
         for report in visible_reports:
             print_text_report(report, args.include_warnings)

@@ -13,6 +13,7 @@ from scripts.check_site_coin_differences import (
     find_all_coins_country_folder,
     group_api_records_by_country,
     print_text_report,
+    report_for_output,
     untracked_api_countries,
 )
 
@@ -178,6 +179,18 @@ class ApiCountryTrackingTests(unittest.TestCase):
         missing = untracked_api_countries(grouped, {"mauricia"})
 
         self.assertEqual(missing, [{"country": "Portugal", "coin_count": 2}])
+
+    def test_report_output_hides_internal_image_match_urls(self) -> None:
+        report = {
+            "country": "portugal",
+            "summary": {"total_issues": 1},
+            "image_matched_ucoin_urls": ["https://pt.ucoin.net/coin/example"],
+        }
+
+        public_report = report_for_output(report)
+
+        self.assertNotIn("image_matched_ucoin_urls", public_report)
+        self.assertIn("image_matched_ucoin_urls", report)
 
 
 if __name__ == "__main__":
