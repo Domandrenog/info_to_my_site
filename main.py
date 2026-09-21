@@ -25,6 +25,7 @@ from scripts.plan_missing_country_tracking import (
     select_tracking_plans,
 )
 from scripts.recheck_ucoin_photos import load_missing_photo_entries
+from scripts.update_ucoin_image_sources import load_image_source_replacements, replacement_counts
 
 PROJECT_DIR = Path(__file__).resolve().parent
 
@@ -726,6 +727,23 @@ def run_ucoin_photo_recheck(report_path: Path) -> None:
     run_step("Rever fotografias no uCoin", command)
 
 
+def run_image_source_review(report_path: Path) -> int:
+    command = [
+        sys.executable,
+        "-m",
+        "scripts.update_ucoin_image_sources",
+        "--input",
+        str(report_path),
+        "--all-coins-dir",
+        str(PROJECT_DIR.parent / "All_Coins"),
+        "--apply",
+    ]
+    result = subprocess.run(command, cwd=PROJECT_DIR, check=False)
+    if result.returncode:
+        print(f"A revisão terminou com código {result.returncode}.")
+    return result.returncode
+
+
 def offer_difference_followups(report_path: Path) -> None:
     try:
         association_countries = unconfirmed_association_countries(report_path)
@@ -737,8 +755,13 @@ def offer_difference_followups(report_path: Path) -> None:
     except (OSError, ValueError, json.JSONDecodeError) as exc:
         print(f"\nNão foi possível preparar a revisão das fotografias: {exc}")
         photo_entries = []
+    try:
+        source_replacements = load_image_source_replacements(report_path)
+    except (OSError, ValueError, json.JSONDecodeError) as exc:
+        print(f"\nNão foi possível preparar a revisão das origens das fotografias: {exc}")
+        source_replacements = []
 
-    while association_countries or photo_entries:
+    while association_countries or photo_entries or source_replacements:
         actions: list[tuple[str, str]] = []
         if association_countries:
             total_coins = sum(int(item.get("coin_count", 0)) for item in association_countries)
@@ -757,6 +780,14 @@ def offer_difference_followups(report_path: Path) -> None:
                 (
                     "photos",
                     f"Rever fotografias indisponíveis no uCoin — {len(photo_entries)} {coin_label}",
+                )
+            )
+        if source_replacements:
+            coin_count, link_count = replacement_counts(source_replacements)
+            actions.append(
+                (
+                    "image_sources",
+                    f"Rever origens das fotografias — {coin_count} moedas / {link_count} links",
                 )
             )
 
@@ -788,9 +819,12 @@ def offer_difference_followups(report_path: Path) -> None:
                 for item in association_countries
                 if str(item.get("country") or "") not in reviewed_country_slugs
             ]
-        else:
+        elif action == "photos":
             run_ucoin_photo_recheck(report_path)
             photo_entries = []
+        else:
+            if run_image_source_review(report_path) == 0:
+                source_replacements = []
 
 
 def print_notes_status(plan: dict[str, object]) -> None:

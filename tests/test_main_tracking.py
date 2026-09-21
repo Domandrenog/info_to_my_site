@@ -145,6 +145,7 @@ class MainTrackingActionTests(unittest.TestCase):
 
         run_step.assert_not_called()
 
+    @patch("main.load_image_source_replacements", return_value=[])
     @patch("main.run_ucoin_photo_recheck")
     @patch("main.review_unconfirmed_association_countries")
     @patch("main.ask_text", side_effect=["2", "1"])
@@ -165,6 +166,7 @@ class MainTrackingActionTests(unittest.TestCase):
         _ask_text,
         review_associations,
         recheck_photos,
+        _source_replacements,
     ) -> None:
         countries = [
             {"country": "filipinas", "country_name": "Filipinas", "coin_count": 2},
@@ -181,6 +183,7 @@ class MainTrackingActionTests(unittest.TestCase):
         recheck_photos.assert_called_once_with(Path("differences.json"))
         review_associations.assert_called_once_with(countries)
 
+    @patch("main.load_image_source_replacements", return_value=[])
     @patch("main.review_unconfirmed_association_countries", side_effect=[["coreia-do-sul"], ["bahamas"]])
     @patch("main.ask_text", side_effect=["1", "1"])
     @patch("main.load_missing_photo_entries", return_value=[])
@@ -197,6 +200,7 @@ class MainTrackingActionTests(unittest.TestCase):
         _photo_entries,
         _ask_text,
         review_associations,
+        _source_replacements,
     ) -> None:
         with redirect_stdout(io.StringIO()) as output:
             main.offer_difference_followups(Path("differences.json"))
@@ -213,6 +217,40 @@ class MainTrackingActionTests(unittest.TestCase):
         )
         self.assertIn("8 moedas em 2 países", output.getvalue())
         self.assertIn("2 moedas em 1 país", output.getvalue())
+
+    @patch("main.run_image_source_review", return_value=0)
+    @patch(
+        "main.load_image_source_replacements",
+        return_value=[
+            {
+                "country": "filipinas",
+                "denomination": f"moeda-{index // 2}",
+                "issuePeriod": "2020",
+                "side": "frente" if index % 2 == 0 else "tras",
+                "current": f"https://base44.app/{index}.jpg",
+                "proposed": f"https://i.ucoin.net/{index}.jpg",
+            }
+            for index in range(38)
+        ],
+    )
+    @patch("main.load_missing_photo_entries", return_value=[])
+    @patch("main.unconfirmed_association_countries", return_value=[])
+    @patch("main.ask_text", return_value="1")
+    def test_difference_followups_offer_image_source_replacements(
+        self,
+        _ask_text,
+        _countries,
+        _photo_entries,
+        _source_replacements,
+        run_source_review,
+    ) -> None:
+        report_path = Path("differences.json")
+
+        with redirect_stdout(io.StringIO()) as output:
+            main.offer_difference_followups(report_path)
+
+        self.assertIn("1) Rever origens das fotografias — 19 moedas / 38 links", output.getvalue())
+        run_source_review.assert_called_once_with(report_path)
 
     @patch("main.subprocess.run", return_value=subprocess.CompletedProcess([], 1))
     @patch("main.ask_yes_no", return_value=True)
