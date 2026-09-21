@@ -756,6 +756,31 @@ class FixSiteIssuesPlanTests(unittest.TestCase):
         )
         self.assertEqual(plan["updates"][0]["issuePeriod"], "1950")
 
+    def test_build_plan_includes_confirmed_catalogue_name_correction(self) -> None:
+        report = {
+            "coins_with_issues": [
+                {
+                    "denomination": "1 cêntimo",
+                    "issuePeriod": "1967 - 1984",
+                    "ucoinUrl": "https://pt.ucoin.net/coin/singapore-1-cent-1967-1984",
+                    "siteUrl": "https://base44.test/entities/Coin/record-1",
+                    "issues": [
+                        {
+                            "type": "mismatched_name",
+                            "field": "name",
+                            "value": "1 cent",
+                            "missing_value": "1 cêntimo",
+                        }
+                    ],
+                }
+            ]
+        }
+
+        plan = fix_site_issues_api.build_fix_plan(report, {})
+
+        self.assertEqual(plan["updates"][0]["current"]["name"], "1 cent")
+        self.assertEqual(plan["updates"][0]["set"]["name"], "1 cêntimo")
+
     def test_selection_keeps_only_the_explicit_field(self) -> None:
         plan = {
             "updates": [

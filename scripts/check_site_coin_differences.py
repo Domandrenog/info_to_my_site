@@ -15,6 +15,7 @@ from scripts.catalog_paths import CATALOG_ROOT, find_country_directory, iter_cou
 ISSUE_TYPE_LABELS = {
     "detail_image_slug_mismatch": "Wrong photo",
     "markdown_url": "Markdown URL",
+    "mismatched_name": "Different coin name",
     "mismatched_url_ucoin": "Wrong uCoin URL",
     "missing_api_coin_record": "Not found",
     "missing_image_url": "No photo",
@@ -30,6 +31,7 @@ ISSUE_TYPE_LABELS = {
 TEXT_REPORT_ISSUE_LABELS = {
     "detail_image_slug_mismatch": "Fotografia incorreta",
     "markdown_url": "URL em formato Markdown",
+    "mismatched_name": "Nome diferente do catálogo",
     "mismatched_url_ucoin": "URL do uCoin incorreto",
     "missing_notes": "Sem notes",
     "missing_url_ucoin": "Sem URL do uCoin",
@@ -509,6 +511,13 @@ def name_year_matches(
     ]
 
 
+def visible_name_matches(value: str, expected: str) -> bool:
+    def normalized_visible_name(raw: str) -> str:
+        return " ".join(str(raw or "").strip().casefold().split())
+
+    return normalized_visible_name(value) == normalized_visible_name(expected)
+
+
 def disambiguate_image_matches(
     records: list[dict[str, object]],
     denomination: str,
@@ -950,6 +959,19 @@ def compare_country(
                 str(coin.get("issuePeriod") or ""),
             )
 
+            # Matching photos make this a strong candidate, but a visibly
+            # different name must still be confirmed by the user before the
+            # records are treated as the same coin and renamed.
+            if (
+                len(matches) == 1
+                and not confirmed_record_id
+                and not visible_name_matches(
+                    str(matches[0].get("name") or ""),
+                    str(coin.get("denomination") or ""),
+                )
+            ):
+                matches = []
+
             if matches:
                 if detail_norm:
                     image_matched_ucoin_urls.append(detail_norm)
@@ -963,7 +985,10 @@ def compare_country(
                     str(coin.get("denomination") or ""),
                     str(coin.get("issuePeriod") or ""),
                 )
-                if len(name_year_candidates) == 1:
+                if len(name_year_candidates) == 1 and visible_name_matches(
+                    str(name_year_candidates[0].get("name") or ""),
+                    str(coin.get("denomination") or ""),
+                ):
                     matches = name_year_candidates
                 else:
                     coin_issues.append(make_finding("missing_api_coin_record", "api", value="", missing_value="Not found"))
@@ -976,6 +1001,8 @@ def compare_country(
                 site_url = build_site_url(record_id)
                 notes = str(record.get("notes") or "").strip()
                 url_ucoin = normalize_url(str(record.get("url_ucoin") or ""))[0]
+                current_name = str(record.get("name") or "").strip()
+                expected_name = str(coin.get("denomination") or "").strip()
                 coin_issues.extend(
                     external_image_source_suggestions(
                         record,
@@ -984,6 +1011,15 @@ def compare_country(
                     )
                 )
 
+                if expected_name and not visible_name_matches(current_name, expected_name):
+                    coin_issues.append(
+                        make_finding(
+                            "mismatched_name",
+                            "name",
+                            value=current_name,
+                            missing_value=expected_name,
+                        )
+                    )
                 if not notes:
                     expected_notes = expected_notes_from_period(period)
                     coin_issues.append(make_finding("missing_notes", "notes", value="", missing_value=expected_notes or "notes"))

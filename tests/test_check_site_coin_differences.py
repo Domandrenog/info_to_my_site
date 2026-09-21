@@ -592,6 +592,7 @@ class AllCoinsPathTests(unittest.TestCase):
         self.assertTrue(coin["siteUrl"].endswith("/record-1"))
         issue_types = [issue["type"] for issue in coin["issues"]]
         self.assertNotIn("missing_api_coin_record", issue_types)
+        self.assertIn("mismatched_name", issue_types)
         self.assertIn("missing_notes", issue_types)
         self.assertIn("missing_url_ucoin", issue_types)
 
@@ -656,6 +657,85 @@ class AllCoinsPathTests(unittest.TestCase):
         self.assertEqual(
             [issue["type"] for issue in coin["issues"]],
             ["missing_image_url", "missing_image_url"],
+        )
+
+    def test_abbreviated_name_requires_confirmation_before_association(self) -> None:
+        with tempfile.TemporaryDirectory() as temp_dir:
+            root = Path(temp_dir)
+            paises_dir = root / "paises"
+            country_dir = paises_dir / "asia" / "singapura"
+            country_dir.mkdir(parents=True)
+            detail_url = "https://pt.ucoin.net/coin/singapore-1-cent-1967-1984"
+            ucoin_front = "https://i.ucoin.net/coin/front.jpg"
+            ucoin_back = "https://i.ucoin.net/coin/back.jpg"
+            site_front = "https://raw.example/front.jpg"
+            site_back = "https://raw.example/back.jpg"
+            (country_dir / "app-catalog.json").write_text(
+                json.dumps(
+                    {
+                        "country": "Singapura",
+                        "periods": [
+                            {
+                                "title": "Singapura › República › 1967-1984",
+                                "coins": [
+                                    {
+                                        "denomination": "1 cêntimo",
+                                        "issuePeriod": "1967 - 1984",
+                                        "detailUrl": detail_url,
+                                        "obverseImage": ucoin_front,
+                                        "reverseImage": ucoin_back,
+                                    }
+                                ],
+                            }
+                        ],
+                    }
+                ),
+                encoding="utf-8",
+            )
+            all_coins_dir = root / "All_Coins"
+            image_dir = all_coins_dir / "fotos" / "paises" / "Asia" / "Singapura" / "normal"
+            image_dir.mkdir(parents=True)
+            (image_dir / "links-internos.txt").write_text(
+                "coin-slug:\n"
+                f"  frente: {site_front}\n"
+                f"  tras: {site_back}\n",
+                encoding="utf-8",
+            )
+            (image_dir / "links-externos.txt").write_text(
+                "coin-slug:\n"
+                f"  frente: {ucoin_front}\n"
+                f"  tras: {ucoin_back}\n",
+                encoding="utf-8",
+            )
+            api_record = {
+                "id": "record-1",
+                "country": "Singapura",
+                "name": "1 cent",
+                "years": "1967-1984",
+                "notes": "República",
+                "url_ucoin": "",
+                "image_frente": site_front,
+                "image_verso": site_back,
+            }
+
+            with patch.dict("os.environ", {"BASE44_APP_ID": "app-id"}):
+                report = compare_country(
+                    paises_dir,
+                    all_coins_dir,
+                    "singapura",
+                    "app-catalog.json",
+                    include_markdown_as_issue=False,
+                    check_api=True,
+                    include_warnings=False,
+                    api_records_by_country={"singapura": [api_record]},
+                )
+
+        coin = report["coins_with_issues"][0]
+        self.assertEqual(coin["denomination"], "1 cêntimo")
+        self.assertEqual(coin["siteUrl"], "Not found")
+        self.assertIn(
+            "missing_api_coin_record",
+            [issue["type"] for issue in coin["issues"]],
         )
 
     def test_api_country_name_resolves_base44_alias(self) -> None:

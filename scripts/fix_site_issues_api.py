@@ -225,6 +225,9 @@ def build_fix_plan(report: dict[str, Any], catalog_index: dict[str, tuple[dict[s
             if field == "notes" and missing_value:
                 update_fields["notes"] = missing_value
                 current_fields["notes"] = str(issue.get("value") or "")
+            elif field == "name" and missing_value:
+                update_fields["name"] = missing_value
+                current_fields["name"] = str(issue.get("value") or "")
             elif field == "url_ucoin" and missing_value:
                 update_fields["url_ucoin"] = missing_value
                 current_fields["url_ucoin"] = str(issue.get("value") or "")
