@@ -79,11 +79,12 @@ class MainTrackingActionTests(unittest.TestCase):
         with redirect_stdout(io.StringIO()):
             main.action_collect_missing_country_tracking()
 
-        self.assertEqual(run.call_count, 2)
+        self.assertEqual(run.call_count, 3)
         commands = [call.args[0] for call in run.call_args_list]
         self.assertEqual(commands[0][commands[0].index("--start-year") + 1], "1966")
         self.assertEqual(commands[1][commands[1].index("--start-year") + 1], "1994")
-        self.assertTrue(all("--no-wait-for-final" in command for command in commands))
+        self.assertTrue(all("--no-wait-for-final" in command for command in commands[:2]))
+        self.assertEqual(commands[2], [main.sys.executable, "-m", "scripts.manage_pending_rarities"])
 
 
 if __name__ == "__main__":

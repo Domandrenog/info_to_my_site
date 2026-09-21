@@ -131,6 +131,25 @@ python3 -m scripts.plan_missing_country_tracking
 
 O ano inicial sugerido é o primeiro ano já coberto pela API. Isto evita perder séries que começaram há vários anos mas continuam a receber novas emissões. Depois da recolha, o check global apresenta esses países como `recolhidos ainda sem raridade` e não volta a sugerir o mesmo scrape. Revê cada `app-catalog-pending.json`, preenche `availability` e só depois gera os outputs finais ou executa qualquer importação.
 
+## Classificar todas as raridades pendentes
+
+Depois de recolher países, o menu `Importar Data de uCoin > Classificar raridades pendentes` prepara um único lote com todas as moedas ainda sem raridade:
+
+- `info/paises/all-rarities-pending.json`: JSON que deve ser classificado;
+- `info/paises/all-rarities-prompt.txt`: instruções prontas para enviar juntamente com o JSON;
+- `info/paises/all-rarities-final.json`: local onde deve ser guardada a resposta completa.
+
+O menu espera pelo ficheiro final e, depois de carregares Enter, valida que todos os países e moedas continuam presentes e que os catálogos de origem não mudaram. Apenas os valores de `availability` são aplicados. Para cada país são então gerados `app-catalog-final.json`, `app-catalog.json`, `availability-statistics.json` e `coins-availability.xlsx`.
+
+Também podes executar as duas fases manualmente:
+
+```bash
+python3 -m scripts.manage_pending_rarities
+python3 -m scripts.manage_pending_rarities --final-input info/paises/all-rarities-final.json
+```
+
+O lote de raridades também é preparado automaticamente no fim de uma recolha de vários países. Esta etapa não importa nem altera dados na Base44.
+
 ## 1. Abrir Browser
 
 O uCoin pode bloquear pedidos automáticos com Cloudflare. Por isso, o scraper usa um browser real via CDP.

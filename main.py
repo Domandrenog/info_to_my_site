@@ -302,7 +302,25 @@ def action_collect_missing_country_tracking() -> None:
 
     print(f"\nRecolha concluída para {len(selected_plans)} países.")
     print("Os países recolhidos ficam marcados como 'ainda sem raridade'.")
-    print("Revê e classifica os app-catalog-pending.json antes de gerar outputs finais ou importar para a Base44.")
+    print("A preparar o lote único para classificação de raridades...")
+    try:
+        subprocess.run(
+            [sys.executable, "-m", "scripts.manage_pending_rarities"],
+            cwd=PROJECT_DIR,
+            check=True,
+        )
+    except subprocess.CalledProcessError as exc:
+        print(f"Não foi possível preparar o lote de raridades: código {exc.returncode}.")
+        return
+    print("Usa a opção 'Classificar raridades pendentes' para preencher e aplicar todas de uma vez.")
+
+
+def action_manage_pending_rarities() -> None:
+    title("Classificar raridades pendentes")
+    print("Reúne todos os países pendentes num único JSON, valida a resposta e gera os catálogos finais.")
+    print("Nenhum dado é enviado automaticamente para a Base44.\n")
+    command = [sys.executable, "-m", "scripts.manage_pending_rarities", "--wait-for-final"]
+    run_step("Classificar raridades pendentes", command)
 
 
 def action_generate_pending() -> None:
@@ -529,8 +547,9 @@ def menu_importar_ucoin() -> None:
         title("Importar Data de uCoin")
         print("1) Pipeline Completo")
         print("2) Recolher países da API sem tracking local")
-        print("3) Specific Stage")
-        print("4) Voltar")
+        print("3) Classificar raridades pendentes")
+        print("4) Specific Stage")
+        print("5) Voltar")
 
         choice = ask_text("Escolhe uma opcao", "1")
         if choice == "1":
@@ -538,9 +557,11 @@ def menu_importar_ucoin() -> None:
         elif choice == "2":
             action_collect_missing_country_tracking()
         elif choice == "3":
+            action_manage_pending_rarities()
+        elif choice == "4":
             menu_specific_stage()
             continue
-        elif choice == "4":
+        elif choice == "5":
             return
         else:
             print("Opcao invalida.")

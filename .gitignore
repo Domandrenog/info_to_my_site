@@ -11,3 +11,8 @@ __pycache__/
 
 # Atomic write temporary files
 *.tmp
+
+# Generated batch used to classify pending rarity values
+info/paises/all-rarities-pending.json
+info/paises/all-rarities-final.json
+info/paises/all-rarities-prompt.txt
