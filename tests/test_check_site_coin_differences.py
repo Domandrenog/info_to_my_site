@@ -10,6 +10,7 @@ from scripts.check_site_coin_differences import (
     api_country_name,
     api_tracking_report,
     build_reverse_map,
+    detail_stem,
     find_all_coins_country_folder,
     group_api_records_by_country,
     print_text_report,
@@ -164,6 +165,16 @@ class AllCoinsPathTests(unittest.TestCase):
                     "ucoin_url": "https://i.ucoin.net/coin-front.jpg",
                 },
             )
+
+    def test_detail_stem_reads_coin_from_login_ref(self) -> None:
+        detail_url = "https://pt.ucoin.net/login/?ref=/coin/greenland-10-kroner-1932/?tid=183830"
+
+        self.assertEqual(detail_stem(detail_url), "greenland-10-kroner-1932")
+
+    def test_detail_stem_keeps_regular_coin_url(self) -> None:
+        detail_url = "https://pt.ucoin.net/coin/denmark-10-kroner-1932/?tid=123"
+
+        self.assertEqual(detail_stem(detail_url), "denmark-10-kroner-1932")
 
 
 class ApiCountryTrackingTests(unittest.TestCase):

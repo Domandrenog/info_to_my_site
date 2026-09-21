@@ -6,7 +6,7 @@ import json
 import os
 import re
 from pathlib import Path
-from urllib.parse import quote, unquote, urlparse
+from urllib.parse import parse_qs, quote, unquote, urlparse
 
 from scripts.catalog_paths import CATALOG_ROOT, find_country_directory, iter_country_directories, slugify
 
@@ -60,7 +60,12 @@ def url_stem(url: str) -> str:
 
 
 def detail_stem(detail_url: str) -> str:
-    path = unquote(urlparse(detail_url).path).strip("/")
+    parsed = urlparse(detail_url)
+    path = unquote(parsed.path).strip("/")
+    if path == "login":
+        referenced_urls = parse_qs(parsed.query).get("ref", [])
+        if referenced_urls:
+            path = unquote(urlparse(referenced_urls[0]).path).strip("/")
     if path.startswith("coin/"):
         path = path[len("coin/") :]
     return slugify(path)
