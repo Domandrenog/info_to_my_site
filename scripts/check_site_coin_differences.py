@@ -896,6 +896,13 @@ def print_text_report(report: dict[str, object], include_warnings: bool) -> None
             print_count_breakdown(summary.get("warnings_by_type", {}), singular="warning", plural="warnings")
 
 
+def print_text_reports(reports: list[dict[str, object]], include_warnings: bool) -> None:
+    for index, report in enumerate(reports):
+        if index:
+            print("\n" + "-" * 72)
+        print_text_report(report, include_warnings)
+
+
 def report_has_output(report: dict[str, object], include_warnings: bool) -> bool:
     if report.get("error"):
         return True
@@ -1022,8 +1029,7 @@ def main() -> int:
     if args.json:
         print(json.dumps(output_reports, ensure_ascii=False, indent=2))
     else:
-        for report in visible_reports:
-            print_text_report(report, args.include_warnings)
+        print_text_reports(visible_reports, args.include_warnings)
 
     return 1 if total_issues or has_errors else 0
 

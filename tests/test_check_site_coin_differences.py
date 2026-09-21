@@ -18,6 +18,7 @@ from scripts.check_site_coin_differences import (
     pending_catalogue_api_countries,
     pending_rarity_report,
     print_text_report,
+    print_text_reports,
     report_for_output,
     untracked_api_countries,
     write_output_report,
@@ -30,6 +31,42 @@ class CheckSiteCoinDifferencesOutputTests(unittest.TestCase):
         with redirect_stdout(output):
             print_text_report(report, include_warnings)
         return output.getvalue().strip()
+
+    def test_multiple_countries_are_separated_visually(self) -> None:
+        reports = [
+            {
+                "country_name": country,
+                "summary": {
+                    "analyzed_coins": 1,
+                    "api_coin_count": 1,
+                    "total_issues": 1,
+                    "by_type": {"missing_api_coin_record": 1},
+                },
+                "coins_with_issues": [
+                    {
+                        "denomination": "1 moeda",
+                        "issues": [
+                            {
+                                "type": "missing_api_coin_record",
+                                "field": "api",
+                                "missing_value": "Not found",
+                            }
+                        ],
+                    }
+                ],
+            }
+            for country in ("Seicheles", "Singapura")
+        ]
+
+        with redirect_stdout(io.StringIO()) as output:
+            print_text_reports(reports, include_warnings=False)
+
+        self.assertIn(
+            "API Base44 e catálogo local: 1 moeda\n\n"
+            + "-" * 72
+            + "\n\nSingapura: 1 moeda analisada",
+            output.getvalue(),
+        )
 
     def test_text_report_separates_analyzed_coins_from_issue_occurrences(self) -> None:
         coins = [
