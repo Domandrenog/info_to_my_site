@@ -255,7 +255,9 @@ def iter_coins(catalogue: dict[str, object]):
 
 
 def normalize_key(value: str) -> str:
-    return str(value or "").strip().lower()
+    normalized = str(value or "").strip().casefold()
+    normalized = re.sub(r"\s*-\s*", "-", normalized)
+    return re.sub(r"\s+", " ", normalized)
 
 
 def expected_notes_from_period(period: dict[str, object]) -> str:

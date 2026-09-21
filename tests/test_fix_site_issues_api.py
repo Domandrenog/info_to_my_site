@@ -13,6 +13,74 @@ from scripts import fix_site_issues_api
 
 
 class FixSiteIssuesPlanTests(unittest.TestCase):
+    def test_name_decision_json_records_verified_application_status(self) -> None:
+        with tempfile.TemporaryDirectory() as temp_dir:
+            path = Path(temp_dir) / "decisions.json"
+            fix_site_issues_api.save_name_match_decision(
+                path,
+                "pais",
+                {
+                    "ucoinUrl": "https://pt.ucoin.net/coin/example",
+                    "siteRecordId": "record-1",
+                    "catalogName": "10 cêntimos",
+                    "catalogYears": "2020",
+                    "sameCoin": "yes",
+                    "rename": "yes",
+                    "proposedName": "10 cêntimos",
+                    "applyStatus": "pending",
+                },
+            )
+
+            fix_site_issues_api.update_name_match_application_status(
+                path,
+                [
+                    {
+                        "record_id": "record-1",
+                        "fields": ["name"],
+                        "status": "applied",
+                        "message": "name",
+                    }
+                ],
+            )
+            payload = json.loads(path.read_text(encoding="utf-8"))
+
+        self.assertEqual(payload["decisions"][0]["applyStatus"], "applied")
+        self.assertEqual(payload["decisions"][0]["applyMessage"], "name")
+        self.assertIn("appliedAt", payload["decisions"][0])
+
+    def test_successful_name_update_confirms_pending_association(self) -> None:
+        with tempfile.TemporaryDirectory() as temp_dir:
+            path = Path(temp_dir) / "missing-found.json"
+            path.write_text(
+                json.dumps(
+                    {
+                        "country": "pais",
+                        "missing": [
+                            {
+                                "status": "connected_pending_name_update",
+                                "ucoinUrl": "https://pt.ucoin.net/coin/example",
+                                "apiUrl": "https://base44.test/entities/Coin/record-1",
+                            }
+                        ],
+                    }
+                ),
+                encoding="utf-8",
+            )
+
+            fix_site_issues_api.confirm_applied_name_matches(
+                path,
+                [
+                    {
+                        "record_id": "record-1",
+                        "fields": ["name"],
+                        "status": "applied",
+                    }
+                ],
+            )
+            payload = json.loads(path.read_text(encoding="utf-8"))
+
+        self.assertEqual(payload["missing"][0]["status"], "connected")
+
     def test_abbreviated_denomination_units_are_equivalent_for_matching(self) -> None:
         self.assertEqual(fix_site_issues_api.normalize_key("10 cents"), "10 cent")
         self.assertEqual(fix_site_issues_api.normalize_key("10 cêntimos"), "10 cent")
@@ -37,6 +105,7 @@ class FixSiteIssuesPlanTests(unittest.TestCase):
         updates: list[dict[str, object]] = []
 
         with tempfile.TemporaryDirectory() as temp_dir:
+            decisions_path = Path(temp_dir) / "name-match-decisions.json"
             with (
                 patch.object(
                     fix_site_issues_api.checker,
@@ -54,13 +123,61 @@ class FixSiteIssuesPlanTests(unittest.TestCase):
                     missing_found_path=Path(temp_dir) / "missing-found.json",
                     interactive=True,
                     max_candidates=5,
+                    name_decisions_path=decisions_path,
+                    decision_country_slug="pais",
                 )
+            decisions = json.loads(decisions_path.read_text(encoding="utf-8"))
 
         self.assertEqual(result["unresolved"], [])
+        self.assertEqual(result["all"][0]["status"], "connected_pending_name_update")
         self.assertEqual(updates[0]["current"]["name"], "10 cents")
         self.assertEqual(updates[0]["set"]["name"], "10 cêntimos")
         self.assertIn("Catálogo local: 10 cêntimos (2020)", output.getvalue())
         self.assertIn("Site Base44 agora: 10 cents", output.getvalue())
+        self.assertEqual(decisions["country"], "pais")
+        self.assertEqual(decisions["decisions"][0]["sameCoin"], "yes")
+        self.assertEqual(decisions["decisions"][0]["rename"], "yes")
+        self.assertEqual(decisions["decisions"][0]["applyStatus"], "pending")
+
+    def test_rejected_match_is_also_saved_in_decisions_json(self) -> None:
+        missing = [
+            {
+                "denomination": "10 cêntimos",
+                "ucoinUrl": "https://pt.ucoin.net/coin/example",
+                "period": {},
+                "coin": {"issuePeriod": "2020"},
+            }
+        ]
+        site_record = {"id": "record-1", "name": "10 cent", "years": "2020"}
+
+        with tempfile.TemporaryDirectory() as temp_dir:
+            decisions_path = Path(temp_dir) / "name-match-decisions.json"
+            with (
+                patch.object(
+                    fix_site_issues_api.checker,
+                    "api_records_for_country",
+                    return_value=([site_record], None),
+                ),
+                patch("builtins.input", return_value="n"),
+                redirect_stdout(io.StringIO()),
+            ):
+                result = fix_site_issues_api.reconcile_missing(
+                    country_name="País",
+                    missing_creates=missing,
+                    plan_updates=[],
+                    associations_path=Path(temp_dir) / "associations.json",
+                    missing_found_path=Path(temp_dir) / "missing-found.json",
+                    interactive=True,
+                    max_candidates=5,
+                    name_decisions_path=decisions_path,
+                    decision_country_slug="pais",
+                )
+            decisions = json.loads(decisions_path.read_text(encoding="utf-8"))
+
+        self.assertEqual(result["unresolved"], [{"denomination": "10 cêntimos", "ucoinUrl": "https://pt.ucoin.net/coin/example"}])
+        self.assertEqual(result["all"][0]["status"], "rejected")
+        self.assertEqual(decisions["decisions"][0]["sameCoin"], "no")
+        self.assertEqual(decisions["decisions"][0]["siteName"], "10 cent")
 
     def test_consolidate_updates_merges_duplicates_and_excludes_conflicting_fields(self) -> None:
         duplicate_updates = [
@@ -283,13 +400,25 @@ class FixSiteIssuesApplyTests(unittest.TestCase):
             patch.object(fix_site_issues_api.import_base44_coins, "create_client", return_value=client),
             redirect_stdout(io.StringIO()),
         ):
-            result = fix_site_issues_api.apply_plan(args, "", plan)
+            application_results: list[dict[str, object]] = []
+            result = fix_site_issues_api.apply_plan(args, "", plan, application_results)
 
         self.assertEqual(result, {"updated": 1, "created": 0, "skipped": 0})
         self.assertEqual(client.record["name"], "10 cêntimos")
         self.assertEqual(client.record["notes"], "República")
         self.assertEqual(client.record["image_frente"], "https://images.test/front.jpg")
         self.assertEqual(client.record["image_verso"], "https://images.test/back.jpg")
+        self.assertEqual(
+            application_results,
+            [
+                {
+                    "record_id": "record-1",
+                    "fields": ["name"],
+                    "status": "applied",
+                    "message": "name",
+                }
+            ],
+        )
 
     def test_apply_changes_selected_field_and_verifies_preserved_fields(self) -> None:
         class FakeClient:

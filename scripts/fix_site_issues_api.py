@@ -505,6 +505,124 @@ def default_missing_found_path(country_dir: Path, country_slug: str) -> Path:
     return country_dir / f"{country_slug}-missing-found.json"
 
 
+def default_name_match_decisions_path(country_dir: Path, country_slug: str) -> Path:
+    return country_dir / f"{country_slug}-name-match-decisions.json"
+
+
+def load_name_match_decisions(path: Path) -> list[dict[str, Any]]:
+    if not path.exists():
+        return []
+    try:
+        data = json.loads(path.read_text(encoding="utf-8"))
+    except Exception:  # noqa: BLE001
+        return []
+    decisions = data.get("decisions", []) if isinstance(data, dict) else []
+    return [item for item in decisions if isinstance(item, dict)]
+
+
+def save_name_match_decision(
+    path: Path,
+    country_slug: str,
+    decision: dict[str, Any],
+) -> None:
+    decisions_by_url = {
+        normalize_url(str(item.get("ucoinUrl") or "")): dict(item)
+        for item in load_name_match_decisions(path)
+        if normalize_url(str(item.get("ucoinUrl") or ""))
+    }
+    ucoin_url = normalize_url(str(decision.get("ucoinUrl") or ""))
+    if not ucoin_url:
+        return
+    decisions_by_url[ucoin_url] = {
+        **decision,
+        "ucoinUrl": ucoin_url,
+        "decidedAt": datetime.now(timezone.utc).isoformat(timespec="seconds").replace("+00:00", "Z"),
+    }
+    decisions = sorted(
+        decisions_by_url.values(),
+        key=lambda item: (
+            str(item.get("catalogName") or ""),
+            str(item.get("catalogYears") or ""),
+            str(item.get("ucoinUrl") or ""),
+        ),
+    )
+    payload = {
+        "updatedAt": datetime.now(timezone.utc).isoformat(timespec="seconds").replace("+00:00", "Z"),
+        "country": country_slug,
+        "decisions": decisions,
+    }
+    path.parent.mkdir(parents=True, exist_ok=True)
+    path.write_text(json.dumps(payload, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+
+
+def update_name_match_application_status(
+    path: Path,
+    application_results: list[dict[str, Any]],
+) -> None:
+    decisions = load_name_match_decisions(path)
+    if not decisions:
+        return
+    results_by_record_id = {
+        str(item.get("record_id") or ""): item
+        for item in application_results
+        if str(item.get("record_id") or "") and "name" in item.get("fields", [])
+    }
+    changed = False
+    for decision in decisions:
+        result = results_by_record_id.get(str(decision.get("siteRecordId") or ""))
+        if result is None or decision.get("rename") != "yes":
+            continue
+        decision["applyStatus"] = str(result.get("status") or "not_applied")
+        decision["applyMessage"] = str(result.get("message") or "")
+        status_updated_at = datetime.now(timezone.utc).isoformat(timespec="seconds").replace("+00:00", "Z")
+        decision["statusUpdatedAt"] = status_updated_at
+        if decision["applyStatus"] in {"applied", "already_correct"}:
+            decision["appliedAt"] = status_updated_at
+        else:
+            decision.pop("appliedAt", None)
+        changed = True
+    if not changed:
+        return
+    payload = {
+        "updatedAt": datetime.now(timezone.utc).isoformat(timespec="seconds").replace("+00:00", "Z"),
+        "country": str(json.loads(path.read_text(encoding="utf-8")).get("country") or ""),
+        "decisions": decisions,
+    }
+    path.write_text(json.dumps(payload, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+
+
+def confirm_applied_name_matches(
+    missing_found_path: Path,
+    application_results: list[dict[str, Any]],
+) -> None:
+    entries = load_missing_found(missing_found_path)
+    if not entries:
+        return
+    successful_record_ids = {
+        str(item.get("record_id") or "")
+        for item in application_results
+        if str(item.get("status") or "") in {"applied", "already_correct"}
+        and "name" in item.get("fields", [])
+    }
+    changed = False
+    for entry in entries:
+        if entry.get("status") != "connected_pending_name_update":
+            continue
+        if parse_association_record_id(entry) not in successful_record_ids:
+            continue
+        entry["status"] = "connected"
+        changed = True
+    if not changed:
+        return
+    existing = json.loads(missing_found_path.read_text(encoding="utf-8"))
+    payload = {
+        "updatedAt": datetime.now(timezone.utc).isoformat(timespec="seconds").replace("+00:00", "Z"),
+        "country": str(existing.get("country") or "") if isinstance(existing, dict) else "",
+        "missing": entries,
+    }
+    missing_found_path.write_text(json.dumps(payload, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+
+
 def load_missing_found(path: Path) -> list[dict[str, str]]:
     if not path.exists():
         return []
@@ -704,6 +822,8 @@ def reconcile_missing(
     interactive: bool,
     max_candidates: int,
     association_ucoin_filter: set[str] | None = None,
+    name_decisions_path: Path | None = None,
+    decision_country_slug: str = "",
 ) -> dict[str, list[dict[str, str]]]:
     api_records_raw, _ = checker.api_records_for_country(country_name)
     api_records = [record for record in (api_records_raw or []) if isinstance(record, dict)]
@@ -736,6 +856,8 @@ def reconcile_missing(
 
         resolved_record: dict[str, Any] | None = None
         resolved_source = ""
+        candidate_for_decision: dict[str, Any] | None = None
+        same_coin_decision = ""
 
         if resolved_record is None:
             known_missing = known_from_missing_found.get(ucoin_url)
@@ -743,6 +865,8 @@ def reconcile_missing(
                 resolved_record = by_record_id.get(str(known_missing.get("record_id") or ""))
                 if resolved_record is not None:
                     resolved_source = "missing_found_file"
+                    candidate_for_decision = resolved_record
+                    same_coin_decision = "yes"
                     associations[ucoin_url] = {
                         "record_id": str(resolved_record.get("id") or ""),
                         "api_url": checker.build_site_url(str(resolved_record.get("id") or "")),
@@ -765,6 +889,7 @@ def reconcile_missing(
             ]
             if len(exact_candidates) == 1:
                 candidate = exact_candidates[0]
+                candidate_for_decision = candidate
                 print("Possível correspondência no Site Base44:")
                 print(f"- {candidate.get('name', '')} ({candidate.get('years', '')})")
                 try:
@@ -774,10 +899,14 @@ def reconcile_missing(
                 if choice in {"y", "yes", "s", "sim"}:
                     resolved_record = candidate
                     resolved_source = "interactive"
+                    same_coin_decision = "yes"
+                else:
+                    same_coin_decision = "no"
             else:
                 candidates = best_candidates(item, api_records, max_candidates)
                 if not candidates:
                     print("Sem candidatos por nome e anos.")
+                    same_coin_decision = "no_candidate"
                 else:
                     print("Possíveis correspondências no Site Base44:")
                     for idx, candidate in enumerate(candidates, start=1):
@@ -790,6 +919,7 @@ def reconcile_missing(
                     while True:
                         choice = input("Escolhe candidato: ").strip()
                         if choice in {"", "0"}:
+                            same_coin_decision = "no"
                             break
                         try:
                             idx = int(choice)
@@ -800,10 +930,44 @@ def reconcile_missing(
                             print("Opção inválida.")
                             continue
                         resolved_record = candidates[idx - 1]["record"]
+                        candidate_for_decision = resolved_record
                         resolved_source = "interactive"
+                        same_coin_decision = "yes"
                         break
 
         if resolved_record is None:
+            candidate = candidate_for_decision or {}
+            if interactive and name_decisions_path is not None:
+                save_name_match_decision(
+                    name_decisions_path,
+                    decision_country_slug or checker.slugify(country_name),
+                    {
+                        "catalogName": denomination,
+                        "catalogYears": issue_period,
+                        "ucoinUrl": ucoin_url,
+                        "siteRecordId": str(candidate.get("id") or ""),
+                        "siteUrl": checker.build_site_url(str(candidate.get("id") or "")),
+                        "siteName": str(candidate.get("name") or ""),
+                        "siteYears": str(candidate.get("years") or ""),
+                        "sameCoin": same_coin_decision or "no",
+                        "rename": "not_asked",
+                        "proposedName": denomination,
+                        "applyStatus": "not_requested",
+                    },
+                )
+            all_entries.append(
+                {
+                    "status": "rejected" if same_coin_decision == "no" else "unresolved",
+                    "source": "interactive" if interactive else "not_matched",
+                    "denomination": denomination,
+                    "issuePeriod": issue_period,
+                    "ucoinUrl": ucoin_url,
+                    "record_id": str(candidate.get("id") or ""),
+                    "record_name": str(candidate.get("name") or ""),
+                    "record_years": str(candidate.get("years") or ""),
+                    "siteUrl": checker.build_site_url(str(candidate.get("id") or "")),
+                }
+            )
             unresolved.append({"denomination": denomination, "ucoinUrl": ucoin_url})
             continue
 
@@ -811,6 +975,7 @@ def reconcile_missing(
         current_notes = str(resolved_record.get("notes") or "").strip()
         current_name = str(resolved_record.get("name") or "").strip()
         set_fields: dict[str, str] = {}
+        rename_decision = "not_needed"
 
         if current_url != ucoin_url:
             set_fields["url_ucoin"] = ucoin_url
@@ -826,12 +991,34 @@ def reconcile_missing(
                 rename_choice = ""
             if rename_choice in {"y", "yes", "s", "sim"}:
                 set_fields["name"] = denomination
+                rename_decision = "yes"
+            else:
+                rename_decision = "no"
+
+        if interactive and name_decisions_path is not None:
+            save_name_match_decision(
+                name_decisions_path,
+                decision_country_slug or checker.slugify(country_name),
+                {
+                    "catalogName": denomination,
+                    "catalogYears": issue_period,
+                    "ucoinUrl": ucoin_url,
+                    "siteRecordId": str(resolved_record.get("id") or ""),
+                    "siteUrl": checker.build_site_url(str(resolved_record.get("id") or "")),
+                    "siteName": current_name,
+                    "siteYears": str(resolved_record.get("years") or ""),
+                    "sameCoin": same_coin_decision or "yes",
+                    "rename": rename_decision,
+                    "proposedName": denomination,
+                    "applyStatus": "pending" if rename_decision == "yes" else "not_requested",
+                },
+            )
 
         merge_update(plan_updates, denomination, issue_period, resolved_record, set_fields)
 
         all_entries.append(
             {
-                "status": "connected",
+                "status": "connected_pending_name_update" if rename_decision == "yes" else "connected",
                 "source": resolved_source,
                 "denomination": denomination,
                 "issuePeriod": issue_period,
@@ -987,7 +1174,12 @@ def confirm_equivalences_for_updates(
     return {"unresolved": unresolved, "entries": entries}
 
 
-def apply_plan(args: argparse.Namespace, country_name: str, plan: dict[str, Any]) -> dict[str, int]:
+def apply_plan(
+    args: argparse.Namespace,
+    country_name: str,
+    plan: dict[str, Any],
+    application_results: list[dict[str, Any]] | None = None,
+) -> dict[str, int]:
     client_args = SimpleNamespace(
         request_delay=args.request_delay,
         rate_limit_delay=args.rate_limit_delay,
@@ -1092,6 +1284,22 @@ def apply_plan(args: argparse.Namespace, country_name: str, plan: dict[str, Any]
                         operation = "Atualizado"
                         operation_detail = ", ".join(fields_to_write)
 
+        if application_results is not None:
+            if operation == "Atualizado":
+                result_status = "applied"
+            elif operation == "Já correto":
+                result_status = "already_correct"
+            else:
+                result_status = "not_applied"
+            application_results.append(
+                {
+                    "record_id": record_id,
+                    "fields": sorted(set_fields),
+                    "status": result_status,
+                    "message": operation_detail,
+                }
+            )
+
         item_duration = time.monotonic() - item_started_at
         total_item_duration += item_duration
         elapsed = time.monotonic() - update_started_at
@@ -1184,6 +1392,7 @@ def main() -> int:
 
     associations_path = Path(args.associations_file) if args.associations_file else default_associations_path(country_dir, country_slug)
     missing_found_path = default_missing_found_path(country_dir, country_slug)
+    name_decisions_path = default_name_match_decisions_path(country_dir, country_slug)
     association_ucoin_filter = collect_image_issue_ucoin_urls(report)
 
     if args.skip_create_missing:
@@ -1196,6 +1405,8 @@ def main() -> int:
             interactive=args.reconcile_missing_interactive,
             max_candidates=args.max_match_candidates,
             association_ucoin_filter=association_ucoin_filter,
+            name_decisions_path=name_decisions_path,
+            decision_country_slug=country_slug,
         )
         missing_entries = list(reconcile_result.get("unresolved", []))
         missing_found_entries = list(reconcile_result.get("all", []))
@@ -1249,6 +1460,8 @@ def main() -> int:
         exclude_ucoin_urls=set(report.get("image_matched_ucoin_urls", [])),
     )
     print(f"Missing guardados em: {missing_found_path}")
+    if name_decisions_path.exists():
+        print(f"Decisões de nomes guardadas em: {name_decisions_path}")
 
     plan_summary = {
         "country": country_slug,
@@ -1280,6 +1493,7 @@ def main() -> int:
         "missing_entries": missing_entries,
         "associationsFile": str(associations_path),
         "missingFoundFile": str(missing_found_path),
+        "nameMatchDecisionsFile": str(name_decisions_path),
     }
 
     if args.output:
@@ -1306,7 +1520,44 @@ def main() -> int:
         print("Nothing to apply.")
         return 0
 
-    results = apply_plan(args, country_name, plan)
+    name_updates = [
+        item
+        for item in plan.get("updates", [])
+        if isinstance(item.get("set"), dict) and "name" in item.get("set", {})
+    ]
+    if name_updates and args.reconcile_missing_interactive:
+        print("\nAlterações de nome confirmadas:")
+        for item in name_updates:
+            current_name = str(item.get("current", {}).get("name") or "")
+            proposed_name = str(item.get("set", {}).get("name") or "")
+            period = str(item.get("issuePeriod") or "")
+            period_text = f" ({period})" if period else ""
+            print(f"- {current_name} → {proposed_name}{period_text}")
+        change_text = "esta 1 alteração" if len(name_updates) == 1 else f"estas {len(name_updates)} alterações"
+        try:
+            apply_choice = input(
+                f"Aplicar exatamente {change_text} de nome no Site Base44? [s/N]: "
+            ).strip().lower()
+        except EOFError:
+            apply_choice = ""
+        if apply_choice not in {"y", "yes", "s", "sim"}:
+            cancelled_results = [
+                {
+                    "record_id": str(item.get("record_id") or ""),
+                    "fields": ["name"],
+                    "status": "approved_not_applied",
+                    "message": "aplicação final cancelada",
+                }
+                for item in name_updates
+            ]
+            update_name_match_application_status(name_decisions_path, cancelled_results)
+            print("Aplicação cancelada. As decisões ficaram guardadas no JSON.")
+            return 0
+
+    application_results: list[dict[str, Any]] = []
+    results = apply_plan(args, country_name, plan, application_results)
+    update_name_match_application_status(name_decisions_path, application_results)
+    confirm_applied_name_matches(missing_found_path, application_results)
     print(f"Applied fixes: updated={results['updated']} created={results['created']}")
     return 0
 

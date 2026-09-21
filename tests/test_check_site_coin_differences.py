@@ -17,6 +17,7 @@ from scripts.check_site_coin_differences import (
     detail_stem,
     find_all_coins_country_folder,
     group_api_records_by_country,
+    normalize_key,
     pending_catalogue_api_countries,
     pending_rarity_report,
     print_text_report,
@@ -28,6 +29,9 @@ from scripts.check_site_coin_differences import (
 
 
 class CheckSiteCoinDifferencesOutputTests(unittest.TestCase):
+    def test_match_key_ignores_spacing_around_year_ranges(self) -> None:
+        self.assertEqual(normalize_key("1966 - 1970"), normalize_key("1966-1970"))
+
     def render(self, report: dict[str, object], *, include_warnings: bool = False) -> str:
         output = io.StringIO()
         with redirect_stdout(output):
