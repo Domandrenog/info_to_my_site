@@ -15,6 +15,7 @@ from scripts.check_site_coin_differences import (
     compare_country,
     country_slugs_with_catalog,
     detail_stem,
+    external_image_source_suggestions,
     find_all_coins_country_folder,
     group_api_records_by_country,
     normalize_key,
@@ -271,6 +272,52 @@ class CheckSiteCoinDifferencesOutputTests(unittest.TestCase):
             "- Multiple API matches: 2 warnings",
         )
 
+    def test_text_report_suggests_ucoin_for_non_ucoin_external_images(self) -> None:
+        report = {
+            "country": "filipinas",
+            "country_name": "Filipinas",
+            "summary": {
+                "analyzed_coins": 1,
+                "api_coin_count": 1,
+                "site_missing_fields": {"url_ucoin": 0, "notes": 0},
+                "total_issues": 2,
+                "by_type": {"non_ucoin_external_image": 2},
+            },
+            "coins_with_issues": [
+                {
+                    "denomination": "1 cêntimo",
+                    "issuePeriod": "1995 - 2016",
+                    "issues": [
+                        {
+                            "type": "non_ucoin_external_image",
+                            "field": "links-externos.frente",
+                            "value": "https://base44.test/front.jpg",
+                            "missing_value": "https://i.ucoin.net/front.jpg",
+                        },
+                        {
+                            "type": "non_ucoin_external_image",
+                            "field": "links-externos.tras",
+                            "value": "https://base44.test/back.jpg",
+                            "missing_value": "https://i.ucoin.net/back.jpg",
+                        },
+                    ],
+                }
+            ],
+        }
+
+        self.assertEqual(
+            self.render(report),
+            "Filipinas: 1 moeda analisada\n"
+            "\n"
+            "Site Base44: 1 moeda\n"
+            "\n"
+            "Catálogo local: 1 moeda\n"
+            "\n"
+            "Mapeamento All_Coins:\n"
+            "- Link externo não é do uCoin: 1 moeda\n"
+            "  - 1 cêntimo (1995 - 2016): substituir frente e verso pelos links do uCoin",
+        )
+
     def test_text_report_combines_equal_api_and_catalog_counts(self) -> None:
         report = {
             "country": "seychelles",
@@ -379,6 +426,91 @@ class CheckSiteCoinDifferencesOutputTests(unittest.TestCase):
 
 
 class AllCoinsPathTests(unittest.TestCase):
+    def test_compare_country_suggests_replacing_external_sources_with_ucoin(self) -> None:
+        with tempfile.TemporaryDirectory() as temp_dir:
+            root = Path(temp_dir)
+            paises_dir = root / "paises"
+            country_dir = paises_dir / "asia" / "filipinas"
+            country_dir.mkdir(parents=True)
+            detail_url = "https://pt.ucoin.net/coin/philippines-1-sentimo-1995-2016"
+            ucoin_front = "https://i.ucoin.net/coin/philippines-front.jpg"
+            ucoin_back = "https://i.ucoin.net/coin/philippines-back.jpg"
+            (country_dir / "app-catalog.json").write_text(
+                json.dumps(
+                    {
+                        "country": "Filipinas",
+                        "periods": [
+                            {
+                                "title": "Filipinas › República › 1995-2016",
+                                "coins": [
+                                    {
+                                        "denomination": "1 cêntimo",
+                                        "issuePeriod": "1995 - 2016",
+                                        "detailUrl": detail_url,
+                                        "obverseImage": ucoin_front,
+                                        "reverseImage": ucoin_back,
+                                    }
+                                ],
+                            }
+                        ],
+                    }
+                ),
+                encoding="utf-8",
+            )
+            all_coins_dir = root / "All_Coins"
+            image_dir = all_coins_dir / "fotos" / "paises" / "Asia" / "Filipinas" / "normal"
+            image_dir.mkdir(parents=True)
+            raw_front = "https://raw.example/front.jpg"
+            raw_back = "https://raw.example/back.jpg"
+            external_front = "https://base44.test/front.jpg"
+            external_back = "https://base44.test/back.jpg"
+            (image_dir / "links-internos.txt").write_text(
+                "coin-slug:\n"
+                f"  frente: {raw_front}\n"
+                f"  tras: {raw_back}\n",
+                encoding="utf-8",
+            )
+            (image_dir / "links-externos.txt").write_text(
+                "coin-slug:\n"
+                f"  frente: {external_front}\n"
+                f"  tras: {external_back}\n",
+                encoding="utf-8",
+            )
+            api_record = {
+                "id": "record-1",
+                "country": "Filipinas",
+                "name": "1 cêntimo",
+                "years": "1995-2016",
+                "notes": "República",
+                "url_ucoin": detail_url,
+                "image_frente": external_front,
+                "image_verso": external_back,
+            }
+
+            with patch.dict("os.environ", {"BASE44_APP_ID": "app-id"}):
+                report = compare_country(
+                    paises_dir,
+                    all_coins_dir,
+                    "filipinas",
+                    "app-catalog.json",
+                    include_markdown_as_issue=False,
+                    check_api=True,
+                    include_warnings=False,
+                    api_records_by_country={"filipinas": [api_record]},
+                )
+
+        coin = report["coins_with_issues"][0]
+        suggestions = [
+            issue
+            for issue in coin["issues"]
+            if issue["type"] == "non_ucoin_external_image"
+        ]
+        self.assertEqual(len(suggestions), 2)
+        self.assertEqual(suggestions[0]["value"], external_front)
+        self.assertEqual(suggestions[0]["missing_value"], ucoin_front)
+        self.assertEqual(suggestions[1]["value"], external_back)
+        self.assertEqual(suggestions[1]["missing_value"], ucoin_back)
+
     def test_confirmed_name_association_exposes_missing_site_metadata(self) -> None:
         with tempfile.TemporaryDirectory() as temp_dir:
             root = Path(temp_dir)
@@ -569,6 +701,55 @@ class AllCoinsPathTests(unittest.TestCase):
                     "ucoin_url": "https://i.ucoin.net/coin-front.jpg",
                 },
             )
+            self.assertEqual(
+                reverse["https://i.ucoin.net/coin-front.jpg"],
+                reverse["https://raw.example/coin-front.jpg"],
+            )
+
+    def test_non_ucoin_external_images_receive_exact_ucoin_suggestions(self) -> None:
+        reverse = {
+            "https://raw.example/front.jpg": {
+                "slug": "coin-slug",
+                "side": "frente",
+                "ucoin_url": "https://base44.test/front.jpg",
+            },
+            "https://raw.example/back.jpg": {
+                "slug": "coin-slug",
+                "side": "tras",
+                "ucoin_url": "https://numista.test/back.jpg",
+            },
+        }
+        record = {
+            "image_frente": "https://raw.example/front.jpg",
+            "image_verso": "https://raw.example/back.jpg",
+        }
+
+        suggestions = external_image_source_suggestions(
+            record,
+            {
+                "frente": "https://i.ucoin.net/coin/front.jpg",
+                "tras": "https://i.ucoin.net/coin/back.jpg",
+            },
+            reverse,
+        )
+
+        self.assertEqual(
+            suggestions,
+            [
+                {
+                    "type": "non_ucoin_external_image",
+                    "field": "links-externos.frente",
+                    "value": "https://base44.test/front.jpg",
+                    "missing_value": "https://i.ucoin.net/coin/front.jpg",
+                },
+                {
+                    "type": "non_ucoin_external_image",
+                    "field": "links-externos.tras",
+                    "value": "https://numista.test/back.jpg",
+                    "missing_value": "https://i.ucoin.net/coin/back.jpg",
+                },
+            ],
+        )
 
     def test_detail_stem_reads_coin_from_login_ref(self) -> None:
         detail_url = "https://pt.ucoin.net/login/?ref=/coin/greenland-10-kroner-1932/?tid=183830"

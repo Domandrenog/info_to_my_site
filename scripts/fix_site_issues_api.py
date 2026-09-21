@@ -37,6 +37,7 @@ PRESERVED_API_FIELDS = {
 PHOTO_ISSUE_TYPES = {
     "detail_image_slug_mismatch",
     "missing_image_url",
+    "non_ucoin_external_image",
     "side_mismatch",
     "url_not_in_all_coins_map",
 }

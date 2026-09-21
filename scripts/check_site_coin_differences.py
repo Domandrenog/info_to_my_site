@@ -20,6 +20,7 @@ ISSUE_TYPE_LABELS = {
     "missing_notes": "Missing notes",
     "missing_url_ucoin": "Missing uCoin URL",
     "multiple_api_matches": "Multiple API matches",
+    "non_ucoin_external_image": "External photo source is not uCoin",
     "side_mismatch": "Wrong photo side",
     "url_not_in_all_coins_map": "Photo not mapped",
 }
@@ -31,6 +32,7 @@ TEXT_REPORT_ISSUE_LABELS = {
     "missing_notes": "Sem notes",
     "missing_url_ucoin": "Sem URL do uCoin",
     "multiple_api_matches": "Várias associações possíveis no Site Base44",
+    "non_ucoin_external_image": "Fonte externa da fotografia não é uCoin",
     "side_mismatch": "Lado da fotografia incorreto",
     "url_not_in_all_coins_map": "Fotografia sem mapeamento",
 }
@@ -112,6 +114,40 @@ def record_matches_image_map(
     return bool(expected_image_urls and mapped_ucoin_urls == expected_image_urls)
 
 
+def is_ucoin_image_url(value: str) -> bool:
+    normalized = normalize_url(value)[0]
+    return (urlparse(normalized).hostname or "").casefold() == "i.ucoin.net"
+
+
+def external_image_source_suggestions(
+    record: dict[str, object],
+    expected_images_by_side: dict[str, str],
+    reverse: dict[str, dict[str, str]],
+) -> list[dict[str, str]]:
+    suggestions: list[dict[str, str]] = []
+    for api_field in ("image_frente", "image_verso"):
+        api_image = normalize_url(str(record.get(api_field) or ""))[0]
+        mapped = reverse.get(api_image)
+        if not mapped:
+            continue
+        side = str(mapped.get("side") or "")
+        if side not in {"frente", "tras"}:
+            continue
+        current_external = normalize_url(str(mapped.get("ucoin_url") or ""))[0]
+        proposed_ucoin = normalize_url(str(expected_images_by_side.get(side) or ""))[0]
+        if not is_ucoin_image_url(proposed_ucoin) or is_ucoin_image_url(current_external):
+            continue
+        suggestions.append(
+            make_finding(
+                "non_ucoin_external_image",
+                f"links-externos.{side}",
+                value=current_external,
+                missing_value=proposed_ucoin,
+            )
+        )
+    return suggestions
+
+
 def expected_country_folder(country_slug: str) -> str:
     mapping = {
         "bielorrussia": "Bielorrussia",
@@ -187,11 +223,15 @@ def build_reverse_map(country_folder: Path) -> dict[str, dict[str, str]]:
             raw_url = raw_sides.get(side, "")
             if not raw_url:
                 continue
-            reverse[raw_url] = {
+            external_url = ucoin_sides.get(side, "")
+            mapping = {
                 "slug": coin_slug,
                 "side": side,
-                "ucoin_url": ucoin_sides.get(side, ""),
+                "ucoin_url": external_url,
             }
+            reverse[raw_url] = mapping
+            if external_url:
+                reverse.setdefault(external_url, mapping)
     return reverse
 
 
@@ -571,6 +611,7 @@ def compare_country(
         detail_norm = normalize_url(ucoin_url)[0]
         expected_detail_slug = detail_stem(ucoin_url)
         expected_image_urls: set[str] = set()
+        expected_images_by_side: dict[str, str] = {}
         site_url = "Not found"
         coin_issues: list[dict[str, str]] = []
         coin_warnings: list[dict[str, str]] = []
@@ -580,6 +621,7 @@ def compare_country(
             normalized, was_markdown = normalize_url(raw_value)
             if normalized:
                 expected_image_urls.add(normalized)
+                expected_images_by_side[side_label] = normalized
 
             if was_markdown:
                 markdown_warning = make_finding("markdown_url", field, value=raw_value, missing_value="normalized_url")
@@ -649,6 +691,13 @@ def compare_country(
                 site_url = build_site_url(str(record.get("id") or ""))
                 notes = str(record.get("notes") or "").strip()
                 url_ucoin = normalize_url(str(record.get("url_ucoin") or ""))[0]
+                coin_issues.extend(
+                    external_image_source_suggestions(
+                        record,
+                        expected_images_by_side,
+                        reverse,
+                    )
+                )
 
                 if not notes:
                     expected_notes = expected_notes_from_period(period)
@@ -802,6 +851,32 @@ def missing_photo_details(report: dict[str, object]) -> list[str]:
     return details
 
 
+def external_image_source_details(report: dict[str, object]) -> list[str]:
+    details: list[str] = []
+    coins = report.get("coins_with_issues", [])
+    for coin in coins if isinstance(coins, list) else []:
+        if not isinstance(coin, dict):
+            continue
+        suggested_sides = {
+            str(issue.get("field") or "").removeprefix("links-externos.")
+            for issue in coin.get("issues", [])
+            if isinstance(issue, dict)
+            and issue.get("type") == "non_ucoin_external_image"
+            and issue.get("field") in {"links-externos.frente", "links-externos.tras"}
+        }
+        if not suggested_sides:
+            continue
+        if suggested_sides == {"frente", "tras"}:
+            side_text = "substituir frente e verso pelos links do uCoin"
+        else:
+            side = "verso" if "tras" in suggested_sides else "frente"
+            side_text = f"substituir {side} pelo link do uCoin"
+        period = str(coin.get("issuePeriod") or "")
+        period_text = f" ({period})" if period else ""
+        details.append(f"  - {coin.get('denomination', '')}{period_text}: {side_text}")
+    return details
+
+
 def print_text_report(report: dict[str, object], include_warnings: bool) -> None:
     summary = report.get("summary", {})
     country_slug = str(report.get("country", ""))
@@ -901,6 +976,7 @@ def print_text_report(report: dict[str, object], include_warnings: bool) -> None
             "missing_notes",
             "missing_url_ucoin",
             "mismatched_url_ucoin",
+            "non_ucoin_external_image",
         }
         for issue_type, count in sorted(
             ((key, value) for key, value in issue_counts.items() if key not in hidden_types),
@@ -918,6 +994,17 @@ def print_text_report(report: dict[str, object], include_warnings: bool) -> None
                 f"{count_label(missing_photos, 'moeda', 'moedas')}"
             )
             for detail in missing_photo_details(report):
+                print(detail)
+
+        external_image_sources = issue_counts.get("non_ucoin_external_image", 0)
+        if external_image_sources:
+            print()
+            print("Mapeamento All_Coins:")
+            print(
+                f"- Link externo não é do uCoin: {external_image_sources} "
+                f"{count_label(external_image_sources, 'moeda', 'moedas')}"
+            )
+            for detail in external_image_source_details(report):
                 print(detail)
 
     else:
