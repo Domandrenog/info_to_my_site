@@ -84,7 +84,36 @@ class MainTrackingActionTests(unittest.TestCase):
         self.assertEqual(commands[0][commands[0].index("--start-year") + 1], "1966")
         self.assertEqual(commands[1][commands[1].index("--start-year") + 1], "1994")
         self.assertTrue(all("--no-wait-for-final" in command for command in commands[:2]))
-        self.assertEqual(commands[2], [main.sys.executable, "-m", "scripts.manage_pending_rarities"])
+        self.assertEqual(
+            commands[2],
+            [
+                main.sys.executable,
+                "-m",
+                "scripts.manage_pending_rarities",
+                "--wait-for-final",
+                "--cleanup-intermediate",
+            ],
+        )
+
+    @patch("main.subprocess.run")
+    @patch("main.pending_rarity_catalogues", return_value=[main.Path("pending.json")])
+    @patch("main.load_tracking_plans", return_value=([], None))
+    @patch("main.title")
+    def test_collection_action_resumes_pending_rarity_stage(self, _title, _load, _pending, run) -> None:
+        with redirect_stdout(io.StringIO()):
+            main.action_collect_missing_country_tracking()
+
+        run.assert_called_once_with(
+            [
+                main.sys.executable,
+                "-m",
+                "scripts.manage_pending_rarities",
+                "--wait-for-final",
+                "--cleanup-intermediate",
+            ],
+            cwd=main.PROJECT_DIR,
+            check=True,
+        )
 
 
 if __name__ == "__main__":

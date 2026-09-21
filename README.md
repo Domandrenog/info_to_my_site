@@ -111,9 +111,9 @@ python3 -m scripts.import_base44_coins --input info/paises/asia/india/app-catalo
 
 Este comando adiciona apenas moedas que ainda não existem para esse país, usando `country + url_ucoin` para evitar duplicados.
 
-## Planear países da API sem tracking local
+## Adicionar países da API sem catálogo local
 
-O menu principal inclui `Importar Data de uCoin > Recolher países da API sem tracking local`.
+O menu principal inclui `Importar e preparar catálogos do uCoin > Adicionar todos os países em falta — recolha e raridades`.
 Este fluxo:
 
 1. Consulta todas as moedas da Base44 sem alterar dados.
@@ -121,7 +121,9 @@ Este fluxo:
 3. Mostra quantidade de moedas, primeiro e último ano, moeda(s) mais recente(s), alias do uCoin e pasta de destino.
 4. Permite escolher todos os países ou apenas alguns números da lista.
 5. Mostra os comandos completos e pede uma única confirmação antes de começar.
-6. Cria `ucoin-catalog.json` e `app-catalog-pending.json`; não importa nada para a Base44.
+6. Cria `ucoin-catalog.json` e `app-catalog-pending.json`.
+7. Prepara um único lote, espera pela classificação das raridades e gera os outputs finais de todos os países.
+8. Apaga os ficheiros intermédios apenas depois de validar e gerar todos os outputs finais; não importa nada para a Base44.
 
 Para ver apenas o plano, sem abrir o browser nem criar ficheiros:
 
@@ -129,26 +131,28 @@ Para ver apenas o plano, sem abrir o browser nem criar ficheiros:
 python3 -m scripts.plan_missing_country_tracking
 ```
 
-O ano inicial sugerido é o primeiro ano já coberto pela API. Isto evita perder séries que começaram há vários anos mas continuam a receber novas emissões. Depois da recolha, o check global apresenta esses países como `recolhidos ainda sem raridade` e não volta a sugerir o mesmo scrape. Revê cada `app-catalog-pending.json`, preenche `availability` e só depois gera os outputs finais ou executa qualquer importação.
+O ano inicial sugerido é o primeiro ano já coberto pela API. Isto evita perder séries que começaram há vários anos mas continuam a receber novas emissões. Durante a espera pela classificação, o check global apresenta esses países como `recolhidos ainda sem raridade` e não volta a sugerir o mesmo scrape.
 
 ## Classificar todas as raridades pendentes
 
-Depois de recolher países, o menu `Importar Data de uCoin > Classificar raridades pendentes` prepara um único lote com todas as moedas ainda sem raridade:
+O menu `Importar e preparar catálogos do uCoin > Adicionar todos os países em falta — recolha e raridades` prepara um único lote com todas as moedas ainda sem raridade depois de terminar a recolha:
 
 - `info/paises/all-rarities-pending.json`: JSON que deve ser classificado;
 - `info/paises/all-rarities-prompt.txt`: instruções prontas para enviar juntamente com o JSON;
 - `info/paises/all-rarities-final.json`: local onde deve ser guardada a resposta completa.
 
-O menu espera pelo ficheiro final e, depois de carregares Enter, valida que todos os países e moedas continuam presentes e que os catálogos de origem não mudaram. Apenas os valores de `availability` são aplicados. Para cada país são então gerados `app-catalog-final.json`, `app-catalog.json`, `availability-statistics.json` e `coins-availability.xlsx`.
+O menu espera pelo ficheiro final e, depois de carregares Enter, valida que todos os países e moedas continuam presentes e que os catálogos de origem não mudaram. Apenas os valores de `availability` são aplicados. Para cada país são então gerados `app-catalog.json`, `availability-statistics.json` e `coins-availability.xlsx`. Tal como no pipeline completo de um país, `ucoin-catalog.json`, `app-catalog-pending.json`, `app-catalog-final.json` e `differences-pending.json` são apagados apenas depois de todos os outputs finais terem sido gerados com sucesso.
+
+Para executar apenas esta classificação sem voltar a recolher os países, usa `Importar e preparar catálogos do uCoin > Executar apenas uma etapa > Classificar raridades pendentes de todos os países`.
 
 Também podes executar as duas fases manualmente:
 
 ```bash
 python3 -m scripts.manage_pending_rarities
-python3 -m scripts.manage_pending_rarities --final-input info/paises/all-rarities-final.json
+python3 -m scripts.manage_pending_rarities --final-input info/paises/all-rarities-final.json --cleanup-intermediate
 ```
 
-O lote de raridades também é preparado automaticamente no fim de uma recolha de vários países. Esta etapa não importa nem altera dados na Base44.
+Os ficheiros globais `all-rarities-pending.json`, `all-rarities-final.json` e `all-rarities-prompt.txt` também são removidos depois da conclusão. Esta etapa não importa nem altera dados na Base44.
 
 ## 1. Abrir Browser
 

@@ -100,6 +100,29 @@ class PendingRarityBatchTests(unittest.TestCase):
             self.assertTrue((country_dir / "availability-statistics.json").is_file())
             self.assertTrue((country_dir / "coins-availability.xlsx").is_file())
 
+    def test_cleanup_removes_intermediate_files_only_after_outputs_are_written(self) -> None:
+        with tempfile.TemporaryDirectory() as temp_dir:
+            root = Path(temp_dir)
+            pending_path = self.create_pending(root)
+            country_dir = pending_path.parent
+            (country_dir / "ucoin-catalog.json").write_text("{}", encoding="utf-8")
+            (country_dir / "differences-pending.json").write_text("[]", encoding="utf-8")
+            entries = discover_pending_catalogues(root)
+            final_batch = build_rarity_batch(entries)
+            for coin in final_batch["countries"][0]["coins"]:
+                coin["availability"] = "historical"
+
+            results = apply_rarity_batch(final_batch, entries)
+            write_country_outputs(results, cleanup_intermediate=True)
+
+            self.assertTrue((country_dir / "app-catalog.json").is_file())
+            self.assertTrue((country_dir / "availability-statistics.json").is_file())
+            self.assertTrue((country_dir / "coins-availability.xlsx").is_file())
+            self.assertFalse((country_dir / "ucoin-catalog.json").exists())
+            self.assertFalse((country_dir / "app-catalog-pending.json").exists())
+            self.assertFalse((country_dir / "app-catalog-final.json").exists())
+            self.assertFalse((country_dir / "differences-pending.json").exists())
+
     def test_incomplete_batch_is_rejected_before_writing(self) -> None:
         with tempfile.TemporaryDirectory() as temp_dir:
             root = Path(temp_dir)

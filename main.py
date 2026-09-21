@@ -125,7 +125,7 @@ def explain_prerequisites() -> None:
     print("   BASE44_APP_ID=...")
     print("   BASE44_API_KEY=...")
     print("4) Fluxo normal recomendado:")
-    print("   Menu 2 (pipeline completo) -> preencher app-catalog-final.json -> Enter no terminal")
+    print("   Importar e preparar catálogos do uCoin > Importar um país — processo completo")
 
 
 def default_catalog_path(country: str, continent: str = "") -> str:
@@ -181,8 +181,36 @@ def add_browser_mode(command: list[str]) -> None:
         print("Escolhe 1 ou 2.")
 
 
+def pending_rarity_catalogues() -> list[Path]:
+    return sorted(
+        path
+        for path in (PROJECT_DIR / CATALOG_ROOT).glob("*/*/app-catalog-pending.json")
+        if not path.with_name("app-catalog.json").is_file()
+    )
+
+
+def complete_pending_rarities() -> bool:
+    try:
+        subprocess.run(
+            [
+                sys.executable,
+                "-m",
+                "scripts.manage_pending_rarities",
+                "--wait-for-final",
+                "--cleanup-intermediate",
+            ],
+            cwd=PROJECT_DIR,
+            check=True,
+        )
+    except subprocess.CalledProcessError as exc:
+        print(f"Não foi possível concluir as raridades: código {exc.returncode}.")
+        return False
+    print("Catálogos finais gerados; ficheiros intermédios removidos.")
+    return True
+
+
 def action_pipeline() -> None:
-    title("Pipeline completo")
+    title("Importar um país — processo completo")
     print("Executa scrape, pending/final, outputs finais e prepara a importacao Base44.")
 
     country = ask_text("Pais (ex: India, Canada)")
@@ -207,7 +235,7 @@ def action_pipeline() -> None:
     if ask_yes_no("Apagar ficheiros intermédios e deixar só os outputs finais?", default=True):
         command.append("--cleanup-intermediate")
 
-    if run_step("Pipeline completo", command) == 0:
+    if run_step("Importar um país — processo completo", command) == 0:
         action_import_base44(
             country=country,
             continent=continent,
@@ -250,16 +278,22 @@ def action_scrape_only() -> None:
 
 
 def action_collect_missing_country_tracking() -> None:
-    title("Recolher países sem tracking local")
-    print("Consulta a Base44, propõe o intervalo por país e só recolhe depois da tua confirmação.")
-    print("Este fluxo cria catálogos locais/pending; não escreve nem apaga registos na Base44.\n")
+    title("Adicionar países da API sem catálogo local")
+    print("Consulta a Base44, recolhe os catálogos em falta e conclui a classificação das raridades.")
+    print("No fim gera os outputs finais e limpa os ficheiros intermédios de cada país.")
+    print("Este fluxo não escreve nem apaga registos na Base44.\n")
 
     plans, error = load_tracking_plans(PROJECT_DIR / CATALOG_ROOT, "app-catalog.json")
     if plans is None:
         print(f"Não foi possível consultar a Base44: {error}")
         return
     if not plans:
-        print("Todos os países da API já foram recolhidos ou têm tracking final.")
+        pending = pending_rarity_catalogues()
+        if pending:
+            print(f"Não há países novos para recolher; existem {len(pending)} catálogos a aguardar raridade.")
+            complete_pending_rarities()
+        else:
+            print("Todos os países da API já têm catálogo final.")
         return
 
     print_tracking_plans(plans)
@@ -303,23 +337,16 @@ def action_collect_missing_country_tracking() -> None:
     print(f"\nRecolha concluída para {len(selected_plans)} países.")
     print("Os países recolhidos ficam marcados como 'ainda sem raridade'.")
     print("A preparar o lote único para classificação de raridades...")
-    try:
-        subprocess.run(
-            [sys.executable, "-m", "scripts.manage_pending_rarities"],
-            cwd=PROJECT_DIR,
-            check=True,
-        )
-    except subprocess.CalledProcessError as exc:
-        print(f"Não foi possível preparar o lote de raridades: código {exc.returncode}.")
-        return
-    print("Usa a opção 'Classificar raridades pendentes' para preencher e aplicar todas de uma vez.")
+    complete_pending_rarities()
 
 
 def action_manage_pending_rarities() -> None:
-    title("Classificar raridades pendentes")
+    title("Classificar raridades pendentes de todos os países")
     print("Reúne todos os países pendentes num único JSON, valida a resposta e gera os catálogos finais.")
     print("Nenhum dado é enviado automaticamente para a Base44.\n")
     command = [sys.executable, "-m", "scripts.manage_pending_rarities", "--wait-for-final"]
+    if ask_yes_no("Apagar os ficheiros intermédios depois de gerar os outputs finais?", default=True):
+        command.append("--cleanup-intermediate")
     run_step("Classificar raridades pendentes", command)
 
 
@@ -544,12 +571,11 @@ def action_autofix_issues() -> None:
 
 def menu_importar_ucoin() -> None:
     while True:
-        title("Importar Data de uCoin")
-        print("1) Pipeline Completo")
-        print("2) Recolher países da API sem tracking local")
-        print("3) Classificar raridades pendentes")
-        print("4) Specific Stage")
-        print("5) Voltar")
+        title("Importar dados do uCoin")
+        print("1) Importar um país — processo completo")
+        print("2) Adicionar todos os países em falta — recolha e raridades")
+        print("3) Executar apenas uma etapa")
+        print("4) Voltar")
 
         choice = ask_text("Escolhe uma opcao", "1")
         if choice == "1":
@@ -557,11 +583,9 @@ def menu_importar_ucoin() -> None:
         elif choice == "2":
             action_collect_missing_country_tracking()
         elif choice == "3":
-            action_manage_pending_rarities()
-        elif choice == "4":
             menu_specific_stage()
             continue
-        elif choice == "5":
+        elif choice == "4":
             return
         else:
             print("Opcao invalida.")
@@ -571,12 +595,13 @@ def menu_importar_ucoin() -> None:
 
 def menu_specific_stage() -> None:
     while True:
-        title("Specific Stage")
-        print("1) Extrair catalogo do uCoin (scrape apenas)")
-        print("2) Gerar app-catalog-pending.json")
-        print("3) Gerar outputs finais do site")
-        print("4) Importar app-catalog.json para Base44")
-        print("5) Voltar")
+        title("Executar apenas uma etapa")
+        print("1) Recolher catálogo técnico do uCoin")
+        print("2) Criar catálogo pendente de raridade")
+        print("3) Classificar raridades pendentes de todos os países")
+        print("4) Gerar ficheiros finais de um país")
+        print("5) Importar catálogo final para a Base44")
+        print("6) Voltar")
 
         choice = ask_text("Escolhe uma opcao", "1")
         if choice == "1":
@@ -584,10 +609,12 @@ def menu_specific_stage() -> None:
         elif choice == "2":
             action_generate_pending()
         elif choice == "3":
-            action_generate_final()
+            action_manage_pending_rarities()
         elif choice == "4":
-            action_import_base44()
+            action_generate_final()
         elif choice == "5":
+            action_import_base44()
+        elif choice == "6":
             return
         else:
             print("Opcao invalida.")
@@ -619,8 +646,8 @@ def menu() -> None:
     while True:
         title("uCoin to MySite - Menu principal")
         print("1) Ver guia de pre-requisitos")
-        print("2) Importar Data de uCoin")
-        print("3) Atualizar data existente no site")
+        print("2) Importar e preparar catálogos do uCoin")
+        print("3) Verificar e corrigir dados existentes")
         print("0) Sair")
 
         choice = ask_text("Escolhe uma opcao", "1")

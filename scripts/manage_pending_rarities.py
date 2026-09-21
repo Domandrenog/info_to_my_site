@@ -19,6 +19,7 @@ from ucoin_to_mysite.generate_resume_json import (
     FINAL_APP_CATALOG_INPUT_FILENAME,
     PENDING_APP_CATALOG_FILENAME,
     PENDING_AVAILABILITY,
+    cleanup_intermediate_files,
     statistics_document,
     validate_final_availability_catalogue,
     validate_resume_catalogue,
@@ -228,7 +229,11 @@ def apply_rarity_batch(batch: Any, entries: list[dict[str, Any]]) -> list[tuple[
     return results
 
 
-def write_country_outputs(results: list[tuple[Path, dict[str, Any]]]) -> None:
+def write_country_outputs(
+    results: list[tuple[Path, dict[str, Any]]],
+    *,
+    cleanup_intermediate: bool = False,
+) -> None:
     for country_dir, final_catalogue in results:
         final_input_path = country_dir / FINAL_APP_CATALOG_INPUT_FILENAME
         app_catalogue_path = country_dir / APP_CATALOG_FILENAME
@@ -241,6 +246,16 @@ def write_country_outputs(results: list[tuple[Path, dict[str, Any]]]) -> None:
         write_json_atomic(statistics_path, statistics_document(app_catalogue))
         write_coins_excel(str(excel_path), app_catalogue)
         print(f"Concluído: {final_catalogue.get('country')} -> {app_catalogue_path}")
+    if cleanup_intermediate:
+        for country_dir, _ in results:
+            cleanup_intermediate_files(str(country_dir / FINAL_APP_CATALOG_INPUT_FILENAME))
+
+
+def cleanup_batch_files(*paths: Path) -> None:
+    for path in paths:
+        if path.exists():
+            path.unlink()
+            print(f"Deleted {path}")
 
 
 def parse_args() -> argparse.Namespace:
@@ -250,6 +265,11 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--prompt-output", default=str(PROJECT_ROOT / DEFAULT_PROMPT_OUTPUT))
     parser.add_argument("--final-input", default="")
     parser.add_argument("--wait-for-final", action="store_true")
+    parser.add_argument(
+        "--cleanup-intermediate",
+        action="store_true",
+        help="Depois de gerar todos os outputs finais, apaga os catálogos e ficheiros de lote intermédios.",
+    )
     return parser.parse_args()
 
 
@@ -269,7 +289,9 @@ def run(args: argparse.Namespace) -> int:
     if args.final_input:
         final_batch = load_json(final_input_path)
         results = apply_rarity_batch(final_batch, entries)
-        write_country_outputs(results)
+        write_country_outputs(results, cleanup_intermediate=args.cleanup_intermediate)
+        if args.cleanup_intermediate:
+            cleanup_batch_files(output_path, prompt_path, final_input_path)
         print(f"Raridades aplicadas: {total_coins} tipos em {len(results)} países.")
         return 0
 
@@ -293,7 +315,9 @@ def run(args: argparse.Namespace) -> int:
         raise ValueError(f"O ficheiro final continua vazio: {final_input_path}")
     final_batch = load_json(final_input_path)
     results = apply_rarity_batch(final_batch, entries)
-    write_country_outputs(results)
+    write_country_outputs(results, cleanup_intermediate=args.cleanup_intermediate)
+    if args.cleanup_intermediate:
+        cleanup_batch_files(output_path, prompt_path, final_input_path)
     print(f"Raridades aplicadas: {total_coins} tipos em {len(results)} países.")
     return 0
 
