@@ -56,7 +56,7 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--all-coins-dir", default=str(project_root.parent / "All_Coins"))
     parser.add_argument("--catalog-file", default="app-catalog.json")
     parser.add_argument("--continent", default="", help="Used when creating missing API records; inferred from the country by default")
-    parser.add_argument("--condition", default="Nao Tenho", help="Used when creating missing API records")
+    parser.add_argument("--condition", default="Não Tenho", help="Used when creating missing API records")
     parser.add_argument("--output", default="", help="Optional path to save fix plan/report JSON")
     parser.add_argument("--apply", action="store_true", help="Apply changes to Base44 API. Without this, only dry-run plan is generated.")
     parser.add_argument(

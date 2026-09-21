@@ -13,6 +13,12 @@ from scripts import fix_site_issues_api
 
 
 class FixSiteIssuesPlanTests(unittest.TestCase):
+    def test_cli_uses_accented_default_condition(self) -> None:
+        with patch("sys.argv", ["fix_site_issues_api", "--country", "china"]):
+            args = fix_site_issues_api.parse_args()
+
+        self.assertEqual(args.condition, "Não Tenho")
+
     def test_verified_creation_updates_decision_and_missing_found_json(self) -> None:
         detail_url = "https://pt.ucoin.net/coin/china-1-jiao-1980-1986"
         with tempfile.TemporaryDirectory() as temp_dir:

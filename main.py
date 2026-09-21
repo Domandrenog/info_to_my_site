@@ -1049,7 +1049,7 @@ def action_autofix_issues() -> None:
         rate_limit_delay=30.0,
         max_retries=5,
         continent="",
-        condition="Nao Tenho",
+        condition="Não Tenho",
     )
     try:
         result = fix_site_issues_api.apply_plan(
