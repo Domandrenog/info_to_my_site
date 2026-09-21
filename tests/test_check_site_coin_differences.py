@@ -413,7 +413,7 @@ class AllCoinsPathTests(unittest.TestCase):
                     {
                         "missing": [
                             {
-                                "status": "connected",
+                                "status": "connected_pending_name_update",
                                 "ucoinUrl": detail_url,
                                 "apiUrl": "https://base44.test/entities/Coin/record-1",
                             }

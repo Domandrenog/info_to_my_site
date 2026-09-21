@@ -469,7 +469,10 @@ def load_confirmed_equivalences(country_dir: Path) -> dict[str, str]:
             for entry in entries:
                 if not isinstance(entry, dict):
                     continue
-                if str(entry.get("status") or "") != "connected":
+                if str(entry.get("status") or "") not in {
+                    "connected",
+                    "connected_pending_name_update",
+                }:
                     continue
                 ucoin_url = normalize_url(str(entry.get("ucoinUrl") or ""))[0]
                 record_id = association_record_id(entry)
