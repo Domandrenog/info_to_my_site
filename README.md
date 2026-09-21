@@ -117,7 +117,7 @@ O menu principal inclui `Importar Data de uCoin > Recolher países da API sem tr
 Este fluxo:
 
 1. Consulta todas as moedas da Base44 sem alterar dados.
-2. Identifica países que ainda não têm `info/paises/<continente>/<pais>/app-catalog.json`.
+2. Identifica países que ainda não têm catálogo final nem `app-catalog-pending.json` já recolhido.
 3. Mostra quantidade de moedas, primeiro e último ano, moeda(s) mais recente(s), alias do uCoin e pasta de destino.
 4. Permite escolher todos os países ou apenas alguns números da lista.
 5. Mostra os comandos completos e pede uma única confirmação antes de começar.
@@ -129,7 +129,7 @@ Para ver apenas o plano, sem abrir o browser nem criar ficheiros:
 python3 -m scripts.plan_missing_country_tracking
 ```
 
-O ano inicial sugerido é o primeiro ano já coberto pela API. Isto evita perder séries que começaram há vários anos mas continuam a receber novas emissões. Depois da recolha, revê cada `app-catalog-pending.json` antes de gerar os outputs finais ou executar qualquer importação.
+O ano inicial sugerido é o primeiro ano já coberto pela API. Isto evita perder séries que começaram há vários anos mas continuam a receber novas emissões. Depois da recolha, o check global apresenta esses países como `recolhidos ainda sem raridade` e não volta a sugerir o mesmo scrape. Revê cada `app-catalog-pending.json`, preenche `availability` e só depois gera os outputs finais ou executa qualquer importação.
 
 ## 1. Abrir Browser
 

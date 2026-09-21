@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import io
+import json
 import tempfile
 import unittest
 from contextlib import redirect_stdout
@@ -14,6 +15,8 @@ from scripts.check_site_coin_differences import (
     detail_stem,
     find_all_coins_country_folder,
     group_api_records_by_country,
+    pending_catalogue_api_countries,
+    pending_rarity_report,
     print_text_report,
     report_for_output,
     untracked_api_countries,
@@ -118,10 +121,30 @@ class CheckSiteCoinDifferencesOutputTests(unittest.TestCase):
             "Países na API sem tracking local: 2\n- Portugal: 60 moedas\n- Alemanha: 1 moeda",
         )
 
+    def test_text_report_lists_pending_catalogues_as_missing_rarity(self) -> None:
+        report = pending_rarity_report(
+            [
+                {
+                    "country": "Bahamas",
+                    "coin_count": 24,
+                    "catalog_coin_type_count": 3,
+                    "missing_rarity_count": 3,
+                }
+            ]
+        )
+
+        self.assertEqual(
+            self.render(report),
+            "Países recolhidos ainda sem raridade: 1\n"
+            "- Bahamas: 3/3 tipos sem raridade (24 moedas na API)",
+        )
+
 
 class AllCoinsPathTests(unittest.TestCase):
     def test_api_country_name_resolves_base44_alias(self) -> None:
         self.assertEqual(api_country_name("mauricia", "Maurícias"), "Maurícia")
+        self.assertEqual(api_country_name("eua", "Estados Unidos da América"), "EUA")
+        self.assertEqual(api_country_name("seychelles", "Seicheles"), "Seychelles")
         self.assertEqual(api_country_name("sri-lanka", "Sri Lanka"), "Sri Lanka")
 
     def test_finds_normal_country_folder_below_continent(self) -> None:
@@ -192,6 +215,45 @@ class ApiCountryTrackingTests(unittest.TestCase):
         missing = untracked_api_countries(grouped, {"mauricia"})
 
         self.assertEqual(missing, [{"country": "Portugal", "coin_count": 2}])
+
+    def test_pending_catalogue_is_reported_separately_from_untracked(self) -> None:
+        with tempfile.TemporaryDirectory() as temp_dir:
+            paises_dir = Path(temp_dir)
+            country_dir = paises_dir / "america" / "bahamas"
+            country_dir.mkdir(parents=True)
+            (country_dir / "app-catalog-pending.json").write_text(
+                json.dumps(
+                    {
+                        "country": "Bahamas",
+                        "periods": [
+                            {
+                                "coins": [
+                                    {"availability": "still needed to calculate"},
+                                    {"availability": "historical"},
+                                ]
+                            }
+                        ],
+                    }
+                ),
+                encoding="utf-8",
+            )
+            grouped = {"bahamas": [{"country": "Bahamas"}, {"country": "Bahamas"}]}
+
+            pending, pending_keys = pending_catalogue_api_countries(grouped, paises_dir, set())
+
+            self.assertEqual(pending_keys, {"bahamas"})
+            self.assertEqual(
+                pending,
+                [
+                    {
+                        "country": "Bahamas",
+                        "coin_count": 2,
+                        "catalog_coin_type_count": 2,
+                        "missing_rarity_count": 1,
+                    }
+                ],
+            )
+            self.assertEqual(untracked_api_countries(grouped, pending_keys), [])
 
     def test_report_output_hides_internal_image_match_urls(self) -> None:
         report = {

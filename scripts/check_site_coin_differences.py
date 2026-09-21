@@ -122,7 +122,9 @@ def expected_country_folder(country_slug: str) -> str:
 
 def api_country_name(country_slug: str, catalog_country_name: str) -> str:
     aliases = {
+        "eua": "EUA",
         "mauricia": "Maurícia",
+        "seychelles": "Seychelles",
     }
     return aliases.get(country_slug, catalog_country_name)
 
@@ -349,6 +351,59 @@ def untracked_api_countries(
     return sorted(countries, key=lambda item: slugify(str(item["country"])))
 
 
+def pending_catalogue_api_countries(
+    grouped_api_records: dict[str, list[dict[str, object]]],
+    paises_dir: Path,
+    tracked_country_keys: set[str],
+) -> tuple[list[dict[str, object]], set[str]]:
+    countries: list[dict[str, object]] = []
+    pending_country_keys: set[str] = set()
+    for country_dir in iter_country_directories(paises_dir):
+        pending_path = country_dir / "app-catalog-pending.json"
+        if not pending_path.is_file() or (country_dir / "app-catalog.json").is_file():
+            continue
+        try:
+            catalogue = json.loads(pending_path.read_text(encoding="utf-8"))
+        except (OSError, json.JSONDecodeError):
+            continue
+        country_name = str(catalogue.get("country") or country_dir.name)
+        country_key = slugify(api_country_name(country_dir.name, country_name))
+        if country_key in tracked_country_keys or country_key not in grouped_api_records:
+            continue
+
+        total_types = 0
+        missing_rarity = 0
+        for period in catalogue.get("periods", []):
+            if not isinstance(period, dict):
+                continue
+            for coin in period.get("coins", []):
+                if not isinstance(coin, dict):
+                    continue
+                total_types += 1
+                if coin.get("availability") == "still needed to calculate":
+                    missing_rarity += 1
+
+        records = grouped_api_records[country_key]
+        api_names = sorted(
+            {
+                str(record.get("country") or "").strip()
+                for record in records
+                if str(record.get("country") or "").strip()
+            },
+            key=slugify,
+        )
+        pending_country_keys.add(country_key)
+        countries.append(
+            {
+                "country": api_names[0] if api_names else country_name,
+                "coin_count": len(records),
+                "catalog_coin_type_count": total_types,
+                "missing_rarity_count": missing_rarity,
+            }
+        )
+    return sorted(countries, key=lambda item: slugify(str(item["country"]))), pending_country_keys
+
+
 def api_tracking_report(countries: list[dict[str, object]]) -> dict[str, object]:
     return {
         "report_type": "api_country_tracking",
@@ -358,6 +413,21 @@ def api_tracking_report(countries: list[dict[str, object]]) -> dict[str, object]
             "total_countries": len(countries),
             "total_issues": len(countries),
             "by_type": {"untracked_api_country": len(countries)} if countries else {},
+        },
+        "countries": countries,
+        "coins_with_issues": [],
+    }
+
+
+def pending_rarity_report(countries: list[dict[str, object]]) -> dict[str, object]:
+    return {
+        "report_type": "api_country_pending_rarity",
+        "country": "api-country-pending-rarity",
+        "country_name": "Países recolhidos ainda sem raridade",
+        "summary": {
+            "total_countries": len(countries),
+            "total_issues": len(countries),
+            "by_type": {"pending_rarity_country": len(countries)} if countries else {},
         },
         "countries": countries,
         "coins_with_issues": [],
@@ -676,7 +746,7 @@ def print_text_report(report: dict[str, object], include_warnings: bool) -> None
         summary = {}
     total_issues = int(summary.get("total_issues", 0))
 
-    if report.get("report_type") == "api_country_tracking":
+    if report.get("report_type") in {"api_country_tracking", "api_country_pending_rarity"}:
         countries = report.get("countries", [])
         if not isinstance(countries, list) or not countries:
             return
@@ -685,7 +755,19 @@ def print_text_report(report: dict[str, object], include_warnings: bool) -> None
             if not isinstance(item, dict):
                 continue
             coin_count = int(item.get("coin_count", 0))
-            print(f"- {item.get('country', '')}: {coin_count} {count_label(coin_count, 'moeda', 'moedas')}")
+            if report.get("report_type") == "api_country_pending_rarity":
+                missing_rarity = int(item.get("missing_rarity_count", 0))
+                type_count = int(item.get("catalog_coin_type_count", 0))
+                if missing_rarity:
+                    print(
+                        f"- {item.get('country', '')}: {missing_rarity}/{type_count} "
+                        f"{count_label(missing_rarity, 'tipo sem raridade', 'tipos sem raridade')} "
+                        f"({coin_count} {count_label(coin_count, 'moeda', 'moedas')} na API)"
+                    )
+                else:
+                    print(f"- {item.get('country', '')}: raridade preenchida; falta gerar o catálogo final")
+            else:
+                print(f"- {item.get('country', '')}: {coin_count} {count_label(coin_count, 'moeda', 'moedas')}")
         return
 
     total_warnings = int(summary.get("total_warnings", 0)) if include_warnings else 0
@@ -786,7 +868,17 @@ def main() -> int:
 
     if api_records_by_country is not None:
         tracked_country_keys = tracked_api_country_keys(paises_dir, countries, args.catalog_file)
-        missing_tracking = untracked_api_countries(api_records_by_country, tracked_country_keys)
+        pending_rarity, pending_country_keys = pending_catalogue_api_countries(
+            api_records_by_country,
+            paises_dir,
+            tracked_country_keys,
+        )
+        if pending_rarity:
+            reports.append(pending_rarity_report(pending_rarity))
+        missing_tracking = untracked_api_countries(
+            api_records_by_country,
+            tracked_country_keys | pending_country_keys,
+        )
         if missing_tracking:
             reports.append(api_tracking_report(missing_tracking))
     elif api_tracking_error:

@@ -259,7 +259,7 @@ def action_collect_missing_country_tracking() -> None:
         print(f"Não foi possível consultar a Base44: {error}")
         return
     if not plans:
-        print("Todos os países da API já têm tracking local.")
+        print("Todos os países da API já foram recolhidos ou têm tracking final.")
         return
 
     print_tracking_plans(plans)
@@ -301,7 +301,8 @@ def action_collect_missing_country_tracking() -> None:
             return
 
     print(f"\nRecolha concluída para {len(selected_plans)} países.")
-    print("Revê os app-catalog-pending.json antes de gerar outputs finais ou importar para a Base44.")
+    print("Os países recolhidos ficam marcados como 'ainda sem raridade'.")
+    print("Revê e classifica os app-catalog-pending.json antes de gerar outputs finais ou importar para a Base44.")
 
 
 def action_generate_pending() -> None:

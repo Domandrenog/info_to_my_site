@@ -173,7 +173,12 @@ def load_tracking_plans(paises_dir: Path, catalog_filename: str) -> tuple[list[d
         return None, error
     country_slugs = sorted(path.name for path in iter_country_directories(paises_dir))
     tracked = tracked_api_country_keys(paises_dir, country_slugs, catalog_filename)
-    return build_tracking_plans(group_api_records_by_country(records), tracked), None
+    already_collected = tracked | tracked_api_country_keys(
+        paises_dir,
+        country_slugs,
+        "app-catalog-pending.json",
+    )
+    return build_tracking_plans(group_api_records_by_country(records), already_collected), None
 
 
 def parse_args() -> argparse.Namespace:
@@ -196,7 +201,7 @@ def main() -> int:
     elif plans:
         print_tracking_plans(plans)
     else:
-        print("Todos os países da API já têm tracking local.")
+        print("Todos os países da API já foram recolhidos ou têm tracking final.")
     return 0
 
 

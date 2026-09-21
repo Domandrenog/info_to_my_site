@@ -1,10 +1,15 @@
 from __future__ import annotations
 
+import json
+import tempfile
 import unittest
+from pathlib import Path
+from unittest.mock import patch
 
 from scripts.plan_missing_country_tracking import (
     build_collection_command,
     build_tracking_plans,
+    load_tracking_plans,
     record_year_bounds,
     select_tracking_plans,
     year_coverage,
@@ -65,6 +70,25 @@ class MissingCountryTrackingPlanTests(unittest.TestCase):
         self.assertIn("--no-wait-for-final", command)
         self.assertEqual(command[command.index("--start-year") + 1], "1966")
         self.assertNotIn("scripts.import_base44_coins", command)
+
+    @patch(
+        "scripts.plan_missing_country_tracking.api_records_for_all_countries",
+        return_value=([{"country": "Bahamas", "continent": "América", "years": "2025"}], None),
+    )
+    def test_pending_catalogue_is_not_suggested_for_collection_again(self, _api) -> None:
+        with tempfile.TemporaryDirectory() as temp_dir:
+            paises_dir = Path(temp_dir)
+            country_dir = paises_dir / "america" / "bahamas"
+            country_dir.mkdir(parents=True)
+            (country_dir / "app-catalog-pending.json").write_text(
+                json.dumps({"country": "Bahamas", "periods": []}),
+                encoding="utf-8",
+            )
+
+            plans, error = load_tracking_plans(paises_dir, "app-catalog.json")
+
+            self.assertIsNone(error)
+            self.assertEqual(plans, [])
 
 
 if __name__ == "__main__":
