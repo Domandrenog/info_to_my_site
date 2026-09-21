@@ -1,10 +1,17 @@
 from __future__ import annotations
 
 import io
+import tempfile
 import unittest
 from contextlib import redirect_stdout
+from pathlib import Path
 
-from scripts.check_site_coin_differences import print_text_report
+from scripts.check_site_coin_differences import (
+    api_country_name,
+    build_reverse_map,
+    find_all_coins_country_folder,
+    print_text_report,
+)
 
 
 class CheckSiteCoinDifferencesOutputTests(unittest.TestCase):
@@ -64,6 +71,56 @@ class CheckSiteCoinDifferencesOutputTests(unittest.TestCase):
         }
 
         self.assertEqual(self.render(report), "Pais Teste: error\n- Catalog not found")
+
+
+class AllCoinsPathTests(unittest.TestCase):
+    def test_api_country_name_resolves_base44_alias(self) -> None:
+        self.assertEqual(api_country_name("mauricia", "Maurícias"), "Maurícia")
+        self.assertEqual(api_country_name("sri-lanka", "Sri Lanka"), "Sri Lanka")
+
+    def test_finds_normal_country_folder_below_continent(self) -> None:
+        with tempfile.TemporaryDirectory() as temp_dir:
+            root = Path(temp_dir)
+            expected = root / "fotos" / "paises" / "Asia" / "SriLanka" / "normal"
+            expected.mkdir(parents=True)
+
+            self.assertEqual(find_all_coins_country_folder(root, "sri-lanka"), expected)
+
+    def test_resolves_historic_country_folder_names(self) -> None:
+        with tempfile.TemporaryDirectory() as temp_dir:
+            root = Path(temp_dir)
+            expected = root / "fotos" / "paises" / "Europa" / "Croacia" / "normal"
+            expected.mkdir(parents=True)
+
+            self.assertEqual(find_all_coins_country_folder(root, "croatia"), expected)
+
+    def test_missing_country_folder_is_an_explicit_error(self) -> None:
+        with tempfile.TemporaryDirectory() as temp_dir:
+            with self.assertRaisesRegex(FileNotFoundError, "Pasta All_Coins não encontrada"):
+                find_all_coins_country_folder(Path(temp_dir), "sri-lanka")
+
+    def test_build_reverse_map_reads_new_link_filenames(self) -> None:
+        with tempfile.TemporaryDirectory() as temp_dir:
+            country_folder = Path(temp_dir)
+            (country_folder / "links-internos.txt").write_text(
+                "coin-slug:\n  frente: https://raw.example/coin-front.jpg\n  tras: https://raw.example/coin-back.jpg\n",
+                encoding="utf-8",
+            )
+            (country_folder / "links-externos.txt").write_text(
+                "coin-slug:\n  frente: https://i.ucoin.net/coin-front.jpg\n  tras: https://i.ucoin.net/coin-back.jpg\n",
+                encoding="utf-8",
+            )
+
+            reverse = build_reverse_map(country_folder)
+
+            self.assertEqual(
+                reverse["https://raw.example/coin-front.jpg"],
+                {
+                    "slug": "coin-slug",
+                    "side": "frente",
+                    "ucoin_url": "https://i.ucoin.net/coin-front.jpg",
+                },
+            )
 
 
 if __name__ == "__main__":

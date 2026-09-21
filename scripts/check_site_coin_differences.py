@@ -100,10 +100,13 @@ def expected_country_folder(country_slug: str) -> str:
     mapping = {
         "bielorrussia": "Bielorrussia",
         "coreia-do-sul": "CoreiaDoSul",
+        "croatia": "Croacia",
+        "egipto": "Egito",
         "emirados-arabes-unidos": "EmiradosArabesUnidos",
         "eua": "EUA",
         "hong-kong": "HongKong",
         "japao": "Japao",
+        "mauricia": "Mauricias",
         "sri-lanka": "SriLanka",
         "tailandia": "Tailandia",
     }
@@ -112,9 +115,52 @@ def expected_country_folder(country_slug: str) -> str:
     return "".join(part.capitalize() for part in country_slug.split("-") if part)
 
 
+def api_country_name(country_slug: str, catalog_country_name: str) -> str:
+    aliases = {
+        "mauricia": "Maurícia",
+    }
+    return aliases.get(country_slug, catalog_country_name)
+
+
+def find_all_coins_country_folder(all_coins_dir: Path, country_slug: str) -> Path:
+    country_folder_name = expected_country_folder(country_slug)
+    photos_root = all_coins_dir / "fotos" / "paises"
+    matches = sorted(
+        path
+        for path in photos_root.glob(f"*/{country_folder_name}/normal")
+        if path.is_dir()
+    )
+    if len(matches) == 1:
+        return matches[0]
+    if len(matches) > 1:
+        raise ValueError(
+            f"Pasta All_Coins duplicada para {country_slug}: "
+            f"{', '.join(str(path) for path in matches)}"
+        )
+
+    legacy_folder = all_coins_dir / country_folder_name
+    if legacy_folder.is_dir():
+        return legacy_folder
+    raise FileNotFoundError(
+        f"Pasta All_Coins não encontrada para {country_slug}: "
+        f"{photos_root}/<continente>/{country_folder_name}/normal"
+    )
+
+
 def build_reverse_map(country_folder: Path) -> dict[str, dict[str, str]]:
-    links_raw = parse_links_file(country_folder / "links.txt")
-    links_ucoin = parse_links_file(country_folder / "links-ucoin.txt")
+    internal_path = country_folder / "links-internos.txt"
+    external_path = country_folder / "links-externos.txt"
+    if not internal_path.exists() and not external_path.exists():
+        internal_path = country_folder / "links.txt"
+        external_path = country_folder / "links-ucoin.txt"
+    if not internal_path.is_file() or not external_path.is_file():
+        raise FileNotFoundError(
+            f"Mapas de imagens não encontrados em {country_folder}: "
+            "links-internos.txt e links-externos.txt"
+        )
+
+    links_raw = parse_links_file(internal_path)
+    links_ucoin = parse_links_file(external_path)
 
     reverse: dict[str, dict[str, str]] = {}
     for coin_slug, raw_sides in links_raw.items():
@@ -293,18 +339,30 @@ def compare_country(
             result["coins_with_warnings"] = []
         return result
 
-    country_folder = all_coins_dir / expected_country_folder(country_slug)
-    reverse = build_reverse_map(country_folder)
-    confirmed_equivalences = load_confirmed_equivalences(country_dir)
-
     data = json.loads(country_catalog.read_text(encoding="utf-8"))
     country_name = str(data.get("country") or country_slug)
+
+    try:
+        country_folder = find_all_coins_country_folder(all_coins_dir, country_slug)
+        reverse = build_reverse_map(country_folder)
+    except (FileNotFoundError, ValueError) as exc:
+        result = {
+            "country": country_slug,
+            "country_name": country_name,
+            "summary": {"coins": [], "total_coins": 0, "total_issues": 0, "by_type": {}},
+            "coins_with_issues": [],
+            "error": str(exc),
+        }
+        if include_warnings:
+            result["coins_with_warnings"] = []
+        return result
+    confirmed_equivalences = load_confirmed_equivalences(country_dir)
 
     api_records: list[dict[str, object]] | None = None
     by_record_id: dict[str, dict[str, object]] = {}
 
     if check_api:
-        api_records, _ = api_records_for_country(country_name)
+        api_records, _ = api_records_for_country(api_country_name(country_slug, country_name))
         if api_records is not None:
             for record in api_records:
                 if not isinstance(record, dict):
