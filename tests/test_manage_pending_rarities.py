@@ -11,7 +11,6 @@ from scripts.manage_pending_rarities import (
     build_rarity_batch,
     discover_pending_catalogues,
     write_country_outputs,
-    write_final_catalogues,
 )
 
 
@@ -131,23 +130,6 @@ class PendingRarityBatchTests(unittest.TestCase):
             self.assertFalse((country_dir / "app-catalog-pending.json").exists())
             self.assertFalse((country_dir / "app-catalog-final.json").exists())
             self.assertFalse((country_dir / "differences-pending.json").exists())
-
-    def test_rarities_only_writes_final_catalogue_without_generating_outputs(self) -> None:
-        with tempfile.TemporaryDirectory() as temp_dir:
-            root = Path(temp_dir)
-            pending_path = self.create_pending(root)
-            entries = discover_pending_catalogues(root)
-            final_batch = build_rarity_batch(entries)
-            for coin in final_batch["countries"][0]["coins"]:
-                coin["availability"] = "circulating"
-
-            results = apply_rarity_batch(final_batch, entries)
-            write_final_catalogues(results)
-
-            country_dir = pending_path.parent
-            self.assertTrue((country_dir / "app-catalog-final.json").is_file())
-            self.assertTrue((country_dir / "app-catalog-pending.json").is_file())
-            self.assertFalse((country_dir / "app-catalog.json").exists())
 
     def test_incomplete_batch_is_rejected_before_writing(self) -> None:
         with tempfile.TemporaryDirectory() as temp_dir:

@@ -255,13 +255,6 @@ def write_country_outputs(
             cleanup_intermediate_files(str(country_dir / FINAL_APP_CATALOG_INPUT_FILENAME))
 
 
-def write_final_catalogues(results: list[tuple[Path, dict[str, Any]]]) -> None:
-    for country_dir, final_catalogue in results:
-        final_input_path = country_dir / FINAL_APP_CATALOG_INPUT_FILENAME
-        write_json_atomic(final_input_path, final_catalogue)
-        print(f"Raridades definidas: {final_catalogue.get('country')} -> {final_input_path}")
-
-
 def cleanup_batch_files(*paths: Path) -> None:
     for path in paths:
         if path.exists():
@@ -277,11 +270,6 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--prompt-output", default=str(PROJECT_ROOT / DEFAULT_PROMPT_OUTPUT))
     parser.add_argument("--final-input", default="")
     parser.add_argument("--wait-for-final", action="store_true")
-    parser.add_argument(
-        "--rarities-only",
-        action="store_true",
-        help="Guarda app-catalog-final.json sem gerar os outputs finais nem limpar os ficheiros do país.",
-    )
     parser.add_argument(
         "--cleanup-intermediate",
         action="store_true",
@@ -306,12 +294,8 @@ def run(args: argparse.Namespace) -> int:
     if args.final_input:
         final_batch = load_json(final_input_path)
         results = apply_rarity_batch(final_batch, entries)
-        if args.rarities_only:
-            write_final_catalogues(results)
-            cleanup_batch_files(output_path, prompt_path, final_input_path)
-        else:
-            write_country_outputs(results, cleanup_intermediate=args.cleanup_intermediate)
-        if args.cleanup_intermediate and not args.rarities_only:
+        write_country_outputs(results, cleanup_intermediate=args.cleanup_intermediate)
+        if args.cleanup_intermediate:
             cleanup_batch_files(output_path, prompt_path, final_input_path)
         print(f"Raridades aplicadas: {total_coins} tipos em {len(results)} países.")
         return 0
@@ -336,12 +320,8 @@ def run(args: argparse.Namespace) -> int:
         raise ValueError(f"O ficheiro final continua vazio: {final_input_path}")
     final_batch = load_json(final_input_path)
     results = apply_rarity_batch(final_batch, entries)
-    if args.rarities_only:
-        write_final_catalogues(results)
-        cleanup_batch_files(output_path, prompt_path, final_input_path)
-    else:
-        write_country_outputs(results, cleanup_intermediate=args.cleanup_intermediate)
-    if args.cleanup_intermediate and not args.rarities_only:
+    write_country_outputs(results, cleanup_intermediate=args.cleanup_intermediate)
+    if args.cleanup_intermediate:
         cleanup_batch_files(output_path, prompt_path, final_input_path)
     print(f"Raridades aplicadas: {total_coins} tipos em {len(results)} países.")
     return 0

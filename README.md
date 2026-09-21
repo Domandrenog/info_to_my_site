@@ -143,7 +143,7 @@ O menu `Importar do uCoin > Recolher países do Site sem tracking local` prepara
 
 O menu espera pelo ficheiro final e, depois de carregares Enter, valida que todos os países e moedas continuam presentes e que os catálogos de origem não mudaram. Apenas os valores de `availability` são aplicados. Para cada país são então gerados `app-catalog.json`, `availability-statistics.json` e `coins-availability.xlsx`. Tal como no pipeline completo de um país, `ucoin-catalog.json`, `app-catalog-pending.json`, `app-catalog-final.json` e `differences-pending.json` são apagados apenas depois de todos os outputs finais terem sido gerados com sucesso.
 
-Para executar apenas esta classificação sem voltar a recolher os países, usa `Importar do uCoin > Executar uma etapa específica > Definir raridades`. Aí podes escolher todos os países pendentes ou apenas um país específico. Esta etapa cria os `app-catalog-final.json`; usa depois `Gerar outputs finais (raridade já definida)`.
+Para executar apenas esta classificação sem voltar a recolher os países, usa `Importar do uCoin > Executar uma etapa específica > Definir raridades e gerar outputs finais`. Aí podes escolher todos os países pendentes ou apenas um país específico.
 
 Também podes executar as duas fases manualmente:
 

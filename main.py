@@ -340,40 +340,41 @@ def action_collect_missing_country_tracking() -> None:
     complete_pending_rarities()
 
 
-def action_define_pending_rarities(country: str = "") -> None:
-    title("Definir raridades")
+def action_finalize_pending_catalogues(country: str = "") -> None:
+    title("Definir raridades e gerar outputs finais")
     command = [
         sys.executable,
         "-m",
         "scripts.manage_pending_rarities",
         "--wait-for-final",
-        "--rarities-only",
     ]
     if country:
         command.extend(["--country", country])
         print(f"Será preparado apenas o país: {country}.")
     else:
         print("Serão preparados todos os países que ainda aguardam raridade.")
-    print("No fim é criado app-catalog-final.json; os outputs finais são gerados na etapa seguinte.\n")
-    run_step("Definir raridades", command)
+    print("Depois da classificação serão gerados app-catalog.json, estatísticas e Excel.")
+    if ask_yes_no("Apagar os ficheiros intermédios no fim?", default=True):
+        command.append("--cleanup-intermediate")
+    run_step("Definir raridades e gerar outputs finais", command)
 
 
-def menu_define_rarities() -> None:
+def menu_finalize_pending_catalogues() -> None:
     while True:
-        title("Definir raridades")
+        title("Definir raridades e gerar outputs finais")
         print("1) Todos os países pendentes")
         print("2) Um país específico")
         print("3) Voltar")
 
         choice = ask_text("Escolhe uma opção", "1")
         if choice == "1":
-            action_define_pending_rarities()
+            action_finalize_pending_catalogues()
         elif choice == "2":
             country = ask_text("País")
             if not country:
                 print("País obrigatório.")
             else:
-                action_define_pending_rarities(slugify(country))
+                action_finalize_pending_catalogues(slugify(country))
         elif choice == "3":
             return
         else:
@@ -629,22 +630,19 @@ def menu_specific_stage() -> None:
     while True:
         title("Executar uma etapa específica")
         print("1) Recolher dados do uCoin e criar catálogo pendente")
-        print("2) Definir raridades")
-        print("3) Gerar outputs finais (raridade já definida)")
-        print("4) Importar dados para o Site Base44")
-        print("5) Voltar")
+        print("2) Definir raridades e gerar outputs finais")
+        print("3) Importar dados para o Site Base44")
+        print("4) Voltar")
 
         choice = ask_text("Escolhe uma opcao", "1")
         if choice == "1":
             action_collect_country_pending()
         elif choice == "2":
-            menu_define_rarities()
+            menu_finalize_pending_catalogues()
             continue
         elif choice == "3":
-            action_generate_final()
-        elif choice == "4":
             action_import_base44()
-        elif choice == "5":
+        elif choice == "4":
             return
         else:
             print("Opcao invalida.")
