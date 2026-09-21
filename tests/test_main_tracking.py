@@ -26,6 +26,44 @@ PLANS = [
 
 
 class MainTrackingActionTests(unittest.TestCase):
+    @patch("main.run_step", return_value=0)
+    @patch("main.add_browser_mode", side_effect=lambda command: command.append("--attach-cdp"))
+    @patch("main.ask_text", return_value="1")
+    @patch("main.load_missing_photo_entries", return_value=[{"denomination": "10 cêntimos"}])
+    def test_photo_recheck_option_runs_only_after_selection(
+        self,
+        _load_entries,
+        _ask_text,
+        _browser_mode,
+        run_step,
+    ) -> None:
+        report_path = main.Path("info/paises/all-differences.json")
+
+        with redirect_stdout(io.StringIO()) as output:
+            main.offer_ucoin_photo_recheck(report_path)
+
+        self.assertIn("1 moeda sem fotografias", output.getvalue())
+        run_step.assert_called_once_with(
+            "Rever fotografias no uCoin",
+            [
+                main.sys.executable,
+                "-m",
+                "scripts.recheck_ucoin_photos",
+                "--input",
+                str(report_path),
+                "--attach-cdp",
+            ],
+        )
+
+    @patch("main.run_step")
+    @patch("main.ask_text", return_value="0")
+    @patch("main.load_missing_photo_entries", return_value=[{"denomination": "10 cêntimos"}])
+    def test_photo_recheck_option_can_be_skipped(self, _load_entries, _ask_text, run_step) -> None:
+        with redirect_stdout(io.StringIO()):
+            main.offer_ucoin_photo_recheck(main.Path("report.json"))
+
+        run_step.assert_not_called()
+
     @patch("main.subprocess.run", return_value=subprocess.CompletedProcess([], 1))
     @patch("main.ask_yes_no", return_value=True)
     @patch("main.title")

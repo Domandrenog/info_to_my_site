@@ -5,6 +5,7 @@ import json
 import os
 import subprocess
 import sys
+import tempfile
 from difflib import get_close_matches
 from pathlib import Path
 from types import SimpleNamespace
@@ -23,6 +24,7 @@ from scripts.plan_missing_country_tracking import (
     print_tracking_plans,
     select_tracking_plans,
 )
+from scripts.recheck_ucoin_photos import load_missing_photo_entries
 
 PROJECT_DIR = Path(__file__).resolve().parent
 
@@ -524,6 +526,20 @@ def action_check_differences() -> None:
         default_output = str(CATALOG_ROOT / "all-differences.json")
     save_report = ask_yes_no("Guardar ficheiro de diferencas em info/paises/?", default=True)
     output_path = ask_text("Ficheiro de output", default_output) if save_report else ""
+    temporary_output = False
+    if output_path:
+        report_path = Path(output_path)
+    else:
+        descriptor, temporary_name = tempfile.mkstemp(prefix="ucoin-differences-", suffix=".json")
+        os.close(descriptor)
+        report_path = Path(temporary_name)
+        report_path.unlink(missing_ok=True)
+        temporary_output = True
+
+    previous_report_state = None
+    if report_path.exists():
+        stat = report_path.stat()
+        previous_report_state = (stat.st_mtime_ns, stat.st_size)
 
     command = [
         sys.executable,
@@ -536,27 +552,72 @@ def action_check_differences() -> None:
         command.extend(["--country", country])
     if include_warnings:
         command.append("--include-warnings")
-    if output_path:
-        command.extend(["--output", output_path])
+    command.extend(["--output", str(report_path)])
 
-    result = run_step("Check diferencas", command, accepted_exit_codes={0, 1})
-    if result != 1 or not country:
+    try:
+        result = run_step("Check diferencas", command, accepted_exit_codes={0, 1})
+        if result != 1:
+            return
+
+        current_report_state = None
+        if report_path.exists():
+            stat = report_path.stat()
+            current_report_state = (stat.st_mtime_ns, stat.st_size)
+        report_was_refreshed = current_report_state is not None and current_report_state != previous_report_state
+
+        if country:
+            country_slug = slugify(country)
+            reconcile_command = [
+                sys.executable,
+                "-m",
+                "scripts.fix_site_issues_api",
+                "--country",
+                country,
+                "--output",
+                str(country_directory(country) / f"{country_slug}-autofix-plan.json"),
+                "--skip-create-missing",
+                "--reconcile-missing-interactive",
+            ]
+            print("\nConfirmar equivalencias que nao foram encontradas pelas imagens:", flush=True)
+            subprocess.run(reconcile_command, cwd=PROJECT_DIR, check=False)
+
+        if report_was_refreshed:
+            offer_ucoin_photo_recheck(report_path)
+    finally:
+        if temporary_output:
+            report_path.unlink(missing_ok=True)
+
+
+def offer_ucoin_photo_recheck(report_path: Path) -> None:
+    try:
+        entries = load_missing_photo_entries(report_path)
+    except (OSError, ValueError, json.JSONDecodeError) as exc:
+        print(f"\nNão foi possível preparar a revisão das fotografias: {exc}")
+        return
+    if not entries:
         return
 
-    country_slug = slugify(country)
-    reconcile_command = [
+    coin_label = "moeda" if len(entries) == 1 else "moedas"
+    print("\nPróximo passo opcional:")
+    print(f"1) Rever no uCoin {len(entries)} {coin_label} sem fotografias disponíveis")
+    print("0) Terminar")
+    while True:
+        choice = ask_text("Escolhe uma opção", "0")
+        if choice == "0":
+            return
+        if choice == "1":
+            break
+        print("Escolhe 1 ou 0.")
+
+    command = [
         sys.executable,
         "-m",
-        "scripts.fix_site_issues_api",
-        "--country",
-        country,
-        "--output",
-        str(country_directory(country) / f"{country_slug}-autofix-plan.json"),
-        "--skip-create-missing",
-        "--reconcile-missing-interactive",
+        "scripts.recheck_ucoin_photos",
+        "--input",
+        str(report_path),
     ]
-    print("\nConfirmar equivalencias que nao foram encontradas pelas imagens:", flush=True)
-    subprocess.run(reconcile_command, cwd=PROJECT_DIR, check=False)
+    add_browser_mode(command)
+    run_step("Rever fotografias no uCoin", command)
 
 
 def print_notes_status(plan: dict[str, object]) -> None:
