@@ -13,6 +13,58 @@ from scripts import fix_site_issues_api
 
 
 class FixSiteIssuesPlanTests(unittest.TestCase):
+    def test_verified_creation_updates_decision_and_missing_found_json(self) -> None:
+        detail_url = "https://pt.ucoin.net/coin/china-1-jiao-1980-1986"
+        with tempfile.TemporaryDirectory() as temp_dir:
+            root = Path(temp_dir)
+            decisions_path = root / "decisions.json"
+            missing_found_path = root / "missing-found.json"
+            fix_site_issues_api.save_name_match_decision(
+                decisions_path,
+                "china",
+                {
+                    "ucoinUrl": detail_url,
+                    "catalogName": "1 jiao",
+                    "catalogYears": "1980 - 1986",
+                    "sameCoin": "new_record",
+                    "createRecord": "yes",
+                    "applyStatus": "pending_create",
+                },
+            )
+            missing_found_path.write_text(
+                json.dumps(
+                    {
+                        "country": "china",
+                        "missing": [
+                            {
+                                "status": "confirmed_create",
+                                "ucoinUrl": detail_url,
+                            }
+                        ],
+                    }
+                ),
+                encoding="utf-8",
+            )
+            results = [
+                {
+                    "record_id": "record-new",
+                    "ucoin_url": detail_url,
+                    "fields": ["create"],
+                    "status": "created",
+                    "message": "criação confirmada no Site Base44",
+                }
+            ]
+
+            fix_site_issues_api.update_creation_application_status(decisions_path, results)
+            fix_site_issues_api.confirm_created_matches(missing_found_path, results)
+            decisions = json.loads(decisions_path.read_text(encoding="utf-8"))
+            missing_found = json.loads(missing_found_path.read_text(encoding="utf-8"))
+
+        self.assertEqual(decisions["decisions"][0]["applyStatus"], "created")
+        self.assertEqual(decisions["decisions"][0]["siteRecordId"], "record-new")
+        self.assertEqual(missing_found["missing"][0]["status"], "created")
+        self.assertEqual(missing_found["missing"][0]["record_id"], "record-new")
+
     def test_name_decision_json_records_verified_application_status(self) -> None:
         with tempfile.TemporaryDirectory() as temp_dir:
             path = Path(temp_dir) / "decisions.json"
@@ -232,6 +284,65 @@ class FixSiteIssuesPlanTests(unittest.TestCase):
         self.assertEqual(decisions["decisions"][0]["updateYears"], "yes")
         self.assertEqual(decisions["decisions"][0]["proposedYears"], "1983 - 2026")
         self.assertEqual(decisions["decisions"][0]["applyStatus"], "pending")
+
+    def test_reconcile_can_confirm_that_missing_coin_must_be_created(self) -> None:
+        missing_item = {
+            "denomination": "1 jiao",
+            "ucoinUrl": "https://pt.ucoin.net/coin/china-1-jiao-1980-1986/?tid=5892",
+            "period": {"title": "China › República Popular › 1980-1986"},
+            "coin": {
+                "denomination": "1 jiao",
+                "issuePeriod": "1980 - 1986",
+                "availability": "scarce",
+            },
+            "ordem": 1,
+        }
+        site_records = [
+            {"id": f"record-{index}", "name": name, "years": years}
+            for index, (name, years) in enumerate(
+                [
+                    ("1 jiao", "2019-2025"),
+                    ("1 jiao", "2005-2018"),
+                    ("1 jiao", "1999-2003"),
+                    ("1 jiao", "1991-2000"),
+                    ("5 jiao", "2019-2025"),
+                ],
+                start=1,
+            )
+        ]
+
+        with tempfile.TemporaryDirectory() as temp_dir:
+            decisions_path = Path(temp_dir) / "name-match-decisions.json"
+            with (
+                patch.object(
+                    fix_site_issues_api.checker,
+                    "api_records_for_country",
+                    return_value=(site_records, None),
+                ),
+                patch("builtins.input", return_value="6"),
+                redirect_stdout(io.StringIO()) as output,
+            ):
+                result = fix_site_issues_api.reconcile_missing(
+                    country_name="China",
+                    missing_creates=[missing_item],
+                    plan_updates=[],
+                    associations_path=Path(temp_dir) / "associations.json",
+                    missing_found_path=Path(temp_dir) / "missing-found.json",
+                    interactive=True,
+                    max_candidates=5,
+                    name_decisions_path=decisions_path,
+                    decision_country_slug="china",
+                )
+            decisions = json.loads(decisions_path.read_text(encoding="utf-8"))
+
+        self.assertEqual(result["unresolved"], [])
+        self.assertEqual(result["creates"], [missing_item])
+        self.assertEqual(result["all"][0]["status"], "confirmed_create")
+        self.assertIn("6) Não existe no Site Base44 — criar moeda nova", output.getvalue())
+        self.assertIn("0) Não associar por agora", output.getvalue())
+        self.assertEqual(decisions["decisions"][0]["sameCoin"], "new_record")
+        self.assertEqual(decisions["decisions"][0]["createRecord"], "yes")
+        self.assertEqual(decisions["decisions"][0]["applyStatus"], "pending_create")
 
     def test_rejected_match_is_also_saved_in_decisions_json(self) -> None:
         missing = [
@@ -455,6 +566,86 @@ class FixSiteIssuesPlanTests(unittest.TestCase):
 
 
 class FixSiteIssuesApplyTests(unittest.TestCase):
+    def test_apply_creates_only_confirmed_coin_and_verifies_it(self) -> None:
+        class FakeClient:
+            base_url = "https://base44.test/entities/Coin"
+
+            def __init__(self) -> None:
+                self.created_record = None
+                self.bulk_calls = 0
+
+            def bulk_create(self, records):
+                self.bulk_calls += 1
+                self.created_record = dict(records[0])
+                return [{**self.created_record, "id": "record-new"}]
+
+            def filter(self, query, limit=1, skip=0):
+                if self.created_record is None:
+                    return []
+                return [{**self.created_record, "id": "record-new"}]
+
+        client = FakeClient()
+        args = argparse.Namespace(
+            request_delay=0,
+            rate_limit_delay=0,
+            max_retries=0,
+            continent="Ásia",
+            condition="Não Tenho",
+        )
+        detail_url = "https://pt.ucoin.net/coin/china-1-jiao-1980-1986/?tid=5892"
+        plan = {
+            "updates": [],
+            "creates": [
+                {
+                    "denomination": "1 jiao",
+                    "issuePeriod": "1980 - 1986",
+                    "ucoinUrl": detail_url,
+                    "period": {"title": "China › República Popular da China › 1980-1986"},
+                    "coin": {
+                        "denomination": "1 jiao",
+                        "issuePeriod": "1980 - 1986",
+                        "availability": "scarce",
+                        "detailUrl": detail_url,
+                        "obverseImage": "https://i.ucoin.net/front.jpg",
+                        "reverseImage": "https://i.ucoin.net/back.jpg",
+                    },
+                    "ordem": 1,
+                }
+            ],
+        }
+
+        with (
+            patch.object(fix_site_issues_api.import_base44_coins, "create_client", return_value=client),
+            redirect_stdout(io.StringIO()) as output,
+        ):
+            application_results: list[dict[str, object]] = []
+            result = fix_site_issues_api.apply_plan(
+                args,
+                "China",
+                plan,
+                application_results,
+            )
+
+        self.assertEqual(result, {"updated": 0, "created": 1, "skipped": 0})
+        self.assertEqual(client.created_record["name"], "1 jiao")
+        self.assertEqual(client.created_record["years"], "1980 - 1986")
+        self.assertEqual(client.created_record["url_ucoin"], detail_url)
+        self.assertEqual(application_results[0]["status"], "created")
+        self.assertEqual(application_results[0]["record_id"], "record-new")
+        self.assertIn("Criado: 1/1 (100,0%) — China — 1 jiao (1980 - 1986)", output.getvalue())
+
+        with (
+            patch.object(fix_site_issues_api.import_base44_coins, "create_client", return_value=client),
+            redirect_stdout(io.StringIO()) as second_output,
+        ):
+            second_results: list[dict[str, object]] = []
+            second_run = fix_site_issues_api.apply_plan(args, "China", plan, second_results)
+
+        self.assertEqual(second_run, {"updated": 0, "created": 0, "skipped": 1})
+        self.assertEqual(client.bulk_calls, 1)
+        self.assertEqual(second_results[0]["status"], "already_exists")
+        self.assertIn("Já existe: 1/1 (100,0%)", second_output.getvalue())
+
     def test_apply_can_change_only_the_confirmed_name_and_years(self) -> None:
         class FakeClient:
             base_url = "https://base44.test/entities/Coin"

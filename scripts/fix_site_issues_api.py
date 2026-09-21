@@ -604,6 +604,48 @@ def update_name_match_application_status(
     path.write_text(json.dumps(payload, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
 
 
+def update_creation_application_status(
+    path: Path,
+    application_results: list[dict[str, Any]],
+) -> None:
+    decisions = load_name_match_decisions(path)
+    if not decisions:
+        return
+    results_by_url = {
+        normalize_url(str(item.get("ucoin_url") or "")): item
+        for item in application_results
+        if normalize_url(str(item.get("ucoin_url") or ""))
+        and "create" in item.get("fields", [])
+    }
+    changed = False
+    for decision in decisions:
+        if decision.get("createRecord") != "yes":
+            continue
+        result = results_by_url.get(normalize_url(str(decision.get("ucoinUrl") or "")))
+        if result is None:
+            continue
+        decision["applyStatus"] = str(result.get("status") or "not_applied")
+        decision["applyMessage"] = str(result.get("message") or "")
+        status_updated_at = datetime.now(timezone.utc).isoformat(timespec="seconds").replace("+00:00", "Z")
+        decision["statusUpdatedAt"] = status_updated_at
+        if decision["applyStatus"] in {"created", "already_exists"}:
+            decision["appliedAt"] = status_updated_at
+            decision["siteRecordId"] = str(result.get("record_id") or "")
+            decision["siteUrl"] = checker.build_site_url(str(result.get("record_id") or ""))
+        else:
+            decision.pop("appliedAt", None)
+        changed = True
+    if not changed:
+        return
+    existing = json.loads(path.read_text(encoding="utf-8"))
+    payload = {
+        "updatedAt": datetime.now(timezone.utc).isoformat(timespec="seconds").replace("+00:00", "Z"),
+        "country": str(existing.get("country") or "") if isinstance(existing, dict) else "",
+        "decisions": decisions,
+    }
+    path.write_text(json.dumps(payload, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+
+
 def confirm_applied_name_matches(
     missing_found_path: Path,
     application_results: list[dict[str, Any]],
@@ -627,6 +669,43 @@ def confirm_applied_name_matches(
         if parse_association_record_id(entry) not in successful_record_ids:
             continue
         entry["status"] = "connected"
+        changed = True
+    if not changed:
+        return
+    existing = json.loads(missing_found_path.read_text(encoding="utf-8"))
+    payload = {
+        "updatedAt": datetime.now(timezone.utc).isoformat(timespec="seconds").replace("+00:00", "Z"),
+        "country": str(existing.get("country") or "") if isinstance(existing, dict) else "",
+        "missing": entries,
+    }
+    missing_found_path.write_text(json.dumps(payload, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+
+
+def confirm_created_matches(
+    missing_found_path: Path,
+    application_results: list[dict[str, Any]],
+) -> None:
+    entries = load_missing_found(missing_found_path)
+    if not entries:
+        return
+    created_by_url = {
+        normalize_url(str(item.get("ucoin_url") or "")): (
+            str(item.get("status") or ""),
+            str(item.get("record_id") or ""),
+        )
+        for item in application_results
+        if item.get("status") in {"created", "already_exists"}
+        and normalize_url(str(item.get("ucoin_url") or ""))
+    }
+    changed = False
+    for entry in entries:
+        ucoin_url = normalize_url(str(entry.get("ucoinUrl") or ""))
+        result_status, record_id = created_by_url.get(ucoin_url, ("", ""))
+        if entry.get("status") != "confirmed_create" or not record_id:
+            continue
+        entry["status"] = result_status
+        entry["record_id"] = record_id
+        entry["siteUrl"] = checker.build_site_url(record_id)
         changed = True
     if not changed:
         return
@@ -840,7 +919,7 @@ def reconcile_missing(
     association_ucoin_filter: set[str] | None = None,
     name_decisions_path: Path | None = None,
     decision_country_slug: str = "",
-) -> dict[str, list[dict[str, str]]]:
+) -> dict[str, list[dict[str, Any]]]:
     api_records_raw, _ = checker.api_records_for_country(country_name)
     api_records = [record for record in (api_records_raw or []) if isinstance(record, dict)]
     by_record_id = {str(record.get("id") or ""): record for record in api_records if str(record.get("id") or "")}
@@ -863,6 +942,7 @@ def reconcile_missing(
     associations_changed = False
     unresolved: list[dict[str, str]] = []
     all_entries: list[dict[str, str]] = []
+    confirmed_creates: list[dict[str, Any]] = []
 
     for item in missing_creates:
         denomination = str(item.get("denomination") or "")
@@ -874,6 +954,7 @@ def reconcile_missing(
         resolved_source = ""
         candidate_for_decision: dict[str, Any] | None = None
         same_coin_decision = ""
+        create_decision = False
 
         if resolved_record is None:
             known_missing = known_from_missing_found.get(ucoin_url)
@@ -918,12 +999,34 @@ def reconcile_missing(
                     resolved_source = "interactive"
                     same_coin_decision = "yes"
                 else:
-                    same_coin_decision = "no"
+                    try:
+                        create_choice = input(
+                            "Não existe no Site Base44 — criar moeda nova? [s/N]: "
+                        ).strip().lower()
+                    except EOFError:
+                        create_choice = ""
+                    if create_choice in {"y", "yes", "s", "sim"}:
+                        create_decision = True
+                        candidate_for_decision = None
+                        same_coin_decision = "new_record"
+                    else:
+                        same_coin_decision = "no"
             else:
                 candidates = best_candidates(item, api_records, max_candidates)
                 if not candidates:
                     print("Sem candidatos por nome e anos.")
-                    same_coin_decision = "no_candidate"
+                    print("  1) Não existe no Site Base44 — criar moeda nova")
+                    print("  0) Não associar por agora")
+                    while True:
+                        choice = input("Escolhe uma opção: ").strip()
+                        if choice in {"", "0"}:
+                            same_coin_decision = "no_candidate"
+                            break
+                        if choice == "1":
+                            create_decision = True
+                            same_coin_decision = "new_record"
+                            break
+                        print("Escolhe 1 ou 0.")
                 else:
                     print("Possíveis correspondências no Site Base44:")
                     for idx, candidate in enumerate(candidates, start=1):
@@ -931,7 +1034,9 @@ def reconcile_missing(
                         print(
                             f"  {idx}) {record.get('name', '')} ({record.get('years', '')})"
                         )
-                    print("  0) Não associar")
+                    create_option = len(candidates) + 1
+                    print(f"  {create_option}) Não existe no Site Base44 — criar moeda nova")
+                    print("  0) Não associar por agora")
 
                     while True:
                         choice = input("Escolhe candidato: ").strip()
@@ -943,6 +1048,10 @@ def reconcile_missing(
                         except ValueError:
                             print("Escreve um número válido.")
                             continue
+                        if idx == create_option:
+                            create_decision = True
+                            same_coin_decision = "new_record"
+                            break
                         if idx < 1 or idx > len(candidates):
                             print("Opção inválida.")
                             continue
@@ -953,6 +1062,44 @@ def reconcile_missing(
                         break
 
         if resolved_record is None:
+            if create_decision:
+                confirmed_creates.append(item)
+                if interactive and name_decisions_path is not None:
+                    save_name_match_decision(
+                        name_decisions_path,
+                        decision_country_slug or checker.slugify(country_name),
+                        {
+                            "catalogName": denomination,
+                            "catalogYears": issue_period,
+                            "ucoinUrl": ucoin_url,
+                            "siteRecordId": "",
+                            "siteUrl": "",
+                            "siteName": "",
+                            "siteYears": "",
+                            "sameCoin": "new_record",
+                            "createRecord": "yes",
+                            "rename": "not_asked",
+                            "proposedName": denomination,
+                            "updateYears": "not_asked",
+                            "proposedYears": issue_period,
+                            "applyStatus": "pending_create",
+                        },
+                    )
+                all_entries.append(
+                    {
+                        "status": "confirmed_create",
+                        "source": "interactive",
+                        "denomination": denomination,
+                        "issuePeriod": issue_period,
+                        "ucoinUrl": ucoin_url,
+                        "record_id": "",
+                        "record_name": "",
+                        "record_years": "",
+                        "siteUrl": "",
+                    }
+                )
+                continue
+
             candidate = candidate_for_decision or {}
             if interactive and name_decisions_path is not None:
                 save_name_match_decision(
@@ -967,6 +1114,7 @@ def reconcile_missing(
                         "siteName": str(candidate.get("name") or ""),
                         "siteYears": str(candidate.get("years") or ""),
                         "sameCoin": same_coin_decision or "no",
+                        "createRecord": "no",
                         "rename": "not_asked",
                         "proposedName": denomination,
                         "updateYears": "not_asked",
@@ -1069,7 +1217,11 @@ def reconcile_missing(
         )
 
 
-    return {"unresolved": unresolved, "all": all_entries}
+    return {
+        "unresolved": unresolved,
+        "all": all_entries,
+        "creates": confirmed_creates,
+    }
 
 
 def confirm_equivalences_for_updates(
@@ -1375,12 +1527,93 @@ def apply_plan(
             "condition": args.condition,
         }
 
-        for item in creates:
+        create_started_at = time.monotonic()
+        total_create_duration = 0.0
+        for index, item in enumerate(creates, start=1):
+            item_started_at = time.monotonic()
             entry = (item["period"], item["coin"])
             record = import_base44_coins.to_coin_record(entry, options, int(item.get("ordem", 1)))
-            client.bulk_create([record])
-            created += 1
-            print(f"Created {item.get('denomination', '')}: {record.get('url_ucoin', '')}")
+            lookup_query = {
+                "country": country_name,
+                "url_ucoin": str(record.get("url_ucoin") or ""),
+            }
+            existing = client.filter(
+                lookup_query,
+                limit=10,
+            )
+            verified_record = next(
+                (
+                    candidate
+                    for candidate in existing
+                    if isinstance(candidate, dict)
+                    and normalize_url(str(candidate.get("url_ucoin") or ""))
+                    == normalize_url(str(record.get("url_ucoin") or ""))
+                ),
+                None,
+            ) if isinstance(existing, list) else None
+
+            if verified_record is None:
+                client.bulk_create([record])
+                verification = client.filter(
+                    lookup_query,
+                    limit=10,
+                )
+                verified_record = next(
+                    (
+                        candidate
+                        for candidate in verification
+                        if isinstance(candidate, dict)
+                        and normalize_url(str(candidate.get("url_ucoin") or ""))
+                        == normalize_url(str(record.get("url_ucoin") or ""))
+                    ),
+                    None,
+                ) if isinstance(verification, list) else None
+                operation = "Criado"
+                result_status = "created"
+                result_message = "criação confirmada no Site Base44"
+                created += 1
+            else:
+                operation = "Já existe"
+                result_status = "already_exists"
+                result_message = "registo já existente; criação não executada"
+                skipped += 1
+
+            if verified_record is None:
+                raise RuntimeError(
+                    f"A criação de {item.get('denomination', '')} não foi confirmada no Site Base44."
+                )
+            if application_results is not None:
+                application_results.append(
+                    {
+                        "record_id": str(verified_record.get("id") or ""),
+                        "ucoin_url": str(record.get("url_ucoin") or ""),
+                        "fields": ["create"],
+                        "status": result_status,
+                        "message": result_message,
+                    }
+                )
+
+            item_duration = time.monotonic() - item_started_at
+            total_create_duration += item_duration
+            elapsed = time.monotonic() - create_started_at
+            remaining = len(creates) - index
+            estimated_remaining = (total_create_duration / index) * remaining
+            remaining_text = (
+                "concluído"
+                if not remaining
+                else f"~{import_base44_coins.format_duration(estimated_remaining)}"
+            )
+            percentage = f"{(index / len(creates)) * 100:.1f}".replace(".", ",")
+            issue_period = str(item.get("issuePeriod") or "")
+            period_text = f" ({issue_period})" if issue_period else ""
+            print(
+                f"{operation}: {index}/{len(creates)} ({percentage}%) — {country_name} — "
+                f"{item.get('denomination', '')}{period_text} "
+                f"[faltam: {remaining} | "
+                f"demorou nesta: {import_base44_coins.format_duration(item_duration, precise=True)} | "
+                f"decorrido: {import_base44_coins.format_duration(elapsed)} | restante: {remaining_text}]",
+                flush=True,
+            )
 
     return {"updated": updated, "created": created, "skipped": skipped}
 
@@ -1449,7 +1682,7 @@ def main() -> int:
         )
         missing_entries = list(reconcile_result.get("unresolved", []))
         missing_found_entries = list(reconcile_result.get("all", []))
-        plan_creates: list[dict[str, Any]] = []
+        plan_creates = list(reconcile_result.get("creates", []))
     else:
         plan_creates = list(full_plan.get("creates", []))
         missing_entries = [
@@ -1485,12 +1718,19 @@ def main() -> int:
         "creates": plan_creates,
     }
 
+    if plan_creates:
+        print("\nConfirmadas como inexistentes no Site Base44 — prontas para revisão final:")
+        for item in plan_creates:
+            print(
+                f"- {item.get('denomination', '')} "
+                f"({item.get('issuePeriod', '')}): {item.get('ucoinUrl', '')}"
+            )
     if missing_entries:
-        print("\nMissing na API (entrada no terminal):")
+        print("\nSem associação e sem criação autorizada:")
         for item in missing_entries:
             print(f"- {item.get('denomination', '')}: {item.get('ucoinUrl', '')}")
-    else:
-        print("\nMissing na API: nenhum")
+    elif not plan_creates:
+        print("\nSem moedas pendentes de associação ou criação.")
 
     save_missing_found(
         missing_found_path,
@@ -1599,13 +1839,77 @@ def main() -> int:
                 for item in metadata_updates
             ]
             update_name_match_application_status(name_decisions_path, cancelled_results)
-            print("Aplicação cancelada. As decisões ficaram guardadas no JSON.")
-            return 0
+            cancelled_record_ids = {
+                str(item.get("record_id") or "")
+                for item in metadata_updates
+            }
+            plan["updates"] = [
+                item
+                for item in plan.get("updates", [])
+                if str(item.get("record_id") or "") not in cancelled_record_ids
+            ]
+            print("Alterações de nome/anos canceladas. As decisões ficaram guardadas no JSON.")
+
+    confirmed_creates = list(plan.get("creates", []))
+    if confirmed_creates and args.reconcile_missing_interactive:
+        continent = args.continent or continent_label_for_country(country_name)
+        if not continent:
+            raise ValueError(f"Missing continent for {country_name}. Pass --continent.")
+        options = {
+            "country": country_name,
+            "continent": continent,
+            "condition": args.condition,
+        }
+        print("\nMoedas confirmadas para criar no Site Base44:")
+        for item in confirmed_creates:
+            record = import_base44_coins.to_coin_record(
+                (item["period"], item["coin"]),
+                options,
+                int(item.get("ordem", 1)),
+            )
+            photos = []
+            if record.get("image_frente"):
+                photos.append("frente")
+            if record.get("image_verso"):
+                photos.append("verso")
+            photo_text = " e ".join(photos) if photos else "nenhuma"
+            print(f"- {record.get('name', '')} ({record.get('years', '')})")
+            print(f"  - Raridade: {record.get('rarity', '')}")
+            print(f"  - Fotografias: {photo_text}")
+            print(f"  - uCoin: {record.get('url_ucoin', '')}")
+        create_label = "moeda" if len(confirmed_creates) == 1 else "moedas"
+        try:
+            create_choice = input(
+                f"Criar exatamente {len(confirmed_creates)} {create_label} "
+                "no Site Base44? [s/N]: "
+            ).strip().lower()
+        except EOFError:
+            create_choice = ""
+        if create_choice not in {"y", "yes", "s", "sim"}:
+            cancelled_results = [
+                {
+                    "record_id": "",
+                    "ucoin_url": str(item.get("ucoinUrl") or ""),
+                    "fields": ["create"],
+                    "status": "approved_not_applied",
+                    "message": "criação final cancelada",
+                }
+                for item in confirmed_creates
+            ]
+            update_creation_application_status(name_decisions_path, cancelled_results)
+            plan["creates"] = []
+            print("Criação cancelada. A decisão ficou guardada no JSON.")
+
+    if not plan.get("updates") and not plan.get("creates"):
+        print("Nenhuma alteração autorizada para aplicar.")
+        return 0
 
     application_results: list[dict[str, Any]] = []
     results = apply_plan(args, country_name, plan, application_results)
     update_name_match_application_status(name_decisions_path, application_results)
+    update_creation_application_status(name_decisions_path, application_results)
     confirm_applied_name_matches(missing_found_path, application_results)
+    confirm_created_matches(missing_found_path, application_results)
     print(f"Applied fixes: updated={results['updated']} created={results['created']}")
     return 0
 
