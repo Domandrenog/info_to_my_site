@@ -253,6 +253,64 @@ def build_fix_plan(report: dict[str, Any], catalog_index: dict[str, tuple[dict[s
     return {"updates": updates, "creates": creates}
 
 
+def consolidate_updates(updates: list[dict[str, Any]]) -> tuple[list[dict[str, Any]], list[dict[str, Any]]]:
+    """Merge duplicate proposals for one API record and isolate conflicting values."""
+    grouped: dict[str, list[dict[str, Any]]] = {}
+    for index, item in enumerate(updates):
+        record_id = str(item.get("record_id") or "")
+        key = record_id or f"missing-record-id-{index}"
+        grouped.setdefault(key, []).append(item)
+
+    consolidated: list[dict[str, Any]] = []
+    conflicts: list[dict[str, Any]] = []
+    for record_id, items in grouped.items():
+        base = dict(items[0])
+        merged_set: dict[str, Any] = {}
+        merged_current: dict[str, Any] = {}
+        fields = {
+            field
+            for item in items
+            for field in item.get("set", {})
+            if isinstance(item.get("set"), dict)
+        }
+        for field in fields:
+            proposals = {
+                str(item.get("set", {}).get(field) or "")
+                for item in items
+                if isinstance(item.get("set"), dict) and field in item.get("set", {})
+            }
+            if len(proposals) > 1:
+                conflicts.append(
+                    {
+                        "record_id": record_id,
+                        "field": field,
+                        "values": sorted(proposals),
+                        "coins": [
+                            {
+                                "denomination": str(item.get("denomination") or ""),
+                                "issuePeriod": str(item.get("issuePeriod") or ""),
+                            }
+                            for item in items
+                            if isinstance(item.get("set"), dict) and field in item.get("set", {})
+                        ],
+                    }
+                )
+                continue
+            merged_set[field] = next(iter(proposals))
+            for item in items:
+                current = item.get("current", {})
+                if isinstance(current, dict) and field in current:
+                    merged_current[field] = current[field]
+                    break
+
+        if merged_set:
+            base["set"] = merged_set
+            base["current"] = merged_current
+            consolidated.append(base)
+
+    return consolidated, conflicts
+
+
 def collect_global_fix_plan(
     paises_dir: Path,
     all_coins_dir: Path,
@@ -267,6 +325,8 @@ def collect_global_fix_plan(
     updates: list[dict[str, Any]] = []
     missing: list[dict[str, Any]] = []
     errors: list[dict[str, str]] = []
+    notes_status: list[dict[str, Any]] = []
+    conflicts: list[dict[str, Any]] = []
     manual_counts = {"photos": 0}
 
     for country_slug in checker.country_slugs_with_catalog(paises_dir, catalog_filename):
@@ -289,8 +349,41 @@ def collect_global_fix_plan(
         catalog_index, catalog_data = load_catalog_index(country_dir / catalog_filename)
         country_name = str(catalog_data.get("country") or country_name)
         country_plan = build_fix_plan(report, catalog_index)
+        country_updates, country_conflicts = consolidate_updates(list(country_plan.get("updates", [])))
+        for conflict in country_conflicts:
+            conflicts.append({**conflict, "country": country_name, "country_slug": country_slug})
+        api_country = checker.api_country_name(country_slug, country_name)
+        country_api_records = api_records_by_country.get(checker.slugify(api_country), [])
+        records_with_notes = sum(
+            1
+            for record in country_api_records
+            if str(record.get("notes") or "").strip()
+        )
+        fixable_missing_notes = sum(
+            1
+            for item in country_updates
+            if "notes" in item.get("set", {})
+        )
+        total_api_records = len(country_api_records)
+        if not records_with_notes:
+            notes_state = "none"
+        elif records_with_notes < total_api_records:
+            notes_state = "partial"
+        else:
+            notes_state = "complete"
+        notes_status.append(
+            {
+                "country": country_name,
+                "country_slug": country_slug,
+                "total": total_api_records,
+                "with_notes": records_with_notes,
+                "without_notes": total_api_records - records_with_notes,
+                "fixable_missing_notes": fixable_missing_notes,
+                "state": notes_state,
+            }
+        )
 
-        for item in country_plan.get("updates", []):
+        for item in country_updates:
             updates.append({**item, "country": country_name, "country_slug": country_slug})
         for item in country_plan.get("creates", []):
             missing.append(
@@ -312,6 +405,8 @@ def collect_global_fix_plan(
         "updates": updates,
         "missing": missing,
         "errors": errors,
+        "notes_status": notes_status,
+        "conflicts": conflicts,
         "manual_counts": manual_counts,
     }
 
@@ -346,6 +441,27 @@ def select_update_fields(plan: dict[str, Any], selected_fields: list[str] | tupl
             if isinstance(raw_current, dict)
         }
         updates.append({**item, "current": selected_current, "set": selected_set})
+    return {**plan, "updates": updates}
+
+
+def restrict_update_field_to_countries(
+    plan: dict[str, Any],
+    field: str,
+    country_slugs: set[str],
+) -> dict[str, Any]:
+    """Keep one selected field only for the explicitly allowed countries."""
+    if field not in SAFE_UPDATE_FIELDS:
+        raise ValueError(f"Campo não permitido: {field}")
+
+    updates: list[dict[str, Any]] = []
+    for item in plan.get("updates", []):
+        set_fields = dict(item.get("set", {}))
+        current_fields = dict(item.get("current", {}))
+        if field in set_fields and str(item.get("country_slug") or "") not in country_slugs:
+            set_fields.pop(field, None)
+            current_fields.pop(field, None)
+        if set_fields:
+            updates.append({**item, "current": current_fields, "set": set_fields})
     return {**plan, "updates": updates}
 
 

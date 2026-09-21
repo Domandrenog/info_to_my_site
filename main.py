@@ -559,6 +559,112 @@ def action_check_differences() -> None:
     subprocess.run(reconcile_command, cwd=PROJECT_DIR, check=False)
 
 
+def print_notes_status(plan: dict[str, object]) -> None:
+    entries = [
+        item
+        for item in plan.get("notes_status", [])
+        if isinstance(item, dict) and int(item.get("total", 0)) > 0
+    ]
+    if not entries:
+        return
+
+    state_order = {"none": 0, "partial": 1, "complete": 2}
+    state_labels = {
+        "none": "nenhuma",
+        "partial": "parcial",
+        "complete": "completa",
+    }
+    print("\nEstado atual de notes por país:")
+    for item in sorted(
+        entries,
+        key=lambda value: (
+            state_order.get(str(value.get("state") or ""), 3),
+            str(value.get("country") or ""),
+        ),
+    ):
+        state = str(item.get("state") or "")
+        with_notes = int(item.get("with_notes", 0))
+        total = int(item.get("total", 0))
+        fixable = int(item.get("fixable_missing_notes", 0))
+        fixable_text = f"; {fixable} correções seguras disponíveis" if fixable else ""
+        print(
+            f"- {item.get('country', '')}: {state_labels.get(state, state)} "
+            f"({with_notes}/{total} moedas com notes{fixable_text})"
+        )
+
+
+def choose_notes_country_scope(plan: dict[str, object]) -> set[str] | None:
+    candidates = [
+        item
+        for item in plan.get("notes_status", [])
+        if isinstance(item, dict) and int(item.get("fixable_missing_notes", 0)) > 0
+    ]
+    if not candidates:
+        return set()
+
+    all_country_slugs = {str(item.get("country_slug") or "") for item in candidates}
+    countries_without_notes = [item for item in candidates if item.get("state") == "none"]
+    choices: list[tuple[str, set[str] | None]] = []
+    if countries_without_notes:
+        slugs = {str(item.get("country_slug") or "") for item in countries_without_notes}
+        coin_count = sum(int(item.get("fixable_missing_notes", 0)) for item in countries_without_notes)
+        choices.append(
+            (
+                "Apenas países sem nenhuma note e com correções seguras — "
+                f"{len(slugs)} países, {coin_count} moedas",
+                slugs,
+            )
+        )
+    choices.append(
+        (
+            "Todas as notes em falta — "
+            f"{len(all_country_slugs)} países, "
+            f"{sum(int(item.get('fixable_missing_notes', 0)) for item in candidates)} moedas",
+            all_country_slugs,
+        )
+    )
+    choices.append(("Escolher países", None))
+
+    print("\nOnde queres preencher notes?")
+    for index, (label, _) in enumerate(choices, start=1):
+        print(f"{index}) {label}")
+    print("0) Cancelar")
+
+    while True:
+        choice = ask_text("Escolhe o âmbito de notes", "1")
+        if choice == "0":
+            return None
+        try:
+            selected_index = int(choice) - 1
+            if selected_index < 0 or selected_index >= len(choices):
+                raise IndexError
+        except (ValueError, IndexError):
+            print("Escolhe uma das opções apresentadas.")
+            continue
+
+        selected_slugs = choices[selected_index][1]
+        if selected_slugs is not None:
+            return selected_slugs
+
+        print("\nPaíses com correções de notes disponíveis:")
+        for index, item in enumerate(candidates, start=1):
+            state_label = "nenhuma" if item.get("state") == "none" else "parcial"
+            print(
+                f"{index}) {item.get('country', '')} — {state_label}; "
+                f"{item.get('fixable_missing_notes', 0)} moedas"
+            )
+        while True:
+            selection = ask_text("Números dos países, separados por vírgulas", "")
+            try:
+                indexes = {int(value.strip()) for value in selection.split(",") if value.strip()}
+            except ValueError:
+                indexes = set()
+            if not indexes or any(index < 1 or index > len(candidates) for index in indexes):
+                print("Indica pelo menos um número válido da lista.")
+                continue
+            return {str(candidates[index - 1].get("country_slug") or "") for index in indexes}
+
+
 def action_autofix_issues() -> None:
     title("Corrigir dados no Site Base44")
     print("Analisa todos os países e só permite alterar os campos escolhidos.")
@@ -581,6 +687,17 @@ def action_autofix_issues() -> None:
             print(f"- {item.get('country', '')}: {item.get('error', '')}")
         print("\nOperação bloqueada: o diagnóstico global ficou incompleto.")
         return
+
+    conflicts = plan.get("conflicts", [])
+    if conflicts:
+        print(f"\nConflitos excluídos das correções automáticas: {len(conflicts)}")
+        print("O mesmo registo recebeu propostas diferentes; estes campos não serão alterados.")
+        for item in conflicts:
+            coins = ", ".join(
+                f"{coin.get('denomination', '')} ({coin.get('issuePeriod', '')})"
+                for coin in item.get("coins", [])
+            )
+            print(f"- {item.get('country', '')}: {item.get('field', '')} — {coins}")
 
     missing = plan.get("missing", [])
     if missing:
@@ -613,6 +730,9 @@ def action_autofix_issues() -> None:
         print("\nNão existem correções automáticas disponíveis para notes ou URL do uCoin.")
         return
 
+    if "notes" in counts:
+        print_notes_status(plan)
+
     field_labels = {
         "url_ucoin": "Corrigir URL do uCoin",
         "notes": "Preencher notes",
@@ -643,7 +763,20 @@ def action_autofix_issues() -> None:
             print("Escolhe uma das opções apresentadas.")
 
     selected_plan = fix_site_issues_api.select_update_fields(plan, selected_fields)
+    if "notes" in selected_fields:
+        selected_note_countries = choose_notes_country_scope(selected_plan)
+        if selected_note_countries is None:
+            print("Operação cancelada. A API não foi alterada.")
+            return
+        selected_plan = fix_site_issues_api.restrict_update_field_to_countries(
+            selected_plan,
+            "notes",
+            selected_note_countries,
+        )
     updates = selected_plan.get("updates", [])
+    if not updates:
+        print("Não existem alterações seguras dentro do âmbito escolhido. A API não foi alterada.")
+        return
     total_changes = sum(len(item.get("set", {})) for item in updates)
     print(f"\nAlterações propostas: {total_changes} campos em {len(updates)} moedas")
 

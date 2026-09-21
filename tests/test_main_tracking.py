@@ -151,6 +151,71 @@ class MainTrackingActionTests(unittest.TestCase):
         self.assertEqual(applied_plan["updates"][0]["set"], {"url_ucoin": "https://pt.ucoin.net/coin/example"})
         self.assertNotIn("fotografias a rever", output.getvalue().lower())
 
+    @patch("main.fix_site_issues_api.apply_plan", return_value={"updated": 1, "created": 0, "skipped": 0})
+    @patch("main.ask_yes_no", return_value=True)
+    @patch("main.ask_text", side_effect=["1", "1"])
+    @patch("main.fix_site_issues_api.collect_global_fix_plan")
+    @patch("main.title")
+    def test_autofix_can_limit_notes_to_countries_without_any_notes(
+        self,
+        _title,
+        collect,
+        _ask_text,
+        _confirm,
+        apply_plan,
+    ) -> None:
+        collect.return_value = {
+            "updates": [
+                {
+                    "country": "Bahamas",
+                    "country_slug": "bahamas",
+                    "denomination": "1 cent",
+                    "record_id": "record-1",
+                    "current": {"notes": ""},
+                    "set": {"notes": "Bahamas"},
+                },
+                {
+                    "country": "Brasil",
+                    "country_slug": "brasil",
+                    "denomination": "1 real",
+                    "record_id": "record-2",
+                    "current": {"notes": ""},
+                    "set": {"notes": "República Federativa do Brasil"},
+                },
+            ],
+            "notes_status": [
+                {
+                    "country": "Bahamas",
+                    "country_slug": "bahamas",
+                    "total": 24,
+                    "with_notes": 0,
+                    "without_notes": 24,
+                    "fixable_missing_notes": 1,
+                    "state": "none",
+                },
+                {
+                    "country": "Brasil",
+                    "country_slug": "brasil",
+                    "total": 14,
+                    "with_notes": 10,
+                    "without_notes": 4,
+                    "fixable_missing_notes": 1,
+                    "state": "partial",
+                },
+            ],
+            "missing": [],
+            "errors": [],
+            "manual_counts": {"photos": 0},
+        }
+
+        with redirect_stdout(io.StringIO()) as output:
+            main.action_autofix_issues()
+
+        applied_updates = apply_plan.call_args.args[2]["updates"]
+        self.assertEqual([item["country"] for item in applied_updates], ["Bahamas"])
+        self.assertIn("Bahamas: nenhuma (0/24 moedas com notes", output.getvalue())
+        self.assertIn("Brasil: parcial (10/14 moedas com notes", output.getvalue())
+
 
 if __name__ == "__main__":
     unittest.main()

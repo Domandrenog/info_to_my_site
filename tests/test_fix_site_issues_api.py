@@ -13,6 +13,33 @@ from scripts import fix_site_issues_api
 
 
 class FixSiteIssuesPlanTests(unittest.TestCase):
+    def test_consolidate_updates_merges_duplicates_and_excludes_conflicting_fields(self) -> None:
+        duplicate_updates = [
+            {
+                "record_id": "record-1",
+                "denomination": "1 fen",
+                "current": {"notes": "", "url_ucoin": ""},
+                "set": {"notes": "República Popular", "url_ucoin": "https://example.test/1"},
+            },
+            {
+                "record_id": "record-1",
+                "denomination": "1 fen",
+                "current": {"notes": "", "url_ucoin": ""},
+                "set": {"notes": "República Popular", "url_ucoin": "https://example.test/2"},
+            },
+        ]
+
+        updates, conflicts = fix_site_issues_api.consolidate_updates(duplicate_updates)
+
+        self.assertEqual(len(updates), 1)
+        self.assertEqual(updates[0]["set"], {"notes": "República Popular"})
+        self.assertEqual(len(conflicts), 1)
+        self.assertEqual(conflicts[0]["field"], "url_ucoin")
+        self.assertEqual(
+            conflicts[0]["values"],
+            ["https://example.test/1", "https://example.test/2"],
+        )
+
     def test_build_plan_keeps_current_and_proposed_values(self) -> None:
         report = {
             "coins_with_issues": [
@@ -63,6 +90,34 @@ class FixSiteIssuesPlanTests(unittest.TestCase):
         self.assertEqual(selected["updates"][0]["set"], {"url_ucoin": "https://example.test"})
         self.assertEqual(selected["missing"], plan["missing"])
 
+    def test_restrict_notes_scope_keeps_other_selected_fields(self) -> None:
+        plan = {
+            "updates": [
+                {
+                    "country_slug": "bahamas",
+                    "current": {"notes": "", "url_ucoin": ""},
+                    "set": {"notes": "Bahamas", "url_ucoin": "https://example.test/bahamas"},
+                },
+                {
+                    "country_slug": "brasil",
+                    "current": {"notes": "", "url_ucoin": ""},
+                    "set": {"notes": "Brasil", "url_ucoin": "https://example.test/brasil"},
+                },
+            ]
+        }
+
+        selected = fix_site_issues_api.restrict_update_field_to_countries(plan, "notes", {"bahamas"})
+
+        self.assertEqual(
+            selected["updates"][0]["set"],
+            {"notes": "Bahamas", "url_ucoin": "https://example.test/bahamas"},
+        )
+        self.assertEqual(
+            selected["updates"][1]["set"],
+            {"url_ucoin": "https://example.test/brasil"},
+        )
+        self.assertEqual(selected["updates"][1]["current"], {"url_ucoin": ""})
+
     def test_collect_global_plan_reuses_one_api_snapshot(self) -> None:
         with tempfile.TemporaryDirectory() as temp_dir:
             paises_dir = Path(temp_dir) / "paises"
@@ -104,7 +159,17 @@ class FixSiteIssuesPlanTests(unittest.TestCase):
             }
 
             with (
-                patch.object(fix_site_issues_api.checker, "api_records_for_all_countries", return_value=([], None)) as api,
+                patch.object(
+                    fix_site_issues_api.checker,
+                    "api_records_for_all_countries",
+                    return_value=(
+                        [
+                            {"country": "País Teste", "notes": ""},
+                            {"country": "País Teste", "notes": "República"},
+                        ],
+                        None,
+                    ),
+                ) as api,
                 patch.object(fix_site_issues_api.checker, "compare_country", return_value=report) as compare,
             ):
                 plan = fix_site_issues_api.collect_global_fix_plan(paises_dir, Path(temp_dir) / "All_Coins")
@@ -113,6 +178,20 @@ class FixSiteIssuesPlanTests(unittest.TestCase):
         self.assertEqual(compare.call_count, 1)
         self.assertEqual(plan["updates"][0]["country"], "País Teste")
         self.assertEqual(plan["manual_counts"], {"photos": 2})
+        self.assertEqual(
+            plan["notes_status"],
+            [
+                {
+                    "country": "País Teste",
+                    "country_slug": "pais-teste",
+                    "total": 2,
+                    "with_notes": 1,
+                    "without_notes": 1,
+                    "fixable_missing_notes": 1,
+                    "state": "partial",
+                }
+            ],
+        )
 
 
 class FixSiteIssuesApplyTests(unittest.TestCase):
