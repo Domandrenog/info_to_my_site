@@ -271,6 +271,94 @@ def api_records_for_country(country_name: str) -> tuple[list[dict[str, object]] 
         return None, str(exc)
 
 
+def api_records_for_all_countries() -> tuple[list[dict[str, object]] | None, str | None]:
+    try:
+        from scripts import import_base44_coins
+
+        args = import_base44_coins.parse_args.__globals__.get("argparse")
+        ns = args.Namespace(request_delay=0.0, rate_limit_delay=0.0, max_retries=0)
+        client = import_base44_coins.create_client(ns)
+        records: list[dict[str, object]] = []
+        page_size = 1000
+        skip = 0
+        while True:
+            result = client.filter({}, limit=page_size, skip=skip)
+            if not isinstance(result, list):
+                raise RuntimeError(f"Unexpected Base44 list response: {result!r}")
+            records.extend(record for record in result if isinstance(record, dict))
+            if len(result) < page_size:
+                return records, None
+            skip += page_size
+    except Exception as exc:  # noqa: BLE001
+        return None, str(exc)
+
+
+def group_api_records_by_country(records: list[dict[str, object]]) -> dict[str, list[dict[str, object]]]:
+    grouped: dict[str, list[dict[str, object]]] = {}
+    for record in records:
+        country = str(record.get("country") or "").strip()
+        country_key = slugify(country)
+        if country_key:
+            grouped.setdefault(country_key, []).append(record)
+    return grouped
+
+
+def tracked_api_country_keys(paises_dir: Path, country_slugs: list[str], catalog_filename: str) -> set[str]:
+    tracked: set[str] = set()
+    for country_slug in country_slugs:
+        try:
+            country_dir = find_country_directory(paises_dir, country_slug)
+        except ValueError:
+            continue
+        country_catalog = country_dir / catalog_filename
+        if not country_catalog.is_file():
+            continue
+        data = json.loads(country_catalog.read_text(encoding="utf-8"))
+        country_name = str(data.get("country") or country_slug)
+        tracked.add(slugify(api_country_name(country_slug, country_name)))
+    return tracked
+
+
+def untracked_api_countries(
+    grouped_api_records: dict[str, list[dict[str, object]]],
+    tracked_country_keys: set[str],
+) -> list[dict[str, object]]:
+    countries: list[dict[str, object]] = []
+    for country_key, records in grouped_api_records.items():
+        if country_key in tracked_country_keys:
+            continue
+        country_names = sorted(
+            {
+                str(record.get("country") or "").strip()
+                for record in records
+                if str(record.get("country") or "").strip()
+            },
+            key=slugify,
+        )
+        countries.append(
+            {
+                "country": country_names[0] if country_names else country_key,
+                "coin_count": len(records),
+            }
+        )
+    return sorted(countries, key=lambda item: slugify(str(item["country"])))
+
+
+def api_tracking_report(countries: list[dict[str, object]]) -> dict[str, object]:
+    return {
+        "report_type": "api_country_tracking",
+        "country": "api-country-tracking",
+        "country_name": "Países na API sem tracking local",
+        "summary": {
+            "total_countries": len(countries),
+            "total_issues": len(countries),
+            "by_type": {"untracked_api_country": len(countries)} if countries else {},
+        },
+        "countries": countries,
+        "coins_with_issues": [],
+    }
+
+
 def association_record_id(entry: dict[str, object]) -> str:
     record_id = str(entry.get("record_id") or "")
     if record_id:
@@ -313,6 +401,7 @@ def compare_country(
     include_markdown_as_issue: bool,
     check_api: bool,
     include_warnings: bool,
+    api_records_by_country: dict[str, list[dict[str, object]]] | None = None,
 ) -> dict[str, object]:
     try:
         country_dir = find_country_directory(paises_dir, country_slug)
@@ -362,7 +451,11 @@ def compare_country(
     by_record_id: dict[str, dict[str, object]] = {}
 
     if check_api:
-        api_records, _ = api_records_for_country(api_country_name(country_slug, country_name))
+        api_country = api_country_name(country_slug, country_name)
+        if api_records_by_country is None:
+            api_records, _ = api_records_for_country(api_country)
+        else:
+            api_records = api_records_by_country.get(slugify(api_country), [])
         if api_records is not None:
             for record in api_records:
                 if not isinstance(record, dict):
@@ -577,14 +670,45 @@ def print_text_report(report: dict[str, object], include_warnings: bool) -> None
     if not isinstance(summary, dict):
         summary = {}
     total_issues = int(summary.get("total_issues", 0))
-    print(f"\n{country}: {total_issues} {count_label(total_issues, 'issue', 'issues')}")
-    print_count_breakdown(summary.get("by_type", {}), singular="issue", plural="issues")
+
+    if report.get("report_type") == "api_country_tracking":
+        countries = report.get("countries", [])
+        if not isinstance(countries, list) or not countries:
+            return
+        print(f"\n{country}: {len(countries)}")
+        for item in countries:
+            if not isinstance(item, dict):
+                continue
+            coin_count = int(item.get("coin_count", 0))
+            print(f"- {item.get('country', '')}: {coin_count} {count_label(coin_count, 'moeda', 'moedas')}")
+        return
+
+    total_warnings = int(summary.get("total_warnings", 0)) if include_warnings else 0
+    if total_issues == 0 and total_warnings == 0:
+        return
+
+    if total_issues:
+        print(f"\n{country}: {total_issues} {count_label(total_issues, 'issue', 'issues')}")
+        print_count_breakdown(summary.get("by_type", {}), singular="issue", plural="issues")
+    else:
+        print(f"\n{country}: {total_warnings} {count_label(total_warnings, 'warning', 'warnings')}")
 
     if include_warnings:
-        total_warnings = int(summary.get("total_warnings", 0))
         if total_warnings:
-            print(f"Warnings: {total_warnings}")
+            if total_issues:
+                print(f"Warnings: {total_warnings}")
             print_count_breakdown(summary.get("warnings_by_type", {}), singular="warning", plural="warnings")
+
+
+def report_has_output(report: dict[str, object], include_warnings: bool) -> bool:
+    if report.get("error"):
+        return True
+    summary = report.get("summary", {})
+    if not isinstance(summary, dict):
+        return False
+    if int(summary.get("total_issues", 0)) > 0:
+        return True
+    return include_warnings and int(summary.get("total_warnings", 0)) > 0
 
 
 def main() -> int:
@@ -597,6 +721,17 @@ def main() -> int:
     else:
         countries = sorted(path.name for path in iter_country_directories(paises_dir))
 
+    check_api = not args.no_check_api
+    api_records_by_country: dict[str, list[dict[str, object]]] | None = None
+    api_tracking_error = ""
+    if check_api and not args.country:
+        all_api_records, api_error = api_records_for_all_countries()
+        if all_api_records is None:
+            api_tracking_error = api_error or "Erro desconhecido ao consultar a API Base44."
+            check_api = False
+        else:
+            api_records_by_country = group_api_records_by_country(all_api_records)
+
     reports = [
         compare_country(
             paises_dir,
@@ -604,11 +739,30 @@ def main() -> int:
             country,
             args.catalog_file,
             args.include_markdown_as_issue,
-            not args.no_check_api,
+            check_api,
             args.include_warnings,
+            api_records_by_country,
         )
         for country in countries
     ]
+
+    if api_records_by_country is not None:
+        tracked_country_keys = tracked_api_country_keys(paises_dir, countries, args.catalog_file)
+        missing_tracking = untracked_api_countries(api_records_by_country, tracked_country_keys)
+        if missing_tracking:
+            reports.append(api_tracking_report(missing_tracking))
+    elif api_tracking_error:
+        reports.append(
+            {
+                "report_type": "api_country_tracking",
+                "country": "api-country-tracking",
+                "country_name": "Tracking de países da API",
+                "summary": {"total_issues": 0, "by_type": {}},
+                "countries": [],
+                "coins_with_issues": [],
+                "error": api_tracking_error,
+            }
+        )
 
     total_issues = 0
     has_errors = False
@@ -619,11 +773,13 @@ def main() -> int:
         if isinstance(summary, dict):
             total_issues += int(summary.get("total_issues", 0))
 
+    visible_reports = [report for report in reports if report_has_output(report, args.include_warnings)]
+
     if args.output:
         output_path = Path(args.output)
         if total_issues > 0 and not has_errors:
             output_path.parent.mkdir(parents=True, exist_ok=True)
-            output_path.write_text(json.dumps(reports, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+            output_path.write_text(json.dumps(visible_reports, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
             print(f"Saved {output_path}")
         elif output_path.exists():
             output_path.unlink()
@@ -632,12 +788,12 @@ def main() -> int:
             print("No differences found. Output file was not created.")
 
     if args.json:
-        print(json.dumps(reports, ensure_ascii=False, indent=2))
+        print(json.dumps(visible_reports, ensure_ascii=False, indent=2))
     else:
-        for report in reports:
+        for report in visible_reports:
             print_text_report(report, args.include_warnings)
 
-    return 1 if total_issues else 0
+    return 1 if total_issues or has_errors else 0
 
 
 if __name__ == "__main__":

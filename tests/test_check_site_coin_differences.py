@@ -8,9 +8,12 @@ from pathlib import Path
 
 from scripts.check_site_coin_differences import (
     api_country_name,
+    api_tracking_report,
     build_reverse_map,
     find_all_coins_country_folder,
+    group_api_records_by_country,
     print_text_report,
+    untracked_api_countries,
 )
 
 
@@ -72,6 +75,45 @@ class CheckSiteCoinDifferencesOutputTests(unittest.TestCase):
 
         self.assertEqual(self.render(report), "Pais Teste: error\n- Catalog not found")
 
+    def test_text_report_hides_countries_without_issues(self) -> None:
+        report = {
+            "country": "sri-lanka",
+            "country_name": "Sri Lanka",
+            "summary": {"total_issues": 0, "by_type": {}},
+        }
+
+        self.assertEqual(self.render(report), "")
+
+    def test_text_report_does_not_print_zero_issues_when_only_warnings_exist(self) -> None:
+        report = {
+            "country": "sri-lanka",
+            "country_name": "Sri Lanka",
+            "summary": {
+                "total_issues": 0,
+                "by_type": {},
+                "total_warnings": 1,
+                "warnings_by_type": {"multiple_api_matches": 1},
+            },
+        }
+
+        self.assertEqual(
+            self.render(report, include_warnings=True),
+            "Sri Lanka: 1 warning\n- Multiple API matches: 1 warning",
+        )
+
+    def test_text_report_lists_api_countries_without_local_tracking(self) -> None:
+        report = api_tracking_report(
+            [
+                {"country": "Portugal", "coin_count": 60},
+                {"country": "Alemanha", "coin_count": 1},
+            ]
+        )
+
+        self.assertEqual(
+            self.render(report),
+            "Países na API sem tracking local: 2\n- Portugal: 60 moedas\n- Alemanha: 1 moeda",
+        )
+
 
 class AllCoinsPathTests(unittest.TestCase):
     def test_api_country_name_resolves_base44_alias(self) -> None:
@@ -121,6 +163,21 @@ class AllCoinsPathTests(unittest.TestCase):
                     "ucoin_url": "https://i.ucoin.net/coin-front.jpg",
                 },
             )
+
+
+class ApiCountryTrackingTests(unittest.TestCase):
+    def test_untracked_api_countries_are_grouped_and_counted(self) -> None:
+        records = [
+            {"country": "Maurícia", "id": "1"},
+            {"country": "Portugal", "id": "2"},
+            {"country": "Portugal", "id": "3"},
+            {"country": "", "id": "4"},
+        ]
+
+        grouped = group_api_records_by_country(records)
+        missing = untracked_api_countries(grouped, {"mauricia"})
+
+        self.assertEqual(missing, [{"country": "Portugal", "coin_count": 2}])
 
 
 if __name__ == "__main__":
