@@ -6,11 +6,13 @@ import tempfile
 import unittest
 from contextlib import redirect_stdout
 from pathlib import Path
+from unittest.mock import patch
 
 from scripts.check_site_coin_differences import (
     api_country_name,
     api_tracking_report,
     build_reverse_map,
+    compare_country,
     country_slugs_with_catalog,
     detail_stem,
     find_all_coins_country_folder,
@@ -141,8 +143,10 @@ class CheckSiteCoinDifferencesOutputTests(unittest.TestCase):
             "- Sem notes: 19 moedas\n"
             "\n"
             "Catálogo local: 21 moedas\n"
-            "- Sem fotografia: 1 moeda\n"
-            "  - 10 piso (2025): frente e verso em falta",
+            "\n"
+            "Fonte uCoin:\n"
+            "- Sem fotografia disponível: 1 moeda\n"
+            "  - 10 piso (2025): frente e verso não disponíveis",
         )
 
     def test_text_report_uses_singular_and_compact_warnings(self) -> None:
@@ -293,6 +297,69 @@ class CheckSiteCoinDifferencesOutputTests(unittest.TestCase):
 
 
 class AllCoinsPathTests(unittest.TestCase):
+    def test_unique_name_and_year_associate_coin_without_source_photos(self) -> None:
+        with tempfile.TemporaryDirectory() as temp_dir:
+            root = Path(temp_dir)
+            paises_dir = root / "paises"
+            country_dir = paises_dir / "africa" / "africa-do-sul"
+            country_dir.mkdir(parents=True)
+            (country_dir / "app-catalog.json").write_text(
+                json.dumps(
+                    {
+                        "country": "África do Sul",
+                        "periods": [
+                            {
+                                "title": "África do Sul › República da África do Sul › 2026",
+                                "coins": [
+                                    {
+                                        "denomination": "10 cêntimos",
+                                        "issuePeriod": "2026",
+                                        "detailUrl": "https://pt.ucoin.net/coin/south-africa-10-cents-2026",
+                                        "obverseImage": "",
+                                        "reverseImage": "",
+                                    }
+                                ],
+                            }
+                        ],
+                    }
+                ),
+                encoding="utf-8",
+            )
+            all_coins_dir = root / "All_Coins"
+            image_dir = all_coins_dir / "fotos" / "paises" / "Africa" / "AfricaDoSul" / "normal"
+            image_dir.mkdir(parents=True)
+            (image_dir / "links-internos.txt").write_text("", encoding="utf-8")
+            (image_dir / "links-externos.txt").write_text("", encoding="utf-8")
+            api_record = {
+                "id": "record-1",
+                "country": "África do Sul",
+                "name": "10 cêntimos",
+                "years": "2026",
+                "notes": "República da África do Sul",
+                "url_ucoin": "https://pt.ucoin.net/coin/south-africa-10-cents-2026",
+                "image_frente": "",
+                "image_verso": "",
+            }
+
+            with patch.dict("os.environ", {"BASE44_APP_ID": "app-id"}):
+                report = compare_country(
+                    paises_dir,
+                    all_coins_dir,
+                    "africa-do-sul",
+                    "app-catalog.json",
+                    include_markdown_as_issue=False,
+                    check_api=True,
+                    include_warnings=False,
+                    api_records_by_country={"africa-do-sul": [api_record]},
+                )
+
+        coin = report["coins_with_issues"][0]
+        self.assertTrue(coin["siteUrl"].endswith("/record-1"))
+        self.assertEqual(
+            [issue["type"] for issue in coin["issues"]],
+            ["missing_image_url", "missing_image_url"],
+        )
+
     def test_api_country_name_resolves_base44_alias(self) -> None:
         self.assertEqual(api_country_name("mauricia", "Maurícias"), "Maurícia")
         self.assertEqual(api_country_name("eua", "Estados Unidos da América"), "EUA")
