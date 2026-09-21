@@ -15,6 +15,7 @@ from scripts.catalog_paths import (
 class CatalogPathsTests(unittest.TestCase):
     def test_known_country_uses_mapped_continent(self) -> None:
         self.assertEqual(country_directory("África do Sul"), Path("info/paises/africa/africa-do-sul"))
+        self.assertEqual(country_directory("Bahamas"), Path("info/paises/america/bahamas"))
         self.assertEqual(continent_label_for_country("Nova Zelândia"), "Oceânia")
 
     def test_unknown_country_requires_continent(self) -> None:

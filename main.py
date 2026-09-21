@@ -15,6 +15,12 @@ from scripts.catalog_paths import (
     normalize_continent,
     slugify,
 )
+from scripts.plan_missing_country_tracking import (
+    build_collection_command,
+    load_tracking_plans,
+    print_tracking_plans,
+    select_tracking_plans,
+)
 
 PROJECT_DIR = Path(__file__).resolve().parent
 
@@ -225,6 +231,61 @@ def action_scrape_only() -> None:
     add_browser_mode(command)
 
     run_step("Scrape uCoin", command)
+
+
+def action_collect_missing_country_tracking() -> None:
+    title("Recolher países sem tracking local")
+    print("Consulta a Base44, propõe o intervalo por país e só recolhe depois da tua confirmação.")
+    print("Este fluxo cria catálogos locais/pending; não escreve nem apaga registos na Base44.\n")
+
+    plans, error = load_tracking_plans(PROJECT_DIR / CATALOG_ROOT, "app-catalog.json")
+    if plans is None:
+        print(f"Não foi possível consultar a Base44: {error}")
+        return
+    if not plans:
+        print("Todos os países da API já têm tracking local.")
+        return
+
+    print_tracking_plans(plans)
+
+    while True:
+        selection = ask_text("Países a recolher (todos ou números separados por vírgula)", "todos")
+        try:
+            selected_plans = select_tracking_plans(plans, selection)
+            break
+        except ValueError as exc:
+            print(exc)
+
+    browser_args: list[str] = []
+    add_browser_mode(browser_args)
+    commands = [
+        build_collection_command(plan, browser_args=browser_args)
+        for plan in selected_plans
+    ]
+
+    print("\nPlano final:")
+    for index, (plan, command) in enumerate(zip(selected_plans, commands), start=1):
+        print(f"{index}/{len(commands)} — {plan['country']}")
+        print(" ".join(command))
+
+    print("\nSerão criados ucoin-catalog.json e app-catalog-pending.json para cada país.")
+    print("Cada recolha começa no primeiro ano já coberto pela API, para não omitir séries em continuação.")
+    print("Nenhuma moeda será importada para a Base44 nesta etapa.")
+    if not ask_yes_no("Confirmas a recolha de todos os países selecionados?", default=False):
+        print("Recolha cancelada; nenhuma alteração efetuada.")
+        return
+
+    for index, (plan, command) in enumerate(zip(selected_plans, commands), start=1):
+        print(f"\n[{index}/{len(commands)}] A recolher {plan['country']}...", flush=True)
+        try:
+            subprocess.run(command, cwd=PROJECT_DIR, check=True)
+        except subprocess.CalledProcessError as exc:
+            print(f"A recolha de {plan['country']} falhou com código {exc.returncode}.")
+            print("O lote foi interrompido para não avançar sem rever o erro.")
+            return
+
+    print(f"\nRecolha concluída para {len(selected_plans)} países.")
+    print("Revê os app-catalog-pending.json antes de gerar outputs finais ou importar para a Base44.")
 
 
 def action_generate_pending() -> None:
@@ -450,16 +511,19 @@ def menu_importar_ucoin() -> None:
     while True:
         title("Importar Data de uCoin")
         print("1) Pipeline Completo")
-        print("2) Specific Stage")
-        print("3) Voltar")
+        print("2) Recolher países da API sem tracking local")
+        print("3) Specific Stage")
+        print("4) Voltar")
 
         choice = ask_text("Escolhe uma opcao", "1")
         if choice == "1":
             action_pipeline()
         elif choice == "2":
+            action_collect_missing_country_tracking()
+        elif choice == "3":
             menu_specific_stage()
             continue
-        elif choice == "3":
+        elif choice == "4":
             return
         else:
             print("Opcao invalida.")

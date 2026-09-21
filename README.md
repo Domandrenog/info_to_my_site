@@ -111,6 +111,26 @@ python3 -m scripts.import_base44_coins --input info/paises/asia/india/app-catalo
 
 Este comando adiciona apenas moedas que ainda não existem para esse país, usando `country + url_ucoin` para evitar duplicados.
 
+## Planear países da API sem tracking local
+
+O menu principal inclui `Importar Data de uCoin > Recolher países da API sem tracking local`.
+Este fluxo:
+
+1. Consulta todas as moedas da Base44 sem alterar dados.
+2. Identifica países que ainda não têm `info/paises/<continente>/<pais>/app-catalog.json`.
+3. Mostra quantidade de moedas, primeiro e último ano, moeda(s) mais recente(s), alias do uCoin e pasta de destino.
+4. Permite escolher todos os países ou apenas alguns números da lista.
+5. Mostra os comandos completos e pede uma única confirmação antes de começar.
+6. Cria `ucoin-catalog.json` e `app-catalog-pending.json`; não importa nada para a Base44.
+
+Para ver apenas o plano, sem abrir o browser nem criar ficheiros:
+
+```bash
+python3 -m scripts.plan_missing_country_tracking
+```
+
+O ano inicial sugerido é o primeiro ano já coberto pela API. Isto evita perder séries que começaram há vários anos mas continuam a receber novas emissões. Depois da recolha, revê cada `app-catalog-pending.json` antes de gerar os outputs finais ou executar qualquer importação.
+
 ## 1. Abrir Browser
 
 O uCoin pode bloquear pedidos automáticos com Cloudflare. Por isso, o scraper usa um browser real via CDP.
