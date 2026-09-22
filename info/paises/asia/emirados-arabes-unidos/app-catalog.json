@@ -1,0 +1,205 @@
+{
+  "country": "Emirados Árabes Unidos",
+  "periods": [
+    {
+      "title": "Emirados Árabes Unidos › Emirados Unidos › 1973 - 2025",
+      "ruler": "Emirados Unidos",
+      "startYear": 1973,
+      "endYear": 2025,
+      "coins": [
+        {
+          "denomination": "1 fils",
+          "value": 1.0,
+          "unit": "fils",
+          "issuePeriod": "1973 - 2005",
+          "startYear": 1973,
+          "endYear": 2005,
+          "availability": "scarce",
+          "detailUrl": "https://pt.ucoin.net/coin/united_arab_emirates-1-fils-1973-2005/?tid=2611",
+          "obverseImage": "https://i.ucoin.net/coin/13/096/13096734-1s/united_arab_emirates-1-fils-1989.jpg",
+          "reverseImage": "https://i.ucoin.net/coin/13/096/13096734-2s/united_arab_emirates-1-fils-1989.jpg"
+        },
+        {
+          "denomination": "1 fils",
+          "value": 1.0,
+          "unit": "fils",
+          "issuePeriod": "2018",
+          "startYear": 2018,
+          "endYear": 2018,
+          "availability": "scarce",
+          "detailUrl": "https://pt.ucoin.net/coin/united_arab_emirates-1-fils-2018/?tid=81163",
+          "obverseImage": "https://i.ucoin.net/coin/44/857/44857219-1s/united_arab_emirates-1-fils-2018.jpg",
+          "reverseImage": "https://i.ucoin.net/coin/44/857/44857219-2s/united_arab_emirates-1-fils-2018.jpg"
+        },
+        {
+          "denomination": "5 fils",
+          "value": 5.0,
+          "unit": "fils",
+          "issuePeriod": "1973 - 1989",
+          "startYear": 1973,
+          "endYear": 1989,
+          "availability": "scarce",
+          "detailUrl": "https://pt.ucoin.net/coin/united_arab_emirates-5-fils-1973-1989/?tid=2606",
+          "obverseImage": "https://i.ucoin.net/coin/49/728/49728692-1s/united_arab_emirates-5-fils-1973.jpg",
+          "reverseImage": "https://i.ucoin.net/coin/49/728/49728692-2s/united_arab_emirates-5-fils-1973.jpg"
+        },
+        {
+          "denomination": "5 fils",
+          "value": 5.0,
+          "unit": "fils",
+          "issuePeriod": "1996 - 2014",
+          "startYear": 1996,
+          "endYear": 2014,
+          "availability": "scarce",
+          "detailUrl": "https://pt.ucoin.net/coin/united_arab_emirates-5-fils-1996-2014/?tid=2603",
+          "obverseImage": "https://i.ucoin.net/coin/70/972/70972210-1s/united_arab_emirates-5-fils-1996.jpg",
+          "reverseImage": "https://i.ucoin.net/coin/70/972/70972210-2s/united_arab_emirates-5-fils-1996.jpg"
+        },
+        {
+          "denomination": "5 fils",
+          "value": 5.0,
+          "unit": "fils",
+          "issuePeriod": "2018",
+          "startYear": 2018,
+          "endYear": 2018,
+          "availability": "scarce",
+          "detailUrl": "https://pt.ucoin.net/coin/united_arab_emirates-5-fils-2018/?tid=80712",
+          "obverseImage": "https://i.ucoin.net/coin/23/356/23356844-1s/united_arab_emirates-5-fils-2018.jpg",
+          "reverseImage": "https://i.ucoin.net/coin/23/356/23356844-2s/united_arab_emirates-5-fils-2018.jpg"
+        },
+        {
+          "denomination": "10 fils",
+          "value": 10.0,
+          "unit": "fils",
+          "issuePeriod": "1973 - 1989",
+          "startYear": 1973,
+          "endYear": 1989,
+          "availability": "scarce",
+          "detailUrl": "https://pt.ucoin.net/coin/united_arab_emirates-10-fils-1973-1989/?tid=2597",
+          "obverseImage": "https://i.ucoin.net/coin/19/904/19904645-1s/united_arab_emirates-10-fils-1973.jpg",
+          "reverseImage": "https://i.ucoin.net/coin/19/904/19904645-2s/united_arab_emirates-10-fils-1973.jpg"
+        },
+        {
+          "denomination": "10 fils",
+          "value": 10.0,
+          "unit": "fils",
+          "issuePeriod": "1996 - 2011",
+          "startYear": 1996,
+          "endYear": 2011,
+          "availability": "scarce",
+          "detailUrl": "https://pt.ucoin.net/coin/united_arab_emirates-10-fils-1996-2011/?tid=2594",
+          "obverseImage": "https://i.ucoin.net/coin/2/266/2266612-1s/united_arab_emirates-10-fils-2001.jpg",
+          "reverseImage": "https://i.ucoin.net/coin/2/266/2266612-2s/united_arab_emirates-10-fils-2001.jpg"
+        },
+        {
+          "denomination": "10 fils",
+          "value": 10.0,
+          "unit": "fils",
+          "issuePeriod": "2017 - 2018",
+          "startYear": 2017,
+          "endYear": 2018,
+          "availability": "scarce",
+          "detailUrl": "https://pt.ucoin.net/coin/united_arab_emirates-10-fils-2017-2018/?tid=71862",
+          "obverseImage": "https://i.ucoin.net/coin/22/442/22442402-1s/united_arab_emirates-10-fils-2017.jpg",
+          "reverseImage": "https://i.ucoin.net/coin/22/442/22442402-2s/united_arab_emirates-10-fils-2017.jpg"
+        },
+        {
+          "denomination": "25 fils",
+          "value": 25.0,
+          "unit": "fils",
+          "issuePeriod": "1973 - 2011",
+          "startYear": 1973,
+          "endYear": 2011,
+          "availability": "scarce",
+          "detailUrl": "https://pt.ucoin.net/coin/united_arab_emirates-25-fils-1973-2011/?tid=2580",
+          "obverseImage": "https://i.ucoin.net/coin/32/761/32761080-1s/united_arab_emirates-25-fils-1995.jpg",
+          "reverseImage": "https://i.ucoin.net/coin/32/761/32761080-2s/united_arab_emirates-25-fils-1995.jpg"
+        },
+        {
+          "denomination": "25 fils",
+          "value": 25.0,
+          "unit": "fils",
+          "issuePeriod": "2014 - 2022",
+          "startYear": 2014,
+          "endYear": 2022,
+          "availability": "circulating",
+          "detailUrl": "https://pt.ucoin.net/coin/united_arab_emirates-25-fils-2014-2022/?tid=44825",
+          "obverseImage": "https://i.ucoin.net/coin/46/837/46837778-1s/united_arab_emirates-25-fils-2014.jpg",
+          "reverseImage": "https://i.ucoin.net/coin/46/837/46837778-2s/united_arab_emirates-25-fils-2014.jpg"
+        },
+        {
+          "denomination": "50 fils",
+          "value": 50.0,
+          "unit": "fils",
+          "issuePeriod": "1973 - 1989",
+          "startYear": 1973,
+          "endYear": 1989,
+          "availability": "scarce",
+          "detailUrl": "https://pt.ucoin.net/coin/united_arab_emirates-50-fils-1973-1989/?tid=2574",
+          "obverseImage": "https://i.ucoin.net/coin/70/975/70975834-1s/united_arab_emirates-50-fils-1988.jpg",
+          "reverseImage": "https://i.ucoin.net/coin/70/975/70975834-2s/united_arab_emirates-50-fils-1988.jpg"
+        },
+        {
+          "denomination": "50 fils",
+          "value": 50.0,
+          "unit": "fils",
+          "issuePeriod": "1995 - 2007",
+          "startYear": 1995,
+          "endYear": 2007,
+          "availability": "circulating",
+          "detailUrl": "https://pt.ucoin.net/coin/united_arab_emirates-50-fils-1995-2007/?tid=2571",
+          "obverseImage": "https://i.ucoin.net/coin/30/711/30711307-1s/united_arab_emirates-50-fils-2007.jpg",
+          "reverseImage": "https://i.ucoin.net/coin/30/711/30711307-2s/united_arab_emirates-50-fils-2007.jpg"
+        },
+        {
+          "denomination": "50 fils",
+          "value": 50.0,
+          "unit": "fils",
+          "issuePeriod": "2013 - 2017",
+          "startYear": 2013,
+          "endYear": 2017,
+          "availability": "circulating",
+          "detailUrl": "https://pt.ucoin.net/coin/united_arab_emirates-50-fils-2013-2017/?tid=26957",
+          "obverseImage": "https://i.ucoin.net/coin/14/479/14479310-1s/united_arab_emirates-50-fils-2017.jpg",
+          "reverseImage": "https://i.ucoin.net/coin/14/479/14479310-2s/united_arab_emirates-50-fils-2017.jpg"
+        },
+        {
+          "denomination": "1 dirham",
+          "value": 1.0,
+          "unit": "dirham",
+          "issuePeriod": "1973 - 1989",
+          "startYear": 1973,
+          "endYear": 1989,
+          "availability": "scarce",
+          "detailUrl": "https://pt.ucoin.net/coin/united_arab_emirates-1-dirham-1973-1989/?tid=2560",
+          "obverseImage": "https://i.ucoin.net/coin/71/261/71261253-1s/united_arab_emirates-1-dirham-1988.jpg",
+          "reverseImage": "https://i.ucoin.net/coin/71/261/71261253-2s/united_arab_emirates-1-dirham-1988.jpg"
+        },
+        {
+          "denomination": "1 dirham",
+          "value": 1.0,
+          "unit": "dirham",
+          "issuePeriod": "1995 - 2007",
+          "startYear": 1995,
+          "endYear": 2007,
+          "availability": "circulating",
+          "detailUrl": "https://pt.ucoin.net/coin/united_arab_emirates-1-dirham-1995-2007/?tid=2567",
+          "obverseImage": "https://i.ucoin.net/coin/30/711/30711474-1s/united_arab_emirates-1-dirham-2007.jpg",
+          "reverseImage": "https://i.ucoin.net/coin/30/711/30711474-2s/united_arab_emirates-1-dirham-2007.jpg"
+        },
+        {
+          "denomination": "1 dirham",
+          "value": 1.0,
+          "unit": "dirham",
+          "issuePeriod": "2012 - 2025",
+          "startYear": 2012,
+          "endYear": 2025,
+          "availability": "circulating",
+          "detailUrl": "https://pt.ucoin.net/coin/united_arab_emirates-1-dirham-2012-2025/?tid=18532",
+          "obverseImage": "https://i.ucoin.net/coin/32/761/32761309-1s/united_arab_emirates-1-dirham-2012.jpg",
+          "reverseImage": "https://i.ucoin.net/coin/32/761/32761309-2s/united_arab_emirates-1-dirham-2012.jpg"
+        }
+      ]
+    }
+  ]
+}

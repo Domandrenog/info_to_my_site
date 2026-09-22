@@ -1,0 +1,229 @@
+{
+  "country": "Taiwan",
+  "periods": [
+    {
+      "title": "Taiwan › República da China › 1949 - 2026",
+      "ruler": "República da China",
+      "startYear": 1949,
+      "endYear": 2026,
+      "coins": [
+        {
+          "denomination": "1 jiao",
+          "value": 1.0,
+          "unit": "jiao",
+          "issuePeriod": "1949",
+          "startYear": 1949,
+          "endYear": 1949,
+          "availability": "scarce",
+          "detailUrl": "https://pt.ucoin.net/coin/taiwan-1-jiao-1949/?tid=22936",
+          "obverseImage": "https://i.ucoin.net/coin/74/810/74810020-1s/taiwan-1-jiao-1949.jpg",
+          "reverseImage": "https://i.ucoin.net/coin/74/810/74810020-2s/taiwan-1-jiao-1949.jpg"
+        },
+        {
+          "denomination": "1 jiao",
+          "value": 1.0,
+          "unit": "jiao",
+          "issuePeriod": "1955",
+          "startYear": 1955,
+          "endYear": 1955,
+          "availability": "scarce",
+          "detailUrl": "https://pt.ucoin.net/coin/taiwan-1-jiao-1955/?tid=22937",
+          "obverseImage": "https://i.ucoin.net/coin/3/763/3763828-1s/taiwan-1-jiao-1955.jpg",
+          "reverseImage": "https://i.ucoin.net/coin/3/763/3763828-2s/taiwan-1-jiao-1955.jpg"
+        },
+        {
+          "denomination": "1 jiao",
+          "value": 1.0,
+          "unit": "jiao",
+          "issuePeriod": "1967 - 1974",
+          "startYear": 1967,
+          "endYear": 1974,
+          "availability": "scarce",
+          "detailUrl": "https://pt.ucoin.net/coin/taiwan-1-jiao-1967-1974/?tid=22938",
+          "obverseImage": "https://i.ucoin.net/coin/54/011/54011071-1s/taiwan-1-jiao-1967.jpg",
+          "reverseImage": "https://i.ucoin.net/coin/54/011/54011071-2s/taiwan-1-jiao-1967.jpg"
+        },
+        {
+          "denomination": "2 jiao",
+          "value": 2.0,
+          "unit": "jiao",
+          "issuePeriod": "1950",
+          "startYear": 1950,
+          "endYear": 1950,
+          "availability": "scarce",
+          "detailUrl": "https://pt.ucoin.net/coin/taiwan-2-jiao-1950/?tid=22944",
+          "obverseImage": "https://i.ucoin.net/coin/33/864/33864127-1s/taiwan-2-jiao-1950.jpg",
+          "reverseImage": "https://i.ucoin.net/coin/33/864/33864127-2s/taiwan-2-jiao-1950.jpg"
+        },
+        {
+          "denomination": "5 jiao",
+          "value": 5.0,
+          "unit": "jiao",
+          "issuePeriod": "1949",
+          "startYear": 1949,
+          "endYear": 1949,
+          "availability": "scarce",
+          "detailUrl": "https://pt.ucoin.net/coin/taiwan-5-jiao-1949/?tid=22945",
+          "obverseImage": "https://i.ucoin.net/coin/60/597/60597868-1s/taiwan-5-jiao-1949.jpg",
+          "reverseImage": "https://i.ucoin.net/coin/60/597/60597868-2s/taiwan-5-jiao-1949.jpg"
+        },
+        {
+          "denomination": "5 jiao",
+          "value": 5.0,
+          "unit": "jiao",
+          "issuePeriod": "1954",
+          "startYear": 1954,
+          "endYear": 1954,
+          "availability": "scarce",
+          "detailUrl": "https://pt.ucoin.net/coin/taiwan-5-jiao-1954/?tid=22946",
+          "obverseImage": "https://i.ucoin.net/coin/76/984/76984150-1s/taiwan-5-jiao-1954.jpg",
+          "reverseImage": "https://i.ucoin.net/coin/76/984/76984150-2s/taiwan-5-jiao-1954.jpg"
+        },
+        {
+          "denomination": "5 jiao",
+          "value": 5.0,
+          "unit": "jiao",
+          "issuePeriod": "1967 - 1973",
+          "startYear": 1967,
+          "endYear": 1973,
+          "availability": "scarce",
+          "detailUrl": "https://pt.ucoin.net/coin/taiwan-5-jiao-1967-1973/?tid=22957",
+          "obverseImage": "https://i.ucoin.net/coin/26/619/26619353-1s/taiwan-5-jiao-1973.jpg",
+          "reverseImage": "https://i.ucoin.net/coin/26/619/26619353-2s/taiwan-5-jiao-1973.jpg"
+        },
+        {
+          "denomination": "½ dólar",
+          "value": null,
+          "unit": null,
+          "issuePeriod": "1981 - 2004",
+          "startYear": 1981,
+          "endYear": 2004,
+          "availability": "scarce",
+          "detailUrl": "https://pt.ucoin.net/coin/taiwan-1-2-dollar-1981-2004/?tid=22964",
+          "obverseImage": "https://i.ucoin.net/coin/29/941/29941414-1s/taiwan-1-2-dollar-1981.jpg",
+          "reverseImage": "https://i.ucoin.net/coin/29/941/29941414-2s/taiwan-1-2-dollar-1981.jpg"
+        },
+        {
+          "denomination": "1 dólar",
+          "value": 1.0,
+          "unit": "dólar",
+          "issuePeriod": "1960 - 1980",
+          "startYear": 1960,
+          "endYear": 1980,
+          "availability": "scarce",
+          "detailUrl": "https://pt.ucoin.net/coin/taiwan-1-dollar-1960-1980/?tid=22977",
+          "obverseImage": "https://i.ucoin.net/coin/55/005/55005955-1s/taiwan-1-dollar-1974.jpg",
+          "reverseImage": "https://i.ucoin.net/coin/55/005/55005955-2s/taiwan-1-dollar-1974.jpg"
+        },
+        {
+          "denomination": "1 dólar",
+          "value": 1.0,
+          "unit": "dólar",
+          "issuePeriod": "1981 - 2024",
+          "startYear": 1981,
+          "endYear": 2024,
+          "availability": "circulating",
+          "detailUrl": "https://pt.ucoin.net/coin/taiwan-1-dollar-1981-2024/?tid=22992",
+          "obverseImage": "https://i.ucoin.net/coin/51/690/51690583-1s/taiwan-1-dollar-2006.jpg",
+          "reverseImage": "https://i.ucoin.net/coin/51/690/51690583-2s/taiwan-1-dollar-2006.jpg"
+        },
+        {
+          "denomination": "5 dólares",
+          "value": 5.0,
+          "unit": "dólares",
+          "issuePeriod": "1970 - 1979",
+          "startYear": 1970,
+          "endYear": 1979,
+          "availability": "scarce",
+          "detailUrl": "https://pt.ucoin.net/coin/taiwan-5-dollars-1970-1979/?tid=23024",
+          "obverseImage": "https://i.ucoin.net/coin/47/646/47646029-1s/taiwan-5-dollars-1979.jpg",
+          "reverseImage": "https://i.ucoin.net/coin/47/646/47646029-2s/taiwan-5-dollars-1979.jpg"
+        },
+        {
+          "denomination": "5 dólares",
+          "value": 5.0,
+          "unit": "dólares",
+          "issuePeriod": "1981 - 2024",
+          "startYear": 1981,
+          "endYear": 2024,
+          "availability": "circulating",
+          "detailUrl": "https://pt.ucoin.net/coin/taiwan-5-dollars-1981-2024/?tid=23035",
+          "obverseImage": "https://i.ucoin.net/coin/70/404/70404333-1s/taiwan-5-dollars-1989.jpg",
+          "reverseImage": "https://i.ucoin.net/coin/70/404/70404333-2s/taiwan-5-dollars-1989.jpg"
+        },
+        {
+          "denomination": "10 Dólares",
+          "value": 10.0,
+          "unit": "Dólares",
+          "issuePeriod": "1981 - 2010",
+          "startYear": 1981,
+          "endYear": 2010,
+          "availability": "circulating",
+          "detailUrl": "https://pt.ucoin.net/coin/taiwan-10-dollars-1981-2010/?tid=23063",
+          "obverseImage": "https://i.ucoin.net/coin/47/645/47645745-1s/taiwan-10-dollars-1997.jpg",
+          "reverseImage": "https://i.ucoin.net/coin/47/645/47645745-2s/taiwan-10-dollars-1997.jpg"
+        },
+        {
+          "denomination": "10 Dólares",
+          "value": 10.0,
+          "unit": "Dólares",
+          "issuePeriod": "2011 - 2024",
+          "startYear": 2011,
+          "endYear": 2024,
+          "availability": "circulating",
+          "detailUrl": "https://pt.ucoin.net/coin/taiwan-10-dollars-2011-2024/?tid=23807",
+          "obverseImage": "https://i.ucoin.net/coin/50/342/50342110-1s/taiwan-10-dollars-2021.jpg",
+          "reverseImage": "https://i.ucoin.net/coin/50/342/50342110-2s/taiwan-10-dollars-2021.jpg"
+        },
+        {
+          "denomination": "20 dólares",
+          "value": 20.0,
+          "unit": "dólares",
+          "issuePeriod": "2001 - 2021",
+          "startYear": 2001,
+          "endYear": 2021,
+          "availability": "scarce",
+          "detailUrl": "https://pt.ucoin.net/coin/taiwan-20-dollars-2001-2021/?tid=23348",
+          "obverseImage": "https://i.ucoin.net/coin/80/778/80778612-1s/taiwan-20-dollars-2005.jpg",
+          "reverseImage": "https://i.ucoin.net/coin/80/778/80778612-2s/taiwan-20-dollars-2005.jpg"
+        },
+        {
+          "denomination": "50 dólares",
+          "value": 50.0,
+          "unit": "dólares",
+          "issuePeriod": "1992 - 1995",
+          "startYear": 1992,
+          "endYear": 1995,
+          "availability": "withdrawn",
+          "detailUrl": "https://pt.ucoin.net/coin/taiwan-50-dollars-1992-1995/?tid=23155",
+          "obverseImage": "https://i.ucoin.net/coin/2/555/2555904-1s/taiwan-50-dollars-1993.jpg",
+          "reverseImage": "https://i.ucoin.net/coin/2/555/2555904-2s/taiwan-50-dollars-1993.jpg"
+        },
+        {
+          "denomination": "50 dólares",
+          "value": 50.0,
+          "unit": "dólares",
+          "issuePeriod": "1996 - 2002",
+          "startYear": 1996,
+          "endYear": 2002,
+          "availability": "withdrawn",
+          "detailUrl": "https://pt.ucoin.net/coin/taiwan-50-dollars-1996-2002/?tid=23322",
+          "obverseImage": "https://i.ucoin.net/coin/2/555/2555884-1s/taiwan-50-dollars-1997.jpg",
+          "reverseImage": "https://i.ucoin.net/coin/2/555/2555884-2s/taiwan-50-dollars-1997.jpg"
+        },
+        {
+          "denomination": "50 dólares",
+          "value": 50.0,
+          "unit": "dólares",
+          "issuePeriod": "2001 - 2024",
+          "startYear": 2001,
+          "endYear": 2024,
+          "availability": "circulating",
+          "detailUrl": "https://pt.ucoin.net/coin/taiwan-50-dollars-2001-2024/?tid=23354",
+          "obverseImage": "https://i.ucoin.net/coin/84/148/84148977-1s/taiwan-50-dollars-2006.jpg",
+          "reverseImage": "https://i.ucoin.net/coin/84/148/84148977-2s/taiwan-50-dollars-2006.jpg"
+        }
+      ]
+    }
+  ]
+}

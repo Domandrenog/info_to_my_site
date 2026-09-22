@@ -1,0 +1,341 @@
+{
+  "country": "Japão",
+  "periods": [
+    {
+      "title": "Japão › Naruhito (Reiwa) › 2019 - 2026",
+      "ruler": "Naruhito (Reiwa)",
+      "startYear": 2019,
+      "endYear": 2026,
+      "coins": [
+        {
+          "denomination": "1 iene",
+          "value": 1.0,
+          "unit": "iene",
+          "issuePeriod": "2019 - 2026",
+          "startYear": 2019,
+          "endYear": 2026,
+          "availability": "circulating",
+          "detailUrl": "https://pt.ucoin.net/coin/japan-1-yen-2019-2026/?tid=93809",
+          "obverseImage": "https://i.ucoin.net/coin/87/696/87696427-1s/japan-1-yen-2025.jpg",
+          "reverseImage": "https://i.ucoin.net/coin/87/696/87696427-2s/japan-1-yen-2025.jpg"
+        },
+        {
+          "denomination": "5 ienes",
+          "value": 5.0,
+          "unit": "ienes",
+          "issuePeriod": "2019 - 2026",
+          "startYear": 2019,
+          "endYear": 2026,
+          "availability": "circulating",
+          "detailUrl": "https://pt.ucoin.net/coin/japan-5-yen-2019-2026/?tid=91777",
+          "obverseImage": "https://i.ucoin.net/coin/52/370/52370648-1s/japan-5-yen-2021.jpg",
+          "reverseImage": "https://i.ucoin.net/coin/52/370/52370648-2s/japan-5-yen-2021.jpg"
+        },
+        {
+          "denomination": "10 ienes",
+          "value": 10.0,
+          "unit": "ienes",
+          "issuePeriod": "2019 - 2026",
+          "startYear": 2019,
+          "endYear": 2026,
+          "availability": "circulating",
+          "detailUrl": "https://pt.ucoin.net/coin/japan-10-yen-2019-2026/?tid=93810",
+          "obverseImage": "https://i.ucoin.net/coin/51/756/51756045-1s/japan-10-yen-2020.jpg",
+          "reverseImage": "https://i.ucoin.net/coin/51/756/51756045-2s/japan-10-yen-2020.jpg"
+        },
+        {
+          "denomination": "50 ienes",
+          "value": 50.0,
+          "unit": "ienes",
+          "issuePeriod": "2019 - 2026",
+          "startYear": 2019,
+          "endYear": 2026,
+          "availability": "circulating",
+          "detailUrl": "https://pt.ucoin.net/coin/japan-50-yen-2019-2026/?tid=93811",
+          "obverseImage": "https://i.ucoin.net/coin/41/257/41257342-1s/japan-50-yen-2019.jpg",
+          "reverseImage": "https://i.ucoin.net/coin/41/257/41257342-2s/japan-50-yen-2019.jpg"
+        },
+        {
+          "denomination": "100 ienes",
+          "value": 100.0,
+          "unit": "ienes",
+          "issuePeriod": "2019 - 2026",
+          "startYear": 2019,
+          "endYear": 2026,
+          "availability": "circulating",
+          "detailUrl": "https://pt.ucoin.net/coin/japan-100-yen-2019-2026/?tid=93812",
+          "obverseImage": "https://i.ucoin.net/coin/84/618/84618093-1s/japan-100-yen-2020.jpg",
+          "reverseImage": "https://i.ucoin.net/coin/84/618/84618093-2s/japan-100-yen-2020.jpg"
+        },
+        {
+          "denomination": "500 ienes",
+          "value": 500.0,
+          "unit": "ienes",
+          "issuePeriod": "2019 - 2021",
+          "startYear": 2019,
+          "endYear": 2021,
+          "availability": "circulating",
+          "detailUrl": "https://pt.ucoin.net/coin/japan-500-yen-2019-2021/?tid=89554",
+          "obverseImage": "https://i.ucoin.net/coin/87/019/87019257-1s/japan-500-yen-2021.jpg",
+          "reverseImage": "https://i.ucoin.net/coin/87/019/87019257-2s/japan-500-yen-2021.jpg"
+        },
+        {
+          "denomination": "500 ienes",
+          "value": 500.0,
+          "unit": "ienes",
+          "issuePeriod": "2021 - 2026",
+          "startYear": 2021,
+          "endYear": 2026,
+          "availability": "circulating",
+          "detailUrl": "https://pt.ucoin.net/coin/japan-500-yen-2021-2026/?tid=109307",
+          "obverseImage": "https://i.ucoin.net/coin/59/474/59474834-1s/japan-500-yen-2023.jpg",
+          "reverseImage": "https://i.ucoin.net/coin/59/474/59474834-2s/japan-500-yen-2023.jpg"
+        }
+      ]
+    },
+    {
+      "title": "Japão › Akihito (Heisei) › 1989 - 2019",
+      "ruler": "Akihito (Heisei)",
+      "startYear": 1989,
+      "endYear": 2019,
+      "coins": [
+        {
+          "denomination": "1 iene",
+          "value": 1.0,
+          "unit": "iene",
+          "issuePeriod": "1989 - 2019",
+          "startYear": 1989,
+          "endYear": 2019,
+          "availability": "circulating",
+          "detailUrl": "https://pt.ucoin.net/coin/japan-1-yen-1989-2019/?tid=2211",
+          "obverseImage": "https://i.ucoin.net/coin/48/256/48256521-1s/japan-1-yen-1991.jpg",
+          "reverseImage": "https://i.ucoin.net/coin/48/256/48256521-2s/japan-1-yen-1991.jpg"
+        },
+        {
+          "denomination": "5 ienes",
+          "value": 5.0,
+          "unit": "ienes",
+          "issuePeriod": "1989 - 2019",
+          "startYear": 1989,
+          "endYear": 2019,
+          "availability": "circulating",
+          "detailUrl": "https://pt.ucoin.net/coin/japan-5-yen-1989-2019/?tid=2212",
+          "obverseImage": "https://i.ucoin.net/coin/48/254/48254796-1s/japan-5-yen-2003.jpg",
+          "reverseImage": "https://i.ucoin.net/coin/48/254/48254796-2s/japan-5-yen-2003.jpg"
+        },
+        {
+          "denomination": "10 ienes",
+          "value": 10.0,
+          "unit": "ienes",
+          "issuePeriod": "1989 - 2019",
+          "startYear": 1989,
+          "endYear": 2019,
+          "availability": "circulating",
+          "detailUrl": "https://pt.ucoin.net/coin/japan-10-yen-1989-2019/?tid=2213",
+          "obverseImage": "https://i.ucoin.net/coin/46/614/46614125-1s/japan-10-yen-2005.jpg",
+          "reverseImage": "https://i.ucoin.net/coin/46/614/46614125-2s/japan-10-yen-2005.jpg"
+        },
+        {
+          "denomination": "50 ienes",
+          "value": 50.0,
+          "unit": "ienes",
+          "issuePeriod": "1989 - 2019",
+          "startYear": 1989,
+          "endYear": 2019,
+          "availability": "circulating",
+          "detailUrl": "https://pt.ucoin.net/coin/japan-50-yen-1989-2019/?tid=2214",
+          "obverseImage": "https://i.ucoin.net/coin/51/241/51241487-1s/japan-50-yen-1998.jpg",
+          "reverseImage": "https://i.ucoin.net/coin/51/241/51241487-2s/japan-50-yen-1998.jpg"
+        },
+        {
+          "denomination": "100 ienes",
+          "value": 100.0,
+          "unit": "ienes",
+          "issuePeriod": "1989 - 2019",
+          "startYear": 1989,
+          "endYear": 2019,
+          "availability": "circulating",
+          "detailUrl": "https://pt.ucoin.net/coin/japan-100-yen-1989-2019/?tid=2215",
+          "obverseImage": "https://i.ucoin.net/coin/79/958/79958481-1s/japan-100-yen-1993.jpg",
+          "reverseImage": "https://i.ucoin.net/coin/79/958/79958481-2s/japan-100-yen-1993.jpg"
+        },
+        {
+          "denomination": "500 ienes",
+          "value": 500.0,
+          "unit": "ienes",
+          "issuePeriod": "1989 - 1999",
+          "startYear": 1989,
+          "endYear": 1999,
+          "availability": "scarce",
+          "detailUrl": "https://pt.ucoin.net/coin/japan-500-yen-1989-1999/?tid=2216",
+          "obverseImage": "https://i.ucoin.net/coin/50/351/50351491-1s/japan-500-yen-1999.jpg",
+          "reverseImage": "https://i.ucoin.net/coin/50/351/50351491-2s/japan-500-yen-1999.jpg"
+        },
+        {
+          "denomination": "500 ienes",
+          "value": 500.0,
+          "unit": "ienes",
+          "issuePeriod": "2000 - 2019",
+          "startYear": 2000,
+          "endYear": 2019,
+          "availability": "circulating",
+          "detailUrl": "https://pt.ucoin.net/coin/japan-500-yen-2000-2019/?tid=2210",
+          "obverseImage": "https://i.ucoin.net/coin/51/576/51576756-1s/japan-500-yen-2004.jpg",
+          "reverseImage": "https://i.ucoin.net/coin/51/576/51576756-2s/japan-500-yen-2004.jpg"
+        }
+      ]
+    },
+    {
+      "title": "Japão › Hirohito (Showa) › 1950 - 1989",
+      "ruler": "Hirohito (Showa)",
+      "startYear": 1950,
+      "endYear": 1989,
+      "coins": [
+        {
+          "denomination": "1 iene",
+          "value": 1.0,
+          "unit": "iene",
+          "issuePeriod": "1955 - 1989",
+          "startYear": 1955,
+          "endYear": 1989,
+          "availability": "circulating",
+          "detailUrl": "https://pt.ucoin.net/coin/japan-1-yen-1955-1989/?tid=2324",
+          "obverseImage": "https://i.ucoin.net/coin/46/582/46582405-1s/japan-1-yen-1983.jpg",
+          "reverseImage": "https://i.ucoin.net/coin/46/582/46582405-2s/japan-1-yen-1983.jpg"
+        },
+        {
+          "denomination": "5 ienes",
+          "value": 5.0,
+          "unit": "ienes",
+          "issuePeriod": "1949 - 1958",
+          "startYear": 1949,
+          "endYear": 1958,
+          "availability": "scarce",
+          "detailUrl": "https://pt.ucoin.net/coin/japan-5-yen-1949-1958/?tid=2338",
+          "obverseImage": "https://i.ucoin.net/coin/15/773/15773698-1s/japan-5-yen-1951.jpg",
+          "reverseImage": "https://i.ucoin.net/coin/15/773/15773698-2s/japan-5-yen-1951.jpg"
+        },
+        {
+          "denomination": "5 ienes",
+          "value": 5.0,
+          "unit": "ienes",
+          "issuePeriod": "1959 - 1989",
+          "startYear": 1959,
+          "endYear": 1989,
+          "availability": "circulating",
+          "detailUrl": "https://pt.ucoin.net/coin/japan-5-yen-1959-1989/?tid=2344",
+          "obverseImage": "https://i.ucoin.net/coin/42/497/42497453-1s/japan-5-yen-1988.jpg",
+          "reverseImage": "https://i.ucoin.net/coin/42/497/42497453-2s/japan-5-yen-1988.jpg"
+        },
+        {
+          "denomination": "10 ienes",
+          "value": 10.0,
+          "unit": "ienes",
+          "issuePeriod": "1951 - 1958",
+          "startYear": 1951,
+          "endYear": 1958,
+          "availability": "scarce",
+          "detailUrl": "https://pt.ucoin.net/coin/japan-10-yen-1951-1958/?tid=2354",
+          "obverseImage": "https://i.ucoin.net/coin/46/602/46602052-1s/japan-10-yen-1955.jpg",
+          "reverseImage": "https://i.ucoin.net/coin/46/602/46602052-2s/japan-10-yen-1955.jpg"
+        },
+        {
+          "denomination": "10 ienes",
+          "value": 10.0,
+          "unit": "ienes",
+          "issuePeriod": "1959 - 1989",
+          "startYear": 1959,
+          "endYear": 1989,
+          "availability": "circulating",
+          "detailUrl": "https://pt.ucoin.net/coin/japan-10-yen-1959-1989/?tid=2361",
+          "obverseImage": "https://i.ucoin.net/coin/46/610/46610695-1s/japan-10-yen-1963.jpg",
+          "reverseImage": "https://i.ucoin.net/coin/46/610/46610695-2s/japan-10-yen-1963.jpg"
+        },
+        {
+          "denomination": "50 ienes",
+          "value": 50.0,
+          "unit": "ienes",
+          "issuePeriod": "1955 - 1958",
+          "startYear": 1955,
+          "endYear": 1958,
+          "availability": "scarce",
+          "detailUrl": "https://pt.ucoin.net/coin/japan-50-yen-1955-1958/?tid=2382",
+          "obverseImage": "https://i.ucoin.net/coin/54/816/54816623-1s/japan-50-yen-1957.jpg",
+          "reverseImage": "https://i.ucoin.net/coin/54/816/54816623-2s/japan-50-yen-1957.jpg"
+        },
+        {
+          "denomination": "50 ienes",
+          "value": 50.0,
+          "unit": "ienes",
+          "issuePeriod": "1959 - 1966",
+          "startYear": 1959,
+          "endYear": 1966,
+          "availability": "scarce",
+          "detailUrl": "https://pt.ucoin.net/coin/japan-50-yen-1959-1966/?tid=2374",
+          "obverseImage": "https://i.ucoin.net/coin/28/311/28311583-1s/japan-50-yen-1965.jpg",
+          "reverseImage": "https://i.ucoin.net/coin/28/311/28311583-2s/japan-50-yen-1965.jpg"
+        },
+        {
+          "denomination": "50 ienes",
+          "value": 50.0,
+          "unit": "ienes",
+          "issuePeriod": "1967 - 1988",
+          "startYear": 1967,
+          "endYear": 1988,
+          "availability": "circulating",
+          "detailUrl": "https://pt.ucoin.net/coin/japan-50-yen-1967-1988/?tid=2371",
+          "obverseImage": "https://i.ucoin.net/coin/67/719/67719116-1s/japan-50-yen-1977.jpg",
+          "reverseImage": "https://i.ucoin.net/coin/67/719/67719116-2s/japan-50-yen-1977.jpg"
+        },
+        {
+          "denomination": "100 ienes",
+          "value": 100.0,
+          "unit": "ienes",
+          "issuePeriod": "1957 - 1958",
+          "startYear": 1957,
+          "endYear": 1958,
+          "availability": "scarce",
+          "detailUrl": "https://pt.ucoin.net/coin/japan-100-yen-1957-1958/?tid=2395",
+          "obverseImage": "https://i.ucoin.net/coin/0/37/37692-1s/japan-100-yen-1957.jpg",
+          "reverseImage": "https://i.ucoin.net/coin/0/37/37692-2s/japan-100-yen-1957.jpg"
+        },
+        {
+          "denomination": "100 ienes",
+          "value": 100.0,
+          "unit": "ienes",
+          "issuePeriod": "1959 - 1966",
+          "startYear": 1959,
+          "endYear": 1966,
+          "availability": "scarce",
+          "detailUrl": "https://pt.ucoin.net/coin/japan-100-yen-1959-1966/?tid=2388",
+          "obverseImage": "https://i.ucoin.net/coin/0/1/1092-1s/japan-100-yen-1960.jpg",
+          "reverseImage": "https://i.ucoin.net/coin/0/1/1092-2s/japan-100-yen-1960.jpg"
+        },
+        {
+          "denomination": "100 ienes",
+          "value": 100.0,
+          "unit": "ienes",
+          "issuePeriod": "1967 - 1988",
+          "startYear": 1967,
+          "endYear": 1988,
+          "availability": "circulating",
+          "detailUrl": "https://pt.ucoin.net/coin/japan-100-yen-1967-1988/?tid=2386",
+          "obverseImage": "https://i.ucoin.net/coin/46/569/46569172-1s/japan-100-yen-1973.jpg",
+          "reverseImage": "https://i.ucoin.net/coin/46/569/46569172-2s/japan-100-yen-1973.jpg"
+        },
+        {
+          "denomination": "500 ienes",
+          "value": 500.0,
+          "unit": "ienes",
+          "issuePeriod": "1982 - 1989",
+          "startYear": 1982,
+          "endYear": 1989,
+          "availability": "circulating",
+          "detailUrl": "https://pt.ucoin.net/coin/japan-500-yen-1982-1989/?tid=2499",
+          "obverseImage": "https://i.ucoin.net/coin/2/189/2189898-1s/japan-500-yen-1982.jpg",
+          "reverseImage": "https://i.ucoin.net/coin/2/189/2189898-2s/japan-500-yen-1982.jpg"
+        }
+      ]
+    }
+  ]
+}

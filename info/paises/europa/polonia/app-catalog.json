@@ -1,0 +1,321 @@
+{
+  "country": "Polónia",
+  "periods": [
+    {
+      "title": "Polónia › Terceira República › 1990 - 2026",
+      "ruler": "Terceira República",
+      "startYear": 1990,
+      "endYear": 2026,
+      "coins": [
+        {
+          "denomination": "1 grosz",
+          "value": 1.0,
+          "unit": "grosz",
+          "issuePeriod": "1990 - 2014",
+          "startYear": 1990,
+          "endYear": 2014,
+          "availability": "circulating",
+          "detailUrl": "https://pt.ucoin.net/coin/poland-1-grosz-1990-2014/?tid=8283",
+          "obverseImage": "https://i.ucoin.net/coin/84/224/84224506-1s/poland-1-grosz-1999.jpg",
+          "reverseImage": "https://i.ucoin.net/coin/84/224/84224506-2s/poland-1-grosz-1999.jpg"
+        },
+        {
+          "denomination": "1 grosz",
+          "value": 1.0,
+          "unit": "grosz",
+          "issuePeriod": "2013 - 2016",
+          "startYear": 2013,
+          "endYear": 2016,
+          "availability": "circulating",
+          "detailUrl": "https://pt.ucoin.net/coin/poland-1-grosz-2013-2016/?tid=33933",
+          "obverseImage": "https://i.ucoin.net/coin/27/328/27328784-1s/poland-1-grosz-2014.jpg",
+          "reverseImage": "https://i.ucoin.net/coin/27/328/27328784-2s/poland-1-grosz-2014.jpg"
+        },
+        {
+          "denomination": "1 grosz",
+          "value": 1.0,
+          "unit": "grosz",
+          "issuePeriod": "2017 - 2026",
+          "startYear": 2017,
+          "endYear": 2026,
+          "availability": "circulating",
+          "detailUrl": "https://pt.ucoin.net/coin/poland-1-grosz-2017-2026/?tid=67962",
+          "obverseImage": "https://i.ucoin.net/coin/38/731/38731762-1s/poland-1-grosz-2018.jpg",
+          "reverseImage": "https://i.ucoin.net/coin/38/731/38731762-2s/poland-1-grosz-2018.jpg"
+        },
+        {
+          "denomination": "2 grosze",
+          "value": 2.0,
+          "unit": "grosze",
+          "issuePeriod": "1990 - 2014",
+          "startYear": 1990,
+          "endYear": 2014,
+          "availability": "circulating",
+          "detailUrl": "https://pt.ucoin.net/coin/poland-2-grosze-1990-2014/?tid=8302",
+          "obverseImage": "https://i.ucoin.net/coin/62/732/62732004-1s/poland-2-grosze-2008.jpg",
+          "reverseImage": "https://i.ucoin.net/coin/62/732/62732004-2s/poland-2-grosze-2008.jpg"
+        },
+        {
+          "denomination": "2 grosze",
+          "value": 2.0,
+          "unit": "grosze",
+          "issuePeriod": "2013 - 2016",
+          "startYear": 2013,
+          "endYear": 2016,
+          "availability": "circulating",
+          "detailUrl": "https://pt.ucoin.net/coin/poland-2-grosze-2013-2016/?tid=33934",
+          "obverseImage": "https://i.ucoin.net/coin/49/505/49505279-1s/poland-2-grosze-2016.jpg",
+          "reverseImage": "https://i.ucoin.net/coin/49/505/49505279-2s/poland-2-grosze-2016.jpg"
+        },
+        {
+          "denomination": "2 grosze",
+          "value": 2.0,
+          "unit": "grosze",
+          "issuePeriod": "2017 - 2026",
+          "startYear": 2017,
+          "endYear": 2026,
+          "availability": "circulating",
+          "detailUrl": "https://pt.ucoin.net/coin/poland-2-grosze-2017-2026/?tid=67963",
+          "obverseImage": "https://i.ucoin.net/coin/50/478/50478519-1s/poland-2-grosze-2017.jpg",
+          "reverseImage": "https://i.ucoin.net/coin/50/478/50478519-2s/poland-2-grosze-2017.jpg"
+        },
+        {
+          "denomination": "5 groszy",
+          "value": 5.0,
+          "unit": "groszy",
+          "issuePeriod": "1990 - 2014",
+          "startYear": 1990,
+          "endYear": 2014,
+          "availability": "circulating",
+          "detailUrl": "https://pt.ucoin.net/coin/poland-5-groszy-1990-2014/?tid=8319",
+          "obverseImage": "https://i.ucoin.net/coin/84/225/84225423-1s/poland-5-groszy-2000.jpg",
+          "reverseImage": "https://i.ucoin.net/coin/84/225/84225423-2s/poland-5-groszy-2000.jpg"
+        },
+        {
+          "denomination": "5 groszy",
+          "value": 5.0,
+          "unit": "groszy",
+          "issuePeriod": "2013 - 2016",
+          "startYear": 2013,
+          "endYear": 2016,
+          "availability": "circulating",
+          "detailUrl": "https://pt.ucoin.net/coin/poland-5-groszy-2013-2016/?tid=33935",
+          "obverseImage": "https://i.ucoin.net/coin/49/505/49505401-1s/poland-5-groszy-2015.jpg",
+          "reverseImage": "https://i.ucoin.net/coin/49/505/49505401-2s/poland-5-groszy-2015.jpg"
+        },
+        {
+          "denomination": "5 groszy",
+          "value": 5.0,
+          "unit": "groszy",
+          "issuePeriod": "2017 - 2026",
+          "startYear": 2017,
+          "endYear": 2026,
+          "availability": "circulating",
+          "detailUrl": "https://pt.ucoin.net/coin/poland-5-groszy-2017-2026/?tid=67964",
+          "obverseImage": "https://i.ucoin.net/coin/10/732/10732022-1s/poland-5-groszy-2017.jpg",
+          "reverseImage": "https://i.ucoin.net/coin/10/732/10732022-2s/poland-5-groszy-2017.jpg"
+        },
+        {
+          "denomination": "10 groszy",
+          "value": 10.0,
+          "unit": "groszy",
+          "issuePeriod": "1990 - 2016",
+          "startYear": 1990,
+          "endYear": 2016,
+          "availability": "circulating",
+          "detailUrl": "https://pt.ucoin.net/coin/poland-10-groszy-1990-2016/?tid=8336",
+          "obverseImage": "https://i.ucoin.net/coin/49/506/49506501-1s/poland-10-groszy-2014.jpg",
+          "reverseImage": "https://i.ucoin.net/coin/49/506/49506501-2s/poland-10-groszy-2014.jpg"
+        },
+        {
+          "denomination": "10 groszy",
+          "value": 10.0,
+          "unit": "groszy",
+          "issuePeriod": "2017 - 2019",
+          "startYear": 2017,
+          "endYear": 2019,
+          "availability": "circulating",
+          "detailUrl": "https://pt.ucoin.net/coin/poland-10-groszy-2017-2019/?tid=67965",
+          "obverseImage": "https://i.ucoin.net/coin/10/475/10475256-1s/poland-10-groszy-2017.jpg",
+          "reverseImage": "https://i.ucoin.net/coin/10/475/10475256-2s/poland-10-groszy-2017.jpg"
+        },
+        {
+          "denomination": "10 groszy",
+          "value": 10.0,
+          "unit": "groszy",
+          "issuePeriod": "2019 - 2026",
+          "startYear": 2019,
+          "endYear": 2026,
+          "availability": "circulating",
+          "detailUrl": "https://pt.ucoin.net/coin/poland-10-groszy-2019-2026/?tid=96239",
+          "obverseImage": "https://i.ucoin.net/coin/61/810/61810832-1s/poland-10-groszy-2021.jpg",
+          "reverseImage": "https://i.ucoin.net/coin/61/810/61810832-2s/poland-10-groszy-2021.jpg"
+        },
+        {
+          "denomination": "20 groszy",
+          "value": 20.0,
+          "unit": "groszy",
+          "issuePeriod": "1990 - 2016",
+          "startYear": 1990,
+          "endYear": 2016,
+          "availability": "circulating",
+          "detailUrl": "https://pt.ucoin.net/coin/poland-20-groszy-1990-2016/?tid=8353",
+          "obverseImage": "https://i.ucoin.net/coin/38/963/38963251-1s/poland-20-groszy-2014.jpg",
+          "reverseImage": "https://i.ucoin.net/coin/38/963/38963251-2s/poland-20-groszy-2014.jpg"
+        },
+        {
+          "denomination": "20 groszy",
+          "value": 20.0,
+          "unit": "groszy",
+          "issuePeriod": "2017 - 2019",
+          "startYear": 2017,
+          "endYear": 2019,
+          "availability": "circulating",
+          "detailUrl": "https://pt.ucoin.net/coin/poland-20-groszy-2017-2019/?tid=67966",
+          "obverseImage": "https://i.ucoin.net/coin/56/334/56334122-1s/poland-20-groszy-2019.jpg",
+          "reverseImage": "https://i.ucoin.net/coin/56/334/56334122-2s/poland-20-groszy-2019.jpg"
+        },
+        {
+          "denomination": "20 groszy",
+          "value": 20.0,
+          "unit": "groszy",
+          "issuePeriod": "2019 - 2026",
+          "startYear": 2019,
+          "endYear": 2026,
+          "availability": "circulating",
+          "detailUrl": "https://pt.ucoin.net/coin/poland-20-groszy-2019-2026/?tid=91710",
+          "obverseImage": "https://i.ucoin.net/coin/82/500/82500215-1s/poland-20-groszy-2022.jpg",
+          "reverseImage": "https://i.ucoin.net/coin/82/500/82500215-2s/poland-20-groszy-2022.jpg"
+        },
+        {
+          "denomination": "50 groszy",
+          "value": 50.0,
+          "unit": "groszy",
+          "issuePeriod": "1990 - 2016",
+          "startYear": 1990,
+          "endYear": 2016,
+          "availability": "circulating",
+          "detailUrl": "https://pt.ucoin.net/coin/poland-50-groszy-1990-2016/?tid=8371",
+          "obverseImage": "https://i.ucoin.net/coin/56/366/56366726-1s/poland-50-groszy-1995.jpg",
+          "reverseImage": "https://i.ucoin.net/coin/56/366/56366726-2s/poland-50-groszy-1995.jpg"
+        },
+        {
+          "denomination": "50 groszy",
+          "value": 50.0,
+          "unit": "groszy",
+          "issuePeriod": "2017 - 2019",
+          "startYear": 2017,
+          "endYear": 2019,
+          "availability": "circulating",
+          "detailUrl": "https://pt.ucoin.net/coin/poland-50-groszy-2017-2019/?tid=67967",
+          "obverseImage": "https://i.ucoin.net/coin/10/732/10732014-1s/poland-50-groszy-2017.jpg",
+          "reverseImage": "https://i.ucoin.net/coin/10/732/10732014-2s/poland-50-groszy-2017.jpg"
+        },
+        {
+          "denomination": "50 groszy",
+          "value": 50.0,
+          "unit": "groszy",
+          "issuePeriod": "2019 - 2026",
+          "startYear": 2019,
+          "endYear": 2026,
+          "availability": "circulating",
+          "detailUrl": "https://pt.ucoin.net/coin/poland-50-groszy-2019-2026/?tid=96240",
+          "obverseImage": "https://i.ucoin.net/coin/66/733/66733404-1s/poland-50-groszy-2022.jpg",
+          "reverseImage": "https://i.ucoin.net/coin/66/733/66733404-2s/poland-50-groszy-2022.jpg"
+        },
+        {
+          "denomination": "1 zloty",
+          "value": 1.0,
+          "unit": "zloty",
+          "issuePeriod": "1990 - 2016",
+          "startYear": 1990,
+          "endYear": 2016,
+          "availability": "circulating",
+          "detailUrl": "https://pt.ucoin.net/coin/poland-1-zloty-1990-2016/?tid=8377",
+          "obverseImage": "https://i.ucoin.net/coin/62/726/62726440-1s/poland-1-zloty-2008.jpg",
+          "reverseImage": "https://i.ucoin.net/coin/62/726/62726440-2s/poland-1-zloty-2008.jpg"
+        },
+        {
+          "denomination": "1 zloty",
+          "value": 1.0,
+          "unit": "zloty",
+          "issuePeriod": "2017 - 2019",
+          "startYear": 2017,
+          "endYear": 2019,
+          "availability": "circulating",
+          "detailUrl": "https://pt.ucoin.net/coin/poland-1-zloty-2017-2019/?tid=67968",
+          "obverseImage": "https://i.ucoin.net/coin/72/205/72205880-1s/poland-1-zloty-2017.jpg",
+          "reverseImage": "https://i.ucoin.net/coin/72/205/72205880-2s/poland-1-zloty-2017.jpg"
+        },
+        {
+          "denomination": "1 zloty",
+          "value": 1.0,
+          "unit": "zloty",
+          "issuePeriod": "2019 - 2026",
+          "startYear": 2019,
+          "endYear": 2026,
+          "availability": "circulating",
+          "detailUrl": "https://pt.ucoin.net/coin/poland-1-zloty-2019-2026/?tid=96524",
+          "obverseImage": "https://i.ucoin.net/coin/82/772/82772927-1s/poland-1-zloty-2022.jpg",
+          "reverseImage": "https://i.ucoin.net/coin/82/772/82772927-2s/poland-1-zloty-2022.jpg"
+        },
+        {
+          "denomination": "2 zlote",
+          "value": 2.0,
+          "unit": "zlote",
+          "issuePeriod": "1994 - 2026",
+          "startYear": 1994,
+          "endYear": 2026,
+          "availability": "circulating",
+          "detailUrl": "https://pt.ucoin.net/coin/poland-2-zlote-1994-2026/?tid=8385",
+          "obverseImage": "https://i.ucoin.net/coin/85/529/85529219-1s/poland-2-zlote-2026.jpg",
+          "reverseImage": "https://i.ucoin.net/coin/85/529/85529219-2s/poland-2-zlote-2026.jpg"
+        },
+        {
+          "denomination": "5 zlotych",
+          "value": 5.0,
+          "unit": "zlotych",
+          "issuePeriod": "1994 - 2026",
+          "startYear": 1994,
+          "endYear": 2026,
+          "availability": "circulating",
+          "detailUrl": "https://pt.ucoin.net/coin/poland-5-zlotych-1994-2026/?tid=8392",
+          "obverseImage": "https://i.ucoin.net/coin/78/906/78906530-1s/poland-5-zlotych-2008.jpg",
+          "reverseImage": "https://i.ucoin.net/coin/78/906/78906530-2s/poland-5-zlotych-2008.jpg"
+        }
+      ]
+    },
+    {
+      "title": "Polónia › Terceira República (Transição) › 1990 - 1994",
+      "ruler": "Terceira República (Transição)",
+      "startYear": 1990,
+      "endYear": 1994,
+      "coins": [
+        {
+          "denomination": "50 zlotych",
+          "value": 50.0,
+          "unit": "zlotych",
+          "issuePeriod": "1990",
+          "startYear": 1990,
+          "endYear": 1990,
+          "availability": "historical",
+          "detailUrl": "https://pt.ucoin.net/coin/poland-50-zlotych-1990/?tid=13978",
+          "obverseImage": "https://i.ucoin.net/coin/72/082/72082797-1s/poland-50-zlotych-1990.jpg",
+          "reverseImage": "https://i.ucoin.net/coin/72/082/72082797-2s/poland-50-zlotych-1990.jpg"
+        },
+        {
+          "denomination": "100 zlotych",
+          "value": 100.0,
+          "unit": "zlotych",
+          "issuePeriod": "1990",
+          "startYear": 1990,
+          "endYear": 1990,
+          "availability": "historical",
+          "detailUrl": "https://pt.ucoin.net/coin/poland-100-zlotych-1990/?tid=14335",
+          "obverseImage": "https://i.ucoin.net/coin/72/083/72083811-1s/poland-100-zlotych-1990.jpg",
+          "reverseImage": "https://i.ucoin.net/coin/72/083/72083811-2s/poland-100-zlotych-1990.jpg"
+        }
+      ]
+    }
+  ]
+}

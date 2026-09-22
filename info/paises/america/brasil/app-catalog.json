@@ -1,0 +1,181 @@
+{
+  "country": "Brasil",
+  "periods": [
+    {
+      "title": "Brasil › Real › 1994 - 2026",
+      "ruler": "Real",
+      "startYear": 1994,
+      "endYear": 2026,
+      "coins": [
+        {
+          "denomination": "1 centavo",
+          "value": 1.0,
+          "unit": "centavo",
+          "issuePeriod": "1994 - 1997",
+          "startYear": 1994,
+          "endYear": 1997,
+          "availability": "scarce",
+          "detailUrl": "https://pt.ucoin.net/coin/brazil-1-centavo-1994-1997/?tid=10556",
+          "obverseImage": "https://i.ucoin.net/coin/19/491/19491930-1s/brazil-1-centavo-1996.jpg",
+          "reverseImage": "https://i.ucoin.net/coin/19/491/19491930-2s/brazil-1-centavo-1996.jpg"
+        },
+        {
+          "denomination": "1 centavo",
+          "value": 1.0,
+          "unit": "centavo",
+          "issuePeriod": "1998 - 2004",
+          "startYear": 1998,
+          "endYear": 2004,
+          "availability": "scarce",
+          "detailUrl": "https://pt.ucoin.net/coin/brazil-1-centavo-1998-2004/?tid=10560",
+          "obverseImage": "https://i.ucoin.net/coin/17/610/17610283-1s/brazil-1-centavo-2004.jpg",
+          "reverseImage": "https://i.ucoin.net/coin/17/610/17610283-2s/brazil-1-centavo-2004.jpg"
+        },
+        {
+          "denomination": "5 centavos",
+          "value": 5.0,
+          "unit": "centavos",
+          "issuePeriod": "1994 - 1997",
+          "startYear": 1994,
+          "endYear": 1997,
+          "availability": "scarce",
+          "detailUrl": "https://pt.ucoin.net/coin/brazil-5-centavos-1994-1997/?tid=10567",
+          "obverseImage": "https://i.ucoin.net/coin/47/580/47580672-1s/brazil-5-centavos-1994.jpg",
+          "reverseImage": "https://i.ucoin.net/coin/47/580/47580672-2s/brazil-5-centavos-1994.jpg"
+        },
+        {
+          "denomination": "5 centavos",
+          "value": 5.0,
+          "unit": "centavos",
+          "issuePeriod": "1998 - 2026",
+          "startYear": 1998,
+          "endYear": 2026,
+          "availability": "circulating",
+          "detailUrl": "https://pt.ucoin.net/coin/brazil-5-centavos-1998-2026/?tid=10571",
+          "obverseImage": "https://i.ucoin.net/coin/51/217/51217408-1s/brazil-5-centavos-2007.jpg",
+          "reverseImage": "https://i.ucoin.net/coin/51/217/51217408-2s/brazil-5-centavos-2007.jpg"
+        },
+        {
+          "denomination": "10 centavos",
+          "value": 10.0,
+          "unit": "centavos",
+          "issuePeriod": "1994 - 1997",
+          "startYear": 1994,
+          "endYear": 1997,
+          "availability": "scarce",
+          "detailUrl": "https://pt.ucoin.net/coin/brazil-10-centavos-1994-1997/?tid=10584",
+          "obverseImage": "https://i.ucoin.net/coin/57/050/57050165-1s/brazil-10-centavos-1996.jpg",
+          "reverseImage": "https://i.ucoin.net/coin/57/050/57050165-2s/brazil-10-centavos-1996.jpg"
+        },
+        {
+          "denomination": "10 centavos",
+          "value": 10.0,
+          "unit": "centavos",
+          "issuePeriod": "1998 - 2025",
+          "startYear": 1998,
+          "endYear": 2025,
+          "availability": "circulating",
+          "detailUrl": "https://pt.ucoin.net/coin/brazil-10-centavos-1998-2025/?tid=10588",
+          "obverseImage": "https://i.ucoin.net/coin/51/218/51218938-1s/brazil-10-centavos-2004.jpg",
+          "reverseImage": "https://i.ucoin.net/coin/51/218/51218938-2s/brazil-10-centavos-2004.jpg"
+        },
+        {
+          "denomination": "25 centavos",
+          "value": 25.0,
+          "unit": "centavos",
+          "issuePeriod": "1994 - 1995",
+          "startYear": 1994,
+          "endYear": 1995,
+          "availability": "scarce",
+          "detailUrl": "https://pt.ucoin.net/coin/brazil-25-centavos-1994-1995/?tid=10602",
+          "obverseImage": "https://i.ucoin.net/coin/47/581/47581122-1s/brazil-25-centavos-1994.jpg",
+          "reverseImage": "https://i.ucoin.net/coin/47/581/47581122-2s/brazil-25-centavos-1994.jpg"
+        },
+        {
+          "denomination": "25 centavos",
+          "value": 25.0,
+          "unit": "centavos",
+          "issuePeriod": "1998 - 2025",
+          "startYear": 1998,
+          "endYear": 2025,
+          "availability": "circulating",
+          "detailUrl": "https://pt.ucoin.net/coin/brazil-25-centavos-1998-2025/?tid=10604",
+          "obverseImage": "https://i.ucoin.net/coin/51/217/51217315-1s/brazil-25-centavos-2002.jpg",
+          "reverseImage": "https://i.ucoin.net/coin/51/217/51217315-2s/brazil-25-centavos-2002.jpg"
+        },
+        {
+          "denomination": "50 centavos",
+          "value": 50.0,
+          "unit": "centavos",
+          "issuePeriod": "1994 - 1995",
+          "startYear": 1994,
+          "endYear": 1995,
+          "availability": "scarce",
+          "detailUrl": "https://pt.ucoin.net/coin/brazil-50-centavos-1994-1995/?tid=10618",
+          "obverseImage": "https://i.ucoin.net/coin/47/580/47580601-1s/brazil-50-centavos-1994.jpg",
+          "reverseImage": "https://i.ucoin.net/coin/47/580/47580601-2s/brazil-50-centavos-1994.jpg"
+        },
+        {
+          "denomination": "50 centavos",
+          "value": 50.0,
+          "unit": "centavos",
+          "issuePeriod": "1998 - 2001",
+          "startYear": 1998,
+          "endYear": 2001,
+          "availability": "circulating",
+          "detailUrl": "https://pt.ucoin.net/coin/brazil-50-centavos-1998-2001/?tid=10625",
+          "obverseImage": "https://i.ucoin.net/coin/17/658/17658894-1s/brazil-50-centavos-1998.jpg",
+          "reverseImage": "https://i.ucoin.net/coin/17/658/17658894-2s/brazil-50-centavos-1998.jpg"
+        },
+        {
+          "denomination": "50 centavos",
+          "value": 50.0,
+          "unit": "centavos",
+          "issuePeriod": "2002 - 2026",
+          "startYear": 2002,
+          "endYear": 2026,
+          "availability": "circulating",
+          "detailUrl": "https://pt.ucoin.net/coin/brazil-50-centavos-2002-2026/?tid=10629",
+          "obverseImage": "https://i.ucoin.net/coin/51/218/51218124-1s/brazil-50-centavos-2005.jpg",
+          "reverseImage": "https://i.ucoin.net/coin/51/218/51218124-2s/brazil-50-centavos-2005.jpg"
+        },
+        {
+          "denomination": "1 real",
+          "value": 1.0,
+          "unit": "real",
+          "issuePeriod": "1994",
+          "startYear": 1994,
+          "endYear": 1994,
+          "availability": "withdrawn",
+          "detailUrl": "https://pt.ucoin.net/coin/brazil-1-real-1994/?tid=10637",
+          "obverseImage": "https://i.ucoin.net/coin/47/581/47581885-1s/brazil-1-real-1994.jpg",
+          "reverseImage": "https://i.ucoin.net/coin/47/581/47581885-2s/brazil-1-real-1994.jpg"
+        },
+        {
+          "denomination": "1 real",
+          "value": 1.0,
+          "unit": "real",
+          "issuePeriod": "1998 - 1999",
+          "startYear": 1998,
+          "endYear": 1999,
+          "availability": "circulating",
+          "detailUrl": "https://pt.ucoin.net/coin/brazil-1-real-1998-1999/?tid=10638",
+          "obverseImage": "https://i.ucoin.net/coin/32/938/32938000-1s/brazil-1-real-1999.jpg",
+          "reverseImage": "https://i.ucoin.net/coin/32/938/32938000-2s/brazil-1-real-1999.jpg"
+        },
+        {
+          "denomination": "1 real",
+          "value": 1.0,
+          "unit": "real",
+          "issuePeriod": "2002 - 2026",
+          "startYear": 2002,
+          "endYear": 2026,
+          "availability": "circulating",
+          "detailUrl": "https://pt.ucoin.net/coin/brazil-1-real-2002-2026/?tid=10640",
+          "obverseImage": "https://i.ucoin.net/coin/57/049/57049079-1s/brazil-1-real-2022.jpg",
+          "reverseImage": "https://i.ucoin.net/coin/57/049/57049079-2s/brazil-1-real-2022.jpg"
+        }
+      ]
+    }
+  ]
+}

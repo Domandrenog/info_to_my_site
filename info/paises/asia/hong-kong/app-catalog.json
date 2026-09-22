@@ -1,0 +1,109 @@
+{
+  "country": "Hong Kong",
+  "periods": [
+    {
+      "title": "Hong Kong › Região Administrativa Especial › 1993 - 2019",
+      "ruler": "Região Administrativa Especial",
+      "startYear": 1993,
+      "endYear": 2019,
+      "coins": [
+        {
+          "denomination": "10 cêntimos",
+          "value": 10.0,
+          "unit": "cêntimos",
+          "issuePeriod": "1993 - 2017",
+          "startYear": 1993,
+          "endYear": 2017,
+          "availability": "circulating",
+          "detailUrl": "https://pt.ucoin.net/coin/hong_kong-10-cents-1993-2017/?tid=14534",
+          "obverseImage": "https://i.ucoin.net/coin/47/694/47694263-1s/hong_kong-10-cents-1998.jpg",
+          "reverseImage": "https://i.ucoin.net/coin/47/694/47694263-2s/hong_kong-10-cents-1998.jpg"
+        },
+        {
+          "denomination": "20 cêntimos",
+          "value": 20.0,
+          "unit": "cêntimos",
+          "issuePeriod": "1993 - 1998",
+          "startYear": 1993,
+          "endYear": 1998,
+          "availability": "circulating",
+          "detailUrl": "https://pt.ucoin.net/coin/hong_kong-20-cents-1993-1998/?tid=14541",
+          "obverseImage": "https://i.ucoin.net/coin/75/179/75179452-1s/hong_kong-20-cents-1994.jpg",
+          "reverseImage": "https://i.ucoin.net/coin/75/179/75179452-2s/hong_kong-20-cents-1994.jpg"
+        },
+        {
+          "denomination": "50 cêntimos",
+          "value": 50.0,
+          "unit": "cêntimos",
+          "issuePeriod": "1993 - 2017",
+          "startYear": 1993,
+          "endYear": 2017,
+          "availability": "circulating",
+          "detailUrl": "https://pt.ucoin.net/coin/hong_kong-50-cents-1993-2017/?tid=14547",
+          "obverseImage": "https://i.ucoin.net/coin/47/685/47685150-1s/hong_kong-50-cents-1993.jpg",
+          "reverseImage": "https://i.ucoin.net/coin/47/685/47685150-2s/hong_kong-50-cents-1993.jpg"
+        },
+        {
+          "denomination": "1 dólar",
+          "value": 1.0,
+          "unit": "dólar",
+          "issuePeriod": "1993",
+          "startYear": 1993,
+          "endYear": 1993,
+          "availability": "circulating",
+          "detailUrl": "https://pt.ucoin.net/coin/hong_kong-1-dollar-1993/?tid=14554",
+          "obverseImage": "https://i.ucoin.net/coin/73/898/73898047-1s/hong_kong-1-dollar-1993.jpg",
+          "reverseImage": "https://i.ucoin.net/coin/73/898/73898047-2s/hong_kong-1-dollar-1993.jpg"
+        },
+        {
+          "denomination": "1 dólar",
+          "value": 1.0,
+          "unit": "dólar",
+          "issuePeriod": "1994 - 2019",
+          "startYear": 1994,
+          "endYear": 2019,
+          "availability": "circulating",
+          "detailUrl": "https://pt.ucoin.net/coin/hong_kong-1-dollar-1994-2019/?tid=14555",
+          "obverseImage": "https://i.ucoin.net/coin/47/698/47698318-1s/hong_kong-1-dollar-2013.jpg",
+          "reverseImage": "https://i.ucoin.net/coin/47/698/47698318-2s/hong_kong-1-dollar-2013.jpg"
+        },
+        {
+          "denomination": "2 dólares",
+          "value": 2.0,
+          "unit": "dólares",
+          "issuePeriod": "1993 - 2019",
+          "startYear": 1993,
+          "endYear": 2019,
+          "availability": "circulating",
+          "detailUrl": "https://pt.ucoin.net/coin/hong_kong-2-dollars-1993-2019/?tid=14561",
+          "obverseImage": "https://i.ucoin.net/coin/20/618/20618416-1s/hong_kong-2-dollars-2015.jpg",
+          "reverseImage": "https://i.ucoin.net/coin/20/618/20618416-2s/hong_kong-2-dollars-2015.jpg"
+        },
+        {
+          "denomination": "5 dólares",
+          "value": 5.0,
+          "unit": "dólares",
+          "issuePeriod": "1993 - 2019",
+          "startYear": 1993,
+          "endYear": 2019,
+          "availability": "circulating",
+          "detailUrl": "https://pt.ucoin.net/coin/hong_kong-5-dollars-1993-2019/?tid=14567",
+          "obverseImage": "https://i.ucoin.net/coin/16/359/16359302-1s/hong_kong-5-dollars-1998.jpg",
+          "reverseImage": "https://i.ucoin.net/coin/16/359/16359302-2s/hong_kong-5-dollars-1998.jpg"
+        },
+        {
+          "denomination": "10 Dólares",
+          "value": 10.0,
+          "unit": "Dólares",
+          "issuePeriod": "1993 - 1998",
+          "startYear": 1993,
+          "endYear": 1998,
+          "availability": "scarce",
+          "detailUrl": "https://pt.ucoin.net/coin/hong_kong-10-dollars-1993-1998/?tid=14573",
+          "obverseImage": "https://i.ucoin.net/coin/47/685/47685053-1s/hong_kong-10-dollars-1995.jpg",
+          "reverseImage": "https://i.ucoin.net/coin/47/685/47685053-2s/hong_kong-10-dollars-1995.jpg"
+        }
+      ]
+    }
+  ]
+}

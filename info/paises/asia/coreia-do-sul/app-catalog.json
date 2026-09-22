@@ -1,0 +1,97 @@
+{
+  "country": "Coreia do Sul",
+  "periods": [
+    {
+      "title": "Coreia do Sul › República da Coreia › 1982 - 2026",
+      "ruler": "República da Coreia",
+      "startYear": 1982,
+      "endYear": 2026,
+      "coins": [
+        {
+          "denomination": "1 won",
+          "value": 1.0,
+          "unit": "won",
+          "issuePeriod": "1983 - 2026",
+          "startYear": 1983,
+          "endYear": 2026,
+          "availability": "scarce",
+          "detailUrl": "https://pt.ucoin.net/coin/south_korea-1-won-1983-2026/?tid=15857",
+          "obverseImage": "https://i.ucoin.net/coin/86/677/86677115-1s/south_korea-1-won-2026.jpg",
+          "reverseImage": "https://i.ucoin.net/coin/86/677/86677115-2s/south_korea-1-won-2026.jpg"
+        },
+        {
+          "denomination": "5 won",
+          "value": 5.0,
+          "unit": "won",
+          "issuePeriod": "1983 - 2026",
+          "startYear": 1983,
+          "endYear": 2026,
+          "availability": "scarce",
+          "detailUrl": "https://pt.ucoin.net/coin/south_korea-5-won-1983-2026/?tid=15881",
+          "obverseImage": "https://i.ucoin.net/coin/86/677/86677930-1s/south_korea-5-won-2026.jpg",
+          "reverseImage": "https://i.ucoin.net/coin/86/677/86677930-2s/south_korea-5-won-2026.jpg"
+        },
+        {
+          "denomination": "10 won",
+          "value": 10.0,
+          "unit": "won",
+          "issuePeriod": "1983 - 2006",
+          "startYear": 1983,
+          "endYear": 2006,
+          "availability": "scarce",
+          "detailUrl": "https://pt.ucoin.net/coin/south_korea-10-won-1983-2006/?tid=15905",
+          "obverseImage": "https://i.ucoin.net/coin/56/076/56076794-1s/south_korea-10-won-1999.jpg",
+          "reverseImage": "https://i.ucoin.net/coin/56/076/56076794-2s/south_korea-10-won-1999.jpg"
+        },
+        {
+          "denomination": "10 won",
+          "value": 10.0,
+          "unit": "won",
+          "issuePeriod": "2006 - 2026",
+          "startYear": 2006,
+          "endYear": 2026,
+          "availability": "circulating",
+          "detailUrl": "https://pt.ucoin.net/coin/south_korea-10-won-2006-2026/?tid=15927",
+          "obverseImage": "https://i.ucoin.net/coin/86/677/86677415-1s/south_korea-10-won-2026.jpg",
+          "reverseImage": "https://i.ucoin.net/coin/86/677/86677415-2s/south_korea-10-won-2026.jpg"
+        },
+        {
+          "denomination": "50 won",
+          "value": 50.0,
+          "unit": "won",
+          "issuePeriod": "1983 - 2026",
+          "startYear": 1983,
+          "endYear": 2026,
+          "availability": "circulating",
+          "detailUrl": "https://pt.ucoin.net/coin/south_korea-50-won-1983-2026/?tid=15934",
+          "obverseImage": "https://i.ucoin.net/coin/86/677/86677509-1s/south_korea-50-won-2026.jpg",
+          "reverseImage": "https://i.ucoin.net/coin/86/677/86677509-2s/south_korea-50-won-2026.jpg"
+        },
+        {
+          "denomination": "100 won",
+          "value": 100.0,
+          "unit": "won",
+          "issuePeriod": "1983 - 2026",
+          "startYear": 1983,
+          "endYear": 2026,
+          "availability": "circulating",
+          "detailUrl": "https://pt.ucoin.net/coin/south_korea-100-won-1983-2026/?tid=15965",
+          "obverseImage": "https://i.ucoin.net/coin/86/678/86678078-1s/south_korea-100-won-2026.jpg",
+          "reverseImage": "https://i.ucoin.net/coin/86/678/86678078-2s/south_korea-100-won-2026.jpg"
+        },
+        {
+          "denomination": "500 won",
+          "value": 500.0,
+          "unit": "won",
+          "issuePeriod": "1982 - 2026",
+          "startYear": 1982,
+          "endYear": 2026,
+          "availability": "circulating",
+          "detailUrl": "https://pt.ucoin.net/coin/south_korea-500-won-1982-2026/?tid=15994",
+          "obverseImage": "https://i.ucoin.net/coin/86/678/86678160-1s/south_korea-500-won-2026.jpg",
+          "reverseImage": "https://i.ucoin.net/coin/86/678/86678160-2s/south_korea-500-won-2026.jpg"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,97 @@
+{
+  "country": "Macau",
+  "periods": [
+    {
+      "title": "Macau › Região Administrativa Especial › 1992 - 2025",
+      "ruler": "Região Administrativa Especial",
+      "startYear": 1992,
+      "endYear": 2025,
+      "coins": [
+        {
+          "denomination": "10 avos",
+          "value": 10.0,
+          "unit": "avos",
+          "issuePeriod": "1993 - 2010",
+          "startYear": 1993,
+          "endYear": 2010,
+          "availability": "circulating",
+          "detailUrl": "https://pt.ucoin.net/coin/macau-10-avos-1993-2010/?tid=29011",
+          "obverseImage": "https://i.ucoin.net/coin/84/342/84342090-1s/macau-10-avos-1998.jpg",
+          "reverseImage": "https://i.ucoin.net/coin/84/342/84342090-2s/macau-10-avos-1998.jpg"
+        },
+        {
+          "denomination": "20 avos",
+          "value": 20.0,
+          "unit": "avos",
+          "issuePeriod": "1993 - 1998",
+          "startYear": 1993,
+          "endYear": 1998,
+          "availability": "circulating",
+          "detailUrl": "https://pt.ucoin.net/coin/macau-20-avos-1993-1998/?tid=29019",
+          "obverseImage": "https://i.ucoin.net/coin/67/805/67805048-1s/macau-20-avos-1998.jpg",
+          "reverseImage": "https://i.ucoin.net/coin/67/805/67805048-2s/macau-20-avos-1998.jpg"
+        },
+        {
+          "denomination": "50 avos",
+          "value": 50.0,
+          "unit": "avos",
+          "issuePeriod": "1993",
+          "startYear": 1993,
+          "endYear": 1993,
+          "availability": "circulating",
+          "detailUrl": "https://pt.ucoin.net/coin/macau-50-avos-1993/?tid=29021",
+          "obverseImage": "https://i.ucoin.net/coin/63/072/63072966-1s/macau-50-avos-1993.jpg",
+          "reverseImage": "https://i.ucoin.net/coin/63/072/63072966-2s/macau-50-avos-1993.jpg"
+        },
+        {
+          "denomination": "1 pataca",
+          "value": 1.0,
+          "unit": "pataca",
+          "issuePeriod": "1992 - 2010",
+          "startYear": 1992,
+          "endYear": 2010,
+          "availability": "circulating",
+          "detailUrl": "https://pt.ucoin.net/coin/macau-1-pataca-1992-2010/?tid=29031",
+          "obverseImage": "https://i.ucoin.net/coin/73/947/73947322-1s/macau-1-pataca-2007.jpg",
+          "reverseImage": "https://i.ucoin.net/coin/73/947/73947322-2s/macau-1-pataca-2007.jpg"
+        },
+        {
+          "denomination": "2 patacas",
+          "value": 2.0,
+          "unit": "patacas",
+          "issuePeriod": "1998",
+          "startYear": 1998,
+          "endYear": 1998,
+          "availability": "circulating",
+          "detailUrl": "https://pt.ucoin.net/coin/macau-2-patacas-1998/?tid=29040",
+          "obverseImage": "https://i.ucoin.net/coin/6/440/6440016-1s/macau-2-patacas-1998.jpg",
+          "reverseImage": "https://i.ucoin.net/coin/6/440/6440016-2s/macau-2-patacas-1998.jpg"
+        },
+        {
+          "denomination": "5 patacas",
+          "value": 5.0,
+          "unit": "patacas",
+          "issuePeriod": "1992 - 2010",
+          "startYear": 1992,
+          "endYear": 2010,
+          "availability": "circulating",
+          "detailUrl": "https://pt.ucoin.net/coin/macau-5-patacas-1992-2010/?tid=29041",
+          "obverseImage": "https://i.ucoin.net/coin/72/925/72925259-1s/macau-5-patacas-1992.jpg",
+          "reverseImage": "https://i.ucoin.net/coin/72/925/72925259-2s/macau-5-patacas-1992.jpg"
+        },
+        {
+          "denomination": "10 patacas",
+          "value": 10.0,
+          "unit": "patacas",
+          "issuePeriod": "1997",
+          "startYear": 1997,
+          "endYear": 1997,
+          "availability": "scarce",
+          "detailUrl": "https://pt.ucoin.net/coin/macau-10-patacas-1997/?tid=29046",
+          "obverseImage": "https://i.ucoin.net/coin/73/044/73044800-1s/macau-10-patacas-1997.jpg",
+          "reverseImage": "https://i.ucoin.net/coin/73/044/73044800-2s/macau-10-patacas-1997.jpg"
+        }
+      ]
+    }
+  ]
+}

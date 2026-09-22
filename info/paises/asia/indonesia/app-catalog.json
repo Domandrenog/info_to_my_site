@@ -1,0 +1,193 @@
+{
+  "country": "Indonésia",
+  "periods": [
+    {
+      "title": "Indonésia › República da Indonésia › 1965 - 2017",
+      "ruler": "República da Indonésia",
+      "startYear": 1965,
+      "endYear": 2017,
+      "coins": [
+        {
+          "denomination": "25 rúpias",
+          "value": 25.0,
+          "unit": "rúpias",
+          "issuePeriod": "1991 - 1996",
+          "startYear": 1991,
+          "endYear": 1996,
+          "availability": "withdrawn",
+          "detailUrl": "https://pt.ucoin.net/coin/indonesia-25-rupiah-1991-1996/?tid=25004",
+          "obverseImage": "https://i.ucoin.net/coin/37/880/37880977-1s/indonesia-25-rupiah-1995.jpg",
+          "reverseImage": "https://i.ucoin.net/coin/37/880/37880977-2s/indonesia-25-rupiah-1995.jpg"
+        },
+        {
+          "denomination": "50 rúpias",
+          "value": 50.0,
+          "unit": "rúpias",
+          "issuePeriod": "1991 - 1998",
+          "startYear": 1991,
+          "endYear": 1998,
+          "availability": "scarce",
+          "detailUrl": "https://pt.ucoin.net/coin/indonesia-50-rupiah-1991-1998/?tid=25016",
+          "obverseImage": "https://i.ucoin.net/coin/37/881/37881012-1s/indonesia-50-rupiah-1998.jpg",
+          "reverseImage": "https://i.ucoin.net/coin/37/881/37881012-2s/indonesia-50-rupiah-1998.jpg"
+        },
+        {
+          "denomination": "50 rúpias",
+          "value": 50.0,
+          "unit": "rúpias",
+          "issuePeriod": "1999 - 2002",
+          "startYear": 1999,
+          "endYear": 2002,
+          "availability": "scarce",
+          "detailUrl": "https://pt.ucoin.net/coin/indonesia-50-rupiah-1999-2002/?tid=25024",
+          "obverseImage": "https://i.ucoin.net/coin/30/463/30463144-1s/indonesia-50-rupiah-1999.jpg",
+          "reverseImage": "https://i.ucoin.net/coin/30/463/30463144-2s/indonesia-50-rupiah-1999.jpg"
+        },
+        {
+          "denomination": "100 rúpias",
+          "value": 100.0,
+          "unit": "rúpias",
+          "issuePeriod": "1991 - 1998",
+          "startYear": 1991,
+          "endYear": 1998,
+          "availability": "scarce",
+          "detailUrl": "https://pt.ucoin.net/coin/indonesia-100-rupiah-1991-1998/?tid=25034",
+          "obverseImage": "https://i.ucoin.net/coin/55/231/55231868-1s/indonesia-100-rupiah-1991.jpg",
+          "reverseImage": "https://i.ucoin.net/coin/55/231/55231868-2s/indonesia-100-rupiah-1991.jpg"
+        },
+        {
+          "denomination": "100 rúpias",
+          "value": 100.0,
+          "unit": "rúpias",
+          "issuePeriod": "1999 - 2005",
+          "startYear": 1999,
+          "endYear": 2005,
+          "availability": "scarce",
+          "detailUrl": "https://pt.ucoin.net/coin/indonesia-100-rupiah-1999-2005/?tid=25042",
+          "obverseImage": "https://i.ucoin.net/coin/37/881/37881024-1s/indonesia-100-rupiah-1999.jpg",
+          "reverseImage": "https://i.ucoin.net/coin/37/881/37881024-2s/indonesia-100-rupiah-1999.jpg"
+        },
+        {
+          "denomination": "100 rúpias",
+          "value": 100.0,
+          "unit": "rúpias",
+          "issuePeriod": "2016",
+          "startYear": 2016,
+          "endYear": 2016,
+          "availability": "circulating",
+          "detailUrl": "https://pt.ucoin.net/coin/indonesia-100-rupiah-2016/?tid=67429",
+          "obverseImage": "https://i.ucoin.net/coin/37/881/37881074-1s/indonesia-100-rupiah-2016.jpg",
+          "reverseImage": "https://i.ucoin.net/coin/37/881/37881074-2s/indonesia-100-rupiah-2016.jpg"
+        },
+        {
+          "denomination": "200 rúpias",
+          "value": 200.0,
+          "unit": "rúpias",
+          "issuePeriod": "2003",
+          "startYear": 2003,
+          "endYear": 2003,
+          "availability": "scarce",
+          "detailUrl": "https://pt.ucoin.net/coin/indonesia-200-rupiah-2003/?tid=25052",
+          "obverseImage": "https://i.ucoin.net/coin/68/591/68591144-1s/indonesia-200-rupiah-2003.jpg",
+          "reverseImage": "https://i.ucoin.net/coin/68/591/68591144-2s/indonesia-200-rupiah-2003.jpg"
+        },
+        {
+          "denomination": "200 rúpias",
+          "value": 200.0,
+          "unit": "rúpias",
+          "issuePeriod": "2016",
+          "startYear": 2016,
+          "endYear": 2016,
+          "availability": "circulating",
+          "detailUrl": "https://pt.ucoin.net/coin/indonesia-200-rupiah-2016/?tid=67430",
+          "obverseImage": "https://i.ucoin.net/coin/50/374/50374505-1s/indonesia-200-rupiah-2016.jpg",
+          "reverseImage": "https://i.ucoin.net/coin/50/374/50374505-2s/indonesia-200-rupiah-2016.jpg"
+        },
+        {
+          "denomination": "500 rúpias",
+          "value": 500.0,
+          "unit": "rúpias",
+          "issuePeriod": "1991 - 1992",
+          "startYear": 1991,
+          "endYear": 1992,
+          "availability": "withdrawn",
+          "detailUrl": "https://pt.ucoin.net/coin/indonesia-500-rupiah-1991-1992/?tid=25054",
+          "obverseImage": "https://i.ucoin.net/coin/56/988/56988662-1s/indonesia-500-rupiah-1991.jpg",
+          "reverseImage": "https://i.ucoin.net/coin/56/988/56988662-2s/indonesia-500-rupiah-1991.jpg"
+        },
+        {
+          "denomination": "500 rúpias",
+          "value": 500.0,
+          "unit": "rúpias",
+          "issuePeriod": "1997 - 2003",
+          "startYear": 1997,
+          "endYear": 2003,
+          "availability": "withdrawn",
+          "detailUrl": "https://pt.ucoin.net/coin/indonesia-500-rupiah-1997-2003/?tid=25058",
+          "obverseImage": "https://i.ucoin.net/coin/50/374/50374416-1s/indonesia-500-rupiah-2000.jpg",
+          "reverseImage": "https://i.ucoin.net/coin/50/374/50374416-2s/indonesia-500-rupiah-2000.jpg"
+        },
+        {
+          "denomination": "500 rúpias",
+          "value": 500.0,
+          "unit": "rúpias",
+          "issuePeriod": "2003",
+          "startYear": 2003,
+          "endYear": 2003,
+          "availability": "scarce",
+          "detailUrl": "https://pt.ucoin.net/coin/indonesia-500-rupiah-2003/?tid=25064",
+          "obverseImage": "https://i.ucoin.net/coin/37/881/37881039-1s/indonesia-500-rupiah-2003.jpg",
+          "reverseImage": "https://i.ucoin.net/coin/37/881/37881039-2s/indonesia-500-rupiah-2003.jpg"
+        },
+        {
+          "denomination": "500 rúpias",
+          "value": 500.0,
+          "unit": "rúpias",
+          "issuePeriod": "2016",
+          "startYear": 2016,
+          "endYear": 2016,
+          "availability": "circulating",
+          "detailUrl": "https://pt.ucoin.net/coin/indonesia-500-rupiah-2016/?tid=67431",
+          "obverseImage": "https://i.ucoin.net/coin/37/881/37881080-1s/indonesia-500-rupiah-2016.jpg",
+          "reverseImage": "https://i.ucoin.net/coin/37/881/37881080-2s/indonesia-500-rupiah-2016.jpg"
+        },
+        {
+          "denomination": "1000 rúpias",
+          "value": 1000.0,
+          "unit": "rúpias",
+          "issuePeriod": "1993 - 2000",
+          "startYear": 1993,
+          "endYear": 2000,
+          "availability": "withdrawn",
+          "detailUrl": "https://pt.ucoin.net/coin/indonesia-1000-rupiah-1993-2000/?tid=25129",
+          "obverseImage": "https://i.ucoin.net/coin/77/178/77178955-1s/indonesia-1000-rupiah-1997.jpg",
+          "reverseImage": "https://i.ucoin.net/coin/77/178/77178955-2s/indonesia-1000-rupiah-1997.jpg"
+        },
+        {
+          "denomination": "1000 rúpias",
+          "value": 1000.0,
+          "unit": "rúpias",
+          "issuePeriod": "2010",
+          "startYear": 2010,
+          "endYear": 2010,
+          "availability": "scarce",
+          "detailUrl": "https://pt.ucoin.net/coin/indonesia-1000-rupiah-2010/?tid=25135",
+          "obverseImage": "https://i.ucoin.net/coin/37/881/37881048-1s/indonesia-1000-rupiah-2010.jpg",
+          "reverseImage": "https://i.ucoin.net/coin/37/881/37881048-2s/indonesia-1000-rupiah-2010.jpg"
+        },
+        {
+          "denomination": "1000 rúpias",
+          "value": 1000.0,
+          "unit": "rúpias",
+          "issuePeriod": "2016",
+          "startYear": 2016,
+          "endYear": 2016,
+          "availability": "circulating",
+          "detailUrl": "https://pt.ucoin.net/coin/indonesia-1000-rupiah-2016/?tid=67432",
+          "obverseImage": "https://i.ucoin.net/coin/9/972/9972755-1s/indonesia-1000-rupiah-2016.jpg",
+          "reverseImage": "https://i.ucoin.net/coin/9/972/9972755-2s/indonesia-1000-rupiah-2016.jpg"
+        }
+      ]
+    }
+  ]
+}

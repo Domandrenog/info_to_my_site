@@ -1,0 +1,297 @@
+{
+  "country": "China",
+  "periods": [
+    {
+      "title": "China › República Popular › 1999 - 2026",
+      "ruler": "República Popular",
+      "startYear": 1999,
+      "endYear": 2026,
+      "coins": [
+        {
+          "denomination": "1 fen",
+          "value": 1.0,
+          "unit": "fen",
+          "issuePeriod": "1955 - 2018",
+          "startYear": 1955,
+          "endYear": 2018,
+          "availability": "scarce",
+          "detailUrl": "https://pt.ucoin.net/coin/china-1-fen-1955-2018/?tid=5784",
+          "obverseImage": "https://i.ucoin.net/coin/51/104/51104735-1s/china-1-fen-2015.jpg",
+          "reverseImage": "https://i.ucoin.net/coin/51/104/51104735-2s/china-1-fen-2015.jpg"
+        },
+        {
+          "denomination": "2 fen",
+          "value": 2.0,
+          "unit": "fen",
+          "issuePeriod": "1956 - 2000",
+          "startYear": 1956,
+          "endYear": 2000,
+          "availability": "scarce",
+          "detailUrl": "https://pt.ucoin.net/coin/china-2-fen-1956-2000/?tid=5824",
+          "obverseImage": "https://i.ucoin.net/coin/47/608/47608710-1s/china-2-fen-1982.jpg",
+          "reverseImage": "https://i.ucoin.net/coin/47/608/47608710-2s/china-2-fen-1982.jpg"
+        },
+        {
+          "denomination": "5 fen",
+          "value": 5.0,
+          "unit": "fen",
+          "issuePeriod": "1955 - 2000",
+          "startYear": 1955,
+          "endYear": 2000,
+          "availability": "scarce",
+          "detailUrl": "https://pt.ucoin.net/coin/china-5-fen-1955-2000/?tid=5858",
+          "obverseImage": "https://i.ucoin.net/coin/37/880/37880228-1s/china-5-fen-1986.jpg",
+          "reverseImage": "https://i.ucoin.net/coin/37/880/37880228-2s/china-5-fen-1986.jpg"
+        },
+        {
+          "denomination": "1 jiao",
+          "value": 1.0,
+          "unit": "jiao",
+          "issuePeriod": "1991 - 2000",
+          "startYear": 1991,
+          "endYear": 2000,
+          "availability": "scarce",
+          "detailUrl": "https://pt.ucoin.net/coin/china-1-jiao-1991-2000/?tid=5920",
+          "obverseImage": "https://i.ucoin.net/coin/62/579/62579000-1s/china-1-jiao-1992.jpg",
+          "reverseImage": "https://i.ucoin.net/coin/62/579/62579000-2s/china-1-jiao-1992.jpg"
+        },
+        {
+          "denomination": "1 jiao",
+          "value": 1.0,
+          "unit": "jiao",
+          "issuePeriod": "1999 - 2003",
+          "startYear": 1999,
+          "endYear": 2003,
+          "availability": "circulating",
+          "detailUrl": "https://pt.ucoin.net/coin/china-1-jiao-1999-2003/?tid=5929",
+          "obverseImage": "https://i.ucoin.net/coin/57/809/57809430-1s/china-1-jiao-1999.jpg",
+          "reverseImage": "https://i.ucoin.net/coin/57/809/57809430-2s/china-1-jiao-1999.jpg"
+        },
+        {
+          "denomination": "1 jiao",
+          "value": 1.0,
+          "unit": "jiao",
+          "issuePeriod": "2005 - 2018",
+          "startYear": 2005,
+          "endYear": 2018,
+          "availability": "circulating",
+          "detailUrl": "https://pt.ucoin.net/coin/china-1-jiao-2005-2018/?tid=5934",
+          "obverseImage": "https://i.ucoin.net/coin/87/324/87324915-1s/china-1-jiao-2013.jpg",
+          "reverseImage": "https://i.ucoin.net/coin/87/324/87324915-2s/china-1-jiao-2013.jpg"
+        },
+        {
+          "denomination": "1 jiao",
+          "value": 1.0,
+          "unit": "jiao",
+          "issuePeriod": "2019 - 2026",
+          "startYear": 2019,
+          "endYear": 2026,
+          "availability": "circulating",
+          "detailUrl": "https://pt.ucoin.net/coin/china-1-jiao-2019-2026/?tid=85786",
+          "obverseImage": "https://i.ucoin.net/coin/28/727/28727042-1s/china-1-jiao-2019.jpg",
+          "reverseImage": "https://i.ucoin.net/coin/28/727/28727042-2s/china-1-jiao-2019.jpg"
+        },
+        {
+          "denomination": "5 jiao",
+          "value": 5.0,
+          "unit": "jiao",
+          "issuePeriod": "1991 - 2001",
+          "startYear": 1991,
+          "endYear": 2001,
+          "availability": "scarce",
+          "detailUrl": "https://pt.ucoin.net/coin/china-5-jiao-1991-2001/?tid=5957",
+          "obverseImage": "https://i.ucoin.net/coin/74/155/74155480-1s/china-5-jiao-1997.jpg",
+          "reverseImage": "https://i.ucoin.net/coin/74/155/74155480-2s/china-5-jiao-1997.jpg"
+        },
+        {
+          "denomination": "5 jiao",
+          "value": 5.0,
+          "unit": "jiao",
+          "issuePeriod": "2002 - 2018",
+          "startYear": 2002,
+          "endYear": 2018,
+          "availability": "circulating",
+          "detailUrl": "https://pt.ucoin.net/coin/china-5-jiao-2002-2018/?tid=5968",
+          "obverseImage": "https://i.ucoin.net/coin/38/345/38345020-1s/china-5-jiao-2013.jpg",
+          "reverseImage": "https://i.ucoin.net/coin/38/345/38345020-2s/china-5-jiao-2013.jpg"
+        },
+        {
+          "denomination": "5 jiao",
+          "value": 5.0,
+          "unit": "jiao",
+          "issuePeriod": "2019 - 2026",
+          "startYear": 2019,
+          "endYear": 2026,
+          "availability": "circulating",
+          "detailUrl": "https://pt.ucoin.net/coin/china-5-jiao-2019-2026/?tid=85784",
+          "obverseImage": "https://i.ucoin.net/coin/28/727/28727036-1s/china-5-jiao-2019.jpg",
+          "reverseImage": "https://i.ucoin.net/coin/28/727/28727036-2s/china-5-jiao-2019.jpg"
+        },
+        {
+          "denomination": "1 yuan",
+          "value": 1.0,
+          "unit": "yuan",
+          "issuePeriod": "1991 - 2000",
+          "startYear": 1991,
+          "endYear": 2000,
+          "availability": "scarce",
+          "detailUrl": "https://pt.ucoin.net/coin/china-1-yuan-1991-2000/?tid=5976",
+          "obverseImage": "https://i.ucoin.net/coin/62/581/62581218-1s/china-1-yuan-1991.jpg",
+          "reverseImage": "https://i.ucoin.net/coin/62/581/62581218-2s/china-1-yuan-1991.jpg"
+        },
+        {
+          "denomination": "1 yuan",
+          "value": 1.0,
+          "unit": "yuan",
+          "issuePeriod": "1999 - 2018",
+          "startYear": 1999,
+          "endYear": 2018,
+          "availability": "circulating",
+          "detailUrl": "https://pt.ucoin.net/coin/china-1-yuan-1999-2018/?tid=5985",
+          "obverseImage": "https://i.ucoin.net/coin/57/808/57808760-1s/china-1-yuan-2008.jpg",
+          "reverseImage": "https://i.ucoin.net/coin/57/808/57808760-2s/china-1-yuan-2008.jpg"
+        },
+        {
+          "denomination": "1 yuan",
+          "value": 1.0,
+          "unit": "yuan",
+          "issuePeriod": "2019 - 2020",
+          "startYear": 2019,
+          "endYear": 2020,
+          "availability": "circulating",
+          "detailUrl": "https://pt.ucoin.net/coin/china-1-yuan-2019-2020/?tid=85785",
+          "obverseImage": "https://i.ucoin.net/coin/28/727/28727052-1s/china-1-yuan-2019.jpg",
+          "reverseImage": "https://i.ucoin.net/coin/28/727/28727052-2s/china-1-yuan-2019.jpg"
+        }
+      ]
+    },
+    {
+      "title": "China › República Popular › 1955 - 1999",
+      "ruler": "República Popular",
+      "startYear": 1955,
+      "endYear": 1999,
+      "coins": [
+        {
+          "denomination": "1 fen",
+          "value": 1.0,
+          "unit": "fen",
+          "issuePeriod": "1955 - 2018",
+          "startYear": 1955,
+          "endYear": 2018,
+          "availability": "scarce",
+          "detailUrl": "https://pt.ucoin.net/coin/china-1-fen-1955-2018/?tid=5784",
+          "obverseImage": "https://i.ucoin.net/coin/51/104/51104735-1s/china-1-fen-2015.jpg",
+          "reverseImage": "https://i.ucoin.net/coin/51/104/51104735-2s/china-1-fen-2015.jpg"
+        },
+        {
+          "denomination": "2 fen",
+          "value": 2.0,
+          "unit": "fen",
+          "issuePeriod": "1956 - 2000",
+          "startYear": 1956,
+          "endYear": 2000,
+          "availability": "scarce",
+          "detailUrl": "https://pt.ucoin.net/coin/china-2-fen-1956-2000/?tid=5824",
+          "obverseImage": "https://i.ucoin.net/coin/47/608/47608710-1s/china-2-fen-1982.jpg",
+          "reverseImage": "https://i.ucoin.net/coin/47/608/47608710-2s/china-2-fen-1982.jpg"
+        },
+        {
+          "denomination": "5 fen",
+          "value": 5.0,
+          "unit": "fen",
+          "issuePeriod": "1955 - 2000",
+          "startYear": 1955,
+          "endYear": 2000,
+          "availability": "scarce",
+          "detailUrl": "https://pt.ucoin.net/coin/china-5-fen-1955-2000/?tid=5858",
+          "obverseImage": "https://i.ucoin.net/coin/37/880/37880228-1s/china-5-fen-1986.jpg",
+          "reverseImage": "https://i.ucoin.net/coin/37/880/37880228-2s/china-5-fen-1986.jpg"
+        },
+        {
+          "denomination": "1 jiao",
+          "value": 1.0,
+          "unit": "jiao",
+          "issuePeriod": "1980 - 1986",
+          "startYear": 1980,
+          "endYear": 1986,
+          "availability": "scarce",
+          "detailUrl": "https://pt.ucoin.net/coin/china-1-jiao-1980-1986/?tid=5892",
+          "obverseImage": "https://i.ucoin.net/coin/1/926/1926285-1s/china-1-jiao-1981.jpg",
+          "reverseImage": "https://i.ucoin.net/coin/1/926/1926285-2s/china-1-jiao-1981.jpg"
+        },
+        {
+          "denomination": "1 jiao",
+          "value": 1.0,
+          "unit": "jiao",
+          "issuePeriod": "1991 - 2000",
+          "startYear": 1991,
+          "endYear": 2000,
+          "availability": "scarce",
+          "detailUrl": "https://pt.ucoin.net/coin/china-1-jiao-1991-2000/?tid=5920",
+          "obverseImage": "https://i.ucoin.net/coin/62/579/62579000-1s/china-1-jiao-1992.jpg",
+          "reverseImage": "https://i.ucoin.net/coin/62/579/62579000-2s/china-1-jiao-1992.jpg"
+        },
+        {
+          "denomination": "2 jiao",
+          "value": 2.0,
+          "unit": "jiao",
+          "issuePeriod": "1980 - 1986",
+          "startYear": 1980,
+          "endYear": 1986,
+          "availability": "scarce",
+          "detailUrl": "https://pt.ucoin.net/coin/china-2-jiao-1980-1986/?tid=5899",
+          "obverseImage": "https://i.ucoin.net/coin/75/778/75778654-1s/china-2-jiao-1983.jpg",
+          "reverseImage": "https://i.ucoin.net/coin/75/778/75778654-2s/china-2-jiao-1983.jpg"
+        },
+        {
+          "denomination": "5 jiao",
+          "value": 5.0,
+          "unit": "jiao",
+          "issuePeriod": "1980 - 1986",
+          "startYear": 1980,
+          "endYear": 1986,
+          "availability": "scarce",
+          "detailUrl": "https://pt.ucoin.net/coin/china-5-jiao-1980-1986/?tid=5906",
+          "obverseImage": "https://i.ucoin.net/coin/75/778/75778665-1s/china-5-jiao-1983.jpg",
+          "reverseImage": "https://i.ucoin.net/coin/75/778/75778665-2s/china-5-jiao-1983.jpg"
+        },
+        {
+          "denomination": "5 jiao",
+          "value": 5.0,
+          "unit": "jiao",
+          "issuePeriod": "1991 - 2001",
+          "startYear": 1991,
+          "endYear": 2001,
+          "availability": "scarce",
+          "detailUrl": "https://pt.ucoin.net/coin/china-5-jiao-1991-2001/?tid=5957",
+          "obverseImage": "https://i.ucoin.net/coin/74/155/74155480-1s/china-5-jiao-1997.jpg",
+          "reverseImage": "https://i.ucoin.net/coin/74/155/74155480-2s/china-5-jiao-1997.jpg"
+        },
+        {
+          "denomination": "1 yuan",
+          "value": 1.0,
+          "unit": "yuan",
+          "issuePeriod": "1980 - 1986",
+          "startYear": 1980,
+          "endYear": 1986,
+          "availability": "scarce",
+          "detailUrl": "https://pt.ucoin.net/coin/china-1-yuan-1980-1986/?tid=5913",
+          "obverseImage": "https://i.ucoin.net/coin/29/566/29566837-1s/china-1-yuan-1981.jpg",
+          "reverseImage": "https://i.ucoin.net/coin/29/566/29566837-2s/china-1-yuan-1981.jpg"
+        },
+        {
+          "denomination": "1 yuan",
+          "value": 1.0,
+          "unit": "yuan",
+          "issuePeriod": "1991 - 2000",
+          "startYear": 1991,
+          "endYear": 2000,
+          "availability": "scarce",
+          "detailUrl": "https://pt.ucoin.net/coin/china-1-yuan-1991-2000/?tid=5976",
+          "obverseImage": "https://i.ucoin.net/coin/62/581/62581218-1s/china-1-yuan-1991.jpg",
+          "reverseImage": "https://i.ucoin.net/coin/62/581/62581218-2s/china-1-yuan-1991.jpg"
+        }
+      ]
+    }
+  ]
+}

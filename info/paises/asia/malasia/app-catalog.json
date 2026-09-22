@@ -1,0 +1,241 @@
+{
+  "country": "Malásia",
+  "periods": [
+    {
+      "title": "Malásia › Federação Malaia › 1967 - 2025",
+      "ruler": "Federação Malaia",
+      "startYear": 1967,
+      "endYear": 2025,
+      "coins": [
+        {
+          "denomination": "1 sen",
+          "value": 1.0,
+          "unit": "sen",
+          "issuePeriod": "1967 - 1981",
+          "startYear": 1967,
+          "endYear": 1981,
+          "availability": "scarce",
+          "detailUrl": "https://pt.ucoin.net/coin/malaysia-1-sen-1967-1981/?tid=21024",
+          "obverseImage": "https://i.ucoin.net/coin/68/525/68525921-1s/malaysia-1-sen-1973.jpg",
+          "reverseImage": "https://i.ucoin.net/coin/68/525/68525921-2s/malaysia-1-sen-1973.jpg"
+        },
+        {
+          "denomination": "1 sen",
+          "value": 1.0,
+          "unit": "sen",
+          "issuePeriod": "1973 - 1988",
+          "startYear": 1973,
+          "endYear": 1988,
+          "availability": "scarce",
+          "detailUrl": "https://pt.ucoin.net/coin/malaysia-1-sen-1973-1988/?tid=21029",
+          "obverseImage": "https://i.ucoin.net/coin/55/324/55324077-1s/malaysia-1-sen-1987.jpg",
+          "reverseImage": "https://i.ucoin.net/coin/55/324/55324077-2s/malaysia-1-sen-1987.jpg"
+        },
+        {
+          "denomination": "1 sen",
+          "value": 1.0,
+          "unit": "sen",
+          "issuePeriod": "1989 - 2007",
+          "startYear": 1989,
+          "endYear": 2007,
+          "availability": "scarce",
+          "detailUrl": "https://pt.ucoin.net/coin/malaysia-1-sen-1989-2007/?tid=21042",
+          "obverseImage": "https://i.ucoin.net/coin/55/326/55326262-1s/malaysia-1-sen-1991.jpg",
+          "reverseImage": "https://i.ucoin.net/coin/55/326/55326262-2s/malaysia-1-sen-1991.jpg"
+        },
+        {
+          "denomination": "5 sen",
+          "value": 5.0,
+          "unit": "sen",
+          "issuePeriod": "1967 - 1988",
+          "startYear": 1967,
+          "endYear": 1988,
+          "availability": "scarce",
+          "detailUrl": "https://pt.ucoin.net/coin/malaysia-5-sen-1967-1988/?tid=21062",
+          "obverseImage": "https://i.ucoin.net/coin/47/158/47158885-1s/malaysia-5-sen-1982.jpg",
+          "reverseImage": "https://i.ucoin.net/coin/47/158/47158885-2s/malaysia-5-sen-1982.jpg"
+        },
+        {
+          "denomination": "5 sen",
+          "value": 5.0,
+          "unit": "sen",
+          "issuePeriod": "1989 - 2011",
+          "startYear": 1989,
+          "endYear": 2011,
+          "availability": "scarce",
+          "detailUrl": "https://pt.ucoin.net/coin/malaysia-5-sen-1989-2011/?tid=21076",
+          "obverseImage": "https://i.ucoin.net/coin/55/320/55320067-1s/malaysia-5-sen-1995.jpg",
+          "reverseImage": "https://i.ucoin.net/coin/55/320/55320067-2s/malaysia-5-sen-1995.jpg"
+        },
+        {
+          "denomination": "5 sen",
+          "value": 5.0,
+          "unit": "sen",
+          "issuePeriod": "2011 - 2025",
+          "startYear": 2011,
+          "endYear": 2025,
+          "availability": "circulating",
+          "detailUrl": "https://pt.ucoin.net/coin/malaysia-5-sen-2011-2025/?tid=21099",
+          "obverseImage": "https://i.ucoin.net/coin/51/540/51540358-1s/malaysia-5-sen-2019.jpg",
+          "reverseImage": "https://i.ucoin.net/coin/51/540/51540358-2s/malaysia-5-sen-2019.jpg"
+        },
+        {
+          "denomination": "10 sen",
+          "value": 10.0,
+          "unit": "sen",
+          "issuePeriod": "1967 - 1988",
+          "startYear": 1967,
+          "endYear": 1988,
+          "availability": "scarce",
+          "detailUrl": "https://pt.ucoin.net/coin/malaysia-10-sen-1967-1988/?tid=21101",
+          "obverseImage": "https://i.ucoin.net/coin/55/273/55273576-1s/malaysia-10-sen-1981.jpg",
+          "reverseImage": "https://i.ucoin.net/coin/55/273/55273576-2s/malaysia-10-sen-1981.jpg"
+        },
+        {
+          "denomination": "10 sen",
+          "value": 10.0,
+          "unit": "sen",
+          "issuePeriod": "1989 - 2011",
+          "startYear": 1989,
+          "endYear": 2011,
+          "availability": "scarce",
+          "detailUrl": "https://pt.ucoin.net/coin/malaysia-10-sen-1989-2011/?tid=21114",
+          "obverseImage": "https://i.ucoin.net/coin/55/293/55293111-1s/malaysia-10-sen-1999.jpg",
+          "reverseImage": "https://i.ucoin.net/coin/55/293/55293111-2s/malaysia-10-sen-1999.jpg"
+        },
+        {
+          "denomination": "10 sen",
+          "value": 10.0,
+          "unit": "sen",
+          "issuePeriod": "2011 - 2025",
+          "startYear": 2011,
+          "endYear": 2025,
+          "availability": "circulating",
+          "detailUrl": "https://pt.ucoin.net/coin/malaysia-10-sen-2011-2025/?tid=21137",
+          "obverseImage": "https://i.ucoin.net/coin/37/924/37924402-1s/malaysia-10-sen-2014.jpg",
+          "reverseImage": "https://i.ucoin.net/coin/37/924/37924402-2s/malaysia-10-sen-2014.jpg"
+        },
+        {
+          "denomination": "20 sen",
+          "value": 20.0,
+          "unit": "sen",
+          "issuePeriod": "1967 - 1988",
+          "startYear": 1967,
+          "endYear": 1988,
+          "availability": "scarce",
+          "detailUrl": "https://pt.ucoin.net/coin/malaysia-20-sen-1967-1988/?tid=21139",
+          "obverseImage": "https://i.ucoin.net/coin/55/273/55273526-1s/malaysia-20-sen-1981.jpg",
+          "reverseImage": "https://i.ucoin.net/coin/55/273/55273526-2s/malaysia-20-sen-1981.jpg"
+        },
+        {
+          "denomination": "20 sen",
+          "value": 20.0,
+          "unit": "sen",
+          "issuePeriod": "1989 - 2011",
+          "startYear": 1989,
+          "endYear": 2011,
+          "availability": "scarce",
+          "detailUrl": "https://pt.ucoin.net/coin/malaysia-20-sen-1989-2011/?tid=21155",
+          "obverseImage": "https://i.ucoin.net/coin/55/279/55279706-1s/malaysia-20-sen-2007.jpg",
+          "reverseImage": "https://i.ucoin.net/coin/55/279/55279706-2s/malaysia-20-sen-2007.jpg"
+        },
+        {
+          "denomination": "20 sen",
+          "value": 20.0,
+          "unit": "sen",
+          "issuePeriod": "2011 - 2025",
+          "startYear": 2011,
+          "endYear": 2025,
+          "availability": "circulating",
+          "detailUrl": "https://pt.ucoin.net/coin/malaysia-20-sen-2011-2025/?tid=21175",
+          "obverseImage": "https://i.ucoin.net/coin/37/924/37924435-1s/malaysia-20-sen-2014.jpg",
+          "reverseImage": "https://i.ucoin.net/coin/37/924/37924435-2s/malaysia-20-sen-2014.jpg"
+        },
+        {
+          "denomination": "50 sen",
+          "value": 50.0,
+          "unit": "sen",
+          "issuePeriod": "1967 - 1988",
+          "startYear": 1967,
+          "endYear": 1988,
+          "availability": "scarce",
+          "detailUrl": "https://pt.ucoin.net/coin/malaysia-50-sen-1967-1988/?tid=21177",
+          "obverseImage": "https://i.ucoin.net/coin/75/390/75390800-1s/malaysia-50-sen-1988.jpg",
+          "reverseImage": "https://i.ucoin.net/coin/75/390/75390800-2s/malaysia-50-sen-1988.jpg"
+        },
+        {
+          "denomination": "50 sen",
+          "value": 50.0,
+          "unit": "sen",
+          "issuePeriod": "1989 - 2011",
+          "startYear": 1989,
+          "endYear": 2011,
+          "availability": "scarce",
+          "detailUrl": "https://pt.ucoin.net/coin/malaysia-50-sen-1989-2011/?tid=21193",
+          "obverseImage": "https://i.ucoin.net/coin/55/333/55333629-1s/malaysia-50-sen-2003.jpg",
+          "reverseImage": "https://i.ucoin.net/coin/55/333/55333629-2s/malaysia-50-sen-2003.jpg"
+        },
+        {
+          "denomination": "50 sen",
+          "value": 50.0,
+          "unit": "sen",
+          "issuePeriod": "2011 - 2025",
+          "startYear": 2011,
+          "endYear": 2025,
+          "availability": "circulating",
+          "detailUrl": "https://pt.ucoin.net/coin/malaysia-50-sen-2011-2025/?tid=21217",
+          "obverseImage": "https://i.ucoin.net/coin/37/924/37924453-1s/malaysia-50-sen-2014.jpg",
+          "reverseImage": "https://i.ucoin.net/coin/37/924/37924453-2s/malaysia-50-sen-2014.jpg"
+        },
+        {
+          "denomination": "1 ringgit",
+          "value": 1.0,
+          "unit": "ringgit",
+          "issuePeriod": "1971 - 1986",
+          "startYear": 1971,
+          "endYear": 1986,
+          "availability": "withdrawn",
+          "detailUrl": "https://pt.ucoin.net/coin/malaysia-1-ringgit-1971-1986/?tid=21220",
+          "obverseImage": "https://i.ucoin.net/coin/44/419/44419535-1s/malaysia-1-ringgit-1985.jpg",
+          "reverseImage": "https://i.ucoin.net/coin/44/419/44419535-2s/malaysia-1-ringgit-1985.jpg"
+        },
+        {
+          "denomination": "1 ringgit",
+          "value": 1.0,
+          "unit": "ringgit",
+          "issuePeriod": "1989 - 1993",
+          "startYear": 1989,
+          "endYear": 1993,
+          "availability": "withdrawn",
+          "detailUrl": "https://pt.ucoin.net/coin/malaysia-1-ringgit-1989-1993/?tid=21263",
+          "obverseImage": "https://i.ucoin.net/coin/36/435/36435686-1s/malaysia-1-ringgit-1989.jpg",
+          "reverseImage": "https://i.ucoin.net/coin/36/435/36435686-2s/malaysia-1-ringgit-1989.jpg"
+        },
+        {
+          "denomination": "1 ringgit",
+          "value": 1.0,
+          "unit": "ringgit",
+          "issuePeriod": "1993 - 1996",
+          "startYear": 1993,
+          "endYear": 1996,
+          "availability": "withdrawn",
+          "detailUrl": "https://pt.ucoin.net/coin/malaysia-1-ringgit-1993-1996/?tid=21268",
+          "obverseImage": "https://i.ucoin.net/coin/50/422/50422773-1s/malaysia-1-ringgit-1995.jpg",
+          "reverseImage": "https://i.ucoin.net/coin/50/422/50422773-2s/malaysia-1-ringgit-1995.jpg"
+        },
+        {
+          "denomination": "5 ringgit",
+          "value": 5.0,
+          "unit": "ringgit",
+          "issuePeriod": "1971",
+          "startYear": 1971,
+          "endYear": 1971,
+          "availability": "scarce",
+          "detailUrl": "https://pt.ucoin.net/coin/malaysia-5-ringgit-1971/?tid=21655",
+          "obverseImage": "https://i.ucoin.net/coin/67/365/67365225-1s/malaysia-5-ringgit-1971.jpg",
+          "reverseImage": "https://i.ucoin.net/coin/67/365/67365225-2s/malaysia-5-ringgit-1971.jpg"
+        }
+      ]
+    }
+  ]
+}
