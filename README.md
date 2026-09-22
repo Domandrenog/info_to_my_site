@@ -85,7 +85,7 @@ info/
 
 ## Recolher souvenirs do Presscoins
 
-No menu principal escolhe `PressedCoins Disney Orlando > Recolher catálogo e criar pré-visualização` ou executa diretamente:
+No menu principal escolhe `Souvenirs > USA > PressedCoins Disney Orlando > Recolher catálogo e criar pré-visualização` ou executa diretamente:
 
 ```bash
 python3 -m scripts.presscoins_souvenirs --location "Magic Kingdom" --search 2026

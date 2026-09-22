@@ -29,6 +29,51 @@ PLANS = [
 
 
 class MainTrackingActionTests(unittest.TestCase):
+    @patch("main.menu_atualizar_site")
+    @patch("main.title")
+    @patch("main.ask_text", side_effect=["4", "5"])
+    def test_base44_update_menu_is_inside_normal_coins(
+        self,
+        _ask_text,
+        _title,
+        update_site_menu,
+    ) -> None:
+        with redirect_stdout(io.StringIO()) as output:
+            main.menu_importar_ucoin()
+
+        self.assertIn("4) Atualizar Site Base44", output.getvalue())
+        update_site_menu.assert_called_once_with()
+
+    @patch("main.menu_souvenirs_usa")
+    @patch("main.title")
+    @patch("main.ask_text", side_effect=["1", "2"])
+    def test_souvenirs_menu_groups_sources_by_country(
+        self,
+        _ask_text,
+        _title,
+        usa_menu,
+    ) -> None:
+        with redirect_stdout(io.StringIO()) as output:
+            main.menu_souvenirs()
+
+        self.assertIn("1) USA", output.getvalue())
+        usa_menu.assert_called_once_with()
+
+    @patch("main.menu_pressedcoins_disney_orlando")
+    @patch("main.title")
+    @patch("main.ask_text", side_effect=["1", "2"])
+    def test_usa_souvenirs_menu_exposes_disney_pressed_coins(
+        self,
+        _ask_text,
+        _title,
+        pressedcoins_menu,
+    ) -> None:
+        with redirect_stdout(io.StringIO()) as output:
+            main.menu_souvenirs_usa()
+
+        self.assertIn("1) PressedCoins Disney Orlando", output.getvalue())
+        pressedcoins_menu.assert_called_once_with()
+
     def test_unconfirmed_associations_are_grouped_by_country(self) -> None:
         payload = [
             {

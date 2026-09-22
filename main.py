@@ -1192,7 +1192,8 @@ def menu_importar_ucoin() -> None:
         print("1) Importar um país do uCoin para o Site Base44")
         print("2) Recolher países do Site sem tracking local")
         print("3) Executar uma etapa específica")
-        print("4) Voltar")
+        print("4) Atualizar Site Base44")
+        print("5) Voltar")
 
         choice = ask_text("Escolhe uma opcao", "1")
         if choice == "1":
@@ -1203,6 +1204,9 @@ def menu_importar_ucoin() -> None:
             menu_specific_stage()
             continue
         elif choice == "4":
+            menu_atualizar_site()
+            continue
+        elif choice == "5":
             return
         else:
             print("Opcao invalida.")
@@ -1279,7 +1283,7 @@ def action_collect_presscoins_souvenirs() -> None:
     run_step("Recolher catálogo PressedCoins Disney Orlando", command)
 
 
-def menu_souvenirs() -> None:
+def menu_pressedcoins_disney_orlando() -> None:
     while True:
         title("PressedCoins Disney Orlando")
         print("1) Recolher catálogo e criar pré-visualização")
@@ -1296,13 +1300,44 @@ def menu_souvenirs() -> None:
         input("\nCarrega Enter para continuar...")
 
 
+def menu_souvenirs_usa() -> None:
+    while True:
+        title("Souvenirs — USA")
+        print("1) PressedCoins Disney Orlando")
+        print("2) Voltar")
+
+        choice = ask_text("Escolhe uma opção", "1")
+        if choice == "1":
+            menu_pressedcoins_disney_orlando()
+        elif choice == "2":
+            return
+        else:
+            print("Opção inválida.")
+            input("\nCarrega Enter para continuar...")
+
+
+def menu_souvenirs() -> None:
+    while True:
+        title("Souvenirs")
+        print("1) USA")
+        print("2) Voltar")
+
+        choice = ask_text("Escolhe uma opção", "1")
+        if choice == "1":
+            menu_souvenirs_usa()
+        elif choice == "2":
+            return
+        else:
+            print("Opção inválida.")
+            input("\nCarrega Enter para continuar...")
+
+
 def menu() -> None:
     while True:
         title("uCoin to MySite - Menu principal")
         print("1) Pré-requisitos")
         print("2) Moedas normais")
-        print("3) Atualizar Site Base44")
-        print("4) PressedCoins Disney Orlando")
+        print("3) Souvenirs")
         print("0) Sair")
 
         choice = ask_text("Escolhe uma opcao", "1")
@@ -1311,8 +1346,6 @@ def menu() -> None:
         elif choice == "2":
             menu_importar_ucoin()
         elif choice == "3":
-            menu_atualizar_site()
-        elif choice == "4":
             menu_souvenirs()
         elif choice == "0":
             print("A sair.")
