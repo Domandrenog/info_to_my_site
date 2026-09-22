@@ -11,6 +11,7 @@ from scripts.presscoins_souvenirs import (
     default_output_directory,
     pagination_page_count,
     parse_search_results,
+    subject_from_description,
     write_outputs,
 )
 
@@ -66,6 +67,27 @@ def page_html(catalog_number: str, page_options: str = "") -> str:
 
 
 class PresscoinsSouvenirsTests(unittest.TestCase):
+    def test_long_descriptions_produce_short_display_names(self) -> None:
+        examples = {
+            "Pongo & Perdita, straight lined chest and has very fine lines, (NOTE: old die)": "Pongo & Perdita",
+            "Woody and Jessie riding Bullseye \"WOODY\" at top": "Woody and Jessie",
+            "Hitchhiking Ghost Gus (Prisoner), Haunted Mansion logo": "Hitchhiking Ghost Gus",
+            "Pirate Pluto wearing a bandana and earring, Pirates logo": "Pirate Pluto",
+            "Lady \"Walt Disney's Lady and the Tramp / 1 of 6\"": "Lady",
+            "Cowboy Stitch swing a lasso overhead \"PECOS BILL\"": "Cowboy Stitch",
+        }
+        for description, expected in examples.items():
+            with self.subTest(description=description):
+                self.assertEqual(subject_from_description(description), expected)
+
+    def test_display_name_has_a_hard_readable_length_limit(self) -> None:
+        description = (
+            "A deliberately extremely long souvenir design subject containing many words "
+            "before any description details"
+        )
+
+        self.assertLessEqual(len(subject_from_description(description)), 48)
+
     def test_parser_extracts_records_and_large_image_url(self) -> None:
         coins = parse_search_results(SAMPLE_HTML)
 

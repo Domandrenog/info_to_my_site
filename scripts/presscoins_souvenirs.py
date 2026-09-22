@@ -270,12 +270,36 @@ def default_output_directory(location: str, search: str, availability: str = "Al
 def subject_from_description(description: str) -> str:
     if not description:
         return "Moeda prensada"
-    match = re.match(
-        r"^(.+?)(?:\s+(?:standing|looking|walking|above|behind|facing|with|on)\b|$)",
+    cleaned = re.sub(
+        r"\s*,?\s*\(NOTE:.*$",
+        "",
         description,
         flags=re.IGNORECASE,
+    ).strip()
+    quote_index = cleaned.find('"')
+    if quote_index > 0:
+        cleaned = cleaned[:quote_index].strip()
+    # The first comma-separated part contains the design subject; later parts
+    # normally describe logos, lettering, borders, copyright marks or history.
+    cleaned = cleaned.split(",", 1)[0].strip()
+    match = re.match(
+        r"^(.+?)(?:\s+(?:standing|looking|walking|above|behind|facing|with|on|"
+        r"holding|playing|riding|wearing|carrying|jumping|running|flying|swinging|swing|"
+        r"leaning|falling|dancing|eating|hugging|patting|kicking|turned|surrounded|"
+        r"going|beside|inside|lying|seated|sitting|crawling|kneeling|peering|coming|"
+        r"waving|pointing|trying|that|in)\b|$)",
+        cleaned,
+        flags=re.IGNORECASE,
     )
-    subject = match.group(1).strip(" ,.-") if match else description.strip()
+    subject = match.group(1).strip(" ,.-") if match else cleaned
+    subject = re.sub(r"\s*\([^)]*\)\s*$", "", subject).strip(" ,.-")
+    if len(subject) > 45 and " and " in subject:
+        first, second = subject.split(" and ", 1)
+        if " the " in first and " the " in second:
+            subject = f"{first.split(' the ', 1)[0]} & {second.split(' the ', 1)[0]}"
+    if len(subject) > 48:
+        shortened = subject[:47].rsplit(" ", 1)[0].rstrip(" ,.-")
+        subject = f"{shortened}…"
     return subject or "Moeda prensada"
 
 

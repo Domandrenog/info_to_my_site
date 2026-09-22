@@ -9,7 +9,7 @@
     "availability": "1",
     "availability_label": "atuais / disponíveis",
     "page_count": 4,
-    "retrieved_at": "2026-09-22T10:50:43+00:00",
+    "retrieved_at": "2026-09-22T11:04:50+00:00",
     "result_count": 185
   },
   "items": [
@@ -86,7 +86,7 @@
         "thumbnail_url": "https://www.presscoins.com/images/coin_images/Magic%20Kingdom/small/MK0164-RES0182.gif"
       },
       "souvenir": {
-        "name": "Lady \"Walt Disney's Lady and the Tramp / 1 of 6\", (NOTE: Originally installed at Pop Century Resort (RES0182, button \"A\") and was removed July 2011. Put back",
+        "name": "Lady",
         "continent": "América",
         "country": "Estados Unidos da América",
         "city": "Orlando",
@@ -116,7 +116,7 @@
         "thumbnail_url": "https://www.presscoins.com/images/coin_images/Magic%20Kingdom/small/MK0168.gif"
       },
       "souvenir": {
-        "name": "Lady, Tramp, Scamp, Colette, Annette, Danielle, Trusty & Jock \"Walt Disney's Lady and the Tramp / 5 of 6\" (Filled characters)",
+        "name": "Lady",
         "continent": "América",
         "country": "Estados Unidos da América",
         "city": "Orlando",
@@ -266,7 +266,7 @@
         "thumbnail_url": "https://www.presscoins.com/images/coin_images/Magic%20Kingdom/small/MK0186-DHS0074-RES0007.gif"
       },
       "souvenir": {
-        "name": "Dalmatian puppy wearing a fireman's helmet & holding a bone, has no spot",
+        "name": "Dalmatian puppy",
         "continent": "América",
         "country": "Estados Unidos da América",
         "city": "Orlando",
@@ -296,7 +296,7 @@
         "thumbnail_url": "https://www.presscoins.com/images/coin_images/Magic%20Kingdom/small/MK0187-DHS0075-RES0026.gif"
       },
       "souvenir": {
-        "name": "Pongo & Perdita, straight lined chest and has very fine short lines coming off the chest, (NOTE: Design was at Caribbean Beach Resort (RES0026, button \"B\") and has been off-stage from November 2004 to January 2012. Machine moved from Prop Shop at Hollywood Studios August 2013.)",
+        "name": "Pongo & Perdita",
         "continent": "América",
         "country": "Estados Unidos da América",
         "city": "Orlando",
@@ -326,7 +326,7 @@
         "thumbnail_url": "https://www.presscoins.com/images/coin_images/Magic%20Kingdom/small/MK0188-DHS0076-RES0009.gif"
       },
       "souvenir": {
-        "name": "Snarling Wizzer, has 2 spots",
+        "name": "Snarling Wizzer",
         "continent": "América",
         "country": "Estados Unidos da América",
         "city": "Orlando",
@@ -356,7 +356,7 @@
         "thumbnail_url": "https://www.presscoins.com/images/coin_images/Magic%20Kingdom/small/MK0193.gif"
       },
       "souvenir": {
-        "name": "Mickey, Goofy and Donald as Hitchhiking Ghosts, Haunted Mansion logo, Magic Kingdom logo",
+        "name": "Mickey",
         "continent": "América",
         "country": "Estados Unidos da América",
         "city": "Orlando",
@@ -386,7 +386,7 @@
         "thumbnail_url": "https://www.presscoins.com/images/coin_images/Magic%20Kingdom/small/MK0194.gif"
       },
       "souvenir": {
-        "name": "Hitchhiking Ghost Ezra (Skeleton), Magic Kingdom logo, Haunted Mansion logo",
+        "name": "Hitchhiking Ghost Ezra",
         "continent": "América",
         "country": "Estados Unidos da América",
         "city": "Orlando",
@@ -416,7 +416,7 @@
         "thumbnail_url": "https://www.presscoins.com/images/coin_images/Magic%20Kingdom/small/MK0195.gif"
       },
       "souvenir": {
-        "name": "Hitchhiking Ghost Phineas (Traveler), Haunted Mansion logo",
+        "name": "Hitchhiking Ghost Phineas",
         "continent": "América",
         "country": "Estados Unidos da América",
         "city": "Orlando",
@@ -446,7 +446,7 @@
         "thumbnail_url": "https://www.presscoins.com/images/coin_images/Magic%20Kingdom/small/MK0196.gif"
       },
       "souvenir": {
-        "name": "Hitchhiking Ghost Gus (Prisoner), Haunted Mansion logo",
+        "name": "Hitchhiking Ghost Gus",
         "continent": "América",
         "country": "Estados Unidos da América",
         "city": "Orlando",
@@ -476,7 +476,7 @@
         "thumbnail_url": "https://www.presscoins.com/images/coin_images/Magic%20Kingdom/small/WDW16061.gif"
       },
       "souvenir": {
-        "name": "Proud Pluto sitting beside trophy cup, Magic Kingdom logo, Walt Disney World logo",
+        "name": "Proud Pluto",
         "continent": "América",
         "country": "Estados Unidos da América",
         "city": "Orlando",
@@ -506,7 +506,7 @@
         "thumbnail_url": "https://www.presscoins.com/images/coin_images/Magic%20Kingdom/small/WDW16062.gif"
       },
       "souvenir": {
-        "name": "Minnie in Tomorrowland Speedway car waving, Magic Kingdom logo, Walt Disney World logo",
+        "name": "Minnie",
         "continent": "América",
         "country": "Estados Unidos da América",
         "city": "Orlando",
@@ -536,7 +536,7 @@
         "thumbnail_url": "https://www.presscoins.com/images/coin_images/Magic%20Kingdom/small/WDW16063.gif"
       },
       "souvenir": {
-        "name": "Race car driver Mickey holding checkered flag, Magic Kingdom logo, Walt Disney World logo",
+        "name": "Race car driver Mickey",
         "continent": "América",
         "country": "Estados Unidos da América",
         "city": "Orlando",
@@ -566,7 +566,7 @@
         "thumbnail_url": "https://www.presscoins.com/images/coin_images/Magic%20Kingdom/small/WDW16064.gif"
       },
       "souvenir": {
-        "name": "Speedway Driver Mickey in race car",
+        "name": "Speedway Driver Mickey",
         "continent": "América",
         "country": "Estados Unidos da América",
         "city": "Orlando",
@@ -596,7 +596,7 @@
         "thumbnail_url": "https://www.presscoins.com/images/coin_images/Magic%20Kingdom/small/WDW16073.gif"
       },
       "souvenir": {
-        "name": "Little Green Man Squeeze Toy Alien, Disney Pixar Toy Story logo, ©Disney/Pixar",
+        "name": "Little Green Man Squeeze Toy Alien",
         "continent": "América",
         "country": "Estados Unidos da América",
         "city": "Orlando",
@@ -626,7 +626,7 @@
         "thumbnail_url": "https://www.presscoins.com/images/coin_images/Magic%20Kingdom/small/WDW16074.gif"
       },
       "souvenir": {
-        "name": "Buzz Lightyear flying to the right, Disney Pixar Toy Story logo, ©Disney/Pixar",
+        "name": "Buzz Lightyear",
         "continent": "América",
         "country": "Estados Unidos da América",
         "city": "Orlando",
@@ -686,7 +686,7 @@
         "thumbnail_url": "https://www.presscoins.com/images/coin_images/Magic%20Kingdom/small/WDW16076.gif"
       },
       "souvenir": {
-        "name": "Buzz Lightyear pointing to the sky",
+        "name": "Buzz Lightyear",
         "continent": "América",
         "country": "Estados Unidos da América",
         "city": "Orlando",
@@ -716,7 +716,7 @@
         "thumbnail_url": "https://www.presscoins.com/images/coin_images/Magic%20Kingdom/small/WDW16077.gif"
       },
       "souvenir": {
-        "name": "Buzz Lightyear flying straight ahead, Disney Pixar Toy Story logo, ©Disney/Pixar",
+        "name": "Buzz Lightyear",
         "continent": "América",
         "country": "Estados Unidos da América",
         "city": "Orlando",
@@ -746,7 +746,7 @@
         "thumbnail_url": "https://www.presscoins.com/images/coin_images/Magic%20Kingdom/small/WDW16078.gif"
       },
       "souvenir": {
-        "name": "Buzz Lightyear's Space Ranger, Disney Pixar Toy Story logo, ©Disney/Pixar",
+        "name": "Buzz Lightyear's Space Ranger",
         "continent": "América",
         "country": "Estados Unidos da América",
         "city": "Orlando",
@@ -806,7 +806,7 @@
         "thumbnail_url": "https://www.presscoins.com/images/coin_images/Magic%20Kingdom/small/WDW16080.gif"
       },
       "souvenir": {
-        "name": "Zurg pointing to the left, Disney Pixar Toy Story logo, ©Disney/Pixar",
+        "name": "Zurg",
         "continent": "América",
         "country": "Estados Unidos da América",
         "city": "Orlando",
@@ -836,7 +836,7 @@
         "thumbnail_url": "https://www.presscoins.com/images/coin_images/Magic%20Kingdom/small/WDW17032.gif"
       },
       "souvenir": {
-        "name": "Buzz Lightyear and a Little Green Man alien riding Buzz Lightyear Space Ranger Spin, Tomorrowland logo, ©Disney/Pixar",
+        "name": "Buzz Lightyear and a Little Green Man alien",
         "continent": "América",
         "country": "Estados Unidos da América",
         "city": "Orlando",
@@ -926,7 +926,7 @@
         "thumbnail_url": "https://www.presscoins.com/images/coin_images/Magic%20Kingdom/small/WDW17035.gif"
       },
       "souvenir": {
-        "name": "Stitch riding Space Mountain, Tomorrowland logo",
+        "name": "Stitch",
         "continent": "América",
         "country": "Estados Unidos da América",
         "city": "Orlando",
@@ -956,7 +956,7 @@
         "thumbnail_url": "https://www.presscoins.com/images/coin_images/Magic%20Kingdom/small/WDW17036.gif"
       },
       "souvenir": {
-        "name": "Mr. Incredible and Dash in a Tomorrowland Speedway car, Tomorrowland logo, ©Disney/Pixar",
+        "name": "Mr. Incredible and Dash",
         "continent": "América",
         "country": "Estados Unidos da América",
         "city": "Orlando",
@@ -986,7 +986,7 @@
         "thumbnail_url": "https://www.presscoins.com/images/coin_images/Magic%20Kingdom/small/WDW17037.gif"
       },
       "souvenir": {
-        "name": "Goofy wearing a spacesuit and helmet, Tomorrowland logo",
+        "name": "Goofy",
         "continent": "América",
         "country": "Estados Unidos da América",
         "city": "Orlando",
@@ -1016,7 +1016,7 @@
         "thumbnail_url": "https://www.presscoins.com/images/coin_images/Magic%20Kingdom/small/WDW17038.gif"
       },
       "souvenir": {
-        "name": "Minnie wearing a spacesuit and helmet, Tomorrowland logo",
+        "name": "Minnie",
         "continent": "América",
         "country": "Estados Unidos da América",
         "city": "Orlando",
@@ -1046,7 +1046,7 @@
         "thumbnail_url": "https://www.presscoins.com/images/coin_images/Magic%20Kingdom/small/WDW17039.gif"
       },
       "souvenir": {
-        "name": "FL, Pluto wearing a spacesuit and helmet, Tomorrowland logo",
+        "name": "FL",
         "continent": "América",
         "country": "Estados Unidos da América",
         "city": "Orlando",
@@ -1106,7 +1106,7 @@
         "thumbnail_url": "https://www.presscoins.com/images/coin_images/Magic%20Kingdom/small/WDW17080.gif"
       },
       "souvenir": {
-        "name": "Space Mountain Donald, Space Mountain logo",
+        "name": "Space Mountain Donald",
         "continent": "América",
         "country": "Estados Unidos da América",
         "city": "Orlando",
@@ -1166,7 +1166,7 @@
         "thumbnail_url": "https://www.presscoins.com/images/coin_images/Magic%20Kingdom/small/WDW17082.gif"
       },
       "souvenir": {
-        "name": "Mickey, Donald & Goofy in Space Mountain ride car, Space Mountain logo",
+        "name": "Mickey",
         "continent": "América",
         "country": "Estados Unidos da América",
         "city": "Orlando",
@@ -1196,7 +1196,7 @@
         "thumbnail_url": "https://www.presscoins.com/images/coin_images/Magic%20Kingdom/small/WDW17083.gif"
       },
       "souvenir": {
-        "name": "Mike & Sulley in Space Mountain ride car, Space Mountain logo",
+        "name": "Mike & Sulley",
         "continent": "América",
         "country": "Estados Unidos da América",
         "city": "Orlando",
@@ -1226,7 +1226,7 @@
         "thumbnail_url": "https://www.presscoins.com/images/coin_images/Magic%20Kingdom/small/WDW17084.gif"
       },
       "souvenir": {
-        "name": "Mickey & Minnie in Space Mountain ride car, Space Mountain logo",
+        "name": "Mickey & Minnie",
         "continent": "América",
         "country": "Estados Unidos da América",
         "city": "Orlando",
@@ -1256,7 +1256,7 @@
         "thumbnail_url": "https://www.presscoins.com/images/coin_images/Magic%20Kingdom/small/WDW17085.gif"
       },
       "souvenir": {
-        "name": "Space Mountain Mickey holding a Mickey ears space helmet, Space Mountain logo",
+        "name": "Space Mountain Mickey",
         "continent": "América",
         "country": "Estados Unidos da América",
         "city": "Orlando",
@@ -1316,7 +1316,7 @@
         "thumbnail_url": "https://www.presscoins.com/images/coin_images/Magic%20Kingdom/small/WDW18084.gif"
       },
       "souvenir": {
-        "name": "Tigger swinging a bat at a baseball, Disney logo at top",
+        "name": "Tigger",
         "continent": "América",
         "country": "Estados Unidos da América",
         "city": "Orlando",
@@ -1346,7 +1346,7 @@
         "thumbnail_url": "https://www.presscoins.com/images/coin_images/Magic%20Kingdom/small/WDW18085.gif"
       },
       "souvenir": {
-        "name": "Mickey kicking a soccer ball, Disney logo",
+        "name": "Mickey",
         "continent": "América",
         "country": "Estados Unidos da América",
         "city": "Orlando",
@@ -1496,7 +1496,7 @@
         "thumbnail_url": "https://www.presscoins.com/images/coin_images/Magic%20Kingdom/small/WDW18090.gif"
       },
       "souvenir": {
-        "name": "Mickey jumping trying to block Donald's basketball shot, Disney logo at top",
+        "name": "Mickey",
         "continent": "América",
         "country": "Estados Unidos da América",
         "city": "Orlando",
@@ -1556,7 +1556,7 @@
         "thumbnail_url": "https://www.presscoins.com/images/coin_images/Magic%20Kingdom/small/WDW18140.gif"
       },
       "souvenir": {
-        "name": "Goofy falling",
+        "name": "Goofy",
         "continent": "América",
         "country": "Estados Unidos da América",
         "city": "Orlando",
@@ -1586,7 +1586,7 @@
         "thumbnail_url": "https://www.presscoins.com/images/coin_images/Magic%20Kingdom/small/WDW18141.gif"
       },
       "souvenir": {
-        "name": "Minnie holding a triple scoop ice cream cone, Disney and Magic Kingdom logo at top",
+        "name": "Minnie",
         "continent": "América",
         "country": "Estados Unidos da América",
         "city": "Orlando",
@@ -1646,7 +1646,7 @@
         "thumbnail_url": "https://www.presscoins.com/images/coin_images/Magic%20Kingdom/small/WDW18143.gif"
       },
       "souvenir": {
-        "name": "Mickey holding and eating a large sucker, Disney and Magic Kingdom logo at top",
+        "name": "Mickey",
         "continent": "América",
         "country": "Estados Unidos da América",
         "city": "Orlando",
@@ -1676,7 +1676,7 @@
         "thumbnail_url": "https://www.presscoins.com/images/coin_images/Magic%20Kingdom/small/WDW18144.gif"
       },
       "souvenir": {
-        "name": "Baby Mickey holding a candy apple, Disney and Magic Kingdom logo at top",
+        "name": "Baby Mickey",
         "continent": "América",
         "country": "Estados Unidos da América",
         "city": "Orlando",
@@ -1706,7 +1706,7 @@
         "thumbnail_url": "https://www.presscoins.com/images/coin_images/Magic%20Kingdom/small/WDW18145.gif"
       },
       "souvenir": {
-        "name": "Baby Donald holding a candy apple, Disney and Magic Kingdom logo at top",
+        "name": "Baby Donald",
         "continent": "América",
         "country": "Estados Unidos da América",
         "city": "Orlando",
@@ -1766,7 +1766,7 @@
         "thumbnail_url": "https://www.presscoins.com/images/coin_images/Magic%20Kingdom/small/WDW18147.gif"
       },
       "souvenir": {
-        "name": "Dalmatian puppy that has gotten in a cake, Disney and Magic Kingdom logo at top",
+        "name": "Dalmatian puppy",
         "continent": "América",
         "country": "Estados Unidos da América",
         "city": "Orlando",
@@ -1796,7 +1796,7 @@
         "thumbnail_url": "https://www.presscoins.com/images/coin_images/Magic%20Kingdom/small/WDW19017.gif"
       },
       "souvenir": {
-        "name": "Tinker Bell sitting, Disney and Magic Kingdom logos at top",
+        "name": "Tinker Bell",
         "continent": "América",
         "country": "Estados Unidos da América",
         "city": "Orlando",
@@ -1826,7 +1826,7 @@
         "thumbnail_url": "https://www.presscoins.com/images/coin_images/Magic%20Kingdom/small/WDW19018.gif"
       },
       "souvenir": {
-        "name": "Peter Pan sitting, Disney and Magic Kingdom logos at top",
+        "name": "Peter Pan",
         "continent": "América",
         "country": "Estados Unidos da América",
         "city": "Orlando",
@@ -1976,7 +1976,7 @@
         "thumbnail_url": "https://www.presscoins.com/images/coin_images/Magic%20Kingdom/small/WDW19023.gif"
       },
       "souvenir": {
-        "name": "Mickey patting Pluto's head, Magic Kingdom logo at top, Disney logo",
+        "name": "Mickey",
         "continent": "América",
         "country": "Estados Unidos da América",
         "city": "Orlando",
@@ -2006,7 +2006,7 @@
         "thumbnail_url": "https://www.presscoins.com/images/coin_images/Magic%20Kingdom/small/WDW19024.gif"
       },
       "souvenir": {
-        "name": "Wendy, Disney and Magic Kingdom logos at top",
+        "name": "Wendy",
         "continent": "América",
         "country": "Estados Unidos da América",
         "city": "Orlando",
@@ -2066,7 +2066,7 @@
         "thumbnail_url": "https://www.presscoins.com/images/coin_images/Magic%20Kingdom/small/WDW19066.gif"
       },
       "souvenir": {
-        "name": "Mickey & Minnie in horseless carriage going to the right, Main Street and Magic Kingdom logos at bottom",
+        "name": "Mickey & Minnie",
         "continent": "América",
         "country": "Estados Unidos da América",
         "city": "Orlando",
@@ -2126,7 +2126,7 @@
         "thumbnail_url": "https://www.presscoins.com/images/coin_images/Magic%20Kingdom/small/WDW19068.gif"
       },
       "souvenir": {
-        "name": "Train Engineer Mickey in locomotive going to the left, Disney logo at top",
+        "name": "Train Engineer Mickey",
         "continent": "América",
         "country": "Estados Unidos da América",
         "city": "Orlando",
@@ -2186,7 +2186,7 @@
         "thumbnail_url": "https://www.presscoins.com/images/coin_images/Magic%20Kingdom/small/WDW20026.gif"
       },
       "souvenir": {
-        "name": "Piglet dancing and playing the violin surrounded by music notes, \"MAGIC KINGDOM\" at top, \"FANTASYLAND\" at bottom",
+        "name": "Piglet",
         "continent": "América",
         "country": "Estados Unidos da América",
         "city": "Orlando",
@@ -2246,7 +2246,7 @@
         "thumbnail_url": "https://www.presscoins.com/images/coin_images/Magic%20Kingdom/small/WDW20028.gif"
       },
       "souvenir": {
-        "name": "Orchestra conductor Mickey Mouse, \"MAGIC KINGDOM\" at top, \"FANTASYLAND\" at bottom",
+        "name": "Orchestra conductor Mickey Mouse",
         "continent": "América",
         "country": "Estados Unidos da América",
         "city": "Orlando",
@@ -2276,7 +2276,7 @@
         "thumbnail_url": "https://www.presscoins.com/images/coin_images/Magic%20Kingdom/small/WDW20029.gif"
       },
       "souvenir": {
-        "name": "Marching band Donald playing the drum, \"MAGIC KINGDOM\" at top, \"FANTASYLAND\" at bottom",
+        "name": "Marching band Donald",
         "continent": "América",
         "country": "Estados Unidos da América",
         "city": "Orlando",
@@ -2366,7 +2366,7 @@
         "thumbnail_url": "https://www.presscoins.com/images/coin_images/Magic%20Kingdom/small/WDW20032.gif"
       },
       "souvenir": {
-        "name": "Marching band Pluto playing the drum",
+        "name": "Marching band Pluto",
         "continent": "América",
         "country": "Estados Unidos da América",
         "city": "Orlando",
@@ -2456,7 +2456,7 @@
         "thumbnail_url": "https://www.presscoins.com/images/coin_images/Magic%20Kingdom/small/WDW20047.gif"
       },
       "souvenir": {
-        "name": "Princess Aurora \"MAGIC KINGDOM\" at top",
+        "name": "Princess Aurora",
         "continent": "América",
         "country": "Estados Unidos da América",
         "city": "Orlando",
@@ -2486,7 +2486,7 @@
         "thumbnail_url": "https://www.presscoins.com/images/coin_images/Magic%20Kingdom/small/WDW20048.gif"
       },
       "souvenir": {
-        "name": "Donald, Goofy & Mickey",
+        "name": "Donald",
         "continent": "América",
         "country": "Estados Unidos da América",
         "city": "Orlando",
@@ -2516,7 +2516,7 @@
         "thumbnail_url": "https://www.presscoins.com/images/coin_images/Magic%20Kingdom/small/WDW20053.gif"
       },
       "souvenir": {
-        "name": "Mickey and Minnie holding hands",
+        "name": "Mickey and Minnie",
         "continent": "América",
         "country": "Estados Unidos da América",
         "city": "Orlando",
@@ -2546,7 +2546,7 @@
         "thumbnail_url": "https://www.presscoins.com/images/coin_images/Magic%20Kingdom/small/WDW20054.gif"
       },
       "souvenir": {
-        "name": "Snow White sitting beside basket",
+        "name": "Snow White",
         "continent": "América",
         "country": "Estados Unidos da América",
         "city": "Orlando",
@@ -2576,7 +2576,7 @@
         "thumbnail_url": "https://www.presscoins.com/images/coin_images/Magic%20Kingdom/small/WDW20055.gif"
       },
       "souvenir": {
-        "name": "Tinker Bell going to the right, Disney logo at top",
+        "name": "Tinker Bell",
         "continent": "América",
         "country": "Estados Unidos da América",
         "city": "Orlando",
@@ -2606,7 +2606,7 @@
         "thumbnail_url": "https://www.presscoins.com/images/coin_images/Magic%20Kingdom/small/WDW20056.gif"
       },
       "souvenir": {
-        "name": "Mickey hugging Pluto \"MAGIC KINGDOM\" at top",
+        "name": "Mickey",
         "continent": "América",
         "country": "Estados Unidos da América",
         "city": "Orlando",
@@ -2636,7 +2636,7 @@
         "thumbnail_url": "https://www.presscoins.com/images/coin_images/Magic%20Kingdom/small/WDW20121.gif"
       },
       "souvenir": {
-        "name": "Cinderella sitting",
+        "name": "Cinderella",
         "continent": "América",
         "country": "Estados Unidos da América",
         "city": "Orlando",
@@ -2696,7 +2696,7 @@
         "thumbnail_url": "https://www.presscoins.com/images/coin_images/Magic%20Kingdom/small/WDW20123.gif"
       },
       "souvenir": {
-        "name": "Snow White sitting",
+        "name": "Snow White",
         "continent": "América",
         "country": "Estados Unidos da América",
         "city": "Orlando",
@@ -2786,7 +2786,7 @@
         "thumbnail_url": "https://www.presscoins.com/images/coin_images/Magic%20Kingdom/small/WDW20126.gif"
       },
       "souvenir": {
-        "name": "Tinker Bell holding a wand",
+        "name": "Tinker Bell",
         "continent": "América",
         "country": "Estados Unidos da América",
         "city": "Orlando",
@@ -2906,7 +2906,7 @@
         "thumbnail_url": "https://www.presscoins.com/images/coin_images/Magic%20Kingdom/small/WDW23083.gif"
       },
       "souvenir": {
-        "name": "User jumping",
+        "name": "User",
         "continent": "América",
         "country": "Estados Unidos da América",
         "city": "Orlando",
@@ -2936,7 +2936,7 @@
         "thumbnail_url": "https://www.presscoins.com/images/coin_images/Magic%20Kingdom/small/WDW23084.gif"
       },
       "souvenir": {
-        "name": "User running to the right holding Identity Disc, Tron logo",
+        "name": "User",
         "continent": "América",
         "country": "Estados Unidos da América",
         "city": "Orlando",
@@ -2966,7 +2966,7 @@
         "thumbnail_url": "https://www.presscoins.com/images/coin_images/Magic%20Kingdom/small/WDW23085.gif"
       },
       "souvenir": {
-        "name": "Three Lightcycles, Tron logo",
+        "name": "Three Lightcycles",
         "continent": "América",
         "country": "Estados Unidos da América",
         "city": "Orlando",
@@ -2996,7 +2996,7 @@
         "thumbnail_url": "https://www.presscoins.com/images/coin_images/Magic%20Kingdom/small/WDW23086.gif"
       },
       "souvenir": {
-        "name": "Tron 1982 logo in center",
+        "name": "Tron 1982 logo",
         "continent": "América",
         "country": "Estados Unidos da América",
         "city": "Orlando",
@@ -3026,7 +3026,7 @@
         "thumbnail_url": "https://www.presscoins.com/images/coin_images/Magic%20Kingdom/small/WDW23087.gif"
       },
       "souvenir": {
-        "name": "Lightcycle in center",
+        "name": "Lightcycle",
         "continent": "América",
         "country": "Estados Unidos da América",
         "city": "Orlando",
@@ -3086,7 +3086,7 @@
         "thumbnail_url": "https://www.presscoins.com/images/coin_images/Magic%20Kingdom/small/WDW23089.gif"
       },
       "souvenir": {
-        "name": "Identity Discs in the shape of a Mickey head, Tron logo at bottom",
+        "name": "Identity Discs",
         "continent": "América",
         "country": "Estados Unidos da América",
         "city": "Orlando",
@@ -3176,7 +3176,7 @@
         "thumbnail_url": "https://www.presscoins.com/images/coin_images/Magic%20Kingdom/small/WDW24080.gif"
       },
       "souvenir": {
-        "name": "Louis the Alligator playing the trumpet",
+        "name": "Louis the Alligator",
         "continent": "América",
         "country": "Estados Unidos da América",
         "city": "Orlando",
@@ -3326,7 +3326,7 @@
         "thumbnail_url": "https://www.presscoins.com/images/coin_images/Magic%20Kingdom/small/WDW24093.gif"
       },
       "souvenir": {
-        "name": "Winnie the Pooh and Tigger sitting",
+        "name": "Winnie the Pooh and Tigger",
         "continent": "América",
         "country": "Estados Unidos da América",
         "city": "Orlando",
@@ -3386,7 +3386,7 @@
         "thumbnail_url": "https://www.presscoins.com/images/coin_images/Magic%20Kingdom/small/WDW24095.gif"
       },
       "souvenir": {
-        "name": "Winnie the Pooh holding a honey pot sitting",
+        "name": "Winnie the Pooh",
         "continent": "América",
         "country": "Estados Unidos da América",
         "city": "Orlando",
@@ -3416,7 +3416,7 @@
         "thumbnail_url": "https://www.presscoins.com/images/coin_images/Magic%20Kingdom/small/WDW24096.gif"
       },
       "souvenir": {
-        "name": "Winnie the Pooh lying",
+        "name": "Winnie the Pooh",
         "continent": "América",
         "country": "Estados Unidos da América",
         "city": "Orlando",
@@ -3446,7 +3446,7 @@
         "thumbnail_url": "https://www.presscoins.com/images/coin_images/Magic%20Kingdom/small/WDW24097.gif"
       },
       "souvenir": {
-        "name": "Bouncing Tigger, \"TIGGER\" in large letters at bottom, \"©Disney Based",
+        "name": "Bouncing Tigger",
         "continent": "América",
         "country": "Estados Unidos da América",
         "city": "Orlando",
@@ -3476,7 +3476,7 @@
         "thumbnail_url": "https://www.presscoins.com/images/coin_images/Magic%20Kingdom/small/WDW24098.gif"
       },
       "souvenir": {
-        "name": "Winnie the Pooh holding a ballon and floating",
+        "name": "Winnie the Pooh",
         "continent": "América",
         "country": "Estados Unidos da América",
         "city": "Orlando",
@@ -3716,7 +3716,7 @@
         "thumbnail_url": "https://www.presscoins.com/images/coin_images/Magic%20Kingdom/small/WDW25032.gif"
       },
       "souvenir": {
-        "name": "Jungle Cruise elephant sitting",
+        "name": "Jungle Cruise elephant",
         "continent": "América",
         "country": "Estados Unidos da América",
         "city": "Orlando",
@@ -3806,7 +3806,7 @@
         "thumbnail_url": "https://www.presscoins.com/images/coin_images/Magic%20Kingdom/small/WDW25035.gif"
       },
       "souvenir": {
-        "name": "Mayra the frog playing a flower blossom like a trumpet",
+        "name": "Mayra the frog",
         "continent": "América",
         "country": "Estados Unidos da América",
         "city": "Orlando",
@@ -3836,7 +3836,7 @@
         "thumbnail_url": "https://www.presscoins.com/images/coin_images/Magic%20Kingdom/small/WDW25036.gif"
       },
       "souvenir": {
-        "name": "Bernadette the Louisiana Black Bear and Mayra the Frog playing a flower horn and Beau the Opossum playing an upright gourd bass, (NOTE: Die ring replaced. Same design as WDW24086.)",
+        "name": "Bernadette & Mayra",
         "continent": "América",
         "country": "Estados Unidos da América",
         "city": "Orlando",
@@ -4166,7 +4166,7 @@
         "thumbnail_url": "https://www.presscoins.com/images/default.jpg"
       },
       "souvenir": {
-        "name": "Pirate Mickey, Pirates of the Caribbean logo at bottom",
+        "name": "Pirate Mickey",
         "continent": "América",
         "country": "Estados Unidos da América",
         "city": "Orlando",
@@ -4226,7 +4226,7 @@
         "thumbnail_url": "https://www.presscoins.com/images/default.jpg"
       },
       "souvenir": {
-        "name": "Pirate Pluto wearing a bandana and earring, Pirates of the Caribbean logo at bottom",
+        "name": "Pirate Pluto",
         "continent": "América",
         "country": "Estados Unidos da América",
         "city": "Orlando",
@@ -4256,7 +4256,7 @@
         "thumbnail_url": "https://www.presscoins.com/images/default.jpg"
       },
       "souvenir": {
-        "name": "Pirate Goofy carrying a treasure chest",
+        "name": "Pirate Goofy",
         "continent": "América",
         "country": "Estados Unidos da América",
         "city": "Orlando",
@@ -4316,7 +4316,7 @@
         "thumbnail_url": "https://www.presscoins.com/images/default.jpg"
       },
       "souvenir": {
-        "name": "Pirate Skeleton at ship's wheel, Pirates of the Caribbean logo at top",
+        "name": "Pirate Skeleton at ship's wheel",
         "continent": "América",
         "country": "Estados Unidos da América",
         "city": "Orlando",
@@ -4376,7 +4376,7 @@
         "thumbnail_url": "https://www.presscoins.com/images/default.jpg"
       },
       "souvenir": {
-        "name": "Pluto holding the American flag in his mouth",
+        "name": "Pluto",
         "continent": "América",
         "country": "Estados Unidos da América",
         "city": "Orlando",
@@ -4436,7 +4436,7 @@
         "thumbnail_url": "https://www.presscoins.com/images/default.jpg"
       },
       "souvenir": {
-        "name": "Stitch holding the American flag",
+        "name": "Stitch",
         "continent": "América",
         "country": "Estados Unidos da América",
         "city": "Orlando",
@@ -4466,7 +4466,7 @@
         "thumbnail_url": "https://www.presscoins.com/images/default.jpg"
       },
       "souvenir": {
-        "name": "Minnie wearing Uncle Sam style outfit",
+        "name": "Minnie",
         "continent": "América",
         "country": "Estados Unidos da América",
         "city": "Orlando",
@@ -4496,7 +4496,7 @@
         "thumbnail_url": "https://www.presscoins.com/images/default.jpg"
       },
       "souvenir": {
-        "name": "Mickey wearing Uncle Sam style outfit",
+        "name": "Mickey",
         "continent": "América",
         "country": "Estados Unidos da América",
         "city": "Orlando",
@@ -4526,7 +4526,7 @@
         "thumbnail_url": "https://www.presscoins.com/images/default.jpg"
       },
       "souvenir": {
-        "name": "Mickey carrying the American flag",
+        "name": "Mickey",
         "continent": "América",
         "country": "Estados Unidos da América",
         "city": "Orlando",
@@ -4556,7 +4556,7 @@
         "thumbnail_url": "https://www.presscoins.com/images/default.jpg"
       },
       "souvenir": {
-        "name": "Mickey in a car",
+        "name": "Mickey",
         "continent": "América",
         "country": "Estados Unidos da América",
         "city": "Orlando",
@@ -4586,7 +4586,7 @@
         "thumbnail_url": "https://www.presscoins.com/images/default.jpg"
       },
       "souvenir": {
-        "name": "Goofy carrying the American flag marching left",
+        "name": "Goofy",
         "continent": "América",
         "country": "Estados Unidos da América",
         "city": "Orlando",
@@ -4616,7 +4616,7 @@
         "thumbnail_url": "https://www.presscoins.com/images/default.jpg"
       },
       "souvenir": {
-        "name": "Genie coming out of the magic lamp \"Genie\" at bottom, Aladdin logo at top",
+        "name": "Genie",
         "continent": "América",
         "country": "Estados Unidos da América",
         "city": "Orlando",
@@ -4886,7 +4886,7 @@
         "thumbnail_url": "https://www.presscoins.com/images/default.jpg"
       },
       "souvenir": {
-        "name": "Big Al playing the guitar \"BIG AL\" at top",
+        "name": "Big Al",
         "continent": "América",
         "country": "Estados Unidos da América",
         "city": "Orlando",
@@ -4946,7 +4946,7 @@
         "thumbnail_url": "https://www.presscoins.com/images/default.jpg"
       },
       "souvenir": {
-        "name": "Henry sitting",
+        "name": "Henry",
         "continent": "América",
         "country": "Estados Unidos da América",
         "city": "Orlando",
@@ -4976,7 +4976,7 @@
         "thumbnail_url": "https://www.presscoins.com/images/default.jpg"
       },
       "souvenir": {
-        "name": "Gomer playing the piano \"GOMER\" at top",
+        "name": "Gomer",
         "continent": "América",
         "country": "Estados Unidos da América",
         "city": "Orlando",
@@ -5006,7 +5006,7 @@
         "thumbnail_url": "https://www.presscoins.com/images/default.jpg"
       },
       "souvenir": {
-        "name": "Bunny, Bubbles, & Beulah singing \"BUNNY, BUBBLES, & BEULAH\" at top",
+        "name": "Bunny",
         "continent": "América",
         "country": "Estados Unidos da América",
         "city": "Orlando",
@@ -5036,7 +5036,7 @@
         "thumbnail_url": "https://www.presscoins.com/images/default.jpg"
       },
       "souvenir": {
-        "name": "Teddi Barra swinging",
+        "name": "Teddi Barra",
         "continent": "América",
         "country": "Estados Unidos da América",
         "city": "Orlando",
@@ -5126,7 +5126,7 @@
         "thumbnail_url": "https://www.presscoins.com/images/default.jpg"
       },
       "souvenir": {
-        "name": "Cowboy Stitch swing a lasso overhead \"PECOS BILL\" at top \"TALL TALE INN\" at bottom, rope border",
+        "name": "Cowboy Stitch",
         "continent": "América",
         "country": "Estados Unidos da América",
         "city": "Orlando",
@@ -5156,7 +5156,7 @@
         "thumbnail_url": "https://www.presscoins.com/images/default.jpg"
       },
       "souvenir": {
-        "name": "Cowgirl Minnie inside of a swinging lasso \"PECOS BILL\" at top \"TALL TALE INN\" at bottom, rope border",
+        "name": "Cowgirl Minnie",
         "continent": "América",
         "country": "Estados Unidos da América",
         "city": "Orlando",
@@ -5186,7 +5186,7 @@
         "thumbnail_url": "https://www.presscoins.com/images/default.jpg"
       },
       "souvenir": {
-        "name": "Cowboys Chip and Dale leaning against each other \"PECOS BILL\" at top \"TALL TALE INN\" at bottom, rope border",
+        "name": "Cowboys Chip and Dale",
         "continent": "América",
         "country": "Estados Unidos da América",
         "city": "Orlando",
@@ -5246,7 +5246,7 @@
         "thumbnail_url": "https://www.presscoins.com/images/default.jpg"
       },
       "souvenir": {
-        "name": "Woody and Jessie riding Bullseye \"WOODY\" at top \"Jessie\" at bottom \"PECOS BILL\" at top \"TALL TALE INN\" at bottom, rope border",
+        "name": "Woody and Jessie",
         "continent": "América",
         "country": "Estados Unidos da América",
         "city": "Orlando",
@@ -5276,7 +5276,7 @@
         "thumbnail_url": "https://www.presscoins.com/images/default.jpg"
       },
       "souvenir": {
-        "name": "Cowboy Goofy holding hands up and together at chest \"PECOS BILL\" at top \"TALL TALE INN\" at bottom, rope border",
+        "name": "Cowboy Goofy",
         "continent": "América",
         "country": "Estados Unidos da América",
         "city": "Orlando",
@@ -5306,7 +5306,7 @@
         "thumbnail_url": "https://www.presscoins.com/images/default.jpg"
       },
       "souvenir": {
-        "name": "Woody riding Bullseye to the left swinging a lasso \"WOODY\" written",
+        "name": "Woody",
         "continent": "América",
         "country": "Estados Unidos da América",
         "city": "Orlando",
@@ -5366,7 +5366,7 @@
         "thumbnail_url": "https://www.presscoins.com/images/default.jpg"
       },
       "souvenir": {
-        "name": "Stinky Pete holding a pick axe over his shoulder, Toy Story logo at top, \"Stinky Pete\" at bottom",
+        "name": "Stinky Pete",
         "continent": "América",
         "country": "Estados Unidos da América",
         "city": "Orlando",
@@ -5396,7 +5396,7 @@
         "thumbnail_url": "https://www.presscoins.com/images/default.jpg"
       },
       "souvenir": {
-        "name": "Frontierland Stitch & Angel, Frontierland logo at top",
+        "name": "Frontierland Stitch & Angel",
         "continent": "América",
         "country": "Estados Unidos da América",
         "city": "Orlando",
@@ -5456,7 +5456,7 @@
         "thumbnail_url": "https://www.presscoins.com/images/default.jpg"
       },
       "souvenir": {
-        "name": "Frontierland Goofy playing the guitar, Frontierland logo at top",
+        "name": "Frontierland Goofy",
         "continent": "América",
         "country": "Estados Unidos da América",
         "city": "Orlando",
@@ -5486,7 +5486,7 @@
         "thumbnail_url": "https://www.presscoins.com/images/default.jpg"
       },
       "souvenir": {
-        "name": "Mickey and friends riding Big Thunder Mountain Railroad \"BIG THUNDER MOUNTAIN RAILROAD\" at bottom",
+        "name": "Mickey and friends",
         "continent": "América",
         "country": "Estados Unidos da América",
         "city": "Orlando",
@@ -5546,7 +5546,7 @@
         "thumbnail_url": "https://www.presscoins.com/images/default.jpg"
       },
       "souvenir": {
-        "name": "Frontierland Mickey, Goofy, Donald, Frontierland logo at top",
+        "name": "Frontierland Mickey",
         "continent": "América",
         "country": "Estados Unidos da América",
         "city": "Orlando",
