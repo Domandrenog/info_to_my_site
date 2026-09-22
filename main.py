@@ -1283,16 +1283,54 @@ def action_collect_presscoins_souvenirs() -> None:
     run_step("Recolher catálogo PressedCoins Disney Orlando", command)
 
 
+def action_import_presscoins_souvenirs(*, apply: bool) -> None:
+    title(
+        "Importar PressedCoins para o Site Base44"
+        if apply
+        else "Verificar importação PressedCoins"
+    )
+    default_input = (
+        "info/souvenirs/america/eua/orlando/magic-kingdom/"
+        "todas/presscoins-catalog.json"
+    )
+    input_path = ask_text("Catálogo revisto", default_input)
+    if not input_path:
+        print("Catálogo obrigatório.")
+        return
+
+    command = [
+        sys.executable,
+        "-m",
+        "scripts.import_base44_souvenirs",
+        "--input",
+        input_path,
+    ]
+    if apply:
+        command.append("--apply")
+    step_name = (
+        "Importar apenas souvenirs em falta"
+        if apply
+        else "Verificar souvenirs existentes e em falta"
+    )
+    run_step(step_name, command)
+
+
 def menu_pressedcoins_disney_orlando() -> None:
     while True:
         title("PressedCoins Disney Orlando")
         print("1) Recolher catálogo e criar pré-visualização")
-        print("2) Voltar")
+        print("2) Verificar o que falta no Site Base44")
+        print("3) Importar apenas souvenirs em falta")
+        print("4) Voltar")
 
         choice = ask_text("Escolhe uma opção", "1")
         if choice == "1":
             action_collect_presscoins_souvenirs()
         elif choice == "2":
+            action_import_presscoins_souvenirs(apply=False)
+        elif choice == "3":
+            action_import_presscoins_souvenirs(apply=True)
+        elif choice == "4":
             return
         else:
             print("Opção inválida.")

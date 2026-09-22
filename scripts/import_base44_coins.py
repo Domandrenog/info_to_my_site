@@ -154,10 +154,13 @@ class Base44Client:
         request_delay_seconds: float = DEFAULT_REQUEST_DELAY_SECONDS,
         rate_limit_delay_seconds: float = DEFAULT_RATE_LIMIT_DELAY_SECONDS,
         max_retries: int = DEFAULT_MAX_RETRIES,
+        entity_name: str = "Coin",
     ) -> None:
         self.app_id = app_id
         self.api_key = api_key
-        self.base_url = f"{server_url.rstrip('/')}/api/apps/{quote(app_id)}/entities/Coin"
+        self.base_url = (
+            f"{server_url.rstrip('/')}/api/apps/{quote(app_id)}/entities/{quote(entity_name)}"
+        )
         self.request_delay_seconds = max(0.0, request_delay_seconds)
         self.rate_limit_delay_seconds = max(0.0, rate_limit_delay_seconds)
         self.max_retries = max(0, max_retries)

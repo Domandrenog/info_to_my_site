@@ -29,6 +29,35 @@ PLANS = [
 
 
 class MainTrackingActionTests(unittest.TestCase):
+    @patch("main.run_step", return_value=0)
+    @patch("main.title")
+    @patch("main.ask_text", return_value="info/souvenirs/catalog.json")
+    def test_souvenir_import_action_can_preview_without_apply(
+        self,
+        _ask_text,
+        _title,
+        run_step,
+    ) -> None:
+        main.action_import_presscoins_souvenirs(apply=False)
+
+        command = run_step.call_args.args[1]
+        self.assertIn("scripts.import_base44_souvenirs", command)
+        self.assertNotIn("--apply", command)
+
+    @patch("main.run_step", return_value=0)
+    @patch("main.title")
+    @patch("main.ask_text", return_value="info/souvenirs/catalog.json")
+    def test_souvenir_import_action_applies_only_when_selected(
+        self,
+        _ask_text,
+        _title,
+        run_step,
+    ) -> None:
+        main.action_import_presscoins_souvenirs(apply=True)
+
+        command = run_step.call_args.args[1]
+        self.assertEqual(command[-1], "--apply")
+
     @patch("main.menu_atualizar_site")
     @patch("main.title")
     @patch("main.ask_text", side_effect=["4", "5"])

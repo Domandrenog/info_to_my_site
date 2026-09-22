@@ -106,6 +106,26 @@ O fluxo recolhe os dados apresentados na pesquisa, usa o URL da fotografia grand
 
 O catálogo fica com `status: pending_review` e `base44_updated: false`. Esta etapa não descarrega as imagens nem escreve no Site Base44. As fotografias continuam referenciadas pelo URL de origem para poderem ser tratadas por um fluxo externo depois da revisão.
 
+Depois da revisão, o mesmo menu permite:
+
+1. `Verificar o que falta no Site Base44`: consulta os souvenirs existentes e apresenta quantos já existem e quantos seriam criados, sem escrever nada;
+2. `Importar apenas souvenirs em falta`: repete o plano, pede confirmação explícita e cria exclusivamente os registos ainda inexistentes.
+
+Também podes executar estas duas etapas diretamente:
+
+```bash
+# Apenas verificar
+python3 -m scripts.import_base44_souvenirs \
+  --input info/souvenirs/america/eua/orlando/magic-kingdom/todas/presscoins-catalog.json
+
+# Criar os que faltam, com confirmação interativa
+python3 -m scripts.import_base44_souvenirs \
+  --input info/souvenirs/america/eua/orlando/magic-kingdom/todas/presscoins-catalog.json \
+  --apply
+```
+
+A associação usa primeiro o número de catálogo Presscoins, depois `reference_url` e por fim país, cidade, localização e nome. Não são atualizados nem eliminados souvenirs existentes. Após a criação, o script volta a consultar o Site Base44 e verifica todos os novos registos.
+
 ## Fluxo Rápido
 
 1. **Abrir o Chromium em modo CDP e entrar no uCoin.**
