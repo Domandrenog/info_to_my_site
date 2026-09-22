@@ -20,6 +20,7 @@ from scripts.check_site_coin_differences import (
     external_image_source_suggestions,
     find_all_coins_country_folder,
     group_api_records_by_country,
+    missing_ucoin_url_details,
     mismatched_ucoin_url_details,
     name_year_matches,
     normalize_key,
@@ -31,6 +32,7 @@ from scripts.check_site_coin_differences import (
     untracked_api_countries,
     ucoin_url_identity_mismatches,
     ucoin_url_identity_details,
+    unaudited_api_record_findings,
     write_output_report,
 )
 
@@ -482,6 +484,63 @@ class CheckSiteCoinDifferencesOutputTests(unittest.TestCase):
 
 
 class AllCoinsPathTests(unittest.TestCase):
+    def test_compare_country_reports_site_only_record_without_ucoin_url(self) -> None:
+        with tempfile.TemporaryDirectory() as temp_dir:
+            root = Path(temp_dir)
+            paises_dir = root / "paises"
+            country_dir = paises_dir / "africa" / "tunisia"
+            country_dir.mkdir(parents=True)
+            (country_dir / "app-catalog.json").write_text(
+                json.dumps({"country": "Tunísia", "periods": []}),
+                encoding="utf-8",
+            )
+            all_coins_dir = root / "All_Coins"
+            image_dir = (
+                all_coins_dir
+                / "fotos"
+                / "paises"
+                / "Africa"
+                / "Tunisia"
+                / "normal"
+            )
+            image_dir.mkdir(parents=True)
+            (image_dir / "links-internos.txt").write_text("", encoding="utf-8")
+            (image_dir / "links-externos.txt").write_text("", encoding="utf-8")
+            api_record = {
+                "id": "record-2002",
+                "country": "Tunísia",
+                "name": "5 dinar",
+                "years": "2002",
+                "notes": "Estrela com buraco",
+                "url_ucoin": "",
+            }
+
+            with patch.dict("os.environ", {"BASE44_APP_ID": "app-id"}):
+                report = compare_country(
+                    paises_dir,
+                    all_coins_dir,
+                    "tunisia",
+                    "app-catalog.json",
+                    include_markdown_as_issue=False,
+                    check_api=True,
+                    include_warnings=False,
+                    api_records_by_country={"tunisia": [api_record]},
+                )
+
+        self.assertEqual(report["summary"]["total_issues"], 1)
+        self.assertEqual(report["summary"]["by_type"], {"missing_url_ucoin": 1})
+        self.assertEqual(
+            report["coins_with_issues"][0]["issues"][0]["type"],
+            "missing_url_ucoin",
+        )
+        self.assertEqual(
+            missing_ucoin_url_details(report),
+            [
+                "  - 5 dinar (2002) — Estrela com buraco",
+                "    Site: https://base44.app/api/apps/app-id/entities/Coin/record-2002",
+            ],
+        )
+
     def test_compare_country_suggests_replacing_external_sources_with_ucoin(self) -> None:
         with tempfile.TemporaryDirectory() as temp_dir:
             root = Path(temp_dir)
@@ -868,6 +927,21 @@ class AllCoinsPathTests(unittest.TestCase):
 
         self.assertEqual(ucoin_url_identity_mismatches(record), ["host"])
 
+    def test_unaudited_api_record_reports_missing_url_and_notes(self) -> None:
+        findings = unaudited_api_record_findings(
+            {
+                "name": "5 dinar",
+                "years": "2002",
+                "url_ucoin": "",
+                "notes": "",
+            }
+        )
+
+        self.assertEqual(
+            [finding["type"] for finding in findings],
+            ["missing_url_ucoin", "missing_notes"],
+        )
+
     def test_ucoin_url_identity_accepts_fraction_slug(self) -> None:
         record = {
             "name": "½ penny",
@@ -913,7 +987,7 @@ class AllCoinsPathTests(unittest.TestCase):
                     "name": "10 cent",
                     "years": "2000-2001",
                     "url_ucoin": "https://pt.ucoin.net/coin/example-20-cents-1990-1991",
-                    "notes": "",
+                    "notes": "República",
                 }
             ],
         )
