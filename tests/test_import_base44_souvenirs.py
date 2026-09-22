@@ -13,7 +13,7 @@ def souvenir(**overrides):
     record = {
         "name": "Mickey — 2026",
         "continent": "América",
-        "country": "Estados Unidos da América",
+        "country": "EUA",
         "city": "Orlando",
         "type": "pressed",
         "condition": "Não Tenho",

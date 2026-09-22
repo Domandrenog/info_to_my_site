@@ -461,7 +461,7 @@ def parse_args(argv: list[str] | None = None) -> argparse.Namespace:
         help="1 (atuais), All (todos) ou 0 (retirados). Por omissão: 1.",
     )
     parser.add_argument("--coin-type", default="All", help="All, Cent, Quarter ou Dime.")
-    parser.add_argument("--country", default="Estados Unidos da América")
+    parser.add_argument("--country", default="EUA")
     parser.add_argument("--city", default="Orlando")
     parser.add_argument("--output-dir", type=Path, help="Pasta para JSON e preview.html.")
     parser.add_argument("--html-input", type=Path, help="Ler HTML local em vez de aceder à rede.")

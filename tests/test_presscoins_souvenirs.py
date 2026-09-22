@@ -10,6 +10,7 @@ from scripts.presscoins_souvenirs import (
     collect_search_results,
     default_output_directory,
     pagination_page_count,
+    parse_args,
     parse_search_results,
     subject_from_description,
     write_outputs,
@@ -67,6 +68,9 @@ def page_html(catalog_number: str, page_options: str = "") -> str:
 
 
 class PresscoinsSouvenirsTests(unittest.TestCase):
+    def test_default_souvenir_country_matches_base44(self) -> None:
+        self.assertEqual(parse_args([]).country, "EUA")
+
     def test_long_descriptions_produce_short_display_names(self) -> None:
         examples = {
             "Pongo & Perdita, straight lined chest and has very fine lines, (NOTE: old die)": "Pongo & Perdita",
@@ -110,7 +114,7 @@ class PresscoinsSouvenirsTests(unittest.TestCase):
             query_url=query_url,
             location="Magic Kingdom",
             search="2026",
-            country="Estados Unidos da América",
+            country="EUA",
             city="Orlando",
         )
 
@@ -118,6 +122,7 @@ class PresscoinsSouvenirsTests(unittest.TestCase):
         self.assertEqual(catalog["status"], "pending_review")
         souvenir = catalog["items"][0]["souvenir"]
         self.assertEqual(souvenir["name"], "Minnie & Mickey — 2026")
+        self.assertEqual(souvenir["country"], "EUA")
         self.assertEqual(souvenir["type"], "pressed")
         self.assertEqual(souvenir["condition"], "Não Tenho")
         self.assertEqual(souvenir["display_shape"], "oval")
@@ -203,7 +208,7 @@ class PresscoinsSouvenirsTests(unittest.TestCase):
             query_url="https://example.test/search",
             location="Magic Kingdom",
             search="2026",
-            country="Estados Unidos da América",
+            country="EUA",
             city="Orlando",
         )
         with tempfile.TemporaryDirectory() as temp_dir:
