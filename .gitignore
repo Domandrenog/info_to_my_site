@@ -16,3 +16,8 @@ __pycache__/
 info/paises/all-rarities-pending.json
 info/paises/all-rarities-final.json
 info/paises/all-rarities-prompt.txt
+
+# Regenerated diagnostics and API correction plans
+info/paises/all-differences.json
+info/paises/*/*/*-differences.json
+info/paises/*/*/*-autofix-plan.json
