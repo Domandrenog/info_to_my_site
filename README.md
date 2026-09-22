@@ -144,7 +144,7 @@ Este comando adiciona apenas moedas que ainda não existem para esse país, usan
 
 ## Adicionar países da API sem catálogo local
 
-O menu principal inclui `Importar do uCoin > Recolher países do Site sem tracking local`.
+O menu principal inclui `Moedas normais > Recolher países do Site sem tracking local`.
 Este fluxo:
 
 1. Consulta todas as moedas da Base44 sem alterar dados.
@@ -166,7 +166,7 @@ O ano inicial sugerido é o primeiro ano já coberto pela API. Isto evita perder
 
 ## Classificar todas as raridades pendentes
 
-O menu `Importar do uCoin > Recolher países do Site sem tracking local` prepara um único lote com todas as moedas ainda sem raridade depois de terminar a recolha:
+O menu `Moedas normais > Recolher países do Site sem tracking local` prepara um único lote com todas as moedas ainda sem raridade depois de terminar a recolha:
 
 - `info/paises/all-rarities-pending.json`: JSON que deve ser classificado;
 - `info/paises/all-rarities-prompt.txt`: instruções prontas para enviar juntamente com o JSON;
@@ -174,7 +174,7 @@ O menu `Importar do uCoin > Recolher países do Site sem tracking local` prepara
 
 O menu espera pelo ficheiro final e, depois de carregares Enter, valida que todos os países e moedas continuam presentes e que os catálogos de origem não mudaram. Apenas os valores de `availability` são aplicados. Para cada país são então gerados `app-catalog.json`, `availability-statistics.json` e `coins-availability.xlsx`. Tal como no pipeline completo de um país, `ucoin-catalog.json`, `app-catalog-pending.json`, `app-catalog-final.json` e `differences-pending.json` são apagados apenas depois de todos os outputs finais terem sido gerados com sucesso.
 
-Para executar apenas esta classificação sem voltar a recolher os países, usa `Importar do uCoin > Executar uma etapa específica > Definir raridades e gerar outputs finais`. Aí podes escolher todos os países pendentes ou apenas um país específico.
+Para executar apenas esta classificação sem voltar a recolher os países, usa `Moedas normais > Executar uma etapa específica > Definir raridades e gerar outputs finais`. Aí podes escolher todos os países pendentes ou apenas um país específico.
 
 Também podes executar as duas fases manualmente:
 

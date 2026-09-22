@@ -1188,7 +1188,7 @@ def action_autofix_issues() -> None:
 
 def menu_importar_ucoin() -> None:
     while True:
-        title("Importar do uCoin")
+        title("Moedas normais")
         print("1) Importar um país do uCoin para o Site Base44")
         print("2) Recolher países do Site sem tracking local")
         print("3) Executar uma etapa específica")
@@ -1300,7 +1300,7 @@ def menu() -> None:
     while True:
         title("uCoin to MySite - Menu principal")
         print("1) Pré-requisitos")
-        print("2) Importar do uCoin")
+        print("2) Moedas normais")
         print("3) Atualizar Site Base44")
         print("4) Souvenirs")
         print("0) Sair")
