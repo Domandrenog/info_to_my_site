@@ -7,7 +7,9 @@ from pathlib import Path
 from scripts.presscoins_souvenirs import (
     build_catalog,
     build_search_url,
+    collect_search_results,
     default_output_directory,
+    pagination_page_count,
     parse_search_results,
     write_outputs,
 )
@@ -44,6 +46,23 @@ SAMPLE_HTML = """
   </td></tr>
 </table>
 """
+
+
+def page_html(catalog_number: str, page_options: str = "") -> str:
+    return f"""
+    <select id="jumpMenu3">{page_options}</select>
+    <table class="row">
+      <tr><td>
+        <b>Location:</b>&nbsp;Magic Kingdom, Test
+        <b>Description:</b>&nbsp;Mickey looking right
+        <b>Position:</b>&nbsp;1<br>
+        <b>Coin Type:</b>&nbsp;Cent<br>
+        <b>Orientation:</b>&nbsp;V<br>
+        <b>Availability:</b>&nbsp;Current<br>
+        <b>Catalog Number:</b> {catalog_number}
+      </td></tr>
+    </table>
+    """
 
 
 class PresscoinsSouvenirsTests(unittest.TestCase):
@@ -89,6 +108,52 @@ class PresscoinsSouvenirsTests(unittest.TestCase):
             default_output_directory("Magic Kingdom", "2026"),
             Path("info/souvenirs/america/eua/orlando/magic-kingdom/2026"),
         )
+
+    def test_empty_search_uses_all_folder(self) -> None:
+        self.assertEqual(
+            default_output_directory("Magic Kingdom", ""),
+            Path("info/souvenirs/america/eua/orlando/magic-kingdom/todas"),
+        )
+
+    def test_pagination_collects_all_pages_and_removes_duplicates(self) -> None:
+        options = "".join(
+            f'<option value="?search=&amp;page={page}">{page}</option>'
+            for page in (1, 2, 3)
+        )
+        pages = {
+            1: page_html("WDW00001", options),
+            2: page_html("WDW00002", options),
+            3: page_html("WDW00002", options),
+        }
+
+        def fetcher(url: str) -> str:
+            page = int(url.rsplit("page=", 1)[1])
+            return pages[page]
+
+        coins, total_pages = collect_search_results(
+            location="Magic Kingdom",
+            search="",
+            availability="All",
+            coin_type="All",
+            max_pages=10,
+            fetcher=fetcher,
+        )
+
+        self.assertEqual(pagination_page_count(pages[1]), 3)
+        self.assertEqual(total_pages, 3)
+        self.assertEqual([coin.catalog_number for coin in coins], ["WDW00001", "WDW00002"])
+
+    def test_pagination_respects_safety_limit(self) -> None:
+        options = '<option value="?search=&amp;page=4">4</option>'
+        with self.assertRaisesRegex(ValueError, "limite de segurança"):
+            collect_search_results(
+                location="Magic Kingdom",
+                search="",
+                availability="All",
+                coin_type="All",
+                max_pages=3,
+                fetcher=lambda _url: page_html("WDW00001", options),
+            )
 
     def test_outputs_include_json_and_visual_preview(self) -> None:
         coin = parse_search_results(SAMPLE_HTML)[0]

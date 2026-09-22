@@ -1255,14 +1255,14 @@ def menu_atualizar_site() -> None:
 
 
 def action_collect_presscoins_souvenirs() -> None:
-    title("Recolher souvenirs do Presscoins")
+    title("PressedCoins Disney Orlando")
     print("Cria um catálogo pendente e uma pré-visualização. Não altera o Site Base44.")
 
-    location = ask_text("Localização no Presscoins", "Magic Kingdom")
-    search = ask_text("Pesquisa (ex: 2026)", "2026")
+    location = ask_text("Parque/localização no Presscoins", "Magic Kingdom")
+    search = ask_text("Pesquisa (vazio = todas as moedas)", "")
     city = ask_text("Cidade para o Site Base44", "Orlando")
-    if not location or not search or not city:
-        print("Localização, pesquisa e cidade são obrigatórias.")
+    if not location or not city:
+        print("Localização e cidade são obrigatórias.")
         return
 
     command = [
@@ -1271,18 +1271,18 @@ def action_collect_presscoins_souvenirs() -> None:
         "scripts.presscoins_souvenirs",
         "--location",
         location,
-        "--search",
-        search,
         "--city",
         city,
     ]
-    run_step("Recolher souvenirs do Presscoins", command)
+    if search:
+        command.extend(["--search", search])
+    run_step("Recolher catálogo PressedCoins Disney Orlando", command)
 
 
 def menu_souvenirs() -> None:
     while True:
-        title("Souvenirs")
-        print("1) Recolher do Presscoins e criar pré-visualização")
+        title("PressedCoins Disney Orlando")
+        print("1) Recolher catálogo e criar pré-visualização")
         print("2) Voltar")
 
         choice = ask_text("Escolhe uma opção", "1")
@@ -1302,7 +1302,7 @@ def menu() -> None:
         print("1) Pré-requisitos")
         print("2) Moedas normais")
         print("3) Atualizar Site Base44")
-        print("4) Souvenirs")
+        print("4) PressedCoins Disney Orlando")
         print("0) Sair")
 
         choice = ask_text("Escolhe uma opcao", "1")

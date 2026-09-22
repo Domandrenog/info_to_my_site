@@ -151,6 +151,7 @@ def build_search_url(
     search: str,
     availability: str = "All",
     coin_type: str = "All",
+    page: int = 1,
 ) -> str:
     query = urlencode(
         {
@@ -161,9 +162,16 @@ def build_search_url(
             "sort": "catalog",
             "cointype": coin_type,
             "Submit": "Search",
+            "page": str(page),
         }
     )
     return f"{PRESSCOINS_SEARCH_URL}?{query}"
+
+
+def pagination_page_count(source_html: str) -> int:
+    decoded = html.unescape(source_html)
+    page_numbers = [int(value) for value in re.findall(r"[?&]page=(\d+)", decoded)]
+    return max(page_numbers, default=1)
 
 
 def fetch_html(url: str, timeout: float = 30.0) -> str:
@@ -176,6 +184,57 @@ def fetch_html(url: str, timeout: float = 30.0) -> str:
         raise RuntimeError(f"Presscoins respondeu com HTTP {exc.code}: {url}") from exc
     except URLError as exc:
         raise RuntimeError(f"Não foi possível aceder ao Presscoins: {exc.reason}") from exc
+
+
+def collect_search_results(
+    *,
+    location: str,
+    search: str,
+    availability: str,
+    coin_type: str,
+    max_pages: int,
+    fetcher: Any = fetch_html,
+) -> tuple[list[Presscoin], int]:
+    first_url = build_search_url(
+        location=location,
+        search=search,
+        availability=availability,
+        coin_type=coin_type,
+        page=1,
+    )
+    first_html = fetcher(first_url)
+    total_pages = pagination_page_count(first_html)
+    if total_pages > max_pages:
+        raise ValueError(
+            f"A pesquisa tem {total_pages} páginas, acima do limite de segurança "
+            f"de {max_pages}. Aumenta --max-pages para continuar."
+        )
+
+    all_coins: list[Presscoin] = []
+    seen_catalog_numbers: set[str] = set()
+    for page in range(1, total_pages + 1):
+        source_html = first_html if page == 1 else fetcher(
+            build_search_url(
+                location=location,
+                search=search,
+                availability=availability,
+                coin_type=coin_type,
+                page=page,
+            )
+        )
+        page_coins = parse_search_results(source_html)
+        new_count = 0
+        for coin in page_coins:
+            if coin.catalog_number in seen_catalog_numbers:
+                continue
+            seen_catalog_numbers.add(coin.catalog_number)
+            all_coins.append(coin)
+            new_count += 1
+        print(
+            f"Página {page}/{total_pages} — {len(page_coins)} resultados "
+            f"({new_count} novos; {len(all_coins)} acumulados)"
+        )
+    return all_coins, total_pages
 
 
 def slugify(value: str) -> str:
@@ -192,7 +251,7 @@ def default_output_directory(location: str, search: str) -> Path:
         / "eua"
         / "orlando"
         / slugify(location)
-        / slugify(search)
+        / (slugify(search) or "todas")
     )
 
 
@@ -245,6 +304,7 @@ def build_catalog(
     search: str,
     country: str,
     city: str,
+    page_count: int = 1,
 ) -> dict[str, Any]:
     items: list[dict[str, Any]] = []
     for order, coin in enumerate(coins, start=1):
@@ -277,6 +337,7 @@ def build_catalog(
             "query_url": query_url,
             "location": location,
             "search": search,
+            "page_count": page_count,
             "retrieved_at": datetime.now(timezone.utc).isoformat(timespec="seconds"),
             "result_count": len(items),
         },
@@ -313,6 +374,7 @@ def preview_html(catalog: dict[str, Any]) -> str:
         )
 
     source = catalog["source"]
+    search_label = str(source["search"] or "todas as moedas")
     return f"""<!doctype html>
 <html lang="pt">
 <head>
@@ -331,7 +393,7 @@ def preview_html(catalog: dict[str, Any]) -> str:
 </head>
 <body>
   <header>
-    <h1>{html.escape(str(source['location']))} — {html.escape(str(source['search']))}</h1>
+    <h1>{html.escape(str(source['location']))} — {html.escape(search_label)}</h1>
     <p>{source['result_count']} souvenirs para rever. Nenhuma alteração foi feita no Site Base44.</p>
     <p><a href="{html.escape(str(source['query_url']))}">Abrir pesquisa original</a></p>
   </header>
@@ -358,13 +420,19 @@ def parse_args(argv: list[str] | None = None) -> argparse.Namespace:
         description="Recolhe souvenirs do Presscoins e cria JSON/HTML para revisão, sem alterar o Base44."
     )
     parser.add_argument("--location", default="Magic Kingdom", help="Localização no Presscoins.")
-    parser.add_argument("--search", default="2026", help="Texto a pesquisar.")
+    parser.add_argument("--search", default="", help="Texto a pesquisar; vazio recolhe todas as moedas.")
     parser.add_argument("--availability", default="All", help="All, 1 (current) ou 0 (retired).")
     parser.add_argument("--coin-type", default="All", help="All, Cent, Quarter ou Dime.")
     parser.add_argument("--country", default="Estados Unidos da América")
     parser.add_argument("--city", default="Orlando")
     parser.add_argument("--output-dir", type=Path, help="Pasta para JSON e preview.html.")
     parser.add_argument("--html-input", type=Path, help="Ler HTML local em vez de aceder à rede.")
+    parser.add_argument(
+        "--max-pages",
+        type=int,
+        default=100,
+        help="Limite de segurança de páginas a percorrer (por omissão: 100).",
+    )
     return parser.parse_args(argv)
 
 
@@ -377,12 +445,19 @@ def main(argv: list[str] | None = None) -> int:
         coin_type=args.coin_type,
     )
     try:
-        source_html = (
-            args.html_input.read_text(encoding="utf-8")
-            if args.html_input
-            else fetch_html(query_url)
-        )
-        coins = parse_search_results(source_html)
+        if args.max_pages < 1:
+            raise ValueError("--max-pages tem de ser pelo menos 1.")
+        if args.html_input:
+            coins = parse_search_results(args.html_input.read_text(encoding="utf-8"))
+            page_count = 1
+        else:
+            coins, page_count = collect_search_results(
+                location=args.location,
+                search=args.search,
+                availability=args.availability,
+                coin_type=args.coin_type,
+                max_pages=args.max_pages,
+            )
         if not coins:
             print("O Presscoins não devolveu moedas para esta pesquisa.", file=sys.stderr)
             return 1
@@ -393,6 +468,7 @@ def main(argv: list[str] | None = None) -> int:
             search=args.search,
             country=args.country,
             city=args.city,
+            page_count=page_count,
         )
         output_dir = args.output_dir or default_output_directory(args.location, args.search)
         catalog_path, preview_path = write_outputs(catalog, output_dir)
@@ -404,9 +480,12 @@ def main(argv: list[str] | None = None) -> int:
     print(f"Encontrados: {len(coins)} souvenirs")
     print(f"Com fotografia: {with_photos}")
     print(f"Sem fotografia: {len(coins) - with_photos}")
-    for index, item in enumerate(catalog["items"], start=1):
-        photo = "com fotografia" if item["souvenir"]["image_front"] else "sem fotografia"
-        print(f"{index}/{len(coins)} — {item['souvenir']['name']} — {photo}")
+    if len(coins) <= 25:
+        for index, item in enumerate(catalog["items"], start=1):
+            photo = "com fotografia" if item["souvenir"]["image_front"] else "sem fotografia"
+            print(f"{index}/{len(coins)} — {item['souvenir']['name']} — {photo}")
+    else:
+        print("O detalhe individual está no catálogo JSON e na pré-visualização HTML.")
     print(f"\nCatálogo pendente: {catalog_path}")
     print(f"Pré-visualização: {preview_path}")
     print("Site Base44: nenhuma alteração efetuada.")

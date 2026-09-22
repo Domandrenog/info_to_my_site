@@ -85,11 +85,19 @@ info/
 
 ## Recolher souvenirs do Presscoins
 
-No menu principal escolhe `Souvenirs > Recolher do Presscoins e criar pré-visualização` ou executa diretamente:
+No menu principal escolhe `PressedCoins Disney Orlando > Recolher catálogo e criar pré-visualização` ou executa diretamente:
 
 ```bash
 python3 -m scripts.presscoins_souvenirs --location "Magic Kingdom" --search 2026
 ```
+
+Para recolher todas as moedas do Magic Kingdom, deixa a pesquisa vazia no menu ou omite `--search`:
+
+```bash
+python3 -m scripts.presscoins_souvenirs --location "Magic Kingdom"
+```
+
+O scraper deteta e percorre automaticamente todas as páginas dos resultados. Para evitar uma recolha acidentalmente ilimitada, existe um limite de segurança configurável através de `--max-pages`.
 
 O fluxo recolhe os dados apresentados na pesquisa, usa o URL da fotografia grande do Presscoins em `image_front` e gera:
 
