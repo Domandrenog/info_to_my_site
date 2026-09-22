@@ -827,6 +827,36 @@ class FixSiteIssuesPlanTests(unittest.TestCase):
         )
         self.assertEqual(selected["updates"][1]["current"], {"url_ucoin": ""})
 
+    def test_safe_notes_scope_keeps_only_text_already_seen_in_country(self) -> None:
+        plan = {
+            "updates": [
+                {
+                    "country_slug": "bahamas",
+                    "safe_note": True,
+                    "current": {"notes": ""},
+                    "set": {"notes": "Elizabeth II"},
+                },
+                {
+                    "country_slug": "bahamas",
+                    "safe_note": False,
+                    "current": {"notes": "", "url_ucoin": ""},
+                    "set": {
+                        "notes": "Charles III",
+                        "url_ucoin": "https://pt.ucoin.net/coin/example",
+                    },
+                },
+            ]
+        }
+
+        selected = fix_site_issues_api.restrict_notes_to_safe_proposals(plan)
+
+        self.assertEqual(selected["updates"][0]["set"], {"notes": "Elizabeth II"})
+        self.assertEqual(
+            selected["updates"][1]["set"],
+            {"url_ucoin": "https://pt.ucoin.net/coin/example"},
+        )
+        self.assertEqual(selected["updates"][1]["current"], {"url_ucoin": ""})
+
     def test_collect_global_plan_reuses_one_api_snapshot(self) -> None:
         with tempfile.TemporaryDirectory() as temp_dir:
             paises_dir = Path(temp_dir) / "paises"
@@ -886,6 +916,7 @@ class FixSiteIssuesPlanTests(unittest.TestCase):
         api.assert_called_once_with()
         self.assertEqual(compare.call_count, 1)
         self.assertEqual(plan["updates"][0]["country"], "País Teste")
+        self.assertIs(plan["updates"][0]["safe_note"], True)
         self.assertEqual(plan["manual_counts"], {"photos": 2})
         self.assertEqual(
             plan["notes_status"],
@@ -897,6 +928,8 @@ class FixSiteIssuesPlanTests(unittest.TestCase):
                     "with_notes": 1,
                     "without_notes": 1,
                     "fixable_missing_notes": 1,
+                    "safe_missing_notes": 1,
+                    "review_missing_notes": 0,
                     "state": "partial",
                 }
             ],

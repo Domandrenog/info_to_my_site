@@ -365,6 +365,21 @@ def collect_global_fix_plan(
             conflicts.append({**conflict, "country": country_name, "country_slug": country_slug})
         api_country = checker.api_country_name(country_slug, country_name)
         country_api_records = api_records_by_country.get(checker.slugify(api_country), [])
+        existing_note_keys = {
+            " ".join(str(record.get("notes") or "").strip().casefold().split())
+            for record in country_api_records
+            if str(record.get("notes") or "").strip()
+        }
+        for item in country_updates:
+            set_fields = item.get("set", {})
+            if not isinstance(set_fields, dict) or "notes" not in set_fields:
+                continue
+            proposed_note_key = " ".join(
+                str(set_fields.get("notes") or "").strip().casefold().split()
+            )
+            item["safe_note"] = bool(
+                proposed_note_key and proposed_note_key in existing_note_keys
+            )
         records_with_notes = sum(
             1
             for record in country_api_records
@@ -374,6 +389,11 @@ def collect_global_fix_plan(
             1
             for item in country_updates
             if "notes" in item.get("set", {})
+        )
+        safe_missing_notes = sum(
+            1
+            for item in country_updates
+            if "notes" in item.get("set", {}) and item.get("safe_note") is True
         )
         total_api_records = len(country_api_records)
         if not records_with_notes:
@@ -390,6 +410,8 @@ def collect_global_fix_plan(
                 "with_notes": records_with_notes,
                 "without_notes": total_api_records - records_with_notes,
                 "fixable_missing_notes": fixable_missing_notes,
+                "safe_missing_notes": safe_missing_notes,
+                "review_missing_notes": fixable_missing_notes - safe_missing_notes,
                 "state": notes_state,
             }
         )
@@ -471,6 +493,20 @@ def restrict_update_field_to_countries(
         if field in set_fields and str(item.get("country_slug") or "") not in country_slugs:
             set_fields.pop(field, None)
             current_fields.pop(field, None)
+        if set_fields:
+            updates.append({**item, "current": current_fields, "set": set_fields})
+    return {**plan, "updates": updates}
+
+
+def restrict_notes_to_safe_proposals(plan: dict[str, Any]) -> dict[str, Any]:
+    """Keep notes only when the proposed text already exists in that country."""
+    updates: list[dict[str, Any]] = []
+    for item in plan.get("updates", []):
+        set_fields = dict(item.get("set", {}))
+        current_fields = dict(item.get("current", {}))
+        if "notes" in set_fields and item.get("safe_note") is not True:
+            set_fields.pop("notes", None)
+            current_fields.pop("notes", None)
         if set_fields:
             updates.append({**item, "current": current_fields, "set": set_fields})
     return {**plan, "updates": updates}

@@ -382,7 +382,7 @@ class MainTrackingActionTests(unittest.TestCase):
     @patch("main.ask_text", side_effect=["1", "1"])
     @patch("main.fix_site_issues_api.collect_global_fix_plan")
     @patch("main.title")
-    def test_autofix_can_limit_notes_to_countries_without_any_notes(
+    def test_autofix_can_limit_notes_to_safe_proposals(
         self,
         _title,
         collect,
@@ -397,6 +397,7 @@ class MainTrackingActionTests(unittest.TestCase):
                     "country_slug": "bahamas",
                     "denomination": "1 cent",
                     "record_id": "record-1",
+                    "safe_note": False,
                     "current": {"notes": ""},
                     "set": {"notes": "Bahamas"},
                 },
@@ -405,6 +406,7 @@ class MainTrackingActionTests(unittest.TestCase):
                     "country_slug": "brasil",
                     "denomination": "1 real",
                     "record_id": "record-2",
+                    "safe_note": True,
                     "current": {"notes": ""},
                     "set": {"notes": "República Federativa do Brasil"},
                 },
@@ -417,6 +419,8 @@ class MainTrackingActionTests(unittest.TestCase):
                     "with_notes": 0,
                     "without_notes": 24,
                     "fixable_missing_notes": 1,
+                    "safe_missing_notes": 0,
+                    "review_missing_notes": 1,
                     "state": "none",
                 },
                 {
@@ -426,7 +430,20 @@ class MainTrackingActionTests(unittest.TestCase):
                     "with_notes": 10,
                     "without_notes": 4,
                     "fixable_missing_notes": 1,
+                    "safe_missing_notes": 1,
+                    "review_missing_notes": 0,
                     "state": "partial",
+                },
+                {
+                    "country": "Canadá",
+                    "country_slug": "canada",
+                    "total": 200,
+                    "with_notes": 200,
+                    "without_notes": 0,
+                    "fixable_missing_notes": 0,
+                    "safe_missing_notes": 0,
+                    "review_missing_notes": 0,
+                    "state": "complete",
                 },
             ],
             "missing": [],
@@ -438,9 +455,11 @@ class MainTrackingActionTests(unittest.TestCase):
             main.action_autofix_issues()
 
         applied_updates = apply_plan.call_args.args[2]["updates"]
-        self.assertEqual([item["country"] for item in applied_updates], ["Bahamas"])
+        self.assertEqual([item["country"] for item in applied_updates], ["Brasil"])
         self.assertIn("Bahamas: nenhuma (0/24 moedas com notes", output.getvalue())
         self.assertIn("Brasil: parcial (10/14 moedas com notes", output.getvalue())
+        self.assertIn("Apenas correções seguras", output.getvalue())
+        self.assertNotIn("Canadá: completa", output.getvalue())
 
 
 if __name__ == "__main__":

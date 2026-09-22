@@ -831,16 +831,20 @@ def print_notes_status(plan: dict[str, object]) -> None:
     entries = [
         item
         for item in plan.get("notes_status", [])
-        if isinstance(item, dict) and int(item.get("total", 0)) > 0
+        if (
+            isinstance(item, dict)
+            and int(item.get("total", 0)) > 0
+            and item.get("state") != "complete"
+            and int(item.get("fixable_missing_notes", 0)) > 0
+        )
     ]
     if not entries:
         return
 
-    state_order = {"none": 0, "partial": 1, "complete": 2}
+    state_order = {"none": 0, "partial": 1}
     state_labels = {
         "none": "nenhuma",
         "partial": "parcial",
-        "complete": "completa",
     }
     print("\nEstado atual de notes por país:")
     for item in sorted(
@@ -853,34 +857,42 @@ def print_notes_status(plan: dict[str, object]) -> None:
         state = str(item.get("state") or "")
         with_notes = int(item.get("with_notes", 0))
         total = int(item.get("total", 0))
-        fixable = int(item.get("fixable_missing_notes", 0))
-        fixable_text = f"; {fixable} correções seguras disponíveis" if fixable else ""
+        safe = int(item.get("safe_missing_notes", 0))
+        review = int(item.get("review_missing_notes", 0))
+        safe_label = "correção segura" if safe == 1 else "correções seguras"
+        review_label = "correção por rever" if review == 1 else "correções por rever"
         print(
             f"- {item.get('country', '')}: {state_labels.get(state, state)} "
-            f"({with_notes}/{total} moedas com notes{fixable_text})"
+            f"({with_notes}/{total} moedas com notes; "
+            f"{safe} {safe_label}; {review} {review_label})"
         )
 
 
-def choose_notes_country_scope(plan: dict[str, object]) -> set[str] | None:
+def choose_notes_country_scope(plan: dict[str, object]) -> tuple[set[str], bool] | None:
     candidates = [
         item
         for item in plan.get("notes_status", [])
         if isinstance(item, dict) and int(item.get("fixable_missing_notes", 0)) > 0
     ]
     if not candidates:
-        return set()
+        return set(), False
 
     all_country_slugs = {str(item.get("country_slug") or "") for item in candidates}
-    countries_without_notes = [item for item in candidates if item.get("state") == "none"]
-    choices: list[tuple[str, set[str] | None]] = []
-    if countries_without_notes:
-        slugs = {str(item.get("country_slug") or "") for item in countries_without_notes}
-        coin_count = sum(int(item.get("fixable_missing_notes", 0)) for item in countries_without_notes)
+    safe_candidates = [
+        item for item in candidates if int(item.get("safe_missing_notes", 0)) > 0
+    ]
+    choices: list[tuple[str, set[str] | None, bool]] = []
+    if safe_candidates:
+        safe_slugs = {str(item.get("country_slug") or "") for item in safe_candidates}
+        safe_count = sum(int(item.get("safe_missing_notes", 0)) for item in safe_candidates)
+        country_label = "país" if len(safe_slugs) == 1 else "países"
+        coin_label = "moeda" if safe_count == 1 else "moedas"
         choices.append(
             (
-                "Apenas países sem nenhuma note e com correções seguras — "
-                f"{len(slugs)} países, {coin_count} moedas",
-                slugs,
+                "Apenas correções seguras (texto já existente no mesmo país) — "
+                f"{len(safe_slugs)} {country_label}, {safe_count} {coin_label}",
+                safe_slugs,
+                True,
             )
         )
     choices.append(
@@ -889,17 +901,18 @@ def choose_notes_country_scope(plan: dict[str, object]) -> set[str] | None:
             f"{len(all_country_slugs)} países, "
             f"{sum(int(item.get('fixable_missing_notes', 0)) for item in candidates)} moedas",
             all_country_slugs,
+            False,
         )
     )
-    choices.append(("Escolher países", None))
+    choices.append(("Escolher países", None, False))
 
     print("\nOnde queres preencher notes?")
-    for index, (label, _) in enumerate(choices, start=1):
+    for index, (label, _, _) in enumerate(choices, start=1):
         print(f"{index}) {label}")
     print("0) Cancelar")
 
     while True:
-        choice = ask_text("Escolhe o âmbito de notes", "1")
+        choice = ask_text("Escolhe o âmbito de notes", "1" if safe_candidates else "0")
         if choice == "0":
             return None
         try:
@@ -911,15 +924,19 @@ def choose_notes_country_scope(plan: dict[str, object]) -> set[str] | None:
             continue
 
         selected_slugs = choices[selected_index][1]
+        safe_only = choices[selected_index][2]
         if selected_slugs is not None:
-            return selected_slugs
+            return selected_slugs, safe_only
 
         print("\nPaíses com correções de notes disponíveis:")
         for index, item in enumerate(candidates, start=1):
             state_label = "nenhuma" if item.get("state") == "none" else "parcial"
+            safe = int(item.get("safe_missing_notes", 0))
+            review = int(item.get("review_missing_notes", 0))
             print(
                 f"{index}) {item.get('country', '')} — {state_label}; "
-                f"{item.get('fixable_missing_notes', 0)} moedas"
+                f"{item.get('fixable_missing_notes', 0)} moedas "
+                f"({safe} seguras; {review} por rever)"
             )
         while True:
             selection = ask_text("Números dos países, separados por vírgulas", "")
@@ -930,7 +947,10 @@ def choose_notes_country_scope(plan: dict[str, object]) -> set[str] | None:
             if not indexes or any(index < 1 or index > len(candidates) for index in indexes):
                 print("Indica pelo menos um número válido da lista.")
                 continue
-            return {str(candidates[index - 1].get("country_slug") or "") for index in indexes}
+            return (
+                {str(candidates[index - 1].get("country_slug") or "") for index in indexes},
+                False,
+            )
 
 
 def action_autofix_issues() -> None:
@@ -1034,15 +1054,20 @@ def action_autofix_issues() -> None:
 
     selected_plan = fix_site_issues_api.select_update_fields(plan, selected_fields)
     if "notes" in selected_fields:
-        selected_note_countries = choose_notes_country_scope(selected_plan)
-        if selected_note_countries is None:
+        notes_scope = choose_notes_country_scope(selected_plan)
+        if notes_scope is None:
             print("Operação cancelada. O Site Base44 não foi alterado.")
             return
+        selected_note_countries, safe_notes_only = notes_scope
         selected_plan = fix_site_issues_api.restrict_update_field_to_countries(
             selected_plan,
             "notes",
             selected_note_countries,
         )
+        if safe_notes_only:
+            selected_plan = fix_site_issues_api.restrict_notes_to_safe_proposals(
+                selected_plan,
+            )
     updates = selected_plan.get("updates", [])
     if not updates:
         print("Não existem alterações seguras dentro do âmbito escolhido. O Site Base44 não foi alterado.")
