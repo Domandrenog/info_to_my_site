@@ -284,26 +284,20 @@ def reference_url(catalog_number: str) -> str:
 
 
 def display_location(location: str) -> str:
-    park, separator, venue = location.partition(",")
-    if not separator:
-        return location
-    return f"{park.strip()} — {venue.strip()}"
+    park, _, _venue = location.partition(",")
+    return park.strip()
+
+
+def venue_from_location(location: str) -> str:
+    _park, separator, venue = location.partition(",")
+    return venue.strip() if separator else ""
 
 
 def notes_for(coin: Presscoin) -> str:
-    orientation = {"H": "horizontal", "V": "vertical"}.get(
-        coin.orientation.upper(), coin.orientation
-    )
-    availability = {
-        "Current": "disponível",
-        "Retired": "retirada",
-    }.get(coin.availability, coin.availability)
     parts = [
+        venue_from_location(coin.location),
+        f"Posição {coin.position}" if coin.position else "",
         f"Catálogo Presscoins: {coin.catalog_number}",
-        f"Posição: {coin.position}" if coin.position else "",
-        f"Tipo de moeda: {coin.coin_type}" if coin.coin_type else "",
-        f"Orientação: {orientation}" if orientation else "",
-        f"Disponibilidade: {availability}" if availability else "",
     ]
     return " · ".join(part for part in parts if part)
 
@@ -381,7 +375,7 @@ def preview_html(catalog: dict[str, Any]) -> str:
                     f'<p class="catalog">{html.escape(str(source["catalog_number"]))}</p>',
                     f'<p>{html.escape(str(souvenir["description"]))}</p>',
                     f'<p><strong>Local:</strong> {html.escape(str(souvenir["location_name"]))}</p>',
-                    f'<p><strong>Posição:</strong> {html.escape(str(source["position"]))}</p>',
+                    f'<p><strong>Notas:</strong> {html.escape(str(souvenir["notes"]))}</p>',
                     f'<p><a href="{html.escape(str(souvenir["reference_url"]))}">Ver no Presscoins</a></p>',
                     "</article>",
                 ]

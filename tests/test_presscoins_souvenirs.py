@@ -99,6 +99,11 @@ class PresscoinsSouvenirsTests(unittest.TestCase):
         self.assertEqual(souvenir["type"], "pressed")
         self.assertEqual(souvenir["condition"], "Não Tenho")
         self.assertEqual(souvenir["display_shape"], "oval")
+        self.assertEqual(souvenir["location_name"], "Magic Kingdom")
+        self.assertEqual(
+            souvenir["notes"],
+            "Emporium #1 · Posição 1 · Catálogo Presscoins: WDW26011",
+        )
         self.assertEqual(souvenir["image_front"], coin.image_url)
         self.assertEqual(souvenir["image_back"], "")
         self.assertIn("WDW26011", souvenir["reference_url"])
