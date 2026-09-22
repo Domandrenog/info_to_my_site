@@ -569,7 +569,7 @@ class AllCoinsPathTests(unittest.TestCase):
                 "id": "record-1",
                 "country": "Filipinas",
                 "name": "10 pesos",
-                "years": "2025",
+                "years": "2024",
                 "notes": "",
                 "url_ucoin": "",
                 "image_frente": "",
@@ -593,6 +593,7 @@ class AllCoinsPathTests(unittest.TestCase):
         issue_types = [issue["type"] for issue in coin["issues"]]
         self.assertNotIn("missing_api_coin_record", issue_types)
         self.assertIn("mismatched_name", issue_types)
+        self.assertIn("mismatched_years", issue_types)
         self.assertIn("missing_notes", issue_types)
         self.assertIn("missing_url_ucoin", issue_types)
 
@@ -776,6 +777,28 @@ class AllCoinsPathTests(unittest.TestCase):
         }
 
         self.assertEqual(ucoin_url_identity_mismatches(record), [])
+
+    def test_ucoin_url_identity_accepts_sentimo_and_rupiah_translations(self) -> None:
+        self.assertEqual(
+            ucoin_url_identity_mismatches(
+                {
+                    "name": "25 cêntimos",
+                    "years": "2022 - 2025",
+                    "url_ucoin": "https://pt.ucoin.net/coin/philippines-25-sentimos-2022-2025",
+                }
+            ),
+            [],
+        )
+        self.assertEqual(
+            ucoin_url_identity_mismatches(
+                {
+                    "name": "1000 rúpias",
+                    "years": "1993 - 2000",
+                    "url_ucoin": "https://pt.ucoin.net/coin/indonesia-1000-rupiah-1993-2000",
+                }
+            ),
+            [],
+        )
 
     def test_ucoin_url_identity_reports_wrong_name_and_years(self) -> None:
         record = {

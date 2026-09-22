@@ -382,6 +382,54 @@ class MainTrackingActionTests(unittest.TestCase):
     @patch("main.ask_text", side_effect=["1", "1"])
     @patch("main.fix_site_issues_api.collect_global_fix_plan")
     @patch("main.title")
+    def test_autofix_can_apply_only_safe_year_extensions(
+        self,
+        _title,
+        collect,
+        _ask_text,
+        _confirm,
+        apply_plan,
+    ) -> None:
+        collect.return_value = {
+            "updates": [
+                {
+                    "country": "Brasil",
+                    "country_slug": "brasil",
+                    "denomination": "1 real",
+                    "record_id": "record-1",
+                    "safe_year_extension": True,
+                    "current": {"years": "2002-2024"},
+                    "set": {"years": "2002 - 2026"},
+                },
+                {
+                    "country": "Malásia",
+                    "country_slug": "malasia",
+                    "denomination": "10 sen",
+                    "record_id": "record-2",
+                    "safe_year_extension": False,
+                    "current": {"years": "1989-2011"},
+                    "set": {"years": "1967 - 1988"},
+                },
+            ],
+            "notes_status": [],
+            "missing": [],
+            "errors": [],
+            "manual_counts": {"photos": 0},
+        }
+
+        with redirect_stdout(io.StringIO()) as output:
+            main.action_autofix_issues()
+
+        applied_updates = apply_plan.call_args.args[2]["updates"]
+        self.assertEqual([item["country"] for item in applied_updates], ["Brasil"])
+        self.assertIn("Apenas prolongar o ano final", output.getvalue())
+        self.assertNotIn("Malásia:", output.getvalue())
+
+    @patch("main.fix_site_issues_api.apply_plan", return_value={"updated": 1, "created": 0, "skipped": 0})
+    @patch("main.ask_yes_no", return_value=True)
+    @patch("main.ask_text", side_effect=["1", "1"])
+    @patch("main.fix_site_issues_api.collect_global_fix_plan")
+    @patch("main.title")
     def test_autofix_can_limit_notes_to_safe_proposals(
         self,
         _title,

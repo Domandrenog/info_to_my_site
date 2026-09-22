@@ -103,6 +103,17 @@ def normalize_key(value: str) -> str:
     return checker.normalize_key(value)
 
 
+def is_safe_year_extension(current: str, proposed: str) -> bool:
+    current_years = [int(value) for value in re.findall(r"\b\d{4}\b", str(current or ""))]
+    proposed_years = [int(value) for value in re.findall(r"\b\d{4}\b", str(proposed or ""))]
+    return bool(
+        len(current_years) == 2
+        and len(proposed_years) == 2
+        and current_years[0] == proposed_years[0]
+        and proposed_years[1] > current_years[1]
+    )
+
+
 def parse_association_record_id(entry: dict[str, Any]) -> str:
     record_id = str(entry.get("record_id") or "")
     if record_id:
@@ -228,6 +239,9 @@ def build_fix_plan(report: dict[str, Any], catalog_index: dict[str, tuple[dict[s
             elif field == "name" and missing_value:
                 update_fields["name"] = missing_value
                 current_fields["name"] = str(issue.get("value") or "")
+            elif field == "years" and missing_value:
+                update_fields["years"] = missing_value
+                current_fields["years"] = str(issue.get("value") or "")
             elif field == "url_ucoin" and missing_value:
                 update_fields["url_ucoin"] = missing_value
                 current_fields["url_ucoin"] = str(issue.get("value") or "")
@@ -235,16 +249,20 @@ def build_fix_plan(report: dict[str, Any], catalog_index: dict[str, tuple[dict[s
                 has_missing_api = True
 
         if record_id and update_fields:
-            updates.append(
-                {
-                    "denomination": coin.get("denomination", ""),
-                    "issuePeriod": coin.get("issuePeriod", ""),
-                    "record_id": record_id,
-                    "siteUrl": site_url,
-                    "current": current_fields,
-                    "set": update_fields,
-                }
-            )
+            update = {
+                "denomination": coin.get("denomination", ""),
+                "issuePeriod": coin.get("issuePeriod", ""),
+                "record_id": record_id,
+                "siteUrl": site_url,
+                "current": current_fields,
+                "set": update_fields,
+            }
+            if "years" in update_fields:
+                update["safe_year_extension"] = is_safe_year_extension(
+                    current_fields.get("years", ""),
+                    update_fields["years"],
+                )
+            updates.append(update)
 
         if has_missing_api:
             catalog_item = catalog_index.get(ucoin_url)
@@ -507,6 +525,20 @@ def restrict_notes_to_safe_proposals(plan: dict[str, Any]) -> dict[str, Any]:
         if "notes" in set_fields and item.get("safe_note") is not True:
             set_fields.pop("notes", None)
             current_fields.pop("notes", None)
+        if set_fields:
+            updates.append({**item, "current": current_fields, "set": set_fields})
+    return {**plan, "updates": updates}
+
+
+def restrict_years_to_safe_extensions(plan: dict[str, Any]) -> dict[str, Any]:
+    """Keep years only when the proposal extends the end year safely."""
+    updates: list[dict[str, Any]] = []
+    for item in plan.get("updates", []):
+        set_fields = dict(item.get("set", {}))
+        current_fields = dict(item.get("current", {}))
+        if "years" in set_fields and item.get("safe_year_extension") is not True:
+            set_fields.pop("years", None)
+            current_fields.pop("years", None)
         if set_fields:
             updates.append({**item, "current": current_fields, "set": set_fields})
     return {**plan, "updates": updates}

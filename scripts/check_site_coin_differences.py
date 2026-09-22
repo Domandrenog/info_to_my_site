@@ -16,6 +16,7 @@ ISSUE_TYPE_LABELS = {
     "detail_image_slug_mismatch": "Wrong photo",
     "markdown_url": "Markdown URL",
     "mismatched_name": "Different coin name",
+    "mismatched_years": "Different years",
     "mismatched_url_ucoin": "Wrong uCoin URL",
     "missing_api_coin_record": "Not found",
     "missing_image_url": "No photo",
@@ -32,6 +33,7 @@ TEXT_REPORT_ISSUE_LABELS = {
     "detail_image_slug_mismatch": "Fotografia incorreta",
     "markdown_url": "URL em formato Markdown",
     "mismatched_name": "Nome diferente do catálogo",
+    "mismatched_years": "Anos diferentes do catálogo",
     "mismatched_url_ucoin": "URL do uCoin incorreto",
     "missing_notes": "Sem notes",
     "missing_url_ucoin": "Sem URL do uCoin",
@@ -319,6 +321,8 @@ def normalize_key(value: str) -> str:
         "centimos": "cent",
         "centavo": "cent",
         "centavos": "cent",
+        "sentimo": "cent",
+        "sentimos": "cent",
         "dolar": "dollar",
         "dolares": "dollar",
         "dollar": "dollar",
@@ -365,6 +369,7 @@ def normalize_key(value: str) -> str:
         "rupees": "rupee",
         "rupia": "rupee",
         "rupias": "rupee",
+        "rupiah": "rupee",
         "iene": "yen",
         "ienes": "yen",
         "yen": "yen",
@@ -1003,6 +1008,8 @@ def compare_country(
                 url_ucoin = normalize_url(str(record.get("url_ucoin") or ""))[0]
                 current_name = str(record.get("name") or "").strip()
                 expected_name = str(coin.get("denomination") or "").strip()
+                current_years = str(record.get("years") or "").strip()
+                expected_years = str(coin.get("issuePeriod") or "").strip()
                 coin_issues.extend(
                     external_image_source_suggestions(
                         record,
@@ -1020,6 +1027,18 @@ def compare_country(
                             missing_value=expected_name,
                         )
                     )
+                if (
+                    expected_years
+                    and normalize_key(current_years) != normalize_key(expected_years)
+                ):
+                    coin_issues.append(
+                        make_finding(
+                            "mismatched_years",
+                            "years",
+                            value=current_years,
+                            missing_value=expected_years,
+                        )
+                    )
                 if not notes:
                     expected_notes = expected_notes_from_period(period)
                     coin_issues.append(make_finding("missing_notes", "notes", value="", missing_value=expected_notes or "notes"))
@@ -1027,6 +1046,23 @@ def compare_country(
                     coin_issues.append(make_finding("missing_url_ucoin", "url_ucoin", value="", missing_value=detail_norm or "url_ucoin"))
                 elif detail_norm and url_ucoin != detail_norm:
                     coin_issues.append(make_finding("mismatched_url_ucoin", "url_ucoin", value=url_ucoin, missing_value=detail_norm))
+                elif detail_norm:
+                    identity_mismatches = ucoin_url_identity_mismatches(
+                        {
+                            "name": expected_name,
+                            "years": expected_years,
+                            "url_ucoin": url_ucoin,
+                        }
+                    )
+                    if identity_mismatches:
+                        coin_issues.append(
+                            make_finding(
+                                "ucoin_url_identity_mismatch",
+                                "url_ucoin_identity",
+                                value=url_ucoin,
+                                missing_value=",".join(identity_mismatches),
+                            )
+                        )
                 elif record_id not in audited_api_record_ids:
                     identity_mismatches = ucoin_url_identity_mismatches(record)
                     if identity_mismatches:

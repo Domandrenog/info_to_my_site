@@ -953,6 +953,57 @@ def choose_notes_country_scope(plan: dict[str, object]) -> tuple[set[str], bool]
             )
 
 
+def choose_years_scope(plan: dict[str, object]) -> bool | None:
+    year_updates = [
+        item
+        for item in plan.get("updates", [])
+        if isinstance(item, dict)
+        and isinstance(item.get("set"), dict)
+        and "years" in item["set"]
+    ]
+    safe_count = sum(
+        1 for item in year_updates if item.get("safe_year_extension") is True
+    )
+    review_count = len(year_updates) - safe_count
+
+    print("\nQue correções de anos queres aplicar?")
+    choices: list[tuple[str, bool]] = []
+    if safe_count:
+        coin_label = "moeda" if safe_count == 1 else "moedas"
+        choices.append(
+            (
+                "Apenas prolongar o ano final, mantendo o ano inicial — "
+                f"{safe_count} {coin_label}",
+                True,
+            )
+        )
+    if year_updates:
+        coin_label = "moeda" if len(year_updates) == 1 else "moedas"
+        review_text = f"; {review_count} por rever" if review_count else ""
+        choices.append(
+            (
+                f"Todas as correções de anos — {len(year_updates)} {coin_label}{review_text}",
+                False,
+            )
+        )
+    for index, (label, _) in enumerate(choices, start=1):
+        print(f"{index}) {label}")
+    print("0) Cancelar")
+
+    while True:
+        choice = ask_text("Escolhe o âmbito dos anos", "1" if safe_count else "0")
+        if choice == "0":
+            return None
+        try:
+            selected_index = int(choice) - 1
+            if selected_index < 0 or selected_index >= len(choices):
+                raise IndexError
+        except (ValueError, IndexError):
+            print("Escolhe uma das opções apresentadas.")
+            continue
+        return choices[selected_index][1]
+
+
 def action_autofix_issues() -> None:
     title("Corrigir dados no Site Base44")
     print("Analisa todos os países e só permite alterar os campos escolhidos.")
@@ -1066,6 +1117,15 @@ def action_autofix_issues() -> None:
         )
         if safe_notes_only:
             selected_plan = fix_site_issues_api.restrict_notes_to_safe_proposals(
+                selected_plan,
+            )
+    if "years" in selected_fields:
+        safe_year_extensions_only = choose_years_scope(selected_plan)
+        if safe_year_extensions_only is None:
+            print("Operação cancelada. O Site Base44 não foi alterado.")
+            return
+        if safe_year_extensions_only:
+            selected_plan = fix_site_issues_api.restrict_years_to_safe_extensions(
                 selected_plan,
             )
     updates = selected_plan.get("updates", [])

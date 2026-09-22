@@ -781,6 +781,35 @@ class FixSiteIssuesPlanTests(unittest.TestCase):
         self.assertEqual(plan["updates"][0]["current"]["name"], "1 cent")
         self.assertEqual(plan["updates"][0]["set"]["name"], "1 cêntimo")
 
+    def test_build_plan_marks_only_end_year_growth_as_safe(self) -> None:
+        report = {
+            "coins_with_issues": [
+                {
+                    "denomination": "1 real",
+                    "issuePeriod": "2002 - 2026",
+                    "ucoinUrl": "https://pt.ucoin.net/coin/brazil-1-real-2002-2026",
+                    "siteUrl": "https://base44.test/entities/Coin/record-1",
+                    "issues": [
+                        {
+                            "type": "mismatched_years",
+                            "field": "years",
+                            "value": "2002-2024",
+                            "missing_value": "2002 - 2026",
+                        }
+                    ],
+                }
+            ]
+        }
+
+        plan = fix_site_issues_api.build_fix_plan(report, {})
+
+        self.assertEqual(plan["updates"][0]["current"]["years"], "2002-2024")
+        self.assertEqual(plan["updates"][0]["set"]["years"], "2002 - 2026")
+        self.assertIs(plan["updates"][0]["safe_year_extension"], True)
+        self.assertFalse(
+            fix_site_issues_api.is_safe_year_extension("1989-2011", "1967 - 1988")
+        )
+
     def test_selection_keeps_only_the_explicit_field(self) -> None:
         plan = {
             "updates": [
@@ -851,6 +880,34 @@ class FixSiteIssuesPlanTests(unittest.TestCase):
         selected = fix_site_issues_api.restrict_notes_to_safe_proposals(plan)
 
         self.assertEqual(selected["updates"][0]["set"], {"notes": "Elizabeth II"})
+        self.assertEqual(
+            selected["updates"][1]["set"],
+            {"url_ucoin": "https://pt.ucoin.net/coin/example"},
+        )
+        self.assertEqual(selected["updates"][1]["current"], {"url_ucoin": ""})
+
+    def test_safe_year_scope_keeps_other_selected_fields(self) -> None:
+        plan = {
+            "updates": [
+                {
+                    "safe_year_extension": True,
+                    "current": {"years": "2002-2024"},
+                    "set": {"years": "2002 - 2026"},
+                },
+                {
+                    "safe_year_extension": False,
+                    "current": {"years": "1989-2011", "url_ucoin": ""},
+                    "set": {
+                        "years": "1967 - 1988",
+                        "url_ucoin": "https://pt.ucoin.net/coin/example",
+                    },
+                },
+            ]
+        }
+
+        selected = fix_site_issues_api.restrict_years_to_safe_extensions(plan)
+
+        self.assertEqual(selected["updates"][0]["set"], {"years": "2002 - 2026"})
         self.assertEqual(
             selected["updates"][1]["set"],
             {"url_ucoin": "https://pt.ucoin.net/coin/example"},
