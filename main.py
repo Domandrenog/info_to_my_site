@@ -1263,6 +1263,17 @@ def action_collect_presscoins_souvenirs() -> None:
     print("Cria um catálogo pendente e uma pré-visualização. Não altera o Site Base44.")
 
     location = ask_text("Parque/localização no Presscoins", "Magic Kingdom")
+    print("\nDisponibilidade:")
+    print("1) Atuais / disponíveis (On-Stage)")
+    print("2) Todos os designs")
+    print("3) Retirados (Off-Stage)")
+    availability_choices = {"1": "1", "2": "All", "3": "0"}
+    while True:
+        availability_choice = ask_text("Escolhe a disponibilidade", "1")
+        availability = availability_choices.get(availability_choice)
+        if availability is not None:
+            break
+        print("Escolhe 1, 2 ou 3.")
     search = ask_text("Pesquisa (vazio = todas as moedas)", "")
     city = ask_text("Cidade para o Site Base44", "Orlando")
     if not location or not city:
@@ -1275,6 +1286,8 @@ def action_collect_presscoins_souvenirs() -> None:
         "scripts.presscoins_souvenirs",
         "--location",
         location,
+        "--availability",
+        availability,
         "--city",
         city,
     ]
@@ -1291,7 +1304,7 @@ def action_import_presscoins_souvenirs(*, apply: bool) -> None:
     )
     default_input = (
         "info/souvenirs/america/eua/orlando/magic-kingdom/"
-        "todas/presscoins-catalog.json"
+        "atuais/presscoins-catalog.json"
     )
     input_path = ask_text("Catálogo revisto", default_input)
     if not input_path:

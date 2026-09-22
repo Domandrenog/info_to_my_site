@@ -31,6 +31,22 @@ PLANS = [
 class MainTrackingActionTests(unittest.TestCase):
     @patch("main.run_step", return_value=0)
     @patch("main.title")
+    @patch("main.ask_text", side_effect=["Magic Kingdom", "2", "", "Orlando"])
+    def test_presscoins_collection_passes_selected_availability(
+        self,
+        _ask_text,
+        _title,
+        run_step,
+    ) -> None:
+        main.action_collect_presscoins_souvenirs()
+
+        command = run_step.call_args.args[1]
+        availability_index = command.index("--availability")
+        self.assertEqual(command[availability_index + 1], "All")
+        self.assertNotIn("--search", command)
+
+    @patch("main.run_step", return_value=0)
+    @patch("main.title")
     @patch("main.ask_text", return_value="info/souvenirs/catalog.json")
     def test_souvenir_import_action_can_preview_without_apply(
         self,

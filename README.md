@@ -91,10 +91,22 @@ No menu principal escolhe `Souvenirs > USA > PressedCoins Disney Orlando > Recol
 python3 -m scripts.presscoins_souvenirs --location "Magic Kingdom" --search 2026
 ```
 
-Para recolher todas as moedas do Magic Kingdom, deixa a pesquisa vazia no menu ou omite `--search`:
+Para recolher apenas os designs atuais do Magic Kingdom, deixa a pesquisa vazia no menu e escolhe `Atuais / disponíveis`, ou executa:
 
 ```bash
-python3 -m scripts.presscoins_souvenirs --location "Magic Kingdom"
+python3 -m scripts.presscoins_souvenirs --location "Magic Kingdom" --availability 1
+```
+
+O seletor de disponibilidade tem três opções e guarda cada âmbito separadamente:
+
+- `Atuais / disponíveis` (`--availability 1`) → pasta `atuais`;
+- `Todos os designs` (`--availability All`) → pasta `todas`;
+- `Retirados` (`--availability 0`) → pasta `retiradas`.
+
+Para recolher todos os designs, incluindo os retirados:
+
+```bash
+python3 -m scripts.presscoins_souvenirs --location "Magic Kingdom" --availability All
 ```
 
 O scraper deteta e percorre automaticamente todas as páginas dos resultados. Para evitar uma recolha acidentalmente ilimitada, existe um limite de segurança configurável através de `--max-pages`.
@@ -116,11 +128,11 @@ Também podes executar estas duas etapas diretamente:
 ```bash
 # Apenas verificar
 python3 -m scripts.import_base44_souvenirs \
-  --input info/souvenirs/america/eua/orlando/magic-kingdom/todas/presscoins-catalog.json
+  --input info/souvenirs/america/eua/orlando/magic-kingdom/atuais/presscoins-catalog.json
 
 # Criar os que faltam, com confirmação interativa
 python3 -m scripts.import_base44_souvenirs \
-  --input info/souvenirs/america/eua/orlando/magic-kingdom/todas/presscoins-catalog.json \
+  --input info/souvenirs/america/eua/orlando/magic-kingdom/atuais/presscoins-catalog.json \
   --apply
 ```
 

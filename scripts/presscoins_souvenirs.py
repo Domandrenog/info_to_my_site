@@ -21,6 +21,12 @@ from urllib.request import Request, urlopen
 
 PRESSCOINS_BASE_URL = "https://www.presscoins.com/"
 PRESSCOINS_SEARCH_URL = urljoin(PRESSCOINS_BASE_URL, "search/")
+AVAILABILITY_FOLDER = {"1": "atuais", "All": "todas", "0": "retiradas"}
+AVAILABILITY_LABEL = {
+    "1": "atuais / disponíveis",
+    "All": "todos os designs",
+    "0": "retirados",
+}
 DEFAULT_USER_AGENT = (
     "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 "
     "Chrome/140.0 Safari/537.36"
@@ -243,16 +249,22 @@ def slugify(value: str) -> str:
     return re.sub(r"[^a-z0-9]+", "-", ascii_value.casefold()).strip("-")
 
 
-def default_output_directory(location: str, search: str) -> Path:
-    return (
+def default_output_directory(location: str, search: str, availability: str = "All") -> Path:
+    base = (
         Path("info")
         / "souvenirs"
         / "america"
         / "eua"
         / "orlando"
         / slugify(location)
-        / (slugify(search) or "todas")
     )
+    search_slug = slugify(search)
+    availability_folder = AVAILABILITY_FOLDER.get(availability, slugify(availability))
+    if not search_slug:
+        return base / availability_folder
+    if availability == "All":
+        return base / search_slug
+    return base / search_slug / availability_folder
 
 
 def subject_from_description(description: str) -> str:
@@ -305,6 +317,7 @@ def build_catalog(
     country: str,
     city: str,
     page_count: int = 1,
+    availability: str = "All",
 ) -> dict[str, Any]:
     items: list[dict[str, Any]] = []
     for order, coin in enumerate(coins, start=1):
@@ -337,6 +350,8 @@ def build_catalog(
             "query_url": query_url,
             "location": location,
             "search": search,
+            "availability": availability,
+            "availability_label": AVAILABILITY_LABEL.get(availability, availability),
             "page_count": page_count,
             "retrieved_at": datetime.now(timezone.utc).isoformat(timespec="seconds"),
             "result_count": len(items),
@@ -374,7 +389,7 @@ def preview_html(catalog: dict[str, Any]) -> str:
         )
 
     source = catalog["source"]
-    search_label = str(source["search"] or "todas as moedas")
+    search_label = str(source["search"] or source.get("availability_label") or "todas as moedas")
     return f"""<!doctype html>
 <html lang="pt">
 <head>
@@ -421,7 +436,12 @@ def parse_args(argv: list[str] | None = None) -> argparse.Namespace:
     )
     parser.add_argument("--location", default="Magic Kingdom", help="Localização no Presscoins.")
     parser.add_argument("--search", default="", help="Texto a pesquisar; vazio recolhe todas as moedas.")
-    parser.add_argument("--availability", default="All", help="All, 1 (current) ou 0 (retired).")
+    parser.add_argument(
+        "--availability",
+        choices=["1", "All", "0"],
+        default="1",
+        help="1 (atuais), All (todos) ou 0 (retirados). Por omissão: 1.",
+    )
     parser.add_argument("--coin-type", default="All", help="All, Cent, Quarter ou Dime.")
     parser.add_argument("--country", default="Estados Unidos da América")
     parser.add_argument("--city", default="Orlando")
@@ -469,8 +489,11 @@ def main(argv: list[str] | None = None) -> int:
             country=args.country,
             city=args.city,
             page_count=page_count,
+            availability=args.availability,
         )
-        output_dir = args.output_dir or default_output_directory(args.location, args.search)
+        output_dir = args.output_dir or default_output_directory(
+            args.location, args.search, args.availability
+        )
         catalog_path, preview_path = write_outputs(catalog, output_dir)
     except (OSError, RuntimeError, ValueError) as exc:
         print(f"Erro: {exc}", file=sys.stderr)

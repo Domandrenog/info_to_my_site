@@ -105,14 +105,28 @@ class PresscoinsSouvenirsTests(unittest.TestCase):
 
     def test_default_output_is_grouped_by_location_and_search(self) -> None:
         self.assertEqual(
-            default_output_directory("Magic Kingdom", "2026"),
+            default_output_directory("Magic Kingdom", "2026", "All"),
             Path("info/souvenirs/america/eua/orlando/magic-kingdom/2026"),
         )
 
     def test_empty_search_uses_all_folder(self) -> None:
         self.assertEqual(
-            default_output_directory("Magic Kingdom", ""),
+            default_output_directory("Magic Kingdom", "", "All"),
             Path("info/souvenirs/america/eua/orlando/magic-kingdom/todas"),
+        )
+
+    def test_availability_scopes_have_separate_output_folders(self) -> None:
+        self.assertEqual(
+            default_output_directory("Magic Kingdom", "", "1"),
+            Path("info/souvenirs/america/eua/orlando/magic-kingdom/atuais"),
+        )
+        self.assertEqual(
+            default_output_directory("Magic Kingdom", "", "0"),
+            Path("info/souvenirs/america/eua/orlando/magic-kingdom/retiradas"),
+        )
+        self.assertEqual(
+            default_output_directory("Magic Kingdom", "2026", "1"),
+            Path("info/souvenirs/america/eua/orlando/magic-kingdom/2026/atuais"),
         )
 
     def test_pagination_collects_all_pages_and_removes_duplicates(self) -> None:
