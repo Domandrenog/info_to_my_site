@@ -1,0 +1,116 @@
+{
+  "updatedAt": "2026-09-21T23:25:53Z",
+  "country": "brasil",
+  "missing": [
+    {
+      "status": "connected",
+      "source": "site_ucoin_url",
+      "denomination": "1 centavo",
+      "issuePeriod": "1994 - 1997",
+      "ucoinUrl": "https://pt.ucoin.net/coin/brazil-1-centavo-1994-1997/?tid=10556",
+      "apiUrl": "https://base44.app/api/apps/69f12d4bf0bb6ef2f9eaa84e/entities/Coin/69f8e59143a5b3cb334841de",
+      "record_name": "1 centavo",
+      "record_years": "1994-1997"
+    },
+    {
+      "status": "connected",
+      "source": "site_ucoin_url",
+      "denomination": "1 centavo",
+      "issuePeriod": "1998 - 2004",
+      "ucoinUrl": "https://pt.ucoin.net/coin/brazil-1-centavo-1998-2004/?tid=10560",
+      "apiUrl": "https://base44.app/api/apps/69f12d4bf0bb6ef2f9eaa84e/entities/Coin/69f8e59bafc807370dddfa62",
+      "record_name": "1 centavo",
+      "record_years": "1998-2004"
+    },
+    {
+      "status": "connected",
+      "source": "site_ucoin_url",
+      "denomination": "10 centavos",
+      "issuePeriod": "1994 - 1997",
+      "ucoinUrl": "https://pt.ucoin.net/coin/brazil-10-centavos-1994-1997/?tid=10584",
+      "apiUrl": "https://base44.app/api/apps/69f12d4bf0bb6ef2f9eaa84e/entities/Coin/69f8e5ca9bc4aaf519bad13a",
+      "record_name": "10 centavos",
+      "record_years": "1994-1997"
+    },
+    {
+      "status": "connected",
+      "source": "site_ucoin_url",
+      "denomination": "10 centavos",
+      "issuePeriod": "1998 - 2025",
+      "ucoinUrl": "https://pt.ucoin.net/coin/brazil-10-centavos-1998-2025/?tid=10588",
+      "apiUrl": "https://base44.app/api/apps/69f12d4bf0bb6ef2f9eaa84e/entities/Coin/69f8e5e72881190cb13a7e91",
+      "record_name": "10 centavos",
+      "record_years": "1998-2025"
+    },
+    {
+      "status": "connected",
+      "source": "site_ucoin_url",
+      "denomination": "25 centavos",
+      "issuePeriod": "1994 - 1995",
+      "ucoinUrl": "https://pt.ucoin.net/coin/brazil-25-centavos-1994-1995/?tid=10602",
+      "apiUrl": "https://base44.app/api/apps/69f12d4bf0bb6ef2f9eaa84e/entities/Coin/69f8e601e8270309b959e9d1",
+      "record_name": "25 centavos",
+      "record_years": "1994-1995"
+    },
+    {
+      "status": "connected",
+      "source": "site_ucoin_url",
+      "denomination": "25 centavos",
+      "issuePeriod": "1998 - 2025",
+      "ucoinUrl": "https://pt.ucoin.net/coin/brazil-25-centavos-1998-2025/?tid=10604",
+      "apiUrl": "https://base44.app/api/apps/69f12d4bf0bb6ef2f9eaa84e/entities/Coin/69f8e60cef7151d56ad573b4",
+      "record_name": "25 centavos",
+      "record_years": "1998-2025"
+    },
+    {
+      "status": "connected",
+      "source": "site_ucoin_url",
+      "denomination": "5 centavos",
+      "issuePeriod": "1994 - 1997",
+      "ucoinUrl": "https://pt.ucoin.net/coin/brazil-5-centavos-1994-1997/?tid=10567",
+      "apiUrl": "https://base44.app/api/apps/69f12d4bf0bb6ef2f9eaa84e/entities/Coin/69f8e5ae461ddf1479717d99",
+      "record_name": "5 centavos",
+      "record_years": "1994-1997"
+    },
+    {
+      "status": "connected",
+      "source": "site_ucoin_url",
+      "denomination": "5 centavos",
+      "issuePeriod": "1998 - 2026",
+      "ucoinUrl": "https://pt.ucoin.net/coin/brazil-5-centavos-1998-2026/?tid=10571",
+      "apiUrl": "https://base44.app/api/apps/69f12d4bf0bb6ef2f9eaa84e/entities/Coin/69f8e5baa193c158f9f308f2",
+      "record_name": "5 centavos",
+      "record_years": "1998 - 2026"
+    },
+    {
+      "status": "connected",
+      "source": "site_ucoin_url",
+      "denomination": "50 centavos",
+      "issuePeriod": "1994 - 1995",
+      "ucoinUrl": "https://pt.ucoin.net/coin/brazil-50-centavos-1994-1995/?tid=10618",
+      "apiUrl": "https://base44.app/api/apps/69f12d4bf0bb6ef2f9eaa84e/entities/Coin/69f8e627734428e007efb09c",
+      "record_name": "50 centavos",
+      "record_years": "1994-1995"
+    },
+    {
+      "status": "connected",
+      "source": "site_ucoin_url",
+      "denomination": "50 centavos",
+      "issuePeriod": "1998 - 2001",
+      "ucoinUrl": "https://pt.ucoin.net/coin/brazil-50-centavos-1998-2001/?tid=10625",
+      "apiUrl": "https://base44.app/api/apps/69f12d4bf0bb6ef2f9eaa84e/entities/Coin/69f8e6367a0737f602e0017f",
+      "record_name": "50 centavos",
+      "record_years": "1998-2001"
+    },
+    {
+      "status": "connected",
+      "source": "site_ucoin_url",
+      "denomination": "50 centavos",
+      "issuePeriod": "2002 - 2026",
+      "ucoinUrl": "https://pt.ucoin.net/coin/brazil-50-centavos-2002-2026/?tid=10629",
+      "apiUrl": "https://base44.app/api/apps/69f12d4bf0bb6ef2f9eaa84e/entities/Coin/69f8e648d9c8be96baac3e7e",
+      "record_name": "50 centavos",
+      "record_years": "2002 - 2026"
+    }
+  ]
+}

@@ -1,0 +1,116 @@
+{
+  "updatedAt": "2026-09-21T23:46:56Z",
+  "country": "taiwan",
+  "missing": [
+    {
+      "status": "connected",
+      "source": "site_ucoin_url",
+      "denomination": "1 dólar",
+      "issuePeriod": "1960 - 1980",
+      "ucoinUrl": "https://pt.ucoin.net/coin/taiwan-1-dollar-1960-1980/?tid=22977",
+      "apiUrl": "https://base44.app/api/apps/69f12d4bf0bb6ef2f9eaa84e/entities/Coin/69f7d55d8b3c80deb3ec30a8",
+      "record_name": "1 dólar",
+      "record_years": "1960-1980"
+    },
+    {
+      "status": "connected",
+      "source": "site_ucoin_url",
+      "denomination": "1 dólar",
+      "issuePeriod": "1981 - 2024",
+      "ucoinUrl": "https://pt.ucoin.net/coin/taiwan-1-dollar-1981-2024/?tid=22992",
+      "apiUrl": "https://base44.app/api/apps/69f12d4bf0bb6ef2f9eaa84e/entities/Coin/69f7d5a4dc549057524db242",
+      "record_name": "1 dólar",
+      "record_years": "1981-2024"
+    },
+    {
+      "status": "connected",
+      "source": "site_ucoin_url",
+      "denomination": "10 Dólares",
+      "issuePeriod": "1981 - 2010",
+      "ucoinUrl": "https://pt.ucoin.net/coin/taiwan-10-dollars-1981-2010/?tid=23063",
+      "apiUrl": "https://base44.app/api/apps/69f12d4bf0bb6ef2f9eaa84e/entities/Coin/69f7d6013bbbea4216b621d7",
+      "record_name": "10 Dólares",
+      "record_years": "1981-2010"
+    },
+    {
+      "status": "connected",
+      "source": "site_ucoin_url",
+      "denomination": "10 Dólares",
+      "issuePeriod": "2011 - 2024",
+      "ucoinUrl": "https://pt.ucoin.net/coin/taiwan-10-dollars-2011-2024/?tid=23807",
+      "apiUrl": "https://base44.app/api/apps/69f12d4bf0bb6ef2f9eaa84e/entities/Coin/69f7d610543d9e348faaf708",
+      "record_name": "10 Dólares",
+      "record_years": "2011-2024"
+    },
+    {
+      "status": "connected",
+      "source": "site_ucoin_url",
+      "denomination": "20 dólares",
+      "issuePeriod": "2001 - 2021",
+      "ucoinUrl": "https://pt.ucoin.net/coin/taiwan-20-dollars-2001-2021/?tid=23348",
+      "apiUrl": "https://base44.app/api/apps/69f12d4bf0bb6ef2f9eaa84e/entities/Coin/69f7d6604e1562df6c8edeb6",
+      "record_name": "20 dólares",
+      "record_years": "2001-2021"
+    },
+    {
+      "status": "connected",
+      "source": "site_ucoin_url",
+      "denomination": "5 dólares",
+      "issuePeriod": "1970 - 1979",
+      "ucoinUrl": "https://pt.ucoin.net/coin/taiwan-5-dollars-1970-1979/?tid=23024",
+      "apiUrl": "https://base44.app/api/apps/69f12d4bf0bb6ef2f9eaa84e/entities/Coin/69f7d5c807b7a2dda7a3a420",
+      "record_name": "5 dólares",
+      "record_years": "1970-1979"
+    },
+    {
+      "status": "connected",
+      "source": "site_ucoin_url",
+      "denomination": "5 dólares",
+      "issuePeriod": "1981 - 2024",
+      "ucoinUrl": "https://pt.ucoin.net/coin/taiwan-5-dollars-1981-2024/?tid=23035",
+      "apiUrl": "https://base44.app/api/apps/69f12d4bf0bb6ef2f9eaa84e/entities/Coin/69f7d5f1dc9d707b05e2bfb8",
+      "record_name": "5 dólares",
+      "record_years": "1981-2024"
+    },
+    {
+      "status": "connected",
+      "source": "site_ucoin_url",
+      "denomination": "50 dólares",
+      "issuePeriod": "1992 - 1995",
+      "ucoinUrl": "https://pt.ucoin.net/coin/taiwan-50-dollars-1992-1995/?tid=23155",
+      "apiUrl": "https://base44.app/api/apps/69f12d4bf0bb6ef2f9eaa84e/entities/Coin/69f7d67d0fea683b424f5d2e",
+      "record_name": "50 dólares",
+      "record_years": "1992-1995"
+    },
+    {
+      "status": "connected",
+      "source": "site_ucoin_url",
+      "denomination": "50 dólares",
+      "issuePeriod": "1996 - 2002",
+      "ucoinUrl": "https://pt.ucoin.net/coin/taiwan-50-dollars-1996-2002/?tid=23322",
+      "apiUrl": "https://base44.app/api/apps/69f12d4bf0bb6ef2f9eaa84e/entities/Coin/69f7d691c3f79b6ed4268be5",
+      "record_name": "50 dólares",
+      "record_years": "1996-2002"
+    },
+    {
+      "status": "connected",
+      "source": "site_ucoin_url",
+      "denomination": "50 dólares",
+      "issuePeriod": "2001 - 2024",
+      "ucoinUrl": "https://pt.ucoin.net/coin/taiwan-50-dollars-2001-2024/?tid=23354",
+      "apiUrl": "https://base44.app/api/apps/69f12d4bf0bb6ef2f9eaa84e/entities/Coin/69f7d6a19056552d12c50e57",
+      "record_name": "50 dólares",
+      "record_years": "2001-2024"
+    },
+    {
+      "status": "connected",
+      "source": "site_ucoin_url",
+      "denomination": "½ dólar",
+      "issuePeriod": "1981 - 2004",
+      "ucoinUrl": "https://pt.ucoin.net/coin/taiwan-1-2-dollar-1981-2004/?tid=22964",
+      "apiUrl": "https://base44.app/api/apps/69f12d4bf0bb6ef2f9eaa84e/entities/Coin/69f7d52c42d83dc8ba6eb124",
+      "record_name": "½ dólar",
+      "record_years": "1981-2004"
+    }
+  ]
+}

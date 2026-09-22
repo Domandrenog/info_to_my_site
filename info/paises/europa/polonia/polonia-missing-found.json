@@ -1,0 +1,176 @@
+{
+  "updatedAt": "2026-09-21T23:39:04Z",
+  "country": "polonia",
+  "missing": [
+    {
+      "status": "connected",
+      "source": "interactive",
+      "denomination": "2 zlote",
+      "issuePeriod": "1994 - 2026",
+      "ucoinUrl": "https://pt.ucoin.net/coin/poland-2-zlote-1994-2026/?tid=8385",
+      "apiUrl": "https://base44.app/api/apps/69f12d4bf0bb6ef2f9eaa84e/entities/Coin/69f3208137c81716cc57d9a2",
+      "record_name": "2 zlote",
+      "record_years": "1994-2026"
+    },
+    {
+      "status": "connected",
+      "source": "site_ucoin_url",
+      "denomination": "10 groszy",
+      "issuePeriod": "1990 - 2016",
+      "ucoinUrl": "https://pt.ucoin.net/coin/poland-10-groszy-1990-2016/?tid=8336",
+      "apiUrl": "https://base44.app/api/apps/69f12d4bf0bb6ef2f9eaa84e/entities/Coin/69f31ffc239746397b703201",
+      "record_name": "10 groszy",
+      "record_years": "1990-2016"
+    },
+    {
+      "status": "connected",
+      "source": "site_ucoin_url",
+      "denomination": "10 groszy",
+      "issuePeriod": "2017 - 2019",
+      "ucoinUrl": "https://pt.ucoin.net/coin/poland-10-groszy-2017-2019/?tid=67965",
+      "apiUrl": "https://base44.app/api/apps/69f12d4bf0bb6ef2f9eaa84e/entities/Coin/69f32007c747c58266988225",
+      "record_name": "10 groszy",
+      "record_years": "2017-2019"
+    },
+    {
+      "status": "connected",
+      "source": "site_ucoin_url",
+      "denomination": "10 groszy",
+      "issuePeriod": "2019 - 2026",
+      "ucoinUrl": "https://pt.ucoin.net/coin/poland-10-groszy-2019-2026/?tid=96239",
+      "apiUrl": "https://base44.app/api/apps/69f12d4bf0bb6ef2f9eaa84e/entities/Coin/69f32004fea90549c1157588",
+      "record_name": "10 groszy",
+      "record_years": "2019-2026"
+    },
+    {
+      "status": "connected",
+      "source": "site_ucoin_url",
+      "denomination": "2 grosze",
+      "issuePeriod": "1990 - 2014",
+      "ucoinUrl": "https://pt.ucoin.net/coin/poland-2-grosze-1990-2014/?tid=8302",
+      "apiUrl": "https://base44.app/api/apps/69f12d4bf0bb6ef2f9eaa84e/entities/Coin/69f31fcba3a2c030af5a3290",
+      "record_name": "2 grosze",
+      "record_years": "1990-2014"
+    },
+    {
+      "status": "connected",
+      "source": "site_ucoin_url",
+      "denomination": "2 grosze",
+      "issuePeriod": "2013 - 2016",
+      "ucoinUrl": "https://pt.ucoin.net/coin/poland-2-grosze-2013-2016/?tid=33934",
+      "apiUrl": "https://base44.app/api/apps/69f12d4bf0bb6ef2f9eaa84e/entities/Coin/69f31fcf6c26d474283b4082",
+      "record_name": "2 grosze",
+      "record_years": "2013-2016"
+    },
+    {
+      "status": "connected",
+      "source": "site_ucoin_url",
+      "denomination": "2 grosze",
+      "issuePeriod": "2017 - 2026",
+      "ucoinUrl": "https://pt.ucoin.net/coin/poland-2-grosze-2017-2026/?tid=67963",
+      "apiUrl": "https://base44.app/api/apps/69f12d4bf0bb6ef2f9eaa84e/entities/Coin/69f31fd2b78a7b4d654decb6",
+      "record_name": "2 grosze",
+      "record_years": "2017-2026"
+    },
+    {
+      "status": "connected",
+      "source": "site_ucoin_url",
+      "denomination": "20 groszy",
+      "issuePeriod": "1990 - 2016",
+      "ucoinUrl": "https://pt.ucoin.net/coin/poland-20-groszy-1990-2016/?tid=8353",
+      "apiUrl": "https://base44.app/api/apps/69f12d4bf0bb6ef2f9eaa84e/entities/Coin/69f3201c660ac998e2c45f04",
+      "record_name": "20 groszy",
+      "record_years": "1990-2016"
+    },
+    {
+      "status": "connected",
+      "source": "site_ucoin_url",
+      "denomination": "20 groszy",
+      "issuePeriod": "2017 - 2019",
+      "ucoinUrl": "https://pt.ucoin.net/coin/poland-20-groszy-2017-2019/?tid=67966",
+      "apiUrl": "https://base44.app/api/apps/69f12d4bf0bb6ef2f9eaa84e/entities/Coin/69f32025765cb3b55096c248",
+      "record_name": "20 groszy",
+      "record_years": "2017-2019"
+    },
+    {
+      "status": "connected",
+      "source": "site_ucoin_url",
+      "denomination": "20 groszy",
+      "issuePeriod": "2019 - 2026",
+      "ucoinUrl": "https://pt.ucoin.net/coin/poland-20-groszy-2019-2026/?tid=91710",
+      "apiUrl": "https://base44.app/api/apps/69f12d4bf0bb6ef2f9eaa84e/entities/Coin/69f3202aa51b470ab5e12202",
+      "record_name": "20 groszy",
+      "record_years": "2019-2026"
+    },
+    {
+      "status": "connected",
+      "source": "site_ucoin_url",
+      "denomination": "5 groszy",
+      "issuePeriod": "1990 - 2014",
+      "ucoinUrl": "https://pt.ucoin.net/coin/poland-5-groszy-1990-2014/?tid=8319",
+      "apiUrl": "https://base44.app/api/apps/69f12d4bf0bb6ef2f9eaa84e/entities/Coin/69f31fe869ce091f475c326b",
+      "record_name": "5 groszy",
+      "record_years": "1990-2014"
+    },
+    {
+      "status": "connected",
+      "source": "site_ucoin_url",
+      "denomination": "5 groszy",
+      "issuePeriod": "2013 - 2016",
+      "ucoinUrl": "https://pt.ucoin.net/coin/poland-5-groszy-2013-2016/?tid=33935",
+      "apiUrl": "https://base44.app/api/apps/69f12d4bf0bb6ef2f9eaa84e/entities/Coin/69f31ff1ea944756995279ee",
+      "record_name": "5 groszy",
+      "record_years": "2013-2016"
+    },
+    {
+      "status": "connected",
+      "source": "site_ucoin_url",
+      "denomination": "5 groszy",
+      "issuePeriod": "2017 - 2026",
+      "ucoinUrl": "https://pt.ucoin.net/coin/poland-5-groszy-2017-2026/?tid=67964",
+      "apiUrl": "https://base44.app/api/apps/69f12d4bf0bb6ef2f9eaa84e/entities/Coin/69f31ff6503bf4cbc9d54da9",
+      "record_name": "5 groszy",
+      "record_years": "2017 - 2026"
+    },
+    {
+      "status": "connected",
+      "source": "site_ucoin_url",
+      "denomination": "5 zlotych",
+      "issuePeriod": "1994 - 2026",
+      "ucoinUrl": "https://pt.ucoin.net/coin/poland-5-zlotych-1994-2026/?tid=8392",
+      "apiUrl": "https://base44.app/api/apps/69f12d4bf0bb6ef2f9eaa84e/entities/Coin/69f320888b0af1a126dce459",
+      "record_name": "5 zlotych",
+      "record_years": "1994-2026"
+    },
+    {
+      "status": "connected",
+      "source": "site_ucoin_url",
+      "denomination": "50 groszy",
+      "issuePeriod": "1990 - 2016",
+      "ucoinUrl": "https://pt.ucoin.net/coin/poland-50-groszy-1990-2016/?tid=8371",
+      "apiUrl": "https://base44.app/api/apps/69f12d4bf0bb6ef2f9eaa84e/entities/Coin/69f320345dbff9b5ed998908",
+      "record_name": "50 groszy",
+      "record_years": "1990-2016"
+    },
+    {
+      "status": "connected",
+      "source": "site_ucoin_url",
+      "denomination": "50 groszy",
+      "issuePeriod": "2017 - 2019",
+      "ucoinUrl": "https://pt.ucoin.net/coin/poland-50-groszy-2017-2019/?tid=67967",
+      "apiUrl": "https://base44.app/api/apps/69f12d4bf0bb6ef2f9eaa84e/entities/Coin/69f3203ba01825ea37249c74",
+      "record_name": "50 groszy",
+      "record_years": "2017-2019"
+    },
+    {
+      "status": "connected",
+      "source": "site_ucoin_url",
+      "denomination": "50 groszy",
+      "issuePeriod": "2019 - 2026",
+      "ucoinUrl": "https://pt.ucoin.net/coin/poland-50-groszy-2019-2026/?tid=96240",
+      "apiUrl": "https://base44.app/api/apps/69f12d4bf0bb6ef2f9eaa84e/entities/Coin/69f3203f4954040d35570920",
+      "record_name": "50 groszy",
+      "record_years": "2019-2026"
+    }
+  ]
+}

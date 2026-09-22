@@ -1,0 +1,236 @@
+{
+  "updatedAt": "2026-09-21T23:44:35Z",
+  "country": "singapura",
+  "missing": [
+    {
+      "status": "connected",
+      "source": "site_ucoin_url",
+      "denomination": "1 cêntimo",
+      "issuePeriod": "1967 - 1984",
+      "ucoinUrl": "https://pt.ucoin.net/coin/singapore-1-cent-1967-1984/?tid=20358",
+      "apiUrl": "https://base44.app/api/apps/69f12d4bf0bb6ef2f9eaa84e/entities/Coin/69f271f0b12bf512685bf5a5",
+      "record_name": "1 cêntimo",
+      "record_years": "1967-1984"
+    },
+    {
+      "status": "connected",
+      "source": "site_ucoin_url",
+      "denomination": "1 cêntimo",
+      "issuePeriod": "1976 - 1985",
+      "ucoinUrl": "https://pt.ucoin.net/coin/singapore-1-cent-1976-1985/?tid=20375",
+      "apiUrl": "https://base44.app/api/apps/69f12d4bf0bb6ef2f9eaa84e/entities/Coin/69f2726065ef5c019f9abbbb",
+      "record_name": "1 cêntimo",
+      "record_years": "1976-1985"
+    },
+    {
+      "status": "connected",
+      "source": "site_ucoin_url",
+      "denomination": "1 cêntimo",
+      "issuePeriod": "1986 - 1990",
+      "ucoinUrl": "https://pt.ucoin.net/coin/singapore-1-cent-1986-1990/?tid=20541",
+      "apiUrl": "https://base44.app/api/apps/69f12d4bf0bb6ef2f9eaa84e/entities/Coin/69f272a9789146bdf2e68b4f",
+      "record_name": "1 cêntimo",
+      "record_years": "1986-1990"
+    },
+    {
+      "status": "connected",
+      "source": "site_ucoin_url",
+      "denomination": "1 cêntimo",
+      "issuePeriod": "1991",
+      "ucoinUrl": "https://pt.ucoin.net/coin/singapore-1-cent-1991/?tid=20546",
+      "apiUrl": "https://base44.app/api/apps/69f12d4bf0bb6ef2f9eaa84e/entities/Coin/69f272b3c23c3b041000fe0c",
+      "record_name": "1 cêntimo",
+      "record_years": "1991"
+    },
+    {
+      "status": "connected",
+      "source": "site_ucoin_url",
+      "denomination": "1 cêntimo",
+      "issuePeriod": "1992 - 2002",
+      "ucoinUrl": "https://pt.ucoin.net/coin/singapore-1-cent-1992-2002/?tid=20547",
+      "apiUrl": "https://base44.app/api/apps/69f12d4bf0bb6ef2f9eaa84e/entities/Coin/69f272c17d5a9eee4e8d567d",
+      "record_name": "1 cêntimo",
+      "record_years": "1992-2002"
+    },
+    {
+      "status": "connected",
+      "source": "site_ucoin_url",
+      "denomination": "10 cêntimos",
+      "issuePeriod": "1967 - 1985",
+      "ucoinUrl": "https://pt.ucoin.net/coin/singapore-10-cents-1967-1985/?tid=20386",
+      "apiUrl": "https://base44.app/api/apps/69f12d4bf0bb6ef2f9eaa84e/entities/Coin/69f2776ba48d14d87f52fddf",
+      "record_name": "10 cêntimos",
+      "record_years": "1967-1985"
+    },
+    {
+      "status": "connected",
+      "source": "site_ucoin_url",
+      "denomination": "10 cêntimos",
+      "issuePeriod": "1985 - 1991",
+      "ucoinUrl": "https://pt.ucoin.net/coin/singapore-10-cents-1985-1991/?tid=20460",
+      "apiUrl": "https://base44.app/api/apps/69f12d4bf0bb6ef2f9eaa84e/entities/Coin/69f2776c56271c3093ae3dc1",
+      "record_name": "10 cêntimos",
+      "record_years": "1985-1991"
+    },
+    {
+      "status": "connected",
+      "source": "site_ucoin_url",
+      "denomination": "10 cêntimos",
+      "issuePeriod": "1992 - 2013",
+      "ucoinUrl": "https://pt.ucoin.net/coin/singapore-10-cents-1992-2013/?tid=20596",
+      "apiUrl": "https://base44.app/api/apps/69f12d4bf0bb6ef2f9eaa84e/entities/Coin/69f2776f1a3cb84318c7c30b",
+      "record_name": "10 cêntimos",
+      "record_years": "1992-2013"
+    },
+    {
+      "status": "connected",
+      "source": "site_ucoin_url",
+      "denomination": "10 cêntimos",
+      "issuePeriod": "2013 - 2019",
+      "ucoinUrl": "https://pt.ucoin.net/coin/singapore-10-cents-2013-2019/?tid=20700",
+      "apiUrl": "https://base44.app/api/apps/69f12d4bf0bb6ef2f9eaa84e/entities/Coin/69f27771e53371d02cd0feba",
+      "record_name": "10 cêntimos",
+      "record_years": "2013-2019"
+    },
+    {
+      "status": "connected",
+      "source": "site_ucoin_url",
+      "denomination": "20 cêntimos",
+      "issuePeriod": "1967 - 1985",
+      "ucoinUrl": "https://pt.ucoin.net/coin/singapore-20-cents-1967-1985/?tid=20387",
+      "apiUrl": "https://base44.app/api/apps/69f12d4bf0bb6ef2f9eaa84e/entities/Coin/69f278605a6a1f44efd88f79",
+      "record_name": "20 cêntimos",
+      "record_years": "1967-1985"
+    },
+    {
+      "status": "connected",
+      "source": "site_ucoin_url",
+      "denomination": "20 cêntimos",
+      "issuePeriod": "1985 - 1991",
+      "ucoinUrl": "https://pt.ucoin.net/coin/singapore-20-cents-1985-1991/?tid=20479",
+      "apiUrl": "https://base44.app/api/apps/69f12d4bf0bb6ef2f9eaa84e/entities/Coin/69f2786a8a06c4c1db2165f1",
+      "record_name": "20 cêntimos",
+      "record_years": "1985-1991"
+    },
+    {
+      "status": "connected",
+      "source": "site_ucoin_url",
+      "denomination": "20 cêntimos",
+      "issuePeriod": "1992 - 2013",
+      "ucoinUrl": "https://pt.ucoin.net/coin/singapore-20-cents-1992-2013/?tid=20605",
+      "apiUrl": "https://base44.app/api/apps/69f12d4bf0bb6ef2f9eaa84e/entities/Coin/69f2786c77b7d1cf4e5769c9",
+      "record_name": "20 cêntimos",
+      "record_years": "1992-2013"
+    },
+    {
+      "status": "connected",
+      "source": "site_ucoin_url",
+      "denomination": "20 cêntimos",
+      "issuePeriod": "2013 - 2019",
+      "ucoinUrl": "https://pt.ucoin.net/coin/singapore-20-cents-2013-2019/?tid=20701",
+      "apiUrl": "https://base44.app/api/apps/69f12d4bf0bb6ef2f9eaa84e/entities/Coin/69f2786e1b9f1b458ebde424",
+      "record_name": "20 cêntimos",
+      "record_years": "2013-2019"
+    },
+    {
+      "status": "connected",
+      "source": "site_ucoin_url",
+      "denomination": "5 cêntimos",
+      "issuePeriod": "1967 - 1985",
+      "ucoinUrl": "https://pt.ucoin.net/coin/singapore-5-cents-1967-1985/?tid=20385",
+      "apiUrl": "https://base44.app/api/apps/69f12d4bf0bb6ef2f9eaa84e/entities/Coin/69f2768924f0b897abb74fed",
+      "record_name": "5 cêntimos",
+      "record_years": "1967-1985"
+    },
+    {
+      "status": "connected",
+      "source": "site_ucoin_url",
+      "denomination": "5 cêntimos",
+      "issuePeriod": "1980 - 1984",
+      "ucoinUrl": "https://pt.ucoin.net/coin/singapore-5-cents-1980-1984/?tid=40086",
+      "apiUrl": "https://base44.app/api/apps/69f12d4bf0bb6ef2f9eaa84e/entities/Coin/69f2768b7cdb38abedd87e45",
+      "record_name": "5 cêntimos",
+      "record_years": "1980-1984"
+    },
+    {
+      "status": "connected",
+      "source": "site_ucoin_url",
+      "denomination": "5 cêntimos",
+      "issuePeriod": "1985 - 1991",
+      "ucoinUrl": "https://pt.ucoin.net/coin/singapore-5-cents-1985-1991/?tid=20441",
+      "apiUrl": "https://base44.app/api/apps/69f12d4bf0bb6ef2f9eaa84e/entities/Coin/69f276ae697ad3938e1d840a",
+      "record_name": "5 cêntimos",
+      "record_years": "1985-1991"
+    },
+    {
+      "status": "connected",
+      "source": "site_ucoin_url",
+      "denomination": "5 cêntimos",
+      "issuePeriod": "1992 - 2013",
+      "ucoinUrl": "https://pt.ucoin.net/coin/singapore-5-cents-1992-2013/?tid=20587",
+      "apiUrl": "https://base44.app/api/apps/69f12d4bf0bb6ef2f9eaa84e/entities/Coin/69f276de3177a334e83b986d",
+      "record_name": "5 cêntimos",
+      "record_years": "1992-2013"
+    },
+    {
+      "status": "connected",
+      "source": "site_ucoin_url",
+      "denomination": "5 cêntimos",
+      "issuePeriod": "2013 - 2019",
+      "ucoinUrl": "https://pt.ucoin.net/coin/singapore-5-cents-2013-2019/?tid=20699",
+      "apiUrl": "https://base44.app/api/apps/69f12d4bf0bb6ef2f9eaa84e/entities/Coin/69f27705b12bf512685bfca7",
+      "record_name": "5 cêntimos",
+      "record_years": "2013-2019"
+    },
+    {
+      "status": "connected",
+      "source": "site_ucoin_url",
+      "denomination": "50 cêntimos",
+      "issuePeriod": "1967 - 1985",
+      "ucoinUrl": "https://pt.ucoin.net/coin/singapore-50-cents-1967-1985/?tid=20388",
+      "apiUrl": "https://base44.app/api/apps/69f12d4bf0bb6ef2f9eaa84e/entities/Coin/69f279236bbeecb0697ff13a",
+      "record_name": "50 cêntimos",
+      "record_years": "1967-1985"
+    },
+    {
+      "status": "connected",
+      "source": "site_ucoin_url",
+      "denomination": "50 cêntimos",
+      "issuePeriod": "1985 - 1988",
+      "ucoinUrl": "https://pt.ucoin.net/coin/singapore-50-cents-1985-1988/?tid=20509",
+      "apiUrl": "https://base44.app/api/apps/69f12d4bf0bb6ef2f9eaa84e/entities/Coin/69f279249db8cd2c187eccee",
+      "record_name": "50 cêntimos",
+      "record_years": "1985-1988"
+    },
+    {
+      "status": "connected",
+      "source": "site_ucoin_url",
+      "denomination": "50 cêntimos",
+      "issuePeriod": "1989 - 1991",
+      "ucoinUrl": "https://pt.ucoin.net/coin/singapore-50-cents-1989-1991/?tid=20577",
+      "apiUrl": "https://base44.app/api/apps/69f12d4bf0bb6ef2f9eaa84e/entities/Coin/69f27926bef34e119c94e172",
+      "record_name": "50 cêntimos",
+      "record_years": "1989-1991"
+    },
+    {
+      "status": "connected",
+      "source": "site_ucoin_url",
+      "denomination": "50 cêntimos",
+      "issuePeriod": "1992 - 2013",
+      "ucoinUrl": "https://pt.ucoin.net/coin/singapore-50-cents-1992-2013/?tid=20614",
+      "apiUrl": "https://base44.app/api/apps/69f12d4bf0bb6ef2f9eaa84e/entities/Coin/69f27928037f251b6eaeb7b2",
+      "record_name": "50 cêntimos",
+      "record_years": "1992-2013"
+    },
+    {
+      "status": "connected",
+      "source": "site_ucoin_url",
+      "denomination": "50 cêntimos",
+      "issuePeriod": "2013 - 2019",
+      "ucoinUrl": "https://pt.ucoin.net/coin/singapore-50-cents-2013-2019/?tid=20702",
+      "apiUrl": "https://base44.app/api/apps/69f12d4bf0bb6ef2f9eaa84e/entities/Coin/69f2792b070f04eb756892a1",
+      "record_name": "50 cêntimos",
+      "record_years": "2013-2019"
+    }
+  ]
+}

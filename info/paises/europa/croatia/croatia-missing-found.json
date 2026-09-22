@@ -1,0 +1,66 @@
+{
+  "updatedAt": "2026-09-21T23:26:20Z",
+  "country": "croatia",
+  "missing": [
+    {
+      "status": "connected",
+      "source": "site_ucoin_url",
+      "denomination": "1 cêntimo de euro",
+      "issuePeriod": "2023-2026",
+      "ucoinUrl": "https://pt.ucoin.net/coin/croatia-1-euro-cent-2023-2026/?tid=137234",
+      "apiUrl": "https://base44.app/api/apps/69f12d4bf0bb6ef2f9eaa84e/entities/Coin/6a7369fcacfedbe4a614128d",
+      "record_name": "1 cêntimo",
+      "record_years": "2023-2026"
+    },
+    {
+      "status": "connected",
+      "source": "site_ucoin_url",
+      "denomination": "10 cêntimos de euro",
+      "issuePeriod": "2023-2026",
+      "ucoinUrl": "https://pt.ucoin.net/coin/croatia-10-euro-cent-2023-2026/?tid=137239",
+      "apiUrl": "https://base44.app/api/apps/69f12d4bf0bb6ef2f9eaa84e/entities/Coin/6a736a11b4ff2003d707019c",
+      "record_name": "10 cêntimos",
+      "record_years": "2023-2026"
+    },
+    {
+      "status": "connected",
+      "source": "site_ucoin_url",
+      "denomination": "2 cêntimos de euro",
+      "issuePeriod": "2023-2026",
+      "ucoinUrl": "https://pt.ucoin.net/coin/croatia-2-euro-cent-2023-2026/?tid=137237",
+      "apiUrl": "https://base44.app/api/apps/69f12d4bf0bb6ef2f9eaa84e/entities/Coin/6a736a039e45f4fc08605223",
+      "record_name": "2 cêntimos",
+      "record_years": "2023-2026"
+    },
+    {
+      "status": "connected",
+      "source": "site_ucoin_url",
+      "denomination": "20 cêntimos de euro",
+      "issuePeriod": "2023-2026",
+      "ucoinUrl": "https://pt.ucoin.net/coin/croatia-20-euro-cent-2023-2026/?tid=137241",
+      "apiUrl": "https://base44.app/api/apps/69f12d4bf0bb6ef2f9eaa84e/entities/Coin/6a736a18a25d1b4223c1fd13",
+      "record_name": "20 cêntimos",
+      "record_years": "2023-2026"
+    },
+    {
+      "status": "connected",
+      "source": "site_ucoin_url",
+      "denomination": "5 cêntimos de euro",
+      "issuePeriod": "2023-2026",
+      "ucoinUrl": "https://pt.ucoin.net/coin/croatia-5-euro-cent-2023-2026/?tid=137238",
+      "apiUrl": "https://base44.app/api/apps/69f12d4bf0bb6ef2f9eaa84e/entities/Coin/6a736a0a1572b30295682776",
+      "record_name": "5 cêntimos",
+      "record_years": "2023-2026"
+    },
+    {
+      "status": "connected",
+      "source": "site_ucoin_url",
+      "denomination": "50 cêntimos de euro",
+      "issuePeriod": "2023-2026",
+      "ucoinUrl": "https://pt.ucoin.net/coin/croatia-50-euro-cent-2023-2026/?tid=137242",
+      "apiUrl": "https://base44.app/api/apps/69f12d4bf0bb6ef2f9eaa84e/entities/Coin/6a736a1f1c509f4a6de3d30d",
+      "record_name": "50 cêntimos",
+      "record_years": "2023-2026"
+    }
+  ]
+}

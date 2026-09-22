@@ -1,0 +1,63 @@
+{
+  "updatedAt": "2026-09-21T23:33:58Z",
+  "country": "macau",
+  "decisions": [
+    {
+      "catalogName": "10 patacas",
+      "catalogYears": "1997",
+      "ucoinUrl": "https://pt.ucoin.net/coin/macau-10-patacas-1997/?tid=29046",
+      "siteRecordId": "69f8c9f8ef3adddfb13aca8e",
+      "siteUrl": "https://base44.app/api/apps/69f12d4bf0bb6ef2f9eaa84e/entities/Coin/69f8c9f8ef3adddfb13aca8e",
+      "siteName": "10 pataca",
+      "siteYears": "1997",
+      "sameCoin": "yes",
+      "rename": "yes",
+      "proposedName": "10 patacas",
+      "updateYears": "not_needed",
+      "proposedYears": "1997",
+      "applyStatus": "applied",
+      "decidedAt": "2026-09-21T23:33:40Z",
+      "applyMessage": "name",
+      "statusUpdatedAt": "2026-09-21T23:33:58Z",
+      "appliedAt": "2026-09-21T23:33:58Z"
+    },
+    {
+      "catalogName": "2 patacas",
+      "catalogYears": "1998",
+      "ucoinUrl": "https://pt.ucoin.net/coin/macau-2-patacas-1998/?tid=29040",
+      "siteRecordId": "69f8c9e54895b5a4b3f3dfa9",
+      "siteUrl": "https://base44.app/api/apps/69f12d4bf0bb6ef2f9eaa84e/entities/Coin/69f8c9e54895b5a4b3f3dfa9",
+      "siteName": "2 pataca",
+      "siteYears": "1998",
+      "sameCoin": "yes",
+      "rename": "yes",
+      "proposedName": "2 patacas",
+      "updateYears": "not_needed",
+      "proposedYears": "1998",
+      "applyStatus": "applied",
+      "decidedAt": "2026-09-21T23:33:38Z",
+      "applyMessage": "name",
+      "statusUpdatedAt": "2026-09-21T23:33:58Z",
+      "appliedAt": "2026-09-21T23:33:58Z"
+    },
+    {
+      "catalogName": "5 patacas",
+      "catalogYears": "1992 - 2010",
+      "ucoinUrl": "https://pt.ucoin.net/coin/macau-5-patacas-1992-2010/?tid=29041",
+      "siteRecordId": "69f8c9edbd1b3f49df290b4b",
+      "siteUrl": "https://base44.app/api/apps/69f12d4bf0bb6ef2f9eaa84e/entities/Coin/69f8c9edbd1b3f49df290b4b",
+      "siteName": "5 pataca",
+      "siteYears": "1992-2010",
+      "sameCoin": "yes",
+      "rename": "yes",
+      "proposedName": "5 patacas",
+      "updateYears": "not_needed",
+      "proposedYears": "1992 - 2010",
+      "applyStatus": "applied",
+      "decidedAt": "2026-09-21T23:33:39Z",
+      "applyMessage": "name",
+      "statusUpdatedAt": "2026-09-21T23:33:58Z",
+      "appliedAt": "2026-09-21T23:33:58Z"
+    }
+  ]
+}

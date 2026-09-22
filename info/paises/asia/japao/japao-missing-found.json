@@ -1,0 +1,216 @@
+{
+  "updatedAt": "2026-09-21T23:30:26Z",
+  "country": "japao",
+  "missing": [
+    {
+      "status": "connected",
+      "source": "interactive",
+      "denomination": "500 ienes",
+      "issuePeriod": "1989 - 1999",
+      "ucoinUrl": "https://pt.ucoin.net/coin/japan-500-yen-1989-1999/?tid=2216",
+      "apiUrl": "https://base44.app/api/apps/69f12d4bf0bb6ef2f9eaa84e/entities/Coin/69f27e19f7d2a8d91f24740f",
+      "record_name": "500 ienes",
+      "record_years": "1989-1999"
+    },
+    {
+      "status": "connected",
+      "source": "interactive",
+      "denomination": "500 ienes",
+      "issuePeriod": "2019 - 2021",
+      "ucoinUrl": "https://pt.ucoin.net/coin/japan-500-yen-2019-2021/?tid=89554",
+      "apiUrl": "https://base44.app/api/apps/69f12d4bf0bb6ef2f9eaa84e/entities/Coin/69f27cfb245c1e92b00de318",
+      "record_name": "500 ienes",
+      "record_years": "2019-2021"
+    },
+    {
+      "status": "connected",
+      "source": "site_ucoin_url",
+      "denomination": "10 ienes",
+      "issuePeriod": "1951 - 1958",
+      "ucoinUrl": "https://pt.ucoin.net/coin/japan-10-yen-1951-1958/?tid=2354",
+      "apiUrl": "https://base44.app/api/apps/69f12d4bf0bb6ef2f9eaa84e/entities/Coin/69f27f676c72c8f5aceb2b18",
+      "record_name": "10 ienes",
+      "record_years": "1951-1958"
+    },
+    {
+      "status": "connected",
+      "source": "site_ucoin_url",
+      "denomination": "10 ienes",
+      "issuePeriod": "1959 - 1989",
+      "ucoinUrl": "https://pt.ucoin.net/coin/japan-10-yen-1959-1989/?tid=2361",
+      "apiUrl": "https://base44.app/api/apps/69f12d4bf0bb6ef2f9eaa84e/entities/Coin/69f27f850f4083a593923d59",
+      "record_name": "10 ienes",
+      "record_years": "1959-1989"
+    },
+    {
+      "status": "connected",
+      "source": "site_ucoin_url",
+      "denomination": "10 ienes",
+      "issuePeriod": "1989 - 2019",
+      "ucoinUrl": "https://pt.ucoin.net/coin/japan-10-yen-1989-2019/?tid=2213",
+      "apiUrl": "https://base44.app/api/apps/69f12d4bf0bb6ef2f9eaa84e/entities/Coin/69f27dfe31f41a1cf3fc174f",
+      "record_name": "10 ienes",
+      "record_years": "1989-2019"
+    },
+    {
+      "status": "connected",
+      "source": "site_ucoin_url",
+      "denomination": "10 ienes",
+      "issuePeriod": "2019 - 2026",
+      "ucoinUrl": "https://pt.ucoin.net/coin/japan-10-yen-2019-2026/?tid=93810",
+      "apiUrl": "https://base44.app/api/apps/69f12d4bf0bb6ef2f9eaa84e/entities/Coin/69f27ce4e62e1463c1b38816",
+      "record_name": "10 ienes",
+      "record_years": "2019-2026"
+    },
+    {
+      "status": "connected",
+      "source": "site_ucoin_url",
+      "denomination": "100 ienes",
+      "issuePeriod": "1967 - 1988",
+      "ucoinUrl": "https://pt.ucoin.net/coin/japan-100-yen-1967-1988/?tid=2386",
+      "apiUrl": "https://base44.app/api/apps/69f12d4bf0bb6ef2f9eaa84e/entities/Coin/69f27ff00ff52825f380eed9",
+      "record_name": "100 ienes",
+      "record_years": "1967-1988"
+    },
+    {
+      "status": "connected",
+      "source": "site_ucoin_url",
+      "denomination": "100 ienes",
+      "issuePeriod": "1989 - 2019",
+      "ucoinUrl": "https://pt.ucoin.net/coin/japan-100-yen-1989-2019/?tid=2215",
+      "apiUrl": "https://base44.app/api/apps/69f12d4bf0bb6ef2f9eaa84e/entities/Coin/69f27e0f259a1fb317e30c51",
+      "record_name": "100 ienes",
+      "record_years": "1989-2019"
+    },
+    {
+      "status": "connected",
+      "source": "site_ucoin_url",
+      "denomination": "100 ienes",
+      "issuePeriod": "2019 - 2026",
+      "ucoinUrl": "https://pt.ucoin.net/coin/japan-100-yen-2019-2026/?tid=93812",
+      "apiUrl": "https://base44.app/api/apps/69f12d4bf0bb6ef2f9eaa84e/entities/Coin/69f27cf40519874ec26b24a5",
+      "record_name": "100 ienes",
+      "record_years": "2019-2026"
+    },
+    {
+      "status": "connected",
+      "source": "site_ucoin_url",
+      "denomination": "5 ienes",
+      "issuePeriod": "1949 - 1958",
+      "ucoinUrl": "https://pt.ucoin.net/coin/japan-5-yen-1949-1958/?tid=2338",
+      "apiUrl": "https://base44.app/api/apps/69f12d4bf0bb6ef2f9eaa84e/entities/Coin/69f27f336b72e04f2e47285c",
+      "record_name": "5 ienes",
+      "record_years": "1949-1958"
+    },
+    {
+      "status": "connected",
+      "source": "site_ucoin_url",
+      "denomination": "5 ienes",
+      "issuePeriod": "1959 - 1989",
+      "ucoinUrl": "https://pt.ucoin.net/coin/japan-5-yen-1959-1989/?tid=2344",
+      "apiUrl": "https://base44.app/api/apps/69f12d4bf0bb6ef2f9eaa84e/entities/Coin/69f27f4e1cfafaa037da590b",
+      "record_name": "5 ienes",
+      "record_years": "1959-1989"
+    },
+    {
+      "status": "connected",
+      "source": "site_ucoin_url",
+      "denomination": "5 ienes",
+      "issuePeriod": "1989 - 2019",
+      "ucoinUrl": "https://pt.ucoin.net/coin/japan-5-yen-1989-2019/?tid=2212",
+      "apiUrl": "https://base44.app/api/apps/69f12d4bf0bb6ef2f9eaa84e/entities/Coin/69f27df1fb5719c4c71c98f0",
+      "record_name": "5 ienes",
+      "record_years": "1989-2019"
+    },
+    {
+      "status": "connected",
+      "source": "site_ucoin_url",
+      "denomination": "5 ienes",
+      "issuePeriod": "2019 - 2026",
+      "ucoinUrl": "https://pt.ucoin.net/coin/japan-5-yen-2019-2026/?tid=91777",
+      "apiUrl": "https://base44.app/api/apps/69f12d4bf0bb6ef2f9eaa84e/entities/Coin/69f27cd8fcb06e3fc8c92bff",
+      "record_name": "5 ienes",
+      "record_years": "2019-2026"
+    },
+    {
+      "status": "connected",
+      "source": "site_ucoin_url",
+      "denomination": "50 ienes",
+      "issuePeriod": "1955 - 1958",
+      "ucoinUrl": "https://pt.ucoin.net/coin/japan-50-yen-1955-1958/?tid=2382",
+      "apiUrl": "https://base44.app/api/apps/69f12d4bf0bb6ef2f9eaa84e/entities/Coin/69f27faba8089a07f354418f",
+      "record_name": "50 ienes",
+      "record_years": "1955-1958"
+    },
+    {
+      "status": "connected",
+      "source": "site_ucoin_url",
+      "denomination": "50 ienes",
+      "issuePeriod": "1959 - 1966",
+      "ucoinUrl": "https://pt.ucoin.net/coin/japan-50-yen-1959-1966/?tid=2374",
+      "apiUrl": "https://base44.app/api/apps/69f12d4bf0bb6ef2f9eaa84e/entities/Coin/69f27fbb070f04eb756894c3",
+      "record_name": "50 ienes",
+      "record_years": "1959-1966"
+    },
+    {
+      "status": "connected",
+      "source": "site_ucoin_url",
+      "denomination": "50 ienes",
+      "issuePeriod": "1967 - 1988",
+      "ucoinUrl": "https://pt.ucoin.net/coin/japan-50-yen-1967-1988/?tid=2371",
+      "apiUrl": "https://base44.app/api/apps/69f12d4bf0bb6ef2f9eaa84e/entities/Coin/69f27fdac664590f21a6dcd7",
+      "record_name": "50 ienes",
+      "record_years": "1967-1988"
+    },
+    {
+      "status": "connected",
+      "source": "site_ucoin_url",
+      "denomination": "50 ienes",
+      "issuePeriod": "1989 - 2019",
+      "ucoinUrl": "https://pt.ucoin.net/coin/japan-50-yen-1989-2019/?tid=2214",
+      "apiUrl": "https://base44.app/api/apps/69f12d4bf0bb6ef2f9eaa84e/entities/Coin/69f27e07988f8c7c659bf3e4",
+      "record_name": "50 ienes",
+      "record_years": "1989-2019"
+    },
+    {
+      "status": "connected",
+      "source": "site_ucoin_url",
+      "denomination": "50 ienes",
+      "issuePeriod": "2019 - 2026",
+      "ucoinUrl": "https://pt.ucoin.net/coin/japan-50-yen-2019-2026/?tid=93811",
+      "apiUrl": "https://base44.app/api/apps/69f12d4bf0bb6ef2f9eaa84e/entities/Coin/69f27cebd66319b6f9229c8f",
+      "record_name": "50 ienes",
+      "record_years": "2019-2026"
+    },
+    {
+      "status": "connected",
+      "source": "site_ucoin_url",
+      "denomination": "500 ienes",
+      "issuePeriod": "1982 - 1989",
+      "ucoinUrl": "https://pt.ucoin.net/coin/japan-500-yen-1982-1989/?tid=2499",
+      "apiUrl": "https://base44.app/api/apps/69f12d4bf0bb6ef2f9eaa84e/entities/Coin/69f28002ab69f33abe281930",
+      "record_name": "500 ienes",
+      "record_years": "1982-1989"
+    },
+    {
+      "status": "connected",
+      "source": "site_ucoin_url",
+      "denomination": "500 ienes",
+      "issuePeriod": "2000 - 2019",
+      "ucoinUrl": "https://pt.ucoin.net/coin/japan-500-yen-2000-2019/?tid=2210",
+      "apiUrl": "https://base44.app/api/apps/69f12d4bf0bb6ef2f9eaa84e/entities/Coin/69f27e2731f41a1cf3fc1758",
+      "record_name": "500 ienes",
+      "record_years": "2000-2019"
+    },
+    {
+      "status": "connected",
+      "source": "site_ucoin_url",
+      "denomination": "500 ienes",
+      "issuePeriod": "2021 - 2026",
+      "ucoinUrl": "https://pt.ucoin.net/coin/japan-500-yen-2021-2026/?tid=109307",
+      "apiUrl": "https://base44.app/api/apps/69f12d4bf0bb6ef2f9eaa84e/entities/Coin/69f27d02a861c1c3bfac687b",
+      "record_name": "500 ienes",
+      "record_years": "2021-2026"
+    }
+  ]
+}

@@ -1,0 +1,66 @@
+{
+  "updatedAt": "2026-09-21T20:55:00Z",
+  "country": "coreia-do-sul",
+  "missing": [
+    {
+      "status": "connected",
+      "source": "interactive",
+      "denomination": "1 won",
+      "issuePeriod": "1983 - 2026",
+      "ucoinUrl": "https://pt.ucoin.net/coin/south_korea-1-won-1983-2026/?tid=15857",
+      "apiUrl": "https://base44.app/api/apps/69f12d4bf0bb6ef2f9eaa84e/entities/Coin/69f240ca91c6235b8d41e19f",
+      "record_name": "1 won",
+      "record_years": "1983 - 2026"
+    },
+    {
+      "status": "connected",
+      "source": "interactive",
+      "denomination": "10 won",
+      "issuePeriod": "2006 - 2026",
+      "ucoinUrl": "https://pt.ucoin.net/coin/south_korea-10-won-2006-2026/?tid=15927",
+      "apiUrl": "https://base44.app/api/apps/69f12d4bf0bb6ef2f9eaa84e/entities/Coin/69f241329672d349062f9a4e",
+      "record_name": "10 won",
+      "record_years": "2006 - 2026"
+    },
+    {
+      "status": "connected",
+      "source": "interactive",
+      "denomination": "100 won",
+      "issuePeriod": "1983 - 2026",
+      "ucoinUrl": "https://pt.ucoin.net/coin/south_korea-100-won-1983-2026/?tid=15965",
+      "apiUrl": "https://base44.app/api/apps/69f12d4bf0bb6ef2f9eaa84e/entities/Coin/69f2416ab1e08cac93762edd",
+      "record_name": "100 won",
+      "record_years": "1983 - 2026"
+    },
+    {
+      "status": "connected",
+      "source": "interactive",
+      "denomination": "5 won",
+      "issuePeriod": "1983 - 2026",
+      "ucoinUrl": "https://pt.ucoin.net/coin/south_korea-5-won-1983-2026/?tid=15881",
+      "apiUrl": "https://base44.app/api/apps/69f12d4bf0bb6ef2f9eaa84e/entities/Coin/69f240e9f2b05b50d0b46f8a",
+      "record_name": "5 won",
+      "record_years": "1983 - 2026"
+    },
+    {
+      "status": "connected",
+      "source": "interactive",
+      "denomination": "50 won",
+      "issuePeriod": "1983 - 2026",
+      "ucoinUrl": "https://pt.ucoin.net/coin/south_korea-50-won-1983-2026/?tid=15934",
+      "apiUrl": "https://base44.app/api/apps/69f12d4bf0bb6ef2f9eaa84e/entities/Coin/69f24150b6d049edeff44bbd",
+      "record_name": "50 won",
+      "record_years": "1983 - 2026"
+    },
+    {
+      "status": "connected",
+      "source": "interactive",
+      "denomination": "500 won",
+      "issuePeriod": "1982 - 2026",
+      "ucoinUrl": "https://pt.ucoin.net/coin/south_korea-500-won-1982-2026/?tid=15994",
+      "apiUrl": "https://base44.app/api/apps/69f12d4bf0bb6ef2f9eaa84e/entities/Coin/69f24184c1213095b3c0c268",
+      "record_name": "500 won",
+      "record_years": "1982 - 2026"
+    }
+  ]
+}

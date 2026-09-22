@@ -1,0 +1,76 @@
+{
+  "updatedAt": "2026-09-21T23:45:34Z",
+  "country": "tailandia",
+  "missing": [
+    {
+      "status": "connected",
+      "source": "interactive",
+      "denomination": "5 baht",
+      "issuePeriod": "1988 - 2008",
+      "ucoinUrl": "https://pt.ucoin.net/coin/thailand-5-baht-1988-2008/?tid=6296",
+      "apiUrl": "https://base44.app/api/apps/69f12d4bf0bb6ef2f9eaa84e/entities/Coin/69f21d14bcdbe5162fca9ec9",
+      "record_name": "5 Baht",
+      "record_years": "1988 - 2008"
+    },
+    {
+      "status": "connected",
+      "source": "interactive",
+      "denomination": "25 satang",
+      "issuePeriod": "1987 - 2008",
+      "ucoinUrl": "https://pt.ucoin.net/coin/thailand-25-satang-1987-2008/?tid=6193",
+      "apiUrl": "https://base44.app/api/apps/69f12d4bf0bb6ef2f9eaa84e/entities/Coin/69f21910c1d9ad2202db4709",
+      "record_name": "25 satang",
+      "record_years": "1987-2008"
+    },
+    {
+      "status": "connected",
+      "source": "interactive",
+      "denomination": "25 satang",
+      "issuePeriod": "2008 - 2017",
+      "ucoinUrl": "https://pt.ucoin.net/coin/thailand-25-satang-2008-2017/?tid=6223",
+      "apiUrl": "https://base44.app/api/apps/69f12d4bf0bb6ef2f9eaa84e/entities/Coin/69f21947a95227ebb1f02de3",
+      "record_name": "25 satang",
+      "record_years": "2008-2017"
+    },
+    {
+      "status": "connected",
+      "source": "site_ucoin_url",
+      "denomination": "25 satang",
+      "issuePeriod": "2018 - 2025",
+      "ucoinUrl": "https://pt.ucoin.net/coin/thailand-25-satang-2018-2025/?tid=76916",
+      "apiUrl": "https://base44.app/api/apps/69f12d4bf0bb6ef2f9eaa84e/entities/Coin/69f21a318a30070688ab484c",
+      "record_name": "25 satang",
+      "record_years": "2018-2025"
+    },
+    {
+      "status": "connected",
+      "source": "site_ucoin_url",
+      "denomination": "50 satang",
+      "issuePeriod": "1987 - 2008",
+      "ucoinUrl": "https://pt.ucoin.net/coin/thailand-50-satang-1987-2008/?tid=6224",
+      "apiUrl": "https://base44.app/api/apps/69f12d4bf0bb6ef2f9eaa84e/entities/Coin/69f21aa41c2c45bed779abeb",
+      "record_name": "50 satang",
+      "record_years": "1987-2008"
+    },
+    {
+      "status": "connected",
+      "source": "site_ucoin_url",
+      "denomination": "50 satang",
+      "issuePeriod": "2008 - 2017",
+      "ucoinUrl": "https://pt.ucoin.net/coin/thailand-50-satang-2008-2017/?tid=6246",
+      "apiUrl": "https://base44.app/api/apps/69f12d4bf0bb6ef2f9eaa84e/entities/Coin/69f21ab9deb94eb15380d536",
+      "record_name": "50 satang",
+      "record_years": "2008-2017"
+    },
+    {
+      "status": "connected",
+      "source": "site_ucoin_url",
+      "denomination": "50 satang",
+      "issuePeriod": "2018 - 2025",
+      "ucoinUrl": "https://pt.ucoin.net/coin/thailand-50-satang-2018-2025/?tid=76917",
+      "apiUrl": "https://base44.app/api/apps/69f12d4bf0bb6ef2f9eaa84e/entities/Coin/69f21b07e7a7dd21794c1559",
+      "record_name": "50 satang",
+      "record_years": "2018-2025"
+    }
+  ]
+}

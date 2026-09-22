@@ -1,0 +1,36 @@
+{
+  "updatedAt": "2026-09-21T23:33:58Z",
+  "country": "macau",
+  "missing": [
+    {
+      "status": "connected",
+      "source": "site_ucoin_url",
+      "denomination": "10 patacas",
+      "issuePeriod": "1997",
+      "ucoinUrl": "https://pt.ucoin.net/coin/macau-10-patacas-1997/?tid=29046",
+      "apiUrl": "https://base44.app/api/apps/69f12d4bf0bb6ef2f9eaa84e/entities/Coin/69f8c9f8ef3adddfb13aca8e",
+      "record_name": "10 patacas",
+      "record_years": "1997"
+    },
+    {
+      "status": "connected",
+      "source": "site_ucoin_url",
+      "denomination": "2 patacas",
+      "issuePeriod": "1998",
+      "ucoinUrl": "https://pt.ucoin.net/coin/macau-2-patacas-1998/?tid=29040",
+      "apiUrl": "https://base44.app/api/apps/69f12d4bf0bb6ef2f9eaa84e/entities/Coin/69f8c9e54895b5a4b3f3dfa9",
+      "record_name": "2 patacas",
+      "record_years": "1998"
+    },
+    {
+      "status": "connected",
+      "source": "site_ucoin_url",
+      "denomination": "5 patacas",
+      "issuePeriod": "1992 - 2010",
+      "ucoinUrl": "https://pt.ucoin.net/coin/macau-5-patacas-1992-2010/?tid=29041",
+      "apiUrl": "https://base44.app/api/apps/69f12d4bf0bb6ef2f9eaa84e/entities/Coin/69f8c9edbd1b3f49df290b4b",
+      "record_name": "5 patacas",
+      "record_years": "1992-2010"
+    }
+  ]
+}

@@ -1,0 +1,187 @@
+{
+  "updatedAt": "2026-09-21T23:51:21Z",
+  "country": "tunisia",
+  "missing": [
+    {
+      "status": "created",
+      "source": "interactive",
+      "denomination": "100 millimes",
+      "issuePeriod": "1960 - 2018",
+      "ucoinUrl": "https://pt.ucoin.net/coin/tunisia-100-millimes-1960-2018/?tid=13806",
+      "record_id": "6ab1c31eed9871d2448ab05a",
+      "record_name": "",
+      "record_years": "",
+      "siteUrl": "https://base44.app/api/apps/69f12d4bf0bb6ef2f9eaa84e/entities/Coin/6ab1c31eed9871d2448ab05a"
+    },
+    {
+      "status": "connected",
+      "source": "site_ucoin_url",
+      "denomination": "1 millim",
+      "issuePeriod": "1960",
+      "ucoinUrl": "https://pt.ucoin.net/coin/tunisia-1-millim-1960/?tid=13767",
+      "apiUrl": "https://base44.app/api/apps/69f12d4bf0bb6ef2f9eaa84e/entities/Coin/69f5219d96e5c6d6de6c5277",
+      "record_name": "1 millim",
+      "record_years": "1960"
+    },
+    {
+      "status": "connected",
+      "source": "site_ucoin_url",
+      "denomination": "10 millimes",
+      "issuePeriod": "1960 - 2008",
+      "ucoinUrl": "https://pt.ucoin.net/coin/tunisia-10-millimes-1960-2008/?tid=13778",
+      "apiUrl": "https://base44.app/api/apps/69f12d4bf0bb6ef2f9eaa84e/entities/Coin/69f522bca65150402ba44f1c",
+      "record_name": "10 millimes",
+      "record_years": "1960-2008"
+    },
+    {
+      "status": "connected",
+      "source": "site_ucoin_url",
+      "denomination": "10 millimes",
+      "issuePeriod": "2009 - 2017",
+      "ucoinUrl": "https://pt.ucoin.net/coin/tunisia-10-millimes-2009-2017/?tid=13785",
+      "apiUrl": "https://base44.app/api/apps/69f12d4bf0bb6ef2f9eaa84e/entities/Coin/69f522f4a73c9afa5b2e2efe",
+      "record_name": "10 millimes",
+      "record_years": "2009-2017"
+    },
+    {
+      "status": "connected",
+      "source": "interactive",
+      "denomination": "100 millimes",
+      "issuePeriod": "2024",
+      "ucoinUrl": "https://pt.ucoin.net/coin/tunisia-100-millimes-2024/?tid=186272",
+      "apiUrl": "https://base44.app/api/apps/69f12d4bf0bb6ef2f9eaa84e/entities/Coin/69f52419d989be38d3ba2be8",
+      "record_name": "100 millimes",
+      "record_years": "2024"
+    },
+    {
+      "status": "connected",
+      "source": "site_ucoin_url",
+      "denomination": "2 millimes",
+      "issuePeriod": "1960",
+      "ucoinUrl": "https://pt.ucoin.net/coin/tunisia-2-millimes-1960/?tid=13770",
+      "apiUrl": "https://base44.app/api/apps/69f12d4bf0bb6ef2f9eaa84e/entities/Coin/69f521a62cf5eec45e85a9f6",
+      "record_name": "2 millimes",
+      "record_years": "1960"
+    },
+    {
+      "status": "connected",
+      "source": "site_ucoin_url",
+      "denomination": "20 millimes",
+      "issuePeriod": "1960 - 2005",
+      "ucoinUrl": "https://pt.ucoin.net/coin/tunisia-20-millimes-1960-2005/?tid=13787",
+      "apiUrl": "https://base44.app/api/apps/69f12d4bf0bb6ef2f9eaa84e/entities/Coin/69f52322e5817e278245fa0b",
+      "record_name": "20 millimes",
+      "record_years": "1960-2005"
+    },
+    {
+      "status": "connected",
+      "source": "site_ucoin_url",
+      "denomination": "20 millimes",
+      "issuePeriod": "2007 - 2017",
+      "ucoinUrl": "https://pt.ucoin.net/coin/tunisia-20-millimes-2007-2017/?tid=13794",
+      "apiUrl": "https://base44.app/api/apps/69f12d4bf0bb6ef2f9eaa84e/entities/Coin/69f52358a416f9a674884eff",
+      "record_name": "20 millimes",
+      "record_years": "2007-2017"
+    },
+    {
+      "status": "connected",
+      "source": "site_ucoin_url",
+      "denomination": "200 millimes",
+      "issuePeriod": "2013 - 2020",
+      "ucoinUrl": "https://pt.ucoin.net/coin/tunisia-200-millimes-2013-2020/?tid=37341",
+      "apiUrl": "https://base44.app/api/apps/69f12d4bf0bb6ef2f9eaa84e/entities/Coin/69f52438fcc10c1c22b4ac25",
+      "record_name": "200 millimes",
+      "record_years": "2013-2020"
+    },
+    {
+      "status": "connected",
+      "source": "site_ucoin_url",
+      "denomination": "5 millimes",
+      "issuePeriod": "1960 - 1996",
+      "ucoinUrl": "https://pt.ucoin.net/coin/tunisia-5-millimes-1960-1996/?tid=13771",
+      "apiUrl": "https://base44.app/api/apps/69f12d4bf0bb6ef2f9eaa84e/entities/Coin/69f521cbe863387a53c9e7d4",
+      "record_name": "5 millimes",
+      "record_years": "1960-1996"
+    },
+    {
+      "status": "connected",
+      "source": "interactive",
+      "denomination": "5 millimes",
+      "issuePeriod": "1997 - 2005",
+      "ucoinUrl": "https://pt.ucoin.net/coin/tunisia-5-millimes-1997-2005/?tid=13775",
+      "apiUrl": "https://base44.app/api/apps/69f12d4bf0bb6ef2f9eaa84e/entities/Coin/69f5222e05a3b73e9acf65c1",
+      "record_name": "5 millimes",
+      "record_years": "1997-2005"
+    },
+    {
+      "status": "connected",
+      "source": "site_ucoin_url",
+      "denomination": "50 millimes",
+      "issuePeriod": "1960 - 2009",
+      "ucoinUrl": "https://pt.ucoin.net/coin/tunisia-50-millimes-1960-2009/?tid=13797",
+      "apiUrl": "https://base44.app/api/apps/69f12d4bf0bb6ef2f9eaa84e/entities/Coin/69f52388cbf1197f939e0868",
+      "record_name": "50 millimes",
+      "record_years": "1960-2009"
+    },
+    {
+      "status": "connected",
+      "source": "interactive",
+      "denomination": "50 millimes",
+      "issuePeriod": "2013 - 2024",
+      "ucoinUrl": "https://pt.ucoin.net/coin/tunisia-50-millimes-2013-2024/?tid=25550",
+      "apiUrl": "https://base44.app/api/apps/69f12d4bf0bb6ef2f9eaa84e/entities/Coin/69f523a2f84c7feadcfb92a2",
+      "record_name": "50 millimes",
+      "record_years": "2013-2024"
+    },
+    {
+      "status": "connected",
+      "source": "site_ucoin_url",
+      "denomination": "½ Dinar",
+      "issuePeriod": "1968",
+      "ucoinUrl": "https://pt.ucoin.net/coin/tunisia-1-2-dinar-1968/?tid=13817",
+      "apiUrl": "https://base44.app/api/apps/69f12d4bf0bb6ef2f9eaa84e/entities/Coin/69f5248709a9d78b2e484aec",
+      "record_name": "½ Dinar",
+      "record_years": "1968"
+    },
+    {
+      "status": "connected",
+      "source": "site_ucoin_url",
+      "denomination": "½ Dinar",
+      "issuePeriod": "1976 - 1983",
+      "ucoinUrl": "https://pt.ucoin.net/coin/tunisia-1-2-dinar-1976-1983/?tid=13818",
+      "apiUrl": "https://base44.app/api/apps/69f12d4bf0bb6ef2f9eaa84e/entities/Coin/69f5248b75c8fd3a6f92fc4d",
+      "record_name": "½ Dinar",
+      "record_years": "1976-1983"
+    },
+    {
+      "status": "connected",
+      "source": "site_ucoin_url",
+      "denomination": "½ Dinar",
+      "issuePeriod": "1988 - 1990",
+      "ucoinUrl": "https://pt.ucoin.net/coin/tunisia-1-2-dinar-1988-1990/?tid=13820",
+      "apiUrl": "https://base44.app/api/apps/69f12d4bf0bb6ef2f9eaa84e/entities/Coin/69f524b4af95fab277acafff",
+      "record_name": "½ Dinar",
+      "record_years": "1988-1990"
+    },
+    {
+      "status": "connected",
+      "source": "site_ucoin_url",
+      "denomination": "½ Dinar",
+      "issuePeriod": "1996 - 2013",
+      "ucoinUrl": "https://pt.ucoin.net/coin/tunisia-1-2-dinar-1996-2013/?tid=13822",
+      "apiUrl": "https://base44.app/api/apps/69f12d4bf0bb6ef2f9eaa84e/entities/Coin/69f524e542b4d0ca402686bb",
+      "record_name": "½ Dinar",
+      "record_years": "1996-2013"
+    },
+    {
+      "status": "connected",
+      "source": "site_ucoin_url",
+      "denomination": "½ Dinar",
+      "issuePeriod": "2021",
+      "ucoinUrl": "https://pt.ucoin.net/coin/tunisia-1-2-dinar-2021/?tid=141557",
+      "apiUrl": "https://base44.app/api/apps/69f12d4bf0bb6ef2f9eaa84e/entities/Coin/69f52504849139f9f501d2c3",
+      "record_name": "½ Dinar",
+      "record_years": "2021"
+    }
+  ]
+}

@@ -1,0 +1,86 @@
+{
+  "updatedAt": "2026-09-21T23:27:25Z",
+  "country": "hong-kong",
+  "missing": [
+    {
+      "status": "connected",
+      "source": "site_ucoin_url",
+      "denomination": "1 dólar",
+      "issuePeriod": "1993",
+      "ucoinUrl": "https://pt.ucoin.net/coin/hong_kong-1-dollar-1993/?tid=14554",
+      "apiUrl": "https://base44.app/api/apps/69f12d4bf0bb6ef2f9eaa84e/entities/Coin/69f8b3a9da6a1c981b399fe1",
+      "record_name": "1 dólar",
+      "record_years": "1993"
+    },
+    {
+      "status": "connected",
+      "source": "site_ucoin_url",
+      "denomination": "1 dólar",
+      "issuePeriod": "1994 - 2019",
+      "ucoinUrl": "https://pt.ucoin.net/coin/hong_kong-1-dollar-1994-2019/?tid=14555",
+      "apiUrl": "https://base44.app/api/apps/69f12d4bf0bb6ef2f9eaa84e/entities/Coin/69f8b3d6f60e5c624ffa7a72",
+      "record_name": "1 dólar",
+      "record_years": "1994-2019"
+    },
+    {
+      "status": "connected",
+      "source": "site_ucoin_url",
+      "denomination": "10 Dólares",
+      "issuePeriod": "1993 - 1998",
+      "ucoinUrl": "https://pt.ucoin.net/coin/hong_kong-10-dollars-1993-1998/?tid=14573",
+      "apiUrl": "https://base44.app/api/apps/69f12d4bf0bb6ef2f9eaa84e/entities/Coin/69f8b3f86929ccbf61d15b06",
+      "record_name": "10 Dólares",
+      "record_years": "1993-1998"
+    },
+    {
+      "status": "connected",
+      "source": "site_ucoin_url",
+      "denomination": "10 cêntimos",
+      "issuePeriod": "1993 - 2017",
+      "ucoinUrl": "https://pt.ucoin.net/coin/hong_kong-10-cents-1993-2017/?tid=14534",
+      "apiUrl": "https://base44.app/api/apps/69f12d4bf0bb6ef2f9eaa84e/entities/Coin/69f8b384da10992fba58df2b",
+      "record_name": "10 cêntimos",
+      "record_years": "1993-2017"
+    },
+    {
+      "status": "connected",
+      "source": "site_ucoin_url",
+      "denomination": "2 dólares",
+      "issuePeriod": "1993 - 2019",
+      "ucoinUrl": "https://pt.ucoin.net/coin/hong_kong-2-dollars-1993-2019/?tid=14561",
+      "apiUrl": "https://base44.app/api/apps/69f12d4bf0bb6ef2f9eaa84e/entities/Coin/69f8b3e452cd603b1b4699cb",
+      "record_name": "2 dólares",
+      "record_years": "1993-2019"
+    },
+    {
+      "status": "connected",
+      "source": "site_ucoin_url",
+      "denomination": "20 cêntimos",
+      "issuePeriod": "1993 - 1998",
+      "ucoinUrl": "https://pt.ucoin.net/coin/hong_kong-20-cents-1993-1998/?tid=14541",
+      "apiUrl": "https://base44.app/api/apps/69f12d4bf0bb6ef2f9eaa84e/entities/Coin/69f8b3892b8084bb9fc8a7ed",
+      "record_name": "20 cêntimos",
+      "record_years": "1993-1998"
+    },
+    {
+      "status": "connected",
+      "source": "site_ucoin_url",
+      "denomination": "5 dólares",
+      "issuePeriod": "1993 - 2019",
+      "ucoinUrl": "https://pt.ucoin.net/coin/hong_kong-5-dollars-1993-2019/?tid=14567",
+      "apiUrl": "https://base44.app/api/apps/69f12d4bf0bb6ef2f9eaa84e/entities/Coin/69f8b3f107fd6675ccb517a1",
+      "record_name": "5 dólares",
+      "record_years": "1993-2019"
+    },
+    {
+      "status": "connected",
+      "source": "site_ucoin_url",
+      "denomination": "50 cêntimos",
+      "issuePeriod": "1993 - 2017",
+      "ucoinUrl": "https://pt.ucoin.net/coin/hong_kong-50-cents-1993-2017/?tid=14547",
+      "apiUrl": "https://base44.app/api/apps/69f12d4bf0bb6ef2f9eaa84e/entities/Coin/69f8b399b05fa8eef913f666",
+      "record_name": "50 cêntimos",
+      "record_years": "1993-2017"
+    }
+  ]
+}

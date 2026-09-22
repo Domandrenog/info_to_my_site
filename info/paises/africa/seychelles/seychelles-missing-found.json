@@ -1,0 +1,236 @@
+{
+  "updatedAt": "2026-09-21T23:36:33Z",
+  "country": "seychelles",
+  "missing": [
+    {
+      "status": "connected",
+      "source": "site_ucoin_url",
+      "denomination": "1 cêntimo",
+      "issuePeriod": "1977",
+      "ucoinUrl": "https://pt.ucoin.net/coin/seychelles-1-cent-1977/?tid=48922",
+      "apiUrl": "https://base44.app/api/apps/69f12d4bf0bb6ef2f9eaa84e/entities/Coin/69f604bcc24944e36153a945",
+      "record_name": "1 cêntimo",
+      "record_years": "1977"
+    },
+    {
+      "status": "connected",
+      "source": "site_ucoin_url",
+      "denomination": "1 cêntimo",
+      "issuePeriod": "1982 - 2004",
+      "ucoinUrl": "https://pt.ucoin.net/coin/seychelles-1-cent-1982-2004/?tid=48923",
+      "apiUrl": "https://base44.app/api/apps/69f12d4bf0bb6ef2f9eaa84e/entities/Coin/69f6050b87e77e649ba96186",
+      "record_name": "1 cêntimo",
+      "record_years": "1982-2004"
+    },
+    {
+      "status": "connected",
+      "source": "site_ucoin_url",
+      "denomination": "1 cêntimo",
+      "issuePeriod": "2012 - 2014",
+      "ucoinUrl": "https://pt.ucoin.net/coin/seychelles-1-cent-2012-2014/?tid=48928",
+      "apiUrl": "https://base44.app/api/apps/69f12d4bf0bb6ef2f9eaa84e/entities/Coin/69f6045e7f8dcba54467c071",
+      "record_name": "1 cêntimo",
+      "record_years": "2012-2014"
+    },
+    {
+      "status": "connected",
+      "source": "site_ucoin_url",
+      "denomination": "1 cêntimo",
+      "issuePeriod": "2016 - 2022",
+      "ucoinUrl": "https://pt.ucoin.net/coin/seychelles-1-cent-2016-2022/?tid=66116",
+      "apiUrl": "https://base44.app/api/apps/69f12d4bf0bb6ef2f9eaa84e/entities/Coin/69f6055ca39475f385e55c95",
+      "record_name": "1 cêntimo",
+      "record_years": "2016-2022"
+    },
+    {
+      "status": "connected",
+      "source": "site_ucoin_url",
+      "denomination": "10 cêntimos",
+      "issuePeriod": "1982 - 2003",
+      "ucoinUrl": "https://pt.ucoin.net/coin/seychelles-10-cents-1982-2003/?tid=48979",
+      "apiUrl": "https://base44.app/api/apps/69f12d4bf0bb6ef2f9eaa84e/entities/Coin/69f605ab84047e7a8daf4f29",
+      "record_name": "10 cêntimos",
+      "record_years": "1982-2003"
+    },
+    {
+      "status": "connected",
+      "source": "site_ucoin_url",
+      "denomination": "10 cêntimos",
+      "issuePeriod": "2007 - 2012",
+      "ucoinUrl": "https://pt.ucoin.net/coin/seychelles-10-cents-2007-2012/?tid=48986",
+      "apiUrl": "https://base44.app/api/apps/69f12d4bf0bb6ef2f9eaa84e/entities/Coin/69f605bff8ed992c1b5954a0",
+      "record_name": "10 cêntimos",
+      "record_years": "2007-2012"
+    },
+    {
+      "status": "connected",
+      "source": "site_ucoin_url",
+      "denomination": "10 cêntimos",
+      "issuePeriod": "2016 - 2022",
+      "ucoinUrl": "https://pt.ucoin.net/coin/seychelles-10-cents-2016-2022/?tid=66217",
+      "apiUrl": "https://base44.app/api/apps/69f12d4bf0bb6ef2f9eaa84e/entities/Coin/69f605c8875cdbec368f3995",
+      "record_name": "10 cêntimos",
+      "record_years": "2016-2022"
+    },
+    {
+      "status": "connected",
+      "source": "site_ucoin_url",
+      "denomination": "10 rúpias",
+      "issuePeriod": "1977",
+      "ucoinUrl": "https://pt.ucoin.net/coin/seychelles-10-rupees-1977/?tid=49207",
+      "apiUrl": "https://base44.app/api/apps/69f12d4bf0bb6ef2f9eaa84e/entities/Coin/69f609a3353fcf8b394172e3",
+      "record_name": "10 rúpias",
+      "record_years": "1977"
+    },
+    {
+      "status": "connected",
+      "source": "site_ucoin_url",
+      "denomination": "10 rúpias",
+      "issuePeriod": "2016",
+      "ucoinUrl": "https://pt.ucoin.net/coin/seychelles-10-rupees-2016/?tid=66213",
+      "apiUrl": "https://base44.app/api/apps/69f12d4bf0bb6ef2f9eaa84e/entities/Coin/69f609b6cf02b37ddaa663d6",
+      "record_name": "10 rúpias",
+      "record_years": "2016"
+    },
+    {
+      "status": "connected",
+      "source": "site_ucoin_url",
+      "denomination": "10 rúpias",
+      "issuePeriod": "2018",
+      "ucoinUrl": "https://pt.ucoin.net/coin/seychelles-10-rupees-2018/?tid=152624",
+      "apiUrl": "https://base44.app/api/apps/69f12d4bf0bb6ef2f9eaa84e/entities/Coin/69f609c11ab5d508d78fe1e2",
+      "record_name": "10 rúpias",
+      "record_years": "2018"
+    },
+    {
+      "status": "connected",
+      "source": "site_ucoin_url",
+      "denomination": "25 cêntimos",
+      "issuePeriod": "1977",
+      "ucoinUrl": "https://pt.ucoin.net/coin/seychelles-25-cents-1977/?tid=48988",
+      "apiUrl": "https://base44.app/api/apps/69f12d4bf0bb6ef2f9eaa84e/entities/Coin/69f6069e6b543a4fd648d8c0",
+      "record_name": "25 cêntimos",
+      "record_years": "1977"
+    },
+    {
+      "status": "connected",
+      "source": "site_ucoin_url",
+      "denomination": "25 cêntimos",
+      "issuePeriod": "1982 - 1992",
+      "ucoinUrl": "https://pt.ucoin.net/coin/seychelles-25-cents-1982-1992/?tid=48989",
+      "apiUrl": "https://base44.app/api/apps/69f12d4bf0bb6ef2f9eaa84e/entities/Coin/69f606af78f863af8a1371d9",
+      "record_name": "25 cêntimos",
+      "record_years": "1982-1992"
+    },
+    {
+      "status": "connected",
+      "source": "site_ucoin_url",
+      "denomination": "25 cêntimos",
+      "issuePeriod": "1993 - 2012",
+      "ucoinUrl": "https://pt.ucoin.net/coin/seychelles-25-cents-1993-2012/?tid=48992",
+      "apiUrl": "https://base44.app/api/apps/69f12d4bf0bb6ef2f9eaa84e/entities/Coin/69f606b9d90ad2b99467e681",
+      "record_name": "25 cêntimos",
+      "record_years": "1993-2012"
+    },
+    {
+      "status": "connected",
+      "source": "site_ucoin_url",
+      "denomination": "25 cêntimos",
+      "issuePeriod": "2000",
+      "ucoinUrl": "https://pt.ucoin.net/coin/seychelles-25-cents-2000/?tid=48998",
+      "apiUrl": "https://base44.app/api/apps/69f12d4bf0bb6ef2f9eaa84e/entities/Coin/69f606c3f949e3dcd2a8019b",
+      "record_name": "25 cêntimos",
+      "record_years": "2000"
+    },
+    {
+      "status": "connected",
+      "source": "site_ucoin_url",
+      "denomination": "25 cêntimos",
+      "issuePeriod": "2016 - 2022",
+      "ucoinUrl": "https://pt.ucoin.net/coin/seychelles-25-cents-2016-2022/?tid=66216",
+      "apiUrl": "https://base44.app/api/apps/69f12d4bf0bb6ef2f9eaa84e/entities/Coin/69f606ca71d655dd4184c7cb",
+      "record_name": "25 cêntimos",
+      "record_years": "2016-2022"
+    },
+    {
+      "status": "connected",
+      "source": "site_ucoin_url",
+      "denomination": "5 cêntimos",
+      "issuePeriod": "1982 - 2003",
+      "ucoinUrl": "https://pt.ucoin.net/coin/seychelles-5-cents-1982-2003/?tid=48964",
+      "apiUrl": "https://base44.app/api/apps/69f12d4bf0bb6ef2f9eaa84e/entities/Coin/69f60573440c3781d8a2d76a",
+      "record_name": "5 cêntimos",
+      "record_years": "1982-2003"
+    },
+    {
+      "status": "connected",
+      "source": "site_ucoin_url",
+      "denomination": "5 cêntimos",
+      "issuePeriod": "2007 - 2012",
+      "ucoinUrl": "https://pt.ucoin.net/coin/seychelles-5-cents-2007-2012/?tid=48972",
+      "apiUrl": "https://base44.app/api/apps/69f12d4bf0bb6ef2f9eaa84e/entities/Coin/69f60589d4d3aec913e71c3d",
+      "record_name": "5 cêntimos",
+      "record_years": "2007-2012"
+    },
+    {
+      "status": "connected",
+      "source": "site_ucoin_url",
+      "denomination": "5 cêntimos",
+      "issuePeriod": "2016 - 2022",
+      "ucoinUrl": "https://pt.ucoin.net/coin/seychelles-5-cents-2016-2022/?tid=66218",
+      "apiUrl": "https://base44.app/api/apps/69f12d4bf0bb6ef2f9eaa84e/entities/Coin/69f605947d5bf37e026c460b",
+      "record_name": "5 cêntimos",
+      "record_years": "2016-2022"
+    },
+    {
+      "status": "connected",
+      "source": "site_ucoin_url",
+      "denomination": "5 rúpias",
+      "issuePeriod": "1977",
+      "ucoinUrl": "https://pt.ucoin.net/coin/seychelles-5-rupees-1977/?tid=49185",
+      "apiUrl": "https://base44.app/api/apps/69f12d4bf0bb6ef2f9eaa84e/entities/Coin/69f609109cceea4ca8559224",
+      "record_name": "5 rúpias",
+      "record_years": "1977"
+    },
+    {
+      "status": "connected",
+      "source": "site_ucoin_url",
+      "denomination": "5 rúpias",
+      "issuePeriod": "1982 - 2010",
+      "ucoinUrl": "https://pt.ucoin.net/coin/seychelles-5-rupees-1982-2010/?tid=49197",
+      "apiUrl": "https://base44.app/api/apps/69f12d4bf0bb6ef2f9eaa84e/entities/Coin/69f6092b42085910f08f8a92",
+      "record_name": "5 rúpias",
+      "record_years": "1982-2010"
+    },
+    {
+      "status": "connected",
+      "source": "site_ucoin_url",
+      "denomination": "5 rúpias",
+      "issuePeriod": "2010",
+      "ucoinUrl": "https://pt.ucoin.net/coin/seychelles-5-rupees-2010/?tid=62066",
+      "apiUrl": "https://base44.app/api/apps/69f12d4bf0bb6ef2f9eaa84e/entities/Coin/69f609429eaefaa08dad3619",
+      "record_name": "5 rúpias",
+      "record_years": "2010"
+    },
+    {
+      "status": "connected",
+      "source": "site_ucoin_url",
+      "denomination": "5 rúpias",
+      "issuePeriod": "2016",
+      "ucoinUrl": "https://pt.ucoin.net/coin/seychelles-5-rupees-2016/?tid=66214",
+      "apiUrl": "https://base44.app/api/apps/69f12d4bf0bb6ef2f9eaa84e/entities/Coin/69f6094aad89bbae2bab3203",
+      "record_name": "5 rúpias",
+      "record_years": "2016"
+    },
+    {
+      "status": "connected",
+      "source": "interactive",
+      "denomination": "50 cêntimos",
+      "issuePeriod": "1977",
+      "ucoinUrl": "https://pt.ucoin.net/coin/seychelles-50-cents-1977/?tid=49001",
+      "apiUrl": "https://base44.app/api/apps/69f12d4bf0bb6ef2f9eaa84e/entities/Coin/69f60770f602fa5d976b8cde",
+      "record_name": "50 cêntimos",
+      "record_years": "1977"
+    }
+  ]
+}

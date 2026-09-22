@@ -1,0 +1,50 @@
+{
+  "updatedAt": "2026-09-21T22:11:07Z",
+  "country": "malasia",
+  "missing": [
+    {
+      "status": "created",
+      "source": "interactive",
+      "denomination": "1 ringgit",
+      "issuePeriod": "1971 - 1986",
+      "ucoinUrl": "https://pt.ucoin.net/coin/malaysia-1-ringgit-1971-1986/?tid=21220",
+      "record_id": "6ab1ab8f8ee42f1d8af6f38d",
+      "record_name": "",
+      "record_years": "",
+      "siteUrl": "https://base44.app/api/apps/69f12d4bf0bb6ef2f9eaa84e/entities/Coin/6ab1ab8f8ee42f1d8af6f38d"
+    },
+    {
+      "status": "created",
+      "source": "interactive",
+      "denomination": "1 ringgit",
+      "issuePeriod": "1989 - 1993",
+      "ucoinUrl": "https://pt.ucoin.net/coin/malaysia-1-ringgit-1989-1993/?tid=21263",
+      "record_id": "6ab1ab9594715407e4413a1a",
+      "record_name": "",
+      "record_years": "",
+      "siteUrl": "https://base44.app/api/apps/69f12d4bf0bb6ef2f9eaa84e/entities/Coin/6ab1ab9594715407e4413a1a"
+    },
+    {
+      "status": "created",
+      "source": "interactive",
+      "denomination": "1 ringgit",
+      "issuePeriod": "1993 - 1996",
+      "ucoinUrl": "https://pt.ucoin.net/coin/malaysia-1-ringgit-1993-1996/?tid=21268",
+      "record_id": "6ab1ab9a2a0b52dd053f8c99",
+      "record_name": "",
+      "record_years": "",
+      "siteUrl": "https://base44.app/api/apps/69f12d4bf0bb6ef2f9eaa84e/entities/Coin/6ab1ab9a2a0b52dd053f8c99"
+    },
+    {
+      "status": "created",
+      "source": "interactive",
+      "denomination": "5 ringgit",
+      "issuePeriod": "1971",
+      "ucoinUrl": "https://pt.ucoin.net/coin/malaysia-5-ringgit-1971/?tid=21655",
+      "record_id": "6ab1aba0fe652cf1b556d65f",
+      "record_name": "",
+      "record_years": "",
+      "siteUrl": "https://base44.app/api/apps/69f12d4bf0bb6ef2f9eaa84e/entities/Coin/6ab1aba0fe652cf1b556d65f"
+    }
+  ]
+}

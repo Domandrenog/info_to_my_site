@@ -1,0 +1,50 @@
+{
+  "updatedAt": "2026-09-21T21:28:23Z",
+  "country": "china",
+  "missing": [
+    {
+      "status": "created",
+      "source": "interactive",
+      "denomination": "1 jiao",
+      "issuePeriod": "1980 - 1986",
+      "ucoinUrl": "https://pt.ucoin.net/coin/china-1-jiao-1980-1986/?tid=5892",
+      "record_id": "6ab1a18b7534cd072e2d9ed1",
+      "record_name": "",
+      "record_years": "",
+      "siteUrl": "https://base44.app/api/apps/69f12d4bf0bb6ef2f9eaa84e/entities/Coin/6ab1a18b7534cd072e2d9ed1"
+    },
+    {
+      "status": "created",
+      "source": "interactive",
+      "denomination": "1 yuan",
+      "issuePeriod": "1980 - 1986",
+      "ucoinUrl": "https://pt.ucoin.net/coin/china-1-yuan-1980-1986/?tid=5913",
+      "record_id": "6ab1a19c3c8f3b0a5b73fb87",
+      "record_name": "",
+      "record_years": "",
+      "siteUrl": "https://base44.app/api/apps/69f12d4bf0bb6ef2f9eaa84e/entities/Coin/6ab1a19c3c8f3b0a5b73fb87"
+    },
+    {
+      "status": "created",
+      "source": "interactive",
+      "denomination": "2 jiao",
+      "issuePeriod": "1980 - 1986",
+      "ucoinUrl": "https://pt.ucoin.net/coin/china-2-jiao-1980-1986/?tid=5899",
+      "record_id": "6ab1a191f4cc0eb5057b028a",
+      "record_name": "",
+      "record_years": "",
+      "siteUrl": "https://base44.app/api/apps/69f12d4bf0bb6ef2f9eaa84e/entities/Coin/6ab1a191f4cc0eb5057b028a"
+    },
+    {
+      "status": "created",
+      "source": "interactive",
+      "denomination": "5 jiao",
+      "issuePeriod": "1980 - 1986",
+      "ucoinUrl": "https://pt.ucoin.net/coin/china-5-jiao-1980-1986/?tid=5906",
+      "record_id": "6ab1a196557a2da321302840",
+      "record_name": "",
+      "record_years": "",
+      "siteUrl": "https://base44.app/api/apps/69f12d4bf0bb6ef2f9eaa84e/entities/Coin/6ab1a196557a2da321302840"
+    }
+  ]
+}

@@ -1,0 +1,218 @@
+{
+  "updatedAt": "2026-09-21T22:01:19Z",
+  "country": "filipinas",
+  "missing": [
+    {
+      "status": "created",
+      "source": "interactive",
+      "denomination": "10 piso",
+      "issuePeriod": "2025",
+      "ucoinUrl": "https://pt.ucoin.net/coin/philippines-10-piso-2025/?tid=192863",
+      "record_id": "6ab1a94eef992cb81920cf49",
+      "record_name": "",
+      "record_years": "",
+      "siteUrl": "https://base44.app/api/apps/69f12d4bf0bb6ef2f9eaa84e/entities/Coin/6ab1a94eef992cb81920cf49"
+    },
+    {
+      "status": "created",
+      "source": "interactive",
+      "denomination": "20 piso",
+      "issuePeriod": "2025",
+      "ucoinUrl": "https://pt.ucoin.net/coin/philippines-20-piso-2025/?tid=192562",
+      "record_id": "6ab1a954edcef56d9bec0958",
+      "record_name": "",
+      "record_years": "",
+      "siteUrl": "https://base44.app/api/apps/69f12d4bf0bb6ef2f9eaa84e/entities/Coin/6ab1a954edcef56d9bec0958"
+    },
+    {
+      "status": "connected",
+      "source": "interactive",
+      "denomination": "1 cêntimo",
+      "issuePeriod": "1995 - 2016",
+      "ucoinUrl": "https://pt.ucoin.net/coin/philippines-1-sentimo-1995-2016/?tid=18878",
+      "apiUrl": "https://base44.app/api/apps/69f12d4bf0bb6ef2f9eaa84e/entities/Coin/69f15f0eabc47d2a80f6d884",
+      "record_name": "1 cêntimo",
+      "record_years": "1995-2016"
+    },
+    {
+      "status": "connected",
+      "source": "interactive",
+      "denomination": "1 cêntimo",
+      "issuePeriod": "2017 - 2019",
+      "ucoinUrl": "https://pt.ucoin.net/coin/philippines-1-sentimo-2017-2019/?tid=78052",
+      "apiUrl": "https://base44.app/api/apps/69f12d4bf0bb6ef2f9eaa84e/entities/Coin/69f161f213362d11b60f17eb",
+      "record_name": "1 cêntimo",
+      "record_years": "2017-2019"
+    },
+    {
+      "status": "connected",
+      "source": "interactive",
+      "denomination": "1 piso",
+      "issuePeriod": "1995 - 2003",
+      "ucoinUrl": "https://pt.ucoin.net/coin/philippines-1-piso-1995-2003/?tid=18943",
+      "apiUrl": "https://base44.app/api/apps/69f12d4bf0bb6ef2f9eaa84e/entities/Coin/69f1646873563fad337f052a",
+      "record_name": "1 piso",
+      "record_years": "1995-2003"
+    },
+    {
+      "status": "connected",
+      "source": "interactive",
+      "denomination": "1 piso",
+      "issuePeriod": "2003 - 2017",
+      "ucoinUrl": "https://pt.ucoin.net/coin/philippines-1-piso-2003-2017/?tid=18952",
+      "apiUrl": "https://base44.app/api/apps/69f12d4bf0bb6ef2f9eaa84e/entities/Coin/69f1658d57360a16eb000ee8",
+      "record_name": "1 piso",
+      "record_years": "2003-2017"
+    },
+    {
+      "status": "connected",
+      "source": "interactive",
+      "denomination": "1 piso",
+      "issuePeriod": "2017 - 2019",
+      "ucoinUrl": "https://pt.ucoin.net/coin/philippines-1-piso-2017-2019/?tid=78411",
+      "apiUrl": "https://base44.app/api/apps/69f12d4bf0bb6ef2f9eaa84e/entities/Coin/69f165b668b92390220e9225",
+      "record_name": "1 piso",
+      "record_years": "2017-2019"
+    },
+    {
+      "status": "connected",
+      "source": "interactive",
+      "denomination": "1 piso",
+      "issuePeriod": "2023 - 2025",
+      "ucoinUrl": "https://pt.ucoin.net/coin/philippines-1-piso-2023-2025/?tid=188484",
+      "apiUrl": "https://base44.app/api/apps/69f12d4bf0bb6ef2f9eaa84e/entities/Coin/69f166079738bfcf05ecc1bd",
+      "record_name": "1 piso",
+      "record_years": "2023-2025"
+    },
+    {
+      "status": "connected",
+      "source": "interactive",
+      "denomination": "10 cêntimos",
+      "issuePeriod": "1995 - 2017",
+      "ucoinUrl": "https://pt.ucoin.net/coin/philippines-10-sentimos-1995-2017/?tid=18910",
+      "apiUrl": "https://base44.app/api/apps/69f12d4bf0bb6ef2f9eaa84e/entities/Coin/69f162e7608c4227fc0927ae",
+      "record_name": "10 cêntimos",
+      "record_years": "1995-2017"
+    },
+    {
+      "status": "connected",
+      "source": "interactive",
+      "denomination": "10 piso",
+      "issuePeriod": "2000 - 2017",
+      "ucoinUrl": "https://pt.ucoin.net/coin/philippines-10-piso-2000-2017/?tid=18979",
+      "apiUrl": "https://base44.app/api/apps/69f12d4bf0bb6ef2f9eaa84e/entities/Coin/69f167149e7407d509938887",
+      "record_name": "10 piso",
+      "record_years": "2000-2017"
+    },
+    {
+      "status": "connected",
+      "source": "interactive",
+      "denomination": "10 piso",
+      "issuePeriod": "2017 - 2020",
+      "ucoinUrl": "https://pt.ucoin.net/coin/philippines-10-piso-2017-2020/?tid=78412",
+      "apiUrl": "https://base44.app/api/apps/69f12d4bf0bb6ef2f9eaa84e/entities/Coin/69f167429f3e799579dd53d1",
+      "record_name": "10 piso",
+      "record_years": "2017 - 2020"
+    },
+    {
+      "status": "connected",
+      "source": "interactive",
+      "denomination": "20 piso",
+      "issuePeriod": "2019 - 2021",
+      "ucoinUrl": "https://pt.ucoin.net/coin/philippines-20-piso-2019-2021/?tid=90556",
+      "apiUrl": "https://base44.app/api/apps/69f12d4bf0bb6ef2f9eaa84e/entities/Coin/69f1676c54902dd153c1629b",
+      "record_name": "20 piso",
+      "record_years": "2019-2021"
+    },
+    {
+      "status": "connected",
+      "source": "interactive",
+      "denomination": "25 cêntimos",
+      "issuePeriod": "1995 - 2003",
+      "ucoinUrl": "https://pt.ucoin.net/coin/philippines-25-sentimos-1995-2003/?tid=18925",
+      "apiUrl": "https://base44.app/api/apps/69f12d4bf0bb6ef2f9eaa84e/entities/Coin/69f163279d6637658f8c4543",
+      "record_name": "25 cêntimos",
+      "record_years": "1995-2003"
+    },
+    {
+      "status": "connected",
+      "source": "interactive",
+      "denomination": "25 cêntimos",
+      "issuePeriod": "2003 - 2017",
+      "ucoinUrl": "https://pt.ucoin.net/coin/philippines-25-sentimos-2003-2017/?tid=18934",
+      "apiUrl": "https://base44.app/api/apps/69f12d4bf0bb6ef2f9eaa84e/entities/Coin/69f16346d041471fcbbe4409",
+      "record_name": "25 cêntimos",
+      "record_years": "2003-2017"
+    },
+    {
+      "status": "connected",
+      "source": "interactive",
+      "denomination": "25 cêntimos",
+      "issuePeriod": "2017 - 2020",
+      "ucoinUrl": "https://pt.ucoin.net/coin/philippines-25-sentimos-2017-2020/?tid=78410",
+      "apiUrl": "https://base44.app/api/apps/69f12d4bf0bb6ef2f9eaa84e/entities/Coin/69f16371eda2355e7613422a",
+      "record_name": "25 cêntimos",
+      "record_years": "2017-2020"
+    },
+    {
+      "status": "connected",
+      "source": "interactive",
+      "denomination": "25 cêntimos",
+      "issuePeriod": "2022 - 2025",
+      "ucoinUrl": "https://pt.ucoin.net/coin/philippines-25-sentimos-2022-2025/?tid=188485",
+      "apiUrl": "https://base44.app/api/apps/69f12d4bf0bb6ef2f9eaa84e/entities/Coin/69f163c4cbc5380d09062015",
+      "record_name": "25 cêntimos",
+      "record_years": "2022-2025"
+    },
+    {
+      "status": "connected",
+      "source": "interactive",
+      "denomination": "5 cêntimos",
+      "issuePeriod": "1995 - 2017",
+      "ucoinUrl": "https://pt.ucoin.net/coin/philippines-5-sentimos-1995-2017/?tid=18892",
+      "apiUrl": "https://base44.app/api/apps/69f12d4bf0bb6ef2f9eaa84e/entities/Coin/69f162792a0413419a0410a2",
+      "record_name": "5 cêntimos",
+      "record_years": "1995-2017"
+    },
+    {
+      "status": "connected",
+      "source": "interactive",
+      "denomination": "5 cêntimos",
+      "issuePeriod": "2017 - 2019",
+      "ucoinUrl": "https://pt.ucoin.net/coin/philippines-5-sentimos-2017-2019/?tid=78053",
+      "apiUrl": "https://base44.app/api/apps/69f12d4bf0bb6ef2f9eaa84e/entities/Coin/69f162c1be7ad8feee55c80f",
+      "record_name": "5 cêntimos",
+      "record_years": "2017-2019"
+    },
+    {
+      "status": "connected",
+      "source": "interactive",
+      "denomination": "5 piso",
+      "issuePeriod": "1995 - 2017",
+      "ucoinUrl": "https://pt.ucoin.net/coin/philippines-5-piso-1995-2017/?tid=18962",
+      "apiUrl": "https://base44.app/api/apps/69f12d4bf0bb6ef2f9eaa84e/entities/Coin/69f1668d98313179dbaafcfb",
+      "record_name": "5 piso",
+      "record_years": "1995-2017"
+    },
+    {
+      "status": "connected",
+      "source": "interactive",
+      "denomination": "5 piso",
+      "issuePeriod": "2017 - 2020",
+      "ucoinUrl": "https://pt.ucoin.net/coin/philippines-5-piso-2017-2020/?tid=75240",
+      "apiUrl": "https://base44.app/api/apps/69f12d4bf0bb6ef2f9eaa84e/entities/Coin/69f166b8ce9705221eed5d23",
+      "record_name": "5 piso",
+      "record_years": "2017-2020"
+    },
+    {
+      "status": "connected",
+      "source": "interactive",
+      "denomination": "5 piso",
+      "issuePeriod": "2019 - 2021",
+      "ucoinUrl": "https://pt.ucoin.net/coin/philippines-5-piso-2019-2021/?tid=90562",
+      "apiUrl": "https://base44.app/api/apps/69f12d4bf0bb6ef2f9eaa84e/entities/Coin/69f166ef9cff9e896d81c8cd",
+      "record_name": "5 piso",
+      "record_years": "2019-2021"
+    }
+  ]
+}

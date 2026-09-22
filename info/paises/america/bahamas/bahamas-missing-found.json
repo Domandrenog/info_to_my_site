@@ -1,0 +1,206 @@
+{
+  "updatedAt": "2026-09-21T23:23:54Z",
+  "country": "bahamas",
+  "missing": [
+    {
+      "status": "connected",
+      "source": "site_ucoin_url",
+      "denomination": "10 cêntimos",
+      "issuePeriod": "1966 - 1970",
+      "ucoinUrl": "https://pt.ucoin.net/coin/bahamas-10-cents-1966-1970/?tid=32640",
+      "apiUrl": "https://base44.app/api/apps/69f12d4bf0bb6ef2f9eaa84e/entities/Coin/69f9a0d1f5d608fb6fd8a9f2",
+      "record_name": "10 cêntimos",
+      "record_years": "1966-1970"
+    },
+    {
+      "status": "connected",
+      "source": "interactive",
+      "denomination": "10 cêntimos",
+      "issuePeriod": "1971 - 1973",
+      "ucoinUrl": "https://pt.ucoin.net/coin/bahamas-10-cents-1971-1973/?tid=32670",
+      "apiUrl": "https://base44.app/api/apps/69f12d4bf0bb6ef2f9eaa84e/entities/Coin/69f9a0e0bc62caefca9a2785",
+      "record_name": "10 cêntimos",
+      "record_years": "1971-1973"
+    },
+    {
+      "status": "connected",
+      "source": "site_ucoin_url",
+      "denomination": "10 cêntimos",
+      "issuePeriod": "1973",
+      "ucoinUrl": "https://pt.ucoin.net/coin/bahamas-10-cents-1973/?tid=32673",
+      "apiUrl": "https://base44.app/api/apps/69f12d4bf0bb6ef2f9eaa84e/entities/Coin/69f9a0e7304e0a4577989a2d",
+      "record_name": "10 cêntimos",
+      "record_years": "1973"
+    },
+    {
+      "status": "connected",
+      "source": "site_ucoin_url",
+      "denomination": "10 cêntimos",
+      "issuePeriod": "1974 - 2005",
+      "ucoinUrl": "https://pt.ucoin.net/coin/bahamas-10-cents-1974-2005/?tid=32674",
+      "apiUrl": "https://base44.app/api/apps/69f12d4bf0bb6ef2f9eaa84e/entities/Coin/69f9a0edc46f96dade9e5c4d",
+      "record_name": "10 cêntimos",
+      "record_years": "1974-2005"
+    },
+    {
+      "status": "connected",
+      "source": "interactive",
+      "denomination": "10 cêntimos",
+      "issuePeriod": "2007 - 2016",
+      "ucoinUrl": "https://pt.ucoin.net/coin/bahamas-10-cents-2007-2016/?tid=32693",
+      "apiUrl": "https://base44.app/api/apps/69f12d4bf0bb6ef2f9eaa84e/entities/Coin/69f9a0f7a5f303323f26ae8d",
+      "record_name": "10 cêntimos",
+      "record_years": "2007-2016"
+    },
+    {
+      "status": "connected",
+      "source": "interactive",
+      "denomination": "15 cêntimos",
+      "issuePeriod": "1966 - 1970",
+      "ucoinUrl": "https://pt.ucoin.net/coin/bahamas-15-cents-1966-1970/?tid=32694",
+      "apiUrl": "https://base44.app/api/apps/69f12d4bf0bb6ef2f9eaa84e/entities/Coin/69f9a16dc2c96efe61917e20",
+      "record_name": "15 cêntimos",
+      "record_years": "1966-1970"
+    },
+    {
+      "status": "connected",
+      "source": "site_ucoin_url",
+      "denomination": "15 cêntimos",
+      "issuePeriod": "1971 - 1973",
+      "ucoinUrl": "https://pt.ucoin.net/coin/bahamas-15-cents-1971-1973/?tid=32697",
+      "apiUrl": "https://base44.app/api/apps/69f12d4bf0bb6ef2f9eaa84e/entities/Coin/69f9a1845fbfece4c9fe56d4",
+      "record_name": "15 cêntimos",
+      "record_years": "1971-1973"
+    },
+    {
+      "status": "connected",
+      "source": "interactive",
+      "denomination": "15 cêntimos",
+      "issuePeriod": "1974 - 2005",
+      "ucoinUrl": "https://pt.ucoin.net/coin/bahamas-15-cents-1974-2005/?tid=32700",
+      "apiUrl": "https://base44.app/api/apps/69f12d4bf0bb6ef2f9eaa84e/entities/Coin/69f9a18cfd2ed9d620c4d8f1",
+      "record_name": "15 cêntimos",
+      "record_years": "1974-2005"
+    },
+    {
+      "status": "connected",
+      "source": "site_ucoin_url",
+      "denomination": "15 cêntimos",
+      "issuePeriod": "2018",
+      "ucoinUrl": "https://pt.ucoin.net/coin/bahamas-15-cents-2018/?tid=82240",
+      "apiUrl": "https://base44.app/api/apps/69f12d4bf0bb6ef2f9eaa84e/entities/Coin/69f9a19548b8d05a190e8c29",
+      "record_name": "15 cêntimos",
+      "record_years": "2018"
+    },
+    {
+      "status": "connected",
+      "source": "interactive",
+      "denomination": "25 cêntimos",
+      "issuePeriod": "1966 - 1970",
+      "ucoinUrl": "https://pt.ucoin.net/coin/bahamas-25-cents-1966-1970/?tid=32717",
+      "apiUrl": "https://base44.app/api/apps/69f12d4bf0bb6ef2f9eaa84e/entities/Coin/6a00f13b19e3d742ae77201b",
+      "record_name": "25 cêntimos",
+      "record_years": "1966-1970"
+    },
+    {
+      "status": "connected",
+      "source": "site_ucoin_url",
+      "denomination": "25 cêntimos",
+      "issuePeriod": "1971 - 1973",
+      "ucoinUrl": "https://pt.ucoin.net/coin/bahamas-25-cents-1971-1973/?tid=32720",
+      "apiUrl": "https://base44.app/api/apps/69f12d4bf0bb6ef2f9eaa84e/entities/Coin/6a00f15b9a4d03a9031aa440",
+      "record_name": "25 cêntimos",
+      "record_years": "1971-1973"
+    },
+    {
+      "status": "connected",
+      "source": "site_ucoin_url",
+      "denomination": "25 cêntimos",
+      "issuePeriod": "1974 - 1989",
+      "ucoinUrl": "https://pt.ucoin.net/coin/bahamas-25-cents-1974-1989/?tid=32723",
+      "apiUrl": "https://base44.app/api/apps/69f12d4bf0bb6ef2f9eaa84e/entities/Coin/6a00f166027761174f2d5f41",
+      "record_name": "25 cêntimos",
+      "record_years": "1974-1989"
+    },
+    {
+      "status": "connected",
+      "source": "site_ucoin_url",
+      "denomination": "25 cêntimos",
+      "issuePeriod": "1991 - 2005",
+      "ucoinUrl": "https://pt.ucoin.net/coin/bahamas-25-cents-1991-2005/?tid=32737",
+      "apiUrl": "https://base44.app/api/apps/69f12d4bf0bb6ef2f9eaa84e/entities/Coin/6a00f179386ff6fcf0fa5ae0",
+      "record_name": "25 cêntimos",
+      "record_years": "1991-2005"
+    },
+    {
+      "status": "connected",
+      "source": "site_ucoin_url",
+      "denomination": "25 cêntimos",
+      "issuePeriod": "2007 - 2015",
+      "ucoinUrl": "https://pt.ucoin.net/coin/bahamas-25-cents-2007-2015/?tid=32744",
+      "apiUrl": "https://base44.app/api/apps/69f12d4bf0bb6ef2f9eaa84e/entities/Coin/6a00f189c1e0a5f1d6b6f94b",
+      "record_name": "25 cêntimos",
+      "record_years": "2007-2015"
+    },
+    {
+      "status": "connected",
+      "source": "interactive",
+      "denomination": "5 cêntimos",
+      "issuePeriod": "1966 - 1970",
+      "ucoinUrl": "https://pt.ucoin.net/coin/bahamas-5-cents-1966-1970/?tid=32609",
+      "apiUrl": "https://base44.app/api/apps/69f12d4bf0bb6ef2f9eaa84e/entities/Coin/69f9a001f5615c8b14983a05",
+      "record_name": "5 cêntimos",
+      "record_years": "1966-1970"
+    },
+    {
+      "status": "connected",
+      "source": "site_ucoin_url",
+      "denomination": "5 cêntimos",
+      "issuePeriod": "1971 - 1973",
+      "ucoinUrl": "https://pt.ucoin.net/coin/bahamas-5-cents-1971-1973/?tid=32613",
+      "apiUrl": "https://base44.app/api/apps/69f12d4bf0bb6ef2f9eaa84e/entities/Coin/69f9a0203bd1d6f5c54ca909",
+      "record_name": "5 cêntimos",
+      "record_years": "1971-1973"
+    },
+    {
+      "status": "connected",
+      "source": "site_ucoin_url",
+      "denomination": "5 cêntimos",
+      "issuePeriod": "1973",
+      "ucoinUrl": "https://pt.ucoin.net/coin/bahamas-5-cents-1973/?tid=32616",
+      "apiUrl": "https://base44.app/api/apps/69f12d4bf0bb6ef2f9eaa84e/entities/Coin/69f9a02aa83405815143d4a6",
+      "record_name": "5 cêntimos",
+      "record_years": "1973"
+    },
+    {
+      "status": "connected",
+      "source": "site_ucoin_url",
+      "denomination": "5 cêntimos",
+      "issuePeriod": "1974 - 2006",
+      "ucoinUrl": "https://pt.ucoin.net/coin/bahamas-5-cents-1974-2006/?tid=32617",
+      "apiUrl": "https://base44.app/api/apps/69f12d4bf0bb6ef2f9eaa84e/entities/Coin/69f9a03b799a1f9150959fd8",
+      "record_name": "5 cêntimos",
+      "record_years": "1974-2006"
+    },
+    {
+      "status": "connected",
+      "source": "site_ucoin_url",
+      "denomination": "5 cêntimos",
+      "issuePeriod": "2015 - 2024",
+      "ucoinUrl": "https://pt.ucoin.net/coin/bahamas-5-cents-2015-2024/?tid=45796",
+      "apiUrl": "https://base44.app/api/apps/69f12d4bf0bb6ef2f9eaa84e/entities/Coin/69f9a0434fef97886313e975",
+      "record_name": "5 cêntimos",
+      "record_years": "2015 - 2024"
+    },
+    {
+      "status": "connected",
+      "source": "site_ucoin_url",
+      "denomination": "50 cêntimos",
+      "issuePeriod": "1974 - 2000",
+      "ucoinUrl": "https://pt.ucoin.net/coin/bahamas-50-cents-1974-2000/?tid=32751",
+      "apiUrl": "https://base44.app/api/apps/69f12d4bf0bb6ef2f9eaa84e/entities/Coin/6a00f19f16f2fd9718f56a4f",
+      "record_name": "50 cêntimos",
+      "record_years": "1974-2000"
+    }
+  ]
+}

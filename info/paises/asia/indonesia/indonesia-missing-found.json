@@ -1,0 +1,157 @@
+{
+  "updatedAt": "2026-09-21T23:15:14Z",
+  "country": "indonesia",
+  "missing": [
+    {
+      "status": "created",
+      "source": "interactive",
+      "denomination": "25 rúpias",
+      "issuePeriod": "1991 - 1996",
+      "ucoinUrl": "https://pt.ucoin.net/coin/indonesia-25-rupiah-1991-1996/?tid=25004",
+      "record_id": "6ab1baa66afd77c9fc94cc70",
+      "record_name": "",
+      "record_years": "",
+      "siteUrl": "https://base44.app/api/apps/69f12d4bf0bb6ef2f9eaa84e/entities/Coin/6ab1baa66afd77c9fc94cc70"
+    },
+    {
+      "status": "connected",
+      "source": "interactive",
+      "denomination": "100 rúpias",
+      "issuePeriod": "1991 - 1998",
+      "ucoinUrl": "https://pt.ucoin.net/coin/indonesia-100-rupiah-1991-1998/?tid=25034",
+      "apiUrl": "https://base44.app/api/apps/69f12d4bf0bb6ef2f9eaa84e/entities/Coin/69f1c8542542413808304e0d",
+      "record_name": "100 rúpias",
+      "record_years": "1991-1998"
+    },
+    {
+      "status": "connected",
+      "source": "interactive",
+      "denomination": "100 rúpias",
+      "issuePeriod": "1999 - 2005",
+      "ucoinUrl": "https://pt.ucoin.net/coin/indonesia-100-rupiah-1999-2005/?tid=25042",
+      "apiUrl": "https://base44.app/api/apps/69f12d4bf0bb6ef2f9eaa84e/entities/Coin/69f1c88202a07f2d6b4e6049",
+      "record_name": "100 rúpias",
+      "record_years": "1999-2005"
+    },
+    {
+      "status": "connected",
+      "source": "interactive",
+      "denomination": "100 rúpias",
+      "issuePeriod": "2016",
+      "ucoinUrl": "https://pt.ucoin.net/coin/indonesia-100-rupiah-2016/?tid=67429",
+      "apiUrl": "https://base44.app/api/apps/69f12d4bf0bb6ef2f9eaa84e/entities/Coin/69f1c8bb0c84180d31db516b",
+      "record_name": "100 rúpias",
+      "record_years": "2016"
+    },
+    {
+      "status": "connected",
+      "source": "interactive",
+      "denomination": "1000 rúpias",
+      "issuePeriod": "1993 - 2000",
+      "ucoinUrl": "https://pt.ucoin.net/coin/indonesia-1000-rupiah-1993-2000/?tid=25129",
+      "apiUrl": "https://base44.app/api/apps/69f12d4bf0bb6ef2f9eaa84e/entities/Coin/69f1cb1cc4187a076d1c1006",
+      "record_name": "1000 rúpias",
+      "record_years": "1993-2000"
+    },
+    {
+      "status": "connected",
+      "source": "interactive",
+      "denomination": "1000 rúpias",
+      "issuePeriod": "2010",
+      "ucoinUrl": "https://pt.ucoin.net/coin/indonesia-1000-rupiah-2010/?tid=25135",
+      "apiUrl": "https://base44.app/api/apps/69f12d4bf0bb6ef2f9eaa84e/entities/Coin/69f1cb399c9fa75c96355f54",
+      "record_name": "1000 rúpias",
+      "record_years": "2010"
+    },
+    {
+      "status": "connected",
+      "source": "interactive",
+      "denomination": "1000 rúpias",
+      "issuePeriod": "2016",
+      "ucoinUrl": "https://pt.ucoin.net/coin/indonesia-1000-rupiah-2016/?tid=67432",
+      "apiUrl": "https://base44.app/api/apps/69f12d4bf0bb6ef2f9eaa84e/entities/Coin/69f1cb5890642e5c23c5773d",
+      "record_name": "1000 rúpias",
+      "record_years": "2016"
+    },
+    {
+      "status": "connected",
+      "source": "interactive",
+      "denomination": "200 rúpias",
+      "issuePeriod": "2003",
+      "ucoinUrl": "https://pt.ucoin.net/coin/indonesia-200-rupiah-2003/?tid=25052",
+      "apiUrl": "https://base44.app/api/apps/69f12d4bf0bb6ef2f9eaa84e/entities/Coin/69f1c8f83ea1861ead1582db",
+      "record_name": "200 rúpias",
+      "record_years": "2003"
+    },
+    {
+      "status": "connected",
+      "source": "interactive",
+      "denomination": "200 rúpias",
+      "issuePeriod": "2016",
+      "ucoinUrl": "https://pt.ucoin.net/coin/indonesia-200-rupiah-2016/?tid=67430",
+      "apiUrl": "https://base44.app/api/apps/69f12d4bf0bb6ef2f9eaa84e/entities/Coin/69f1c918fbb53e782c9e5ede",
+      "record_name": "200 rúpias",
+      "record_years": "2016"
+    },
+    {
+      "status": "connected",
+      "source": "interactive",
+      "denomination": "50 rúpias",
+      "issuePeriod": "1991 - 1998",
+      "ucoinUrl": "https://pt.ucoin.net/coin/indonesia-50-rupiah-1991-1998/?tid=25016",
+      "apiUrl": "https://base44.app/api/apps/69f12d4bf0bb6ef2f9eaa84e/entities/Coin/69f1c7b79deab3eb519f4746",
+      "record_name": "50 rúpias",
+      "record_years": "1991-1998"
+    },
+    {
+      "status": "connected",
+      "source": "interactive",
+      "denomination": "50 rúpias",
+      "issuePeriod": "1999 - 2002",
+      "ucoinUrl": "https://pt.ucoin.net/coin/indonesia-50-rupiah-1999-2002/?tid=25024",
+      "apiUrl": "https://base44.app/api/apps/69f12d4bf0bb6ef2f9eaa84e/entities/Coin/69f1c7fb0671ae6aad75685d",
+      "record_name": "50 rúpias",
+      "record_years": "1999-2002"
+    },
+    {
+      "status": "connected",
+      "source": "interactive",
+      "denomination": "500 rúpias",
+      "issuePeriod": "1991 - 1992",
+      "ucoinUrl": "https://pt.ucoin.net/coin/indonesia-500-rupiah-1991-1992/?tid=25054",
+      "apiUrl": "https://base44.app/api/apps/69f12d4bf0bb6ef2f9eaa84e/entities/Coin/69f1ca46fda447f318d8c577",
+      "record_name": "500 rúpias",
+      "record_years": "1991-1992"
+    },
+    {
+      "status": "connected",
+      "source": "interactive",
+      "denomination": "500 rúpias",
+      "issuePeriod": "1997 - 2003",
+      "ucoinUrl": "https://pt.ucoin.net/coin/indonesia-500-rupiah-1997-2003/?tid=25058",
+      "apiUrl": "https://base44.app/api/apps/69f12d4bf0bb6ef2f9eaa84e/entities/Coin/69f1ca7ffb8b1c0db64cfe7c",
+      "record_name": "500 rúpias",
+      "record_years": "1997-2003"
+    },
+    {
+      "status": "connected",
+      "source": "interactive",
+      "denomination": "500 rúpias",
+      "issuePeriod": "2003",
+      "ucoinUrl": "https://pt.ucoin.net/coin/indonesia-500-rupiah-2003/?tid=25064",
+      "apiUrl": "https://base44.app/api/apps/69f12d4bf0bb6ef2f9eaa84e/entities/Coin/69f1caabb432eba07045c473",
+      "record_name": "500 rúpias",
+      "record_years": "2003"
+    },
+    {
+      "status": "connected",
+      "source": "interactive",
+      "denomination": "500 rúpias",
+      "issuePeriod": "2016",
+      "ucoinUrl": "https://pt.ucoin.net/coin/indonesia-500-rupiah-2016/?tid=67431",
+      "apiUrl": "https://base44.app/api/apps/69f12d4bf0bb6ef2f9eaa84e/entities/Coin/69f1cacd82e75e8740a9ad31",
+      "record_name": "500 rúpias",
+      "record_years": "2016"
+    }
+  ]
+}
