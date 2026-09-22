@@ -1254,12 +1254,55 @@ def menu_atualizar_site() -> None:
         input("\nCarrega Enter para continuar...")
 
 
+def action_collect_presscoins_souvenirs() -> None:
+    title("Recolher souvenirs do Presscoins")
+    print("Cria um catálogo pendente e uma pré-visualização. Não altera o Site Base44.")
+
+    location = ask_text("Localização no Presscoins", "Magic Kingdom")
+    search = ask_text("Pesquisa (ex: 2026)", "2026")
+    city = ask_text("Cidade para o Site Base44", "Orlando")
+    if not location or not search or not city:
+        print("Localização, pesquisa e cidade são obrigatórias.")
+        return
+
+    command = [
+        sys.executable,
+        "-m",
+        "scripts.presscoins_souvenirs",
+        "--location",
+        location,
+        "--search",
+        search,
+        "--city",
+        city,
+    ]
+    run_step("Recolher souvenirs do Presscoins", command)
+
+
+def menu_souvenirs() -> None:
+    while True:
+        title("Souvenirs")
+        print("1) Recolher do Presscoins e criar pré-visualização")
+        print("2) Voltar")
+
+        choice = ask_text("Escolhe uma opção", "1")
+        if choice == "1":
+            action_collect_presscoins_souvenirs()
+        elif choice == "2":
+            return
+        else:
+            print("Opção inválida.")
+
+        input("\nCarrega Enter para continuar...")
+
+
 def menu() -> None:
     while True:
         title("uCoin to MySite - Menu principal")
         print("1) Pré-requisitos")
         print("2) Importar do uCoin")
         print("3) Atualizar Site Base44")
+        print("4) Souvenirs")
         print("0) Sair")
 
         choice = ask_text("Escolhe uma opcao", "1")
@@ -1269,6 +1312,8 @@ def menu() -> None:
             menu_importar_ucoin()
         elif choice == "3":
             menu_atualizar_site()
+        elif choice == "4":
+            menu_souvenirs()
         elif choice == "0":
             print("A sair.")
             return

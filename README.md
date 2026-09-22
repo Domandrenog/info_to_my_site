@@ -2,6 +2,8 @@
 
 Pipeline em Python para recolher moedas do uCoin por país, transformar o catálogo num JSON simples para a app, classificar a disponibilidade com ajuda externa e importar os resultados para a Base44.
 
+Também inclui um fluxo separado para recolher moedas prensadas do Presscoins como souvenirs, com pré-visualização local e sem escrever automaticamente no Site Base44.
+
 ```mermaid
 flowchart LR
 	subgraph S1["1. Abrir browser"]
@@ -66,6 +68,35 @@ info/
 ```
 
 Os nomes das pastas usam slugs sem acentos. Quando o país já é conhecido, o continente é escolhido automaticamente. Para um país novo, usa `--continent`, por exemplo `--continent Ásia`.
+
+Os souvenirs ficam separados das moedas normais:
+
+```text
+info/
+└── souvenirs/
+    └── america/
+        └── eua/
+            └── orlando/
+                └── magic-kingdom/
+                    └── 2026/
+                        ├── presscoins-catalog.json
+                        └── preview.html
+```
+
+## Recolher souvenirs do Presscoins
+
+No menu principal escolhe `Souvenirs > Recolher do Presscoins e criar pré-visualização` ou executa diretamente:
+
+```bash
+python3 -m scripts.presscoins_souvenirs --location "Magic Kingdom" --search 2026
+```
+
+O fluxo recolhe os dados apresentados na pesquisa, usa o URL da fotografia grande do Presscoins em `image_front` e gera:
+
+- `presscoins-catalog.json`: dados de origem e payload `Souvenir` pendente;
+- `preview.html`: grelha visual para confirmar nomes, locais e fotografias.
+
+O catálogo fica com `status: pending_review` e `base44_updated: false`. Esta etapa não descarrega as imagens nem escreve no Site Base44. As fotografias continuam referenciadas pelo URL de origem para poderem ser tratadas por um fluxo externo depois da revisão.
 
 ## Fluxo Rápido
 

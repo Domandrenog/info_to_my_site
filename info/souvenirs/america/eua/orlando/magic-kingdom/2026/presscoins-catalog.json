@@ -1,0 +1,284 @@
+{
+  "status": "pending_review",
+  "base44_updated": false,
+  "source": {
+    "site": "Presscoins",
+    "query_url": "https://www.presscoins.com/search/?availability=All&locations=Magic+Kingdom&search=2026&limit=50&sort=catalog&cointype=All&Submit=Search",
+    "location": "Magic Kingdom",
+    "search": "2026",
+    "retrieved_at": "2026-09-22T10:09:07+00:00",
+    "result_count": 9
+  },
+  "items": [
+    {
+      "source": {
+        "catalog_number": "WDW26004",
+        "location": "Magic Kingdom, Tony's Town Square Restaurant",
+        "description": "Minnie above and behind a \"2026\" sign facing right with arms outstretched",
+        "position": "3",
+        "coin_type": "Cent",
+        "orientation": "V",
+        "availability": "Current",
+        "image_url": "https://www.presscoins.com/images/coin_images/Magic%20Kingdom/large/WDW26004.jpg",
+        "thumbnail_url": "https://www.presscoins.com/images/coin_images/Magic%20Kingdom/small/WDW26004.gif"
+      },
+      "souvenir": {
+        "name": "Minnie — 2026",
+        "continent": "América",
+        "country": "Estados Unidos da América",
+        "city": "Orlando",
+        "type": "pressed",
+        "condition": "Não Tenho",
+        "location_name": "Magic Kingdom — Tony's Town Square Restaurant",
+        "description": "Minnie above and behind a \"2026\" sign facing right with arms outstretched",
+        "display_shape": "oval",
+        "image_front": "https://www.presscoins.com/images/coin_images/Magic%20Kingdom/large/WDW26004.jpg",
+        "image_back": "",
+        "notes": "Catálogo Presscoins: WDW26004 · Posição: 3 · Tipo de moeda: Cent · Orientação: vertical · Disponibilidade: disponível",
+        "reference_url": "https://www.presscoins.com/search/?availability=All&locations=All&search=WDW26004&limit=50&sort=catalog&cointype=All&Submit=Search",
+        "ordem": 1,
+        "hidden": false
+      }
+    },
+    {
+      "source": {
+        "catalog_number": "WDW26011",
+        "location": "Magic Kingdom, Emporium #1",
+        "description": "Minnie & Mickey standing close together on left with the year \"2026\" split in half on the right with \"20\" on top and \"26\" on bottom",
+        "position": "1",
+        "coin_type": "Cent",
+        "orientation": "H",
+        "availability": "Current",
+        "image_url": "https://www.presscoins.com/images/coin_images/Magic%20Kingdom/large/WDW26011.jpg",
+        "thumbnail_url": "https://www.presscoins.com/images/coin_images/Magic%20Kingdom/small/WDW26011.gif"
+      },
+      "souvenir": {
+        "name": "Minnie & Mickey — 2026",
+        "continent": "América",
+        "country": "Estados Unidos da América",
+        "city": "Orlando",
+        "type": "pressed",
+        "condition": "Não Tenho",
+        "location_name": "Magic Kingdom — Emporium #1",
+        "description": "Minnie & Mickey standing close together on left with the year \"2026\" split in half on the right with \"20\" on top and \"26\" on bottom",
+        "display_shape": "oval",
+        "image_front": "https://www.presscoins.com/images/coin_images/Magic%20Kingdom/large/WDW26011.jpg",
+        "image_back": "",
+        "notes": "Catálogo Presscoins: WDW26011 · Posição: 1 · Tipo de moeda: Cent · Orientação: horizontal · Disponibilidade: disponível",
+        "reference_url": "https://www.presscoins.com/search/?availability=All&locations=All&search=WDW26011&limit=50&sort=catalog&cointype=All&Submit=Search",
+        "ordem": 2,
+        "hidden": false
+      }
+    },
+    {
+      "source": {
+        "catalog_number": "WDW26012",
+        "location": "Magic Kingdom, Emporium #1",
+        "description": "Daisy looking right above and behind a \"2026\" sign at bottom",
+        "position": "2",
+        "coin_type": "Cent",
+        "orientation": "V",
+        "availability": "Current",
+        "image_url": "https://www.presscoins.com/images/coin_images/Magic%20Kingdom/large/WDW26012.jpg",
+        "thumbnail_url": "https://www.presscoins.com/images/coin_images/Magic%20Kingdom/small/WDW26012.gif"
+      },
+      "souvenir": {
+        "name": "Daisy — 2026",
+        "continent": "América",
+        "country": "Estados Unidos da América",
+        "city": "Orlando",
+        "type": "pressed",
+        "condition": "Não Tenho",
+        "location_name": "Magic Kingdom — Emporium #1",
+        "description": "Daisy looking right above and behind a \"2026\" sign at bottom",
+        "display_shape": "oval",
+        "image_front": "https://www.presscoins.com/images/coin_images/Magic%20Kingdom/large/WDW26012.jpg",
+        "image_back": "",
+        "notes": "Catálogo Presscoins: WDW26012 · Posição: 2 · Tipo de moeda: Cent · Orientação: vertical · Disponibilidade: disponível",
+        "reference_url": "https://www.presscoins.com/search/?availability=All&locations=All&search=WDW26012&limit=50&sort=catalog&cointype=All&Submit=Search",
+        "ordem": 3,
+        "hidden": false
+      }
+    },
+    {
+      "source": {
+        "catalog_number": "WDW26013",
+        "location": "Magic Kingdom, Emporium #1",
+        "description": "Pluto walking right above a \"2026\" sign at bottom",
+        "position": "3",
+        "coin_type": "Cent",
+        "orientation": "V",
+        "availability": "Current",
+        "image_url": "https://www.presscoins.com/images/coin_images/Magic%20Kingdom/large/WDW26013.jpg",
+        "thumbnail_url": "https://www.presscoins.com/images/coin_images/Magic%20Kingdom/small/WDW26013.gif"
+      },
+      "souvenir": {
+        "name": "Pluto — 2026",
+        "continent": "América",
+        "country": "Estados Unidos da América",
+        "city": "Orlando",
+        "type": "pressed",
+        "condition": "Não Tenho",
+        "location_name": "Magic Kingdom — Emporium #1",
+        "description": "Pluto walking right above a \"2026\" sign at bottom",
+        "display_shape": "oval",
+        "image_front": "https://www.presscoins.com/images/coin_images/Magic%20Kingdom/large/WDW26013.jpg",
+        "image_back": "",
+        "notes": "Catálogo Presscoins: WDW26013 · Posição: 3 · Tipo de moeda: Cent · Orientação: vertical · Disponibilidade: disponível",
+        "reference_url": "https://www.presscoins.com/search/?availability=All&locations=All&search=WDW26013&limit=50&sort=catalog&cointype=All&Submit=Search",
+        "ordem": 4,
+        "hidden": false
+      }
+    },
+    {
+      "source": {
+        "catalog_number": "WDW26014",
+        "location": "Magic Kingdom, Emporium #1",
+        "description": "Donald above and behind a \"2026\" sign with arms raised out, larger and fewer border dots than WDW26005",
+        "position": "4",
+        "coin_type": "Cent",
+        "orientation": "V",
+        "availability": "Current",
+        "image_url": "https://www.presscoins.com/images/coin_images/Magic%20Kingdom/large/WDW26014.jpg",
+        "thumbnail_url": "https://www.presscoins.com/images/coin_images/Magic%20Kingdom/small/WDW26014.gif"
+      },
+      "souvenir": {
+        "name": "Donald — 2026",
+        "continent": "América",
+        "country": "Estados Unidos da América",
+        "city": "Orlando",
+        "type": "pressed",
+        "condition": "Não Tenho",
+        "location_name": "Magic Kingdom — Emporium #1",
+        "description": "Donald above and behind a \"2026\" sign with arms raised out, larger and fewer border dots than WDW26005",
+        "display_shape": "oval",
+        "image_front": "https://www.presscoins.com/images/coin_images/Magic%20Kingdom/large/WDW26014.jpg",
+        "image_back": "",
+        "notes": "Catálogo Presscoins: WDW26014 · Posição: 4 · Tipo de moeda: Cent · Orientação: vertical · Disponibilidade: disponível",
+        "reference_url": "https://www.presscoins.com/search/?availability=All&locations=All&search=WDW26014&limit=50&sort=catalog&cointype=All&Submit=Search",
+        "ordem": 5,
+        "hidden": false
+      }
+    },
+    {
+      "source": {
+        "catalog_number": "WDW26015",
+        "location": "Magic Kingdom, Emporium #2",
+        "description": "Minnie above and behind a \"2026\" sign facing right with arms outstretched",
+        "position": "1",
+        "coin_type": "Cent",
+        "orientation": "V",
+        "availability": "Current",
+        "image_url": "https://www.presscoins.com/images/coin_images/Magic%20Kingdom/large/WDW26015.jpg",
+        "thumbnail_url": "https://www.presscoins.com/images/coin_images/Magic%20Kingdom/small/WDW26015.gif"
+      },
+      "souvenir": {
+        "name": "Minnie — 2026",
+        "continent": "América",
+        "country": "Estados Unidos da América",
+        "city": "Orlando",
+        "type": "pressed",
+        "condition": "Não Tenho",
+        "location_name": "Magic Kingdom — Emporium #2",
+        "description": "Minnie above and behind a \"2026\" sign facing right with arms outstretched",
+        "display_shape": "oval",
+        "image_front": "https://www.presscoins.com/images/coin_images/Magic%20Kingdom/large/WDW26015.jpg",
+        "image_back": "",
+        "notes": "Catálogo Presscoins: WDW26015 · Posição: 1 · Tipo de moeda: Cent · Orientação: vertical · Disponibilidade: disponível",
+        "reference_url": "https://www.presscoins.com/search/?availability=All&locations=All&search=WDW26015&limit=50&sort=catalog&cointype=All&Submit=Search",
+        "ordem": 6,
+        "hidden": false
+      }
+    },
+    {
+      "source": {
+        "catalog_number": "WDW26016",
+        "location": "Magic Kingdom, Emporium #2",
+        "description": "Mickey above and behind a \"2026\" sign facing right with arm outstretched",
+        "position": "2",
+        "coin_type": "Cent",
+        "orientation": "V",
+        "availability": "Current",
+        "image_url": "https://www.presscoins.com/images/coin_images/Magic%20Kingdom/large/WDW26016.jpg",
+        "thumbnail_url": "https://www.presscoins.com/images/coin_images/Magic%20Kingdom/small/WDW26016.gif"
+      },
+      "souvenir": {
+        "name": "Mickey — 2026",
+        "continent": "América",
+        "country": "Estados Unidos da América",
+        "city": "Orlando",
+        "type": "pressed",
+        "condition": "Não Tenho",
+        "location_name": "Magic Kingdom — Emporium #2",
+        "description": "Mickey above and behind a \"2026\" sign facing right with arm outstretched",
+        "display_shape": "oval",
+        "image_front": "https://www.presscoins.com/images/coin_images/Magic%20Kingdom/large/WDW26016.jpg",
+        "image_back": "",
+        "notes": "Catálogo Presscoins: WDW26016 · Posição: 2 · Tipo de moeda: Cent · Orientação: vertical · Disponibilidade: disponível",
+        "reference_url": "https://www.presscoins.com/search/?availability=All&locations=All&search=WDW26016&limit=50&sort=catalog&cointype=All&Submit=Search",
+        "ordem": 7,
+        "hidden": false
+      }
+    },
+    {
+      "source": {
+        "catalog_number": "WDW26017",
+        "location": "Magic Kingdom, Emporium #2",
+        "description": "Cinderella Castle above and behind a \"2026\" sign at bottom",
+        "position": "3",
+        "coin_type": "Cent",
+        "orientation": "V",
+        "availability": "Current",
+        "image_url": "https://www.presscoins.com/images/coin_images/Magic%20Kingdom/large/WDW26017.jpg",
+        "thumbnail_url": "https://www.presscoins.com/images/coin_images/Magic%20Kingdom/small/WDW26017.gif"
+      },
+      "souvenir": {
+        "name": "Cinderella Castle — 2026",
+        "continent": "América",
+        "country": "Estados Unidos da América",
+        "city": "Orlando",
+        "type": "pressed",
+        "condition": "Não Tenho",
+        "location_name": "Magic Kingdom — Emporium #2",
+        "description": "Cinderella Castle above and behind a \"2026\" sign at bottom",
+        "display_shape": "oval",
+        "image_front": "https://www.presscoins.com/images/coin_images/Magic%20Kingdom/large/WDW26017.jpg",
+        "image_back": "",
+        "notes": "Catálogo Presscoins: WDW26017 · Posição: 3 · Tipo de moeda: Cent · Orientação: vertical · Disponibilidade: disponível",
+        "reference_url": "https://www.presscoins.com/search/?availability=All&locations=All&search=WDW26017&limit=50&sort=catalog&cointype=All&Submit=Search",
+        "ordem": 8,
+        "hidden": false
+      }
+    },
+    {
+      "source": {
+        "catalog_number": "WDW26018",
+        "location": "Magic Kingdom, Emporium #2",
+        "description": "Goofy looking right above and behind a \"2026\" sign with arm raised up and out",
+        "position": "4",
+        "coin_type": "Cent",
+        "orientation": "V",
+        "availability": "Current",
+        "image_url": "https://www.presscoins.com/images/coin_images/Magic%20Kingdom/large/WDW26018.jpg",
+        "thumbnail_url": "https://www.presscoins.com/images/coin_images/Magic%20Kingdom/small/WDW26018.gif"
+      },
+      "souvenir": {
+        "name": "Goofy — 2026",
+        "continent": "América",
+        "country": "Estados Unidos da América",
+        "city": "Orlando",
+        "type": "pressed",
+        "condition": "Não Tenho",
+        "location_name": "Magic Kingdom — Emporium #2",
+        "description": "Goofy looking right above and behind a \"2026\" sign with arm raised up and out",
+        "display_shape": "oval",
+        "image_front": "https://www.presscoins.com/images/coin_images/Magic%20Kingdom/large/WDW26018.jpg",
+        "image_back": "",
+        "notes": "Catálogo Presscoins: WDW26018 · Posição: 4 · Tipo de moeda: Cent · Orientação: vertical · Disponibilidade: disponível",
+        "reference_url": "https://www.presscoins.com/search/?availability=All&locations=All&search=WDW26018&limit=50&sort=catalog&cointype=All&Submit=Search",
+        "ordem": 9,
+        "hidden": false
+      }
+    }
+  ]
+}
