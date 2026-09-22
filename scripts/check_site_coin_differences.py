@@ -881,7 +881,26 @@ def compare_country(
     if check_api:
         api_country = api_country_name(country_slug, country_name)
         if api_records_by_country is None:
-            api_records, _ = api_records_for_country(api_country)
+            api_records, api_error = api_records_for_country(api_country)
+            if api_records is None:
+                result = {
+                    "country": country_slug,
+                    "country_name": country_name,
+                    "summary": {
+                        "coins": [],
+                        "total_coins": 0,
+                        "total_issues": 0,
+                        "by_type": {},
+                    },
+                    "coins_with_issues": [],
+                    "error": (
+                        "Não foi possível consultar o Site Base44: "
+                        f"{api_error or 'erro desconhecido'}"
+                    ),
+                }
+                if include_warnings:
+                    result["coins_with_warnings"] = []
+                return result
         else:
             api_records = api_records_by_country.get(slugify(api_country), [])
         if api_records is not None:

@@ -373,6 +373,56 @@ class CheckSiteCoinDifferencesOutputTests(unittest.TestCase):
 
         self.assertEqual(self.render(report), "Pais Teste: error\n- Catalog not found")
 
+    @patch(
+        "scripts.check_site_coin_differences.api_records_for_country",
+        return_value=(None, "network unavailable"),
+    )
+    def test_country_api_failure_is_reported_instead_of_no_differences(
+        self,
+        _api_records_for_country,
+    ) -> None:
+        with tempfile.TemporaryDirectory() as temp_dir:
+            root = Path(temp_dir)
+            paises_dir = root / "paises"
+            country_dir = paises_dir / "asia" / "malasia"
+            country_dir.mkdir(parents=True)
+            (country_dir / "app-catalog.json").write_text(
+                json.dumps({"country": "Malásia", "periods": []}),
+                encoding="utf-8",
+            )
+            all_coins_dir = root / "All_Coins"
+            image_dir = (
+                all_coins_dir
+                / "fotos"
+                / "paises"
+                / "Asia"
+                / "Malasia"
+                / "normal"
+            )
+            image_dir.mkdir(parents=True)
+            (image_dir / "links-internos.txt").write_text("", encoding="utf-8")
+            (image_dir / "links-externos.txt").write_text("", encoding="utf-8")
+
+            report = compare_country(
+                paises_dir,
+                all_coins_dir,
+                "malasia",
+                "app-catalog.json",
+                include_markdown_as_issue=False,
+                check_api=True,
+                include_warnings=False,
+            )
+
+        self.assertEqual(
+            report["error"],
+            "Não foi possível consultar o Site Base44: network unavailable",
+        )
+        self.assertEqual(
+            self.render(report),
+            "Malásia: error\n"
+            "- Não foi possível consultar o Site Base44: network unavailable",
+        )
+
     def test_text_report_hides_countries_without_issues(self) -> None:
         report = {
             "country": "sri-lanka",
