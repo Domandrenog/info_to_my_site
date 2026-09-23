@@ -1381,19 +1381,32 @@ def menu_pennycollector_kennedy_space_center() -> None:
         input("\nCarrega Enter para continuar...")
 
 
-def menu_souvenirs_usa() -> None:
+def menu_presscoins_usa() -> None:
     while True:
-        title("Souvenirs — USA")
-        print("1) PressedCoins Disney Orlando")
-        print("2) PennyCollector Kennedy Space Center")
-        print("3) Voltar")
+        title("Presscoins — USA")
+        print("1) Disney Orlando")
+        print("2) Voltar")
 
         choice = ask_text("Escolhe uma opção", "1")
         if choice == "1":
             menu_pressedcoins_disney_orlando()
         elif choice == "2":
+            return
+        else:
+            print("Opção inválida.")
+            input("\nCarrega Enter para continuar...")
+
+
+def menu_pennycollector() -> None:
+    while True:
+        title("PennyCollector.com")
+        print("1) Kennedy Space Center")
+        print("2) Voltar")
+
+        choice = ask_text("Escolhe uma opção", "1")
+        if choice == "1":
             menu_pennycollector_kennedy_space_center()
-        elif choice == "3":
+        elif choice == "2":
             return
         else:
             print("Opção inválida.")
@@ -1403,13 +1416,16 @@ def menu_souvenirs_usa() -> None:
 def menu_souvenirs() -> None:
     while True:
         title("Souvenirs")
-        print("1) USA")
-        print("2) Voltar")
+        print("1) Presscoins — USA")
+        print("2) PennyCollector.com")
+        print("3) Voltar")
 
         choice = ask_text("Escolhe uma opção", "1")
         if choice == "1":
-            menu_souvenirs_usa()
+            menu_presscoins_usa()
         elif choice == "2":
+            menu_pennycollector()
+        elif choice == "3":
             return
         else:
             print("Opção inválida.")

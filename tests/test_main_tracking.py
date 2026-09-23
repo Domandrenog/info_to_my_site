@@ -89,34 +89,35 @@ class MainTrackingActionTests(unittest.TestCase):
         self.assertIn("4) Atualizar Site Base44", output.getvalue())
         update_site_menu.assert_called_once_with()
 
-    @patch("main.menu_souvenirs_usa")
+    @patch("main.menu_presscoins_usa")
     @patch("main.title")
-    @patch("main.ask_text", side_effect=["1", "2"])
-    def test_souvenirs_menu_groups_sources_by_country(
+    @patch("main.ask_text", side_effect=["1", "3"])
+    def test_souvenirs_menu_groups_entries_by_source_site(
         self,
         _ask_text,
         _title,
-        usa_menu,
+        presscoins_menu,
     ) -> None:
         with redirect_stdout(io.StringIO()) as output:
             main.menu_souvenirs()
 
-        self.assertIn("1) USA", output.getvalue())
-        usa_menu.assert_called_once_with()
+        self.assertIn("1) Presscoins — USA", output.getvalue())
+        self.assertIn("2) PennyCollector.com", output.getvalue())
+        presscoins_menu.assert_called_once_with()
 
     @patch("main.menu_pressedcoins_disney_orlando")
     @patch("main.title")
-    @patch("main.ask_text", side_effect=["1", "3"])
-    def test_usa_souvenirs_menu_exposes_disney_pressed_coins(
+    @patch("main.ask_text", side_effect=["1", "2"])
+    def test_presscoins_menu_exposes_disney_orlando(
         self,
         _ask_text,
         _title,
         pressedcoins_menu,
     ) -> None:
         with redirect_stdout(io.StringIO()) as output:
-            main.menu_souvenirs_usa()
+            main.menu_presscoins_usa()
 
-        self.assertIn("1) PressedCoins Disney Orlando", output.getvalue())
+        self.assertIn("1) Disney Orlando", output.getvalue())
         pressedcoins_menu.assert_called_once_with()
 
     @patch("main.run_step", return_value=0)
@@ -131,17 +132,17 @@ class MainTrackingActionTests(unittest.TestCase):
 
     @patch("main.menu_pennycollector_kennedy_space_center")
     @patch("main.title")
-    @patch("main.ask_text", side_effect=["2", "3"])
-    def test_usa_souvenirs_menu_exposes_kennedy_space_center(
+    @patch("main.ask_text", side_effect=["1", "2"])
+    def test_pennycollector_menu_exposes_kennedy_space_center(
         self,
         _ask_text,
         _title,
         pennycollector_menu,
     ) -> None:
         with redirect_stdout(io.StringIO()) as output:
-            main.menu_souvenirs_usa()
+            main.menu_pennycollector()
 
-        self.assertIn("2) PennyCollector Kennedy Space Center", output.getvalue())
+        self.assertIn("1) Kennedy Space Center", output.getvalue())
         pennycollector_menu.assert_called_once_with()
 
     def test_unconfirmed_associations_are_grouped_by_country(self) -> None:
