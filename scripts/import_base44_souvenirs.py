@@ -124,6 +124,13 @@ def catalogue_records(catalog: dict[str, Any]) -> list[dict[str, Any]]:
     for index, item in enumerate(catalog["items"], start=1):
         if not isinstance(item, dict) or not isinstance(item.get("souvenir"), dict):
             raise ValueError(f"Item {index}: objeto souvenir em falta.")
+        review_status = str(item.get("review_status") or "").casefold()
+        if review_status in {"skipped", "rejected"}:
+            continue
+        if review_status and review_status != "approved":
+            raise ValueError(
+                f"Item {index}: decisão de revisão ainda pendente: {review_status}."
+            )
         records.append(validate_record(item["souvenir"], index))
     duplicate_keys: set[tuple[str, ...]] = set()
     seen: set[tuple[str, ...]] = set()
@@ -173,6 +180,33 @@ def presscoins_catalog_number(record: dict[str, Any]) -> str:
     return match.group(1).upper() if match else ""
 
 
+def pennycollector_identity(record: dict[str, Any]) -> tuple[str, ...] | None:
+    reference = str(record.get("reference_url") or "")
+    parsed = urlparse(reference)
+    if not parsed.netloc.casefold().endswith("pennycollector.com"):
+        return None
+    locations = parse_qs(parsed.query).get("location", [])
+    location_id = locations[0].strip() if locations else ""
+    machine = ""
+    position = ""
+    fragment_match = re.fullmatch(
+        r"machine-(\d+)-position-(\d+)", parsed.fragment, flags=re.IGNORECASE
+    )
+    if fragment_match:
+        machine, position = fragment_match.groups()
+    else:
+        notes_match = re.search(
+            r"Machine\s+(\d+).*?Posição\s+(\d+)",
+            str(record.get("notes") or ""),
+            flags=re.IGNORECASE,
+        )
+        if notes_match:
+            machine, position = notes_match.groups()
+    if location_id and machine and position:
+        return ("pennycollector", location_id, machine, position)
+    return None
+
+
 def fallback_identity(record: dict[str, Any]) -> tuple[str, ...]:
     return (
         "fields",
@@ -184,6 +218,12 @@ def fallback_identity(record: dict[str, Any]) -> tuple[str, ...]:
 
 
 def preferred_identity(record: dict[str, Any]) -> tuple[str, ...]:
+    pennycollector = pennycollector_identity(record)
+    if pennycollector is not None:
+        return pennycollector
+    reference_url = str(record.get("reference_url") or "").strip()
+    if urlparse(reference_url).netloc.casefold().endswith("pennycollector.com"):
+        return fallback_identity(record)
     catalog_number = presscoins_catalog_number(record)
     if catalog_number:
         return ("presscoins", catalog_number.casefold())

@@ -1,0 +1,282 @@
+#!/usr/bin/env python3
+"""Review PennyCollector souvenirs and produce an import-ready catalogue."""
+
+from __future__ import annotations
+
+import argparse
+import copy
+import html
+import json
+import sys
+from datetime import datetime, timezone
+from pathlib import Path
+from typing import Any
+from urllib.parse import urlsplit, urlunsplit
+
+
+SHARED_PHOTO_NOTE = "Fotografia provisória partilhada da máquina"
+APPROVED = "approved"
+SKIPPED = "skipped"
+PENDING = "pending"
+
+
+def read_catalog(path: Path) -> dict[str, Any]:
+    payload = json.loads(path.read_text(encoding="utf-8"))
+    if not isinstance(payload, dict) or not isinstance(payload.get("items"), list):
+        raise ValueError("O catálogo PennyCollector não contém uma lista items.")
+    source = payload.get("source", {})
+    if source.get("site") != "PennyCollector":
+        raise ValueError("Este ficheiro não é um catálogo PennyCollector.")
+    return payload
+
+
+def default_output_path(input_path: Path) -> Path:
+    return input_path.with_name("pennycollector-catalog-final.json")
+
+
+def item_key(item: dict[str, Any], index: int) -> str:
+    source = item.get("source", {})
+    location_id = str(source.get("location_id") or "")
+    machine = str(source.get("machine_number") or "")
+    position = str(source.get("position") or "")
+    if location_id and machine and position:
+        return f"{location_id}:{machine}:{position}"
+    return f"index:{index}"
+
+
+def unique_reference_url(item: dict[str, Any]) -> str:
+    source = item.get("source", {})
+    souvenir = item.get("souvenir", {})
+    reference_url = str(souvenir.get("reference_url") or "")
+    machine = str(source.get("machine_number") or "")
+    position = str(source.get("position") or "")
+    if not reference_url or not machine or not position:
+        return reference_url
+    parsed = urlsplit(reference_url)
+    fragment = f"machine-{machine}-position-{position}"
+    return urlunsplit((parsed.scheme, parsed.netloc, parsed.path, parsed.query, fragment))
+
+
+def prepare_approved_item(item: dict[str, Any], *, name: str = "") -> None:
+    souvenir = item["souvenir"]
+    if name:
+        souvenir["name"] = name.strip()
+    if not str(souvenir.get("name") or "").strip():
+        raise ValueError("O nome do souvenir não pode ficar vazio.")
+    source = item.get("source", {})
+    if source.get("image_scope") == "machine" and souvenir.get("image_front"):
+        notes = str(souvenir.get("notes") or "").strip()
+        if SHARED_PHOTO_NOTE.casefold() not in notes.casefold():
+            souvenir["notes"] = " · ".join(part for part in (notes, SHARED_PHOTO_NOTE) if part)
+    souvenir["reference_url"] = unique_reference_url(item)
+    item["review_status"] = APPROVED
+
+
+def merge_previous_review(
+    catalog: dict[str, Any], previous: dict[str, Any] | None
+) -> dict[str, Any]:
+    working = copy.deepcopy(catalog)
+    if not previous:
+        return working
+    previous_by_key = {
+        item_key(item, index): item
+        for index, item in enumerate(previous.get("items", []), start=1)
+        if isinstance(item, dict)
+    }
+    for index, item in enumerate(working["items"], start=1):
+        reviewed = previous_by_key.get(item_key(item, index))
+        if not reviewed:
+            continue
+        status = str(reviewed.get("review_status") or PENDING)
+        if status in {APPROVED, SKIPPED}:
+            item["review_status"] = status
+            if status == APPROVED and isinstance(reviewed.get("souvenir"), dict):
+                item["souvenir"] = copy.deepcopy(reviewed["souvenir"])
+    return working
+
+
+def review_summary(catalog: dict[str, Any]) -> dict[str, int]:
+    counts = {APPROVED: 0, SKIPPED: 0, PENDING: 0}
+    for item in catalog["items"]:
+        status = str(item.get("review_status") or PENDING)
+        counts[status if status in counts else PENDING] += 1
+    return counts
+
+
+def update_catalog_status(catalog: dict[str, Any]) -> dict[str, int]:
+    summary = review_summary(catalog)
+    complete = summary[PENDING] == 0
+    catalog["status"] = "ready_for_import" if complete else "review_in_progress"
+    catalog["import_ready"] = complete
+    catalog["base44_updated"] = False
+    catalog["review"] = {
+        "approved": summary[APPROVED],
+        "skipped": summary[SKIPPED],
+        "pending": summary[PENDING],
+        "completed": complete,
+        "updated_at": datetime.now(timezone.utc).isoformat(timespec="seconds"),
+        "shared_machine_photos_accepted_as_temporary": True,
+    }
+    return summary
+
+
+def review_html(catalog: dict[str, Any]) -> str:
+    cards: list[str] = []
+    labels = {APPROVED: "Aprovado", SKIPPED: "Não importar", PENDING: "Pendente"}
+    for item in catalog["items"]:
+        source = item.get("source", {})
+        souvenir = item.get("souvenir", {})
+        status = str(item.get("review_status") or PENDING)
+        image_url = str(souvenir.get("image_front") or "")
+        image = (
+            f'<a href="{html.escape(image_url)}"><img src="{html.escape(image_url)}" '
+            f'alt="{html.escape(str(souvenir.get("name") or ""))}"></a>'
+            if image_url
+            else '<div class="missing">Sem fotografia</div>'
+        )
+        cards.append(
+            "".join(
+                [
+                    f'<article class="card {status}">',
+                    image,
+                    f'<p class="status">{labels.get(status, status)}</p>',
+                    f'<h2>{html.escape(str(souvenir.get("name") or ""))}</h2>',
+                    f'<p>Machine {source.get("machine_number", "?")} · Posição {source.get("position", "?")}</p>',
+                    f'<p>{html.escape(str(souvenir.get("description") or ""))}</p>',
+                    "</article>",
+                ]
+            )
+        )
+    summary = catalog["review"]
+    location = catalog.get("source", {}).get("location_name", "PennyCollector")
+    return f"""<!doctype html>
+<html lang="pt"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Revisão PennyCollector — {html.escape(str(location))}</title>
+<style>body{{font:15px/1.4 system-ui,sans-serif;margin:30px;background:#f4f2ed;color:#24221f}}main{{display:grid;gap:18px;grid-template-columns:repeat(auto-fit,minmax(260px,1fr))}}.card{{background:#fff;border:3px solid #ddd;border-radius:12px;padding:15px}}.approved{{border-color:#48a868}}.skipped{{border-color:#999;opacity:.65}}.pending{{border-color:#d79b28}}img{{display:block;height:220px;max-width:100%;margin:auto;object-fit:contain}}.status{{font-weight:700}}.missing{{padding:70px;text-align:center;background:#eee}}</style>
+</head><body><h1>{html.escape(str(location))}</h1>
+<p>{summary['approved']} aprovados · {summary['skipped']} não importar · {summary['pending']} pendentes.</p>
+<p>As fotografias partilhadas das máquinas são provisórias e podem ser recortadas posteriormente.</p>
+<main>{''.join(cards)}</main></body></html>"""
+
+
+def write_review(catalog: dict[str, Any], output_path: Path) -> tuple[Path, Path]:
+    update_catalog_status(catalog)
+    preview_path = output_path.with_name("review.html")
+    output_path.parent.mkdir(parents=True, exist_ok=True)
+    output_path.write_text(
+        json.dumps(catalog, ensure_ascii=False, indent=2) + "\n",
+        encoding="utf-8",
+    )
+    preview_path.write_text(review_html(catalog), encoding="utf-8")
+    return output_path, preview_path
+
+
+def approve_all(catalog: dict[str, Any]) -> None:
+    for item in catalog["items"]:
+        prepare_approved_item(item)
+
+
+def interactive_review(
+    catalog: dict[str, Any], output_path: Path, *, input_fn: Any = input
+) -> dict[str, int]:
+    summary = update_catalog_status(catalog)
+    print(f"Localização: {catalog['source'].get('location_name', '')}")
+    print(
+        f"Aprovados: {summary[APPROVED]} · Não importar: {summary[SKIPPED]} "
+        f"· Pendentes: {summary[PENDING]}"
+    )
+    if not summary[PENDING]:
+        write_review(catalog, output_path)
+        return summary
+
+    print("\n1) Rever pendentes um a um")
+    print("2) Aprovar todos os pendentes com os dados atuais")
+    print("3) Guardar e terminar")
+    mode = str(input_fn("Escolhe uma opção [1]: ")).strip() or "1"
+    if mode == "2":
+        for item in catalog["items"]:
+            if str(item.get("review_status") or PENDING) == PENDING:
+                prepare_approved_item(item)
+        return update_catalog_status(catalog)
+    if mode == "3":
+        write_review(catalog, output_path)
+        return update_catalog_status(catalog)
+    if mode != "1":
+        raise ValueError("Opção inválida.")
+
+    pending_items = [
+        item for item in catalog["items"]
+        if str(item.get("review_status") or PENDING) == PENDING
+    ]
+    for index, item in enumerate(pending_items, start=1):
+        source = item.get("source", {})
+        souvenir = item["souvenir"]
+        print("\n" + "-" * 72)
+        print(f"{index}/{len(pending_items)} — Machine {source.get('machine_number')} · Posição {source.get('position')}")
+        print(f"Nome: {souvenir.get('name', '')}")
+        print(f"Descrição: {souvenir.get('description', '')}")
+        print(f"Fotografia: {souvenir.get('image_front') or 'sem fotografia'}")
+        print(f"Origem: {souvenir.get('reference_url', '')}")
+        print("\n1) Aprovar nome, dados e fotografia atuais")
+        print("2) Editar o nome e aprovar")
+        print("3) Não importar")
+        print("4) Guardar e terminar a revisão")
+        choice = str(input_fn("Escolhe uma opção [1]: ")).strip() or "1"
+        if choice == "1":
+            prepare_approved_item(item)
+        elif choice == "2":
+            name = str(input_fn(f"Nome [{souvenir.get('name', '')}]: ")).strip()
+            prepare_approved_item(item, name=name or str(souvenir.get("name") or ""))
+        elif choice == "3":
+            item["review_status"] = SKIPPED
+        elif choice == "4":
+            write_review(catalog, output_path)
+            return update_catalog_status(catalog)
+        else:
+            print("Opção inválida; a moeda continua pendente.")
+        write_review(catalog, output_path)
+    return update_catalog_status(catalog)
+
+
+def parse_args(argv: list[str] | None = None) -> argparse.Namespace:
+    parser = argparse.ArgumentParser(
+        description="Revê um catálogo PennyCollector e gera o ficheiro aprovado para o Base44."
+    )
+    parser.add_argument("--input", type=Path, required=True)
+    parser.add_argument("--output", type=Path)
+    parser.add_argument("--approve-all", action="store_true")
+    return parser.parse_args(argv)
+
+
+def main(argv: list[str] | None = None) -> int:
+    args = parse_args(argv)
+    output_path = args.output or default_output_path(args.input)
+    try:
+        pending = read_catalog(args.input)
+        previous = read_catalog(output_path) if output_path.is_file() else None
+        catalog = merge_previous_review(pending, previous)
+        if args.approve_all:
+            approve_all(catalog)
+            summary = update_catalog_status(catalog)
+        else:
+            summary = interactive_review(catalog, output_path)
+        output_path, preview_path = write_review(catalog, output_path)
+    except (OSError, ValueError, json.JSONDecodeError) as exc:
+        print(f"Erro: {exc}", file=sys.stderr)
+        return 1
+
+    print(f"\nAprovados: {summary[APPROVED]}")
+    print(f"Não importar: {summary[SKIPPED]}")
+    print(f"Pendentes: {summary[PENDING]}")
+    print(f"Catálogo final: {output_path}")
+    print(f"Revisão: {preview_path}")
+    if catalog["import_ready"]:
+        print("Pronto para verificar e importar no Site Base44.")
+    else:
+        print("Ainda não está pronto para importar; existem decisões pendentes.")
+    print("Site Base44: nenhuma alteração efetuada.")
+    return 0
+
+
+if __name__ == "__main__":
+    raise SystemExit(main())

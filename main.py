@@ -1402,6 +1402,76 @@ def action_collect_pennycollector_area() -> None:
     run_step("Descobrir área e recolher localizações PennyCollector", command)
 
 
+def latest_pennycollector_catalog(filename: str) -> str:
+    root = PROJECT_DIR / "info" / "souvenirs"
+    candidates = list(root.rglob(filename)) if root.is_dir() else []
+    if candidates:
+        latest = max(candidates, key=lambda candidate: candidate.stat().st_mtime)
+        return str(latest.relative_to(PROJECT_DIR))
+    return str(
+        Path("info")
+        / "souvenirs"
+        / "america"
+        / "eua"
+        / "merritt-island"
+        / "kennedy-space-center"
+        / filename
+    )
+
+
+def action_review_pennycollector_souvenirs() -> None:
+    title("PennyCollector.com — Rever e aprovar catálogo")
+    print(
+        "Permite aprovar, corrigir o nome ou excluir cada desenho. "
+        "As fotografias das máquinas seguem provisoriamente para o Site."
+    )
+    input_path = ask_text(
+        "Catálogo pendente",
+        latest_pennycollector_catalog("pennycollector-catalog.json"),
+    )
+    if not input_path:
+        print("Catálogo obrigatório.")
+        return
+    command = [
+        sys.executable,
+        "-m",
+        "scripts.review_pennycollector_souvenirs",
+        "--input",
+        input_path,
+    ]
+    run_step("Rever e aprovar souvenirs PennyCollector", command)
+
+
+def action_import_pennycollector_souvenirs(*, apply: bool) -> None:
+    title(
+        "Importar PennyCollector para o Site Base44"
+        if apply
+        else "Verificar PennyCollector no Site Base44"
+    )
+    input_path = ask_text(
+        "Catálogo final aprovado",
+        latest_pennycollector_catalog("pennycollector-catalog-final.json"),
+    )
+    if not input_path:
+        print("Catálogo obrigatório.")
+        return
+    command = [
+        sys.executable,
+        "-m",
+        "scripts.import_base44_souvenirs",
+        "--input",
+        input_path,
+    ]
+    if apply:
+        command.append("--apply")
+    step_name = (
+        "Importar apenas souvenirs PennyCollector em falta"
+        if apply
+        else "Verificar souvenirs PennyCollector existentes e em falta"
+    )
+    run_step(step_name, command)
+
+
 def menu_pennycollector_kennedy_space_center() -> None:
     while True:
         title("PennyCollector Kennedy Space Center")
@@ -1440,8 +1510,11 @@ def menu_pennycollector() -> None:
         title("PennyCollector.com")
         print("1) Recolher localização por link ou ID")
         print("2) Recolher área por link ou ID")
-        print("3) Kennedy Space Center")
-        print("4) Voltar")
+        print("3) Rever e aprovar catálogo recolhido")
+        print("4) Verificar o que falta no Site Base44")
+        print("5) Importar apenas souvenirs aprovados e em falta")
+        print("6) Kennedy Space Center")
+        print("7) Voltar")
 
         choice = ask_text("Escolhe uma opção", "1")
         if choice == "1":
@@ -1449,8 +1522,14 @@ def menu_pennycollector() -> None:
         elif choice == "2":
             action_collect_pennycollector_area()
         elif choice == "3":
-            menu_pennycollector_kennedy_space_center()
+            action_review_pennycollector_souvenirs()
         elif choice == "4":
+            action_import_pennycollector_souvenirs(apply=False)
+        elif choice == "5":
+            action_import_pennycollector_souvenirs(apply=True)
+        elif choice == "6":
+            menu_pennycollector_kennedy_space_center()
+        elif choice == "7":
             return
         else:
             print("Opção inválida.")

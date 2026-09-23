@@ -115,6 +115,10 @@ class PennyCollectorSouvenirsTests(unittest.TestCase):
         self.assertEqual(first["souvenir"]["location_name"], "Kennedy Space Center")
         self.assertEqual(first["source"]["image_scope"], "machine")
         self.assertIn("shared_machine_photo", first["source"]["review_flags"])
+        self.assertIn("Fotografia provisória partilhada da máquina", first["souvenir"]["notes"])
+        self.assertTrue(
+            first["souvenir"]["reference_url"].endswith("#machine-6-position-1")
+        )
         self.assertIn(
             "missing_orientation", catalog["items"][-1]["source"]["review_flags"]
         )

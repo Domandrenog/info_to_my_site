@@ -34,6 +34,23 @@ def souvenir(**overrides):
     return record
 
 
+def pennycollector_souvenir(position: int, **overrides):
+    record = souvenir()
+    record.update(
+        {
+            "name": f"Design {position}",
+            "location_name": "Kennedy Space Center",
+            "notes": f"Machine 6 · Posição {position} · PennyCollector location 1851",
+            "reference_url": (
+                "http://locations.pennycollector.com/Details.aspx?location=1851"
+                f"#machine-6-position-{position}"
+            ),
+        }
+    )
+    record.update(overrides)
+    return record
+
+
 class ImportBase44SouvenirsTests(unittest.TestCase):
     def test_catalog_explicitly_not_ready_cannot_be_imported(self) -> None:
         with tempfile.TemporaryDirectory() as temp_dir:
@@ -153,6 +170,70 @@ class ImportBase44SouvenirsTests(unittest.TestCase):
 
         self.assertEqual(missing, [])
         self.assertEqual(already_present, [pending])
+
+    def test_pennycollector_designs_on_same_page_have_distinct_identity(self) -> None:
+        first = pennycollector_souvenir(1)
+        second = pennycollector_souvenir(2)
+
+        records = import_base44_souvenirs.catalogue_records(
+            {
+                "items": [
+                    {"review_status": "approved", "souvenir": first},
+                    {"review_status": "approved", "souvenir": second},
+                ]
+            }
+        )
+
+        self.assertEqual(records, [first, second])
+        self.assertNotEqual(
+            import_base44_souvenirs.preferred_identity(first),
+            import_base44_souvenirs.preferred_identity(second),
+        )
+
+    def test_legacy_pennycollector_record_without_position_matches_by_fields(self) -> None:
+        pending = pennycollector_souvenir(1)
+        existing = pennycollector_souvenir(
+            1,
+            notes="",
+            reference_url=(
+                "http://locations.pennycollector.com/Details.aspx?location=1851"
+            ),
+        )
+
+        missing, already_present = import_base44_souvenirs.partition_missing(
+            [pending], [existing]
+        )
+
+        self.assertEqual(missing, [])
+        self.assertEqual(already_present, [pending])
+
+    def test_skipped_review_items_are_not_imported(self) -> None:
+        approved = pennycollector_souvenir(1)
+        skipped = pennycollector_souvenir(2)
+
+        records = import_base44_souvenirs.catalogue_records(
+            {
+                "items": [
+                    {"review_status": "approved", "souvenir": approved},
+                    {"review_status": "skipped", "souvenir": skipped},
+                ]
+            }
+        )
+
+        self.assertEqual(records, [approved])
+
+    def test_pending_review_item_is_rejected_by_importer(self) -> None:
+        with self.assertRaisesRegex(ValueError, "ainda pendente"):
+            import_base44_souvenirs.catalogue_records(
+                {
+                    "items": [
+                        {
+                            "review_status": "pending",
+                            "souvenir": pennycollector_souvenir(1),
+                        }
+                    ]
+                }
+            )
 
     def test_create_missing_records_uses_batches_and_reports_progress(self) -> None:
         class FakeClient:

@@ -161,8 +161,8 @@ class MainTrackingActionTests(unittest.TestCase):
 
     @patch("main.menu_pennycollector_kennedy_space_center")
     @patch("main.title")
-    @patch("main.ask_text", side_effect=["3", "4"])
-    def test_pennycollector_menu_exposes_kennedy_space_center(
+    @patch("main.ask_text", side_effect=["6", "7"])
+    def test_pennycollector_menu_exposes_complete_review_and_import_flow(
         self,
         _ask_text,
         _title,
@@ -171,10 +171,40 @@ class MainTrackingActionTests(unittest.TestCase):
         with redirect_stdout(io.StringIO()) as output:
             main.menu_pennycollector()
 
-        self.assertIn("1) Recolher localização por link ou ID", output.getvalue())
-        self.assertIn("2) Recolher área por link ou ID", output.getvalue())
-        self.assertIn("3) Kennedy Space Center", output.getvalue())
+        menu = output.getvalue()
+        self.assertIn("1) Recolher localização por link ou ID", menu)
+        self.assertIn("2) Recolher área por link ou ID", menu)
+        self.assertIn("3) Rever e aprovar catálogo recolhido", menu)
+        self.assertIn("4) Verificar o que falta no Site Base44", menu)
+        self.assertIn("5) Importar apenas souvenirs aprovados e em falta", menu)
+        self.assertIn("6) Kennedy Space Center", menu)
         pennycollector_menu.assert_called_once_with()
+
+    @patch("main.run_step", return_value=0)
+    @patch("main.title")
+    @patch("main.ask_text", return_value="info/pennycollector-catalog.json")
+    def test_pennycollector_review_uses_separate_approval_step(
+        self, _ask_text, _title, run_step
+    ) -> None:
+        main.action_review_pennycollector_souvenirs()
+
+        command = run_step.call_args.args[1]
+        self.assertIn("scripts.review_pennycollector_souvenirs", command)
+        self.assertIn("info/pennycollector-catalog.json", command)
+        self.assertNotIn("--apply", command)
+
+    @patch("main.run_step", return_value=0)
+    @patch("main.title")
+    @patch("main.ask_text", return_value="info/pennycollector-catalog-final.json")
+    def test_pennycollector_import_requires_final_catalog_and_apply_flag(
+        self, _ask_text, _title, run_step
+    ) -> None:
+        main.action_import_pennycollector_souvenirs(apply=True)
+
+        command = run_step.call_args.args[1]
+        self.assertIn("scripts.import_base44_souvenirs", command)
+        self.assertIn("info/pennycollector-catalog-final.json", command)
+        self.assertIn("--apply", command)
 
     def test_unconfirmed_associations_are_grouped_by_country(self) -> None:
         payload = [

@@ -430,6 +430,14 @@ def build_catalog(
                 "review_flags": review_flags,
             }
         )
+        note_parts = [
+            f"Machine {design.machine_number}",
+            f"Posição {design.position}",
+            f"Orientação {orientation_label}",
+            f"PennyCollector location {location_id}",
+        ]
+        if design.machine_image_url:
+            note_parts.append("Fotografia provisória partilhada da máquina")
         souvenir = {
             "name": display_name(design.description),
             "continent": continent,
@@ -442,11 +450,10 @@ def build_catalog(
             "display_shape": "oval",
             "image_front": design.machine_image_url,
             "image_back": "",
-            "notes": (
-                f"Machine {design.machine_number} · Posição {design.position} · "
-                f"Orientação {orientation_label} · PennyCollector location {location_id}"
+            "notes": " · ".join(note_parts),
+            "reference_url": (
+                f"{source_url}#machine-{design.machine_number}-position-{design.position}"
             ),
-            "reference_url": source_url,
             "ordem": order,
             "hidden": False,
         }
