@@ -9,8 +9,12 @@
     "availability": "1",
     "availability_label": "atuais / disponíveis",
     "page_count": 4,
-    "retrieved_at": "2026-09-22T11:10:07+00:00",
-    "result_count": 185
+    "retrieved_at": "2026-09-22T23:59:45+00:00",
+    "result_count": 187,
+    "manual_catalog_numbers": [
+      "WDW24087",
+      "WDW18031"
+    ]
   },
   "items": [
     {
@@ -5560,6 +5564,66 @@
         "notes": "Frontierland Railroad Station · Posição 8 · Catálogo Presscoins: WDW26085",
         "reference_url": "https://www.presscoins.com/search/?availability=All&locations=All&search=WDW26085&limit=50&sort=catalog&cointype=All&Submit=Search&page=1",
         "ordem": 185,
+        "hidden": false
+      }
+    },
+    {
+      "source": {
+        "catalog_number": "WDW24087",
+        "location": "Magic Kingdom, Frontierland Railroad Station",
+        "description": "Mayra and other critters playing music, \"SOUNDS OF THE BAYOU\" in large lettering at bottom",
+        "position": "1",
+        "coin_type": "Cent",
+        "orientation": "H",
+        "availability": "Retired",
+        "image_url": "https://www.presscoins.com/images/coin_images/Magic%20Kingdom/large/WDW24087.jpg",
+        "thumbnail_url": "https://www.presscoins.com/images/coin_images/Magic%20Kingdom/small/WDW24087.gif"
+      },
+      "souvenir": {
+        "name": "Mayra and other critters",
+        "continent": "América",
+        "country": "EUA",
+        "city": "Orlando",
+        "type": "pressed",
+        "condition": "Não Tenho",
+        "location_name": "Magic Kingdom",
+        "description": "Mayra and other critters playing music, \"SOUNDS OF THE BAYOU\" in large lettering at bottom",
+        "display_shape": "oval",
+        "image_front": "https://www.presscoins.com/images/coin_images/Magic%20Kingdom/large/WDW24087.jpg",
+        "image_back": "",
+        "notes": "Frontierland Railroad Station · Posição 1 · Catálogo Presscoins: WDW24087",
+        "reference_url": "https://www.presscoins.com/search/?availability=All&locations=All&search=WDW24087&limit=50&sort=catalog&cointype=All&Submit=Search&page=1",
+        "ordem": 186,
+        "hidden": false
+      }
+    },
+    {
+      "source": {
+        "catalog_number": "WDW18031",
+        "location": "Magic Kingdom, Plaza del Sol Caribe Bazaar (Near Women's Restroom)",
+        "description": "Silhouette of a pirate ship with a skull and crossbones flag, Disney Pirates of the Caribbean logo at top",
+        "position": "8",
+        "coin_type": "Cent",
+        "orientation": "V",
+        "availability": "Retired",
+        "image_url": "https://www.presscoins.com/images/coin_images/Magic%20Kingdom/large/WDW18031.jpg",
+        "thumbnail_url": "https://www.presscoins.com/images/coin_images/Magic%20Kingdom/small/WDW18031.gif"
+      },
+      "souvenir": {
+        "name": "Silhouette of a pirate ship",
+        "continent": "América",
+        "country": "EUA",
+        "city": "Orlando",
+        "type": "pressed",
+        "condition": "Não Tenho",
+        "location_name": "Magic Kingdom",
+        "description": "Silhouette of a pirate ship with a skull and crossbones flag, Disney Pirates of the Caribbean logo at top",
+        "display_shape": "oval",
+        "image_front": "https://www.presscoins.com/images/coin_images/Magic%20Kingdom/large/WDW18031.jpg",
+        "image_back": "",
+        "notes": "Plaza del Sol Caribe Bazaar (Near Women's Restroom) · Posição 8 · Catálogo Presscoins: WDW18031",
+        "reference_url": "https://www.presscoins.com/search/?availability=All&locations=All&search=WDW18031&limit=50&sort=catalog&cointype=All&Submit=Search&page=1",
+        "ordem": 187,
         "hidden": false
       }
     }

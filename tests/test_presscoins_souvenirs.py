@@ -5,10 +5,12 @@ import unittest
 from pathlib import Path
 
 from scripts.presscoins_souvenirs import (
+    append_manual_coins,
     build_catalog,
     build_search_url,
     collect_search_results,
     default_output_directory,
+    load_manual_catalog_numbers,
     pagination_page_count,
     parse_args,
     parse_search_results,
@@ -68,6 +70,35 @@ def page_html(catalog_number: str, page_options: str = "") -> str:
 
 
 class PresscoinsSouvenirsTests(unittest.TestCase):
+    def test_manual_includes_are_validated_and_deduplicated(self) -> None:
+        with tempfile.TemporaryDirectory() as temp_dir:
+            path = Path(temp_dir) / "manual-includes.json"
+            path.write_text(
+                '{"catalog_numbers": ["wdw24087", "WDW18031", "WDW24087"]}',
+                encoding="utf-8",
+            )
+
+            self.assertEqual(
+                load_manual_catalog_numbers(path), ["WDW24087", "WDW18031"]
+            )
+
+    def test_manual_retired_coin_is_merged_only_once(self) -> None:
+        existing = parse_search_results(SAMPLE_HTML)[0]
+        retired_html = page_html("WDW24087").replace("Current", "Retired")
+
+        merged = append_manual_coins(
+            [existing],
+            ["WDW24087", existing.catalog_number],
+            location="Magic Kingdom",
+            coin_type="All",
+            fetcher=lambda _url: retired_html,
+        )
+
+        self.assertEqual(
+            [coin.catalog_number for coin in merged], ["WDW26011", "WDW24087"]
+        )
+        self.assertEqual(merged[1].availability, "Retired")
+
     def test_default_souvenir_country_matches_base44(self) -> None:
         self.assertEqual(parse_args([]).country, "EUA")
 

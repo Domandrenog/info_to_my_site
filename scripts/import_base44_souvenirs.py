@@ -58,6 +58,12 @@ def parse_args(argv: list[str] | None = None) -> argparse.Namespace:
     parser.add_argument("--apply", action="store_true", help="Permitir criação após confirmação explícita.")
     parser.add_argument("--batch-size", type=int, default=10)
     parser.add_argument("--limit", type=int, default=0, help="Considerar apenas os primeiros N souvenirs.")
+    parser.add_argument(
+        "--catalog-number",
+        action="append",
+        default=[],
+        help="Importar apenas este número de catálogo Presscoins; pode repetir a opção.",
+    )
     parser.add_argument("--request-delay", type=float, default=DEFAULT_REQUEST_DELAY_SECONDS)
     parser.add_argument("--rate-limit-delay", type=float, default=DEFAULT_RATE_LIMIT_DELAY_SECONDS)
     parser.add_argument("--max-retries", type=int, default=DEFAULT_MAX_RETRIES)
@@ -124,6 +130,31 @@ def catalogue_records(catalog: dict[str, Any]) -> list[dict[str, Any]]:
     if duplicate_keys:
         raise ValueError(f"O catálogo contém {len(duplicate_keys)} identidades duplicadas.")
     return records
+
+
+def filter_records_by_catalog_numbers(
+    records: list[dict[str, Any]], requested_values: list[str]
+) -> list[dict[str, Any]]:
+    requested: list[str] = []
+    seen: set[str] = set()
+    for value in requested_values:
+        catalog_number = str(value or "").strip().upper()
+        if not re.fullmatch(r"[A-Z0-9][A-Z0-9-]+", catalog_number):
+            raise ValueError(f"Número de catálogo inválido: {value!r}")
+        if catalog_number not in seen:
+            seen.add(catalog_number)
+            requested.append(catalog_number)
+    if not requested:
+        return records
+    records_by_catalog_number = {
+        presscoins_catalog_number(record): record for record in records
+    }
+    missing = [code for code in requested if code not in records_by_catalog_number]
+    if missing:
+        raise ValueError(
+            "Números de catálogo não encontrados no ficheiro: " + ", ".join(missing)
+        )
+    return [records_by_catalog_number[code] for code in requested]
 
 
 def presscoins_catalog_number(record: dict[str, Any]) -> str:
@@ -308,6 +339,7 @@ def main(argv: list[str] | None = None) -> int:
         raise ValueError("--batch-size tem de ser pelo menos 1.")
     catalog = read_catalog(args.input)
     records = catalogue_records(catalog)
+    records = filter_records_by_catalog_numbers(records, args.catalog_number)
     if args.limit > 0:
         records = records[: args.limit]
     if not records:

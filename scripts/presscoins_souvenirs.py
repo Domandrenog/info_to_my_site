@@ -31,6 +31,7 @@ DEFAULT_USER_AGENT = (
     "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 "
     "Chrome/140.0 Safari/537.36"
 )
+MANUAL_INCLUDES_FILENAME = "manual-includes.json"
 
 
 @dataclass(frozen=True)
@@ -243,6 +244,66 @@ def collect_search_results(
     return all_coins, total_pages
 
 
+def load_manual_catalog_numbers(path: Path) -> list[str]:
+    """Read catalog numbers that must remain in a generated availability scope."""
+    if not path.is_file():
+        return []
+    payload = json.loads(path.read_text(encoding="utf-8"))
+    values = payload.get("catalog_numbers") if isinstance(payload, dict) else None
+    if not isinstance(values, list):
+        raise ValueError(
+            f"{path}: catalog_numbers tem de ser uma lista de números de catálogo."
+        )
+    catalog_numbers: list[str] = []
+    seen: set[str] = set()
+    for value in values:
+        catalog_number = str(value or "").strip().upper()
+        if not re.fullmatch(r"[A-Z0-9][A-Z0-9-]+", catalog_number):
+            raise ValueError(f"{path}: número de catálogo inválido: {value!r}")
+        if catalog_number not in seen:
+            seen.add(catalog_number)
+            catalog_numbers.append(catalog_number)
+    return catalog_numbers
+
+
+def append_manual_coins(
+    coins: list[Presscoin],
+    catalog_numbers: list[str],
+    *,
+    location: str,
+    coin_type: str,
+    fetcher: Any = fetch_html,
+) -> list[Presscoin]:
+    """Fetch exact manual inclusions across all availability states and merge them."""
+    merged = list(coins)
+    seen = {coin.catalog_number.upper() for coin in merged}
+    for catalog_number in catalog_numbers:
+        if catalog_number in seen:
+            continue
+        source_html = fetcher(
+            build_search_url(
+                location=location,
+                search=catalog_number,
+                availability="All",
+                coin_type=coin_type,
+            )
+        )
+        exact = [
+            coin
+            for coin in parse_search_results(source_html)
+            if coin.catalog_number.upper() == catalog_number
+        ]
+        if len(exact) != 1:
+            raise ValueError(
+                f"Inclusão manual {catalog_number}: esperava 1 resultado exato, "
+                f"mas encontrei {len(exact)}."
+            )
+        merged.append(exact[0])
+        seen.add(catalog_number)
+        print(f"Inclusão manual: {catalog_number} — {exact[0].availability}")
+    return merged
+
+
 def slugify(value: str) -> str:
     normalized = unicodedata.normalize("NFKD", value)
     ascii_value = normalized.encode("ascii", "ignore").decode("ascii")
@@ -336,6 +397,7 @@ def build_catalog(
     city: str,
     page_count: int = 1,
     availability: str = "All",
+    manual_catalog_numbers: list[str] | None = None,
 ) -> dict[str, Any]:
     items: list[dict[str, Any]] = []
     for order, coin in enumerate(coins, start=1):
@@ -373,6 +435,7 @@ def build_catalog(
             "page_count": page_count,
             "retrieved_at": datetime.now(timezone.utc).isoformat(timespec="seconds"),
             "result_count": len(items),
+            "manual_catalog_numbers": manual_catalog_numbers or [],
         },
         "items": items,
     }
@@ -476,6 +539,9 @@ def parse_args(argv: list[str] | None = None) -> argparse.Namespace:
 
 def main(argv: list[str] | None = None) -> int:
     args = parse_args(argv)
+    output_dir = args.output_dir or default_output_directory(
+        args.location, args.search, args.availability
+    )
     query_url = build_search_url(
         location=args.location,
         search=args.search,
@@ -485,7 +551,15 @@ def main(argv: list[str] | None = None) -> int:
     try:
         if args.max_pages < 1:
             raise ValueError("--max-pages tem de ser pelo menos 1.")
+        manual_catalog_numbers = load_manual_catalog_numbers(
+            output_dir / MANUAL_INCLUDES_FILENAME
+        )
         if args.html_input:
+            if manual_catalog_numbers:
+                raise ValueError(
+                    "Não é possível resolver inclusões manuais com --html-input; "
+                    "executa a recolha online."
+                )
             coins = parse_search_results(args.html_input.read_text(encoding="utf-8"))
             page_count = 1
         else:
@@ -495,6 +569,12 @@ def main(argv: list[str] | None = None) -> int:
                 availability=args.availability,
                 coin_type=args.coin_type,
                 max_pages=args.max_pages,
+            )
+            coins = append_manual_coins(
+                coins,
+                manual_catalog_numbers,
+                location=args.location,
+                coin_type=args.coin_type,
             )
         if not coins:
             print("O Presscoins não devolveu moedas para esta pesquisa.", file=sys.stderr)
@@ -508,9 +588,7 @@ def main(argv: list[str] | None = None) -> int:
             city=args.city,
             page_count=page_count,
             availability=args.availability,
-        )
-        output_dir = args.output_dir or default_output_directory(
-            args.location, args.search, args.availability
+            manual_catalog_numbers=manual_catalog_numbers,
         )
         catalog_path, preview_path = write_outputs(catalog, output_dir)
     except (OSError, RuntimeError, ValueError) as exc:

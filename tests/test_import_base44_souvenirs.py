@@ -32,6 +32,24 @@ def souvenir(**overrides):
 
 
 class ImportBase44SouvenirsTests(unittest.TestCase):
+    def test_catalog_number_filter_keeps_exact_requested_order(self) -> None:
+        first = souvenir(
+            name="First",
+            notes="Catálogo Presscoins: WDW24087",
+            reference_url="https://www.presscoins.com/search/?search=WDW24087",
+        )
+        second = souvenir(
+            name="Second",
+            notes="Catálogo Presscoins: WDW18031",
+            reference_url="https://www.presscoins.com/search/?search=WDW18031",
+        )
+
+        selected = import_base44_souvenirs.filter_records_by_catalog_numbers(
+            [first, second], ["WDW18031", "wdw24087", "WDW18031"]
+        )
+
+        self.assertEqual(selected, [second, first])
+
     def test_base44_client_can_target_souvenir_entity(self) -> None:
         client = Base44Client(
             "app-id",
