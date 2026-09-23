@@ -31,6 +31,7 @@ REVIEW_FLAG_LABELS = {
     "missing_photo": "fotografia em falta",
     "missing_orientation": "orientação em falta",
     "possible_source_typo": "possível erro no texto de origem",
+    "retired_machine": "máquina retirada",
 }
 SUSPECT_SOURCE_PHRASES = ("Artemus", "Pace Shuttle Program", "Heat with")
 COUNTRY_ALIASES = {
@@ -87,6 +88,7 @@ class PressedDesign:
     description: str
     orientation: str
     machine_image_url: str
+    availability: str = "active"
 
 
 class PennyCollectorPageParser(HTMLParser):
@@ -97,6 +99,7 @@ class PennyCollectorPageParser(HTMLParser):
         self.inputs: dict[str, str] = {}
         self.selected_options: dict[str, str] = {}
         self.machine_images: dict[int, str] = {}
+        self.retired_machine_images: dict[int, str] = {}
         self._select_id = ""
         self._selected_option = False
         self._selected_text: list[str] = []
@@ -117,10 +120,19 @@ class PennyCollectorPageParser(HTMLParser):
             self._capturing_title = True
             self._title_text = []
         elif tag == "img" and self._pending_title:
-            match = re.match(r"Machine\s+(\d+)\b", self._pending_title, flags=re.IGNORECASE)
+            active_match = re.match(
+                r"Machine\s+(\d+)\b", self._pending_title, flags=re.IGNORECASE
+            )
+            retired_match = re.match(
+                r"Retired\s+(\d+)\b", self._pending_title, flags=re.IGNORECASE
+            )
             source = attributes.get("src", "")
-            if match and source:
-                self.machine_images[int(match.group(1))] = urljoin(
+            if active_match and source:
+                self.machine_images[int(active_match.group(1))] = urljoin(
+                    PENNYCOLLECTOR_BASE_URL, source
+                )
+            elif retired_match and source:
+                self.retired_machine_images[int(retired_match.group(1))] = urljoin(
                     PENNYCOLLECTOR_BASE_URL, source
                 )
             self._pending_title = ""
@@ -304,7 +316,11 @@ def parse_description_machine_designs(
         return []
     content = container.group(1)
     headers = list(
-        re.finditer(r"<b>\s*Machine\s+(\d+)\s*</b>", content, flags=re.IGNORECASE)
+        re.finditer(
+            r"<b>\s*Machine\s+(\d+)\s*:?\s*</b>",
+            content,
+            flags=re.IGNORECASE,
+        )
     )
     designs: list[PressedDesign] = []
     for index, header in enumerate(headers):
@@ -350,7 +366,67 @@ def parse_description_machine_designs(
     return designs
 
 
-def parse_designs(source_html: str) -> tuple[list[PressedDesign], dict[str, Any]]:
+def parse_retired_machine_designs(
+    source_html: str, page_parser: PennyCollectorPageParser
+) -> list[PressedDesign]:
+    container = re.search(
+        r"<td[^>]+id=[\"']DescriptionContainer[\"'][^>]*>(.*?)</td>",
+        source_html,
+        flags=re.IGNORECASE | re.DOTALL,
+    )
+    if not container:
+        return []
+    heading = re.search(
+        r"<b>\s*Retired\s+machines?\s*:?\s*</b>",
+        container.group(1),
+        flags=re.IGNORECASE,
+    )
+    if not heading:
+        return []
+    section = container.group(1)[heading.end() :]
+    section = re.sub(r"^\s*(?:<p\b[^>]*>\s*)+", "", section, flags=re.IGNORECASE)
+    section_end = re.search(r"<p\b", section, flags=re.IGNORECASE)
+    if section_end:
+        section = section[: section_end.start()]
+    section_text = html_fragment_text(section)
+    headers = list(
+        re.finditer(r"(?m)^\s*Retired\s+(\d+)\s*:\s*", section_text, flags=re.IGNORECASE)
+    )
+    designs: list[PressedDesign] = []
+    for index, header in enumerate(headers):
+        machine_number = int(header.group(1))
+        block_end = headers[index + 1].start() if index + 1 < len(headers) else len(section_text)
+        block = section_text[header.end() : block_end].strip()
+        numbered = list(re.finditer(r"(?<!\d)([1-9]\d*)\)\s*", block))
+        for design_index, numbered_item in enumerate(numbered):
+            description_end = (
+                numbered[design_index + 1].start()
+                if design_index + 1 < len(numbered)
+                else len(block)
+            )
+            description = block[numbered_item.end() : description_end].strip(" \n,;.")
+            description = re.split(r"\s+Note,?\s+", description, maxsplit=1, flags=re.IGNORECASE)[0]
+            description, orientation = parse_orientation(description)
+            if description:
+                designs.append(
+                    PressedDesign(
+                        machine_number=machine_number,
+                        machine_details=f"Retired machine {machine_number}",
+                        position=int(numbered_item.group(1)),
+                        description=description,
+                        orientation=orientation,
+                        machine_image_url=page_parser.retired_machine_images.get(
+                            machine_number, ""
+                        ),
+                        availability="retired",
+                    )
+                )
+    return designs
+
+
+def parse_designs(
+    source_html: str, *, include_retired: bool = False
+) -> tuple[list[PressedDesign], dict[str, Any]]:
     page_parser = PennyCollectorPageParser()
     page_parser.feed(source_html)
     page_parser.close()
@@ -399,9 +475,11 @@ def parse_designs(source_html: str) -> tuple[list[PressedDesign], dict[str, Any]
                 )
 
     if not designs:
-        designs = parse_simple_designs(source_html, page_parser)
-    if not designs:
         designs = parse_description_machine_designs(source_html, page_parser)
+    if not designs:
+        designs = parse_simple_designs(source_html, page_parser)
+    if include_retired:
+        designs.extend(parse_retired_machine_designs(source_html, page_parser))
     if not designs:
         raise ValueError("Não foram encontrados designs reconhecíveis na página.")
 
@@ -480,6 +558,8 @@ def build_catalog(
         review_flags = ["shared_machine_photo"] if design.machine_image_url else ["missing_photo"]
         if not design.orientation:
             review_flags.append("missing_orientation")
+        if design.availability == "retired":
+            review_flags.append("retired_machine")
         if any(
             phrase.casefold() in design.description.casefold()
             for phrase in SUSPECT_SOURCE_PHRASES
@@ -493,8 +573,13 @@ def build_catalog(
                 "review_flags": review_flags,
             }
         )
+        machine_label = (
+            f"Máquina retirada {design.machine_number}"
+            if design.availability == "retired"
+            else f"Machine {design.machine_number}"
+        )
         note_parts = [
-            f"Machine {design.machine_number}",
+            machine_label,
             f"Posição {design.position}",
             f"Orientação {orientation_label}",
             f"PennyCollector location {location_id}",
@@ -515,14 +600,24 @@ def build_catalog(
             "image_back": "",
             "notes": " · ".join(note_parts),
             "reference_url": (
-                f"{source_url}#machine-{design.machine_number}-position-{design.position}"
+                f"{source_url}#"
+                f"{'retired-' if design.availability == 'retired' else ''}"
+                f"machine-{design.machine_number}-position-{design.position}"
             ),
             "ordem": order,
             "hidden": False,
         }
         items.append({"source": source, "souvenir": souvenir, "review_status": "pending"})
 
-    machine_numbers = sorted({design.machine_number for design in designs})
+    machine_keys = sorted(
+        {(design.availability, design.machine_number) for design in designs}
+    )
+    active_machine_numbers = sorted(
+        {design.machine_number for design in designs if design.availability == "active"}
+    )
+    retired_machine_numbers = sorted(
+        {design.machine_number for design in designs if design.availability == "retired"}
+    )
     return {
         "status": "pending_review",
         "base44_updated": False,
@@ -533,9 +628,17 @@ def build_catalog(
             "url": source_url,
             **metadata,
             "retrieved_at": datetime.now(timezone.utc).isoformat(timespec="seconds"),
-            "machine_count": len(machine_numbers),
+            "machine_count": len(machine_keys),
             "design_count": len(items),
-            "machine_numbers": machine_numbers,
+            "machine_numbers": sorted({design.machine_number for design in designs}),
+            "active_machine_numbers": active_machine_numbers,
+            "retired_machine_numbers": retired_machine_numbers,
+            "active_design_count": sum(
+                design.availability == "active" for design in designs
+            ),
+            "retired_design_count": sum(
+                design.availability == "retired" for design in designs
+            ),
             "photo_policy": "A fotografia pertence à máquina e é partilhada pelos seus designs.",
         },
         "items": items,
@@ -543,14 +646,24 @@ def build_catalog(
 
 
 def preview_html(catalog: dict[str, Any]) -> str:
-    groups: dict[int, list[dict[str, Any]]] = {}
+    groups: dict[tuple[str, int], list[dict[str, Any]]] = {}
     for item in catalog["items"]:
-        groups.setdefault(int(item["source"]["machine_number"]), []).append(item)
+        source = item["source"]
+        key = (
+            str(source.get("availability") or "active"),
+            int(source["machine_number"]),
+        )
+        groups.setdefault(key, []).append(item)
 
     sections: list[str] = []
-    for machine_number, items in groups.items():
+    for (availability, machine_number), items in groups.items():
         first = items[0]
         source = first["source"]
+        machine_heading = (
+            f"Máquina retirada {machine_number}"
+            if availability == "retired"
+            else f"Machine {machine_number}"
+        )
         image_url = str(source.get("machine_image_url") or "")
         image = (
             f'<a href="{html.escape(image_url)}"><img src="{html.escape(image_url)}" '
@@ -582,7 +695,7 @@ def preview_html(catalog: dict[str, Any]) -> str:
             "".join(
                 [
                     '<section class="machine">',
-                    f'<h2>Machine {machine_number}</h2>',
+                    f'<h2>{machine_heading}</h2>',
                     f'<p>{html.escape(str(source["machine_details"]))}</p>',
                     '<p class="warning">A fotografia abaixo pertence à máquina e pode mostrar os quatro designs.</p>',
                     image,
@@ -619,7 +732,7 @@ def preview_html(catalog: dict[str, Any]) -> str:
 <body>
   <header>
     <h1>{html.escape(str(source['location_name']))}</h1>
-    <p>{source['machine_count']} máquinas · {source['design_count']} designs pendentes de revisão.</p>
+    <p>{source['machine_count']} máquinas · {source['design_count']} designs pendentes de revisão ({source.get('active_design_count', source['design_count'])} atuais · {source.get('retired_design_count', 0)} retirados).</p>
     <p><strong>Site Base44:</strong> nenhuma alteração efetuada. Este catálogo ainda não está pronto para importar.</p>
     {source_warning}
     <p><a href="{html.escape(str(source['url']))}">Abrir página original</a></p>
@@ -667,6 +780,11 @@ def parse_args(argv: list[str] | None = None) -> argparse.Namespace:
     parser.add_argument("--country", default="", help="Substituir o país detetado.")
     parser.add_argument("--output-dir", type=Path)
     parser.add_argument("--html-input", type=Path, help="Usar HTML local sem aceder à rede.")
+    parser.add_argument(
+        "--include-retired",
+        action="store_true",
+        help="Incluir também os designs das máquinas retiradas.",
+    )
     return parser.parse_args(argv)
 
 
@@ -679,9 +797,11 @@ def main(argv: list[str] | None = None) -> int:
             if args.html_input
             else fetch_html(location_url(location_id))
         )
-        designs, metadata = parse_designs(source_html)
+        designs, metadata = parse_designs(
+            source_html, include_retired=args.include_retired
+        )
         if not designs:
-            raise ValueError("A página não devolveu designs ativos.")
+            raise ValueError("A página não devolveu designs reconhecíveis.")
         catalog = build_catalog(
             designs, metadata, location_id=location_id, country=args.country
         )
@@ -700,6 +820,8 @@ def main(argv: list[str] | None = None) -> int:
     )
     print(f"Localização: {catalog['source']['location_name']}")
     print(f"Máquinas analisadas: {machines}")
+    print(f"Designs atuais: {catalog['source']['active_design_count']}")
+    print(f"Designs retirados: {catalog['source']['retired_design_count']}")
     print(f"Designs pendentes de revisão: {len(catalog['items'])}")
     print(f"Com fotografia partilhada da máquina: {shared_photos}")
     print(f"Sem orientação indicada: {missing_orientation}")

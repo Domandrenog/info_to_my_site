@@ -189,21 +189,28 @@ def pennycollector_identity(record: dict[str, Any]) -> tuple[str, ...] | None:
     location_id = locations[0].strip() if locations else ""
     machine = ""
     position = ""
+    availability = "active"
     fragment_match = re.fullmatch(
-        r"machine-(\d+)-position-(\d+)", parsed.fragment, flags=re.IGNORECASE
+        r"(?:(retired)-)?machine-(\d+)-position-(\d+)",
+        parsed.fragment,
+        flags=re.IGNORECASE,
     )
     if fragment_match:
-        machine, position = fragment_match.groups()
+        retired, machine, position = fragment_match.groups()
+        availability = "retired" if retired else "active"
     else:
+        notes = str(record.get("notes") or "")
         notes_match = re.search(
-            r"Machine\s+(\d+).*?Posição\s+(\d+)",
-            str(record.get("notes") or ""),
+            r"(?:Machine|Máquina\s+retirada)\s+(\d+).*?Posição\s+(\d+)",
+            notes,
             flags=re.IGNORECASE,
         )
         if notes_match:
             machine, position = notes_match.groups()
+            if re.search(r"Máquina\s+retirada", notes, flags=re.IGNORECASE):
+                availability = "retired"
     if location_id and machine and position:
-        return ("pennycollector", location_id, machine, position)
+        return ("pennycollector", location_id, availability, machine, position)
     return None
 
 

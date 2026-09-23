@@ -39,8 +39,9 @@ def item_key(item: dict[str, Any], index: int) -> str:
     location_id = str(source.get("location_id") or "")
     machine = str(source.get("machine_number") or "")
     position = str(source.get("position") or "")
+    availability = str(source.get("availability") or "active")
     if location_id and machine and position:
-        return f"{location_id}:{machine}:{position}"
+        return f"{location_id}:{availability}:{machine}:{position}"
     return f"index:{index}"
 
 
@@ -53,7 +54,9 @@ def unique_reference_url(item: dict[str, Any]) -> str:
     if not reference_url or not machine or not position:
         return reference_url
     parsed = urlsplit(reference_url)
-    fragment = f"machine-{machine}-position-{position}"
+    availability = str(source.get("availability") or "active")
+    prefix = "retired-" if availability == "retired" else ""
+    fragment = f"{prefix}machine-{machine}-position-{position}"
     return urlunsplit((parsed.scheme, parsed.netloc, parsed.path, parsed.query, fragment))
 
 

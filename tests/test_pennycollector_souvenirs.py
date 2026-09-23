@@ -73,6 +73,26 @@ G.P.S. coordinates and later location updates.</td></tr></table>
 """
 
 
+MULTI_MACHINE_NARRATIVE_HTML = """
+<input id="ReportLocation_Location" value="Faneuil Hall Marketplace, Quincy Market">
+<input id="ReportLocation_City" value="Boston">
+<select id="ReportLocation_CountryList"><option selected="selected">United States</option></select>
+<select id="ReportLocation_StatusList"><option selected="selected">Active</option></select>
+<table><tr><td id="DescriptionContainer">
+<b>Machine 3</b> is outdoors. Designs are:<br>
+1) Design 3-1<br>2) Design 3-2<br>3) Design 3-3<br>4) Design 3-4<p>
+<b>Machine 4</b> is inside. Designs are:<br>
+1) Design 4-1<br>2) Design 4-2<br>3) Design 4-3<br>4) Design 4-4<p>
+<b>Machine 6:</b> is near the restrooms. Designs are:<br>
+1) Design 6-1<br>2) Design 6-2<br>3) Design 6-3<br>4) Design 6-4<p>
+<b>Retired machines:</b><p>Retired 1: 1) Old 1, 2) Old 2, 3) Old 3, 4) Old 4</td></tr></table>
+<span class="pagetitle">Machine 3 - outdoors</span><img src="images/machine-3.jpg">
+<span class="pagetitle">Machine 4 - inside</span><img src="images/machine-4.jpg">
+<span class="pagetitle">Machine 6 - north side</span><img src="images/machine-6.jpg">
+<span class="pagetitle">Retired 1</span><img src="images/retired-1.jpg">
+"""
+
+
 class PennyCollectorSouvenirsTests(unittest.TestCase):
     def test_known_global_country_uses_project_label_and_path(self) -> None:
         self.assertEqual(
@@ -134,6 +154,53 @@ class PennyCollectorSouvenirsTests(unittest.TestCase):
         self.assertTrue(
             designs[0].machine_image_url.endswith("images/machine-miami.jpg")
         )
+
+    def test_all_current_machines_in_narrative_page_are_extracted(self) -> None:
+        designs, metadata = parse_designs(MULTI_MACHINE_NARRATIVE_HTML)
+
+        self.assertEqual(metadata["location_name"], "Faneuil Hall Marketplace, Quincy Market")
+        self.assertEqual(len(designs), 12)
+        self.assertEqual({design.machine_number for design in designs}, {3, 4, 6})
+        self.assertEqual(
+            {machine: sum(design.machine_number == machine for design in designs) for machine in (3, 4, 6)},
+            {3: 4, 4: 4, 6: 4},
+        )
+        self.assertTrue(all(design.machine_image_url for design in designs))
+        self.assertNotIn("Old 1", {design.description for design in designs})
+
+    def test_retired_machines_are_included_only_when_requested(self) -> None:
+        current, _metadata = parse_designs(MULTI_MACHINE_NARRATIVE_HTML)
+        all_designs, _metadata = parse_designs(
+            MULTI_MACHINE_NARRATIVE_HTML, include_retired=True
+        )
+
+        self.assertEqual(len(current), 12)
+        self.assertEqual(len(all_designs), 16)
+        retired = [
+            design for design in all_designs if design.availability == "retired"
+        ]
+        self.assertEqual(len(retired), 4)
+        self.assertEqual({design.machine_number for design in retired}, {1})
+        self.assertTrue(
+            all(design.machine_image_url.endswith("images/retired-1.jpg") for design in retired)
+        )
+        catalog = build_catalog(
+            all_designs,
+            {
+                "country": "United States",
+                "location_name": "Faneuil Hall Marketplace, Quincy Market",
+                "city": "Boston",
+            },
+            location_id="8143",
+        )
+        retired_items = [
+            item for item in catalog["items"]
+            if item["source"]["availability"] == "retired"
+        ]
+        self.assertTrue(
+            all("#retired-machine-1-position-" in item["souvenir"]["reference_url"] for item in retired_items)
+        )
+        self.assertIn("Máquina retirada 1", preview_html(catalog))
 
     def test_catalog_is_review_only_and_uses_machine_photo_scope(self) -> None:
         designs, metadata = parse_designs(SAMPLE_HTML)
