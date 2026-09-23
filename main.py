@@ -1351,16 +1351,49 @@ def menu_pressedcoins_disney_orlando() -> None:
         input("\nCarrega Enter para continuar...")
 
 
+def action_collect_pennycollector_kennedy_space_center() -> None:
+    title("PennyCollector Kennedy Space Center")
+    print("Cria um catálogo separado para revisão. Não altera o Site Base44.")
+    command = [
+        sys.executable,
+        "-m",
+        "scripts.pennycollector_souvenirs",
+        "--location-id",
+        "1851",
+    ]
+    run_step("Recolher Kennedy Space Center do PennyCollector", command)
+
+
+def menu_pennycollector_kennedy_space_center() -> None:
+    while True:
+        title("PennyCollector Kennedy Space Center")
+        print("1) Recolher catálogo e criar pré-visualização")
+        print("2) Voltar")
+
+        choice = ask_text("Escolhe uma opção", "1")
+        if choice == "1":
+            action_collect_pennycollector_kennedy_space_center()
+        elif choice == "2":
+            return
+        else:
+            print("Opção inválida.")
+
+        input("\nCarrega Enter para continuar...")
+
+
 def menu_souvenirs_usa() -> None:
     while True:
         title("Souvenirs — USA")
         print("1) PressedCoins Disney Orlando")
-        print("2) Voltar")
+        print("2) PennyCollector Kennedy Space Center")
+        print("3) Voltar")
 
         choice = ask_text("Escolhe uma opção", "1")
         if choice == "1":
             menu_pressedcoins_disney_orlando()
         elif choice == "2":
+            menu_pennycollector_kennedy_space_center()
+        elif choice == "3":
             return
         else:
             print("Opção inválida.")

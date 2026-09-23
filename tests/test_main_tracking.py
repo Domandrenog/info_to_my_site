@@ -106,7 +106,7 @@ class MainTrackingActionTests(unittest.TestCase):
 
     @patch("main.menu_pressedcoins_disney_orlando")
     @patch("main.title")
-    @patch("main.ask_text", side_effect=["1", "2"])
+    @patch("main.ask_text", side_effect=["1", "3"])
     def test_usa_souvenirs_menu_exposes_disney_pressed_coins(
         self,
         _ask_text,
@@ -118,6 +118,31 @@ class MainTrackingActionTests(unittest.TestCase):
 
         self.assertIn("1) PressedCoins Disney Orlando", output.getvalue())
         pressedcoins_menu.assert_called_once_with()
+
+    @patch("main.run_step", return_value=0)
+    @patch("main.title")
+    def test_pennycollector_collection_is_review_only(self, _title, run_step) -> None:
+        main.action_collect_pennycollector_kennedy_space_center()
+
+        command = run_step.call_args.args[1]
+        self.assertIn("scripts.pennycollector_souvenirs", command)
+        self.assertEqual(command[-2:], ["--location-id", "1851"])
+        self.assertNotIn("--apply", command)
+
+    @patch("main.menu_pennycollector_kennedy_space_center")
+    @patch("main.title")
+    @patch("main.ask_text", side_effect=["2", "3"])
+    def test_usa_souvenirs_menu_exposes_kennedy_space_center(
+        self,
+        _ask_text,
+        _title,
+        pennycollector_menu,
+    ) -> None:
+        with redirect_stdout(io.StringIO()) as output:
+            main.menu_souvenirs_usa()
+
+        self.assertIn("2) PennyCollector Kennedy Space Center", output.getvalue())
+        pennycollector_menu.assert_called_once_with()
 
     def test_unconfirmed_associations_are_grouped_by_country(self) -> None:
         payload = [

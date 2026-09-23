@@ -1,8 +1,11 @@
 from __future__ import annotations
 
 import io
+import json
+import tempfile
 import unittest
 from contextlib import redirect_stdout
+from pathlib import Path
 from unittest.mock import patch
 
 from scripts import import_base44_souvenirs
@@ -32,6 +35,16 @@ def souvenir(**overrides):
 
 
 class ImportBase44SouvenirsTests(unittest.TestCase):
+    def test_catalog_explicitly_not_ready_cannot_be_imported(self) -> None:
+        with tempfile.TemporaryDirectory() as temp_dir:
+            path = Path(temp_dir) / "pending.json"
+            path.write_text(
+                json.dumps({"import_ready": False, "items": []}), encoding="utf-8"
+            )
+
+            with self.assertRaisesRegex(ValueError, "não aprovado para importação"):
+                import_base44_souvenirs.read_catalog(path)
+
     def test_catalog_number_filter_keeps_exact_requested_order(self) -> None:
         first = souvenir(
             name="First",

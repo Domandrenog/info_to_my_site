@@ -1,0 +1,1628 @@
+{
+  "status": "pending_review",
+  "base44_updated": false,
+  "import_ready": false,
+  "source": {
+    "site": "PennyCollector",
+    "location_id": "1851",
+    "url": "http://locations.pennycollector.com/Details.aspx?location=1851",
+    "location_name": "Kennedy Space Center Visitor Complex",
+    "address": "Space Commerce Way",
+    "city": "Merritt Island",
+    "zip_code": "32953",
+    "status": "Active",
+    "state": "FL",
+    "source_flagged_needs_update": true,
+    "retrieved_at": "2026-09-23T09:27:27+00:00",
+    "machine_count": 12,
+    "design_count": 48,
+    "machine_numbers": [
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      15,
+      16,
+      17,
+      18
+    ],
+    "photo_policy": "A fotografia pertence à máquina e é partilhada pelos seus designs."
+  },
+  "items": [
+    {
+      "source": {
+        "machine_number": 6,
+        "machine_details": "Temp Space Shop outside entrance area – (this machine was formerly near the Information Center inside the gates, but was relocated during construction, and then formerly located by restrooms outside admission gates). There is currently a change machine and a medallion/token machine (NASA logo) with it.\n",
+        "position": 1,
+        "description": "Astronaut on the moon with U.S. flag",
+        "orientation": "V",
+        "machine_image_url": "http://locations.pennycollector.com/images/machine_4b49d804-6775-453a-8e77-57e3de513824.jpg",
+        "location_id": "1851",
+        "image_scope": "machine",
+        "review_flags": [
+          "shared_machine_photo"
+        ]
+      },
+      "souvenir": {
+        "name": "Astronaut on the moon with U.S. flag",
+        "continent": "América",
+        "country": "EUA",
+        "city": "Merritt Island",
+        "type": "pressed",
+        "condition": "Não Tenho",
+        "location_name": "Kennedy Space Center",
+        "description": "Astronaut on the moon with U.S. flag",
+        "display_shape": "oval",
+        "image_front": "http://locations.pennycollector.com/images/machine_4b49d804-6775-453a-8e77-57e3de513824.jpg",
+        "image_back": "",
+        "notes": "Machine 6 · Posição 1 · Orientação vertical · PennyCollector location 1851",
+        "reference_url": "http://locations.pennycollector.com/Details.aspx?location=1851",
+        "ordem": 1,
+        "hidden": false
+      },
+      "review_status": "pending"
+    },
+    {
+      "source": {
+        "machine_number": 6,
+        "machine_details": "Temp Space Shop outside entrance area – (this machine was formerly near the Information Center inside the gates, but was relocated during construction, and then formerly located by restrooms outside admission gates). There is currently a change machine and a medallion/token machine (NASA logo) with it.\n",
+        "position": 2,
+        "description": "NASA logo on U.S. flag background",
+        "orientation": "H",
+        "machine_image_url": "http://locations.pennycollector.com/images/machine_4b49d804-6775-453a-8e77-57e3de513824.jpg",
+        "location_id": "1851",
+        "image_scope": "machine",
+        "review_flags": [
+          "shared_machine_photo"
+        ]
+      },
+      "souvenir": {
+        "name": "NASA logo on U.S. flag background",
+        "continent": "América",
+        "country": "EUA",
+        "city": "Merritt Island",
+        "type": "pressed",
+        "condition": "Não Tenho",
+        "location_name": "Kennedy Space Center",
+        "description": "NASA logo on U.S. flag background",
+        "display_shape": "oval",
+        "image_front": "http://locations.pennycollector.com/images/machine_4b49d804-6775-453a-8e77-57e3de513824.jpg",
+        "image_back": "",
+        "notes": "Machine 6 · Posição 2 · Orientação horizontal · PennyCollector location 1851",
+        "reference_url": "http://locations.pennycollector.com/Details.aspx?location=1851",
+        "ordem": 2,
+        "hidden": false
+      },
+      "review_status": "pending"
+    },
+    {
+      "source": {
+        "machine_number": 6,
+        "machine_details": "Temp Space Shop outside entrance area – (this machine was formerly near the Information Center inside the gates, but was relocated during construction, and then formerly located by restrooms outside admission gates). There is currently a change machine and a medallion/token machine (NASA logo) with it.\n",
+        "position": 3,
+        "description": "Telescope with “reach for the stars”",
+        "orientation": "V",
+        "machine_image_url": "http://locations.pennycollector.com/images/machine_4b49d804-6775-453a-8e77-57e3de513824.jpg",
+        "location_id": "1851",
+        "image_scope": "machine",
+        "review_flags": [
+          "shared_machine_photo"
+        ]
+      },
+      "souvenir": {
+        "name": "Telescope with “reach for the stars”",
+        "continent": "América",
+        "country": "EUA",
+        "city": "Merritt Island",
+        "type": "pressed",
+        "condition": "Não Tenho",
+        "location_name": "Kennedy Space Center",
+        "description": "Telescope with “reach for the stars”",
+        "display_shape": "oval",
+        "image_front": "http://locations.pennycollector.com/images/machine_4b49d804-6775-453a-8e77-57e3de513824.jpg",
+        "image_back": "",
+        "notes": "Machine 6 · Posição 3 · Orientação vertical · PennyCollector location 1851",
+        "reference_url": "http://locations.pennycollector.com/Details.aspx?location=1851",
+        "ordem": 3,
+        "hidden": false
+      },
+      "review_status": "pending"
+    },
+    {
+      "source": {
+        "machine_number": 6,
+        "machine_details": "Temp Space Shop outside entrance area – (this machine was formerly near the Information Center inside the gates, but was relocated during construction, and then formerly located by restrooms outside admission gates). There is currently a change machine and a medallion/token machine (NASA logo) with it.\n",
+        "position": 4,
+        "description": "Space Shuttle landing",
+        "orientation": "H",
+        "machine_image_url": "http://locations.pennycollector.com/images/machine_4b49d804-6775-453a-8e77-57e3de513824.jpg",
+        "location_id": "1851",
+        "image_scope": "machine",
+        "review_flags": [
+          "shared_machine_photo"
+        ]
+      },
+      "souvenir": {
+        "name": "Space Shuttle landing",
+        "continent": "América",
+        "country": "EUA",
+        "city": "Merritt Island",
+        "type": "pressed",
+        "condition": "Não Tenho",
+        "location_name": "Kennedy Space Center",
+        "description": "Space Shuttle landing",
+        "display_shape": "oval",
+        "image_front": "http://locations.pennycollector.com/images/machine_4b49d804-6775-453a-8e77-57e3de513824.jpg",
+        "image_back": "",
+        "notes": "Machine 6 · Posição 4 · Orientação horizontal · PennyCollector location 1851",
+        "reference_url": "http://locations.pennycollector.com/Details.aspx?location=1851",
+        "ordem": 4,
+        "hidden": false
+      },
+      "review_status": "pending"
+    },
+    {
+      "source": {
+        "machine_number": 7,
+        "machine_details": "at one of the entrances to the Space Shop (the largest one) - (Formerly located Orlando INTL Airport & in former Early Space Exploration now Heros & Legends building) is to the left of the entrance plaza. The machine takes $1 bills and no penny is necessary. It costs $ 1 per design. You can run a credit card, but it will get you all 4 designs.\n",
+        "position": 1,
+        "description": "Saturn V rocket (Roman numeral “V” for “5”)",
+        "orientation": "V",
+        "machine_image_url": "http://locations.pennycollector.com/images/machine_9e0a0273-ec3c-441f-9492-7c739df2bf10.jpg",
+        "location_id": "1851",
+        "image_scope": "machine",
+        "review_flags": [
+          "shared_machine_photo"
+        ]
+      },
+      "souvenir": {
+        "name": "Saturn V rocket (Roman numeral “V” for “5”)",
+        "continent": "América",
+        "country": "EUA",
+        "city": "Merritt Island",
+        "type": "pressed",
+        "condition": "Não Tenho",
+        "location_name": "Kennedy Space Center",
+        "description": "Saturn V rocket (Roman numeral “V” for “5”)",
+        "display_shape": "oval",
+        "image_front": "http://locations.pennycollector.com/images/machine_9e0a0273-ec3c-441f-9492-7c739df2bf10.jpg",
+        "image_back": "",
+        "notes": "Machine 7 · Posição 1 · Orientação vertical · PennyCollector location 1851",
+        "reference_url": "http://locations.pennycollector.com/Details.aspx?location=1851",
+        "ordem": 5,
+        "hidden": false
+      },
+      "review_status": "pending"
+    },
+    {
+      "source": {
+        "machine_number": 7,
+        "machine_details": "at one of the entrances to the Space Shop (the largest one) - (Formerly located Orlando INTL Airport & in former Early Space Exploration now Heros & Legends building) is to the left of the entrance plaza. The machine takes $1 bills and no penny is necessary. It costs $ 1 per design. You can run a credit card, but it will get you all 4 designs.\n",
+        "position": 2,
+        "description": "Rounded NASA logo with 6 stars",
+        "orientation": "H",
+        "machine_image_url": "http://locations.pennycollector.com/images/machine_9e0a0273-ec3c-441f-9492-7c739df2bf10.jpg",
+        "location_id": "1851",
+        "image_scope": "machine",
+        "review_flags": [
+          "shared_machine_photo"
+        ]
+      },
+      "souvenir": {
+        "name": "Rounded NASA logo with 6 stars",
+        "continent": "América",
+        "country": "EUA",
+        "city": "Merritt Island",
+        "type": "pressed",
+        "condition": "Não Tenho",
+        "location_name": "Kennedy Space Center",
+        "description": "Rounded NASA logo with 6 stars",
+        "display_shape": "oval",
+        "image_front": "http://locations.pennycollector.com/images/machine_9e0a0273-ec3c-441f-9492-7c739df2bf10.jpg",
+        "image_back": "",
+        "notes": "Machine 7 · Posição 2 · Orientação horizontal · PennyCollector location 1851",
+        "reference_url": "http://locations.pennycollector.com/Details.aspx?location=1851",
+        "ordem": 6,
+        "hidden": false
+      },
+      "review_status": "pending"
+    },
+    {
+      "source": {
+        "machine_number": 7,
+        "machine_details": "at one of the entrances to the Space Shop (the largest one) - (Formerly located Orlando INTL Airport & in former Early Space Exploration now Heros & Legends building) is to the left of the entrance plaza. The machine takes $1 bills and no penny is necessary. It costs $ 1 per design. You can run a credit card, but it will get you all 4 designs.\n",
+        "position": 3,
+        "description": "Mars Rover",
+        "orientation": "V",
+        "machine_image_url": "http://locations.pennycollector.com/images/machine_9e0a0273-ec3c-441f-9492-7c739df2bf10.jpg",
+        "location_id": "1851",
+        "image_scope": "machine",
+        "review_flags": [
+          "shared_machine_photo"
+        ]
+      },
+      "souvenir": {
+        "name": "Mars Rover",
+        "continent": "América",
+        "country": "EUA",
+        "city": "Merritt Island",
+        "type": "pressed",
+        "condition": "Não Tenho",
+        "location_name": "Kennedy Space Center",
+        "description": "Mars Rover",
+        "display_shape": "oval",
+        "image_front": "http://locations.pennycollector.com/images/machine_9e0a0273-ec3c-441f-9492-7c739df2bf10.jpg",
+        "image_back": "",
+        "notes": "Machine 7 · Posição 3 · Orientação vertical · PennyCollector location 1851",
+        "reference_url": "http://locations.pennycollector.com/Details.aspx?location=1851",
+        "ordem": 7,
+        "hidden": false
+      },
+      "review_status": "pending"
+    },
+    {
+      "source": {
+        "machine_number": 7,
+        "machine_details": "at one of the entrances to the Space Shop (the largest one) - (Formerly located Orlando INTL Airport & in former Early Space Exploration now Heros & Legends building) is to the left of the entrance plaza. The machine takes $1 bills and no penny is necessary. It costs $ 1 per design. You can run a credit card, but it will get you all 4 designs.\n",
+        "position": 4,
+        "description": "Space Shuttle with flag background (without “Kennedy Space Center” on coin)",
+        "orientation": "H",
+        "machine_image_url": "http://locations.pennycollector.com/images/machine_9e0a0273-ec3c-441f-9492-7c739df2bf10.jpg",
+        "location_id": "1851",
+        "image_scope": "machine",
+        "review_flags": [
+          "shared_machine_photo"
+        ]
+      },
+      "souvenir": {
+        "name": "Space Shuttle with flag background (without “Kennedy…",
+        "continent": "América",
+        "country": "EUA",
+        "city": "Merritt Island",
+        "type": "pressed",
+        "condition": "Não Tenho",
+        "location_name": "Kennedy Space Center",
+        "description": "Space Shuttle with flag background (without “Kennedy Space Center” on coin)",
+        "display_shape": "oval",
+        "image_front": "http://locations.pennycollector.com/images/machine_9e0a0273-ec3c-441f-9492-7c739df2bf10.jpg",
+        "image_back": "",
+        "notes": "Machine 7 · Posição 4 · Orientação horizontal · PennyCollector location 1851",
+        "reference_url": "http://locations.pennycollector.com/Details.aspx?location=1851",
+        "ordem": 8,
+        "hidden": false
+      },
+      "review_status": "pending"
+    },
+    {
+      "source": {
+        "machine_number": 8,
+        "machine_details": "Inside Information building outside main entrance gate (formerly inside IMAX Theater – the IMAX machine is in the lobby to the left of the building entrance).\n",
+        "position": 1,
+        "description": "Saturn 5 Rocket (number “5” instead of the Roman numeral)",
+        "orientation": "V",
+        "machine_image_url": "http://locations.pennycollector.com/images/machine_d29e871d-84d5-4d0e-9b38-b2fd6a26f9fb.jpg",
+        "location_id": "1851",
+        "image_scope": "machine",
+        "review_flags": [
+          "shared_machine_photo"
+        ]
+      },
+      "souvenir": {
+        "name": "Saturn 5 Rocket (number “5” instead of the Roman numeral)",
+        "continent": "América",
+        "country": "EUA",
+        "city": "Merritt Island",
+        "type": "pressed",
+        "condition": "Não Tenho",
+        "location_name": "Kennedy Space Center",
+        "description": "Saturn 5 Rocket (number “5” instead of the Roman numeral)",
+        "display_shape": "oval",
+        "image_front": "http://locations.pennycollector.com/images/machine_d29e871d-84d5-4d0e-9b38-b2fd6a26f9fb.jpg",
+        "image_back": "",
+        "notes": "Machine 8 · Posição 1 · Orientação vertical · PennyCollector location 1851",
+        "reference_url": "http://locations.pennycollector.com/Details.aspx?location=1851",
+        "ordem": 9,
+        "hidden": false
+      },
+      "review_status": "pending"
+    },
+    {
+      "source": {
+        "machine_number": 8,
+        "machine_details": "Inside Information building outside main entrance gate (formerly inside IMAX Theater – the IMAX machine is in the lobby to the left of the building entrance).\n",
+        "position": 2,
+        "description": "Apollo 11 capsule",
+        "orientation": "H",
+        "machine_image_url": "http://locations.pennycollector.com/images/machine_d29e871d-84d5-4d0e-9b38-b2fd6a26f9fb.jpg",
+        "location_id": "1851",
+        "image_scope": "machine",
+        "review_flags": [
+          "shared_machine_photo"
+        ]
+      },
+      "souvenir": {
+        "name": "Apollo 11 capsule",
+        "continent": "América",
+        "country": "EUA",
+        "city": "Merritt Island",
+        "type": "pressed",
+        "condition": "Não Tenho",
+        "location_name": "Kennedy Space Center",
+        "description": "Apollo 11 capsule",
+        "display_shape": "oval",
+        "image_front": "http://locations.pennycollector.com/images/machine_d29e871d-84d5-4d0e-9b38-b2fd6a26f9fb.jpg",
+        "image_back": "",
+        "notes": "Machine 8 · Posição 2 · Orientação horizontal · PennyCollector location 1851",
+        "reference_url": "http://locations.pennycollector.com/Details.aspx?location=1851",
+        "ordem": 10,
+        "hidden": false
+      },
+      "review_status": "pending"
+    },
+    {
+      "source": {
+        "machine_number": 8,
+        "machine_details": "Inside Information building outside main entrance gate (formerly inside IMAX Theater – the IMAX machine is in the lobby to the left of the building entrance).\n",
+        "position": 3,
+        "description": "Apollo logo",
+        "orientation": "V",
+        "machine_image_url": "http://locations.pennycollector.com/images/machine_d29e871d-84d5-4d0e-9b38-b2fd6a26f9fb.jpg",
+        "location_id": "1851",
+        "image_scope": "machine",
+        "review_flags": [
+          "shared_machine_photo"
+        ]
+      },
+      "souvenir": {
+        "name": "Apollo logo",
+        "continent": "América",
+        "country": "EUA",
+        "city": "Merritt Island",
+        "type": "pressed",
+        "condition": "Não Tenho",
+        "location_name": "Kennedy Space Center",
+        "description": "Apollo logo",
+        "display_shape": "oval",
+        "image_front": "http://locations.pennycollector.com/images/machine_d29e871d-84d5-4d0e-9b38-b2fd6a26f9fb.jpg",
+        "image_back": "",
+        "notes": "Machine 8 · Posição 3 · Orientação vertical · PennyCollector location 1851",
+        "reference_url": "http://locations.pennycollector.com/Details.aspx?location=1851",
+        "ordem": 11,
+        "hidden": false
+      },
+      "review_status": "pending"
+    },
+    {
+      "source": {
+        "machine_number": 8,
+        "machine_details": "Inside Information building outside main entrance gate (formerly inside IMAX Theater – the IMAX machine is in the lobby to the left of the building entrance).\n",
+        "position": 4,
+        "description": "Flat NASA logo",
+        "orientation": "V",
+        "machine_image_url": "http://locations.pennycollector.com/images/machine_d29e871d-84d5-4d0e-9b38-b2fd6a26f9fb.jpg",
+        "location_id": "1851",
+        "image_scope": "machine",
+        "review_flags": [
+          "shared_machine_photo"
+        ]
+      },
+      "souvenir": {
+        "name": "Flat NASA logo",
+        "continent": "América",
+        "country": "EUA",
+        "city": "Merritt Island",
+        "type": "pressed",
+        "condition": "Não Tenho",
+        "location_name": "Kennedy Space Center",
+        "description": "Flat NASA logo",
+        "display_shape": "oval",
+        "image_front": "http://locations.pennycollector.com/images/machine_d29e871d-84d5-4d0e-9b38-b2fd6a26f9fb.jpg",
+        "image_back": "",
+        "notes": "Machine 8 · Posição 4 · Orientação vertical · PennyCollector location 1851",
+        "reference_url": "http://locations.pennycollector.com/Details.aspx?location=1851",
+        "ordem": 12,
+        "hidden": false
+      },
+      "review_status": "pending"
+    },
+    {
+      "source": {
+        "machine_number": 9,
+        "machine_details": "at one of the entrances to the Space Shop (the largest one) – (formerly next to Shuttle Launch Experience located next to the lockers outside this simulation ride). The machine takes $1 bills and no penny is necessary. It costs $ 1 per design. You can run a credit card, but it will get you all 4 designs.\n",
+        "position": 1,
+        "description": "Shuttle on Boeing 747",
+        "orientation": "H",
+        "machine_image_url": "http://locations.pennycollector.com/images/machine_5c718ff3-1452-4527-a621-ec536c5d2c5d.jpg",
+        "location_id": "1851",
+        "image_scope": "machine",
+        "review_flags": [
+          "shared_machine_photo"
+        ]
+      },
+      "souvenir": {
+        "name": "Shuttle on Boeing 747",
+        "continent": "América",
+        "country": "EUA",
+        "city": "Merritt Island",
+        "type": "pressed",
+        "condition": "Não Tenho",
+        "location_name": "Kennedy Space Center",
+        "description": "Shuttle on Boeing 747",
+        "display_shape": "oval",
+        "image_front": "http://locations.pennycollector.com/images/machine_5c718ff3-1452-4527-a621-ec536c5d2c5d.jpg",
+        "image_back": "",
+        "notes": "Machine 9 · Posição 1 · Orientação horizontal · PennyCollector location 1851",
+        "reference_url": "http://locations.pennycollector.com/Details.aspx?location=1851",
+        "ordem": 13,
+        "hidden": false
+      },
+      "review_status": "pending"
+    },
+    {
+      "source": {
+        "machine_number": 9,
+        "machine_details": "at one of the entrances to the Space Shop (the largest one) – (formerly next to Shuttle Launch Experience located next to the lockers outside this simulation ride). The machine takes $1 bills and no penny is necessary. It costs $ 1 per design. You can run a credit card, but it will get you all 4 designs.\n",
+        "position": 2,
+        "description": "Shuttle with sunshine background",
+        "orientation": "H",
+        "machine_image_url": "http://locations.pennycollector.com/images/machine_5c718ff3-1452-4527-a621-ec536c5d2c5d.jpg",
+        "location_id": "1851",
+        "image_scope": "machine",
+        "review_flags": [
+          "shared_machine_photo"
+        ]
+      },
+      "souvenir": {
+        "name": "Shuttle with sunshine background",
+        "continent": "América",
+        "country": "EUA",
+        "city": "Merritt Island",
+        "type": "pressed",
+        "condition": "Não Tenho",
+        "location_name": "Kennedy Space Center",
+        "description": "Shuttle with sunshine background",
+        "display_shape": "oval",
+        "image_front": "http://locations.pennycollector.com/images/machine_5c718ff3-1452-4527-a621-ec536c5d2c5d.jpg",
+        "image_back": "",
+        "notes": "Machine 9 · Posição 2 · Orientação horizontal · PennyCollector location 1851",
+        "reference_url": "http://locations.pennycollector.com/Details.aspx?location=1851",
+        "ordem": 14,
+        "hidden": false
+      },
+      "review_status": "pending"
+    },
+    {
+      "source": {
+        "machine_number": 9,
+        "machine_details": "at one of the entrances to the Space Shop (the largest one) – (formerly next to Shuttle Launch Experience located next to the lockers outside this simulation ride). The machine takes $1 bills and no penny is necessary. It costs $ 1 per design. You can run a credit card, but it will get you all 4 designs.\n",
+        "position": 3,
+        "description": "Shuttle Launch Experience logo",
+        "orientation": "H",
+        "machine_image_url": "http://locations.pennycollector.com/images/machine_5c718ff3-1452-4527-a621-ec536c5d2c5d.jpg",
+        "location_id": "1851",
+        "image_scope": "machine",
+        "review_flags": [
+          "shared_machine_photo"
+        ]
+      },
+      "souvenir": {
+        "name": "Shuttle Launch Experience logo",
+        "continent": "América",
+        "country": "EUA",
+        "city": "Merritt Island",
+        "type": "pressed",
+        "condition": "Não Tenho",
+        "location_name": "Kennedy Space Center",
+        "description": "Shuttle Launch Experience logo",
+        "display_shape": "oval",
+        "image_front": "http://locations.pennycollector.com/images/machine_5c718ff3-1452-4527-a621-ec536c5d2c5d.jpg",
+        "image_back": "",
+        "notes": "Machine 9 · Posição 3 · Orientação horizontal · PennyCollector location 1851",
+        "reference_url": "http://locations.pennycollector.com/Details.aspx?location=1851",
+        "ordem": 15,
+        "hidden": false
+      },
+      "review_status": "pending"
+    },
+    {
+      "source": {
+        "machine_number": 9,
+        "machine_details": "at one of the entrances to the Space Shop (the largest one) – (formerly next to Shuttle Launch Experience located next to the lockers outside this simulation ride). The machine takes $1 bills and no penny is necessary. It costs $ 1 per design. You can run a credit card, but it will get you all 4 designs.\n",
+        "position": 4,
+        "description": "Triangle logo with Shuttle",
+        "orientation": "V",
+        "machine_image_url": "http://locations.pennycollector.com/images/machine_5c718ff3-1452-4527-a621-ec536c5d2c5d.jpg",
+        "location_id": "1851",
+        "image_scope": "machine",
+        "review_flags": [
+          "shared_machine_photo"
+        ]
+      },
+      "souvenir": {
+        "name": "Triangle logo with Shuttle",
+        "continent": "América",
+        "country": "EUA",
+        "city": "Merritt Island",
+        "type": "pressed",
+        "condition": "Não Tenho",
+        "location_name": "Kennedy Space Center",
+        "description": "Triangle logo with Shuttle",
+        "display_shape": "oval",
+        "image_front": "http://locations.pennycollector.com/images/machine_5c718ff3-1452-4527-a621-ec536c5d2c5d.jpg",
+        "image_back": "",
+        "notes": "Machine 9 · Posição 4 · Orientação vertical · PennyCollector location 1851",
+        "reference_url": "http://locations.pennycollector.com/Details.aspx?location=1851",
+        "ordem": 16,
+        "hidden": false
+      },
+      "review_status": "pending"
+    },
+    {
+      "source": {
+        "machine_number": 10,
+        "machine_details": "Shuttle Launch Experience Locker Area (formerly located in Space Shop - Outdoor machine, outside the store’s door facing the “NASA Central” outdoor plaza).\n",
+        "position": 1,
+        "description": "Mercury 7 round logo",
+        "orientation": "V",
+        "machine_image_url": "http://locations.pennycollector.com/images/machine_9e2031ca-2d74-4972-b5ef-6b9929f85212.jpg",
+        "location_id": "1851",
+        "image_scope": "machine",
+        "review_flags": [
+          "shared_machine_photo"
+        ]
+      },
+      "souvenir": {
+        "name": "Mercury 7 round logo",
+        "continent": "América",
+        "country": "EUA",
+        "city": "Merritt Island",
+        "type": "pressed",
+        "condition": "Não Tenho",
+        "location_name": "Kennedy Space Center",
+        "description": "Mercury 7 round logo",
+        "display_shape": "oval",
+        "image_front": "http://locations.pennycollector.com/images/machine_9e2031ca-2d74-4972-b5ef-6b9929f85212.jpg",
+        "image_back": "",
+        "notes": "Machine 10 · Posição 1 · Orientação vertical · PennyCollector location 1851",
+        "reference_url": "http://locations.pennycollector.com/Details.aspx?location=1851",
+        "ordem": 17,
+        "hidden": false
+      },
+      "review_status": "pending"
+    },
+    {
+      "source": {
+        "machine_number": 10,
+        "machine_details": "Shuttle Launch Experience Locker Area (formerly located in Space Shop - Outdoor machine, outside the store’s door facing the “NASA Central” outdoor plaza).\n",
+        "position": 2,
+        "description": "Shuttle landing with a parachute, inscribed “Atlantis Space Shuttle”",
+        "orientation": "H",
+        "machine_image_url": "http://locations.pennycollector.com/images/machine_9e2031ca-2d74-4972-b5ef-6b9929f85212.jpg",
+        "location_id": "1851",
+        "image_scope": "machine",
+        "review_flags": [
+          "shared_machine_photo"
+        ]
+      },
+      "souvenir": {
+        "name": "Shuttle landing with a parachute",
+        "continent": "América",
+        "country": "EUA",
+        "city": "Merritt Island",
+        "type": "pressed",
+        "condition": "Não Tenho",
+        "location_name": "Kennedy Space Center",
+        "description": "Shuttle landing with a parachute, inscribed “Atlantis Space Shuttle”",
+        "display_shape": "oval",
+        "image_front": "http://locations.pennycollector.com/images/machine_9e2031ca-2d74-4972-b5ef-6b9929f85212.jpg",
+        "image_back": "",
+        "notes": "Machine 10 · Posição 2 · Orientação horizontal · PennyCollector location 1851",
+        "reference_url": "http://locations.pennycollector.com/Details.aspx?location=1851",
+        "ordem": 18,
+        "hidden": false
+      },
+      "review_status": "pending"
+    },
+    {
+      "source": {
+        "machine_number": 10,
+        "machine_details": "Shuttle Launch Experience Locker Area (formerly located in Space Shop - Outdoor machine, outside the store’s door facing the “NASA Central” outdoor plaza).\n",
+        "position": 3,
+        "description": "triangle logo with Space Shuttle",
+        "orientation": "V",
+        "machine_image_url": "http://locations.pennycollector.com/images/machine_9e2031ca-2d74-4972-b5ef-6b9929f85212.jpg",
+        "location_id": "1851",
+        "image_scope": "machine",
+        "review_flags": [
+          "shared_machine_photo"
+        ]
+      },
+      "souvenir": {
+        "name": "triangle logo with Space Shuttle",
+        "continent": "América",
+        "country": "EUA",
+        "city": "Merritt Island",
+        "type": "pressed",
+        "condition": "Não Tenho",
+        "location_name": "Kennedy Space Center",
+        "description": "triangle logo with Space Shuttle",
+        "display_shape": "oval",
+        "image_front": "http://locations.pennycollector.com/images/machine_9e2031ca-2d74-4972-b5ef-6b9929f85212.jpg",
+        "image_back": "",
+        "notes": "Machine 10 · Posição 3 · Orientação vertical · PennyCollector location 1851",
+        "reference_url": "http://locations.pennycollector.com/Details.aspx?location=1851",
+        "ordem": 19,
+        "hidden": false
+      },
+      "review_status": "pending"
+    },
+    {
+      "source": {
+        "machine_number": 10,
+        "machine_details": "Shuttle Launch Experience Locker Area (formerly located in Space Shop - Outdoor machine, outside the store’s door facing the “NASA Central” outdoor plaza).\n",
+        "position": 4,
+        "description": "Shuttle on Boeing 747, inscribed “Shuttle Atlantis 747 SCA”",
+        "orientation": "H",
+        "machine_image_url": "http://locations.pennycollector.com/images/machine_9e2031ca-2d74-4972-b5ef-6b9929f85212.jpg",
+        "location_id": "1851",
+        "image_scope": "machine",
+        "review_flags": [
+          "shared_machine_photo"
+        ]
+      },
+      "souvenir": {
+        "name": "Shuttle on Boeing 747",
+        "continent": "América",
+        "country": "EUA",
+        "city": "Merritt Island",
+        "type": "pressed",
+        "condition": "Não Tenho",
+        "location_name": "Kennedy Space Center",
+        "description": "Shuttle on Boeing 747, inscribed “Shuttle Atlantis 747 SCA”",
+        "display_shape": "oval",
+        "image_front": "http://locations.pennycollector.com/images/machine_9e2031ca-2d74-4972-b5ef-6b9929f85212.jpg",
+        "image_back": "",
+        "notes": "Machine 10 · Posição 4 · Orientação horizontal · PennyCollector location 1851",
+        "reference_url": "http://locations.pennycollector.com/Details.aspx?location=1851",
+        "ordem": 20,
+        "hidden": false
+      },
+      "review_status": "pending"
+    },
+    {
+      "source": {
+        "machine_number": 11,
+        "machine_details": "Inside Information building just outside main entrance gate (formerly located inside Space Shop Inside door machine near cash registers):\n",
+        "position": 1,
+        "description": "Shuttle with cargo door open and arm extended with “Florida, U.S.A.”",
+        "orientation": "H",
+        "machine_image_url": "http://locations.pennycollector.com/images/machine_a18c603f-d049-4240-9a72-cad754a52868.jpg",
+        "location_id": "1851",
+        "image_scope": "machine",
+        "review_flags": [
+          "shared_machine_photo"
+        ]
+      },
+      "souvenir": {
+        "name": "Shuttle with cargo door open and arm extended with…",
+        "continent": "América",
+        "country": "EUA",
+        "city": "Merritt Island",
+        "type": "pressed",
+        "condition": "Não Tenho",
+        "location_name": "Kennedy Space Center",
+        "description": "Shuttle with cargo door open and arm extended with “Florida, U.S.A.”",
+        "display_shape": "oval",
+        "image_front": "http://locations.pennycollector.com/images/machine_a18c603f-d049-4240-9a72-cad754a52868.jpg",
+        "image_back": "",
+        "notes": "Machine 11 · Posição 1 · Orientação horizontal · PennyCollector location 1851",
+        "reference_url": "http://locations.pennycollector.com/Details.aspx?location=1851",
+        "ordem": 21,
+        "hidden": false
+      },
+      "review_status": "pending"
+    },
+    {
+      "source": {
+        "machine_number": 11,
+        "machine_details": "Inside Information building just outside main entrance gate (formerly located inside Space Shop Inside door machine near cash registers):\n",
+        "position": 2,
+        "description": "“Shuttle Launch” without “Kennedy Space Center” on coin",
+        "orientation": "V",
+        "machine_image_url": "http://locations.pennycollector.com/images/machine_a18c603f-d049-4240-9a72-cad754a52868.jpg",
+        "location_id": "1851",
+        "image_scope": "machine",
+        "review_flags": [
+          "shared_machine_photo"
+        ]
+      },
+      "souvenir": {
+        "name": "“Shuttle Launch” without “Kennedy Space Center” on coin",
+        "continent": "América",
+        "country": "EUA",
+        "city": "Merritt Island",
+        "type": "pressed",
+        "condition": "Não Tenho",
+        "location_name": "Kennedy Space Center",
+        "description": "“Shuttle Launch” without “Kennedy Space Center” on coin",
+        "display_shape": "oval",
+        "image_front": "http://locations.pennycollector.com/images/machine_a18c603f-d049-4240-9a72-cad754a52868.jpg",
+        "image_back": "",
+        "notes": "Machine 11 · Posição 2 · Orientação vertical · PennyCollector location 1851",
+        "reference_url": "http://locations.pennycollector.com/Details.aspx?location=1851",
+        "ordem": 22,
+        "hidden": false
+      },
+      "review_status": "pending"
+    },
+    {
+      "source": {
+        "machine_number": 11,
+        "machine_details": "Inside Information building just outside main entrance gate (formerly located inside Space Shop Inside door machine near cash registers):\n",
+        "position": 3,
+        "description": "flat NASA logo with “Florida USA”",
+        "orientation": "V",
+        "machine_image_url": "http://locations.pennycollector.com/images/machine_a18c603f-d049-4240-9a72-cad754a52868.jpg",
+        "location_id": "1851",
+        "image_scope": "machine",
+        "review_flags": [
+          "shared_machine_photo"
+        ]
+      },
+      "souvenir": {
+        "name": "flat NASA logo with “Florida USA”",
+        "continent": "América",
+        "country": "EUA",
+        "city": "Merritt Island",
+        "type": "pressed",
+        "condition": "Não Tenho",
+        "location_name": "Kennedy Space Center",
+        "description": "flat NASA logo with “Florida USA”",
+        "display_shape": "oval",
+        "image_front": "http://locations.pennycollector.com/images/machine_a18c603f-d049-4240-9a72-cad754a52868.jpg",
+        "image_back": "",
+        "notes": "Machine 11 · Posição 3 · Orientação vertical · PennyCollector location 1851",
+        "reference_url": "http://locations.pennycollector.com/Details.aspx?location=1851",
+        "ordem": 23,
+        "hidden": false
+      },
+      "review_status": "pending"
+    },
+    {
+      "source": {
+        "machine_number": 11,
+        "machine_details": "Inside Information building just outside main entrance gate (formerly located inside Space Shop Inside door machine near cash registers):\n",
+        "position": 4,
+        "description": "flat globe view of Western Hemisphere with “Florida USA”",
+        "orientation": "V",
+        "machine_image_url": "http://locations.pennycollector.com/images/machine_a18c603f-d049-4240-9a72-cad754a52868.jpg",
+        "location_id": "1851",
+        "image_scope": "machine",
+        "review_flags": [
+          "shared_machine_photo"
+        ]
+      },
+      "souvenir": {
+        "name": "flat globe view of Western Hemisphere with “Florida USA”",
+        "continent": "América",
+        "country": "EUA",
+        "city": "Merritt Island",
+        "type": "pressed",
+        "condition": "Não Tenho",
+        "location_name": "Kennedy Space Center",
+        "description": "flat globe view of Western Hemisphere with “Florida USA”",
+        "display_shape": "oval",
+        "image_front": "http://locations.pennycollector.com/images/machine_a18c603f-d049-4240-9a72-cad754a52868.jpg",
+        "image_back": "",
+        "notes": "Machine 11 · Posição 4 · Orientação vertical · PennyCollector location 1851",
+        "reference_url": "http://locations.pennycollector.com/Details.aspx?location=1851",
+        "ordem": 24,
+        "hidden": false
+      },
+      "review_status": "pending"
+    },
+    {
+      "source": {
+        "machine_number": 12,
+        "machine_details": "Temp Space Shop outside (near cash registers):\n",
+        "position": 1,
+        "description": "“Apollo Moon Rover”",
+        "orientation": "H",
+        "machine_image_url": "http://locations.pennycollector.com/images/machine_7d0b3aa9-41b6-4e52-a118-6c1bf167c659.jpg",
+        "location_id": "1851",
+        "image_scope": "machine",
+        "review_flags": [
+          "shared_machine_photo"
+        ]
+      },
+      "souvenir": {
+        "name": "“Apollo Moon Rover”",
+        "continent": "América",
+        "country": "EUA",
+        "city": "Merritt Island",
+        "type": "pressed",
+        "condition": "Não Tenho",
+        "location_name": "Kennedy Space Center",
+        "description": "“Apollo Moon Rover”",
+        "display_shape": "oval",
+        "image_front": "http://locations.pennycollector.com/images/machine_7d0b3aa9-41b6-4e52-a118-6c1bf167c659.jpg",
+        "image_back": "",
+        "notes": "Machine 12 · Posição 1 · Orientação horizontal · PennyCollector location 1851",
+        "reference_url": "http://locations.pennycollector.com/Details.aspx?location=1851",
+        "ordem": 25,
+        "hidden": false
+      },
+      "review_status": "pending"
+    },
+    {
+      "source": {
+        "machine_number": 12,
+        "machine_details": "Temp Space Shop outside (near cash registers):\n",
+        "position": 2,
+        "description": "Apollo 11 eagle logo",
+        "orientation": "V",
+        "machine_image_url": "http://locations.pennycollector.com/images/machine_7d0b3aa9-41b6-4e52-a118-6c1bf167c659.jpg",
+        "location_id": "1851",
+        "image_scope": "machine",
+        "review_flags": [
+          "shared_machine_photo"
+        ]
+      },
+      "souvenir": {
+        "name": "Apollo 11 eagle logo",
+        "continent": "América",
+        "country": "EUA",
+        "city": "Merritt Island",
+        "type": "pressed",
+        "condition": "Não Tenho",
+        "location_name": "Kennedy Space Center",
+        "description": "Apollo 11 eagle logo",
+        "display_shape": "oval",
+        "image_front": "http://locations.pennycollector.com/images/machine_7d0b3aa9-41b6-4e52-a118-6c1bf167c659.jpg",
+        "image_back": "",
+        "notes": "Machine 12 · Posição 2 · Orientação vertical · PennyCollector location 1851",
+        "reference_url": "http://locations.pennycollector.com/Details.aspx?location=1851",
+        "ordem": 26,
+        "hidden": false
+      },
+      "review_status": "pending"
+    },
+    {
+      "source": {
+        "machine_number": 12,
+        "machine_details": "Temp Space Shop outside (near cash registers):\n",
+        "position": 3,
+        "description": "Mars Rover",
+        "orientation": "V",
+        "machine_image_url": "http://locations.pennycollector.com/images/machine_7d0b3aa9-41b6-4e52-a118-6c1bf167c659.jpg",
+        "location_id": "1851",
+        "image_scope": "machine",
+        "review_flags": [
+          "shared_machine_photo"
+        ]
+      },
+      "souvenir": {
+        "name": "Mars Rover",
+        "continent": "América",
+        "country": "EUA",
+        "city": "Merritt Island",
+        "type": "pressed",
+        "condition": "Não Tenho",
+        "location_name": "Kennedy Space Center",
+        "description": "Mars Rover",
+        "display_shape": "oval",
+        "image_front": "http://locations.pennycollector.com/images/machine_7d0b3aa9-41b6-4e52-a118-6c1bf167c659.jpg",
+        "image_back": "",
+        "notes": "Machine 12 · Posição 3 · Orientação vertical · PennyCollector location 1851",
+        "reference_url": "http://locations.pennycollector.com/Details.aspx?location=1851",
+        "ordem": 27,
+        "hidden": false
+      },
+      "review_status": "pending"
+    },
+    {
+      "source": {
+        "machine_number": 12,
+        "machine_details": "Temp Space Shop outside (near cash registers):\n",
+        "position": 4,
+        "description": "shuttle on Boeing 747 inscribed “Shuttle Enterprise 747 SCA”",
+        "orientation": "H",
+        "machine_image_url": "http://locations.pennycollector.com/images/machine_7d0b3aa9-41b6-4e52-a118-6c1bf167c659.jpg",
+        "location_id": "1851",
+        "image_scope": "machine",
+        "review_flags": [
+          "shared_machine_photo"
+        ]
+      },
+      "souvenir": {
+        "name": "shuttle on Boeing 747 inscribed “Shuttle Enterprise 747…",
+        "continent": "América",
+        "country": "EUA",
+        "city": "Merritt Island",
+        "type": "pressed",
+        "condition": "Não Tenho",
+        "location_name": "Kennedy Space Center",
+        "description": "shuttle on Boeing 747 inscribed “Shuttle Enterprise 747 SCA”",
+        "display_shape": "oval",
+        "image_front": "http://locations.pennycollector.com/images/machine_7d0b3aa9-41b6-4e52-a118-6c1bf167c659.jpg",
+        "image_back": "",
+        "notes": "Machine 12 · Posição 4 · Orientação horizontal · PennyCollector location 1851",
+        "reference_url": "http://locations.pennycollector.com/Details.aspx?location=1851",
+        "ordem": 28,
+        "hidden": false
+      },
+      "review_status": "pending"
+    },
+    {
+      "source": {
+        "machine_number": 13,
+        "machine_details": "at one of the entrances to the Space Shop (the largest one). The machine takes $1 bills and no penny is necessary. It costs $ 1 per design. You can run a credit card, but it will get you all 4 designs.\n",
+        "position": 1,
+        "description": "Astronaut stepping onto Moon, inscribed “July 20th, 1969”",
+        "orientation": "V",
+        "machine_image_url": "http://locations.pennycollector.com/images/machine_70d7399b-91dc-490d-8671-395006b08c88.jpg",
+        "location_id": "1851",
+        "image_scope": "machine",
+        "review_flags": [
+          "shared_machine_photo"
+        ]
+      },
+      "souvenir": {
+        "name": "Astronaut stepping onto Moon",
+        "continent": "América",
+        "country": "EUA",
+        "city": "Merritt Island",
+        "type": "pressed",
+        "condition": "Não Tenho",
+        "location_name": "Kennedy Space Center",
+        "description": "Astronaut stepping onto Moon, inscribed “July 20th, 1969”",
+        "display_shape": "oval",
+        "image_front": "http://locations.pennycollector.com/images/machine_70d7399b-91dc-490d-8671-395006b08c88.jpg",
+        "image_back": "",
+        "notes": "Machine 13 · Posição 1 · Orientação vertical · PennyCollector location 1851",
+        "reference_url": "http://locations.pennycollector.com/Details.aspx?location=1851",
+        "ordem": 29,
+        "hidden": false
+      },
+      "review_status": "pending"
+    },
+    {
+      "source": {
+        "machine_number": 13,
+        "machine_details": "at one of the entrances to the Space Shop (the largest one). The machine takes $1 bills and no penny is necessary. It costs $ 1 per design. You can run a credit card, but it will get you all 4 designs.\n",
+        "position": 2,
+        "description": "Hubble space telescope & NASA logo",
+        "orientation": "H",
+        "machine_image_url": "http://locations.pennycollector.com/images/machine_70d7399b-91dc-490d-8671-395006b08c88.jpg",
+        "location_id": "1851",
+        "image_scope": "machine",
+        "review_flags": [
+          "shared_machine_photo"
+        ]
+      },
+      "souvenir": {
+        "name": "Hubble space telescope & NASA logo",
+        "continent": "América",
+        "country": "EUA",
+        "city": "Merritt Island",
+        "type": "pressed",
+        "condition": "Não Tenho",
+        "location_name": "Kennedy Space Center",
+        "description": "Hubble space telescope & NASA logo",
+        "display_shape": "oval",
+        "image_front": "http://locations.pennycollector.com/images/machine_70d7399b-91dc-490d-8671-395006b08c88.jpg",
+        "image_back": "",
+        "notes": "Machine 13 · Posição 2 · Orientação horizontal · PennyCollector location 1851",
+        "reference_url": "http://locations.pennycollector.com/Details.aspx?location=1851",
+        "ordem": 30,
+        "hidden": false
+      },
+      "review_status": "pending"
+    },
+    {
+      "source": {
+        "machine_number": 13,
+        "machine_details": "at one of the entrances to the Space Shop (the largest one). The machine takes $1 bills and no penny is necessary. It costs $ 1 per design. You can run a credit card, but it will get you all 4 designs.\n",
+        "position": 3,
+        "description": "Space Shuttle, inscribed Pace Shuttle Program”",
+        "orientation": "V",
+        "machine_image_url": "http://locations.pennycollector.com/images/machine_70d7399b-91dc-490d-8671-395006b08c88.jpg",
+        "location_id": "1851",
+        "image_scope": "machine",
+        "review_flags": [
+          "shared_machine_photo",
+          "possible_source_typo"
+        ]
+      },
+      "souvenir": {
+        "name": "Space Shuttle",
+        "continent": "América",
+        "country": "EUA",
+        "city": "Merritt Island",
+        "type": "pressed",
+        "condition": "Não Tenho",
+        "location_name": "Kennedy Space Center",
+        "description": "Space Shuttle, inscribed Pace Shuttle Program”",
+        "display_shape": "oval",
+        "image_front": "http://locations.pennycollector.com/images/machine_70d7399b-91dc-490d-8671-395006b08c88.jpg",
+        "image_back": "",
+        "notes": "Machine 13 · Posição 3 · Orientação vertical · PennyCollector location 1851",
+        "reference_url": "http://locations.pennycollector.com/Details.aspx?location=1851",
+        "ordem": 31,
+        "hidden": false
+      },
+      "review_status": "pending"
+    },
+    {
+      "source": {
+        "machine_number": 13,
+        "machine_details": "at one of the entrances to the Space Shop (the largest one). The machine takes $1 bills and no penny is necessary. It costs $ 1 per design. You can run a credit card, but it will get you all 4 designs.\n",
+        "position": 4,
+        "description": "Heat with “Space Princess”",
+        "orientation": "H",
+        "machine_image_url": "http://locations.pennycollector.com/images/machine_70d7399b-91dc-490d-8671-395006b08c88.jpg",
+        "location_id": "1851",
+        "image_scope": "machine",
+        "review_flags": [
+          "shared_machine_photo",
+          "possible_source_typo"
+        ]
+      },
+      "souvenir": {
+        "name": "Heat with “Space Princess”",
+        "continent": "América",
+        "country": "EUA",
+        "city": "Merritt Island",
+        "type": "pressed",
+        "condition": "Não Tenho",
+        "location_name": "Kennedy Space Center",
+        "description": "Heat with “Space Princess”",
+        "display_shape": "oval",
+        "image_front": "http://locations.pennycollector.com/images/machine_70d7399b-91dc-490d-8671-395006b08c88.jpg",
+        "image_back": "",
+        "notes": "Machine 13 · Posição 4 · Orientação horizontal · PennyCollector location 1851",
+        "reference_url": "http://locations.pennycollector.com/Details.aspx?location=1851",
+        "ordem": 32,
+        "hidden": false
+      },
+      "review_status": "pending"
+    },
+    {
+      "source": {
+        "machine_number": 15,
+        "machine_details": "LC-39 Observation Gantry (this area is accessed by the bus tour):\n",
+        "position": 1,
+        "description": "International Space Station",
+        "orientation": "V",
+        "machine_image_url": "http://locations.pennycollector.com/images/machine_493ac5be-d99e-4bc4-aa32-c8df1c361cb2.jpg",
+        "location_id": "1851",
+        "image_scope": "machine",
+        "review_flags": [
+          "shared_machine_photo"
+        ]
+      },
+      "souvenir": {
+        "name": "International Space Station",
+        "continent": "América",
+        "country": "EUA",
+        "city": "Merritt Island",
+        "type": "pressed",
+        "condition": "Não Tenho",
+        "location_name": "Kennedy Space Center",
+        "description": "International Space Station",
+        "display_shape": "oval",
+        "image_front": "http://locations.pennycollector.com/images/machine_493ac5be-d99e-4bc4-aa32-c8df1c361cb2.jpg",
+        "image_back": "",
+        "notes": "Machine 15 · Posição 1 · Orientação vertical · PennyCollector location 1851",
+        "reference_url": "http://locations.pennycollector.com/Details.aspx?location=1851",
+        "ordem": 33,
+        "hidden": false
+      },
+      "review_status": "pending"
+    },
+    {
+      "source": {
+        "machine_number": 15,
+        "machine_details": "LC-39 Observation Gantry (this area is accessed by the bus tour):\n",
+        "position": 2,
+        "description": "hollow NASA logo",
+        "orientation": "H",
+        "machine_image_url": "http://locations.pennycollector.com/images/machine_493ac5be-d99e-4bc4-aa32-c8df1c361cb2.jpg",
+        "location_id": "1851",
+        "image_scope": "machine",
+        "review_flags": [
+          "shared_machine_photo"
+        ]
+      },
+      "souvenir": {
+        "name": "hollow NASA logo",
+        "continent": "América",
+        "country": "EUA",
+        "city": "Merritt Island",
+        "type": "pressed",
+        "condition": "Não Tenho",
+        "location_name": "Kennedy Space Center",
+        "description": "hollow NASA logo",
+        "display_shape": "oval",
+        "image_front": "http://locations.pennycollector.com/images/machine_493ac5be-d99e-4bc4-aa32-c8df1c361cb2.jpg",
+        "image_back": "",
+        "notes": "Machine 15 · Posição 2 · Orientação horizontal · PennyCollector location 1851",
+        "reference_url": "http://locations.pennycollector.com/Details.aspx?location=1851",
+        "ordem": 34,
+        "hidden": false
+      },
+      "review_status": "pending"
+    },
+    {
+      "source": {
+        "machine_number": 15,
+        "machine_details": "LC-39 Observation Gantry (this area is accessed by the bus tour):\n",
+        "position": 3,
+        "description": "shuttle launching with a view from above",
+        "orientation": "V",
+        "machine_image_url": "http://locations.pennycollector.com/images/machine_493ac5be-d99e-4bc4-aa32-c8df1c361cb2.jpg",
+        "location_id": "1851",
+        "image_scope": "machine",
+        "review_flags": [
+          "shared_machine_photo"
+        ]
+      },
+      "souvenir": {
+        "name": "shuttle launching with a view from above",
+        "continent": "América",
+        "country": "EUA",
+        "city": "Merritt Island",
+        "type": "pressed",
+        "condition": "Não Tenho",
+        "location_name": "Kennedy Space Center",
+        "description": "shuttle launching with a view from above",
+        "display_shape": "oval",
+        "image_front": "http://locations.pennycollector.com/images/machine_493ac5be-d99e-4bc4-aa32-c8df1c361cb2.jpg",
+        "image_back": "",
+        "notes": "Machine 15 · Posição 3 · Orientação vertical · PennyCollector location 1851",
+        "reference_url": "http://locations.pennycollector.com/Details.aspx?location=1851",
+        "ordem": 35,
+        "hidden": false
+      },
+      "review_status": "pending"
+    },
+    {
+      "source": {
+        "machine_number": 15,
+        "machine_details": "LC-39 Observation Gantry (this area is accessed by the bus tour):\n",
+        "position": 4,
+        "description": "shuttle in space, viewed from above",
+        "orientation": "H",
+        "machine_image_url": "http://locations.pennycollector.com/images/machine_493ac5be-d99e-4bc4-aa32-c8df1c361cb2.jpg",
+        "location_id": "1851",
+        "image_scope": "machine",
+        "review_flags": [
+          "shared_machine_photo"
+        ]
+      },
+      "souvenir": {
+        "name": "shuttle in space, viewed from above",
+        "continent": "América",
+        "country": "EUA",
+        "city": "Merritt Island",
+        "type": "pressed",
+        "condition": "Não Tenho",
+        "location_name": "Kennedy Space Center",
+        "description": "shuttle in space, viewed from above",
+        "display_shape": "oval",
+        "image_front": "http://locations.pennycollector.com/images/machine_493ac5be-d99e-4bc4-aa32-c8df1c361cb2.jpg",
+        "image_back": "",
+        "notes": "Machine 15 · Posição 4 · Orientação horizontal · PennyCollector location 1851",
+        "reference_url": "http://locations.pennycollector.com/Details.aspx?location=1851",
+        "ordem": 36,
+        "hidden": false
+      },
+      "review_status": "pending"
+    },
+    {
+      "source": {
+        "machine_number": 16,
+        "machine_details": "Apollo/Saturn V Center Moon Rock Café - restroom area (this area is accessed by the bus tour; Many years ago, this machine was located at the Right Stuff gift shop.):\n",
+        "position": 1,
+        "description": "Apollo XIII logo, inscribed “failure is not an option”",
+        "orientation": "V",
+        "machine_image_url": "http://locations.pennycollector.com/images/machine_c7a07781-3343-4015-afb6-1cfb2fe5c6df.jpg",
+        "location_id": "1851",
+        "image_scope": "machine",
+        "review_flags": [
+          "shared_machine_photo"
+        ]
+      },
+      "souvenir": {
+        "name": "Apollo XIII logo",
+        "continent": "América",
+        "country": "EUA",
+        "city": "Merritt Island",
+        "type": "pressed",
+        "condition": "Não Tenho",
+        "location_name": "Kennedy Space Center",
+        "description": "Apollo XIII logo, inscribed “failure is not an option”",
+        "display_shape": "oval",
+        "image_front": "http://locations.pennycollector.com/images/machine_c7a07781-3343-4015-afb6-1cfb2fe5c6df.jpg",
+        "image_back": "",
+        "notes": "Machine 16 · Posição 1 · Orientação vertical · PennyCollector location 1851",
+        "reference_url": "http://locations.pennycollector.com/Details.aspx?location=1851",
+        "ordem": 37,
+        "hidden": false
+      },
+      "review_status": "pending"
+    },
+    {
+      "source": {
+        "machine_number": 16,
+        "machine_details": "Apollo/Saturn V Center Moon Rock Café - restroom area (this area is accessed by the bus tour; Many years ago, this machine was located at the Right Stuff gift shop.):\n",
+        "position": 2,
+        "description": "Saturn V rocket launching",
+        "orientation": "V",
+        "machine_image_url": "http://locations.pennycollector.com/images/machine_c7a07781-3343-4015-afb6-1cfb2fe5c6df.jpg",
+        "location_id": "1851",
+        "image_scope": "machine",
+        "review_flags": [
+          "shared_machine_photo"
+        ]
+      },
+      "souvenir": {
+        "name": "Saturn V rocket launching",
+        "continent": "América",
+        "country": "EUA",
+        "city": "Merritt Island",
+        "type": "pressed",
+        "condition": "Não Tenho",
+        "location_name": "Kennedy Space Center",
+        "description": "Saturn V rocket launching",
+        "display_shape": "oval",
+        "image_front": "http://locations.pennycollector.com/images/machine_c7a07781-3343-4015-afb6-1cfb2fe5c6df.jpg",
+        "image_back": "",
+        "notes": "Machine 16 · Posição 2 · Orientação vertical · PennyCollector location 1851",
+        "reference_url": "http://locations.pennycollector.com/Details.aspx?location=1851",
+        "ordem": 38,
+        "hidden": false
+      },
+      "review_status": "pending"
+    },
+    {
+      "source": {
+        "machine_number": 16,
+        "machine_details": "Apollo/Saturn V Center Moon Rock Café - restroom area (this area is accessed by the bus tour; Many years ago, this machine was located at the Right Stuff gift shop.):\n",
+        "position": 3,
+        "description": "Lunar Rover",
+        "orientation": "V",
+        "machine_image_url": "http://locations.pennycollector.com/images/machine_c7a07781-3343-4015-afb6-1cfb2fe5c6df.jpg",
+        "location_id": "1851",
+        "image_scope": "machine",
+        "review_flags": [
+          "shared_machine_photo"
+        ]
+      },
+      "souvenir": {
+        "name": "Lunar Rover",
+        "continent": "América",
+        "country": "EUA",
+        "city": "Merritt Island",
+        "type": "pressed",
+        "condition": "Não Tenho",
+        "location_name": "Kennedy Space Center",
+        "description": "Lunar Rover",
+        "display_shape": "oval",
+        "image_front": "http://locations.pennycollector.com/images/machine_c7a07781-3343-4015-afb6-1cfb2fe5c6df.jpg",
+        "image_back": "",
+        "notes": "Machine 16 · Posição 3 · Orientação vertical · PennyCollector location 1851",
+        "reference_url": "http://locations.pennycollector.com/Details.aspx?location=1851",
+        "ordem": 39,
+        "hidden": false
+      },
+      "review_status": "pending"
+    },
+    {
+      "source": {
+        "machine_number": 16,
+        "machine_details": "Apollo/Saturn V Center Moon Rock Café - restroom area (this area is accessed by the bus tour; Many years ago, this machine was located at the Right Stuff gift shop.):\n",
+        "position": 4,
+        "description": "close-up of an astronaut on Moon",
+        "orientation": "H",
+        "machine_image_url": "http://locations.pennycollector.com/images/machine_c7a07781-3343-4015-afb6-1cfb2fe5c6df.jpg",
+        "location_id": "1851",
+        "image_scope": "machine",
+        "review_flags": [
+          "shared_machine_photo"
+        ]
+      },
+      "souvenir": {
+        "name": "close-up of an astronaut on Moon",
+        "continent": "América",
+        "country": "EUA",
+        "city": "Merritt Island",
+        "type": "pressed",
+        "condition": "Não Tenho",
+        "location_name": "Kennedy Space Center",
+        "description": "close-up of an astronaut on Moon",
+        "display_shape": "oval",
+        "image_front": "http://locations.pennycollector.com/images/machine_c7a07781-3343-4015-afb6-1cfb2fe5c6df.jpg",
+        "image_back": "",
+        "notes": "Machine 16 · Posição 4 · Orientação horizontal · PennyCollector location 1851",
+        "reference_url": "http://locations.pennycollector.com/Details.aspx?location=1851",
+        "ordem": 40,
+        "hidden": false
+      },
+      "review_status": "pending"
+    },
+    {
+      "source": {
+        "machine_number": 17,
+        "machine_details": "Apollo/Saturn V Center Moon Rock Café - Right Stuff gift store: All 4 coins from this machine have “Pennycollector.com” in the dotted border.\n",
+        "position": 1,
+        "description": "rounded NASA logo surrounded by planets and stars, inscribed “I Need My Space,” without “Kennedy Space Center” inscription",
+        "orientation": "H",
+        "machine_image_url": "http://locations.pennycollector.com/images/machine_4905a4b0-62de-4692-ad9c-8ced82da2e02.jpg",
+        "location_id": "1851",
+        "image_scope": "machine",
+        "review_flags": [
+          "shared_machine_photo"
+        ]
+      },
+      "souvenir": {
+        "name": "rounded NASA logo surrounded by planets and stars",
+        "continent": "América",
+        "country": "EUA",
+        "city": "Merritt Island",
+        "type": "pressed",
+        "condition": "Não Tenho",
+        "location_name": "Kennedy Space Center",
+        "description": "rounded NASA logo surrounded by planets and stars, inscribed “I Need My Space,” without “Kennedy Space Center” inscription",
+        "display_shape": "oval",
+        "image_front": "http://locations.pennycollector.com/images/machine_4905a4b0-62de-4692-ad9c-8ced82da2e02.jpg",
+        "image_back": "",
+        "notes": "Machine 17 · Posição 1 · Orientação horizontal · PennyCollector location 1851",
+        "reference_url": "http://locations.pennycollector.com/Details.aspx?location=1851",
+        "ordem": 41,
+        "hidden": false
+      },
+      "review_status": "pending"
+    },
+    {
+      "source": {
+        "machine_number": 17,
+        "machine_details": "Apollo/Saturn V Center Moon Rock Café - Right Stuff gift store: All 4 coins from this machine have “Pennycollector.com” in the dotted border.\n",
+        "position": 2,
+        "description": "Orion space capsule, inscribed “Constellation Program ‘Orion’”",
+        "orientation": "H",
+        "machine_image_url": "http://locations.pennycollector.com/images/machine_4905a4b0-62de-4692-ad9c-8ced82da2e02.jpg",
+        "location_id": "1851",
+        "image_scope": "machine",
+        "review_flags": [
+          "shared_machine_photo"
+        ]
+      },
+      "souvenir": {
+        "name": "Orion space capsule",
+        "continent": "América",
+        "country": "EUA",
+        "city": "Merritt Island",
+        "type": "pressed",
+        "condition": "Não Tenho",
+        "location_name": "Kennedy Space Center",
+        "description": "Orion space capsule, inscribed “Constellation Program ‘Orion’”",
+        "display_shape": "oval",
+        "image_front": "http://locations.pennycollector.com/images/machine_4905a4b0-62de-4692-ad9c-8ced82da2e02.jpg",
+        "image_back": "",
+        "notes": "Machine 17 · Posição 2 · Orientação horizontal · PennyCollector location 1851",
+        "reference_url": "http://locations.pennycollector.com/Details.aspx?location=1851",
+        "ordem": 42,
+        "hidden": false
+      },
+      "review_status": "pending"
+    },
+    {
+      "source": {
+        "machine_number": 17,
+        "machine_details": "Apollo/Saturn V Center Moon Rock Café - Right Stuff gift store: All 4 coins from this machine have “Pennycollector.com” in the dotted border.\n",
+        "position": 3,
+        "description": "shuttle launching, viewed from above",
+        "orientation": "V",
+        "machine_image_url": "http://locations.pennycollector.com/images/machine_4905a4b0-62de-4692-ad9c-8ced82da2e02.jpg",
+        "location_id": "1851",
+        "image_scope": "machine",
+        "review_flags": [
+          "shared_machine_photo"
+        ]
+      },
+      "souvenir": {
+        "name": "shuttle launching, viewed from above",
+        "continent": "América",
+        "country": "EUA",
+        "city": "Merritt Island",
+        "type": "pressed",
+        "condition": "Não Tenho",
+        "location_name": "Kennedy Space Center",
+        "description": "shuttle launching, viewed from above",
+        "display_shape": "oval",
+        "image_front": "http://locations.pennycollector.com/images/machine_4905a4b0-62de-4692-ad9c-8ced82da2e02.jpg",
+        "image_back": "",
+        "notes": "Machine 17 · Posição 3 · Orientação vertical · PennyCollector location 1851",
+        "reference_url": "http://locations.pennycollector.com/Details.aspx?location=1851",
+        "ordem": 43,
+        "hidden": false
+      },
+      "review_status": "pending"
+    },
+    {
+      "source": {
+        "machine_number": 17,
+        "machine_details": "Apollo/Saturn V Center Moon Rock Café - Right Stuff gift store: All 4 coins from this machine have “Pennycollector.com” in the dotted border.\n",
+        "position": 4,
+        "description": "shuttle in flight, viewed from above, inscribed “Rocket Scientist”",
+        "orientation": "H",
+        "machine_image_url": "http://locations.pennycollector.com/images/machine_4905a4b0-62de-4692-ad9c-8ced82da2e02.jpg",
+        "location_id": "1851",
+        "image_scope": "machine",
+        "review_flags": [
+          "shared_machine_photo"
+        ]
+      },
+      "souvenir": {
+        "name": "shuttle in flight, viewed from above",
+        "continent": "América",
+        "country": "EUA",
+        "city": "Merritt Island",
+        "type": "pressed",
+        "condition": "Não Tenho",
+        "location_name": "Kennedy Space Center",
+        "description": "shuttle in flight, viewed from above, inscribed “Rocket Scientist”",
+        "display_shape": "oval",
+        "image_front": "http://locations.pennycollector.com/images/machine_4905a4b0-62de-4692-ad9c-8ced82da2e02.jpg",
+        "image_back": "",
+        "notes": "Machine 17 · Posição 4 · Orientação horizontal · PennyCollector location 1851",
+        "reference_url": "http://locations.pennycollector.com/Details.aspx?location=1851",
+        "ordem": 44,
+        "hidden": false
+      },
+      "review_status": "pending"
+    },
+    {
+      "source": {
+        "machine_number": 18,
+        "machine_details": "2023:\n",
+        "position": 1,
+        "description": "'Artemus', Logo",
+        "orientation": "",
+        "machine_image_url": "http://locations.pennycollector.com/images/machine_446fd88d-9995-4272-97f7-180fb4d2d155.jpg",
+        "location_id": "1851",
+        "image_scope": "machine",
+        "review_flags": [
+          "shared_machine_photo",
+          "missing_orientation",
+          "possible_source_typo"
+        ]
+      },
+      "souvenir": {
+        "name": "Artemus",
+        "continent": "América",
+        "country": "EUA",
+        "city": "Merritt Island",
+        "type": "pressed",
+        "condition": "Não Tenho",
+        "location_name": "Kennedy Space Center",
+        "description": "'Artemus', Logo",
+        "display_shape": "oval",
+        "image_front": "http://locations.pennycollector.com/images/machine_446fd88d-9995-4272-97f7-180fb4d2d155.jpg",
+        "image_back": "",
+        "notes": "Machine 18 · Posição 1 · Orientação não indicada · PennyCollector location 1851",
+        "reference_url": "http://locations.pennycollector.com/Details.aspx?location=1851",
+        "ordem": 45,
+        "hidden": false
+      },
+      "review_status": "pending"
+    },
+    {
+      "source": {
+        "machine_number": 18,
+        "machine_details": "2023:\n",
+        "position": 2,
+        "description": "'Spaceport KSC', Logo",
+        "orientation": "",
+        "machine_image_url": "http://locations.pennycollector.com/images/machine_446fd88d-9995-4272-97f7-180fb4d2d155.jpg",
+        "location_id": "1851",
+        "image_scope": "machine",
+        "review_flags": [
+          "shared_machine_photo",
+          "missing_orientation"
+        ]
+      },
+      "souvenir": {
+        "name": "Spaceport KSC",
+        "continent": "América",
+        "country": "EUA",
+        "city": "Merritt Island",
+        "type": "pressed",
+        "condition": "Não Tenho",
+        "location_name": "Kennedy Space Center",
+        "description": "'Spaceport KSC', Logo",
+        "display_shape": "oval",
+        "image_front": "http://locations.pennycollector.com/images/machine_446fd88d-9995-4272-97f7-180fb4d2d155.jpg",
+        "image_back": "",
+        "notes": "Machine 18 · Posição 2 · Orientação não indicada · PennyCollector location 1851",
+        "reference_url": "http://locations.pennycollector.com/Details.aspx?location=1851",
+        "ordem": 46,
+        "hidden": false
+      },
+      "review_status": "pending"
+    },
+    {
+      "source": {
+        "machine_number": 18,
+        "machine_details": "2023:\n",
+        "position": 3,
+        "description": "'Gateway', logo",
+        "orientation": "",
+        "machine_image_url": "http://locations.pennycollector.com/images/machine_446fd88d-9995-4272-97f7-180fb4d2d155.jpg",
+        "location_id": "1851",
+        "image_scope": "machine",
+        "review_flags": [
+          "shared_machine_photo",
+          "missing_orientation"
+        ]
+      },
+      "souvenir": {
+        "name": "Gateway",
+        "continent": "América",
+        "country": "EUA",
+        "city": "Merritt Island",
+        "type": "pressed",
+        "condition": "Não Tenho",
+        "location_name": "Kennedy Space Center",
+        "description": "'Gateway', logo",
+        "display_shape": "oval",
+        "image_front": "http://locations.pennycollector.com/images/machine_446fd88d-9995-4272-97f7-180fb4d2d155.jpg",
+        "image_back": "",
+        "notes": "Machine 18 · Posição 3 · Orientação não indicada · PennyCollector location 1851",
+        "reference_url": "http://locations.pennycollector.com/Details.aspx?location=1851",
+        "ordem": 47,
+        "hidden": false
+      },
+      "review_status": "pending"
+    },
+    {
+      "source": {
+        "machine_number": 18,
+        "machine_details": "2023:\n",
+        "position": 4,
+        "description": "'Orion', an image of spacecraft",
+        "orientation": "",
+        "machine_image_url": "http://locations.pennycollector.com/images/machine_446fd88d-9995-4272-97f7-180fb4d2d155.jpg",
+        "location_id": "1851",
+        "image_scope": "machine",
+        "review_flags": [
+          "shared_machine_photo",
+          "missing_orientation"
+        ]
+      },
+      "souvenir": {
+        "name": "Orion",
+        "continent": "América",
+        "country": "EUA",
+        "city": "Merritt Island",
+        "type": "pressed",
+        "condition": "Não Tenho",
+        "location_name": "Kennedy Space Center",
+        "description": "'Orion', an image of spacecraft",
+        "display_shape": "oval",
+        "image_front": "http://locations.pennycollector.com/images/machine_446fd88d-9995-4272-97f7-180fb4d2d155.jpg",
+        "image_back": "",
+        "notes": "Machine 18 · Posição 4 · Orientação não indicada · PennyCollector location 1851",
+        "reference_url": "http://locations.pennycollector.com/Details.aspx?location=1851",
+        "ordem": 48,
+        "hidden": false
+      },
+      "review_status": "pending"
+    }
+  ]
+}

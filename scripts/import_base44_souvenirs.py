@@ -74,6 +74,11 @@ def read_catalog(path: Path) -> dict[str, Any]:
     payload = json.loads(path.read_text(encoding="utf-8"))
     if not isinstance(payload, dict):
         raise ValueError("O catálogo deve conter um objeto JSON.")
+    if payload.get("import_ready") is False:
+        raise ValueError(
+            "Este catálogo está marcado como não aprovado para importação. "
+            "Revê e aprova primeiro os registos pendentes."
+        )
     items = payload.get("items")
     if not isinstance(items, list):
         raise ValueError("O catálogo não contém uma lista items.")
