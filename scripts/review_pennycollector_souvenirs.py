@@ -123,6 +123,13 @@ def update_catalog_status(catalog: dict[str, Any]) -> dict[str, int]:
     return summary
 
 
+def machine_label(source: dict[str, Any]) -> str:
+    machine_number = source.get("machine_number", "?")
+    if str(source.get("availability") or "active") == "retired":
+        return f"Máquina retirada {machine_number}"
+    return f"Machine {machine_number}"
+
+
 def review_html(catalog: dict[str, Any]) -> str:
     cards: list[str] = []
     labels = {APPROVED: "Aprovado", SKIPPED: "Não importar", PENDING: "Pendente"}
@@ -144,7 +151,7 @@ def review_html(catalog: dict[str, Any]) -> str:
                     image,
                     f'<p class="status">{labels.get(status, status)}</p>',
                     f'<h2>{html.escape(str(souvenir.get("name") or ""))}</h2>',
-                    f'<p>Machine {source.get("machine_number", "?")} · Posição {source.get("position", "?")}</p>',
+                    f'<p>{html.escape(machine_label(source))} · Posição {source.get("position", "?")}</p>',
                     f'<p>{html.escape(str(souvenir.get("description") or ""))}</p>',
                     "</article>",
                 ]
@@ -211,11 +218,24 @@ def interactive_review(
         item for item in catalog["items"]
         if str(item.get("review_status") or PENDING) == PENDING
     ]
+    previous_machine: tuple[str, str] | None = None
     for index, item in enumerate(pending_items, start=1):
         source = item.get("source", {})
         souvenir = item["souvenir"]
+        machine_key = (
+            str(source.get("availability") or "active"),
+            str(source.get("machine_number") or "?"),
+        )
+        if machine_key != previous_machine:
+            print("\n" + "#" * 72)
+            print(machine_label(source).upper())
+            print("#" * 72)
+            previous_machine = machine_key
         print("\n" + "-" * 72)
-        print(f"{index}/{len(pending_items)} — Machine {source.get('machine_number')} · Posição {source.get('position')}")
+        print(
+            f"{index}/{len(pending_items)} — {machine_label(source)} "
+            f"· Posição {source.get('position')}"
+        )
         print(f"Nome: {souvenir.get('name', '')}")
         print(f"Descrição: {souvenir.get('description', '')}")
         print(f"Fotografia: {souvenir.get('image_front') or 'sem fotografia'}")

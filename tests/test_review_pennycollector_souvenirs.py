@@ -103,6 +103,19 @@ class ReviewPennyCollectorSouvenirsTests(unittest.TestCase):
         self.assertEqual(merged["items"][0]["souvenir"]["name"], "Nome corrigido")
         self.assertEqual(merged["items"][1]["review_status"], PENDING)
 
+    def test_review_preview_labels_retired_machine_explicitly(self) -> None:
+        catalog = pending_catalog()
+        for item in catalog["items"]:
+            item["source"]["availability"] = "retired"
+        approve_all(catalog)
+        with tempfile.TemporaryDirectory() as temp_dir:
+            output = Path(temp_dir) / "pennycollector-catalog-final.json"
+            _catalog_path, preview_path = write_review(catalog, output)
+            preview = preview_path.read_text(encoding="utf-8")
+
+        self.assertIn("Máquina retirada 6", preview)
+        self.assertNotIn(">Machine 6 ·", preview)
+
     def test_complete_review_file_is_marked_import_ready(self) -> None:
         catalog = pending_catalog()
         approve_all(catalog)
