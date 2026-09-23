@@ -1358,14 +1358,7 @@ def action_collect_pennycollector_location() -> None:
     if not reference:
         print("O link ou ID da localização é obrigatório.")
         return
-    print("\nDesigns a recolher:")
-    print("1) Apenas máquinas atuais")
-    print("2) Máquinas atuais e retiradas")
-    while True:
-        availability = ask_text("Escolhe uma opção", "1")
-        if availability in {"1", "2"}:
-            break
-        print("Escolhe 1 ou 2.")
+    print("São recolhidas as máquinas atuais e também as retiradas.")
     command = [
         sys.executable,
         "-m",
@@ -1373,8 +1366,6 @@ def action_collect_pennycollector_location() -> None:
         "--location-id",
         reference,
     ]
-    if availability == "2":
-        command.append("--include-retired")
     run_step("Recolher localização do PennyCollector", command)
 
 

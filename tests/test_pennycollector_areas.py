@@ -124,6 +124,9 @@ class PennyCollectorAreasTests(unittest.TestCase):
 
             self.assertTrue((output_dir / "area" / "pennycollector-area.json").exists())
         self.assertEqual(stats, {"collected": 1, "skipped": 0, "failed": 0})
+        _parse_designs.assert_called_once_with(
+            "<html></html>", include_retired=True
+        )
         self.assertEqual(catalog["locations"][0]["collection_status"], "collected")
 
     @patch("scripts.pennycollector_areas.collect_locations")

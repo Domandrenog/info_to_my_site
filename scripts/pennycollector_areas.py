@@ -361,7 +361,9 @@ def collect_locations(
         else:
             try:
                 source_html = fetcher(str(location["url"]))
-                designs, metadata = parse_designs(source_html)
+                designs, metadata = parse_designs(
+                    source_html, include_retired=True
+                )
                 location_catalog = build_location_catalog(
                     designs,
                     metadata,

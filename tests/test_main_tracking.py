@@ -124,10 +124,7 @@ class MainTrackingActionTests(unittest.TestCase):
     @patch("main.title")
     @patch(
         "main.ask_text",
-        side_effect=[
-            "http://locations.pennycollector.com/Details.aspx?location=1851",
-            "1",
-        ],
+        return_value="http://locations.pennycollector.com/Details.aspx?location=1851",
     )
     def test_pennycollector_accepts_location_link(self, _ask_text, _title, run_step) -> None:
         main.action_collect_pennycollector_location()
@@ -139,15 +136,15 @@ class MainTrackingActionTests(unittest.TestCase):
 
     @patch("main.run_step", return_value=0)
     @patch("main.title")
-    @patch("main.ask_text", side_effect=["8143", "2"])
-    def test_pennycollector_location_can_include_retired_designs(
+    @patch("main.ask_text", return_value="8143")
+    def test_pennycollector_location_includes_retired_by_default(
         self, _ask_text, _title, run_step
     ) -> None:
         main.action_collect_pennycollector_location()
 
         command = run_step.call_args.args[1]
-        self.assertIn("--include-retired", command)
         self.assertIn("8143", command)
+        self.assertNotIn("--current-only", command)
 
     @patch("main.run_step", return_value=0)
     @patch("main.title")

@@ -781,9 +781,9 @@ def parse_args(argv: list[str] | None = None) -> argparse.Namespace:
     parser.add_argument("--output-dir", type=Path)
     parser.add_argument("--html-input", type=Path, help="Usar HTML local sem aceder à rede.")
     parser.add_argument(
-        "--include-retired",
+        "--current-only",
         action="store_true",
-        help="Incluir também os designs das máquinas retiradas.",
+        help="Recolher apenas as máquinas atuais; por omissão inclui também as retiradas.",
     )
     return parser.parse_args(argv)
 
@@ -798,7 +798,7 @@ def main(argv: list[str] | None = None) -> int:
             else fetch_html(location_url(location_id))
         )
         designs, metadata = parse_designs(
-            source_html, include_retired=args.include_retired
+            source_html, include_retired=not args.current_only
         )
         if not designs:
             raise ValueError("A página não devolveu designs reconhecíveis.")
