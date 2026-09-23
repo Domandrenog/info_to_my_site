@@ -1351,19 +1351,6 @@ def menu_pressedcoins_disney_orlando() -> None:
         input("\nCarrega Enter para continuar...")
 
 
-def action_collect_pennycollector_kennedy_space_center() -> None:
-    title("PennyCollector Kennedy Space Center")
-    print("Cria um catálogo separado para revisão. Não altera o Site Base44.")
-    command = [
-        sys.executable,
-        "-m",
-        "scripts.pennycollector_souvenirs",
-        "--location-id",
-        "1851",
-    ]
-    run_step("Recolher Kennedy Space Center do PennyCollector", command)
-
-
 def action_collect_pennycollector_location() -> None:
     title("PennyCollector.com — Recolher localização")
     print("Recolhe as máquinas e os designs de uma localização. Não altera o Site Base44.")
@@ -1472,23 +1459,6 @@ def action_import_pennycollector_souvenirs(*, apply: bool) -> None:
     run_step(step_name, command)
 
 
-def menu_pennycollector_kennedy_space_center() -> None:
-    while True:
-        title("PennyCollector Kennedy Space Center")
-        print("1) Recolher catálogo e criar pré-visualização")
-        print("2) Voltar")
-
-        choice = ask_text("Escolhe uma opção", "1")
-        if choice == "1":
-            action_collect_pennycollector_kennedy_space_center()
-        elif choice == "2":
-            return
-        else:
-            print("Opção inválida.")
-
-        input("\nCarrega Enter para continuar...")
-
-
 def menu_presscoins_usa() -> None:
     while True:
         title("Presscoins — USA")
@@ -1513,8 +1483,7 @@ def menu_pennycollector() -> None:
         print("3) Rever e aprovar catálogo recolhido")
         print("4) Verificar o que falta no Site Base44")
         print("5) Importar apenas souvenirs aprovados e em falta")
-        print("6) Kennedy Space Center")
-        print("7) Voltar")
+        print("6) Voltar")
 
         choice = ask_text("Escolhe uma opção", "1")
         if choice == "1":
@@ -1528,8 +1497,6 @@ def menu_pennycollector() -> None:
         elif choice == "5":
             action_import_pennycollector_souvenirs(apply=True)
         elif choice == "6":
-            menu_pennycollector_kennedy_space_center()
-        elif choice == "7":
             return
         else:
             print("Opção inválida.")

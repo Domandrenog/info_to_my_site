@@ -122,16 +122,6 @@ class MainTrackingActionTests(unittest.TestCase):
 
     @patch("main.run_step", return_value=0)
     @patch("main.title")
-    def test_pennycollector_collection_is_review_only(self, _title, run_step) -> None:
-        main.action_collect_pennycollector_kennedy_space_center()
-
-        command = run_step.call_args.args[1]
-        self.assertIn("scripts.pennycollector_souvenirs", command)
-        self.assertEqual(command[-2:], ["--location-id", "1851"])
-        self.assertNotIn("--apply", command)
-
-    @patch("main.run_step", return_value=0)
-    @patch("main.title")
     @patch(
         "main.ask_text",
         return_value="http://locations.pennycollector.com/Details.aspx?location=1851",
@@ -159,14 +149,12 @@ class MainTrackingActionTests(unittest.TestCase):
         self.assertIn("--interactive", command)
         self.assertNotIn("--apply", command)
 
-    @patch("main.menu_pennycollector_kennedy_space_center")
     @patch("main.title")
-    @patch("main.ask_text", side_effect=["6", "7"])
+    @patch("main.ask_text", side_effect=["6"])
     def test_pennycollector_menu_exposes_complete_review_and_import_flow(
         self,
         _ask_text,
         _title,
-        pennycollector_menu,
     ) -> None:
         with redirect_stdout(io.StringIO()) as output:
             main.menu_pennycollector()
@@ -177,8 +165,8 @@ class MainTrackingActionTests(unittest.TestCase):
         self.assertIn("3) Rever e aprovar catálogo recolhido", menu)
         self.assertIn("4) Verificar o que falta no Site Base44", menu)
         self.assertIn("5) Importar apenas souvenirs aprovados e em falta", menu)
-        self.assertIn("6) Kennedy Space Center", menu)
-        pennycollector_menu.assert_called_once_with()
+        self.assertIn("6) Voltar", menu)
+        self.assertNotIn("Kennedy Space Center", menu)
 
     @patch("main.run_step", return_value=0)
     @patch("main.title")

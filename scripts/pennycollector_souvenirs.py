@@ -221,6 +221,9 @@ def active_machines_fragment(source_html: str) -> str:
 
 
 def parse_orientation(description: str) -> tuple[str, str]:
+    prefix = re.match(r"^\s*\((H|V)\)\s*", description, flags=re.IGNORECASE)
+    if prefix:
+        return description[prefix.end() :].rstrip(" .,;"), prefix.group(1).upper()
     patterns = [
         (r"\s*\((H|V)\)\s*\.?\s*$", {"H": "H", "V": "V"}),
         (
@@ -289,6 +292,64 @@ def parse_simple_designs(
     return designs
 
 
+def parse_description_machine_designs(
+    source_html: str, page_parser: PennyCollectorPageParser
+) -> list[PressedDesign]:
+    container = re.search(
+        r"<td[^>]+id=[\"']DescriptionContainer[\"'][^>]*>(.*?)</td>",
+        source_html,
+        flags=re.IGNORECASE | re.DOTALL,
+    )
+    if not container:
+        return []
+    content = container.group(1)
+    headers = list(
+        re.finditer(r"<b>\s*Machine\s+(\d+)\s*</b>", content, flags=re.IGNORECASE)
+    )
+    designs: list[PressedDesign] = []
+    for index, header in enumerate(headers):
+        machine_number = int(header.group(1))
+        block_end = headers[index + 1].start() if index + 1 < len(headers) else len(content)
+        block = content[header.end() : block_end]
+        first_number = re.search(
+            r"(?:^|<br\s*/?>)\s*[1-9]\d*\s*[.)]\s*",
+            block,
+            flags=re.IGNORECASE,
+        )
+        if not first_number:
+            continue
+        paragraph_end = re.search(r"<p\b", block[first_number.start() :], flags=re.IGNORECASE)
+        if paragraph_end:
+            block = block[: first_number.start() + paragraph_end.start()]
+        block_text = html_fragment_text(block)
+        numbered = list(
+            re.finditer(r"(?m)^\s*([1-9]\d*)\s*[.)]\s*", block_text)
+        )
+        if not numbered:
+            continue
+        machine_details = block_text[: numbered[0].start()].strip(" :-")
+        for design_index, numbered_item in enumerate(numbered):
+            description_end = (
+                numbered[design_index + 1].start()
+                if design_index + 1 < len(numbered)
+                else len(block_text)
+            )
+            description = block_text[numbered_item.end() : description_end].strip(" \n;.")
+            description, orientation = parse_orientation(description)
+            if description:
+                designs.append(
+                    PressedDesign(
+                        machine_number=machine_number,
+                        machine_details=machine_details,
+                        position=int(numbered_item.group(1)),
+                        description=description,
+                        orientation=orientation,
+                        machine_image_url=page_parser.machine_images.get(machine_number, ""),
+                    )
+                )
+    return designs
+
+
 def parse_designs(source_html: str) -> tuple[list[PressedDesign], dict[str, Any]]:
     page_parser = PennyCollectorPageParser()
     page_parser.feed(source_html)
@@ -340,7 +401,9 @@ def parse_designs(source_html: str) -> tuple[list[PressedDesign], dict[str, Any]
     if not designs:
         designs = parse_simple_designs(source_html, page_parser)
     if not designs:
-        raise ValueError("Não foram encontrados designs ativos reconhecíveis na página.")
+        designs = parse_description_machine_designs(source_html, page_parser)
+    if not designs:
+        raise ValueError("Não foram encontrados designs reconhecíveis na página.")
 
     metadata = {
         "location_name": page_parser.inputs.get("ReportLocation_Location", ""),
@@ -636,7 +699,7 @@ def main(argv: list[str] | None = None) -> int:
         not item["source"]["orientation"] for item in catalog["items"]
     )
     print(f"Localização: {catalog['source']['location_name']}")
-    print(f"Máquinas ativas analisadas: {machines}")
+    print(f"Máquinas analisadas: {machines}")
     print(f"Designs pendentes de revisão: {len(catalog['items'])}")
     print(f"Com fotografia partilhada da máquina: {shared_photos}")
     print(f"Sem orientação indicada: {missing_orientation}")

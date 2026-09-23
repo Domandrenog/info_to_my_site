@@ -54,6 +54,25 @@ SIMPLE_HTML = """
 """
 
 
+NARRATIVE_HTML = """
+<input id="ReportLocation_Location" value="Hard Rock Cafe">
+<input id="ReportLocation_Address" value="401 Biscayne Boulevard Suite R-200">
+<input id="ReportLocation_City" value="Miami">
+<select id="ReportLocation_CountryList"><option selected="selected">United States</option></select>
+<select id="ReportLocation_StateList"><option selected="selected">FL</option></select>
+<select id="ReportLocation_StatusList"><option selected="selected">Gone</option></select>
+<table><tr><td id="DescriptionContainer"><p>Location introduction.</p>
+<b>Machine 1</b> is inside the Rock Shop. Designs all have a beaded border:<br>
+1. (V) Miami city skyline inside a guitar pick.<br>
+2. (H) Hard Rock Cafe logo.<br>
+3. (H) Tee shirt with logo.<br>
+4. (H) Gibson Les Paul guitar.<p>
+G.P.S. coordinates and later location updates.</td></tr></table>
+<span class="pagetitle">Machine 1 - Inside Rock Shop</span><br>
+<img src="images/machine-miami.jpg">
+"""
+
+
 class PennyCollectorSouvenirsTests(unittest.TestCase):
     def test_known_global_country_uses_project_label_and_path(self) -> None:
         self.assertEqual(
@@ -99,6 +118,22 @@ class PennyCollectorSouvenirsTests(unittest.TestCase):
         self.assertEqual(designs[-1].description, "a Snook (Fish)")
         self.assertEqual(designs[0].orientation, "")
         self.assertTrue(designs[0].machine_image_url.endswith("images/manatee.jpg"))
+
+    def test_gone_location_with_narrative_numbered_designs_is_supported(self) -> None:
+        designs, metadata = parse_designs(NARRATIVE_HTML)
+
+        self.assertEqual(len(designs), 4)
+        self.assertEqual(metadata["location_name"], "Hard Rock Cafe")
+        self.assertEqual(metadata["city"], "Miami")
+        self.assertEqual(metadata["status"], "Gone")
+        self.assertEqual(designs[0].description, "Miami city skyline inside a guitar pick")
+        self.assertEqual(designs[0].orientation, "V")
+        self.assertEqual(designs[-1].description, "Gibson Les Paul guitar")
+        self.assertEqual(designs[-1].orientation, "H")
+        self.assertNotIn("G.P.S.", designs[-1].description)
+        self.assertTrue(
+            designs[0].machine_image_url.endswith("images/machine-miami.jpg")
+        )
 
     def test_catalog_is_review_only_and_uses_machine_photo_scope(self) -> None:
         designs, metadata = parse_designs(SAMPLE_HTML)
