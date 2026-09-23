@@ -5,7 +5,9 @@ import unittest
 from pathlib import Path
 
 from scripts.pennycollector_souvenirs import (
+    DesignSequence,
     build_catalog,
+    choose_machine_sequences,
     country_settings,
     default_output_directory,
     parse_designs,
@@ -90,6 +92,81 @@ MULTI_MACHINE_NARRATIVE_HTML = """
 <span class="pagetitle">Machine 4 - inside</span><img src="images/machine-4.jpg">
 <span class="pagetitle">Machine 6 - north side</span><img src="images/machine-6.jpg">
 <span class="pagetitle">Retired 1</span><img src="images/retired-1.jpg">
+"""
+
+
+MIXED_FORMAT_HTML = """
+<input id="ReportLocation_Location" value="Mixed Souvenir Shop">
+<input id="ReportLocation_City" value="Albufeira">
+<input id="ReportLocation_Machine1_MachineName" value="Machine 1">
+<input id="ReportLocation_Machine2_MachineName" value="Token Machine 1">
+<select id="ReportLocation_Machine1_QuantityDrop"><option selected="selected">3</option></select>
+<select id="ReportLocation_Machine2_QuantityDrop"><option selected="selected">1</option></select>
+<select id="ReportLocation_CountryList"><option selected="selected">Portugal</option></select>
+<table><tr><td id="DescriptionContainer">Designs are: 1, Beach, 2, Tunnel, 3, Museum,
+Token Machine 1: Design: 1) Skyline.</td></tr></table>
+<span class="pagetitle">Machine 1</span><img src="images/euro.jpg">
+<span class="pagetitle">Token Machine 1</span><img src="images/token.jpg">
+"""
+
+
+MULTI_TOKEN_HTML = """
+<input id="ReportLocation_Location" value="Three Token Machines">
+<input id="ReportLocation_Machine1_MachineName" value="Token Machine 1">
+<input id="ReportLocation_Machine2_MachineName" value="Token Machine 2">
+<input id="ReportLocation_Machine3_MachineName" value="Token Machine 3">
+<select id="ReportLocation_Machine1_QuantityDrop"><option selected="selected">2</option></select>
+<select id="ReportLocation_Machine2_QuantityDrop"><option selected="selected">2</option></select>
+<select id="ReportLocation_Machine3_QuantityDrop"><option selected="selected">2</option></select>
+<table><tr><td id="DescriptionContainer">
+Token Machine 1: Designs are: 1) First A, 2) First B.
+Token Machine 2: Designs are: 1) Second A, 2) Second B.
+Token Machine 3: Designs are: 1) Third A, 2) Third B. 6/12: still present.
+</td></tr></table>
+<span class="pagetitle">Token Machine 1</span><img src="images/token-1.jpg">
+<span class="pagetitle">Token Machine 2</span><img src="images/token-2.jpg">
+<span class="pagetitle">Token Machine 3</span><img src="images/token-3.jpg">
+"""
+
+
+TOKEN_SIDES_HTML = """
+<input id="ReportLocation_Location" value="Token Sides">
+<input id="ReportLocation_Machine1_MachineName" value="Token Machine 1">
+<select id="ReportLocation_Machine1_QuantityDrop"><option selected="selected">2</option></select>
+<table><tr><td id="DescriptionContainer">Design:
+Token 1 Obverse: Cable car. Token 1 Reverse: Mountain.
+Token 2 Obverse: Train. Token 2 Reverse: Museum.
+10/16/25: machine checked.
+</td></tr></table>
+<span class="pagetitle">Token Machine 1</span><img src="images/token-sides.jpg">
+"""
+
+
+RETIRED_VARIANTS_HTML = """
+<input id="ReportLocation_Location" value="Retired Variants">
+<input id="ReportLocation_Machine1_MachineName" value="Machine 3">
+<input id="ReportLocation_Machine2_MachineName" value="Machine 1 - Retired">
+<input id="ReportLocation_Machine3_MachineName" value="Retired Token Machine 2">
+<select id="ReportLocation_Machine1_QuantityDrop"><option selected="selected">1</option></select>
+<select id="ReportLocation_Machine2_QuantityDrop"><option selected="selected">?</option></select>
+<select id="ReportLocation_Machine3_QuantityDrop"><option selected="selected">?</option></select>
+<table><tr><td id="DescriptionContainer">Machine 3: Designs are: 1) Current train.
+Retired machines/ designs:
+Machine 1 design had a border: Old locomotive.
+Retired Token Machine 2: 1. Old token A. 2. Old token B.
+</td></tr></table>
+<span class="pagetitle">Machine 3</span><img src="images/current.jpg">
+<span class="pagetitle">Machine 1 - Retired</span><img src="images/retired-1.jpg">
+<span class="pagetitle">Retired Token Machine 2</span><img src="images/retired-2.jpg">
+"""
+
+
+MISSING_DESCRIPTIONS_HTML = """
+<input id="ReportLocation_Location" value="No Written Designs">
+<input id="ReportLocation_Machine1_MachineName" value="Machine 1">
+<select id="ReportLocation_Machine1_QuantityDrop"><option selected="selected">2</option></select>
+<table><tr><td id="DescriptionContainer">The machine is beside the entrance.</td></tr></table>
+<span class="pagetitle">Machine 1</span><img src="images/no-description.jpg">
 """
 
 
@@ -201,6 +278,101 @@ class PennyCollectorSouvenirsTests(unittest.TestCase):
             all("#retired-machine-1-position-" in item["souvenir"]["reference_url"] for item in retired_items)
         )
         self.assertIn("Máquina retirada 1", preview_html(catalog))
+
+    def test_comma_lists_and_duplicate_public_machine_numbers_are_separated(self) -> None:
+        designs, metadata = parse_designs(MIXED_FORMAT_HTML)
+
+        self.assertEqual(len(designs), 4)
+        self.assertEqual(
+            {(design.machine_number, design.position) for design in designs},
+            {(1, 1), (1, 2), (1, 3), (2, 1)},
+        )
+        self.assertTrue(designs[0].machine_image_url.endswith("images/euro.jpg"))
+        self.assertTrue(designs[-1].machine_image_url.endswith("images/token.jpg"))
+        catalog = build_catalog(designs, metadata, location_id="406415")
+        self.assertNotIn("coin_type", catalog["items"][0]["source"])
+        self.assertEqual(catalog["items"][0]["souvenir"]["type"], "pressed")
+
+    def test_all_token_machines_are_extracted_and_history_is_removed(self) -> None:
+        designs, _metadata = parse_designs(MULTI_TOKEN_HTML)
+
+        self.assertEqual(len(designs), 6)
+        self.assertEqual(
+            {
+                machine: sum(design.machine_number == machine for design in designs)
+                for machine in (1, 2, 3)
+            },
+            {1: 2, 2: 2, 3: 2},
+        )
+        self.assertEqual(designs[-1].description, "Third B")
+        self.assertTrue(all(design.machine_image_url for design in designs))
+
+    def test_machine_descriptions_can_be_matched_when_form_order_differs(self) -> None:
+        group_of_four = DesignSequence(
+            start=0,
+            end=40,
+            entries=tuple((position, f"Main {position}") for position in range(1, 5)),
+        )
+        group_of_one = DesignSequence(
+            start=41, end=50, entries=((1, "Single"),)
+        )
+
+        selected = choose_machine_sequences(
+            [group_of_four, group_of_one], [1, 4]
+        )
+
+        self.assertEqual(selected, [group_of_one, group_of_four])
+
+        another_group_of_one = DesignSequence(
+            start=51, end=60, entries=((1, "Another single"),)
+        )
+        self.assertEqual(
+            choose_machine_sequences(
+                [group_of_four, group_of_one, another_group_of_one], [1, 4]
+            ),
+            [],
+        )
+
+    def test_token_obverse_and_reverse_pairs_form_two_designs(self) -> None:
+        designs, _metadata = parse_designs(TOKEN_SIDES_HTML)
+
+        self.assertEqual(len(designs), 2)
+        self.assertEqual(designs[0].description, "Obverse: Cable car / Reverse: Mountain")
+        self.assertEqual(designs[1].description, "Obverse: Train / Reverse: Museum")
+
+    def test_retired_header_variants_and_machine_name_suffix_are_supported(self) -> None:
+        current, _metadata = parse_designs(RETIRED_VARIANTS_HTML)
+        all_designs, _metadata = parse_designs(
+            RETIRED_VARIANTS_HTML, include_retired=True
+        )
+
+        self.assertEqual(len(current), 1)
+        self.assertEqual(len(all_designs), 4)
+        retired = [design for design in all_designs if design.availability == "retired"]
+        self.assertEqual(
+            {(design.machine_number, design.position) for design in retired},
+            {(1, 1), (2, 1), (2, 2)},
+        )
+        self.assertTrue(all(design.machine_image_url for design in retired))
+
+    def test_common_reverse_is_applied_to_every_design_in_the_machine(self) -> None:
+        source_html = MIXED_FORMAT_HTML.replace(
+            "3, Museum,\nToken Machine",
+            "3, Museum. Rear- All designs use the same seal.\nToken Machine",
+        )
+        designs, _metadata = parse_designs(source_html)
+
+        self.assertTrue(
+            all(
+                "Rear- All designs use the same seal" in design.description
+                for design in designs[:3]
+            )
+        )
+        self.assertNotIn("same seal", designs[-1].description)
+
+    def test_declared_designs_without_descriptions_do_not_create_partial_catalog(self) -> None:
+        with self.assertRaisesRegex(ValueError, "indica 2 designs atuais.*catálogo parcial"):
+            parse_designs(MISSING_DESCRIPTIONS_HTML)
 
     def test_catalog_is_review_only_and_uses_machine_photo_scope(self) -> None:
         designs, metadata = parse_designs(SAMPLE_HTML)

@@ -227,9 +227,15 @@ def default_output_directory(metadata: dict[str, Any]) -> Path:
 
 
 def pressed_design_count(value: str) -> int:
-    """Return the pressed-penny count from values such as ``48p 16t``."""
-    match = re.search(r"(?:^|\s)(\d+)\s*p(?:\s|$)", value, flags=re.IGNORECASE)
-    return int(match.group(1)) if match else 0
+    """Return all supported design counts, for example ``3e 1t``."""
+    return sum(
+        int(match.group(1))
+        for match in re.finditer(
+            r"(?:^|\s)(\d+)\s*[pndqmet](?=\s|$)",
+            value,
+            flags=re.IGNORECASE,
+        )
+    )
 
 
 def location_candidates(catalog: dict[str, Any], mode: str) -> list[dict[str, Any]]:

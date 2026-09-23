@@ -13,6 +13,7 @@ from scripts.pennycollector_areas import (
     location_candidates,
     parse_area,
     parse_location_selection,
+    pressed_design_count,
     preview_html,
     sync_existing_location_catalogs,
 )
@@ -56,6 +57,12 @@ class PennyCollectorAreasTests(unittest.TestCase):
             default_output_directory({"country": "United States", "area_name": "Florida"}),
             Path("info/souvenirs/america/eua/areas/florida"),
         )
+
+    def test_all_site_design_codes_count_as_collectible_candidates(self) -> None:
+        self.assertEqual(pressed_design_count("4p"), 4)
+        self.assertEqual(pressed_design_count("4n 1d 2q 3m 4e 5t"), 19)
+        self.assertEqual(pressed_design_count("3e 1t"), 4)
+        self.assertEqual(pressed_design_count("Gone"), 0)
 
     def test_area_filters_pressed_locations_and_accepts_ids_or_links(self) -> None:
         locations, metadata = parse_area(SAMPLE_HTML)

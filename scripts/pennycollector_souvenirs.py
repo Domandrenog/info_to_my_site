@@ -91,6 +91,23 @@ class PressedDesign:
     availability: str = "active"
 
 
+@dataclass(frozen=True)
+class MachineInventory:
+    slot: int
+    name: str
+    quantity: int | None
+    machine_number: int
+    image_url: str
+    availability: str = "active"
+
+
+@dataclass(frozen=True)
+class DesignSequence:
+    start: int
+    end: int
+    entries: tuple[tuple[int, str], ...]
+
+
 class PennyCollectorPageParser(HTMLParser):
     """Extract form metadata and machine photo cards from the legacy page."""
 
@@ -100,6 +117,7 @@ class PennyCollectorPageParser(HTMLParser):
         self.selected_options: dict[str, str] = {}
         self.machine_images: dict[int, str] = {}
         self.retired_machine_images: dict[int, str] = {}
+        self.machine_cards: list[tuple[str, str]] = []
         self._select_id = ""
         self._selected_option = False
         self._selected_text: list[str] = []
@@ -127,14 +145,13 @@ class PennyCollectorPageParser(HTMLParser):
                 r"Retired\s+(\d+)\b", self._pending_title, flags=re.IGNORECASE
             )
             source = attributes.get("src", "")
+            image_url = urljoin(PENNYCOLLECTOR_BASE_URL, source) if source else ""
+            if image_url:
+                self.machine_cards.append((self._pending_title, image_url))
             if active_match and source:
-                self.machine_images[int(active_match.group(1))] = urljoin(
-                    PENNYCOLLECTOR_BASE_URL, source
-                )
+                self.machine_images[int(active_match.group(1))] = image_url
             elif retired_match and source:
-                self.retired_machine_images[int(retired_match.group(1))] = urljoin(
-                    PENNYCOLLECTOR_BASE_URL, source
-                )
+                self.retired_machine_images[int(retired_match.group(1))] = image_url
             self._pending_title = ""
 
     def handle_endtag(self, tag: str) -> None:
@@ -249,6 +266,399 @@ def parse_orientation(description: str) -> tuple[str, str]:
             cleaned = description[: match.start()].rstrip(" .,;")
             return cleaned, values[match.group(1).upper()]
     return description.rstrip(" .,;"), ""
+
+
+def description_container_text(source_html: str) -> str:
+    container = re.search(
+        r"<td[^>]+id=[\"\']DescriptionContainer[\"\'][^>]*>(.*?)</td>",
+        source_html,
+        flags=re.IGNORECASE | re.DOTALL,
+    )
+    return html_fragment_text(container.group(1)) if container else ""
+
+
+def normalized_machine_label(value: str) -> str:
+    normalized = unicodedata.normalize("NFKD", value)
+    ascii_value = normalized.encode("ascii", "ignore").decode("ascii")
+    return re.sub(r"[^a-z0-9]+", " ", ascii_value.casefold()).strip()
+
+
+def machine_kind(value: str) -> str:
+    label = normalized_machine_label(value)
+    if re.search(r"\bretired\b", label):
+        return "retired"
+    if "token" in label or "medallion" in label:
+        return "token"
+    if "dye roll" in label:
+        return "dye-roll"
+    return "machine"
+
+
+def machine_label_number(value: str, fallback: int) -> int:
+    match = re.search(
+        r"\b(?:retired|(?:token|medallion)\s+machine|machine|token|dye\s+roll)\s*#?\s*(\d+)\b",
+        value,
+        flags=re.IGNORECASE,
+    )
+    return int(match.group(1)) if match else fallback
+
+
+def machine_card_image(
+    page_parser: PennyCollectorPageParser,
+    name: str,
+    *,
+    ordinal: int,
+    availability: str,
+    machine_number: int,
+) -> str:
+    expected = normalized_machine_label(name)
+    cards = [
+        (title, image_url)
+        for title, image_url in page_parser.machine_cards
+        if (machine_kind(title) == "retired") == (availability == "retired")
+    ]
+    for title, image_url in cards:
+        candidate = normalized_machine_label(title)
+        if (
+            candidate == expected
+            or candidate.startswith(expected)
+            or expected.startswith(candidate)
+        ):
+            return image_url
+    expected_kind = machine_kind(name)
+    for title, image_url in cards:
+        numbers = {int(value) for value in re.findall(r"\d+", title)}
+        if machine_kind(title) == expected_kind and machine_number in numbers:
+            return image_url
+    if 0 < ordinal <= len(cards):
+        return cards[ordinal - 1][1]
+    return ""
+
+
+def machine_inventory(page_parser: PennyCollectorPageParser) -> list[MachineInventory]:
+    slots = sorted(
+        int(match.group(1))
+        for key in page_parser.inputs
+        if (match := re.fullmatch(r"ReportLocation_Machine(\d+)_MachineName", key))
+    )
+    used_numbers: dict[str, set[int]] = {"active": set(), "retired": set()}
+    ordinals: dict[str, int] = {"active": 0, "retired": 0}
+    inventory: list[MachineInventory] = []
+    for slot in slots:
+        name = page_parser.inputs.get(
+            f"ReportLocation_Machine{slot}_MachineName", f"Machine {slot}"
+        ).strip() or f"Machine {slot}"
+        availability = (
+            "retired"
+            if re.search(r"\bretired\b", normalized_machine_label(name))
+            else "active"
+        )
+        quantity_text = page_parser.selected_options.get(
+            f"ReportLocation_Machine{slot}_QuantityDrop", ""
+        ).strip()
+        quantity = (
+            int(quantity_text)
+            if quantity_text.isdigit() and int(quantity_text) > 0
+            else None
+        )
+        candidate = machine_label_number(name, slot)
+        if candidate in used_numbers[availability]:
+            candidate = slot
+            while candidate in used_numbers[availability]:
+                candidate += 1
+        used_numbers[availability].add(candidate)
+        ordinals[availability] += 1
+        image_url = machine_card_image(
+            page_parser,
+            name,
+            ordinal=ordinals[availability],
+            availability=availability,
+            machine_number=machine_label_number(name, slot),
+        )
+        inventory.append(
+            MachineInventory(
+                slot=slot,
+                name=name,
+                quantity=quantity,
+                machine_number=candidate,
+                image_url=image_url,
+                availability=availability,
+            )
+        )
+    return inventory
+
+
+DESIGN_MARKER_RE = re.compile(
+    r"(?<!\d)([1-9]\d*)\s*([).,])(?=\s|[\"“‘(\[])"
+)
+
+
+def clean_design_description(value: str) -> str:
+    cleaned = " ".join(value.split()).strip(" ,;.")
+    stop_patterns = [
+        (
+            r"\s+(?:Retired\s+Machines?\b|Retired\s+\d+\s*:"
+            r"|(?:Token|Medallion)\s+Machine\s+\d+\b[^:]{0,300}:"
+            r"|Machine\s+\d+\b[^:]{0,300}:)"
+        ),
+        (
+            r"\s+Retired(?:\s+(?:Machines?(?:\s*/\s*Designs?)?|Designs?)"
+            r"|\s+(?:(?:Token|Medallion)\s+)?(?:Machine\s+)?\d+)\b"
+        ),
+        r"\s+\d{1,2}/\d{1,2}/(?:\d{2}|\d{4})\s*:",
+        r"\s+Missing\.\s*(?=\d{1,2}/)",
+        r"\s+\d{1,2}/(?:\d{2}|\d{4})\b",
+        r"\s+\d{1,2}-\d{1,2}-(?:\d{2}|\d{4})\s*:",
+        r"\s+G\.?P\.?S\.?\s+coordinates?",
+        r"\s+Google Maps coordinates?",
+        r"\s+(?:Please upload|Machine is active|Both machines are)\b",
+        r"\s+(?:Each\b[^:]{0,300}\s+)?Design\s+is\s*:",
+        r"\s+Price is\b",
+        r"\s*,?\s+costs?\b",
+        r"\s+Note,?\s+",
+    ]
+    cuts = [
+        match.start()
+        for pattern in stop_patterns
+        if (match := re.search(pattern, cleaned, flags=re.IGNORECASE))
+    ]
+    if cuts:
+        cleaned = cleaned[: min(cuts)]
+    return cleaned.strip(" ,;.")
+
+
+def numbered_design_sequences(text: str) -> list[DesignSequence]:
+    marker_groups: list[list[re.Match[str]]] = []
+    current: list[re.Match[str]] = []
+    for marker in DESIGN_MARKER_RE.finditer(text):
+        if marker.group(2) == ",":
+            prefix = text[: marker.start()].rstrip()
+            if prefix and prefix[-1] not in ":;,\n":
+                continue
+        number = int(marker.group(1))
+        if number == 1:
+            if current:
+                marker_groups.append(current)
+            current = [marker]
+        elif current and number == int(current[-1].group(1)) + 1:
+            current.append(marker)
+    if current:
+        marker_groups.append(current)
+
+    sequences: list[DesignSequence] = []
+    for group_index, markers in enumerate(marker_groups):
+        sequence_end = (
+            marker_groups[group_index + 1][0].start()
+            if group_index + 1 < len(marker_groups)
+            else len(text)
+        )
+        entries: list[tuple[int, str]] = []
+        for marker_index, marker in enumerate(markers):
+            item_end = (
+                markers[marker_index + 1].start()
+                if marker_index + 1 < len(markers)
+                else sequence_end
+            )
+            description = clean_design_description(text[marker.end() : item_end])
+            if description:
+                entries.append((int(marker.group(1)), description))
+        if entries:
+            last_position, last_description = entries[-1]
+            common_reverse = re.search(
+                (
+                    r"\s+((?:Rear\s*-\s*All designs|Rear of all"
+                    r"|Reverse for (?:all|both)(?: tokens| designs)?"
+                    r"|Reverse side of coins all)\b.*)$"
+                ),
+                last_description,
+                flags=re.IGNORECASE,
+            )
+            if common_reverse:
+                shared = common_reverse.group(1).strip(" ,;.")
+                entries[-1] = (
+                    last_position,
+                    last_description[: common_reverse.start()].strip(" ,;."),
+                )
+                entries = [
+                    (position, f"{description} / {shared}")
+                    for position, description in entries
+                ]
+        if len(entries) == len(markers):
+            sequences.append(
+                DesignSequence(
+                    start=markers[0].start(),
+                    end=sequence_end,
+                    entries=tuple(entries),
+                )
+            )
+    return sequences
+
+
+def token_obverse_sequences(text: str) -> list[DesignSequence]:
+    markers = list(
+        re.finditer(
+            r"\bToken\s+(\d+)\s+(Obverse|Reverse)\s*:\s*",
+            text,
+            flags=re.IGNORECASE,
+        )
+    )
+    if not markers:
+        return []
+    values: dict[int, dict[str, str]] = {}
+    starts: dict[int, int] = {}
+    ends: dict[int, int] = {}
+    for index, marker in enumerate(markers):
+        number = int(marker.group(1))
+        side = marker.group(2).casefold()
+        item_end = markers[index + 1].start() if index + 1 < len(markers) else len(text)
+        values.setdefault(number, {})[side] = clean_design_description(
+            text[marker.end() : item_end]
+        )
+        starts.setdefault(number, marker.start())
+        ends[number] = item_end
+    numbers = sorted(values)
+    if numbers != list(range(1, len(numbers) + 1)):
+        return []
+    entries: list[tuple[int, str]] = []
+    for number in numbers:
+        sides = values[number]
+        description = " / ".join(
+            f"{label}: {sides[key]}"
+            for key, label in (("obverse", "Obverse"), ("reverse", "Reverse"))
+            if sides.get(key)
+        )
+        if not description:
+            return []
+        entries.append((number, description))
+    return [
+        DesignSequence(
+            start=min(starts.values()),
+            end=max(ends.values()),
+            entries=tuple(entries),
+        )
+    ]
+
+
+def active_description_text(source_html: str) -> str:
+    text = description_container_text(source_html)
+    retired = re.search(
+        (
+            r"\bRetired(?:\s+(?:Machines?(?:\s*/\s*Designs?)?|Designs?)"
+            r"|\s+(?:(?:Token|Medallion)\s+)?(?:Machine\s+)?\d+)\s*:"
+        ),
+        text,
+        flags=re.IGNORECASE,
+    )
+    return text[: retired.start()] if retired else text
+
+
+def choose_machine_sequences(
+    sequences: list[DesignSequence], quantities: list[int]
+) -> list[DesignSequence]:
+    def choose(machine_index: int, sequence_index: int) -> list[DesignSequence] | None:
+        if machine_index == len(quantities):
+            return []
+        for index in range(sequence_index, len(sequences)):
+            if len(sequences[index].entries) != quantities[machine_index]:
+                continue
+            remaining = choose(machine_index + 1, index + 1)
+            if remaining is not None:
+                return [sequences[index], *remaining]
+        return None
+
+    ordered = choose(0, 0)
+    if ordered is not None:
+        return ordered
+
+    alternatives: list[list[DesignSequence]] = []
+
+    def collect_by_quantity(
+        machine_index: int,
+        used_indexes: frozenset[int],
+        selected: list[DesignSequence],
+    ) -> None:
+        if len(alternatives) > 1:
+            return
+        if machine_index == len(quantities):
+            alternatives.append(list(selected))
+            return
+        for index, sequence in enumerate(sequences):
+            if index in used_indexes or len(sequence.entries) != quantities[machine_index]:
+                continue
+            collect_by_quantity(
+                machine_index + 1,
+                used_indexes | {index},
+                [*selected, sequence],
+            )
+
+    collect_by_quantity(0, frozenset(), [])
+    return alternatives[0] if len(alternatives) == 1 else []
+
+
+def single_design_description(text: str) -> str:
+    patterns = [
+        r"\bdesign\s+(?:is|of)\s*:?\s*(.+)",
+        r"\bdesign\s*:\s*(.+)",
+    ]
+    for pattern in patterns:
+        match = re.search(pattern, text, flags=re.IGNORECASE)
+        if match:
+            description = clean_design_description(match.group(1))
+            if description and not DESIGN_MARKER_RE.match(description):
+                return description
+    return ""
+
+
+def parse_inventory_active_designs(
+    source_html: str, page_parser: PennyCollectorPageParser
+) -> tuple[list[PressedDesign], int | None, bool]:
+    active_inventory = [
+        machine
+        for machine in machine_inventory(page_parser)
+        if machine.availability == "active"
+    ]
+    if not active_inventory:
+        return [], None, False
+    complete_inventory = all(machine.quantity is not None for machine in active_inventory)
+    active_inventory = [
+        machine for machine in active_inventory if machine.quantity is not None
+    ]
+    if not active_inventory:
+        return [], None, False
+    quantities = [int(machine.quantity or 0) for machine in active_inventory]
+    expected = sum(quantities)
+    text = active_description_text(source_html)
+    sequences = numbered_design_sequences(text) + token_obverse_sequences(text)
+    sequences.sort(key=lambda sequence: sequence.start)
+    selected = choose_machine_sequences(sequences, quantities)
+    if not selected and len(active_inventory) == 1 and expected == 1:
+        description = single_design_description(text)
+        if description:
+            selected = [
+                DesignSequence(
+                    start=0,
+                    end=len(text),
+                    entries=((1, description),),
+                )
+            ]
+    if len(selected) != len(active_inventory):
+        return [], expected, complete_inventory
+
+    designs: list[PressedDesign] = []
+    for machine, sequence in zip(active_inventory, selected):
+        for position, description in sequence.entries:
+            description, orientation = parse_orientation(description)
+            designs.append(
+                PressedDesign(
+                    machine_number=machine.machine_number,
+                    machine_details=machine.name,
+                    position=position,
+                    description=description,
+                    orientation=orientation,
+                    machine_image_url=machine.image_url,
+                )
+            )
+    return designs, expected, complete_inventory
 
 
 def parse_simple_designs(
@@ -369,58 +779,84 @@ def parse_description_machine_designs(
 def parse_retired_machine_designs(
     source_html: str, page_parser: PennyCollectorPageParser
 ) -> list[PressedDesign]:
-    container = re.search(
-        r"<td[^>]+id=[\"']DescriptionContainer[\"'][^>]*>(.*?)</td>",
-        source_html,
-        flags=re.IGNORECASE | re.DOTALL,
-    )
-    if not container:
-        return []
-    heading = re.search(
-        r"<b>\s*Retired\s+machines?\s*:?\s*</b>",
-        container.group(1),
-        flags=re.IGNORECASE,
-    )
-    if not heading:
-        return []
-    section = container.group(1)[heading.end() :]
-    section = re.sub(r"^\s*(?:<p\b[^>]*>\s*)+", "", section, flags=re.IGNORECASE)
-    section_end = re.search(r"<p\b", section, flags=re.IGNORECASE)
-    if section_end:
-        section = section[: section_end.start()]
-    section_text = html_fragment_text(section)
+    text = description_container_text(source_html)
     headers = list(
-        re.finditer(r"(?m)^\s*Retired\s+(\d+)\s*:\s*", section_text, flags=re.IGNORECASE)
+        re.finditer(
+            r"\bRetired\s+(?:(?:Token|Medallion)\s+)?(?:Machine\s+)?(\d+)\s*:",
+            text,
+            flags=re.IGNORECASE,
+        )
     )
     designs: list[PressedDesign] = []
+
+    def append_entries(
+        machine_number: int,
+        entries: tuple[tuple[int, str], ...],
+        ordinal: int,
+    ) -> None:
+        image_url = machine_card_image(
+            page_parser,
+            f"Retired {machine_number}",
+            ordinal=ordinal,
+            availability="retired",
+            machine_number=machine_number,
+        )
+        for position, description in entries:
+            description, orientation = parse_orientation(description)
+            designs.append(
+                PressedDesign(
+                    machine_number=machine_number,
+                    machine_details=f"Retired machine {machine_number}",
+                    position=position,
+                    description=description,
+                    orientation=orientation,
+                    machine_image_url=image_url,
+                    availability="retired",
+                )
+            )
+
     for index, header in enumerate(headers):
         machine_number = int(header.group(1))
-        block_end = headers[index + 1].start() if index + 1 < len(headers) else len(section_text)
-        block = section_text[header.end() : block_end].strip()
-        numbered = list(re.finditer(r"(?<!\d)([1-9]\d*)\)\s*", block))
-        for design_index, numbered_item in enumerate(numbered):
-            description_end = (
-                numbered[design_index + 1].start()
-                if design_index + 1 < len(numbered)
-                else len(block)
+        block_end = headers[index + 1].start() if index + 1 < len(headers) else len(text)
+        block = text[header.end() : block_end]
+        sequences = numbered_design_sequences(block)
+        if sequences:
+            append_entries(machine_number, sequences[0].entries, index + 1)
+
+    section = re.search(
+        r"\bRetired\s+(?:Machines?(?:\s*/\s*Designs?)?|Designs?)\s*:",
+        text,
+        flags=re.IGNORECASE,
+    )
+    if section:
+        section_text = text[section.end() :]
+        machine_headers = list(
+            re.finditer(
+                r"\bMachine\s+(\d+)(?:\s+design\b[^:]{0,200})?\s*:\s*",
+                section_text,
+                flags=re.IGNORECASE,
             )
-            description = block[numbered_item.end() : description_end].strip(" \n,;.")
-            description = re.split(r"\s+Note,?\s+", description, maxsplit=1, flags=re.IGNORECASE)[0]
-            description, orientation = parse_orientation(description)
-            if description:
-                designs.append(
-                    PressedDesign(
-                        machine_number=machine_number,
-                        machine_details=f"Retired machine {machine_number}",
-                        position=int(numbered_item.group(1)),
-                        description=description,
-                        orientation=orientation,
-                        machine_image_url=page_parser.retired_machine_images.get(
-                            machine_number, ""
-                        ),
-                        availability="retired",
-                    )
-                )
+        )
+        existing_numbers = {design.machine_number for design in designs}
+        for index, header in enumerate(machine_headers):
+            machine_number = int(header.group(1))
+            if machine_number in existing_numbers:
+                continue
+            block_end = (
+                machine_headers[index + 1].start()
+                if index + 1 < len(machine_headers)
+                else len(section_text)
+            )
+            block = section_text[header.end() : block_end]
+            sequences = numbered_design_sequences(block)
+            if sequences:
+                entries = sequences[0].entries
+            else:
+                description = clean_design_description(block)
+                entries = ((1, description),) if description else ()
+            if entries:
+                append_entries(machine_number, entries, len(existing_numbers) + 1)
+                existing_numbers.add(machine_number)
     return designs
 
 
@@ -478,6 +914,20 @@ def parse_designs(
         designs = parse_description_machine_designs(source_html, page_parser)
     if not designs:
         designs = parse_simple_designs(source_html, page_parser)
+
+    inventory_designs, expected_active, complete_inventory = (
+        parse_inventory_active_designs(source_html, page_parser)
+    )
+    if expected_active is not None:
+        if len(inventory_designs) == expected_active and len(designs) <= expected_active:
+            designs = inventory_designs
+        elif complete_inventory and len(designs) != expected_active:
+            found = max(len(designs), len(inventory_designs))
+            raise ValueError(
+                f"A página indica {expected_active} designs atuais, mas só foi "
+                f"possível interpretar {found}; não foi criado um catálogo parcial."
+            )
+
     if include_retired:
         designs.extend(parse_retired_machine_designs(source_html, page_parser))
     if not designs:
