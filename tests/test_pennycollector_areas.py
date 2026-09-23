@@ -1,13 +1,20 @@
 from __future__ import annotations
 
+import tempfile
 import unittest
 from pathlib import Path
+from unittest.mock import patch
 
 from scripts.pennycollector_areas import (
     build_catalog,
+    collect_locations,
     default_output_directory,
+    interactive_area_menu,
+    location_candidates,
     parse_area,
+    parse_location_selection,
     preview_html,
+    sync_existing_location_catalogs,
 )
 
 
@@ -49,6 +56,97 @@ class PennyCollectorAreasTests(unittest.TestCase):
             default_output_directory({"country": "United States", "area_name": "Florida"}),
             Path("info/souvenirs/america/eua/areas/florida"),
         )
+
+    def test_area_filters_pressed_locations_and_accepts_ids_or_links(self) -> None:
+        locations, metadata = parse_area(SAMPLE_HTML)
+        catalog = build_catalog(locations, metadata, area_id="14")
+
+        self.assertEqual(
+            [location["location_id"] for location in location_candidates(catalog, "active")],
+            ["1851"],
+        )
+        self.assertEqual(
+            parse_location_selection(
+                "1851, http://locations.pennycollector.com/Details.aspx?location=100",
+                catalog,
+            ),
+            ["1851", "100"],
+        )
+        with self.assertRaisesRegex(ValueError, "não pertencem"):
+            parse_location_selection("999", catalog)
+
+    def test_existing_location_catalog_is_reused(self) -> None:
+        locations, metadata = parse_area(SAMPLE_HTML)
+        catalog = build_catalog(locations, metadata, area_id="14")
+        with tempfile.TemporaryDirectory() as temp_dir:
+            root = Path(temp_dir)
+            existing = root / "merritt-island" / "kennedy" / "pennycollector-catalog.json"
+            existing.parent.mkdir(parents=True)
+            existing.write_text(
+                '{"source": {"site": "PennyCollector", "location_id": "1851"}}',
+                encoding="utf-8",
+            )
+
+            found = sync_existing_location_catalogs(catalog, root)
+
+        self.assertEqual(found["1851"], existing)
+        self.assertEqual(catalog["locations"][0]["collection_status"], "already_collected")
+        self.assertEqual(catalog["collection"]["collected"], 1)
+
+    @patch("scripts.pennycollector_areas.write_location_outputs")
+    @patch("scripts.pennycollector_areas.default_location_output_directory")
+    @patch("scripts.pennycollector_areas.build_location_catalog", return_value={"items": []})
+    @patch("scripts.pennycollector_areas.parse_designs", return_value=([object()], {}))
+    def test_collect_location_persists_area_progress(
+        self,
+        _parse_designs,
+        _build_location_catalog,
+        location_output_directory,
+        write_location_outputs,
+    ) -> None:
+        locations, metadata = parse_area(SAMPLE_HTML)
+        catalog = build_catalog(locations, metadata, area_id="14")
+        with tempfile.TemporaryDirectory() as temp_dir:
+            output_dir = Path(temp_dir)
+            location_output_directory.return_value = output_dir / "location"
+            write_location_outputs.return_value = (
+                output_dir / "location" / "pennycollector-catalog.json",
+                output_dir / "location" / "preview.html",
+            )
+
+            stats = collect_locations(
+                catalog,
+                ["1851"],
+                area_output_dir=output_dir / "area",
+                force=True,
+                fetcher=lambda _url: "<html></html>",
+            )
+
+            self.assertTrue((output_dir / "area" / "pennycollector-area.json").exists())
+        self.assertEqual(stats, {"collected": 1, "skipped": 0, "failed": 0})
+        self.assertEqual(catalog["locations"][0]["collection_status"], "collected")
+
+    @patch("scripts.pennycollector_areas.collect_locations")
+    @patch("scripts.pennycollector_areas.write_outputs")
+    @patch("scripts.pennycollector_areas.sync_existing_location_catalogs", return_value={})
+    def test_interactive_menu_collects_exact_selected_ids(
+        self,
+        _sync_existing,
+        _write_outputs,
+        collect,
+    ) -> None:
+        locations, metadata = parse_area(SAMPLE_HTML)
+        catalog = build_catalog(locations, metadata, area_id="14")
+        collect.return_value = {"collected": 1, "skipped": 0, "failed": 0}
+        answers = iter(["1", "1851", "", "5"])
+
+        interactive_area_menu(
+            catalog,
+            Path("unused"),
+            input_fn=lambda _prompt: next(answers),
+        )
+
+        self.assertEqual(collect.call_args.args[1], ["1851"])
 
 
 if __name__ == "__main__":

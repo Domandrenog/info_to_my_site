@@ -155,7 +155,8 @@ class MainTrackingActionTests(unittest.TestCase):
 
         command = run_step.call_args.args[1]
         self.assertIn("scripts.pennycollector_areas", command)
-        self.assertIn("Locations.aspx?area=14", command[-1])
+        self.assertIn("http://locations.pennycollector.com/Locations.aspx?area=14", command)
+        self.assertIn("--interactive", command)
         self.assertNotIn("--apply", command)
 
     @patch("main.menu_pennycollector_kennedy_space_center")

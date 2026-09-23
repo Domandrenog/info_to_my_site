@@ -1383,7 +1383,10 @@ def action_collect_pennycollector_location() -> None:
 
 def action_collect_pennycollector_area() -> None:
     title("PennyCollector.com — Recolher área")
-    print("Cria um índice de localizações da área. Não recolhe todas as moedas nem altera o Base44.")
+    print(
+        "Descobre as localizações e permite escolher quais serão recolhidas. "
+        "Não altera o Site Base44."
+    )
     reference = ask_text("Link ou ID da área", "")
     if not reference:
         print("O link ou ID da área é obrigatório.")
@@ -1394,8 +1397,9 @@ def action_collect_pennycollector_area() -> None:
         "scripts.pennycollector_areas",
         "--area",
         reference,
+        "--interactive",
     ]
-    run_step("Recolher índice da área PennyCollector", command)
+    run_step("Descobrir área e recolher localizações PennyCollector", command)
 
 
 def menu_pennycollector_kennedy_space_center() -> None:
