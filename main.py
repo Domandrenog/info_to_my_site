@@ -1364,6 +1364,40 @@ def action_collect_pennycollector_kennedy_space_center() -> None:
     run_step("Recolher Kennedy Space Center do PennyCollector", command)
 
 
+def action_collect_pennycollector_location() -> None:
+    title("PennyCollector.com — Recolher localização")
+    print("Recolhe as máquinas e os designs de uma localização. Não altera o Site Base44.")
+    reference = ask_text("Link ou ID da localização", "")
+    if not reference:
+        print("O link ou ID da localização é obrigatório.")
+        return
+    command = [
+        sys.executable,
+        "-m",
+        "scripts.pennycollector_souvenirs",
+        "--location-id",
+        reference,
+    ]
+    run_step("Recolher localização do PennyCollector", command)
+
+
+def action_collect_pennycollector_area() -> None:
+    title("PennyCollector.com — Recolher área")
+    print("Cria um índice de localizações da área. Não recolhe todas as moedas nem altera o Base44.")
+    reference = ask_text("Link ou ID da área", "")
+    if not reference:
+        print("O link ou ID da área é obrigatório.")
+        return
+    command = [
+        sys.executable,
+        "-m",
+        "scripts.pennycollector_areas",
+        "--area",
+        reference,
+    ]
+    run_step("Recolher índice da área PennyCollector", command)
+
+
 def menu_pennycollector_kennedy_space_center() -> None:
     while True:
         title("PennyCollector Kennedy Space Center")
@@ -1400,13 +1434,19 @@ def menu_presscoins_usa() -> None:
 def menu_pennycollector() -> None:
     while True:
         title("PennyCollector.com")
-        print("1) Kennedy Space Center")
-        print("2) Voltar")
+        print("1) Recolher localização por link ou ID")
+        print("2) Recolher área por link ou ID")
+        print("3) Kennedy Space Center")
+        print("4) Voltar")
 
         choice = ask_text("Escolhe uma opção", "1")
         if choice == "1":
-            menu_pennycollector_kennedy_space_center()
+            action_collect_pennycollector_location()
         elif choice == "2":
+            action_collect_pennycollector_area()
+        elif choice == "3":
+            menu_pennycollector_kennedy_space_center()
+        elif choice == "4":
             return
         else:
             print("Opção inválida.")

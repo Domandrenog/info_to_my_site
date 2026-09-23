@@ -15,7 +15,7 @@ from html.parser import HTMLParser
 from pathlib import Path
 from typing import Any
 from urllib.error import HTTPError, URLError
-from urllib.parse import urljoin
+from urllib.parse import parse_qs, urljoin, urlparse
 from urllib.request import Request, urlopen
 
 
@@ -33,6 +33,50 @@ REVIEW_FLAG_LABELS = {
     "possible_source_typo": "possível erro no texto de origem",
 }
 SUSPECT_SOURCE_PHRASES = ("Artemus", "Pace Shuttle Program", "Heat with")
+COUNTRY_ALIASES = {
+    "Australia": "Austrália",
+    "Belarus": "Bielorrússia",
+    "Brazil": "Brasil",
+    "Canada": "Canadá",
+    "Croatia": "Croácia",
+    "Czech Republic": "República Checa",
+    "Denmark": "Dinamarca",
+    "Hungary": "Hungria",
+    "India": "Índia",
+    "Japan": "Japão",
+    "Kazakhstan": "Cazaquistão",
+    "Macao": "Macau",
+    "Malaysia": "Malásia",
+    "New Zealand": "Nova Zelândia",
+    "Poland": "Polónia",
+    "Romania": "Roménia",
+    "Russia": "Rússia",
+    "Singapore": "Singapura",
+    "South Africa": "África do Sul",
+    "South Korea": "Coreia do Sul",
+    "Sweden": "Suécia",
+    "Switzerland": "Suíça",
+    "Thailand": "Tailândia",
+    "Turkey": "Turquia",
+    "United Arab Emirates": "Emirados Árabes Unidos",
+    "United States": "EUA",
+}
+EUROPE_COUNTRIES = {
+    "Austria", "Belarus", "Belgium", "Bulgaria", "Croatia", "Cyprus",
+    "Czech Republic", "Denmark", "England", "Estonia", "Finland", "France",
+    "Germany", "Gibraltar", "Greece", "Hungary", "Ireland", "Italy", "Jersey",
+    "Latvia", "Liechtenstein", "Lithuania", "Malta", "Netherlands",
+    "Northern Ireland", "Norway", "Poland", "Portugal", "Principality of Monaco",
+    "Romania", "Russia", "San Marino", "Scotland", "Slovenia", "Spain", "Sweden",
+    "Switzerland", "Turkey", "Ukraine", "Wales",
+}
+ASIA_COUNTRIES = {
+    "China", "Hong Kong", "India", "Israel", "Japan", "Kazakhstan", "Macao",
+    "Malaysia", "Singapore", "South Korea", "Taiwan", "Thailand",
+    "United Arab Emirates",
+}
+AFRICA_COUNTRIES = {"South Africa"}
+OCEANIA_COUNTRIES = {"Australia", "Guam", "New Zealand"}
 
 
 @dataclass(frozen=True)
@@ -126,6 +170,21 @@ def location_url(location_id: str) -> str:
     return f"{PENNYCOLLECTOR_BASE_URL}Details.aspx?location={location_id}"
 
 
+def reference_id(value: str, parameter: str) -> str:
+    cleaned = value.strip()
+    if cleaned.isdigit():
+        return cleaned
+    parsed = urlparse(cleaned)
+    values = parse_qs(parsed.query).get(parameter, [])
+    if parsed.netloc.casefold().endswith("pennycollector.com") and values:
+        candidate = values[0].strip()
+        if candidate.isdigit():
+            return candidate
+    raise ValueError(
+        f"Indica um ID numérico ou um link PennyCollector com ?{parameter}=..."
+    )
+
+
 def fetch_html(url: str, timeout: float = 30.0) -> str:
     request = Request(url, headers={"User-Agent": DEFAULT_USER_AGENT, "Accept": "text/html"})
     try:
@@ -177,17 +236,71 @@ def parse_orientation(description: str) -> tuple[str, str]:
     return description.rstrip(" .,;"), ""
 
 
+def parse_simple_designs(
+    source_html: str, page_parser: PennyCollectorPageParser
+) -> list[PressedDesign]:
+    container = re.search(
+        r"<td[^>]+id=[\"']DescriptionContainer[\"'][^>]*>(.*?)</td>",
+        source_html,
+        flags=re.IGNORECASE | re.DOTALL,
+    )
+    if not container:
+        return []
+    content = container.group(1)
+    heading = re.search(r"Designs\s+are\s*:", content, flags=re.IGNORECASE)
+    if not heading:
+        return []
+    design_fragment = content[heading.end() :]
+    paragraph_end = re.search(r"<p\b", design_fragment, flags=re.IGNORECASE)
+    if paragraph_end:
+        design_fragment = design_fragment[: paragraph_end.start()]
+    design_text = html_fragment_text(design_fragment)
+    numbered = list(re.finditer(r"(?<!\d)([1-9]\d*)\)\s*", design_text))
+    if not numbered:
+        return []
+
+    machine_numbers = sorted(
+        int(match.group(1))
+        for key in page_parser.inputs
+        if (match := re.fullmatch(r"ReportLocation_Machine(\d+)_MachineName", key))
+    )
+    machine_number = machine_numbers[0] if machine_numbers else 1
+    machine_name = page_parser.inputs.get(
+        f"ReportLocation_Machine{machine_number}_MachineName", f"Machine {machine_number}"
+    )
+    context = design_text[: numbered[0].start()].strip(" :-")
+    machine_details = " · ".join(part for part in (machine_name, context) if part)
+    designs: list[PressedDesign] = []
+    for index, marker in enumerate(numbered):
+        end = numbered[index + 1].start() if index + 1 < len(numbered) else len(design_text)
+        description = design_text[marker.end() : end].strip(" \n;.")
+        description, orientation = parse_orientation(description)
+        if description:
+            designs.append(
+                PressedDesign(
+                    machine_number=machine_number,
+                    machine_details=machine_details,
+                    position=int(marker.group(1)),
+                    description=description,
+                    orientation=orientation,
+                    machine_image_url=page_parser.machine_images.get(machine_number, ""),
+                )
+            )
+    return designs
+
+
 def parse_designs(source_html: str) -> tuple[list[PressedDesign], dict[str, Any]]:
     page_parser = PennyCollectorPageParser()
     page_parser.feed(source_html)
     page_parser.close()
 
-    fragment = active_machines_fragment(source_html)
+    try:
+        fragment = active_machines_fragment(source_html)
+    except ValueError:
+        fragment = ""
     headers = list(
         re.finditer(r"<b>\s*Machine\s+(\d+)\s*:?[\s]*</b>", fragment, flags=re.IGNORECASE)
     )
-    if not headers:
-        raise ValueError("Não foram encontradas máquinas ativas na página.")
 
     designs: list[PressedDesign] = []
     for index, header in enumerate(headers):
@@ -224,6 +337,11 @@ def parse_designs(source_html: str) -> tuple[list[PressedDesign], dict[str, Any]
                     )
                 )
 
+    if not designs:
+        designs = parse_simple_designs(source_html, page_parser)
+    if not designs:
+        raise ValueError("Não foram encontrados designs ativos reconhecíveis na página.")
+
     metadata = {
         "location_name": page_parser.inputs.get("ReportLocation_Location", ""),
         "address": page_parser.inputs.get("ReportLocation_Address", ""),
@@ -231,6 +349,7 @@ def parse_designs(source_html: str) -> tuple[list[PressedDesign], dict[str, Any]
         "zip_code": page_parser.inputs.get("ReportLocation_Zip", "").strip(),
         "status": page_parser.selected_options.get("ReportLocation_StatusList", ""),
         "state": page_parser.selected_options.get("ReportLocation_StateList", ""),
+        "country": page_parser.selected_options.get("ReportLocation_CountryList", ""),
         "source_flagged_needs_update": "Needs Updating" in html_fragment_text(source_html),
     }
     return designs, metadata
@@ -240,6 +359,26 @@ def slugify(value: str) -> str:
     normalized = unicodedata.normalize("NFKD", value)
     ascii_value = normalized.encode("ascii", "ignore").decode("ascii")
     return re.sub(r"[^a-z0-9]+", "-", ascii_value.casefold()).strip("-")
+
+
+def country_settings(source_country: str) -> tuple[str, str, str, str]:
+    country = COUNTRY_ALIASES.get(source_country, source_country or "Desconhecido")
+    if source_country in EUROPE_COUNTRIES:
+        continent, continent_folder = "Europa", "europa"
+    elif source_country in ASIA_COUNTRIES:
+        continent, continent_folder = "Ásia", "asia"
+    elif source_country in AFRICA_COUNTRIES:
+        continent, continent_folder = "África", "africa"
+    elif source_country in OCEANIA_COUNTRIES:
+        continent, continent_folder = "Oceânia", "oceania"
+    else:
+        continent, continent_folder = "América", "america"
+    country_folder = "eua" if source_country == "United States" else slugify(country)
+    return continent, continent_folder, country, country_folder
+
+
+def short_location_name(value: str) -> str:
+    return re.sub(r"\s+Visitor (?:Complex|Center)\s*$", "", value).strip() or value
 
 
 def display_name(description: str) -> str:
@@ -264,10 +403,14 @@ def build_catalog(
     metadata: dict[str, Any],
     *,
     location_id: str,
-    country: str = "EUA",
+    country: str = "",
 ) -> dict[str, Any]:
     source_url = location_url(location_id)
-    short_location = "Kennedy Space Center"
+    continent, _continent_folder, detected_country, _country_folder = country_settings(
+        str(metadata.get("country") or "")
+    )
+    country = country or detected_country
+    short_location = short_location_name(str(metadata.get("location_name") or ""))
     items: list[dict[str, Any]] = []
     for order, design in enumerate(designs, start=1):
         orientation_label = ORIENTATION_LABELS[design.orientation]
@@ -289,9 +432,9 @@ def build_catalog(
         )
         souvenir = {
             "name": display_name(design.description),
-            "continent": "América",
+            "continent": continent,
             "country": country,
-            "city": metadata.get("city") or "Merritt Island",
+            "city": metadata.get("city") or "Desconhecida",
             "type": "pressed",
             "condition": "Não Tenho",
             "location_name": short_location,
@@ -417,14 +560,17 @@ def preview_html(catalog: dict[str, Any]) -> str:
 """
 
 
-def default_output_directory() -> Path:
+def default_output_directory(metadata: dict[str, Any]) -> Path:
+    _continent, continent_folder, _country, country_folder = country_settings(
+        str(metadata.get("country") or "")
+    )
     return (
         Path("info")
         / "souvenirs"
-        / "america"
-        / "eua"
-        / "merritt-island"
-        / "kennedy-space-center"
+        / continent_folder
+        / country_folder
+        / slugify(str(metadata.get("city") or "cidade-desconhecida"))
+        / slugify(short_location_name(str(metadata.get("location_name") or "localizacao")))
     )
 
 
@@ -443,9 +589,13 @@ def parse_args(argv: list[str] | None = None) -> argparse.Namespace:
     parser = argparse.ArgumentParser(
         description="Recolhe uma localização PennyCollector para revisão sem alterar o Base44."
     )
-    parser.add_argument("--location-id", default=DEFAULT_LOCATION_ID)
-    parser.add_argument("--country", default="EUA")
-    parser.add_argument("--output-dir", type=Path, default=default_output_directory())
+    parser.add_argument(
+        "--location-id",
+        default=DEFAULT_LOCATION_ID,
+        help="ID numérico ou link Details.aspx?location=...",
+    )
+    parser.add_argument("--country", default="", help="Substituir o país detetado.")
+    parser.add_argument("--output-dir", type=Path)
     parser.add_argument("--html-input", type=Path, help="Usar HTML local sem aceder à rede.")
     return parser.parse_args(argv)
 
@@ -453,20 +603,20 @@ def parse_args(argv: list[str] | None = None) -> argparse.Namespace:
 def main(argv: list[str] | None = None) -> int:
     args = parse_args(argv)
     try:
-        if not re.fullmatch(r"\d+", args.location_id):
-            raise ValueError("--location-id tem de ser numérico.")
+        location_id = reference_id(args.location_id, "location")
         source_html = (
             args.html_input.read_text(encoding="utf-8")
             if args.html_input
-            else fetch_html(location_url(args.location_id))
+            else fetch_html(location_url(location_id))
         )
         designs, metadata = parse_designs(source_html)
         if not designs:
             raise ValueError("A página não devolveu designs ativos.")
         catalog = build_catalog(
-            designs, metadata, location_id=args.location_id, country=args.country
+            designs, metadata, location_id=location_id, country=args.country
         )
-        catalog_path, preview_path = write_outputs(catalog, args.output_dir)
+        output_dir = args.output_dir or default_output_directory(metadata)
+        catalog_path, preview_path = write_outputs(catalog, output_dir)
     except (OSError, RuntimeError, ValueError, json.JSONDecodeError) as exc:
         print(f"Erro: {exc}", file=sys.stderr)
         return 1

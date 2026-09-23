@@ -12,8 +12,9 @@
     "zip_code": "32953",
     "status": "Active",
     "state": "FL",
+    "country": "United States",
     "source_flagged_needs_update": true,
-    "retrieved_at": "2026-09-23T09:27:27+00:00",
+    "retrieved_at": "2026-09-23T12:01:26+00:00",
     "machine_count": 12,
     "design_count": 48,
     "machine_numbers": [

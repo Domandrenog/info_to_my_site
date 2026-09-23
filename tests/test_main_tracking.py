@@ -130,9 +130,37 @@ class MainTrackingActionTests(unittest.TestCase):
         self.assertEqual(command[-2:], ["--location-id", "1851"])
         self.assertNotIn("--apply", command)
 
+    @patch("main.run_step", return_value=0)
+    @patch("main.title")
+    @patch(
+        "main.ask_text",
+        return_value="http://locations.pennycollector.com/Details.aspx?location=1851",
+    )
+    def test_pennycollector_accepts_location_link(self, _ask_text, _title, run_step) -> None:
+        main.action_collect_pennycollector_location()
+
+        command = run_step.call_args.args[1]
+        self.assertIn("scripts.pennycollector_souvenirs", command)
+        self.assertIn("Details.aspx?location=1851", command[-1])
+        self.assertNotIn("--apply", command)
+
+    @patch("main.run_step", return_value=0)
+    @patch("main.title")
+    @patch(
+        "main.ask_text",
+        return_value="http://locations.pennycollector.com/Locations.aspx?area=14",
+    )
+    def test_pennycollector_accepts_area_link(self, _ask_text, _title, run_step) -> None:
+        main.action_collect_pennycollector_area()
+
+        command = run_step.call_args.args[1]
+        self.assertIn("scripts.pennycollector_areas", command)
+        self.assertIn("Locations.aspx?area=14", command[-1])
+        self.assertNotIn("--apply", command)
+
     @patch("main.menu_pennycollector_kennedy_space_center")
     @patch("main.title")
-    @patch("main.ask_text", side_effect=["1", "2"])
+    @patch("main.ask_text", side_effect=["3", "4"])
     def test_pennycollector_menu_exposes_kennedy_space_center(
         self,
         _ask_text,
@@ -142,7 +170,9 @@ class MainTrackingActionTests(unittest.TestCase):
         with redirect_stdout(io.StringIO()) as output:
             main.menu_pennycollector()
 
-        self.assertIn("1) Kennedy Space Center", output.getvalue())
+        self.assertIn("1) Recolher localização por link ou ID", output.getvalue())
+        self.assertIn("2) Recolher área por link ou ID", output.getvalue())
+        self.assertIn("3) Kennedy Space Center", output.getvalue())
         pennycollector_menu.assert_called_once_with()
 
     def test_unconfirmed_associations_are_grouped_by_country(self) -> None:
