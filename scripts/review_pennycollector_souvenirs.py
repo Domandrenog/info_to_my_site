@@ -18,6 +18,7 @@ SHARED_PHOTO_NOTE = "Fotografia provisória partilhada da máquina"
 APPROVED = "approved"
 SKIPPED = "skipped"
 PENDING = "pending"
+DEFAULT_CATALOG_ROOT = Path("info/souvenirs")
 
 
 def read_catalog(path: Path) -> dict[str, Any]:
@@ -32,6 +33,13 @@ def read_catalog(path: Path) -> dict[str, Any]:
 
 def default_output_path(input_path: Path) -> Path:
     return input_path.with_name("pennycollector-catalog-final.json")
+
+
+def discover_pending_catalogs(root: Path) -> list[Path]:
+    """Return every PennyCollector source catalogue below *root*."""
+    if not root.is_dir():
+        return []
+    return sorted(root.rglob("pennycollector-catalog.json"))
 
 
 def item_key(item: dict[str, Any], index: int) -> str:
@@ -265,28 +273,44 @@ def parse_args(argv: list[str] | None = None) -> argparse.Namespace:
     parser = argparse.ArgumentParser(
         description="Revê um catálogo PennyCollector e gera o ficheiro aprovado para o Base44."
     )
-    parser.add_argument("--input", type=Path, required=True)
+    selection = parser.add_mutually_exclusive_group(required=True)
+    selection.add_argument("--input", type=Path)
+    selection.add_argument(
+        "--all-catalogs",
+        action="store_true",
+        help="Rever todos os pennycollector-catalog.json existentes sob --root.",
+    )
+    parser.add_argument("--root", type=Path, default=DEFAULT_CATALOG_ROOT)
     parser.add_argument("--output", type=Path)
     parser.add_argument("--approve-all", action="store_true")
     return parser.parse_args(argv)
 
 
-def main(argv: list[str] | None = None) -> int:
-    args = parse_args(argv)
-    output_path = args.output or default_output_path(args.input)
-    try:
-        pending = read_catalog(args.input)
-        previous = read_catalog(output_path) if output_path.is_file() else None
-        catalog = merge_previous_review(pending, previous)
-        if args.approve_all:
-            approve_all(catalog)
-            summary = update_catalog_status(catalog)
-        else:
-            summary = interactive_review(catalog, output_path)
-        output_path, preview_path = write_review(catalog, output_path)
-    except (OSError, ValueError, json.JSONDecodeError) as exc:
-        print(f"Erro: {exc}", file=sys.stderr)
-        return 1
+def review_catalog(
+    input_path: Path,
+    *,
+    output_path: Path | None = None,
+    approve_everything: bool = False,
+) -> tuple[dict[str, int], dict[str, Any], Path, Path]:
+    destination = output_path or default_output_path(input_path)
+    pending = read_catalog(input_path)
+    previous = read_catalog(destination) if destination.is_file() else None
+    catalog = merge_previous_review(pending, previous)
+    if approve_everything:
+        approve_all(catalog)
+        summary = update_catalog_status(catalog)
+    else:
+        summary = interactive_review(catalog, destination)
+    destination, preview_path = write_review(catalog, destination)
+    return summary, catalog, destination, preview_path
+
+
+def print_review_result(
+    summary: dict[str, int],
+    catalog: dict[str, Any],
+    output_path: Path,
+    preview_path: Path,
+) -> None:
 
     print(f"\nAprovados: {summary[APPROVED]}")
     print(f"Não importar: {summary[SKIPPED]}")
@@ -298,6 +322,51 @@ def main(argv: list[str] | None = None) -> int:
     else:
         print("Ainda não está pronto para importar; existem decisões pendentes.")
     print("Site Base44: nenhuma alteração efetuada.")
+
+
+def main(argv: list[str] | None = None) -> int:
+    args = parse_args(argv)
+    if args.output and args.all_catalogs:
+        print("Erro: --output só pode ser usado com --input.", file=sys.stderr)
+        return 1
+
+    input_paths = discover_pending_catalogs(args.root) if args.all_catalogs else [args.input]
+    if not input_paths:
+        print(f"Nenhum catálogo PennyCollector encontrado em {args.root}.")
+        return 0
+
+    if args.all_catalogs:
+        print(f"Catálogos PennyCollector encontrados: {len(input_paths)}")
+
+    totals = {APPROVED: 0, SKIPPED: 0, PENDING: 0}
+    completed = 0
+    for index, input_path in enumerate(input_paths, start=1):
+        if args.all_catalogs:
+            print("\n" + "#" * 72)
+            print(f"CATÁLOGO {index}/{len(input_paths)} — {input_path}")
+            print("#" * 72)
+        try:
+            summary, catalog, output_path, preview_path = review_catalog(
+                input_path,
+                output_path=args.output,
+                approve_everything=args.approve_all,
+            )
+        except (OSError, ValueError, json.JSONDecodeError) as exc:
+            print(f"Erro em {input_path}: {exc}", file=sys.stderr)
+            return 1
+        print_review_result(summary, catalog, output_path, preview_path)
+        for status in totals:
+            totals[status] += summary[status]
+        completed += int(bool(catalog["import_ready"]))
+
+    if args.all_catalogs:
+        print("\n" + "=" * 72)
+        print("RESUMO GERAL DA REVISÃO")
+        print("=" * 72)
+        print(f"Catálogos prontos: {completed}/{len(input_paths)}")
+        print(f"Souvenirs aprovados: {totals[APPROVED]}")
+        print(f"Souvenirs a não importar: {totals[SKIPPED]}")
+        print(f"Decisões ainda pendentes: {totals[PENDING]}")
     return 0
 
 

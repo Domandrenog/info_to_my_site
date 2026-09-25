@@ -182,7 +182,10 @@ class MainTrackingActionTests(unittest.TestCase):
 
     @patch("main.run_step", return_value=0)
     @patch("main.title")
-    @patch("main.ask_text", return_value="info/pennycollector-catalog.json")
+    @patch(
+        "main.ask_text",
+        side_effect=["2", "info/pennycollector-catalog.json"],
+    )
     def test_pennycollector_review_uses_separate_approval_step(
         self, _ask_text, _title, run_step
     ) -> None:
@@ -195,7 +198,10 @@ class MainTrackingActionTests(unittest.TestCase):
 
     @patch("main.run_step", return_value=0)
     @patch("main.title")
-    @patch("main.ask_text", return_value="info/pennycollector-catalog-final.json")
+    @patch(
+        "main.ask_text",
+        side_effect=["2", "info/pennycollector-catalog-final.json"],
+    )
     def test_pennycollector_import_requires_final_catalog_and_apply_flag(
         self, _ask_text, _title, run_step
     ) -> None:
@@ -204,6 +210,32 @@ class MainTrackingActionTests(unittest.TestCase):
         command = run_step.call_args.args[1]
         self.assertIn("scripts.import_base44_souvenirs", command)
         self.assertIn("info/pennycollector-catalog-final.json", command)
+        self.assertIn("--apply", command)
+
+    @patch("main.run_step", return_value=0)
+    @patch("main.title")
+    @patch("main.ask_text", return_value="1")
+    def test_pennycollector_review_can_process_all_catalogs(
+        self, _ask_text, _title, run_step
+    ) -> None:
+        main.action_review_pennycollector_souvenirs()
+
+        command = run_step.call_args.args[1]
+        self.assertIn("--all-catalogs", command)
+        self.assertIn("info/souvenirs", command)
+        self.assertNotIn("--input", command)
+
+    @patch("main.run_step", return_value=0)
+    @patch("main.title")
+    @patch("main.ask_text", return_value="1")
+    def test_pennycollector_import_can_process_all_souvenir_catalogs(
+        self, _ask_text, _title, run_step
+    ) -> None:
+        main.action_import_pennycollector_souvenirs(apply=True)
+
+        command = run_step.call_args.args[1]
+        self.assertIn("--all-catalogs", command)
+        self.assertIn("info/souvenirs", command)
         self.assertIn("--apply", command)
 
     def test_unconfirmed_associations_are_grouped_by_country(self) -> None:

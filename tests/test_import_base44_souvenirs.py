@@ -52,6 +52,67 @@ def pennycollector_souvenir(position: int, **overrides):
 
 
 class ImportBase44SouvenirsTests(unittest.TestCase):
+    def test_general_import_uses_presscoins_and_approved_pennycollector_only(self) -> None:
+        with tempfile.TemporaryDirectory() as temp_dir:
+            root = Path(temp_dir)
+            presscoins = root / "disney" / "presscoins-catalog.json"
+            pending = root / "nasa" / "pennycollector-catalog.json"
+            final = root / "nasa" / "pennycollector-catalog-final.json"
+            incomplete = root / "other" / "pennycollector-catalog-final.json"
+            for path in (presscoins, pending, final, incomplete):
+                path.parent.mkdir(parents=True, exist_ok=True)
+            presscoins.write_text(
+                json.dumps({"source": {"site": "Presscoins"}, "items": []}),
+                encoding="utf-8",
+            )
+            pending.write_text(
+                json.dumps({"source": {"site": "PennyCollector"}, "items": []}),
+                encoding="utf-8",
+            )
+            final.write_text(
+                json.dumps(
+                    {
+                        "source": {"site": "PennyCollector"},
+                        "import_ready": True,
+                        "items": [],
+                    }
+                ),
+                encoding="utf-8",
+            )
+            incomplete.write_text(
+                json.dumps(
+                    {
+                        "source": {"site": "PennyCollector"},
+                        "import_ready": False,
+                        "items": [],
+                    }
+                ),
+                encoding="utf-8",
+            )
+
+            discovered = import_base44_souvenirs.discover_import_catalogs(root)
+
+        self.assertEqual(discovered, sorted([presscoins, final]))
+
+    def test_combined_catalogues_deduplicate_the_same_souvenir(self) -> None:
+        with tempfile.TemporaryDirectory() as temp_dir:
+            root = Path(temp_dir)
+            paths = [root / "first.json", root / "second.json"]
+            record = souvenir()
+            for index, path in enumerate(paths, start=1):
+                duplicate = dict(record, ordem=index)
+                path.write_text(
+                    json.dumps({"items": [{"souvenir": duplicate}]}),
+                    encoding="utf-8",
+                )
+
+            records, duplicate_count = import_base44_souvenirs.combined_catalogue_records(
+                paths
+            )
+
+        self.assertEqual(records, [record])
+        self.assertEqual(duplicate_count, 1)
+
     def test_catalog_explicitly_not_ready_cannot_be_imported(self) -> None:
         with tempfile.TemporaryDirectory() as temp_dir:
             path = Path(temp_dir) / "pending.json"

@@ -11,6 +11,7 @@ from scripts.review_pennycollector_souvenirs import (
     SHARED_PHOTO_NOTE,
     SKIPPED,
     approve_all,
+    discover_pending_catalogs,
     interactive_review,
     merge_previous_review,
     review_summary,
@@ -59,6 +60,17 @@ def pending_catalog() -> dict:
 
 
 class ReviewPennyCollectorSouvenirsTests(unittest.TestCase):
+    def test_general_review_discovers_only_pending_source_catalogs(self) -> None:
+        with tempfile.TemporaryDirectory() as temp_dir:
+            root = Path(temp_dir)
+            first = root / "portugal" / "location" / "pennycollector-catalog.json"
+            final = first.with_name("pennycollector-catalog-final.json")
+            first.parent.mkdir(parents=True)
+            first.write_text("{}", encoding="utf-8")
+            final.write_text("{}", encoding="utf-8")
+
+            self.assertEqual(discover_pending_catalogs(root), [first])
+
     def test_approve_all_keeps_machine_photo_and_creates_unique_references(self) -> None:
         catalog = pending_catalog()
 

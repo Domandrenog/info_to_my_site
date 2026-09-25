@@ -123,6 +123,13 @@ Depois da revisão, o mesmo menu permite:
 1. `Verificar o que falta no Site Base44`: consulta os souvenirs existentes e apresenta quantos já existem e quantos seriam criados, sem escrever nada;
 2. `Importar apenas souvenirs em falta`: repete o plano, pede confirmação explícita e cria exclusivamente os registos ainda inexistentes.
 
+As ações de revisão, verificação e importação permitem escolher entre um
+catálogo específico e o modo geral. O modo geral de revisão percorre todos os
+`pennycollector-catalog.json` em `info/souvenirs` e retoma as decisões já
+guardadas. O modo geral de verificação/importação agrega os catálogos Presscoins
+e apenas os `pennycollector-catalog-final.json` completamente aprovados. Entradas
+repetidas entre catálogos são consideradas uma única vez.
+
 Também podes executar estas duas etapas diretamente:
 
 ```bash
@@ -134,6 +141,14 @@ python3 -m scripts.import_base44_souvenirs \
 python3 -m scripts.import_base44_souvenirs \
   --input info/souvenirs/america/eua/orlando/magic-kingdom/atuais/presscoins-catalog.json \
   --apply
+
+# Verificar todos os catálogos importáveis de souvenirs
+python3 -m scripts.import_base44_souvenirs \
+  --all-catalogs --root info/souvenirs
+
+# Importar todos os aprovados que ainda faltam, com confirmação interativa
+python3 -m scripts.import_base44_souvenirs \
+  --all-catalogs --root info/souvenirs --apply
 ```
 
 A associação usa primeiro o número de catálogo Presscoins, depois `reference_url` e por fim país, cidade, localização e nome. Não são atualizados nem eliminados souvenirs existentes. Após a criação, o script volta a consultar o Site Base44 e verifica todos os novos registos.

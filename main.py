@@ -1407,55 +1407,77 @@ def latest_pennycollector_catalog(filename: str) -> str:
     )
 
 
+def choose_souvenir_catalog_scope(*, review: bool = False) -> str:
+    print("\nÂmbito:")
+    if review:
+        print("1) Todos os catálogos PennyCollector em info/souvenirs")
+    else:
+        print("1) Todos os catálogos de souvenirs em info/souvenirs")
+    print("2) Um catálogo específico")
+    while True:
+        choice = ask_text("Escolhe o âmbito", "1")
+        if choice in {"1", "2"}:
+            return choice
+        print("Escolhe 1 ou 2.")
+
+
 def action_review_pennycollector_souvenirs() -> None:
     title("PennyCollector.com — Rever e aprovar catálogo")
     print(
         "Permite aprovar, corrigir o nome ou excluir cada desenho. "
         "As fotografias das máquinas seguem provisoriamente para o Site."
     )
-    input_path = ask_text(
-        "Catálogo pendente",
-        latest_pennycollector_catalog("pennycollector-catalog.json"),
-    )
-    if not input_path:
-        print("Catálogo obrigatório.")
-        return
     command = [
         sys.executable,
         "-m",
         "scripts.review_pennycollector_souvenirs",
-        "--input",
-        input_path,
     ]
+    if choose_souvenir_catalog_scope(review=True) == "1":
+        command.extend(["--all-catalogs", "--root", "info/souvenirs"])
+    else:
+        input_path = ask_text(
+            "Catálogo pendente",
+            latest_pennycollector_catalog("pennycollector-catalog.json"),
+        )
+        if not input_path:
+            print("Catálogo obrigatório.")
+            return
+        command.extend(["--input", input_path])
     run_step("Rever e aprovar souvenirs PennyCollector", command)
 
 
 def action_import_pennycollector_souvenirs(*, apply: bool) -> None:
     title(
-        "Importar PennyCollector para o Site Base44"
+        "Importar souvenirs para o Site Base44"
         if apply
-        else "Verificar PennyCollector no Site Base44"
+        else "Verificar souvenirs no Site Base44"
     )
-    input_path = ask_text(
-        "Catálogo final aprovado",
-        latest_pennycollector_catalog("pennycollector-catalog-final.json"),
+    print(
+        "Destino: entidade Souvenir. Só são considerados registos que ainda "
+        "não existem no Site Base44."
     )
-    if not input_path:
-        print("Catálogo obrigatório.")
-        return
     command = [
         sys.executable,
         "-m",
         "scripts.import_base44_souvenirs",
-        "--input",
-        input_path,
     ]
+    if choose_souvenir_catalog_scope() == "1":
+        command.extend(["--all-catalogs", "--root", "info/souvenirs"])
+    else:
+        input_path = ask_text(
+            "Catálogo final aprovado",
+            latest_pennycollector_catalog("pennycollector-catalog-final.json"),
+        )
+        if not input_path:
+            print("Catálogo obrigatório.")
+            return
+        command.extend(["--input", input_path])
     if apply:
         command.append("--apply")
     step_name = (
-        "Importar apenas souvenirs PennyCollector em falta"
+        "Importar apenas souvenirs aprovados e em falta"
         if apply
-        else "Verificar souvenirs PennyCollector existentes e em falta"
+        else "Verificar souvenirs existentes e em falta"
     )
     run_step(step_name, command)
 
@@ -1481,9 +1503,9 @@ def menu_pennycollector() -> None:
         title("PennyCollector.com")
         print("1) Recolher localização por link ou ID")
         print("2) Recolher área por link ou ID")
-        print("3) Rever e aprovar catálogo recolhido")
-        print("4) Verificar o que falta no Site Base44")
-        print("5) Importar apenas souvenirs aprovados e em falta")
+        print("3) Rever e aprovar catálogo recolhido (geral ou específico)")
+        print("4) Verificar o que falta no Site Base44 (geral ou específico)")
+        print("5) Importar apenas souvenirs aprovados e em falta (geral ou específico)")
         print("6) Voltar")
 
         choice = ask_text("Escolhe uma opção", "1")

@@ -30,6 +30,7 @@ VALID_CONTINENTS = {"Europa", "América", "Ásia", "África", "Oceânia"}
 VALID_TYPES = {"pressed", "coin", "card", "other"}
 VALID_CONDITIONS = {"Tenho", "Não Tenho"}
 VALID_SHAPES = {"", "oval", "circle", "card_wide", "square"}
+DEFAULT_CATALOG_ROOT = Path("info/souvenirs")
 SOUVENIR_FIELDS = {
     "name",
     "continent",
@@ -54,7 +55,14 @@ def parse_args(argv: list[str] | None = None) -> argparse.Namespace:
     parser = argparse.ArgumentParser(
         description="Verifica e cria apenas souvenirs ainda em falta no Site Base44."
     )
-    parser.add_argument("--input", type=Path, required=True, help="presscoins-catalog.json revisto.")
+    selection = parser.add_mutually_exclusive_group(required=True)
+    selection.add_argument("--input", type=Path, help="Catálogo revisto ou aprovado.")
+    selection.add_argument(
+        "--all-catalogs",
+        action="store_true",
+        help="Usar todos os catálogos importáveis existentes sob --root.",
+    )
+    parser.add_argument("--root", type=Path, default=DEFAULT_CATALOG_ROOT)
     parser.add_argument("--apply", action="store_true", help="Permitir criação após confirmação explícita.")
     parser.add_argument("--batch-size", type=int, default=10)
     parser.add_argument("--limit", type=int, default=0, help="Considerar apenas os primeiros N souvenirs.")
@@ -83,6 +91,30 @@ def read_catalog(path: Path) -> dict[str, Any]:
     if not isinstance(items, list):
         raise ValueError("O catálogo não contém uma lista items.")
     return payload
+
+
+def discover_import_catalogs(root: Path) -> list[Path]:
+    """Find importable catalogues without selecting pending PennyCollector data."""
+    if not root.is_dir():
+        return []
+    candidates = sorted(
+        [
+            *root.rglob("pennycollector-catalog-final.json"),
+            *root.rglob("presscoins-catalog.json"),
+        ]
+    )
+    selected: list[Path] = []
+    for path in candidates:
+        try:
+            payload = json.loads(path.read_text(encoding="utf-8"))
+        except (OSError, json.JSONDecodeError):
+            selected.append(path)
+            continue
+        source_site = str(payload.get("source", {}).get("site") or "")
+        if source_site == "PennyCollector" and payload.get("import_ready") is not True:
+            continue
+        selected.append(path)
+    return selected
 
 
 def is_http_url(value: str) -> bool:
@@ -142,6 +174,32 @@ def catalogue_records(catalog: dict[str, Any]) -> list[dict[str, Any]]:
     if duplicate_keys:
         raise ValueError(f"O catálogo contém {len(duplicate_keys)} identidades duplicadas.")
     return records
+
+
+def comparable_record(record: dict[str, Any]) -> dict[str, Any]:
+    return {key: value for key, value in record.items() if key != "ordem"}
+
+
+def combined_catalogue_records(paths: list[Path]) -> tuple[list[dict[str, Any]], int]:
+    records: list[dict[str, Any]] = []
+    identities: dict[tuple[str, ...], tuple[dict[str, Any], Path]] = {}
+    duplicate_count = 0
+    for path in paths:
+        for record in catalogue_records(read_catalog(path)):
+            identity = preferred_identity(record)
+            previous = identities.get(identity)
+            if previous is None:
+                identities[identity] = (record, path)
+                records.append(record)
+                continue
+            previous_record, previous_path = previous
+            if comparable_record(previous_record) != comparable_record(record):
+                raise ValueError(
+                    "O mesmo souvenir tem dados diferentes em dois catálogos: "
+                    f"{previous_path} e {path}. Revê estes ficheiros antes da importação geral."
+                )
+            duplicate_count += 1
+    return records, duplicate_count
 
 
 def filter_records_by_catalog_numbers(
@@ -389,8 +447,14 @@ def main(argv: list[str] | None = None) -> int:
     args = parse_args(argv)
     if args.batch_size < 1:
         raise ValueError("--batch-size tem de ser pelo menos 1.")
-    catalog = read_catalog(args.input)
-    records = catalogue_records(catalog)
+    catalog_paths = discover_import_catalogs(args.root) if args.all_catalogs else [args.input]
+    if not catalog_paths:
+        print(f"Nenhum catálogo aprovado ou importável encontrado em {args.root}.")
+        return 0
+    records, duplicate_count = combined_catalogue_records(catalog_paths)
+    if args.all_catalogs:
+        print(f"Catálogos incluídos: {len(catalog_paths)}")
+        print(f"Souvenirs repetidos entre catálogos e agregados uma vez: {duplicate_count}")
     records = filter_records_by_catalog_numbers(records, args.catalog_number)
     if args.limit > 0:
         records = records[: args.limit]
