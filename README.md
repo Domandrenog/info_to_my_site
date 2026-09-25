@@ -129,6 +129,10 @@ catálogos PennyCollector e Presscoins em `info/souvenirs`, retoma as decisões 
 guardadas e gera o respetivo ficheiro `*-catalog-final.json`. O modo geral de
 verificação/importação usa exclusivamente esses ficheiros finais completamente
 aprovados. Entradas repetidas entre catálogos são consideradas uma única vez.
+Durante a revisão, os registos Presscoins pendentes são comparados, em modo só
+de leitura, com o Site Base44. Os que já existirem pelo número de catálogo ficam
+aprovados localmente de forma automática; apenas souvenirs realmente novos
+continuam a pedir uma decisão manual.
 
 Também podes executar estas duas etapas diretamente:
 

@@ -15,6 +15,7 @@ from scripts.review_pennycollector_souvenirs import (
     discover_pending_catalogs,
     interactive_review,
     merge_previous_review,
+    reconcile_existing_presscoins,
     review_summary,
     write_review,
 )
@@ -61,6 +62,39 @@ def pending_catalog() -> dict:
 
 
 class ReviewPennyCollectorSouvenirsTests(unittest.TestCase):
+    def test_existing_presscoins_items_are_approved_without_approving_new_items(self) -> None:
+        catalog = pending_catalog()
+        catalog["source"]["site"] = "Presscoins"
+        for position, item in enumerate(catalog["items"], start=1):
+            catalog_number = f"MK{position:04d}"
+            item["source"] = {
+                "catalog_number": catalog_number,
+                "location": "Magic Kingdom, Emporium",
+                "position": str(position),
+            }
+            item["souvenir"]["reference_url"] = (
+                f"https://www.presscoins.com/search/?search={catalog_number}"
+            )
+            item["souvenir"]["notes"] = f"Catálogo Presscoins: {catalog_number}"
+
+        existing = copy.deepcopy(catalog["items"][0]["souvenir"])
+
+        class FakeClient:
+            def filter(self, _query: dict, *, limit: int, skip: int) -> list[dict]:
+                self.assert_valid_pagination(limit, skip)
+                return [existing]
+
+            @staticmethod
+            def assert_valid_pagination(limit: int, skip: int) -> None:
+                if (limit, skip) != (1000, 0):
+                    raise AssertionError((limit, skip))
+
+        approved, pending = reconcile_existing_presscoins(catalog, FakeClient(), {})
+
+        self.assertEqual((approved, pending), (1, 2))
+        self.assertEqual(catalog["items"][0]["review_status"], APPROVED)
+        self.assertEqual(catalog["items"][1]["review_status"], PENDING)
+
     def test_general_review_discovers_only_pending_source_catalogs(self) -> None:
         with tempfile.TemporaryDirectory() as temp_dir:
             root = Path(temp_dir)

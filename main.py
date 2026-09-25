@@ -1425,7 +1425,9 @@ def action_review_pennycollector_souvenirs() -> None:
     title("Souvenirs — Rever e aprovar catálogo")
     print(
         "Permite aprovar, corrigir o nome ou excluir cada desenho. "
-        "No PennyCollector, as fotografias das máquinas seguem provisoriamente para o Site."
+        "No PennyCollector, as fotografias das máquinas seguem provisoriamente para o Site.\n"
+        "No Presscoins, entradas já existentes no Site são reconhecidas automaticamente, "
+        "sem alterar o Site Base44."
     )
     command = [
         sys.executable,

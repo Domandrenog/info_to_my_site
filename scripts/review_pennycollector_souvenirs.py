@@ -13,6 +13,8 @@ from pathlib import Path
 from typing import Any
 from urllib.parse import urlsplit, urlunsplit
 
+from scripts import import_base44_souvenirs
+
 
 SHARED_PHOTO_NOTE = "Fotografia provisória partilhada da máquina"
 APPROVED = "approved"
@@ -91,6 +93,44 @@ def prepare_approved_item(item: dict[str, Any], *, name: str = "") -> None:
             souvenir["notes"] = " · ".join(part for part in (notes, SHARED_PHOTO_NOTE) if part)
     souvenir["reference_url"] = unique_reference_url(item)
     item["review_status"] = APPROVED
+
+
+def reconcile_existing_presscoins(
+    catalog: dict[str, Any],
+    client: Any,
+    existing_by_country: dict[str, list[dict[str, Any]]],
+) -> tuple[int, int]:
+    """Approve pending Presscoins items whose strong identity already exists on Base44."""
+    if str(catalog.get("source", {}).get("site") or "") != "Presscoins":
+        return 0, 0
+
+    pending_items: list[tuple[dict[str, Any], dict[str, Any]]] = []
+    for index, item in enumerate(catalog["items"], start=1):
+        if str(item.get("review_status") or PENDING) != PENDING:
+            continue
+        souvenir = item.get("souvenir")
+        if not isinstance(souvenir, dict):
+            raise ValueError(f"Item {index}: objeto souvenir em falta.")
+        record = import_base44_souvenirs.validate_record(souvenir, index)
+        if import_base44_souvenirs.strong_identity(record) is None:
+            continue
+        pending_items.append((item, record))
+
+    for country in sorted({str(record["country"]) for _item, record in pending_items}):
+        if country not in existing_by_country:
+            existing_by_country[country] = (
+                import_base44_souvenirs.existing_records_for_country(client, country)
+            )
+
+    approved = 0
+    for item, record in pending_items:
+        _missing, already_present = import_base44_souvenirs.partition_missing(
+            [record], existing_by_country[str(record["country"])]
+        )
+        if already_present:
+            prepare_approved_item(item)
+            approved += 1
+    return approved, len(pending_items)
 
 
 def merge_previous_review(
@@ -307,6 +347,11 @@ def parse_args(argv: list[str] | None = None) -> argparse.Namespace:
     parser.add_argument("--root", type=Path, default=DEFAULT_CATALOG_ROOT)
     parser.add_argument("--output", type=Path)
     parser.add_argument("--approve-all", action="store_true")
+    parser.add_argument(
+        "--no-site-reconciliation",
+        action="store_true",
+        help="Não reconhecer automaticamente entradas Presscoins já existentes no Site Base44.",
+    )
     return parser.parse_args(argv)
 
 
@@ -315,11 +360,24 @@ def review_catalog(
     *,
     output_path: Path | None = None,
     approve_everything: bool = False,
+    site_client: Any = None,
+    existing_by_country: dict[str, list[dict[str, Any]]] | None = None,
 ) -> tuple[dict[str, int], dict[str, Any], Path, Path]:
     destination = output_path or default_output_path(input_path)
     pending = read_catalog(input_path)
     previous = read_catalog(destination) if destination.is_file() else None
     catalog = merge_previous_review(pending, previous)
+    if site_client is not None:
+        approved, pending_count = reconcile_existing_presscoins(
+            catalog,
+            site_client,
+            existing_by_country if existing_by_country is not None else {},
+        )
+        if pending_count:
+            print(
+                "Reconciliação com o Site Base44: "
+                f"{approved}/{pending_count} pendentes já existiam e foram aprovados localmente."
+            )
     if approve_everything:
         approve_all(catalog)
         summary = update_catalog_status(catalog)
@@ -362,6 +420,33 @@ def main(argv: list[str] | None = None) -> int:
     if args.all_catalogs:
         print(f"Catálogos de souvenirs encontrados: {len(input_paths)}")
 
+    site_client = None
+    existing_by_country: dict[str, list[dict[str, Any]]] = {}
+    should_reconcile = (
+        not args.approve_all
+        and not args.no_site_reconciliation
+        and any(path.name == "presscoins-catalog.json" for path in input_paths)
+    )
+    if should_reconcile:
+        try:
+            site_client = import_base44_souvenirs.create_client(
+                argparse.Namespace(
+                    request_delay=import_base44_souvenirs.DEFAULT_REQUEST_DELAY_SECONDS,
+                    rate_limit_delay=import_base44_souvenirs.DEFAULT_RATE_LIMIT_DELAY_SECONDS,
+                    max_retries=import_base44_souvenirs.DEFAULT_MAX_RETRIES,
+                )
+            )
+            print(
+                "Presscoins: os pendentes serão comparados com o Site Base44 "
+                "em modo só de leitura."
+            )
+        except ValueError as exc:
+            print(
+                f"Aviso: não foi possível preparar a reconciliação com o Site Base44: {exc}\n"
+                "A revisão continuará apenas com o estado guardado localmente.",
+                file=sys.stderr,
+            )
+
     totals = {APPROVED: 0, SKIPPED: 0, PENDING: 0}
     completed = 0
     for index, input_path in enumerate(input_paths, start=1):
@@ -374,7 +459,28 @@ def main(argv: list[str] | None = None) -> int:
                 input_path,
                 output_path=args.output,
                 approve_everything=args.approve_all,
+                site_client=site_client,
+                existing_by_country=existing_by_country,
             )
+        except RuntimeError as exc:
+            if site_client is None or input_path.name != "presscoins-catalog.json":
+                print(f"Erro em {input_path}: {exc}", file=sys.stderr)
+                return 1
+            print(
+                f"Aviso: não foi possível consultar o Site Base44: {exc}\n"
+                "Este catálogo continuará em revisão manual.",
+                file=sys.stderr,
+            )
+            site_client = None
+            try:
+                summary, catalog, output_path, preview_path = review_catalog(
+                    input_path,
+                    output_path=args.output,
+                    approve_everything=args.approve_all,
+                )
+            except (OSError, ValueError, json.JSONDecodeError) as fallback_exc:
+                print(f"Erro em {input_path}: {fallback_exc}", file=sys.stderr)
+                return 1
         except (OSError, ValueError, json.JSONDecodeError) as exc:
             print(f"Erro em {input_path}: {exc}", file=sys.stderr)
             return 1
