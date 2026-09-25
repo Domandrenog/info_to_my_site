@@ -361,6 +361,33 @@ class ImportBase44SouvenirsTests(unittest.TestCase):
         self.assertIn("2/2 — Portugal: a consultar", progress)
         self.assertEqual(progress.count("1 encontrados"), 2)
 
+    def test_plan_shows_exact_import_impact_by_country(self) -> None:
+        existing = souvenir(country="EUA", name="Already there")
+        portugal = [
+            souvenir(country="Portugal", name="Novo 1", ordem=2),
+            souvenir(country="Portugal", name="Novo 2", ordem=3),
+        ]
+
+        with redirect_stdout(io.StringIO()) as output:
+            import_base44_souvenirs.print_plan(
+                [existing, *portugal],
+                portugal,
+                [existing],
+            )
+
+        plan = output.getvalue()
+        self.assertIn(
+            "EUA: 1 no catálogo · 1 já existente · 0 novos — sem alterações",
+            plan,
+        )
+        self.assertIn(
+            "Portugal: 2 no catálogo · 0 já existentes · 2 novos a criar",
+            plan,
+        )
+        self.assertIn("serão criados registos apenas em:\n- Portugal: 2 souvenirs", plan)
+        self.assertIn("Países sem alterações: EUA.", plan)
+        self.assertIn("Primeiros registos a criar em Portugal:", plan)
+
     @patch("builtins.input", return_value="")
     def test_write_confirmation_defaults_to_no(self, _input) -> None:
         self.assertFalse(import_base44_souvenirs.ask_confirmation(10))

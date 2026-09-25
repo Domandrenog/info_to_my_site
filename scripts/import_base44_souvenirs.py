@@ -4,6 +4,7 @@
 from __future__ import annotations
 
 import argparse
+from collections import Counter
 import json
 import os
 import re
@@ -404,12 +405,57 @@ def print_plan(
     print(f"- Novos a criar: {len(missing)}")
     print(f"- Novos com fotografia: {with_photos}")
     print(f"- Novos sem fotografia: {len(missing) - with_photos}")
+
+    catalog_by_country = Counter(str(record["country"]) for record in records)
+    existing_by_country = Counter(str(record["country"]) for record in already_present)
+    missing_by_country = Counter(str(record["country"]) for record in missing)
+    print("\nImpacto por país:")
+    for country in sorted(catalog_by_country):
+        catalog_count = catalog_by_country[country]
+        existing_count = existing_by_country[country]
+        missing_count = missing_by_country[country]
+        existing_label = "já existente" if existing_count == 1 else "já existentes"
+        if missing_count == 0:
+            missing_label = "0 novos — sem alterações"
+        elif missing_count == 1:
+            missing_label = "1 novo a criar"
+        else:
+            missing_label = f"{missing_count} novos a criar"
+        print(
+            f"- {country}: {catalog_count} no catálogo · "
+            f"{existing_count} {existing_label} · {missing_label}"
+        )
+
+    countries_to_change = sorted(missing_by_country)
+    unchanged_countries = sorted(
+        country for country in catalog_by_country if missing_by_country[country] == 0
+    )
+    if countries_to_change:
+        print("\nSe autorizares a importação, serão criados registos apenas em:")
+        for country in countries_to_change:
+            count = missing_by_country[country]
+            label = "souvenir" if count == 1 else "souvenirs"
+            print(f"- {country}: {count} {label}")
+    else:
+        print("\nSe autorizares a importação, nenhum país será alterado.")
+    if unchanged_countries:
+        print(f"Países sem alterações: {', '.join(unchanged_countries)}.")
+
     if missing:
-        print("\nPrimeiros registos a criar:")
+        if len(countries_to_change) == 1:
+            print(f"\nPrimeiros registos a criar em {countries_to_change[0]}:")
+        else:
+            print("\nPrimeiros registos a criar:")
         for record in missing[:10]:
             catalog_number = presscoins_catalog_number(record)
             suffix = f" [{catalog_number}]" if catalog_number else ""
-            print(f"- {record['name']} — {record.get('location_name', '')}{suffix}")
+            country_prefix = (
+                f"{record['country']} — " if len(countries_to_change) > 1 else ""
+            )
+            print(
+                f"- {country_prefix}{record['name']} — "
+                f"{record.get('location_name', '')}{suffix}"
+            )
         if len(missing) > 10:
             print(f"- ... e mais {len(missing) - 10}")
 
