@@ -335,6 +335,32 @@ class ImportBase44SouvenirsTests(unittest.TestCase):
         self.assertEqual([len(batch) for batch in client.batches], [2, 2, 1])
         self.assertIn("5/5 (100.0%)", output.getvalue())
 
+    def test_loading_existing_souvenirs_reports_progress_by_country(self) -> None:
+        class FakeClient:
+            def filter(self, query, *, limit, skip):
+                self.assert_valid_pagination(limit, skip)
+                return [{"country": query["country"]}]
+
+            @staticmethod
+            def assert_valid_pagination(limit, skip):
+                if (limit, skip) != (1000, 0):
+                    raise AssertionError((limit, skip))
+
+        records = [
+            souvenir(country="EUA"),
+            souvenir(country="Portugal", ordem=2),
+        ]
+        with redirect_stdout(io.StringIO()) as output:
+            existing = import_base44_souvenirs.load_existing(
+                FakeClient(), records, show_progress=True
+            )
+
+        progress = output.getvalue()
+        self.assertEqual(len(existing), 2)
+        self.assertIn("1/2 — EUA: a consultar", progress)
+        self.assertIn("2/2 — Portugal: a consultar", progress)
+        self.assertEqual(progress.count("1 encontrados"), 2)
+
     @patch("builtins.input", return_value="")
     def test_write_confirmation_defaults_to_no(self, _input) -> None:
         self.assertFalse(import_base44_souvenirs.ask_confirmation(10))

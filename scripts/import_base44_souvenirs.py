@@ -364,10 +364,31 @@ def partition_missing(
     return missing, already_present
 
 
-def load_existing(client: Base44Client, records: list[dict[str, Any]]) -> list[dict[str, Any]]:
+def load_existing(
+    client: Base44Client,
+    records: list[dict[str, Any]],
+    *,
+    show_progress: bool = False,
+) -> list[dict[str, Any]]:
     existing: list[dict[str, Any]] = []
-    for country in sorted({str(record["country"]) for record in records}):
-        existing.extend(existing_records_for_country(client, country))
+    countries = sorted({str(record["country"]) for record in records})
+    if show_progress:
+        print(f"\nA consultar souvenirs no Site Base44 para {len(countries)} país(es)...")
+    for index, country in enumerate(countries, start=1):
+        if show_progress:
+            print(
+                f"{index}/{len(countries)} — {country}: a consultar...",
+                end="",
+                flush=True,
+            )
+        started_at = time.monotonic()
+        country_records = existing_records_for_country(client, country)
+        existing.extend(country_records)
+        if show_progress:
+            print(
+                f" {len(country_records)} encontrados "
+                f"[{format_duration(time.monotonic() - started_at, precise=True)}]"
+            )
     return existing
 
 
@@ -434,7 +455,8 @@ def create_missing_records(
 
 
 def verify_created(client: Base44Client, records: list[dict[str, Any]]) -> None:
-    existing = load_existing(client, records)
+    print("\nA verificar os souvenirs criados no Site Base44...")
+    existing = load_existing(client, records, show_progress=True)
     missing, _ = partition_missing(records, existing)
     if missing:
         raise RuntimeError(
@@ -462,7 +484,7 @@ def main(argv: list[str] | None = None) -> int:
         return 0
 
     client = create_client(args)
-    existing = load_existing(client, records)
+    existing = load_existing(client, records, show_progress=True)
     missing, already_present = partition_missing(records, existing)
     print_plan(records, missing, already_present)
 

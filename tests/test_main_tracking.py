@@ -180,6 +180,22 @@ class MainTrackingActionTests(unittest.TestCase):
         self.assertIn("6) Voltar", menu)
         self.assertNotIn("Kennedy Space Center", menu)
 
+    @patch("main.action_import_pennycollector_souvenirs")
+    @patch("builtins.input", return_value="")
+    @patch("main.title")
+    @patch("main.ask_text", side_effect=["4", "6"])
+    def test_pennycollector_menu_keeps_verification_result_visible(
+        self,
+        _ask_text,
+        _title,
+        wait_for_continue,
+        verify_souvenirs,
+    ) -> None:
+        main.menu_pennycollector()
+
+        verify_souvenirs.assert_called_once_with(apply=False)
+        wait_for_continue.assert_called_once_with("\nCarrega Enter para continuar...")
+
     @patch("main.run_step", return_value=0)
     @patch("main.title")
     @patch(

@@ -1525,7 +1525,8 @@ def menu_pennycollector() -> None:
             return
         else:
             print("Opção inválida.")
-            input("\nCarrega Enter para continuar...")
+
+        input("\nCarrega Enter para continuar...")
 
 
 def menu_souvenirs() -> None:
