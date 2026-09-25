@@ -125,10 +125,10 @@ Depois da revisão, o mesmo menu permite:
 
 As ações de revisão, verificação e importação permitem escolher entre um
 catálogo específico e o modo geral. O modo geral de revisão percorre todos os
-`pennycollector-catalog.json` em `info/souvenirs` e retoma as decisões já
-guardadas. O modo geral de verificação/importação agrega os catálogos Presscoins
-e apenas os `pennycollector-catalog-final.json` completamente aprovados. Entradas
-repetidas entre catálogos são consideradas uma única vez.
+catálogos PennyCollector e Presscoins em `info/souvenirs`, retoma as decisões já
+guardadas e gera o respetivo ficheiro `*-catalog-final.json`. O modo geral de
+verificação/importação usa exclusivamente esses ficheiros finais completamente
+aprovados. Entradas repetidas entre catálogos são consideradas uma única vez.
 
 Também podes executar estas duas etapas diretamente:
 

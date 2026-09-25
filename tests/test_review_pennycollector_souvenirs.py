@@ -11,6 +11,7 @@ from scripts.review_pennycollector_souvenirs import (
     SHARED_PHOTO_NOTE,
     SKIPPED,
     approve_all,
+    default_output_path,
     discover_pending_catalogs,
     interactive_review,
     merge_previous_review,
@@ -65,11 +66,38 @@ class ReviewPennyCollectorSouvenirsTests(unittest.TestCase):
             root = Path(temp_dir)
             first = root / "portugal" / "location" / "pennycollector-catalog.json"
             final = first.with_name("pennycollector-catalog-final.json")
+            presscoins = root / "eua" / "disney" / "presscoins-catalog.json"
+            presscoins_final = presscoins.with_name("presscoins-catalog-final.json")
             first.parent.mkdir(parents=True)
+            presscoins.parent.mkdir(parents=True)
             first.write_text("{}", encoding="utf-8")
             final.write_text("{}", encoding="utf-8")
+            presscoins.write_text("{}", encoding="utf-8")
+            presscoins_final.write_text("{}", encoding="utf-8")
 
-            self.assertEqual(discover_pending_catalogs(root), [first])
+            self.assertEqual(discover_pending_catalogs(root), sorted([presscoins, first]))
+
+    def test_presscoins_review_uses_stable_catalog_number_and_final_filename(self) -> None:
+        catalog = pending_catalog()
+        catalog["source"]["site"] = "Presscoins"
+        catalog["items"][0]["source"] = {
+            "catalog_number": "MK0001",
+            "location": "Magic Kingdom, Emporium",
+            "position": "1",
+        }
+        catalog["items"] = catalog["items"][:1]
+        with tempfile.TemporaryDirectory() as temp_dir:
+            input_path = Path(temp_dir) / "presscoins-catalog.json"
+            output_path = input_path.with_name("presscoins-catalog-final.json")
+            input_path.write_text("{}", encoding="utf-8")
+
+            self.assertEqual(default_output_path(input_path), output_path)
+
+        previous = copy.deepcopy(catalog)
+        previous["items"][0]["review_status"] = APPROVED
+        previous["items"][0]["souvenir"]["name"] = "Nome confirmado"
+        merged = merge_previous_review(catalog, previous)
+        self.assertEqual(merged["items"][0]["souvenir"]["name"], "Nome confirmado")
 
     def test_approve_all_keeps_machine_photo_and_creates_unique_references(self) -> None:
         catalog = pending_catalog()

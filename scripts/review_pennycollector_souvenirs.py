@@ -24,26 +24,36 @@ DEFAULT_CATALOG_ROOT = Path("info/souvenirs")
 def read_catalog(path: Path) -> dict[str, Any]:
     payload = json.loads(path.read_text(encoding="utf-8"))
     if not isinstance(payload, dict) or not isinstance(payload.get("items"), list):
-        raise ValueError("O catálogo PennyCollector não contém uma lista items.")
+        raise ValueError("O catálogo de souvenirs não contém uma lista items.")
     source = payload.get("source", {})
-    if source.get("site") != "PennyCollector":
-        raise ValueError("Este ficheiro não é um catálogo PennyCollector.")
+    if source.get("site") not in {"PennyCollector", "Presscoins"}:
+        raise ValueError("Este ficheiro não é um catálogo PennyCollector ou Presscoins.")
     return payload
 
 
 def default_output_path(input_path: Path) -> Path:
+    if input_path.name == "presscoins-catalog.json":
+        return input_path.with_name("presscoins-catalog-final.json")
     return input_path.with_name("pennycollector-catalog-final.json")
 
 
 def discover_pending_catalogs(root: Path) -> list[Path]:
-    """Return every PennyCollector source catalogue below *root*."""
+    """Return every reviewable source catalogue below *root*."""
     if not root.is_dir():
         return []
-    return sorted(root.rglob("pennycollector-catalog.json"))
+    return sorted(
+        [
+            *root.rglob("pennycollector-catalog.json"),
+            *root.rglob("presscoins-catalog.json"),
+        ]
+    )
 
 
 def item_key(item: dict[str, Any], index: int) -> str:
     source = item.get("source", {})
+    catalog_number = str(source.get("catalog_number") or "").strip().casefold()
+    if catalog_number:
+        return f"presscoins:{catalog_number}"
     location_id = str(source.get("location_id") or "")
     machine = str(source.get("machine_number") or "")
     position = str(source.get("position") or "")
@@ -132,6 +142,9 @@ def update_catalog_status(catalog: dict[str, Any]) -> dict[str, int]:
 
 
 def machine_label(source: dict[str, Any]) -> str:
+    presscoins_location = str(source.get("location") or "").strip()
+    if source.get("catalog_number") and presscoins_location:
+        return presscoins_location
     machine_number = source.get("machine_number", "?")
     if str(source.get("availability") or "active") == "retired":
         return f"Máquina retirada {machine_number}"
@@ -166,14 +179,21 @@ def review_html(catalog: dict[str, Any]) -> str:
             )
         )
     summary = catalog["review"]
-    location = catalog.get("source", {}).get("location_name", "PennyCollector")
+    catalog_source = catalog.get("source", {})
+    source_site = str(catalog_source.get("site") or "Souvenirs")
+    location = catalog_source.get("location_name") or catalog_source.get("location") or source_site
+    photo_note = (
+        "As fotografias partilhadas das máquinas são provisórias e podem ser recortadas posteriormente."
+        if source_site == "PennyCollector"
+        else "As fotografias Presscoins correspondem ao desenho apresentado no catálogo de origem."
+    )
     return f"""<!doctype html>
 <html lang="pt"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Revisão PennyCollector — {html.escape(str(location))}</title>
+<title>Revisão {html.escape(source_site)} — {html.escape(str(location))}</title>
 <style>body{{font:15px/1.4 system-ui,sans-serif;margin:30px;background:#f4f2ed;color:#24221f}}main{{display:grid;gap:18px;grid-template-columns:repeat(auto-fit,minmax(260px,1fr))}}.card{{background:#fff;border:3px solid #ddd;border-radius:12px;padding:15px}}.approved{{border-color:#48a868}}.skipped{{border-color:#999;opacity:.65}}.pending{{border-color:#d79b28}}img{{display:block;height:220px;max-width:100%;margin:auto;object-fit:contain}}.status{{font-weight:700}}.missing{{padding:70px;text-align:center;background:#eee}}</style>
 </head><body><h1>{html.escape(str(location))}</h1>
 <p>{summary['approved']} aprovados · {summary['skipped']} não importar · {summary['pending']} pendentes.</p>
-<p>As fotografias partilhadas das máquinas são provisórias e podem ser recortadas posteriormente.</p>
+<p>{html.escape(photo_note)}</p>
 <main>{''.join(cards)}</main></body></html>"""
 
 
@@ -230,7 +250,11 @@ def interactive_review(
     for index, item in enumerate(pending_items, start=1):
         source = item.get("source", {})
         souvenir = item["souvenir"]
+        presscoins_location = str(source.get("location") or "").strip()
         machine_key = (
+            "presscoins",
+            presscoins_location,
+        ) if source.get("catalog_number") else (
             str(source.get("availability") or "active"),
             str(source.get("machine_number") or "?"),
         )
@@ -271,14 +295,14 @@ def interactive_review(
 
 def parse_args(argv: list[str] | None = None) -> argparse.Namespace:
     parser = argparse.ArgumentParser(
-        description="Revê um catálogo PennyCollector e gera o ficheiro aprovado para o Base44."
+        description="Revê catálogos de souvenirs e gera ficheiros aprovados para o Base44."
     )
     selection = parser.add_mutually_exclusive_group(required=True)
     selection.add_argument("--input", type=Path)
     selection.add_argument(
         "--all-catalogs",
         action="store_true",
-        help="Rever todos os pennycollector-catalog.json existentes sob --root.",
+        help="Rever todos os catálogos PennyCollector e Presscoins existentes sob --root.",
     )
     parser.add_argument("--root", type=Path, default=DEFAULT_CATALOG_ROOT)
     parser.add_argument("--output", type=Path)
@@ -332,11 +356,11 @@ def main(argv: list[str] | None = None) -> int:
 
     input_paths = discover_pending_catalogs(args.root) if args.all_catalogs else [args.input]
     if not input_paths:
-        print(f"Nenhum catálogo PennyCollector encontrado em {args.root}.")
+        print(f"Nenhum catálogo de souvenirs para rever encontrado em {args.root}.")
         return 0
 
     if args.all_catalogs:
-        print(f"Catálogos PennyCollector encontrados: {len(input_paths)}")
+        print(f"Catálogos de souvenirs encontrados: {len(input_paths)}")
 
     totals = {APPROVED: 0, SKIPPED: 0, PENDING: 0}
     completed = 0

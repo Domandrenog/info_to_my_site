@@ -94,13 +94,13 @@ def read_catalog(path: Path) -> dict[str, Any]:
 
 
 def discover_import_catalogs(root: Path) -> list[Path]:
-    """Find importable catalogues without selecting pending PennyCollector data."""
+    """Find only explicitly approved final catalogues."""
     if not root.is_dir():
         return []
     candidates = sorted(
         [
             *root.rglob("pennycollector-catalog-final.json"),
-            *root.rglob("presscoins-catalog.json"),
+            *root.rglob("presscoins-catalog-final.json"),
         ]
     )
     selected: list[Path] = []
@@ -110,8 +110,7 @@ def discover_import_catalogs(root: Path) -> list[Path]:
         except (OSError, json.JSONDecodeError):
             selected.append(path)
             continue
-        source_site = str(payload.get("source", {}).get("site") or "")
-        if source_site == "PennyCollector" and payload.get("import_ready") is not True:
+        if payload.get("import_ready") is not True:
             continue
         selected.append(path)
     return selected

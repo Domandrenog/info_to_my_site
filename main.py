@@ -1410,7 +1410,7 @@ def latest_pennycollector_catalog(filename: str) -> str:
 def choose_souvenir_catalog_scope(*, review: bool = False) -> str:
     print("\nÂmbito:")
     if review:
-        print("1) Todos os catálogos PennyCollector em info/souvenirs")
+        print("1) Todos os catálogos de souvenirs em info/souvenirs")
     else:
         print("1) Todos os catálogos de souvenirs em info/souvenirs")
     print("2) Um catálogo específico")
@@ -1422,10 +1422,10 @@ def choose_souvenir_catalog_scope(*, review: bool = False) -> str:
 
 
 def action_review_pennycollector_souvenirs() -> None:
-    title("PennyCollector.com — Rever e aprovar catálogo")
+    title("Souvenirs — Rever e aprovar catálogo")
     print(
         "Permite aprovar, corrigir o nome ou excluir cada desenho. "
-        "As fotografias das máquinas seguem provisoriamente para o Site."
+        "No PennyCollector, as fotografias das máquinas seguem provisoriamente para o Site."
     )
     command = [
         sys.executable,
@@ -1443,7 +1443,7 @@ def action_review_pennycollector_souvenirs() -> None:
             print("Catálogo obrigatório.")
             return
         command.extend(["--input", input_path])
-    run_step("Rever e aprovar souvenirs PennyCollector", command)
+    run_step("Rever e aprovar catálogos de souvenirs", command)
 
 
 def action_import_pennycollector_souvenirs(*, apply: bool) -> None:

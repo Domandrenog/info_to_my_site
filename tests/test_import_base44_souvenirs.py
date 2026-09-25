@@ -55,14 +55,25 @@ class ImportBase44SouvenirsTests(unittest.TestCase):
     def test_general_import_uses_presscoins_and_approved_pennycollector_only(self) -> None:
         with tempfile.TemporaryDirectory() as temp_dir:
             root = Path(temp_dir)
-            presscoins = root / "disney" / "presscoins-catalog.json"
+            presscoins_pending = root / "disney" / "presscoins-catalog.json"
+            presscoins = root / "disney" / "presscoins-catalog-final.json"
             pending = root / "nasa" / "pennycollector-catalog.json"
             final = root / "nasa" / "pennycollector-catalog-final.json"
             incomplete = root / "other" / "pennycollector-catalog-final.json"
-            for path in (presscoins, pending, final, incomplete):
+            for path in (presscoins_pending, presscoins, pending, final, incomplete):
                 path.parent.mkdir(parents=True, exist_ok=True)
-            presscoins.write_text(
+            presscoins_pending.write_text(
                 json.dumps({"source": {"site": "Presscoins"}, "items": []}),
+                encoding="utf-8",
+            )
+            presscoins.write_text(
+                json.dumps(
+                    {
+                        "source": {"site": "Presscoins"},
+                        "import_ready": True,
+                        "items": [],
+                    }
+                ),
                 encoding="utf-8",
             )
             pending.write_text(
