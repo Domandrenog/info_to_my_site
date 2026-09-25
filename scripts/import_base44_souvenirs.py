@@ -24,6 +24,7 @@ from scripts.import_base44_coins import (
     format_duration,
     load_dotenv,
 )
+from scripts.pennycollector_souvenirs import normalize_pennycollector_catalog_types
 
 
 REQUIRED_FIELDS = {"name", "continent", "country", "city", "type", "condition"}
@@ -91,6 +92,7 @@ def read_catalog(path: Path) -> dict[str, Any]:
     items = payload.get("items")
     if not isinstance(items, list):
         raise ValueError("O catálogo não contém uma lista items.")
+    normalize_pennycollector_catalog_types(payload)
     return payload
 
 

@@ -13,6 +13,7 @@ from scripts.pennycollector_souvenirs import (
     parse_designs,
     preview_html,
     reference_id,
+    souvenir_type_for_machine_details,
     write_outputs,
 )
 
@@ -292,9 +293,10 @@ class PennyCollectorSouvenirsTests(unittest.TestCase):
         catalog = build_catalog(designs, metadata, location_id="406415")
         self.assertNotIn("coin_type", catalog["items"][0]["source"])
         self.assertEqual(catalog["items"][0]["souvenir"]["type"], "pressed")
+        self.assertEqual(catalog["items"][-1]["souvenir"]["type"], "coin")
 
     def test_all_token_machines_are_extracted_and_history_is_removed(self) -> None:
-        designs, _metadata = parse_designs(MULTI_TOKEN_HTML)
+        designs, metadata = parse_designs(MULTI_TOKEN_HTML)
 
         self.assertEqual(len(designs), 6)
         self.assertEqual(
@@ -306,6 +308,23 @@ class PennyCollectorSouvenirsTests(unittest.TestCase):
         )
         self.assertEqual(designs[-1].description, "Third B")
         self.assertTrue(all(design.machine_image_url for design in designs))
+        catalog = build_catalog(designs, metadata, location_id="token-location")
+        self.assertTrue(
+            all(item["souvenir"]["type"] == "coin" for item in catalog["items"])
+        )
+
+    def test_type_detection_requires_an_explicit_token_or_medallion_machine_label(self) -> None:
+        self.assertEqual(souvenir_type_for_machine_details("Token Machine 1"), "coin")
+        self.assertEqual(souvenir_type_for_machine_details("Medallion Machine 2"), "coin")
+        self.assertEqual(
+            souvenir_type_for_machine_details("Retired Token Machine 3"), "coin"
+        )
+        self.assertEqual(
+            souvenir_type_for_machine_details(
+                "Temp shop with a medallion/token machine beside this machine"
+            ),
+            "pressed",
+        )
 
     def test_machine_descriptions_can_be_matched_when_form_order_differs(self) -> None:
         group_of_four = DesignSequence(
@@ -354,6 +373,17 @@ class PennyCollectorSouvenirsTests(unittest.TestCase):
             {(1, 1), (2, 1), (2, 2)},
         )
         self.assertTrue(all(design.machine_image_url for design in retired))
+        catalog = build_catalog(
+            all_designs,
+            {"country": "Portugal", "location_name": "Retired Variants"},
+            location_id="retired-variants",
+        )
+        retired_types = {
+            (item["source"]["machine_number"], item["souvenir"]["type"])
+            for item in catalog["items"]
+            if item["source"]["availability"] == "retired"
+        }
+        self.assertEqual(retired_types, {(1, "pressed"), (2, "coin")})
 
     def test_common_reverse_is_applied_to_every_design_in_the_machine(self) -> None:
         source_html = MIXED_FORMAT_HTML.replace(

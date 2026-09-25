@@ -162,7 +162,7 @@ class MainTrackingActionTests(unittest.TestCase):
         self.assertNotIn("--apply", command)
 
     @patch("main.title")
-    @patch("main.ask_text", side_effect=["6"])
+    @patch("main.ask_text", side_effect=["7"])
     def test_pennycollector_menu_exposes_complete_review_and_import_flow(
         self,
         _ask_text,
@@ -177,13 +177,14 @@ class MainTrackingActionTests(unittest.TestCase):
         self.assertIn("3) Rever e aprovar catálogo recolhido", menu)
         self.assertIn("4) Verificar o que falta no Site Base44", menu)
         self.assertIn("5) Importar apenas souvenirs aprovados e em falta", menu)
-        self.assertIn("6) Voltar", menu)
+        self.assertIn("6) Corrigir tipos de tokens e medalhões", menu)
+        self.assertIn("7) Voltar", menu)
         self.assertNotIn("Kennedy Space Center", menu)
 
     @patch("main.action_import_pennycollector_souvenirs")
     @patch("builtins.input", return_value="")
     @patch("main.title")
-    @patch("main.ask_text", side_effect=["4", "6"])
+    @patch("main.ask_text", side_effect=["4", "7"])
     def test_pennycollector_menu_keeps_verification_result_visible(
         self,
         _ask_text,
@@ -251,6 +252,18 @@ class MainTrackingActionTests(unittest.TestCase):
 
         command = run_step.call_args.args[1]
         self.assertIn("--all-catalogs", command)
+        self.assertIn("info/souvenirs", command)
+        self.assertIn("--apply", command)
+
+    @patch("main.run_step", return_value=0)
+    @patch("main.title")
+    def test_pennycollector_type_correction_uses_explicit_apply_flow(
+        self, _title, run_step
+    ) -> None:
+        main.action_fix_pennycollector_souvenir_types()
+
+        command = run_step.call_args.args[1]
+        self.assertIn("scripts.fix_pennycollector_souvenir_types", command)
         self.assertIn("info/souvenirs", command)
         self.assertIn("--apply", command)
 

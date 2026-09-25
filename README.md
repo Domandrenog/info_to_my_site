@@ -134,6 +134,19 @@ de leitura, com o Site Base44. Os que já existirem pelo número de catálogo fi
 aprovados localmente de forma automática; apenas souvenirs realmente novos
 continuam a pedir uma decisão manual.
 
+No PennyCollector, desenhos de máquinas explicitamente identificadas como
+`Token Machine` ou `Medallion Machine` são guardados como souvenirs do tipo
+`coin`; as restantes moedas prensadas continuam com o tipo `pressed`. A opção
+`Corrigir tipos de tokens e medalhões no Site Base44` mostra todas as alterações,
+pede confirmação, atualiza apenas o campo `type` e verifica novamente o Site.
+Também pode ser executada diretamente:
+
+```bash
+python3 -m scripts.fix_pennycollector_souvenir_types \
+  --root info/souvenirs \
+  --apply
+```
+
 Também podes executar estas duas etapas diretamente:
 
 ```bash

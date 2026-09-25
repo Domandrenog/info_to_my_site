@@ -14,6 +14,7 @@ from typing import Any
 from urllib.parse import urlsplit, urlunsplit
 
 from scripts import import_base44_souvenirs
+from scripts.pennycollector_souvenirs import normalize_pennycollector_catalog_types
 
 
 SHARED_PHOTO_NOTE = "Fotografia provisória partilhada da máquina"
@@ -30,6 +31,7 @@ def read_catalog(path: Path) -> dict[str, Any]:
     source = payload.get("source", {})
     if source.get("site") not in {"PennyCollector", "Presscoins"}:
         raise ValueError("Este ficheiro não é um catálogo PennyCollector ou Presscoins.")
+    normalize_pennycollector_catalog_types(payload)
     return payload
 
 

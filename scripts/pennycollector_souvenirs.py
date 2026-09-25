@@ -294,6 +294,35 @@ def machine_kind(value: str) -> str:
     return "machine"
 
 
+def souvenir_type_for_machine_details(value: str) -> str:
+    """Map an explicit token/medallion machine label to the Base44 Souvenir type."""
+    label = normalized_machine_label(value)
+    if re.match(r"^(?:retired )?(?:token|medallion)\b", label):
+        return "coin"
+    return "pressed"
+
+
+def normalize_pennycollector_catalog_types(catalog: dict[str, Any]) -> int:
+    """Repair generated PennyCollector items whose machine proves they are coins."""
+    if str(catalog.get("source", {}).get("site") or "") != "PennyCollector":
+        return 0
+    changed = 0
+    for item in catalog.get("items", []):
+        if not isinstance(item, dict):
+            continue
+        source = item.get("source", {})
+        souvenir = item.get("souvenir", {})
+        if not isinstance(source, dict) or not isinstance(souvenir, dict):
+            continue
+        expected = souvenir_type_for_machine_details(
+            str(source.get("machine_details") or "")
+        )
+        if expected == "coin" and souvenir.get("type") != "coin":
+            souvenir["type"] = "coin"
+            changed += 1
+    return changed
+
+
 def machine_label_number(value: str, fallback: int) -> int:
     match = re.search(
         r"\b(?:retired|(?:token|medallion)\s+machine|machine|token|dye\s+roll)\s*#?\s*(\d+)\b",
@@ -782,7 +811,7 @@ def parse_retired_machine_designs(
     text = description_container_text(source_html)
     headers = list(
         re.finditer(
-            r"\bRetired\s+(?:(?:Token|Medallion)\s+)?(?:Machine\s+)?(\d+)\s*:",
+            r"\bRetired\s+((?:(?:Token|Medallion)\s+)?(?:Machine\s+)?)(\d+)\s*:",
             text,
             flags=re.IGNORECASE,
         )
@@ -793,6 +822,7 @@ def parse_retired_machine_designs(
         machine_number: int,
         entries: tuple[tuple[int, str], ...],
         ordinal: int,
+        machine_details: str = "",
     ) -> None:
         image_url = machine_card_image(
             page_parser,
@@ -806,7 +836,7 @@ def parse_retired_machine_designs(
             designs.append(
                 PressedDesign(
                     machine_number=machine_number,
-                    machine_details=f"Retired machine {machine_number}",
+                    machine_details=machine_details or f"Retired machine {machine_number}",
                     position=position,
                     description=description,
                     orientation=orientation,
@@ -816,12 +846,18 @@ def parse_retired_machine_designs(
             )
 
     for index, header in enumerate(headers):
-        machine_number = int(header.group(1))
+        machine_number = int(header.group(2))
+        machine_label = header.group(1).strip() or "Machine"
         block_end = headers[index + 1].start() if index + 1 < len(headers) else len(text)
         block = text[header.end() : block_end]
         sequences = numbered_design_sequences(block)
         if sequences:
-            append_entries(machine_number, sequences[0].entries, index + 1)
+            append_entries(
+                machine_number,
+                sequences[0].entries,
+                index + 1,
+                f"Retired {machine_label} {machine_number}",
+            )
 
     section = re.search(
         r"\bRetired\s+(?:Machines?(?:\s*/\s*Designs?)?|Designs?)\s*:",
@@ -1041,7 +1077,7 @@ def build_catalog(
             "continent": continent,
             "country": country,
             "city": metadata.get("city") or "Desconhecida",
-            "type": "pressed",
+            "type": souvenir_type_for_machine_details(design.machine_details),
             "condition": "Não Tenho",
             "location_name": short_location,
             "description": design.description,

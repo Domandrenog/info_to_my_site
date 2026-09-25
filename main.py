@@ -1484,6 +1484,25 @@ def action_import_pennycollector_souvenirs(*, apply: bool) -> None:
     run_step(step_name, command)
 
 
+def action_fix_pennycollector_souvenir_types() -> None:
+    title("PennyCollector.com — Corrigir tipos no Site Base44")
+    print(
+        "Corrige apenas tokens e medalhões confirmados que estejam marcados como "
+        "pressed. Mostra o plano e pede confirmação antes de alterar o Site."
+    )
+    run_step(
+        "Corrigir tipos de tokens e medalhões",
+        [
+            sys.executable,
+            "-m",
+            "scripts.fix_pennycollector_souvenir_types",
+            "--root",
+            "info/souvenirs",
+            "--apply",
+        ],
+    )
+
+
 def menu_presscoins_usa() -> None:
     while True:
         title("Presscoins — USA")
@@ -1508,7 +1527,8 @@ def menu_pennycollector() -> None:
         print("3) Rever e aprovar catálogo recolhido (geral ou específico)")
         print("4) Verificar o que falta no Site Base44 (geral ou específico)")
         print("5) Importar apenas souvenirs aprovados e em falta (geral ou específico)")
-        print("6) Voltar")
+        print("6) Corrigir tipos de tokens e medalhões no Site Base44")
+        print("7) Voltar")
 
         choice = ask_text("Escolhe uma opção", "1")
         if choice == "1":
@@ -1522,6 +1542,8 @@ def menu_pennycollector() -> None:
         elif choice == "5":
             action_import_pennycollector_souvenirs(apply=True)
         elif choice == "6":
+            action_fix_pennycollector_souvenir_types()
+        elif choice == "7":
             return
         else:
             print("Opção inválida.")
