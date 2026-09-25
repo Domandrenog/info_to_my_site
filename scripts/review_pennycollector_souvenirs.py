@@ -267,10 +267,14 @@ def interactive_review(
         write_review(catalog, output_path)
         return summary
 
-    print("\n1) Rever pendentes um a um")
-    print("2) Aprovar todos os pendentes com os dados atuais")
-    print("3) Guardar e terminar")
-    mode = str(input_fn("Escolhe uma opção [1]: ")).strip() or "1"
+    while True:
+        print("\n1) Rever pendentes um a um")
+        print("2) Aprovar todos os pendentes com os dados atuais")
+        print("3) Guardar e terminar")
+        mode = str(input_fn("Escolhe uma opção [1]: ")).strip() or "1"
+        if mode in {"1", "2", "3"}:
+            break
+        print("Opção inválida. Escolhe 1, 2 ou 3.")
     if mode == "2":
         for item in catalog["items"]:
             if str(item.get("review_status") or PENDING) == PENDING:
@@ -279,9 +283,6 @@ def interactive_review(
     if mode == "3":
         write_review(catalog, output_path)
         return update_catalog_status(catalog)
-    if mode != "1":
-        raise ValueError("Opção inválida.")
-
     pending_items = [
         item for item in catalog["items"]
         if str(item.get("review_status") or PENDING) == PENDING
@@ -312,23 +313,26 @@ def interactive_review(
         print(f"Descrição: {souvenir.get('description', '')}")
         print(f"Fotografia: {souvenir.get('image_front') or 'sem fotografia'}")
         print(f"Origem: {souvenir.get('reference_url', '')}")
-        print("\n1) Aprovar nome, dados e fotografia atuais")
-        print("2) Editar o nome e aprovar")
-        print("3) Não importar")
-        print("4) Guardar e terminar a revisão")
-        choice = str(input_fn("Escolhe uma opção [1]: ")).strip() or "1"
-        if choice == "1":
-            prepare_approved_item(item)
-        elif choice == "2":
-            name = str(input_fn(f"Nome [{souvenir.get('name', '')}]: ")).strip()
-            prepare_approved_item(item, name=name or str(souvenir.get("name") or ""))
-        elif choice == "3":
-            item["review_status"] = SKIPPED
-        elif choice == "4":
-            write_review(catalog, output_path)
-            return update_catalog_status(catalog)
-        else:
-            print("Opção inválida; a moeda continua pendente.")
+        while True:
+            print("\n1) Aprovar nome, dados e fotografia atuais")
+            print("2) Editar o nome e aprovar")
+            print("3) Não importar")
+            print("4) Guardar e terminar a revisão")
+            choice = str(input_fn("Escolhe uma opção [1]: ")).strip() or "1"
+            if choice == "1":
+                prepare_approved_item(item)
+                break
+            if choice == "2":
+                name = str(input_fn(f"Nome [{souvenir.get('name', '')}]: ")).strip()
+                prepare_approved_item(item, name=name or str(souvenir.get("name") or ""))
+                break
+            if choice == "3":
+                item["review_status"] = SKIPPED
+                break
+            if choice == "4":
+                write_review(catalog, output_path)
+                return update_catalog_status(catalog)
+            print("Opção inválida. Escolhe 1, 2, 3 ou 4.")
         write_review(catalog, output_path)
     return update_catalog_status(catalog)
 

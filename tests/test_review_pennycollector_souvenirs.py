@@ -165,6 +165,22 @@ class ReviewPennyCollectorSouvenirsTests(unittest.TestCase):
         self.assertEqual(catalog["items"][0]["souvenir"]["name"], "Astronauta na Lua")
         self.assertEqual(catalog["items"][1]["review_status"], SKIPPED)
 
+    def test_invalid_choices_repeat_the_same_question(self) -> None:
+        catalog = pending_catalog()
+        answers = iter(["22", "1", "99", "1", "3"])
+        with tempfile.TemporaryDirectory() as temp_dir:
+            output = Path(temp_dir) / "pennycollector-catalog-final.json"
+
+            summary = interactive_review(
+                catalog,
+                output,
+                input_fn=lambda _prompt: next(answers),
+            )
+
+        self.assertEqual(summary, {APPROVED: 1, SKIPPED: 1, PENDING: 0})
+        self.assertEqual(catalog["items"][0]["review_status"], APPROVED)
+        self.assertEqual(catalog["items"][1]["review_status"], SKIPPED)
+
     def test_partial_review_is_resumed_by_stable_machine_position(self) -> None:
         pending = pending_catalog()
         previous = copy.deepcopy(pending)
