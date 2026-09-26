@@ -195,6 +195,59 @@ MISSING_DESCRIPTIONS_HTML = """
 """
 
 
+COMMA_LINES_HTML = """
+<input id="ReportLocation_Location" value="Comma Lines">
+<input id="ReportLocation_Machine1_MachineName" value="Machine 1">
+<select id="ReportLocation_Machine1_QuantityDrop"><option selected="selected">3</option></select>
+<table><tr><td id="DescriptionContainer">Machine is preloaded.
+1, Bell Tower,
+2, Beach,
+3, Funicular
+Coordinates are: 1,2
+</td></tr></table>
+"""
+
+
+FORM_ORDER_HTML = """
+<input id="ReportLocation_Location" value="Different Form Order">
+<input id="ReportLocation_Machine1_MachineName" value="Token Machine 1">
+<input id="ReportLocation_Machine2_MachineName" value="Machine 1">
+<input id="ReportLocation_Machine3_MachineName" value="Token Machine 2">
+<select id="ReportLocation_Machine1_QuantityDrop"><option selected="selected">2</option></select>
+<select id="ReportLocation_Machine2_QuantityDrop"><option selected="selected">4</option></select>
+<select id="ReportLocation_Machine3_QuantityDrop"><option selected="selected">2</option></select>
+<table><tr><td id="DescriptionContainer">
+Machine 1: 1) Pressed A. 2) Pressed B. 3) Pressed C. 4) Pressed D.
+Token Machine 1: 1) Token 1 gold. 2) Token 1 silver.
+Token Machine 2: 1) Token 2 gold. 2) Token 2 silver.
+</td></tr></table>
+"""
+
+
+MALFORMED_ORDINALS_HTML = """
+<input id="ReportLocation_Location" value="Malformed Ordinals">
+<input id="ReportLocation_Machine1_MachineName" value="Machine 1">
+<select id="ReportLocation_Machine1_QuantityDrop"><option selected="selected">4</option></select>
+<table><tr><td id="DescriptionContainer">4 designs:
+1) First,
+2) Second,
+30 Third,
+3) Fourth.
+</td></tr></table>
+"""
+
+
+TOKEN_COLOR_VARIANTS_HTML = """
+<input id="ReportLocation_Location" value="Token Colors">
+<input id="ReportLocation_Machine1_MachineName" value="Machine 1">
+<select id="ReportLocation_Machine1_QuantityDrop"><option selected="selected">2</option></select>
+<table><tr><td id="DescriptionContainer">
+A token machine is attached to the wall. The machine has a gold or silver option
+with a design of the cathedral.
+</td></tr></table>
+"""
+
+
 class PennyCollectorSouvenirsTests(unittest.TestCase):
     def test_known_global_country_uses_project_label_and_path(self) -> None:
         self.assertEqual(
@@ -212,6 +265,47 @@ class PennyCollectorSouvenirsTests(unittest.TestCase):
                 "location",
             ),
             "1851",
+        )
+
+    def test_comma_lists_starting_on_new_lines_are_supported(self) -> None:
+        designs, _metadata = parse_designs(COMMA_LINES_HTML)
+
+        self.assertEqual([design.description for design in designs], [
+            "Bell Tower",
+            "Beach",
+            "Funicular",
+        ])
+
+    def test_explicit_machine_headers_override_form_order(self) -> None:
+        designs, _metadata = parse_designs(FORM_ORDER_HTML)
+
+        self.assertEqual(len(designs), 8)
+        self.assertEqual(
+            [design.machine_details for design in designs],
+            ["Token Machine 1"] * 2 + ["Machine 1"] * 4 + ["Token Machine 2"] * 2,
+        )
+
+    def test_line_order_recovers_malformed_written_ordinals(self) -> None:
+        designs, _metadata = parse_designs(MALFORMED_ORDINALS_HTML)
+
+        self.assertEqual(
+            [design.description for design in designs],
+            ["First", "Second", "Third", "Fourth"],
+        )
+        self.assertEqual([design.position for design in designs], [1, 2, 3, 4])
+
+    def test_named_gold_and_silver_tokens_keep_coin_type(self) -> None:
+        designs, metadata = parse_designs(TOKEN_COLOR_VARIANTS_HTML)
+
+        self.assertEqual(
+            [design.description for design in designs],
+            ["the cathedral (gold)", "the cathedral (silver)"],
+        )
+        self.assertEqual({design.machine_details for design in designs}, {"token machine"})
+        catalog = build_catalog(designs, metadata, location_id="color-token")
+        self.assertEqual(
+            {item["souvenir"]["type"] for item in catalog["items"]},
+            {"coin"},
         )
 
     def test_active_designs_and_machine_photos_are_extracted(self) -> None:

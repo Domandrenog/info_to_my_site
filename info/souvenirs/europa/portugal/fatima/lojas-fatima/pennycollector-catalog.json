@@ -1,0 +1,206 @@
+{
+  "status": "pending_review",
+  "base44_updated": false,
+  "import_ready": false,
+  "source": {
+    "site": "PennyCollector",
+    "location_id": "454661",
+    "url": "http://locations.pennycollector.com/Details.aspx?location=454661",
+    "location_name": "Lojas Fátima",
+    "address": "Rua Cónego Manuel Nunes Formigão, 52",
+    "city": "Fátima",
+    "zip_code": "2495-401",
+    "status": "Active",
+    "state": "",
+    "country": "Portugal",
+    "source_flagged_needs_update": false,
+    "retrieved_at": "2026-09-26T22:57:46+00:00",
+    "machine_count": 2,
+    "design_count": 5,
+    "machine_numbers": [
+      1,
+      2
+    ],
+    "active_machine_numbers": [
+      1,
+      2
+    ],
+    "retired_machine_numbers": [],
+    "active_design_count": 5,
+    "retired_design_count": 0,
+    "photo_policy": "A fotografia pertence à máquina e é partilhada pelos seus designs."
+  },
+  "items": [
+    {
+      "source": {
+        "machine_number": 1,
+        "machine_details": "Machine 1 - Outside in front",
+        "position": 1,
+        "description": "Crown of Our Lady of Fátima with 'Coroa Preciosa De Nossa Senhora Do Rosario'",
+        "orientation": "V",
+        "machine_image_url": "http://locations.pennycollector.com/images/machine_09247101-1fad-4b45-8dfd-9a8f4e8b7424.jpg",
+        "availability": "active",
+        "location_id": "454661",
+        "image_scope": "machine",
+        "review_flags": [
+          "shared_machine_photo"
+        ]
+      },
+      "souvenir": {
+        "name": "Crown of Our Lady of Fátima with 'Coroa Preciosa De…",
+        "continent": "Europa",
+        "country": "Portugal",
+        "city": "Fátima",
+        "type": "pressed",
+        "condition": "Não Tenho",
+        "location_name": "Lojas Fátima",
+        "description": "Crown of Our Lady of Fátima with 'Coroa Preciosa De Nossa Senhora Do Rosario'",
+        "display_shape": "oval",
+        "image_front": "http://locations.pennycollector.com/images/machine_09247101-1fad-4b45-8dfd-9a8f4e8b7424.jpg",
+        "image_back": "",
+        "notes": "Machine 1 · Posição 1 · Orientação vertical · PennyCollector location 454661 · Fotografia provisória partilhada da máquina",
+        "reference_url": "http://locations.pennycollector.com/Details.aspx?location=454661#machine-1-position-1",
+        "ordem": 1,
+        "hidden": false
+      },
+      "review_status": "pending"
+    },
+    {
+      "source": {
+        "machine_number": 1,
+        "machine_details": "Machine 1 - Outside in front",
+        "position": 2,
+        "description": "Sanctuary of Fátima with 'Santuario De'",
+        "orientation": "V",
+        "machine_image_url": "http://locations.pennycollector.com/images/machine_09247101-1fad-4b45-8dfd-9a8f4e8b7424.jpg",
+        "availability": "active",
+        "location_id": "454661",
+        "image_scope": "machine",
+        "review_flags": [
+          "shared_machine_photo"
+        ]
+      },
+      "souvenir": {
+        "name": "Sanctuary of Fátima with 'Santuario De",
+        "continent": "Europa",
+        "country": "Portugal",
+        "city": "Fátima",
+        "type": "pressed",
+        "condition": "Não Tenho",
+        "location_name": "Lojas Fátima",
+        "description": "Sanctuary of Fátima with 'Santuario De'",
+        "display_shape": "oval",
+        "image_front": "http://locations.pennycollector.com/images/machine_09247101-1fad-4b45-8dfd-9a8f4e8b7424.jpg",
+        "image_back": "",
+        "notes": "Machine 1 · Posição 2 · Orientação vertical · PennyCollector location 454661 · Fotografia provisória partilhada da máquina",
+        "reference_url": "http://locations.pennycollector.com/Details.aspx?location=454661#machine-1-position-2",
+        "ordem": 2,
+        "hidden": false
+      },
+      "review_status": "pending"
+    },
+    {
+      "source": {
+        "machine_number": 1,
+        "machine_details": "Machine 1 - Outside in front",
+        "position": 3,
+        "description": "Three children praying to Mary with 'Aparicao De Nossa Senhora De'",
+        "orientation": "V",
+        "machine_image_url": "http://locations.pennycollector.com/images/machine_09247101-1fad-4b45-8dfd-9a8f4e8b7424.jpg",
+        "availability": "active",
+        "location_id": "454661",
+        "image_scope": "machine",
+        "review_flags": [
+          "shared_machine_photo"
+        ]
+      },
+      "souvenir": {
+        "name": "Three children praying to Mary with 'Aparicao De Nossa…",
+        "continent": "Europa",
+        "country": "Portugal",
+        "city": "Fátima",
+        "type": "pressed",
+        "condition": "Não Tenho",
+        "location_name": "Lojas Fátima",
+        "description": "Three children praying to Mary with 'Aparicao De Nossa Senhora De'",
+        "display_shape": "oval",
+        "image_front": "http://locations.pennycollector.com/images/machine_09247101-1fad-4b45-8dfd-9a8f4e8b7424.jpg",
+        "image_back": "",
+        "notes": "Machine 1 · Posição 3 · Orientação vertical · PennyCollector location 454661 · Fotografia provisória partilhada da máquina",
+        "reference_url": "http://locations.pennycollector.com/Details.aspx?location=454661#machine-1-position-3",
+        "ordem": 3,
+        "hidden": false
+      },
+      "review_status": "pending"
+    },
+    {
+      "source": {
+        "machine_number": 1,
+        "machine_details": "Machine 1 - Outside in front",
+        "position": 4,
+        "description": "Our Lady of Fátima wearing a crown with 'Nossa Senhora De'",
+        "orientation": "V",
+        "machine_image_url": "http://locations.pennycollector.com/images/machine_09247101-1fad-4b45-8dfd-9a8f4e8b7424.jpg",
+        "availability": "active",
+        "location_id": "454661",
+        "image_scope": "machine",
+        "review_flags": [
+          "shared_machine_photo"
+        ]
+      },
+      "souvenir": {
+        "name": "Our Lady of Fátima wearing a crown with 'Nossa Senhora De",
+        "continent": "Europa",
+        "country": "Portugal",
+        "city": "Fátima",
+        "type": "pressed",
+        "condition": "Não Tenho",
+        "location_name": "Lojas Fátima",
+        "description": "Our Lady of Fátima wearing a crown with 'Nossa Senhora De'",
+        "display_shape": "oval",
+        "image_front": "http://locations.pennycollector.com/images/machine_09247101-1fad-4b45-8dfd-9a8f4e8b7424.jpg",
+        "image_back": "",
+        "notes": "Machine 1 · Posição 4 · Orientação vertical · PennyCollector location 454661 · Fotografia provisória partilhada da máquina",
+        "reference_url": "http://locations.pennycollector.com/Details.aspx?location=454661#machine-1-position-4",
+        "ordem": 4,
+        "hidden": false
+      },
+      "review_status": "pending"
+    },
+    {
+      "source": {
+        "machine_number": 2,
+        "machine_details": "Token Machine 1 - Outside in front",
+        "position": 1,
+        "description": "Obverse: 18 stars surrounding a praying Our Lady of Fátima with 'Nossa Senhora De Fátima' / Reverse: Eight stars surrounding three children on their knees praying to Our Lady of Fátima with 'Nossa Senhora Do Rosario De Fátima'",
+        "orientation": "",
+        "machine_image_url": "http://locations.pennycollector.com/images/machine_872f48a8-206a-4f64-b2d1-7adb799b1f79.jpg",
+        "availability": "active",
+        "location_id": "454661",
+        "image_scope": "machine",
+        "review_flags": [
+          "shared_machine_photo",
+          "missing_orientation"
+        ]
+      },
+      "souvenir": {
+        "name": "Obverse: 18 stars surrounding a praying Our Lady of…",
+        "continent": "Europa",
+        "country": "Portugal",
+        "city": "Fátima",
+        "type": "coin",
+        "condition": "Não Tenho",
+        "location_name": "Lojas Fátima",
+        "description": "Obverse: 18 stars surrounding a praying Our Lady of Fátima with 'Nossa Senhora De Fátima' / Reverse: Eight stars surrounding three children on their knees praying to Our Lady of Fátima with 'Nossa Senhora Do Rosario De Fátima'",
+        "display_shape": "oval",
+        "image_front": "http://locations.pennycollector.com/images/machine_872f48a8-206a-4f64-b2d1-7adb799b1f79.jpg",
+        "image_back": "",
+        "notes": "Machine 2 · Posição 1 · Orientação não indicada · PennyCollector location 454661 · Fotografia provisória partilhada da máquina",
+        "reference_url": "http://locations.pennycollector.com/Details.aspx?location=454661#machine-2-position-1",
+        "ordem": 5,
+        "hidden": false
+      },
+      "review_status": "pending"
+    }
+  ]
+}

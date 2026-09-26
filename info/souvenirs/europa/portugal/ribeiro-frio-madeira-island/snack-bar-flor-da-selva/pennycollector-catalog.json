@@ -1,0 +1,245 @@
+{
+  "status": "pending_review",
+  "base44_updated": false,
+  "import_ready": false,
+  "source": {
+    "site": "PennyCollector",
+    "location_id": "425843",
+    "url": "http://locations.pennycollector.com/Details.aspx?location=425843",
+    "location_name": "Snack Bar Flor da Selva",
+    "address": "Vereda Promenade da Laurissilva, Balcões 4",
+    "city": "Ribeiro Frio (Madeira Island)",
+    "zip_code": "9230-209",
+    "status": "Active",
+    "state": "",
+    "country": "Portugal",
+    "source_flagged_needs_update": false,
+    "retrieved_at": "2026-09-26T22:57:57+00:00",
+    "machine_count": 2,
+    "design_count": 6,
+    "machine_numbers": [
+      1,
+      2
+    ],
+    "active_machine_numbers": [
+      1,
+      2
+    ],
+    "retired_machine_numbers": [],
+    "active_design_count": 6,
+    "retired_design_count": 0,
+    "photo_policy": "A fotografia pertence à máquina e é partilhada pelos seus designs."
+  },
+  "items": [
+    {
+      "source": {
+        "machine_number": 1,
+        "machine_details": "Machine 1",
+        "position": 1,
+        "description": "Madeira Island",
+        "orientation": "",
+        "machine_image_url": "http://locations.pennycollector.com/images/machine_3c0a7021-2d40-40e9-a4bd-d87892c68889.jpg",
+        "availability": "active",
+        "location_id": "425843",
+        "image_scope": "machine",
+        "review_flags": [
+          "shared_machine_photo",
+          "missing_orientation"
+        ]
+      },
+      "souvenir": {
+        "name": "Madeira Island",
+        "continent": "Europa",
+        "country": "Portugal",
+        "city": "Ribeiro Frio (Madeira Island)",
+        "type": "pressed",
+        "condition": "Não Tenho",
+        "location_name": "Snack Bar Flor da Selva",
+        "description": "Madeira Island",
+        "display_shape": "oval",
+        "image_front": "http://locations.pennycollector.com/images/machine_3c0a7021-2d40-40e9-a4bd-d87892c68889.jpg",
+        "image_back": "",
+        "notes": "Machine 1 · Posição 1 · Orientação não indicada · PennyCollector location 425843 · Fotografia provisória partilhada da máquina",
+        "reference_url": "http://locations.pennycollector.com/Details.aspx?location=425843#machine-1-position-1",
+        "ordem": 1,
+        "hidden": false
+      },
+      "review_status": "pending"
+    },
+    {
+      "source": {
+        "machine_number": 1,
+        "machine_details": "Machine 1",
+        "position": 2,
+        "description": "Viewpoint",
+        "orientation": "",
+        "machine_image_url": "http://locations.pennycollector.com/images/machine_3c0a7021-2d40-40e9-a4bd-d87892c68889.jpg",
+        "availability": "active",
+        "location_id": "425843",
+        "image_scope": "machine",
+        "review_flags": [
+          "shared_machine_photo",
+          "missing_orientation"
+        ]
+      },
+      "souvenir": {
+        "name": "Viewpoint",
+        "continent": "Europa",
+        "country": "Portugal",
+        "city": "Ribeiro Frio (Madeira Island)",
+        "type": "pressed",
+        "condition": "Não Tenho",
+        "location_name": "Snack Bar Flor da Selva",
+        "description": "Viewpoint",
+        "display_shape": "oval",
+        "image_front": "http://locations.pennycollector.com/images/machine_3c0a7021-2d40-40e9-a4bd-d87892c68889.jpg",
+        "image_back": "",
+        "notes": "Machine 1 · Posição 2 · Orientação não indicada · PennyCollector location 425843 · Fotografia provisória partilhada da máquina",
+        "reference_url": "http://locations.pennycollector.com/Details.aspx?location=425843#machine-1-position-2",
+        "ordem": 2,
+        "hidden": false
+      },
+      "review_status": "pending"
+    },
+    {
+      "source": {
+        "machine_number": 1,
+        "machine_details": "Machine 1",
+        "position": 3,
+        "description": "Trout farm fish",
+        "orientation": "",
+        "machine_image_url": "http://locations.pennycollector.com/images/machine_3c0a7021-2d40-40e9-a4bd-d87892c68889.jpg",
+        "availability": "active",
+        "location_id": "425843",
+        "image_scope": "machine",
+        "review_flags": [
+          "shared_machine_photo",
+          "missing_orientation"
+        ]
+      },
+      "souvenir": {
+        "name": "Trout farm fish",
+        "continent": "Europa",
+        "country": "Portugal",
+        "city": "Ribeiro Frio (Madeira Island)",
+        "type": "pressed",
+        "condition": "Não Tenho",
+        "location_name": "Snack Bar Flor da Selva",
+        "description": "Trout farm fish",
+        "display_shape": "oval",
+        "image_front": "http://locations.pennycollector.com/images/machine_3c0a7021-2d40-40e9-a4bd-d87892c68889.jpg",
+        "image_back": "",
+        "notes": "Machine 1 · Posição 3 · Orientação não indicada · PennyCollector location 425843 · Fotografia provisória partilhada da máquina",
+        "reference_url": "http://locations.pennycollector.com/Details.aspx?location=425843#machine-1-position-3",
+        "ordem": 3,
+        "hidden": false
+      },
+      "review_status": "pending"
+    },
+    {
+      "source": {
+        "machine_number": 1,
+        "machine_details": "Machine 1",
+        "position": 4,
+        "description": "Trout farm building",
+        "orientation": "",
+        "machine_image_url": "http://locations.pennycollector.com/images/machine_3c0a7021-2d40-40e9-a4bd-d87892c68889.jpg",
+        "availability": "active",
+        "location_id": "425843",
+        "image_scope": "machine",
+        "review_flags": [
+          "shared_machine_photo",
+          "missing_orientation"
+        ]
+      },
+      "souvenir": {
+        "name": "Trout farm building",
+        "continent": "Europa",
+        "country": "Portugal",
+        "city": "Ribeiro Frio (Madeira Island)",
+        "type": "pressed",
+        "condition": "Não Tenho",
+        "location_name": "Snack Bar Flor da Selva",
+        "description": "Trout farm building",
+        "display_shape": "oval",
+        "image_front": "http://locations.pennycollector.com/images/machine_3c0a7021-2d40-40e9-a4bd-d87892c68889.jpg",
+        "image_back": "",
+        "notes": "Machine 1 · Posição 4 · Orientação não indicada · PennyCollector location 425843 · Fotografia provisória partilhada da máquina",
+        "reference_url": "http://locations.pennycollector.com/Details.aspx?location=425843#machine-1-position-4",
+        "ordem": 4,
+        "hidden": false
+      },
+      "review_status": "pending"
+    },
+    {
+      "source": {
+        "machine_number": 2,
+        "machine_details": "Medallion Machine 1",
+        "position": 1,
+        "description": "the viewpoint (gold)",
+        "orientation": "",
+        "machine_image_url": "http://locations.pennycollector.com/images/machine_01f41158-d218-4a6b-aa73-26e2ede79fb9.jpg",
+        "availability": "active",
+        "location_id": "425843",
+        "image_scope": "machine",
+        "review_flags": [
+          "shared_machine_photo",
+          "missing_orientation"
+        ]
+      },
+      "souvenir": {
+        "name": "the viewpoint (gold)",
+        "continent": "Europa",
+        "country": "Portugal",
+        "city": "Ribeiro Frio (Madeira Island)",
+        "type": "coin",
+        "condition": "Não Tenho",
+        "location_name": "Snack Bar Flor da Selva",
+        "description": "the viewpoint (gold)",
+        "display_shape": "oval",
+        "image_front": "http://locations.pennycollector.com/images/machine_01f41158-d218-4a6b-aa73-26e2ede79fb9.jpg",
+        "image_back": "",
+        "notes": "Machine 2 · Posição 1 · Orientação não indicada · PennyCollector location 425843 · Fotografia provisória partilhada da máquina",
+        "reference_url": "http://locations.pennycollector.com/Details.aspx?location=425843#machine-2-position-1",
+        "ordem": 5,
+        "hidden": false
+      },
+      "review_status": "pending"
+    },
+    {
+      "source": {
+        "machine_number": 2,
+        "machine_details": "Medallion Machine 1",
+        "position": 2,
+        "description": "the viewpoint (silver)",
+        "orientation": "",
+        "machine_image_url": "http://locations.pennycollector.com/images/machine_01f41158-d218-4a6b-aa73-26e2ede79fb9.jpg",
+        "availability": "active",
+        "location_id": "425843",
+        "image_scope": "machine",
+        "review_flags": [
+          "shared_machine_photo",
+          "missing_orientation"
+        ]
+      },
+      "souvenir": {
+        "name": "the viewpoint (silver)",
+        "continent": "Europa",
+        "country": "Portugal",
+        "city": "Ribeiro Frio (Madeira Island)",
+        "type": "coin",
+        "condition": "Não Tenho",
+        "location_name": "Snack Bar Flor da Selva",
+        "description": "the viewpoint (silver)",
+        "display_shape": "oval",
+        "image_front": "http://locations.pennycollector.com/images/machine_01f41158-d218-4a6b-aa73-26e2ede79fb9.jpg",
+        "image_back": "",
+        "notes": "Machine 2 · Posição 2 · Orientação não indicada · PennyCollector location 425843 · Fotografia provisória partilhada da máquina",
+        "reference_url": "http://locations.pennycollector.com/Details.aspx?location=425843#machine-2-position-2",
+        "ordem": 6,
+        "hidden": false
+      },
+      "review_status": "pending"
+    }
+  ]
+}

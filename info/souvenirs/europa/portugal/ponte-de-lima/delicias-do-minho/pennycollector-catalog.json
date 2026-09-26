@@ -1,0 +1,241 @@
+{
+  "status": "pending_review",
+  "base44_updated": false,
+  "import_ready": false,
+  "source": {
+    "site": "PennyCollector",
+    "location_id": "485662",
+    "url": "http://locations.pennycollector.com/Details.aspx?location=485662",
+    "location_name": "Delícias do minho",
+    "address": "Passeio 25 de Abril 5, 4990-058 Pte. de Lima",
+    "city": "Ponte de Lima",
+    "zip_code": "4990-058",
+    "status": "Active",
+    "state": "",
+    "country": "Portugal",
+    "source_flagged_needs_update": false,
+    "retrieved_at": "2026-09-26T22:57:55+00:00",
+    "machine_count": 2,
+    "design_count": 6,
+    "machine_numbers": [
+      1,
+      2
+    ],
+    "active_machine_numbers": [
+      1,
+      2
+    ],
+    "retired_machine_numbers": [],
+    "active_design_count": 6,
+    "retired_design_count": 0,
+    "photo_policy": "A fotografia pertence à máquina e é partilhada pelos seus designs."
+  },
+  "items": [
+    {
+      "source": {
+        "machine_number": 1,
+        "machine_details": "Machine 1",
+        "position": 1,
+        "description": "'Ponte de Lima'",
+        "orientation": "H",
+        "machine_image_url": "http://locations.pennycollector.com/images/machine_389c2865-295f-4fab-a96c-ead03494c974.png",
+        "availability": "active",
+        "location_id": "485662",
+        "image_scope": "machine",
+        "review_flags": [
+          "shared_machine_photo"
+        ]
+      },
+      "souvenir": {
+        "name": "Ponte de Lima",
+        "continent": "Europa",
+        "country": "Portugal",
+        "city": "Ponte de Lima",
+        "type": "pressed",
+        "condition": "Não Tenho",
+        "location_name": "Delícias do minho",
+        "description": "'Ponte de Lima'",
+        "display_shape": "oval",
+        "image_front": "http://locations.pennycollector.com/images/machine_389c2865-295f-4fab-a96c-ead03494c974.png",
+        "image_back": "",
+        "notes": "Machine 1 · Posição 1 · Orientação horizontal · PennyCollector location 485662 · Fotografia provisória partilhada da máquina",
+        "reference_url": "http://locations.pennycollector.com/Details.aspx?location=485662#machine-1-position-1",
+        "ordem": 1,
+        "hidden": false
+      },
+      "review_status": "pending"
+    },
+    {
+      "source": {
+        "machine_number": 1,
+        "machine_details": "Machine 1",
+        "position": 2,
+        "description": "'Coração do Minho'",
+        "orientation": "V",
+        "machine_image_url": "http://locations.pennycollector.com/images/machine_389c2865-295f-4fab-a96c-ead03494c974.png",
+        "availability": "active",
+        "location_id": "485662",
+        "image_scope": "machine",
+        "review_flags": [
+          "shared_machine_photo"
+        ]
+      },
+      "souvenir": {
+        "name": "Coração do Minho",
+        "continent": "Europa",
+        "country": "Portugal",
+        "city": "Ponte de Lima",
+        "type": "pressed",
+        "condition": "Não Tenho",
+        "location_name": "Delícias do minho",
+        "description": "'Coração do Minho'",
+        "display_shape": "oval",
+        "image_front": "http://locations.pennycollector.com/images/machine_389c2865-295f-4fab-a96c-ead03494c974.png",
+        "image_back": "",
+        "notes": "Machine 1 · Posição 2 · Orientação vertical · PennyCollector location 485662 · Fotografia provisória partilhada da máquina",
+        "reference_url": "http://locations.pennycollector.com/Details.aspx?location=485662#machine-1-position-2",
+        "ordem": 2,
+        "hidden": false
+      },
+      "review_status": "pending"
+    },
+    {
+      "source": {
+        "machine_number": 1,
+        "machine_details": "Machine 1",
+        "position": 3,
+        "description": "'Caminho de Santiago de Compostela'",
+        "orientation": "V",
+        "machine_image_url": "http://locations.pennycollector.com/images/machine_389c2865-295f-4fab-a96c-ead03494c974.png",
+        "availability": "active",
+        "location_id": "485662",
+        "image_scope": "machine",
+        "review_flags": [
+          "shared_machine_photo"
+        ]
+      },
+      "souvenir": {
+        "name": "Caminho de Santiago de Compostela",
+        "continent": "Europa",
+        "country": "Portugal",
+        "city": "Ponte de Lima",
+        "type": "pressed",
+        "condition": "Não Tenho",
+        "location_name": "Delícias do minho",
+        "description": "'Caminho de Santiago de Compostela'",
+        "display_shape": "oval",
+        "image_front": "http://locations.pennycollector.com/images/machine_389c2865-295f-4fab-a96c-ead03494c974.png",
+        "image_back": "",
+        "notes": "Machine 1 · Posição 3 · Orientação vertical · PennyCollector location 485662 · Fotografia provisória partilhada da máquina",
+        "reference_url": "http://locations.pennycollector.com/Details.aspx?location=485662#machine-1-position-3",
+        "ordem": 3,
+        "hidden": false
+      },
+      "review_status": "pending"
+    },
+    {
+      "source": {
+        "machine_number": 1,
+        "machine_details": "Machine 1",
+        "position": 4,
+        "description": "'Galo de Barcelos'",
+        "orientation": "V",
+        "machine_image_url": "http://locations.pennycollector.com/images/machine_389c2865-295f-4fab-a96c-ead03494c974.png",
+        "availability": "active",
+        "location_id": "485662",
+        "image_scope": "machine",
+        "review_flags": [
+          "shared_machine_photo"
+        ]
+      },
+      "souvenir": {
+        "name": "Galo de Barcelos",
+        "continent": "Europa",
+        "country": "Portugal",
+        "city": "Ponte de Lima",
+        "type": "pressed",
+        "condition": "Não Tenho",
+        "location_name": "Delícias do minho",
+        "description": "'Galo de Barcelos'",
+        "display_shape": "oval",
+        "image_front": "http://locations.pennycollector.com/images/machine_389c2865-295f-4fab-a96c-ead03494c974.png",
+        "image_back": "",
+        "notes": "Machine 1 · Posição 4 · Orientação vertical · PennyCollector location 485662 · Fotografia provisória partilhada da máquina",
+        "reference_url": "http://locations.pennycollector.com/Details.aspx?location=485662#machine-1-position-4",
+        "ordem": 4,
+        "hidden": false
+      },
+      "review_status": "pending"
+    },
+    {
+      "source": {
+        "machine_number": 2,
+        "machine_details": "Token Machine",
+        "position": 1,
+        "description": "Ponte de Lima (silver)",
+        "orientation": "",
+        "machine_image_url": "http://locations.pennycollector.com/images/machine_45fd9271-d17e-4f66-8bdb-284c18d027e7.png",
+        "availability": "active",
+        "location_id": "485662",
+        "image_scope": "machine",
+        "review_flags": [
+          "shared_machine_photo",
+          "missing_orientation"
+        ]
+      },
+      "souvenir": {
+        "name": "Ponte de Lima (silver)",
+        "continent": "Europa",
+        "country": "Portugal",
+        "city": "Ponte de Lima",
+        "type": "coin",
+        "condition": "Não Tenho",
+        "location_name": "Delícias do minho",
+        "description": "Ponte de Lima (silver)",
+        "display_shape": "oval",
+        "image_front": "http://locations.pennycollector.com/images/machine_45fd9271-d17e-4f66-8bdb-284c18d027e7.png",
+        "image_back": "",
+        "notes": "Machine 2 · Posição 1 · Orientação não indicada · PennyCollector location 485662 · Fotografia provisória partilhada da máquina",
+        "reference_url": "http://locations.pennycollector.com/Details.aspx?location=485662#machine-2-position-1",
+        "ordem": 5,
+        "hidden": false
+      },
+      "review_status": "pending"
+    },
+    {
+      "source": {
+        "machine_number": 2,
+        "machine_details": "Token Machine",
+        "position": 2,
+        "description": "Ponte de Lima (gold)",
+        "orientation": "",
+        "machine_image_url": "http://locations.pennycollector.com/images/machine_45fd9271-d17e-4f66-8bdb-284c18d027e7.png",
+        "availability": "active",
+        "location_id": "485662",
+        "image_scope": "machine",
+        "review_flags": [
+          "shared_machine_photo",
+          "missing_orientation"
+        ]
+      },
+      "souvenir": {
+        "name": "Ponte de Lima (gold)",
+        "continent": "Europa",
+        "country": "Portugal",
+        "city": "Ponte de Lima",
+        "type": "coin",
+        "condition": "Não Tenho",
+        "location_name": "Delícias do minho",
+        "description": "Ponte de Lima (gold)",
+        "display_shape": "oval",
+        "image_front": "http://locations.pennycollector.com/images/machine_45fd9271-d17e-4f66-8bdb-284c18d027e7.png",
+        "image_back": "",
+        "notes": "Machine 2 · Posição 2 · Orientação não indicada · PennyCollector location 485662 · Fotografia provisória partilhada da máquina",
+        "reference_url": "http://locations.pennycollector.com/Details.aspx?location=485662#machine-2-position-2",
+        "ordem": 6,
+        "hidden": false
+      },
+      "review_status": "pending"
+    }
+  ]
+}

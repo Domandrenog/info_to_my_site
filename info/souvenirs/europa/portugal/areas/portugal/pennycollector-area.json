@@ -9,7 +9,7 @@
     "area_name": "Portugal",
     "country": "Portugal",
     "state": "",
-    "retrieved_at": "2026-09-26T22:34:44+00:00",
+    "retrieved_at": "2026-09-26T22:57:40+00:00",
     "location_count": 93,
     "status_counts": {
       "Active": 83,
@@ -18,9 +18,9 @@
     }
   },
   "collection": {
-    "collected": 47,
+    "collected": 59,
     "pending": 11,
-    "failed": 35
+    "failed": 23
   },
   "locations": [
     {
@@ -63,10 +63,10 @@
       "updated": "07/09/26",
       "status": "Active",
       "url": "http://locations.pennycollector.com/Details.aspx?location=399586",
-      "collection_status": "failed",
-      "catalog_path": "",
-      "preview_path": "",
-      "collection_error": "A página indica 3 designs atuais, mas só foi possível interpretar 0; não foi criado um catálogo parcial."
+      "collection_status": "collected",
+      "catalog_path": "info/souvenirs/europa/portugal/albufeira/praia-dos-pescadores-beach-look-out/pennycollector-catalog.json",
+      "preview_path": "info/souvenirs/europa/portugal/albufeira/praia-dos-pescadores-beach-look-out/preview.html",
+      "collection_error": ""
     },
     {
       "location_id": "406414",
@@ -438,10 +438,10 @@
       "updated": "03/27/25",
       "status": "Active",
       "url": "http://locations.pennycollector.com/Details.aspx?location=287474",
-      "collection_status": "failed",
-      "catalog_path": "",
-      "preview_path": "",
-      "collection_error": "A página indica 8 designs atuais, mas só foi possível interpretar 4; não foi criado um catálogo parcial."
+      "collection_status": "collected",
+      "catalog_path": "info/souvenirs/europa/portugal/evora/catedral-de-evora-evora-cathedral/pennycollector-catalog.json",
+      "preview_path": "info/souvenirs/europa/portugal/evora/catedral-de-evora-evora-cathedral/preview.html",
+      "collection_error": ""
     },
     {
       "location_id": "396019",
@@ -453,10 +453,10 @@
       "updated": "03/30/25",
       "status": "Active",
       "url": "http://locations.pennycollector.com/Details.aspx?location=396019",
-      "collection_status": "failed",
-      "catalog_path": "",
-      "preview_path": "",
-      "collection_error": "A página indica 4 designs atuais, mas só foi possível interpretar 3; não foi criado um catálogo parcial."
+      "collection_status": "collected",
+      "catalog_path": "info/souvenirs/europa/portugal/fatima/herancas-de-fatima-shop/pennycollector-catalog.json",
+      "preview_path": "info/souvenirs/europa/portugal/fatima/herancas-de-fatima-shop/preview.html",
+      "collection_error": ""
     },
     {
       "location_id": "302875",
@@ -498,10 +498,10 @@
       "updated": "03/30/25",
       "status": "Active",
       "url": "http://locations.pennycollector.com/Details.aspx?location=454661",
-      "collection_status": "failed",
-      "catalog_path": "",
-      "preview_path": "",
-      "collection_error": "A página indica 5 designs atuais, mas só foi possível interpretar 4; não foi criado um catálogo parcial."
+      "collection_status": "collected",
+      "catalog_path": "info/souvenirs/europa/portugal/fatima/lojas-fatima/pennycollector-catalog.json",
+      "preview_path": "info/souvenirs/europa/portugal/fatima/lojas-fatima/preview.html",
+      "collection_error": ""
     },
     {
       "location_id": "454660",
@@ -573,10 +573,10 @@
       "updated": "07/09/26",
       "status": "Active",
       "url": "http://locations.pennycollector.com/Details.aspx?location=407085",
-      "collection_status": "failed",
-      "catalog_path": "",
-      "preview_path": "",
-      "collection_error": "A página indica 2 designs atuais, mas só foi possível interpretar 0; não foi criado um catálogo parcial."
+      "collection_status": "collected",
+      "catalog_path": "info/souvenirs/europa/portugal/faro/oberon/pennycollector-catalog.json",
+      "preview_path": "info/souvenirs/europa/portugal/faro/oberon/preview.html",
+      "collection_error": ""
     },
     {
       "location_id": "407084",
@@ -603,10 +603,10 @@
       "updated": "01/17/23",
       "status": "Active",
       "url": "http://locations.pennycollector.com/Details.aspx?location=287621",
-      "collection_status": "failed",
-      "catalog_path": "",
-      "preview_path": "",
-      "collection_error": "A página indica 2 designs atuais, mas só foi possível interpretar 0; não foi criado um catálogo parcial."
+      "collection_status": "collected",
+      "catalog_path": "info/souvenirs/europa/portugal/funchal-madeira-island/carreiros-do-monte-arrival-location-livramento/pennycollector-catalog.json",
+      "preview_path": "info/souvenirs/europa/portugal/funchal-madeira-island/carreiros-do-monte-arrival-location-livramento/preview.html",
+      "collection_error": ""
     },
     {
       "location_id": "395110",
@@ -618,10 +618,10 @@
       "updated": "02/20/24",
       "status": "Active",
       "url": "http://locations.pennycollector.com/Details.aspx?location=395110",
-      "collection_status": "failed",
-      "catalog_path": "",
-      "preview_path": "",
-      "collection_error": "A página indica 6 designs atuais, mas só foi possível interpretar 0; não foi criado um catálogo parcial."
+      "collection_status": "collected",
+      "catalog_path": "info/souvenirs/europa/portugal/funchal-madeira-island/carreiros-do-monte-departure-location-monte/pennycollector-catalog.json",
+      "preview_path": "info/souvenirs/europa/portugal/funchal-madeira-island/carreiros-do-monte-departure-location-monte/preview.html",
+      "collection_error": ""
     },
     {
       "location_id": "394499",
@@ -948,10 +948,10 @@
       "updated": "07/09/26",
       "status": "Active",
       "url": "http://locations.pennycollector.com/Details.aspx?location=385199",
-      "collection_status": "failed",
-      "catalog_path": "",
-      "preview_path": "",
-      "collection_error": "A página indica 3 designs atuais, mas só foi possível interpretar 0; não foi criado um catálogo parcial."
+      "collection_status": "collected",
+      "catalog_path": "info/souvenirs/europa/portugal/loule/mercado-de-loule/pennycollector-catalog.json",
+      "preview_path": "info/souvenirs/europa/portugal/loule/mercado-de-loule/preview.html",
+      "collection_error": ""
     },
     {
       "location_id": "409758",
@@ -1053,10 +1053,10 @@
       "updated": "08/15/23",
       "status": "Active",
       "url": "http://locations.pennycollector.com/Details.aspx?location=410987",
-      "collection_status": "failed",
-      "catalog_path": "",
-      "preview_path": "",
-      "collection_error": "A página indica 4 designs atuais, mas só foi possível interpretar 0; não foi criado um catálogo parcial."
+      "collection_status": "collected",
+      "catalog_path": "info/souvenirs/europa/portugal/ponta-delgada/luz-gift-shop-luzart-souvenir-manufacturer/pennycollector-catalog.json",
+      "preview_path": "info/souvenirs/europa/portugal/ponta-delgada/luz-gift-shop-luzart-souvenir-manufacturer/preview.html",
+      "collection_error": ""
     },
     {
       "location_id": "485662",
@@ -1068,10 +1068,10 @@
       "updated": "09/09/26",
       "status": "Active",
       "url": "http://locations.pennycollector.com/Details.aspx?location=485662",
-      "collection_status": "failed",
-      "catalog_path": "",
-      "preview_path": "",
-      "collection_error": "A página indica 6 designs atuais, mas só foi possível interpretar 4; não foi criado um catálogo parcial."
+      "collection_status": "collected",
+      "catalog_path": "info/souvenirs/europa/portugal/ponte-de-lima/delicias-do-minho/pennycollector-catalog.json",
+      "preview_path": "info/souvenirs/europa/portugal/ponte-de-lima/delicias-do-minho/preview.html",
+      "collection_error": ""
     },
     {
       "location_id": "344094",
@@ -1188,10 +1188,10 @@
       "updated": "02/26/24",
       "status": "Active",
       "url": "http://locations.pennycollector.com/Details.aspx?location=425843",
-      "collection_status": "failed",
-      "catalog_path": "",
-      "preview_path": "",
-      "collection_error": "A página indica 6 designs atuais, mas só foi possível interpretar 0; não foi criado um catálogo parcial."
+      "collection_status": "collected",
+      "catalog_path": "info/souvenirs/europa/portugal/ribeiro-frio-madeira-island/snack-bar-flor-da-selva/pennycollector-catalog.json",
+      "preview_path": "info/souvenirs/europa/portugal/ribeiro-frio-madeira-island/snack-bar-flor-da-selva/preview.html",
+      "collection_error": ""
     },
     {
       "location_id": "424919",
@@ -1338,10 +1338,10 @@
       "updated": "03/29/25",
       "status": "Active",
       "url": "http://locations.pennycollector.com/Details.aspx?location=287466",
-      "collection_status": "failed",
-      "catalog_path": "",
-      "preview_path": "",
-      "collection_error": "A página indica 5 designs atuais, mas só foi possível interpretar 4; não foi criado um catálogo parcial."
+      "collection_status": "collected",
+      "catalog_path": "info/souvenirs/europa/portugal/tomar/cafetaria-do-castelo-cafeteria-of-the-castle/pennycollector-catalog.json",
+      "preview_path": "info/souvenirs/europa/portugal/tomar/cafetaria-do-castelo-cafeteria-of-the-castle/preview.html",
+      "collection_error": ""
     },
     {
       "location_id": "455917",

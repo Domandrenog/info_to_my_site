@@ -932,7 +932,7 @@ def parse_inventory_active_designs(
             designs.append(
                 PressedDesign(
                     machine_number=machine.machine_number,
-                    machine_details=machine.name,
+                    machine_details=machine_details,
                     position=position,
                     description=description,
                     orientation=orientation,
