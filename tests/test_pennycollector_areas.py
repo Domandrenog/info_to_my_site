@@ -1,7 +1,10 @@
 from __future__ import annotations
 
+import io
+import json
 import tempfile
 import unittest
+from contextlib import redirect_stdout
 from pathlib import Path
 from unittest.mock import patch
 
@@ -15,6 +18,8 @@ from scripts.pennycollector_areas import (
     parse_location_selection,
     pressed_design_count,
     preview_html,
+    print_collection_failures,
+    restore_failed_collection_state,
     sync_existing_location_catalogs,
 )
 
@@ -99,6 +104,43 @@ class PennyCollectorAreasTests(unittest.TestCase):
         self.assertEqual(found["1851"], existing)
         self.assertEqual(catalog["locations"][0]["collection_status"], "already_collected")
         self.assertEqual(catalog["collection"]["collected"], 1)
+
+    def test_failed_locations_are_restored_and_printed_with_counts_and_link(self) -> None:
+        locations, metadata = parse_area(SAMPLE_HTML)
+        catalog = build_catalog(locations, metadata, area_id="14")
+        with tempfile.TemporaryDirectory() as temp_dir:
+            area_path = Path(temp_dir) / "pennycollector-area.json"
+            area_path.write_text(
+                json.dumps(
+                    {
+                        "locations": [
+                            {
+                                "location_id": "1851",
+                                "collection_status": "failed",
+                                "collection_error": (
+                                    "A página indica 48 designs atuais, mas só foi "
+                                    "possível interpretar 47; não foi criado um catálogo parcial."
+                                ),
+                            }
+                        ]
+                    }
+                ),
+                encoding="utf-8",
+            )
+            restore_failed_collection_state(catalog, area_path)
+
+        with redirect_stdout(io.StringIO()) as output:
+            print_collection_failures(catalog)
+
+        self.assertEqual(catalog["collection"]["failed"], 1)
+        self.assertEqual(
+            [item["location_id"] for item in location_candidates(catalog, "failed")],
+            ["1851"],
+        )
+        rendered = output.getvalue()
+        self.assertIn("FALHAS NA RECOLHA — 1 LOCALIZAÇÃO", rendered)
+        self.assertIn("48 esperados · 47 interpretados", rendered)
+        self.assertIn("Details.aspx?location=1851", rendered)
 
     @patch("scripts.pennycollector_areas.write_location_outputs")
     @patch("scripts.pennycollector_areas.default_location_output_directory")

@@ -111,6 +111,30 @@ Token Machine 1: Design: 1) Skyline.</td></tr></table>
 """
 
 
+SINGLE_TOKEN_SIDES_WITH_PRESSED_MACHINE_HTML = """
+<input id="ReportLocation_Location" value="Casa Miradouro Regional Gifts">
+<input id="ReportLocation_City" value="Nazaré">
+<input id="ReportLocation_Machine1_MachineName" value="Machine 1 - Outside">
+<input id="ReportLocation_Machine2_MachineName" value="Token Machine 1 - Outside">
+<select id="ReportLocation_Machine1_QuantityDrop"><option selected="selected">4</option></select>
+<select id="ReportLocation_Machine2_QuantityDrop"><option selected="selected">1</option></select>
+<select id="ReportLocation_CountryList"><option selected="selected">Portugal</option></select>
+<table><tr><td id="DescriptionContainer">
+<b>Machine 1</b> is outside. Designs:<br>
+1. (H) Fort and ocean.<br>
+2. (V) Funicular.<br>
+3. (V) Fisherman.<br>
+4. (H) Giant wave.<p>
+<b>Token Machine 1</b> is outside. The single design is available in two colors.<br>
+Obverse: Fort in front of a wave.<br>
+Reverse: Portuguese shield and outline of Portugal.<p>
+G.P.S. coordinates: Nazaré.
+</td></tr></table>
+<span class="pagetitle">Machine 1 - Outside</span><img src="images/euro.jpg">
+<span class="pagetitle">Token Machine 1 - Outside</span><img src="images/token.jpg">
+"""
+
+
 MULTI_TOKEN_HTML = """
 <input id="ReportLocation_Location" value="Three Token Machines">
 <input id="ReportLocation_Machine1_MachineName" value="Token Machine 1">
@@ -293,6 +317,28 @@ class PennyCollectorSouvenirsTests(unittest.TestCase):
         catalog = build_catalog(designs, metadata, location_id="406415")
         self.assertNotIn("coin_type", catalog["items"][0]["source"])
         self.assertEqual(catalog["items"][0]["souvenir"]["type"], "pressed")
+        self.assertEqual(catalog["items"][-1]["souvenir"]["type"], "coin")
+
+    def test_single_token_obverse_reverse_is_combined_with_pressed_machine(self) -> None:
+        designs, metadata = parse_designs(
+            SINGLE_TOKEN_SIDES_WITH_PRESSED_MACHINE_HTML
+        )
+
+        self.assertEqual(len(designs), 5)
+        self.assertEqual(
+            {(design.machine_number, design.position) for design in designs},
+            {(1, 1), (1, 2), (1, 3), (1, 4), (2, 1)},
+        )
+        token = designs[-1]
+        self.assertEqual(
+            token.description,
+            (
+                "Obverse: Fort in front of a wave / Reverse: Portuguese shield "
+                "and outline of Portugal"
+            ),
+        )
+        self.assertTrue(token.machine_image_url.endswith("images/token.jpg"))
+        catalog = build_catalog(designs, metadata, location_id="414903")
         self.assertEqual(catalog["items"][-1]["souvenir"]["type"], "coin")
 
     def test_all_token_machines_are_extracted_and_history_is_removed(self) -> None:

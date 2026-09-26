@@ -175,7 +175,17 @@ continuam a pedir uma decisão manual.
 
 No PennyCollector, desenhos de máquinas explicitamente identificadas como
 `Token Machine` ou `Medallion Machine` são guardados como souvenirs do tipo
-`coin`; as restantes moedas prensadas continuam com o tipo `pressed`. A opção
+`coin`; tokens únicos descritos apenas por `Obverse` e `Reverse` são unidos num
+único registo com as duas faces. As restantes moedas prensadas continuam com o
+tipo `pressed`.
+
+Na recolha de uma área, as tentativas falhadas ficam guardadas no índice e são
+mostradas novamente nas execuções seguintes. O terminal apresenta ID, cidade,
+inventário anunciado, contagem esperada/interpretada, motivo e link. No menu
+`Ver localizações da área > Falhas de recolha` é possível voltar a consultar só
+essas entradas. A proteção contra catálogos parciais continua ativa.
+
+A opção
 `Corrigir tipos de tokens e medalhões no Site Base44` mostra todas as alterações,
 pede confirmação, atualiza apenas o campo `type` e verifica novamente o Site.
 Também pode ser executada diretamente:

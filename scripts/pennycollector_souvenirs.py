@@ -568,6 +568,42 @@ def token_obverse_sequences(text: str) -> list[DesignSequence]:
     ]
 
 
+def single_token_side_sequences(text: str) -> list[DesignSequence]:
+    """Read one-design token machines described with plain Obverse/Reverse labels."""
+    headers = list(
+        re.finditer(
+            r"\b(?:Token|Medallion)\s+Machine\s+\d+\b",
+            text,
+            flags=re.IGNORECASE,
+        )
+    )
+    sequences: list[DesignSequence] = []
+    for index, header in enumerate(headers):
+        block_end = headers[index + 1].start() if index + 1 < len(headers) else len(text)
+        block = text[header.end() : block_end]
+        obverse = re.search(r"\bObverse\s*:\s*", block, flags=re.IGNORECASE)
+        reverse = re.search(r"\bReverse\s*:\s*", block, flags=re.IGNORECASE)
+        if obverse is None or reverse is None or reverse.start() <= obverse.end():
+            continue
+        obverse_text = clean_design_description(block[obverse.end() : reverse.start()])
+        reverse_text = clean_design_description(block[reverse.end() :])
+        if not obverse_text or not reverse_text:
+            continue
+        sequences.append(
+            DesignSequence(
+                start=header.start(),
+                end=block_end,
+                entries=(
+                    (
+                        1,
+                        f"Obverse: {obverse_text} / Reverse: {reverse_text}",
+                    ),
+                ),
+            )
+        )
+    return sequences
+
+
 def active_description_text(source_html: str) -> str:
     text = description_container_text(source_html)
     retired = re.search(
@@ -657,7 +693,11 @@ def parse_inventory_active_designs(
     quantities = [int(machine.quantity or 0) for machine in active_inventory]
     expected = sum(quantities)
     text = active_description_text(source_html)
-    sequences = numbered_design_sequences(text) + token_obverse_sequences(text)
+    sequences = (
+        numbered_design_sequences(text)
+        + token_obverse_sequences(text)
+        + single_token_side_sequences(text)
+    )
     sequences.sort(key=lambda sequence: sequence.start)
     selected = choose_machine_sequences(sequences, quantities)
     if not selected and len(active_inventory) == 1 and expected == 1:
@@ -1198,6 +1238,7 @@ def preview_html(catalog: dict[str, Any]) -> str:
         if source.get("source_flagged_needs_update")
         else ""
     )
+    source_warning_line = f"    {source_warning}\n" if source_warning else ""
     return f"""<!doctype html>
 <html lang="pt">
 <head>
@@ -1220,8 +1261,7 @@ def preview_html(catalog: dict[str, Any]) -> str:
     <h1>{html.escape(str(source['location_name']))}</h1>
     <p>{source['machine_count']} máquinas · {source['design_count']} designs pendentes de revisão ({source.get('active_design_count', source['design_count'])} atuais · {source.get('retired_design_count', 0)} retirados).</p>
     <p><strong>Site Base44:</strong> nenhuma alteração efetuada. Este catálogo ainda não está pronto para importar.</p>
-    {source_warning}
-    <p><a href="{html.escape(str(source['url']))}">Abrir página original</a></p>
+{source_warning_line}    <p><a href="{html.escape(str(source['url']))}">Abrir página original</a></p>
   </header>
   {''.join(sections)}
 </body>

@@ -242,6 +242,12 @@ def location_candidates(catalog: dict[str, Any], mode: str) -> list[dict[str, An
     locations = list(catalog["locations"])
     if mode == "all":
         return locations
+    if mode == "failed":
+        return [
+            location
+            for location in locations
+            if str(location.get("collection_status") or "") == "failed"
+        ]
     active = [
         location
         for location in locations
@@ -314,6 +320,32 @@ def refresh_collection_summary(catalog: dict[str, Any]) -> None:
         "pending": statuses["pending"],
         "failed": statuses["failed"],
     }
+
+
+def restore_failed_collection_state(catalog: dict[str, Any], catalog_path: Path) -> None:
+    """Keep failed attempts visible when an area index is refreshed later."""
+    if not catalog_path.is_file():
+        return
+    try:
+        previous = json.loads(catalog_path.read_text(encoding="utf-8"))
+    except (OSError, json.JSONDecodeError):
+        return
+    previous_by_id = {
+        str(location.get("location_id") or ""): location
+        for location in previous.get("locations", [])
+        if isinstance(location, dict)
+    }
+    for location in catalog["locations"]:
+        previous_location = previous_by_id.get(str(location["location_id"]))
+        if not previous_location:
+            continue
+        if str(previous_location.get("collection_status") or "") != "failed":
+            continue
+        location["collection_status"] = "failed"
+        location["collection_error"] = str(
+            previous_location.get("collection_error") or "Erro sem detalhe."
+        )
+    refresh_collection_summary(catalog)
 
 
 def sync_existing_location_catalogs(
@@ -425,6 +457,37 @@ def print_locations(locations: list[dict[str, Any]]) -> None:
             f"- {location['location_id']} — {location['name']} — {location['city']} "
             f"— {location['designs']} — {location['status']} — {photo} — {collection}"
         )
+        if collection_status == "failed":
+            collection_error = str(
+                location.get("collection_error") or "Erro sem detalhe."
+            )
+            count_match = re.search(
+                r"indica\s+(\d+)\s+designs.*?interpretar\s+(\d+)",
+                collection_error,
+                flags=re.IGNORECASE,
+            )
+            if count_match:
+                expected = int(count_match.group(1))
+                interpreted = int(count_match.group(2))
+                print(
+                    f"  Contagem: {expected} "
+                    f"{'esperado' if expected == 1 else 'esperados'} · "
+                    f"{interpreted} "
+                    f"{'interpretado' if interpreted == 1 else 'interpretados'}"
+                )
+            print(f"  Motivo: {collection_error}")
+            print(f"  Link: {location['url']}")
+
+
+def print_collection_failures(catalog: dict[str, Any]) -> None:
+    failures = location_candidates(catalog, "failed")
+    if not failures:
+        return
+    print("\n" + "#" * 72)
+    label = "LOCALIZAÇÃO" if len(failures) == 1 else "LOCALIZAÇÕES"
+    print(f"FALHAS NA RECOLHA — {len(failures)} {label}")
+    print("#" * 72)
+    print_locations(failures)
 
 
 def _confirm(prompt: str, input_fn: Any, *, default: bool) -> bool:
@@ -470,8 +533,14 @@ def interactive_area_menu(
             print("\n1) Ativas com moedas prensadas")
             print("2) Ativas com fotografias")
             print("3) Todas")
+            print("4) Falhas de recolha")
             view = str(input_fn("Filtro [1]: ")).strip() or "1"
-            modes = {"1": "active", "2": "with_images", "3": "all"}
+            modes = {
+                "1": "active",
+                "2": "with_images",
+                "3": "all",
+                "4": "failed",
+            }
             if view not in modes:
                 print("Opção inválida.")
                 continue
@@ -525,6 +594,7 @@ def interactive_area_menu(
             f"recolhidas={stats['collected']} · já existentes={stats['skipped']} "
             f"· erros={stats['failed']}"
         )
+        print_collection_failures(catalog)
         print("Site Base44: nenhuma alteração efetuada.")
 
 
@@ -623,6 +693,10 @@ def main(argv: list[str] | None = None) -> int:
         locations, metadata = parse_area(source_html)
         catalog = build_catalog(locations, metadata, area_id=area_id)
         output_dir = args.output_dir or default_output_directory(metadata)
+        restore_failed_collection_state(
+            catalog,
+            output_dir / "pennycollector-area.json",
+        )
         sync_existing_location_catalogs(catalog)
         catalog_path, preview_path = write_outputs(catalog, output_dir)
     except (OSError, RuntimeError, ValueError, json.JSONDecodeError) as exc:
@@ -645,6 +719,7 @@ def main(argv: list[str] | None = None) -> int:
     print(f"\nÍndice: {catalog_path}")
     print(f"Pré-visualização: {preview_path}")
     print("Site Base44: nenhuma alteração efetuada.")
+    print_collection_failures(catalog)
 
     try:
         if args.interactive:
@@ -679,6 +754,7 @@ def main(argv: list[str] | None = None) -> int:
         f"recolhidas={stats['collected']} · já existentes={stats['skipped']} "
         f"· erros={stats['failed']}"
     )
+    print_collection_failures(catalog)
     print("Site Base44: nenhuma alteração efetuada.")
     return 1 if stats["failed"] else 0
 
