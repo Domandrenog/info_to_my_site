@@ -1,0 +1,109 @@
+{
+  "status": "ready_for_import",
+  "base44_updated": false,
+  "import_ready": true,
+  "source": {
+    "site": "PennyCollector",
+    "location_id": "287465",
+    "url": "http://locations.pennycollector.com/Details.aspx?location=287465",
+    "location_name": "Mosteiro de Santa Cruz (Santa Cruz Monastery)",
+    "address": "Praça 8 de Maio",
+    "city": "Coimbra",
+    "zip_code": "3001-801",
+    "status": "Active",
+    "state": "",
+    "country": "Portugal",
+    "source_flagged_needs_update": false,
+    "retrieved_at": "2026-09-25T10:17:56+00:00",
+    "machine_count": 1,
+    "design_count": 2,
+    "machine_numbers": [
+      1
+    ],
+    "active_machine_numbers": [
+      1
+    ],
+    "retired_machine_numbers": [],
+    "active_design_count": 2,
+    "retired_design_count": 0,
+    "photo_policy": "A fotografia pertence à máquina e é partilhada pelos seus designs."
+  },
+  "items": [
+    {
+      "source": {
+        "machine_number": 1,
+        "machine_details": "Machine 1 - Inside Monastery store",
+        "position": 1,
+        "description": "Front facade of the Santa Cruz church with 'Igreja de Santa Cruz Coimbra'",
+        "orientation": "V",
+        "machine_image_url": "http://locations.pennycollector.com/images/machine_7bba5537-2a20-4957-99ee-02721487505f.jpg",
+        "availability": "active",
+        "location_id": "287465",
+        "image_scope": "machine",
+        "review_flags": [
+          "shared_machine_photo"
+        ]
+      },
+      "souvenir": {
+        "name": "Front facade of the Santa Cruz church with 'Igreja de…",
+        "continent": "Europa",
+        "country": "Portugal",
+        "city": "Coimbra",
+        "type": "pressed",
+        "condition": "Não Tenho",
+        "location_name": "Mosteiro de Santa Cruz (Santa Cruz Monastery)",
+        "description": "Front facade of the Santa Cruz church with 'Igreja de Santa Cruz Coimbra'",
+        "display_shape": "oval",
+        "image_front": "http://locations.pennycollector.com/images/machine_7bba5537-2a20-4957-99ee-02721487505f.jpg",
+        "image_back": "",
+        "notes": "Machine 1 · Posição 1 · Orientação vertical · PennyCollector location 287465 · Fotografia provisória partilhada da máquina",
+        "reference_url": "http://locations.pennycollector.com/Details.aspx?location=287465#machine-1-position-1",
+        "ordem": 1,
+        "hidden": false
+      },
+      "review_status": "approved"
+    },
+    {
+      "source": {
+        "machine_number": 1,
+        "machine_details": "Machine 1 - Inside Monastery store",
+        "position": 2,
+        "description": "Tomb of King Henriques with 'Tumulo D. Alfonso Henriques 1º Rei De Portugal'",
+        "orientation": "H",
+        "machine_image_url": "http://locations.pennycollector.com/images/machine_7bba5537-2a20-4957-99ee-02721487505f.jpg",
+        "availability": "active",
+        "location_id": "287465",
+        "image_scope": "machine",
+        "review_flags": [
+          "shared_machine_photo"
+        ]
+      },
+      "souvenir": {
+        "name": "Tomb of King Henriques with 'Tumulo D. Alfonso Henriques…",
+        "continent": "Europa",
+        "country": "Portugal",
+        "city": "Coimbra",
+        "type": "pressed",
+        "condition": "Não Tenho",
+        "location_name": "Mosteiro de Santa Cruz (Santa Cruz Monastery)",
+        "description": "Tomb of King Henriques with 'Tumulo D. Alfonso Henriques 1º Rei De Portugal'",
+        "display_shape": "oval",
+        "image_front": "http://locations.pennycollector.com/images/machine_7bba5537-2a20-4957-99ee-02721487505f.jpg",
+        "image_back": "",
+        "notes": "Machine 1 · Posição 2 · Orientação horizontal · PennyCollector location 287465 · Fotografia provisória partilhada da máquina",
+        "reference_url": "http://locations.pennycollector.com/Details.aspx?location=287465#machine-1-position-2",
+        "ordem": 2,
+        "hidden": false
+      },
+      "review_status": "approved"
+    }
+  ],
+  "review": {
+    "approved": 2,
+    "skipped": 0,
+    "pending": 0,
+    "completed": true,
+    "updated_at": "2026-09-25T10:57:14+00:00",
+    "shared_machine_photos_accepted_as_temporary": true
+  }
+}

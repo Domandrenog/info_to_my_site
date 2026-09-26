@@ -1,0 +1,181 @@
+{
+  "status": "ready_for_import",
+  "base44_updated": false,
+  "import_ready": true,
+  "source": {
+    "site": "PennyCollector",
+    "location_id": "422881",
+    "url": "http://locations.pennycollector.com/Details.aspx?location=422881",
+    "location_name": "Madeira Story Centre",
+    "address": "R. Dom Carlos I 27",
+    "city": "Funchal (Madeira Island)",
+    "zip_code": "9060-051",
+    "status": "Active",
+    "state": "",
+    "country": "Portugal",
+    "source_flagged_needs_update": false,
+    "retrieved_at": "2026-09-25T10:18:24+00:00",
+    "machine_count": 1,
+    "design_count": 4,
+    "machine_numbers": [
+      1
+    ],
+    "active_machine_numbers": [
+      1
+    ],
+    "retired_machine_numbers": [],
+    "active_design_count": 4,
+    "retired_design_count": 0,
+    "photo_policy": "A fotografia pertence à máquina e é partilhada pelos seus designs."
+  },
+  "items": [
+    {
+      "source": {
+        "machine_number": 1,
+        "machine_details": "Machine 1",
+        "position": 1,
+        "description": "Funchal Gondola",
+        "orientation": "",
+        "machine_image_url": "http://locations.pennycollector.com/images/machine_28c4fd6d-d010-4ce4-a301-446b0f08e485.jpg",
+        "availability": "active",
+        "location_id": "422881",
+        "image_scope": "machine",
+        "review_flags": [
+          "shared_machine_photo",
+          "missing_orientation"
+        ]
+      },
+      "souvenir": {
+        "name": "Funchal Gondola",
+        "continent": "Europa",
+        "country": "Portugal",
+        "city": "Funchal (Madeira Island)",
+        "type": "pressed",
+        "condition": "Não Tenho",
+        "location_name": "Madeira Story Centre",
+        "description": "Funchal Gondola",
+        "display_shape": "oval",
+        "image_front": "http://locations.pennycollector.com/images/machine_28c4fd6d-d010-4ce4-a301-446b0f08e485.jpg",
+        "image_back": "",
+        "notes": "Machine 1 · Posição 1 · Orientação não indicada · PennyCollector location 422881 · Fotografia provisória partilhada da máquina",
+        "reference_url": "http://locations.pennycollector.com/Details.aspx?location=422881#machine-1-position-1",
+        "ordem": 1,
+        "hidden": false
+      },
+      "review_status": "approved"
+    },
+    {
+      "source": {
+        "machine_number": 1,
+        "machine_details": "Machine 1",
+        "position": 2,
+        "description": "Funchal Port",
+        "orientation": "",
+        "machine_image_url": "http://locations.pennycollector.com/images/machine_28c4fd6d-d010-4ce4-a301-446b0f08e485.jpg",
+        "availability": "active",
+        "location_id": "422881",
+        "image_scope": "machine",
+        "review_flags": [
+          "shared_machine_photo",
+          "missing_orientation"
+        ]
+      },
+      "souvenir": {
+        "name": "Funchal Port",
+        "continent": "Europa",
+        "country": "Portugal",
+        "city": "Funchal (Madeira Island)",
+        "type": "pressed",
+        "condition": "Não Tenho",
+        "location_name": "Madeira Story Centre",
+        "description": "Funchal Port",
+        "display_shape": "oval",
+        "image_front": "http://locations.pennycollector.com/images/machine_28c4fd6d-d010-4ce4-a301-446b0f08e485.jpg",
+        "image_back": "",
+        "notes": "Machine 1 · Posição 2 · Orientação não indicada · PennyCollector location 422881 · Fotografia provisória partilhada da máquina",
+        "reference_url": "http://locations.pennycollector.com/Details.aspx?location=422881#machine-1-position-2",
+        "ordem": 2,
+        "hidden": false
+      },
+      "review_status": "approved"
+    },
+    {
+      "source": {
+        "machine_number": 1,
+        "machine_details": "Machine 1",
+        "position": 3,
+        "description": "Funchal Cathedral",
+        "orientation": "",
+        "machine_image_url": "http://locations.pennycollector.com/images/machine_28c4fd6d-d010-4ce4-a301-446b0f08e485.jpg",
+        "availability": "active",
+        "location_id": "422881",
+        "image_scope": "machine",
+        "review_flags": [
+          "shared_machine_photo",
+          "missing_orientation"
+        ]
+      },
+      "souvenir": {
+        "name": "Funchal Cathedral",
+        "continent": "Europa",
+        "country": "Portugal",
+        "city": "Funchal (Madeira Island)",
+        "type": "pressed",
+        "condition": "Não Tenho",
+        "location_name": "Madeira Story Centre",
+        "description": "Funchal Cathedral",
+        "display_shape": "oval",
+        "image_front": "http://locations.pennycollector.com/images/machine_28c4fd6d-d010-4ce4-a301-446b0f08e485.jpg",
+        "image_back": "",
+        "notes": "Machine 1 · Posição 3 · Orientação não indicada · PennyCollector location 422881 · Fotografia provisória partilhada da máquina",
+        "reference_url": "http://locations.pennycollector.com/Details.aspx?location=422881#machine-1-position-3",
+        "ordem": 3,
+        "hidden": false
+      },
+      "review_status": "approved"
+    },
+    {
+      "source": {
+        "machine_number": 1,
+        "machine_details": "Machine 1",
+        "position": 4,
+        "description": "Discovery of Madeira in 1419",
+        "orientation": "",
+        "machine_image_url": "http://locations.pennycollector.com/images/machine_28c4fd6d-d010-4ce4-a301-446b0f08e485.jpg",
+        "availability": "active",
+        "location_id": "422881",
+        "image_scope": "machine",
+        "review_flags": [
+          "shared_machine_photo",
+          "missing_orientation"
+        ]
+      },
+      "souvenir": {
+        "name": "Discovery of Madeira in 1419",
+        "continent": "Europa",
+        "country": "Portugal",
+        "city": "Funchal (Madeira Island)",
+        "type": "pressed",
+        "condition": "Não Tenho",
+        "location_name": "Madeira Story Centre",
+        "description": "Discovery of Madeira in 1419",
+        "display_shape": "oval",
+        "image_front": "http://locations.pennycollector.com/images/machine_28c4fd6d-d010-4ce4-a301-446b0f08e485.jpg",
+        "image_back": "",
+        "notes": "Machine 1 · Posição 4 · Orientação não indicada · PennyCollector location 422881 · Fotografia provisória partilhada da máquina",
+        "reference_url": "http://locations.pennycollector.com/Details.aspx?location=422881#machine-1-position-4",
+        "ordem": 4,
+        "hidden": false
+      },
+      "review_status": "approved"
+    }
+  ],
+  "review": {
+    "approved": 4,
+    "skipped": 0,
+    "pending": 0,
+    "completed": true,
+    "updated_at": "2026-09-25T10:57:19+00:00",
+    "shared_machine_photos_accepted_as_temporary": true
+  }
+}

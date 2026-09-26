@@ -1,0 +1,111 @@
+{
+  "status": "ready_for_import",
+  "base44_updated": false,
+  "import_ready": true,
+  "source": {
+    "site": "PennyCollector",
+    "location_id": "441995",
+    "url": "http://locations.pennycollector.com/Details.aspx?location=441995",
+    "location_name": "Tabacaria Garrett",
+    "address": "R. Garrett 10, 8600-315 Lagos, Portugal",
+    "city": "Lagos",
+    "zip_code": "",
+    "status": "Active",
+    "state": "",
+    "country": "Portugal",
+    "source_flagged_needs_update": false,
+    "retrieved_at": "2026-09-25T10:18:39+00:00",
+    "machine_count": 1,
+    "design_count": 2,
+    "machine_numbers": [
+      1
+    ],
+    "active_machine_numbers": [
+      1
+    ],
+    "retired_machine_numbers": [],
+    "active_design_count": 2,
+    "retired_design_count": 0,
+    "photo_policy": "A fotografia pertence à máquina e é partilhada pelos seus designs."
+  },
+  "items": [
+    {
+      "source": {
+        "machine_number": 1,
+        "machine_details": "Machine 1",
+        "position": 1,
+        "description": "Ponta da Piedade, with 'Lagos'",
+        "orientation": "",
+        "machine_image_url": "http://locations.pennycollector.com/images/clear.gif",
+        "availability": "active",
+        "location_id": "441995",
+        "image_scope": "machine",
+        "review_flags": [
+          "shared_machine_photo",
+          "missing_orientation"
+        ]
+      },
+      "souvenir": {
+        "name": "Ponta da Piedade",
+        "continent": "Europa",
+        "country": "Portugal",
+        "city": "Lagos",
+        "type": "pressed",
+        "condition": "Não Tenho",
+        "location_name": "Tabacaria Garrett",
+        "description": "Ponta da Piedade, with 'Lagos'",
+        "display_shape": "oval",
+        "image_front": "http://locations.pennycollector.com/images/clear.gif",
+        "image_back": "",
+        "notes": "Machine 1 · Posição 1 · Orientação não indicada · PennyCollector location 441995 · Fotografia provisória partilhada da máquina",
+        "reference_url": "http://locations.pennycollector.com/Details.aspx?location=441995#machine-1-position-1",
+        "ordem": 1,
+        "hidden": false
+      },
+      "review_status": "approved"
+    },
+    {
+      "source": {
+        "machine_number": 1,
+        "machine_details": "Machine 1",
+        "position": 2,
+        "description": "Praça Infante D. Henrique, with 'Lagos'",
+        "orientation": "",
+        "machine_image_url": "http://locations.pennycollector.com/images/clear.gif",
+        "availability": "active",
+        "location_id": "441995",
+        "image_scope": "machine",
+        "review_flags": [
+          "shared_machine_photo",
+          "missing_orientation"
+        ]
+      },
+      "souvenir": {
+        "name": "Praça Infante D. Henrique",
+        "continent": "Europa",
+        "country": "Portugal",
+        "city": "Lagos",
+        "type": "pressed",
+        "condition": "Não Tenho",
+        "location_name": "Tabacaria Garrett",
+        "description": "Praça Infante D. Henrique, with 'Lagos'",
+        "display_shape": "oval",
+        "image_front": "http://locations.pennycollector.com/images/clear.gif",
+        "image_back": "",
+        "notes": "Machine 1 · Posição 2 · Orientação não indicada · PennyCollector location 441995 · Fotografia provisória partilhada da máquina",
+        "reference_url": "http://locations.pennycollector.com/Details.aspx?location=441995#machine-1-position-2",
+        "ordem": 2,
+        "hidden": false
+      },
+      "review_status": "approved"
+    }
+  ],
+  "review": {
+    "approved": 2,
+    "skipped": 0,
+    "pending": 0,
+    "completed": true,
+    "updated_at": "2026-09-25T10:57:21+00:00",
+    "shared_machine_photos_accepted_as_temporary": true
+  }
+}

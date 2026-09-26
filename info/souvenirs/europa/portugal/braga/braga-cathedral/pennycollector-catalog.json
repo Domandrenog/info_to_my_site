@@ -1,0 +1,173 @@
+{
+  "status": "pending_review",
+  "base44_updated": false,
+  "import_ready": false,
+  "source": {
+    "site": "PennyCollector",
+    "location_id": "287396",
+    "url": "http://locations.pennycollector.com/Details.aspx?location=287396",
+    "location_name": "Braga Cathedral",
+    "address": "Rue Dom Paio Mendes",
+    "city": "Braga",
+    "zip_code": "4700-424",
+    "status": "Active",
+    "state": "",
+    "country": "Portugal",
+    "source_flagged_needs_update": false,
+    "retrieved_at": "2026-09-25T10:17:43+00:00",
+    "machine_count": 1,
+    "design_count": 4,
+    "machine_numbers": [
+      1
+    ],
+    "active_machine_numbers": [
+      1
+    ],
+    "retired_machine_numbers": [],
+    "active_design_count": 4,
+    "retired_design_count": 0,
+    "photo_policy": "A fotografia pertence à máquina e é partilhada pelos seus designs."
+  },
+  "items": [
+    {
+      "source": {
+        "machine_number": 1,
+        "machine_details": "Machine 1 - In the cloisters",
+        "position": 1,
+        "description": "Sé de Braga",
+        "orientation": "",
+        "machine_image_url": "http://locations.pennycollector.com/images/machine_a67d8226-db57-4f95-bd63-3dd77510139d.jpg",
+        "availability": "active",
+        "location_id": "287396",
+        "image_scope": "machine",
+        "review_flags": [
+          "shared_machine_photo",
+          "missing_orientation"
+        ]
+      },
+      "souvenir": {
+        "name": "Sé de Braga",
+        "continent": "Europa",
+        "country": "Portugal",
+        "city": "Braga",
+        "type": "pressed",
+        "condition": "Não Tenho",
+        "location_name": "Braga Cathedral",
+        "description": "Sé de Braga",
+        "display_shape": "oval",
+        "image_front": "http://locations.pennycollector.com/images/machine_a67d8226-db57-4f95-bd63-3dd77510139d.jpg",
+        "image_back": "",
+        "notes": "Machine 1 · Posição 1 · Orientação não indicada · PennyCollector location 287396 · Fotografia provisória partilhada da máquina",
+        "reference_url": "http://locations.pennycollector.com/Details.aspx?location=287396#machine-1-position-1",
+        "ordem": 1,
+        "hidden": false
+      },
+      "review_status": "pending"
+    },
+    {
+      "source": {
+        "machine_number": 1,
+        "machine_details": "Machine 1 - In the cloisters",
+        "position": 2,
+        "description": "Nossa Senhora de Braga",
+        "orientation": "",
+        "machine_image_url": "http://locations.pennycollector.com/images/machine_a67d8226-db57-4f95-bd63-3dd77510139d.jpg",
+        "availability": "active",
+        "location_id": "287396",
+        "image_scope": "machine",
+        "review_flags": [
+          "shared_machine_photo",
+          "missing_orientation"
+        ]
+      },
+      "souvenir": {
+        "name": "Nossa Senhora de Braga",
+        "continent": "Europa",
+        "country": "Portugal",
+        "city": "Braga",
+        "type": "pressed",
+        "condition": "Não Tenho",
+        "location_name": "Braga Cathedral",
+        "description": "Nossa Senhora de Braga",
+        "display_shape": "oval",
+        "image_front": "http://locations.pennycollector.com/images/machine_a67d8226-db57-4f95-bd63-3dd77510139d.jpg",
+        "image_back": "",
+        "notes": "Machine 1 · Posição 2 · Orientação não indicada · PennyCollector location 287396 · Fotografia provisória partilhada da máquina",
+        "reference_url": "http://locations.pennycollector.com/Details.aspx?location=287396#machine-1-position-2",
+        "ordem": 2,
+        "hidden": false
+      },
+      "review_status": "pending"
+    },
+    {
+      "source": {
+        "machine_number": 1,
+        "machine_details": "Machine 1 - In the cloisters",
+        "position": 3,
+        "description": "Sto. Antonio",
+        "orientation": "",
+        "machine_image_url": "http://locations.pennycollector.com/images/machine_a67d8226-db57-4f95-bd63-3dd77510139d.jpg",
+        "availability": "active",
+        "location_id": "287396",
+        "image_scope": "machine",
+        "review_flags": [
+          "shared_machine_photo",
+          "missing_orientation"
+        ]
+      },
+      "souvenir": {
+        "name": "Sto. Antonio",
+        "continent": "Europa",
+        "country": "Portugal",
+        "city": "Braga",
+        "type": "pressed",
+        "condition": "Não Tenho",
+        "location_name": "Braga Cathedral",
+        "description": "Sto. Antonio",
+        "display_shape": "oval",
+        "image_front": "http://locations.pennycollector.com/images/machine_a67d8226-db57-4f95-bd63-3dd77510139d.jpg",
+        "image_back": "",
+        "notes": "Machine 1 · Posição 3 · Orientação não indicada · PennyCollector location 287396 · Fotografia provisória partilhada da máquina",
+        "reference_url": "http://locations.pennycollector.com/Details.aspx?location=287396#machine-1-position-3",
+        "ordem": 3,
+        "hidden": false
+      },
+      "review_status": "pending"
+    },
+    {
+      "source": {
+        "machine_number": 1,
+        "machine_details": "Machine 1 - In the cloisters",
+        "position": 4,
+        "description": "S. Judas Tadeu",
+        "orientation": "",
+        "machine_image_url": "http://locations.pennycollector.com/images/machine_a67d8226-db57-4f95-bd63-3dd77510139d.jpg",
+        "availability": "active",
+        "location_id": "287396",
+        "image_scope": "machine",
+        "review_flags": [
+          "shared_machine_photo",
+          "missing_orientation"
+        ]
+      },
+      "souvenir": {
+        "name": "S. Judas Tadeu",
+        "continent": "Europa",
+        "country": "Portugal",
+        "city": "Braga",
+        "type": "pressed",
+        "condition": "Não Tenho",
+        "location_name": "Braga Cathedral",
+        "description": "S. Judas Tadeu",
+        "display_shape": "oval",
+        "image_front": "http://locations.pennycollector.com/images/machine_a67d8226-db57-4f95-bd63-3dd77510139d.jpg",
+        "image_back": "",
+        "notes": "Machine 1 · Posição 4 · Orientação não indicada · PennyCollector location 287396 · Fotografia provisória partilhada da máquina",
+        "reference_url": "http://locations.pennycollector.com/Details.aspx?location=287396#machine-1-position-4",
+        "ordem": 4,
+        "hidden": false
+      },
+      "review_status": "pending"
+    }
+  ]
+}

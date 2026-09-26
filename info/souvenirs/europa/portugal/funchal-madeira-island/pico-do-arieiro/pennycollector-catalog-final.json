@@ -1,0 +1,253 @@
+{
+  "status": "ready_for_import",
+  "base44_updated": false,
+  "import_ready": true,
+  "source": {
+    "site": "PennyCollector",
+    "location_id": "424918",
+    "url": "http://locations.pennycollector.com/Details.aspx?location=424918",
+    "location_name": "Pico do Arieiro",
+    "address": "Pico do Arieiro",
+    "city": "Funchal (Madeira Island)",
+    "zip_code": "",
+    "status": "Active",
+    "state": "",
+    "country": "Portugal",
+    "source_flagged_needs_update": false,
+    "retrieved_at": "2026-09-25T10:18:25+00:00",
+    "machine_count": 2,
+    "design_count": 6,
+    "machine_numbers": [
+      1,
+      2
+    ],
+    "active_machine_numbers": [
+      1,
+      2
+    ],
+    "retired_machine_numbers": [],
+    "active_design_count": 6,
+    "retired_design_count": 0,
+    "photo_policy": "A fotografia pertence à máquina e é partilhada pelos seus designs."
+  },
+  "items": [
+    {
+      "source": {
+        "machine_number": 1,
+        "machine_details": "Machine 1",
+        "position": 1,
+        "description": "Building",
+        "orientation": "",
+        "machine_image_url": "http://locations.pennycollector.com/images/machine_e520c271-208e-45e1-a87f-16992f39b427.jpg",
+        "availability": "active",
+        "location_id": "424918",
+        "image_scope": "machine",
+        "review_flags": [
+          "shared_machine_photo",
+          "missing_orientation"
+        ]
+      },
+      "souvenir": {
+        "name": "Building",
+        "continent": "Europa",
+        "country": "Portugal",
+        "city": "Funchal (Madeira Island)",
+        "type": "pressed",
+        "condition": "Não Tenho",
+        "location_name": "Pico do Arieiro",
+        "description": "Building",
+        "display_shape": "oval",
+        "image_front": "http://locations.pennycollector.com/images/machine_e520c271-208e-45e1-a87f-16992f39b427.jpg",
+        "image_back": "",
+        "notes": "Machine 1 · Posição 1 · Orientação não indicada · PennyCollector location 424918 · Fotografia provisória partilhada da máquina",
+        "reference_url": "http://locations.pennycollector.com/Details.aspx?location=424918#machine-1-position-1",
+        "ordem": 1,
+        "hidden": false
+      },
+      "review_status": "approved"
+    },
+    {
+      "source": {
+        "machine_number": 1,
+        "machine_details": "Machine 1",
+        "position": 2,
+        "description": "Viewpoint",
+        "orientation": "",
+        "machine_image_url": "http://locations.pennycollector.com/images/machine_e520c271-208e-45e1-a87f-16992f39b427.jpg",
+        "availability": "active",
+        "location_id": "424918",
+        "image_scope": "machine",
+        "review_flags": [
+          "shared_machine_photo",
+          "missing_orientation"
+        ]
+      },
+      "souvenir": {
+        "name": "Viewpoint",
+        "continent": "Europa",
+        "country": "Portugal",
+        "city": "Funchal (Madeira Island)",
+        "type": "pressed",
+        "condition": "Não Tenho",
+        "location_name": "Pico do Arieiro",
+        "description": "Viewpoint",
+        "display_shape": "oval",
+        "image_front": "http://locations.pennycollector.com/images/machine_e520c271-208e-45e1-a87f-16992f39b427.jpg",
+        "image_back": "",
+        "notes": "Machine 1 · Posição 2 · Orientação não indicada · PennyCollector location 424918 · Fotografia provisória partilhada da máquina",
+        "reference_url": "http://locations.pennycollector.com/Details.aspx?location=424918#machine-1-position-2",
+        "ordem": 2,
+        "hidden": false
+      },
+      "review_status": "approved"
+    },
+    {
+      "source": {
+        "machine_number": 1,
+        "machine_details": "Machine 1",
+        "position": 3,
+        "description": "NATO radar",
+        "orientation": "",
+        "machine_image_url": "http://locations.pennycollector.com/images/machine_e520c271-208e-45e1-a87f-16992f39b427.jpg",
+        "availability": "active",
+        "location_id": "424918",
+        "image_scope": "machine",
+        "review_flags": [
+          "shared_machine_photo",
+          "missing_orientation"
+        ]
+      },
+      "souvenir": {
+        "name": "NATO radar",
+        "continent": "Europa",
+        "country": "Portugal",
+        "city": "Funchal (Madeira Island)",
+        "type": "pressed",
+        "condition": "Não Tenho",
+        "location_name": "Pico do Arieiro",
+        "description": "NATO radar",
+        "display_shape": "oval",
+        "image_front": "http://locations.pennycollector.com/images/machine_e520c271-208e-45e1-a87f-16992f39b427.jpg",
+        "image_back": "",
+        "notes": "Machine 1 · Posição 3 · Orientação não indicada · PennyCollector location 424918 · Fotografia provisória partilhada da máquina",
+        "reference_url": "http://locations.pennycollector.com/Details.aspx?location=424918#machine-1-position-3",
+        "ordem": 3,
+        "hidden": false
+      },
+      "review_status": "approved"
+    },
+    {
+      "source": {
+        "machine_number": 1,
+        "machine_details": "Machine 1",
+        "position": 4,
+        "description": "Madeira Island",
+        "orientation": "",
+        "machine_image_url": "http://locations.pennycollector.com/images/machine_e520c271-208e-45e1-a87f-16992f39b427.jpg",
+        "availability": "active",
+        "location_id": "424918",
+        "image_scope": "machine",
+        "review_flags": [
+          "shared_machine_photo",
+          "missing_orientation"
+        ]
+      },
+      "souvenir": {
+        "name": "Madeira Island",
+        "continent": "Europa",
+        "country": "Portugal",
+        "city": "Funchal (Madeira Island)",
+        "type": "pressed",
+        "condition": "Não Tenho",
+        "location_name": "Pico do Arieiro",
+        "description": "Madeira Island",
+        "display_shape": "oval",
+        "image_front": "http://locations.pennycollector.com/images/machine_e520c271-208e-45e1-a87f-16992f39b427.jpg",
+        "image_back": "",
+        "notes": "Machine 1 · Posição 4 · Orientação não indicada · PennyCollector location 424918 · Fotografia provisória partilhada da máquina",
+        "reference_url": "http://locations.pennycollector.com/Details.aspx?location=424918#machine-1-position-4",
+        "ordem": 4,
+        "hidden": false
+      },
+      "review_status": "approved"
+    },
+    {
+      "source": {
+        "machine_number": 2,
+        "machine_details": "Token Machine 1",
+        "position": 1,
+        "description": "Gold - PR1 hike to Pico Ruivo",
+        "orientation": "",
+        "machine_image_url": "http://locations.pennycollector.com/images/machine_1b427fe7-a205-4e60-afc0-c164681e5c28.jpg",
+        "availability": "active",
+        "location_id": "424918",
+        "image_scope": "machine",
+        "review_flags": [
+          "shared_machine_photo",
+          "missing_orientation"
+        ]
+      },
+      "souvenir": {
+        "name": "Gold - PR1 hike to Pico Ruivo",
+        "continent": "Europa",
+        "country": "Portugal",
+        "city": "Funchal (Madeira Island)",
+        "type": "coin",
+        "condition": "Não Tenho",
+        "location_name": "Pico do Arieiro",
+        "description": "Gold - PR1 hike to Pico Ruivo",
+        "display_shape": "oval",
+        "image_front": "http://locations.pennycollector.com/images/machine_1b427fe7-a205-4e60-afc0-c164681e5c28.jpg",
+        "image_back": "",
+        "notes": "Machine 2 · Posição 1 · Orientação não indicada · PennyCollector location 424918 · Fotografia provisória partilhada da máquina",
+        "reference_url": "http://locations.pennycollector.com/Details.aspx?location=424918#machine-2-position-1",
+        "ordem": 5,
+        "hidden": false
+      },
+      "review_status": "approved"
+    },
+    {
+      "source": {
+        "machine_number": 2,
+        "machine_details": "Token Machine 1",
+        "position": 2,
+        "description": "Silver - NATO long range radar",
+        "orientation": "",
+        "machine_image_url": "http://locations.pennycollector.com/images/machine_1b427fe7-a205-4e60-afc0-c164681e5c28.jpg",
+        "availability": "active",
+        "location_id": "424918",
+        "image_scope": "machine",
+        "review_flags": [
+          "shared_machine_photo",
+          "missing_orientation"
+        ]
+      },
+      "souvenir": {
+        "name": "Silver - NATO long range radar",
+        "continent": "Europa",
+        "country": "Portugal",
+        "city": "Funchal (Madeira Island)",
+        "type": "coin",
+        "condition": "Não Tenho",
+        "location_name": "Pico do Arieiro",
+        "description": "Silver - NATO long range radar",
+        "display_shape": "oval",
+        "image_front": "http://locations.pennycollector.com/images/machine_1b427fe7-a205-4e60-afc0-c164681e5c28.jpg",
+        "image_back": "",
+        "notes": "Machine 2 · Posição 2 · Orientação não indicada · PennyCollector location 424918 · Fotografia provisória partilhada da máquina",
+        "reference_url": "http://locations.pennycollector.com/Details.aspx?location=424918#machine-2-position-2",
+        "ordem": 6,
+        "hidden": false
+      },
+      "review_status": "approved"
+    }
+  ],
+  "review": {
+    "approved": 6,
+    "skipped": 0,
+    "pending": 0,
+    "completed": true,
+    "updated_at": "2026-09-25T10:57:19+00:00",
+    "shared_machine_photos_accepted_as_temporary": true
+  }
+}

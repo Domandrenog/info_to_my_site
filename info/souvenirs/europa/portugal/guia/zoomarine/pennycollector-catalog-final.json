@@ -1,0 +1,253 @@
+{
+  "status": "ready_for_import",
+  "base44_updated": false,
+  "import_ready": true,
+  "source": {
+    "site": "PennyCollector",
+    "location_id": "277072",
+    "url": "http://locations.pennycollector.com/Details.aspx?location=277072",
+    "location_name": "Zoomarine",
+    "address": "EN 125 - Km 65, 8201-864 ",
+    "city": "Guia ",
+    "zip_code": "",
+    "status": "Active",
+    "state": "",
+    "country": "Portugal",
+    "source_flagged_needs_update": false,
+    "retrieved_at": "2026-09-25T10:18:28+00:00",
+    "machine_count": 2,
+    "design_count": 6,
+    "machine_numbers": [
+      1,
+      2
+    ],
+    "active_machine_numbers": [
+      1,
+      2
+    ],
+    "retired_machine_numbers": [],
+    "active_design_count": 6,
+    "retired_design_count": 0,
+    "photo_policy": "A fotografia pertence à máquina e é partilhada pelos seus designs."
+  },
+  "items": [
+    {
+      "source": {
+        "machine_number": 1,
+        "machine_details": "Machine 1",
+        "position": 1,
+        "description": "Dolphin jumping right over name",
+        "orientation": "",
+        "machine_image_url": "http://locations.pennycollector.com/images/machine_1f185c9c-c86d-4ece-b9cd-6d8537b8f989.jpg",
+        "availability": "active",
+        "location_id": "277072",
+        "image_scope": "machine",
+        "review_flags": [
+          "shared_machine_photo",
+          "missing_orientation"
+        ]
+      },
+      "souvenir": {
+        "name": "Dolphin jumping right over name",
+        "continent": "Europa",
+        "country": "Portugal",
+        "city": "Guia ",
+        "type": "pressed",
+        "condition": "Não Tenho",
+        "location_name": "Zoomarine",
+        "description": "Dolphin jumping right over name",
+        "display_shape": "oval",
+        "image_front": "http://locations.pennycollector.com/images/machine_1f185c9c-c86d-4ece-b9cd-6d8537b8f989.jpg",
+        "image_back": "",
+        "notes": "Machine 1 · Posição 1 · Orientação não indicada · PennyCollector location 277072 · Fotografia provisória partilhada da máquina",
+        "reference_url": "http://locations.pennycollector.com/Details.aspx?location=277072#machine-1-position-1",
+        "ordem": 1,
+        "hidden": false
+      },
+      "review_status": "approved"
+    },
+    {
+      "source": {
+        "machine_number": 1,
+        "machine_details": "Machine 1",
+        "position": 2,
+        "description": "Dolphin jumping right over name with saying",
+        "orientation": "",
+        "machine_image_url": "http://locations.pennycollector.com/images/machine_1f185c9c-c86d-4ece-b9cd-6d8537b8f989.jpg",
+        "availability": "active",
+        "location_id": "277072",
+        "image_scope": "machine",
+        "review_flags": [
+          "shared_machine_photo",
+          "missing_orientation"
+        ]
+      },
+      "souvenir": {
+        "name": "Dolphin jumping right over name with saying",
+        "continent": "Europa",
+        "country": "Portugal",
+        "city": "Guia ",
+        "type": "pressed",
+        "condition": "Não Tenho",
+        "location_name": "Zoomarine",
+        "description": "Dolphin jumping right over name with saying",
+        "display_shape": "oval",
+        "image_front": "http://locations.pennycollector.com/images/machine_1f185c9c-c86d-4ece-b9cd-6d8537b8f989.jpg",
+        "image_back": "",
+        "notes": "Machine 1 · Posição 2 · Orientação não indicada · PennyCollector location 277072 · Fotografia provisória partilhada da máquina",
+        "reference_url": "http://locations.pennycollector.com/Details.aspx?location=277072#machine-1-position-2",
+        "ordem": 2,
+        "hidden": false
+      },
+      "review_status": "approved"
+    },
+    {
+      "source": {
+        "machine_number": 1,
+        "machine_details": "Machine 1",
+        "position": 3,
+        "description": "'Together We Protect', logo",
+        "orientation": "",
+        "machine_image_url": "http://locations.pennycollector.com/images/machine_1f185c9c-c86d-4ece-b9cd-6d8537b8f989.jpg",
+        "availability": "active",
+        "location_id": "277072",
+        "image_scope": "machine",
+        "review_flags": [
+          "shared_machine_photo",
+          "missing_orientation"
+        ]
+      },
+      "souvenir": {
+        "name": "Together We Protect",
+        "continent": "Europa",
+        "country": "Portugal",
+        "city": "Guia ",
+        "type": "pressed",
+        "condition": "Não Tenho",
+        "location_name": "Zoomarine",
+        "description": "'Together We Protect', logo",
+        "display_shape": "oval",
+        "image_front": "http://locations.pennycollector.com/images/machine_1f185c9c-c86d-4ece-b9cd-6d8537b8f989.jpg",
+        "image_back": "",
+        "notes": "Machine 1 · Posição 3 · Orientação não indicada · PennyCollector location 277072 · Fotografia provisória partilhada da máquina",
+        "reference_url": "http://locations.pennycollector.com/Details.aspx?location=277072#machine-1-position-3",
+        "ordem": 3,
+        "hidden": false
+      },
+      "review_status": "approved"
+    },
+    {
+      "source": {
+        "machine_number": 2,
+        "machine_details": "Machine 2",
+        "position": 1,
+        "description": "Seal over name",
+        "orientation": "",
+        "machine_image_url": "http://locations.pennycollector.com/images/machine_31844185-637e-4d79-9ba0-8cc46514f831.jpg",
+        "availability": "active",
+        "location_id": "277072",
+        "image_scope": "machine",
+        "review_flags": [
+          "shared_machine_photo",
+          "missing_orientation"
+        ]
+      },
+      "souvenir": {
+        "name": "Seal over name",
+        "continent": "Europa",
+        "country": "Portugal",
+        "city": "Guia ",
+        "type": "pressed",
+        "condition": "Não Tenho",
+        "location_name": "Zoomarine",
+        "description": "Seal over name",
+        "display_shape": "oval",
+        "image_front": "http://locations.pennycollector.com/images/machine_31844185-637e-4d79-9ba0-8cc46514f831.jpg",
+        "image_back": "",
+        "notes": "Machine 2 · Posição 1 · Orientação não indicada · PennyCollector location 277072 · Fotografia provisória partilhada da máquina",
+        "reference_url": "http://locations.pennycollector.com/Details.aspx?location=277072#machine-2-position-1",
+        "ordem": 4,
+        "hidden": false
+      },
+      "review_status": "approved"
+    },
+    {
+      "source": {
+        "machine_number": 2,
+        "machine_details": "Machine 2",
+        "position": 2,
+        "description": "Two Parrots",
+        "orientation": "",
+        "machine_image_url": "http://locations.pennycollector.com/images/machine_31844185-637e-4d79-9ba0-8cc46514f831.jpg",
+        "availability": "active",
+        "location_id": "277072",
+        "image_scope": "machine",
+        "review_flags": [
+          "shared_machine_photo",
+          "missing_orientation"
+        ]
+      },
+      "souvenir": {
+        "name": "Two Parrots",
+        "continent": "Europa",
+        "country": "Portugal",
+        "city": "Guia ",
+        "type": "pressed",
+        "condition": "Não Tenho",
+        "location_name": "Zoomarine",
+        "description": "Two Parrots",
+        "display_shape": "oval",
+        "image_front": "http://locations.pennycollector.com/images/machine_31844185-637e-4d79-9ba0-8cc46514f831.jpg",
+        "image_back": "",
+        "notes": "Machine 2 · Posição 2 · Orientação não indicada · PennyCollector location 277072 · Fotografia provisória partilhada da máquina",
+        "reference_url": "http://locations.pennycollector.com/Details.aspx?location=277072#machine-2-position-2",
+        "ordem": 5,
+        "hidden": false
+      },
+      "review_status": "approved"
+    },
+    {
+      "source": {
+        "machine_number": 2,
+        "machine_details": "Machine 2",
+        "position": 3,
+        "description": "Dolphine swimming right over name",
+        "orientation": "",
+        "machine_image_url": "http://locations.pennycollector.com/images/machine_31844185-637e-4d79-9ba0-8cc46514f831.jpg",
+        "availability": "active",
+        "location_id": "277072",
+        "image_scope": "machine",
+        "review_flags": [
+          "shared_machine_photo",
+          "missing_orientation"
+        ]
+      },
+      "souvenir": {
+        "name": "Dolphine swimming right over name",
+        "continent": "Europa",
+        "country": "Portugal",
+        "city": "Guia ",
+        "type": "pressed",
+        "condition": "Não Tenho",
+        "location_name": "Zoomarine",
+        "description": "Dolphine swimming right over name",
+        "display_shape": "oval",
+        "image_front": "http://locations.pennycollector.com/images/machine_31844185-637e-4d79-9ba0-8cc46514f831.jpg",
+        "image_back": "",
+        "notes": "Machine 2 · Posição 3 · Orientação não indicada · PennyCollector location 277072 · Fotografia provisória partilhada da máquina",
+        "reference_url": "http://locations.pennycollector.com/Details.aspx?location=277072#machine-2-position-3",
+        "ordem": 6,
+        "hidden": false
+      },
+      "review_status": "approved"
+    }
+  ],
+  "review": {
+    "approved": 6,
+    "skipped": 0,
+    "pending": 0,
+    "completed": true,
+    "updated_at": "2026-09-25T10:57:19+00:00",
+    "shared_machine_photos_accepted_as_temporary": true
+  }
+}

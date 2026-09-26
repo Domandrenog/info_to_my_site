@@ -1,0 +1,3677 @@
+{
+  "status": "pending_review",
+  "base44_updated": false,
+  "source": {
+    "site": "Presscoins",
+    "query_url": "https://www.presscoins.com/search/?availability=1&locations=Downtown&search=&limit=50&sort=catalog&cointype=All&Submit=Search&page=1",
+    "location": "Downtown",
+    "search": "",
+    "availability": "1",
+    "availability_label": "atuais / disponíveis",
+    "page_count": 3,
+    "retrieved_at": "2026-09-22T16:57:30+00:00",
+    "result_count": 122
+  },
+  "items": [
+    {
+      "source": {
+        "catalog_number": "DTD0100",
+        "location": "Disney Springs, House of Blues",
+        "description": "House of Blues logo \"HOUSE OF BLUES / ORLANDO\", block lettering",
+        "position": "1",
+        "coin_type": "Cent",
+        "orientation": "V",
+        "availability": "Current",
+        "image_url": "https://www.presscoins.com/images/coin_images/Downtown%20Disney/large/DTD0100.jpg",
+        "thumbnail_url": "https://www.presscoins.com/images/coin_images/Downtown%20Disney/small/DTD0100.gif"
+      },
+      "souvenir": {
+        "name": "House of Blues logo",
+        "continent": "América",
+        "country": "EUA",
+        "city": "Orlando",
+        "type": "pressed",
+        "condition": "Não Tenho",
+        "location_name": "Disney Springs",
+        "description": "House of Blues logo \"HOUSE OF BLUES / ORLANDO\", block lettering",
+        "display_shape": "oval",
+        "image_front": "https://www.presscoins.com/images/coin_images/Downtown%20Disney/large/DTD0100.jpg",
+        "image_back": "",
+        "notes": "House of Blues · Posição 1 · Catálogo Presscoins: DTD0100",
+        "reference_url": "https://www.presscoins.com/search/?availability=All&locations=All&search=DTD0100&limit=50&sort=catalog&cointype=All&Submit=Search&page=1",
+        "ordem": 1,
+        "hidden": false
+      }
+    },
+    {
+      "source": {
+        "catalog_number": "DTD0123",
+        "location": "Disney Springs, The Art Corner",
+        "description": "Mickey Mouse surrounded by hearts, Disney Springs logo at top",
+        "position": "1",
+        "coin_type": "Cent",
+        "orientation": "V",
+        "availability": "Current",
+        "image_url": "https://www.presscoins.com/images/coin_images/Downtown%20Disney/large/DTD0123.jpg",
+        "thumbnail_url": "https://www.presscoins.com/images/coin_images/Downtown%20Disney/small/DTD0123.gif"
+      },
+      "souvenir": {
+        "name": "Mickey Mouse",
+        "continent": "América",
+        "country": "EUA",
+        "city": "Orlando",
+        "type": "pressed",
+        "condition": "Não Tenho",
+        "location_name": "Disney Springs",
+        "description": "Mickey Mouse surrounded by hearts, Disney Springs logo at top",
+        "display_shape": "oval",
+        "image_front": "https://www.presscoins.com/images/coin_images/Downtown%20Disney/large/DTD0123.jpg",
+        "image_back": "",
+        "notes": "The Art Corner · Posição 1 · Catálogo Presscoins: DTD0123",
+        "reference_url": "https://www.presscoins.com/search/?availability=All&locations=All&search=DTD0123&limit=50&sort=catalog&cointype=All&Submit=Search&page=1",
+        "ordem": 2,
+        "hidden": false
+      }
+    },
+    {
+      "source": {
+        "catalog_number": "DTD0124",
+        "location": "Disney Springs, The Art Corner",
+        "description": "Disney Springs logo with 3 stars above and below logo",
+        "position": "2",
+        "coin_type": "Cent",
+        "orientation": "H",
+        "availability": "Current",
+        "image_url": "https://www.presscoins.com/images/coin_images/Downtown%20Disney/large/DTD0124.jpg",
+        "thumbnail_url": "https://www.presscoins.com/images/coin_images/Downtown%20Disney/small/DTD0124.gif"
+      },
+      "souvenir": {
+        "name": "Disney Springs logo",
+        "continent": "América",
+        "country": "EUA",
+        "city": "Orlando",
+        "type": "pressed",
+        "condition": "Não Tenho",
+        "location_name": "Disney Springs",
+        "description": "Disney Springs logo with 3 stars above and below logo",
+        "display_shape": "oval",
+        "image_front": "https://www.presscoins.com/images/coin_images/Downtown%20Disney/large/DTD0124.jpg",
+        "image_back": "",
+        "notes": "The Art Corner · Posição 2 · Catálogo Presscoins: DTD0124",
+        "reference_url": "https://www.presscoins.com/search/?availability=All&locations=All&search=DTD0124&limit=50&sort=catalog&cointype=All&Submit=Search&page=1",
+        "ordem": 3,
+        "hidden": false
+      }
+    },
+    {
+      "source": {
+        "catalog_number": "DTD0125",
+        "location": "Disney Springs, The Art Corner",
+        "description": "Minnie Mouse holding a heart, Disney Springs logo at top",
+        "position": "3",
+        "coin_type": "Cent",
+        "orientation": "V",
+        "availability": "Current",
+        "image_url": "https://www.presscoins.com/images/coin_images/Downtown%20Disney/large/DTD0125.jpg",
+        "thumbnail_url": "https://www.presscoins.com/images/coin_images/Downtown%20Disney/small/DTD0125.gif"
+      },
+      "souvenir": {
+        "name": "Minnie Mouse",
+        "continent": "América",
+        "country": "EUA",
+        "city": "Orlando",
+        "type": "pressed",
+        "condition": "Não Tenho",
+        "location_name": "Disney Springs",
+        "description": "Minnie Mouse holding a heart, Disney Springs logo at top",
+        "display_shape": "oval",
+        "image_front": "https://www.presscoins.com/images/coin_images/Downtown%20Disney/large/DTD0125.jpg",
+        "image_back": "",
+        "notes": "The Art Corner · Posição 3 · Catálogo Presscoins: DTD0125",
+        "reference_url": "https://www.presscoins.com/search/?availability=All&locations=All&search=DTD0125&limit=50&sort=catalog&cointype=All&Submit=Search&page=1",
+        "ordem": 4,
+        "hidden": false
+      }
+    },
+    {
+      "source": {
+        "catalog_number": "DTD0126",
+        "location": "Disney Springs, The Art Corner",
+        "description": "Goofy Surrounded by Stars, Disney Springs logo at top",
+        "position": "4",
+        "coin_type": "Cent",
+        "orientation": "V",
+        "availability": "Current",
+        "image_url": "https://www.presscoins.com/images/coin_images/Downtown%20Disney/large/DTD0126.jpg",
+        "thumbnail_url": "https://www.presscoins.com/images/coin_images/Downtown%20Disney/small/DTD0126.gif"
+      },
+      "souvenir": {
+        "name": "Goofy",
+        "continent": "América",
+        "country": "EUA",
+        "city": "Orlando",
+        "type": "pressed",
+        "condition": "Não Tenho",
+        "location_name": "Disney Springs",
+        "description": "Goofy Surrounded by Stars, Disney Springs logo at top",
+        "display_shape": "oval",
+        "image_front": "https://www.presscoins.com/images/coin_images/Downtown%20Disney/large/DTD0126.jpg",
+        "image_back": "",
+        "notes": "The Art Corner · Posição 4 · Catálogo Presscoins: DTD0126",
+        "reference_url": "https://www.presscoins.com/search/?availability=All&locations=All&search=DTD0126&limit=50&sort=catalog&cointype=All&Submit=Search&page=1",
+        "ordem": 5,
+        "hidden": false
+      }
+    },
+    {
+      "source": {
+        "catalog_number": "EPC0155-DTD0115",
+        "location": "Disney Springs, Once Upon A Toy #2",
+        "description": "Elsa in front of Elsa's Ice Palace surrounded by large snowflakes, Disney Frozen logo, \"Series 1 of 8\"",
+        "position": "1",
+        "coin_type": "Cent",
+        "orientation": "V",
+        "availability": "Current",
+        "image_url": "https://www.presscoins.com/images/coin_images/Downtown%20Disney/large/EPC0155-DTD0115.jpg",
+        "thumbnail_url": "https://www.presscoins.com/images/coin_images/Downtown%20Disney/small/EPC0155-DTD0115.gif"
+      },
+      "souvenir": {
+        "name": "Elsa",
+        "continent": "América",
+        "country": "EUA",
+        "city": "Orlando",
+        "type": "pressed",
+        "condition": "Não Tenho",
+        "location_name": "Disney Springs",
+        "description": "Elsa in front of Elsa's Ice Palace surrounded by large snowflakes, Disney Frozen logo, \"Series 1 of 8\"",
+        "display_shape": "oval",
+        "image_front": "https://www.presscoins.com/images/coin_images/Downtown%20Disney/large/EPC0155-DTD0115.jpg",
+        "image_back": "",
+        "notes": "Once Upon A Toy #2 · Posição 1 · Catálogo Presscoins: EPC0155-DTD0115",
+        "reference_url": "https://www.presscoins.com/search/?availability=All&locations=All&search=EPC0155-DTD0115&limit=50&sort=catalog&cointype=All&Submit=Search&page=1",
+        "ordem": 6,
+        "hidden": false
+      }
+    },
+    {
+      "source": {
+        "catalog_number": "EPC0156-DTD0116",
+        "location": "Disney Springs, Once Upon A Toy #2",
+        "description": "Elsa & Anna looking down at and touching a large snowflake, Disney Frozen logo, \"Series 2 of 8\"",
+        "position": "2",
+        "coin_type": "Cent",
+        "orientation": "V",
+        "availability": "Current",
+        "image_url": "https://www.presscoins.com/images/coin_images/Downtown%20Disney/large/EPC0156-DTD0116.jpg",
+        "thumbnail_url": "https://www.presscoins.com/images/coin_images/Downtown%20Disney/small/EPC0156-DTD0116.gif"
+      },
+      "souvenir": {
+        "name": "Elsa & Anna",
+        "continent": "América",
+        "country": "EUA",
+        "city": "Orlando",
+        "type": "pressed",
+        "condition": "Não Tenho",
+        "location_name": "Disney Springs",
+        "description": "Elsa & Anna looking down at and touching a large snowflake, Disney Frozen logo, \"Series 2 of 8\"",
+        "display_shape": "oval",
+        "image_front": "https://www.presscoins.com/images/coin_images/Downtown%20Disney/large/EPC0156-DTD0116.jpg",
+        "image_back": "",
+        "notes": "Once Upon A Toy #2 · Posição 2 · Catálogo Presscoins: EPC0156-DTD0116",
+        "reference_url": "https://www.presscoins.com/search/?availability=All&locations=All&search=EPC0156-DTD0116&limit=50&sort=catalog&cointype=All&Submit=Search&page=1",
+        "ordem": 7,
+        "hidden": false
+      }
+    },
+    {
+      "source": {
+        "catalog_number": "EPC0157-DTD0117",
+        "location": "Disney Springs, Once Upon A Toy #2",
+        "description": "Elsa & Anna facing each other with foreheads touching, Disney Frozen logo, \"Series 3 of 8\"",
+        "position": "3",
+        "coin_type": "Cent",
+        "orientation": "V",
+        "availability": "Current",
+        "image_url": "https://www.presscoins.com/images/coin_images/Downtown%20Disney/large/EPC0157-DTD0117.jpg",
+        "thumbnail_url": "https://www.presscoins.com/images/coin_images/Downtown%20Disney/small/EPC0157-DTD0117.gif"
+      },
+      "souvenir": {
+        "name": "Elsa & Anna",
+        "continent": "América",
+        "country": "EUA",
+        "city": "Orlando",
+        "type": "pressed",
+        "condition": "Não Tenho",
+        "location_name": "Disney Springs",
+        "description": "Elsa & Anna facing each other with foreheads touching, Disney Frozen logo, \"Series 3 of 8\"",
+        "display_shape": "oval",
+        "image_front": "https://www.presscoins.com/images/coin_images/Downtown%20Disney/large/EPC0157-DTD0117.jpg",
+        "image_back": "",
+        "notes": "Once Upon A Toy #2 · Posição 3 · Catálogo Presscoins: EPC0157-DTD0117",
+        "reference_url": "https://www.presscoins.com/search/?availability=All&locations=All&search=EPC0157-DTD0117&limit=50&sort=catalog&cointype=All&Submit=Search&page=1",
+        "ordem": 8,
+        "hidden": false
+      }
+    },
+    {
+      "source": {
+        "catalog_number": "EPC0158-DTD0118",
+        "location": "Disney Springs, Once Upon A Toy #2",
+        "description": "Anna, Disney Frozen logo, \"ANNA / Series 4 of 8\"",
+        "position": "4",
+        "coin_type": "Cent",
+        "orientation": "V",
+        "availability": "Current",
+        "image_url": "https://www.presscoins.com/images/coin_images/Downtown%20Disney/large/EPC0158-DTD0118.jpg",
+        "thumbnail_url": "https://www.presscoins.com/images/coin_images/Downtown%20Disney/small/EPC0158-DTD0118.gif"
+      },
+      "souvenir": {
+        "name": "Anna",
+        "continent": "América",
+        "country": "EUA",
+        "city": "Orlando",
+        "type": "pressed",
+        "condition": "Não Tenho",
+        "location_name": "Disney Springs",
+        "description": "Anna, Disney Frozen logo, \"ANNA / Series 4 of 8\"",
+        "display_shape": "oval",
+        "image_front": "https://www.presscoins.com/images/coin_images/Downtown%20Disney/large/EPC0158-DTD0118.jpg",
+        "image_back": "",
+        "notes": "Once Upon A Toy #2 · Posição 4 · Catálogo Presscoins: EPC0158-DTD0118",
+        "reference_url": "https://www.presscoins.com/search/?availability=All&locations=All&search=EPC0158-DTD0118&limit=50&sort=catalog&cointype=All&Submit=Search&page=1",
+        "ordem": 9,
+        "hidden": false
+      }
+    },
+    {
+      "source": {
+        "catalog_number": "EPC0159-DTD0119",
+        "location": "Disney Springs, Once Upon A Toy #2",
+        "description": "Anna in front of Elsa's Ice Palace surrounded by large snowflakes, Disney Frozen logo, \"Series 5 of 8\"",
+        "position": "5",
+        "coin_type": "Cent",
+        "orientation": "V",
+        "availability": "Current",
+        "image_url": "https://www.presscoins.com/images/coin_images/Downtown%20Disney/large/EPC0159-DTD0119.jpg",
+        "thumbnail_url": "https://www.presscoins.com/images/coin_images/Downtown%20Disney/small/EPC0159-DTD0119.gif"
+      },
+      "souvenir": {
+        "name": "Anna",
+        "continent": "América",
+        "country": "EUA",
+        "city": "Orlando",
+        "type": "pressed",
+        "condition": "Não Tenho",
+        "location_name": "Disney Springs",
+        "description": "Anna in front of Elsa's Ice Palace surrounded by large snowflakes, Disney Frozen logo, \"Series 5 of 8\"",
+        "display_shape": "oval",
+        "image_front": "https://www.presscoins.com/images/coin_images/Downtown%20Disney/large/EPC0159-DTD0119.jpg",
+        "image_back": "",
+        "notes": "Once Upon A Toy #2 · Posição 5 · Catálogo Presscoins: EPC0159-DTD0119",
+        "reference_url": "https://www.presscoins.com/search/?availability=All&locations=All&search=EPC0159-DTD0119&limit=50&sort=catalog&cointype=All&Submit=Search&page=1",
+        "ordem": 10,
+        "hidden": false
+      }
+    },
+    {
+      "source": {
+        "catalog_number": "EPC0160-DTD0120",
+        "location": "Disney Springs, Once Upon A Toy #2",
+        "description": "Elsa holding a large snowflake, Disney Frozen logo, \"ELSA / Series 6 of 8\"",
+        "position": "6",
+        "coin_type": "Cent",
+        "orientation": "V",
+        "availability": "Current",
+        "image_url": "https://www.presscoins.com/images/coin_images/Downtown%20Disney/large/EPC0160-DTD0120.jpg",
+        "thumbnail_url": "https://www.presscoins.com/images/coin_images/Downtown%20Disney/small/EPC0160-DTD0120.gif"
+      },
+      "souvenir": {
+        "name": "Elsa",
+        "continent": "América",
+        "country": "EUA",
+        "city": "Orlando",
+        "type": "pressed",
+        "condition": "Não Tenho",
+        "location_name": "Disney Springs",
+        "description": "Elsa holding a large snowflake, Disney Frozen logo, \"ELSA / Series 6 of 8\"",
+        "display_shape": "oval",
+        "image_front": "https://www.presscoins.com/images/coin_images/Downtown%20Disney/large/EPC0160-DTD0120.jpg",
+        "image_back": "",
+        "notes": "Once Upon A Toy #2 · Posição 6 · Catálogo Presscoins: EPC0160-DTD0120",
+        "reference_url": "https://www.presscoins.com/search/?availability=All&locations=All&search=EPC0160-DTD0120&limit=50&sort=catalog&cointype=All&Submit=Search&page=1",
+        "ordem": 11,
+        "hidden": false
+      }
+    },
+    {
+      "source": {
+        "catalog_number": "EPC0161-DTD0121",
+        "location": "Disney Springs, Once Upon A Toy #2",
+        "description": "Olaf with arms outstretched beside a flower with bees buzzing around, Disney Frozen logo, \"Series 7 of 8\"",
+        "position": "7",
+        "coin_type": "Cent",
+        "orientation": "V",
+        "availability": "Current",
+        "image_url": "https://www.presscoins.com/images/coin_images/Downtown%20Disney/large/EPC0161-DTD0121.jpg",
+        "thumbnail_url": "https://www.presscoins.com/images/coin_images/Downtown%20Disney/small/EPC0161-DTD0121.gif"
+      },
+      "souvenir": {
+        "name": "Olaf",
+        "continent": "América",
+        "country": "EUA",
+        "city": "Orlando",
+        "type": "pressed",
+        "condition": "Não Tenho",
+        "location_name": "Disney Springs",
+        "description": "Olaf with arms outstretched beside a flower with bees buzzing around, Disney Frozen logo, \"Series 7 of 8\"",
+        "display_shape": "oval",
+        "image_front": "https://www.presscoins.com/images/coin_images/Downtown%20Disney/large/EPC0161-DTD0121.jpg",
+        "image_back": "",
+        "notes": "Once Upon A Toy #2 · Posição 7 · Catálogo Presscoins: EPC0161-DTD0121",
+        "reference_url": "https://www.presscoins.com/search/?availability=All&locations=All&search=EPC0161-DTD0121&limit=50&sort=catalog&cointype=All&Submit=Search&page=1",
+        "ordem": 12,
+        "hidden": false
+      }
+    },
+    {
+      "source": {
+        "catalog_number": "EPC0162-DTD0122",
+        "location": "Disney Springs, Once Upon A Toy #2",
+        "description": "Kristoff & Sven, Disney Frozen logo, \"Series 8 of 8\"",
+        "position": "8",
+        "coin_type": "Cent",
+        "orientation": "V",
+        "availability": "Current",
+        "image_url": "https://www.presscoins.com/images/coin_images/Downtown%20Disney/large/EPC0162-DTD0122.jpg",
+        "thumbnail_url": "https://www.presscoins.com/images/coin_images/Downtown%20Disney/small/EPC0162-DTD0122.gif"
+      },
+      "souvenir": {
+        "name": "Kristoff & Sven",
+        "continent": "América",
+        "country": "EUA",
+        "city": "Orlando",
+        "type": "pressed",
+        "condition": "Não Tenho",
+        "location_name": "Disney Springs",
+        "description": "Kristoff & Sven, Disney Frozen logo, \"Series 8 of 8\"",
+        "display_shape": "oval",
+        "image_front": "https://www.presscoins.com/images/coin_images/Downtown%20Disney/large/EPC0162-DTD0122.jpg",
+        "image_back": "",
+        "notes": "Once Upon A Toy #2 · Posição 8 · Catálogo Presscoins: EPC0162-DTD0122",
+        "reference_url": "https://www.presscoins.com/search/?availability=All&locations=All&search=EPC0162-DTD0122&limit=50&sort=catalog&cointype=All&Submit=Search&page=1",
+        "ordem": 13,
+        "hidden": false
+      }
+    },
+    {
+      "source": {
+        "catalog_number": "MGM0073",
+        "location": "Disney Springs, Disney's Pin Traders #4",
+        "description": "Classic Mickey Mouse with hands behind his back, (NOTE: Design was at Hollywood Studios Pizza Planet in a 3-die hand crank machine. Off-Stage for about a year and placed on-stage at Disney Springs Pin Traders February 22, 2017 in a 3-die electric machine)",
+        "position": "1",
+        "coin_type": "Cent",
+        "orientation": "V",
+        "availability": "Current",
+        "image_url": "https://www.presscoins.com/images/coin_images/Downtown%20Disney/large/MGM0073.jpg",
+        "thumbnail_url": "https://www.presscoins.com/images/coin_images/Downtown%20Disney/small/MGM0073.gif"
+      },
+      "souvenir": {
+        "name": "Classic Mickey Mouse",
+        "continent": "América",
+        "country": "EUA",
+        "city": "Orlando",
+        "type": "pressed",
+        "condition": "Não Tenho",
+        "location_name": "Disney Springs",
+        "description": "Classic Mickey Mouse with hands behind his back, (NOTE: Design was at Hollywood Studios Pizza Planet in a 3-die hand crank machine. Off-Stage for about a year and placed on-stage at Disney Springs Pin Traders February 22, 2017 in a 3-die electric machine)",
+        "display_shape": "oval",
+        "image_front": "https://www.presscoins.com/images/coin_images/Downtown%20Disney/large/MGM0073.jpg",
+        "image_back": "",
+        "notes": "Disney's Pin Traders #4 · Posição 1 · Catálogo Presscoins: MGM0073",
+        "reference_url": "https://www.presscoins.com/search/?availability=All&locations=All&search=MGM0073&limit=50&sort=catalog&cointype=All&Submit=Search&page=1",
+        "ordem": 14,
+        "hidden": false
+      }
+    },
+    {
+      "source": {
+        "catalog_number": "WDW16023",
+        "location": "Disney Springs, Marvel Super Hero Headquarters",
+        "description": "Iron Man \"MARVEL AVENGERS\" logo, \"1 of 8 / ©MARVEL\"",
+        "position": "1",
+        "coin_type": "Cent",
+        "orientation": "V",
+        "availability": "Current",
+        "image_url": "https://www.presscoins.com/images/coin_images/Downtown%20Disney/large/WDW16023.jpg",
+        "thumbnail_url": "https://www.presscoins.com/images/coin_images/Downtown%20Disney/small/WDW16023.gif"
+      },
+      "souvenir": {
+        "name": "Iron Man",
+        "continent": "América",
+        "country": "EUA",
+        "city": "Orlando",
+        "type": "pressed",
+        "condition": "Não Tenho",
+        "location_name": "Disney Springs",
+        "description": "Iron Man \"MARVEL AVENGERS\" logo, \"1 of 8 / ©MARVEL\"",
+        "display_shape": "oval",
+        "image_front": "https://www.presscoins.com/images/coin_images/Downtown%20Disney/large/WDW16023.jpg",
+        "image_back": "",
+        "notes": "Marvel Super Hero Headquarters · Posição 1 · Catálogo Presscoins: WDW16023",
+        "reference_url": "https://www.presscoins.com/search/?availability=All&locations=All&search=WDW16023&limit=50&sort=catalog&cointype=All&Submit=Search&page=1",
+        "ordem": 15,
+        "hidden": false
+      }
+    },
+    {
+      "source": {
+        "catalog_number": "WDW16024",
+        "location": "Disney Springs, Marvel Super Hero Headquarters",
+        "description": "Hulk \"MARVEL AVENGERS\" logo, \"2 of 8 / ©MARVEL\"",
+        "position": "2",
+        "coin_type": "Cent",
+        "orientation": "V",
+        "availability": "Current",
+        "image_url": "https://www.presscoins.com/images/coin_images/Downtown%20Disney/large/WDW16024.jpg",
+        "thumbnail_url": "https://www.presscoins.com/images/coin_images/Downtown%20Disney/small/WDW16024.gif"
+      },
+      "souvenir": {
+        "name": "Hulk",
+        "continent": "América",
+        "country": "EUA",
+        "city": "Orlando",
+        "type": "pressed",
+        "condition": "Não Tenho",
+        "location_name": "Disney Springs",
+        "description": "Hulk \"MARVEL AVENGERS\" logo, \"2 of 8 / ©MARVEL\"",
+        "display_shape": "oval",
+        "image_front": "https://www.presscoins.com/images/coin_images/Downtown%20Disney/large/WDW16024.jpg",
+        "image_back": "",
+        "notes": "Marvel Super Hero Headquarters · Posição 2 · Catálogo Presscoins: WDW16024",
+        "reference_url": "https://www.presscoins.com/search/?availability=All&locations=All&search=WDW16024&limit=50&sort=catalog&cointype=All&Submit=Search&page=1",
+        "ordem": 16,
+        "hidden": false
+      }
+    },
+    {
+      "source": {
+        "catalog_number": "WDW16025",
+        "location": "Disney Springs, Marvel Super Hero Headquarters",
+        "description": "Captain America \"MARVEL AVENGERS\" logo, \"3 of 8 / ©MARVEL\"",
+        "position": "3",
+        "coin_type": "Cent",
+        "orientation": "V",
+        "availability": "Current",
+        "image_url": "https://www.presscoins.com/images/coin_images/Downtown%20Disney/large/WDW16025.jpg",
+        "thumbnail_url": "https://www.presscoins.com/images/coin_images/Downtown%20Disney/small/WDW16025.gif"
+      },
+      "souvenir": {
+        "name": "Captain America",
+        "continent": "América",
+        "country": "EUA",
+        "city": "Orlando",
+        "type": "pressed",
+        "condition": "Não Tenho",
+        "location_name": "Disney Springs",
+        "description": "Captain America \"MARVEL AVENGERS\" logo, \"3 of 8 / ©MARVEL\"",
+        "display_shape": "oval",
+        "image_front": "https://www.presscoins.com/images/coin_images/Downtown%20Disney/large/WDW16025.jpg",
+        "image_back": "",
+        "notes": "Marvel Super Hero Headquarters · Posição 3 · Catálogo Presscoins: WDW16025",
+        "reference_url": "https://www.presscoins.com/search/?availability=All&locations=All&search=WDW16025&limit=50&sort=catalog&cointype=All&Submit=Search&page=1",
+        "ordem": 17,
+        "hidden": false
+      }
+    },
+    {
+      "source": {
+        "catalog_number": "WDW16026",
+        "location": "Disney Springs, Marvel Super Hero Headquarters",
+        "description": "Thor \"MARVEL AVENGERS\" logo, \"4 of 8 / ©MARVEL\"",
+        "position": "4",
+        "coin_type": "Cent",
+        "orientation": "V",
+        "availability": "Current",
+        "image_url": "https://www.presscoins.com/images/coin_images/Downtown%20Disney/large/WDW16026.jpg",
+        "thumbnail_url": "https://www.presscoins.com/images/coin_images/Downtown%20Disney/small/WDW16026.gif"
+      },
+      "souvenir": {
+        "name": "Thor",
+        "continent": "América",
+        "country": "EUA",
+        "city": "Orlando",
+        "type": "pressed",
+        "condition": "Não Tenho",
+        "location_name": "Disney Springs",
+        "description": "Thor \"MARVEL AVENGERS\" logo, \"4 of 8 / ©MARVEL\"",
+        "display_shape": "oval",
+        "image_front": "https://www.presscoins.com/images/coin_images/Downtown%20Disney/large/WDW16026.jpg",
+        "image_back": "",
+        "notes": "Marvel Super Hero Headquarters · Posição 4 · Catálogo Presscoins: WDW16026",
+        "reference_url": "https://www.presscoins.com/search/?availability=All&locations=All&search=WDW16026&limit=50&sort=catalog&cointype=All&Submit=Search&page=1",
+        "ordem": 18,
+        "hidden": false
+      }
+    },
+    {
+      "source": {
+        "catalog_number": "WDW16027",
+        "location": "Disney Springs, Marvel Super Hero Headquarters",
+        "description": "Hawkeye \"MARVEL AVENGERS\" logo, \"5 of 8 / ©MARVEL\"",
+        "position": "5",
+        "coin_type": "Cent",
+        "orientation": "V",
+        "availability": "Current",
+        "image_url": "https://www.presscoins.com/images/coin_images/Downtown%20Disney/large/WDW16027.jpg",
+        "thumbnail_url": "https://www.presscoins.com/images/coin_images/Downtown%20Disney/small/WDW16027.gif"
+      },
+      "souvenir": {
+        "name": "Hawkeye",
+        "continent": "América",
+        "country": "EUA",
+        "city": "Orlando",
+        "type": "pressed",
+        "condition": "Não Tenho",
+        "location_name": "Disney Springs",
+        "description": "Hawkeye \"MARVEL AVENGERS\" logo, \"5 of 8 / ©MARVEL\"",
+        "display_shape": "oval",
+        "image_front": "https://www.presscoins.com/images/coin_images/Downtown%20Disney/large/WDW16027.jpg",
+        "image_back": "",
+        "notes": "Marvel Super Hero Headquarters · Posição 5 · Catálogo Presscoins: WDW16027",
+        "reference_url": "https://www.presscoins.com/search/?availability=All&locations=All&search=WDW16027&limit=50&sort=catalog&cointype=All&Submit=Search&page=1",
+        "ordem": 19,
+        "hidden": false
+      }
+    },
+    {
+      "source": {
+        "catalog_number": "WDW16028",
+        "location": "Disney Springs, Marvel Super Hero Headquarters",
+        "description": "Black Widow \"MARVEL AVENGERS\" logo, \"6 of 8 / ©MARVEL\"",
+        "position": "6",
+        "coin_type": "Cent",
+        "orientation": "V",
+        "availability": "Current",
+        "image_url": "https://www.presscoins.com/images/coin_images/Downtown%20Disney/large/WDW16028.jpg",
+        "thumbnail_url": "https://www.presscoins.com/images/coin_images/Downtown%20Disney/small/WDW16028.gif"
+      },
+      "souvenir": {
+        "name": "Black Widow",
+        "continent": "América",
+        "country": "EUA",
+        "city": "Orlando",
+        "type": "pressed",
+        "condition": "Não Tenho",
+        "location_name": "Disney Springs",
+        "description": "Black Widow \"MARVEL AVENGERS\" logo, \"6 of 8 / ©MARVEL\"",
+        "display_shape": "oval",
+        "image_front": "https://www.presscoins.com/images/coin_images/Downtown%20Disney/large/WDW16028.jpg",
+        "image_back": "",
+        "notes": "Marvel Super Hero Headquarters · Posição 6 · Catálogo Presscoins: WDW16028",
+        "reference_url": "https://www.presscoins.com/search/?availability=All&locations=All&search=WDW16028&limit=50&sort=catalog&cointype=All&Submit=Search&page=1",
+        "ordem": 20,
+        "hidden": false
+      }
+    },
+    {
+      "source": {
+        "catalog_number": "WDW16029",
+        "location": "Disney Springs, Marvel Super Hero Headquarters",
+        "description": "\"MARVEL AVENGERS\" logo, \"7 of 8 / ©MARVEL\"",
+        "position": "7",
+        "coin_type": "Cent",
+        "orientation": "H",
+        "availability": "Current",
+        "image_url": "https://www.presscoins.com/images/coin_images/Downtown%20Disney/large/WDW16029.jpg",
+        "thumbnail_url": "https://www.presscoins.com/images/coin_images/Downtown%20Disney/small/WDW16029.gif"
+      },
+      "souvenir": {
+        "name": "\"MARVEL AVENGERS\" logo",
+        "continent": "América",
+        "country": "EUA",
+        "city": "Orlando",
+        "type": "pressed",
+        "condition": "Não Tenho",
+        "location_name": "Disney Springs",
+        "description": "\"MARVEL AVENGERS\" logo, \"7 of 8 / ©MARVEL\"",
+        "display_shape": "oval",
+        "image_front": "https://www.presscoins.com/images/coin_images/Downtown%20Disney/large/WDW16029.jpg",
+        "image_back": "",
+        "notes": "Marvel Super Hero Headquarters · Posição 7 · Catálogo Presscoins: WDW16029",
+        "reference_url": "https://www.presscoins.com/search/?availability=All&locations=All&search=WDW16029&limit=50&sort=catalog&cointype=All&Submit=Search&page=1",
+        "ordem": 21,
+        "hidden": false
+      }
+    },
+    {
+      "source": {
+        "catalog_number": "WDW16030",
+        "location": "Disney Springs, Marvel Super Hero Headquarters",
+        "description": "Loki \"MARVEL AVENGERS\" logo, \"8 of 8 / ©MARVEL\"",
+        "position": "8",
+        "coin_type": "Cent",
+        "orientation": "V",
+        "availability": "Current",
+        "image_url": "https://www.presscoins.com/images/coin_images/Downtown%20Disney/large/WDW16030.jpg",
+        "thumbnail_url": "https://www.presscoins.com/images/coin_images/Downtown%20Disney/small/WDW16030.gif"
+      },
+      "souvenir": {
+        "name": "Loki",
+        "continent": "América",
+        "country": "EUA",
+        "city": "Orlando",
+        "type": "pressed",
+        "condition": "Não Tenho",
+        "location_name": "Disney Springs",
+        "description": "Loki \"MARVEL AVENGERS\" logo, \"8 of 8 / ©MARVEL\"",
+        "display_shape": "oval",
+        "image_front": "https://www.presscoins.com/images/coin_images/Downtown%20Disney/large/WDW16030.jpg",
+        "image_back": "",
+        "notes": "Marvel Super Hero Headquarters · Posição 8 · Catálogo Presscoins: WDW16030",
+        "reference_url": "https://www.presscoins.com/search/?availability=All&locations=All&search=WDW16030&limit=50&sort=catalog&cointype=All&Submit=Search&page=1",
+        "ordem": 22,
+        "hidden": false
+      }
+    },
+    {
+      "source": {
+        "catalog_number": "WDW16045",
+        "location": "Disney Springs, Star Wars Galactic Outpost",
+        "description": "X-Wing Starfighter, Star Wars logo, ©LFL",
+        "position": "1",
+        "coin_type": "Cent",
+        "orientation": "H",
+        "availability": "Current",
+        "image_url": "https://www.presscoins.com/images/coin_images/Downtown%20Disney/large/WDW16045.jpg",
+        "thumbnail_url": "https://www.presscoins.com/images/coin_images/Downtown%20Disney/small/WDW16045.gif"
+      },
+      "souvenir": {
+        "name": "X-Wing Starfighter",
+        "continent": "América",
+        "country": "EUA",
+        "city": "Orlando",
+        "type": "pressed",
+        "condition": "Não Tenho",
+        "location_name": "Disney Springs",
+        "description": "X-Wing Starfighter, Star Wars logo, ©LFL",
+        "display_shape": "oval",
+        "image_front": "https://www.presscoins.com/images/coin_images/Downtown%20Disney/large/WDW16045.jpg",
+        "image_back": "",
+        "notes": "Star Wars Galactic Outpost · Posição 1 · Catálogo Presscoins: WDW16045",
+        "reference_url": "https://www.presscoins.com/search/?availability=All&locations=All&search=WDW16045&limit=50&sort=catalog&cointype=All&Submit=Search&page=1",
+        "ordem": 23,
+        "hidden": false
+      }
+    },
+    {
+      "source": {
+        "catalog_number": "WDW16046",
+        "location": "Disney Springs, Star Wars Galactic Outpost",
+        "description": "Stormtrooper, Star Wars logo, ©LFL",
+        "position": "2",
+        "coin_type": "Cent",
+        "orientation": "V",
+        "availability": "Current",
+        "image_url": "https://www.presscoins.com/images/coin_images/Downtown%20Disney/large/WDW16046.jpg",
+        "thumbnail_url": "https://www.presscoins.com/images/coin_images/Downtown%20Disney/small/WDW16046.gif"
+      },
+      "souvenir": {
+        "name": "Stormtrooper",
+        "continent": "América",
+        "country": "EUA",
+        "city": "Orlando",
+        "type": "pressed",
+        "condition": "Não Tenho",
+        "location_name": "Disney Springs",
+        "description": "Stormtrooper, Star Wars logo, ©LFL",
+        "display_shape": "oval",
+        "image_front": "https://www.presscoins.com/images/coin_images/Downtown%20Disney/large/WDW16046.jpg",
+        "image_back": "",
+        "notes": "Star Wars Galactic Outpost · Posição 2 · Catálogo Presscoins: WDW16046",
+        "reference_url": "https://www.presscoins.com/search/?availability=All&locations=All&search=WDW16046&limit=50&sort=catalog&cointype=All&Submit=Search&page=1",
+        "ordem": 24,
+        "hidden": false
+      }
+    },
+    {
+      "source": {
+        "catalog_number": "WDW16047",
+        "location": "Disney Springs, Star Wars Galactic Outpost",
+        "description": "C-3PO, BB-8 and R2-D2, Star Wars logo, ©LFL",
+        "position": "3",
+        "coin_type": "Cent",
+        "orientation": "V",
+        "availability": "Current",
+        "image_url": "https://www.presscoins.com/images/coin_images/Downtown%20Disney/large/WDW16047.jpg",
+        "thumbnail_url": "https://www.presscoins.com/images/coin_images/Downtown%20Disney/small/WDW16047.gif"
+      },
+      "souvenir": {
+        "name": "C-3PO",
+        "continent": "América",
+        "country": "EUA",
+        "city": "Orlando",
+        "type": "pressed",
+        "condition": "Não Tenho",
+        "location_name": "Disney Springs",
+        "description": "C-3PO, BB-8 and R2-D2, Star Wars logo, ©LFL",
+        "display_shape": "oval",
+        "image_front": "https://www.presscoins.com/images/coin_images/Downtown%20Disney/large/WDW16047.jpg",
+        "image_back": "",
+        "notes": "Star Wars Galactic Outpost · Posição 3 · Catálogo Presscoins: WDW16047",
+        "reference_url": "https://www.presscoins.com/search/?availability=All&locations=All&search=WDW16047&limit=50&sort=catalog&cointype=All&Submit=Search&page=1",
+        "ordem": 25,
+        "hidden": false
+      }
+    },
+    {
+      "source": {
+        "catalog_number": "WDW16048",
+        "location": "Disney Springs, Star Wars Galactic Outpost",
+        "description": "Millennium Falcon, Star Wars logo, ©LFL",
+        "position": "4",
+        "coin_type": "Cent",
+        "orientation": "H",
+        "availability": "Current",
+        "image_url": "https://www.presscoins.com/images/coin_images/Downtown%20Disney/large/WDW16048.jpg",
+        "thumbnail_url": "https://www.presscoins.com/images/coin_images/Downtown%20Disney/small/WDW16048.gif"
+      },
+      "souvenir": {
+        "name": "Millennium Falcon",
+        "continent": "América",
+        "country": "EUA",
+        "city": "Orlando",
+        "type": "pressed",
+        "condition": "Não Tenho",
+        "location_name": "Disney Springs",
+        "description": "Millennium Falcon, Star Wars logo, ©LFL",
+        "display_shape": "oval",
+        "image_front": "https://www.presscoins.com/images/coin_images/Downtown%20Disney/large/WDW16048.jpg",
+        "image_back": "",
+        "notes": "Star Wars Galactic Outpost · Posição 4 · Catálogo Presscoins: WDW16048",
+        "reference_url": "https://www.presscoins.com/search/?availability=All&locations=All&search=WDW16048&limit=50&sort=catalog&cointype=All&Submit=Search&page=1",
+        "ordem": 26,
+        "hidden": false
+      }
+    },
+    {
+      "source": {
+        "catalog_number": "WDW16049",
+        "location": "Disney Springs, Star Wars Galactic Outpost",
+        "description": "Stormtrooper mask with \"POWER\" in large letters at top and \"FIRST ORDER\" below mask, Star Wars logo, ©LFL",
+        "position": "5",
+        "coin_type": "Cent",
+        "orientation": "V",
+        "availability": "Current",
+        "image_url": "https://www.presscoins.com/images/coin_images/Downtown%20Disney/large/WDW16049.jpg",
+        "thumbnail_url": "https://www.presscoins.com/images/coin_images/Downtown%20Disney/small/WDW16049.gif"
+      },
+      "souvenir": {
+        "name": "Stormtrooper mask",
+        "continent": "América",
+        "country": "EUA",
+        "city": "Orlando",
+        "type": "pressed",
+        "condition": "Não Tenho",
+        "location_name": "Disney Springs",
+        "description": "Stormtrooper mask with \"POWER\" in large letters at top and \"FIRST ORDER\" below mask, Star Wars logo, ©LFL",
+        "display_shape": "oval",
+        "image_front": "https://www.presscoins.com/images/coin_images/Downtown%20Disney/large/WDW16049.jpg",
+        "image_back": "",
+        "notes": "Star Wars Galactic Outpost · Posição 5 · Catálogo Presscoins: WDW16049",
+        "reference_url": "https://www.presscoins.com/search/?availability=All&locations=All&search=WDW16049&limit=50&sort=catalog&cointype=All&Submit=Search&page=1",
+        "ordem": 27,
+        "hidden": false
+      }
+    },
+    {
+      "source": {
+        "catalog_number": "WDW16050",
+        "location": "Disney Springs, Star Wars Galactic Outpost",
+        "description": "Justice Rebel Forces shield, Star Wars logo, ©LFL",
+        "position": "6",
+        "coin_type": "Cent",
+        "orientation": "V",
+        "availability": "Current",
+        "image_url": "https://www.presscoins.com/images/coin_images/Downtown%20Disney/large/WDW16050.jpg",
+        "thumbnail_url": "https://www.presscoins.com/images/coin_images/Downtown%20Disney/small/WDW16050.gif"
+      },
+      "souvenir": {
+        "name": "Justice Rebel Forces shield",
+        "continent": "América",
+        "country": "EUA",
+        "city": "Orlando",
+        "type": "pressed",
+        "condition": "Não Tenho",
+        "location_name": "Disney Springs",
+        "description": "Justice Rebel Forces shield, Star Wars logo, ©LFL",
+        "display_shape": "oval",
+        "image_front": "https://www.presscoins.com/images/coin_images/Downtown%20Disney/large/WDW16050.jpg",
+        "image_back": "",
+        "notes": "Star Wars Galactic Outpost · Posição 6 · Catálogo Presscoins: WDW16050",
+        "reference_url": "https://www.presscoins.com/search/?availability=All&locations=All&search=WDW16050&limit=50&sort=catalog&cointype=All&Submit=Search&page=1",
+        "ordem": 28,
+        "hidden": false
+      }
+    },
+    {
+      "source": {
+        "catalog_number": "WDW16051",
+        "location": "Disney Springs, Star Wars Galactic Outpost",
+        "description": "Kylo Ren with two Stormtroopers standing in the background, Star Wars logo, ©LFL",
+        "position": "7",
+        "coin_type": "Cent",
+        "orientation": "V",
+        "availability": "Current",
+        "image_url": "https://www.presscoins.com/images/coin_images/Downtown%20Disney/large/WDW16051.jpg",
+        "thumbnail_url": "https://www.presscoins.com/images/coin_images/Downtown%20Disney/small/WDW16051.gif"
+      },
+      "souvenir": {
+        "name": "Kylo Ren",
+        "continent": "América",
+        "country": "EUA",
+        "city": "Orlando",
+        "type": "pressed",
+        "condition": "Não Tenho",
+        "location_name": "Disney Springs",
+        "description": "Kylo Ren with two Stormtroopers standing in the background, Star Wars logo, ©LFL",
+        "display_shape": "oval",
+        "image_front": "https://www.presscoins.com/images/coin_images/Downtown%20Disney/large/WDW16051.jpg",
+        "image_back": "",
+        "notes": "Star Wars Galactic Outpost · Posição 7 · Catálogo Presscoins: WDW16051",
+        "reference_url": "https://www.presscoins.com/search/?availability=All&locations=All&search=WDW16051&limit=50&sort=catalog&cointype=All&Submit=Search&page=1",
+        "ordem": 29,
+        "hidden": false
+      }
+    },
+    {
+      "source": {
+        "catalog_number": "WDW16052",
+        "location": "Disney Springs, Star Wars Galactic Outpost",
+        "description": "Han Solo, Star Wars logo, ©LFL",
+        "position": "8",
+        "coin_type": "Cent",
+        "orientation": "V",
+        "availability": "Current",
+        "image_url": "https://www.presscoins.com/images/coin_images/Downtown%20Disney/large/WDW16052.jpg",
+        "thumbnail_url": "https://www.presscoins.com/images/coin_images/Downtown%20Disney/small/WDW16052.gif"
+      },
+      "souvenir": {
+        "name": "Han Solo",
+        "continent": "América",
+        "country": "EUA",
+        "city": "Orlando",
+        "type": "pressed",
+        "condition": "Não Tenho",
+        "location_name": "Disney Springs",
+        "description": "Han Solo, Star Wars logo, ©LFL",
+        "display_shape": "oval",
+        "image_front": "https://www.presscoins.com/images/coin_images/Downtown%20Disney/large/WDW16052.jpg",
+        "image_back": "",
+        "notes": "Star Wars Galactic Outpost · Posição 8 · Catálogo Presscoins: WDW16052",
+        "reference_url": "https://www.presscoins.com/search/?availability=All&locations=All&search=WDW16052&limit=50&sort=catalog&cointype=All&Submit=Search&page=1",
+        "ordem": 30,
+        "hidden": false
+      }
+    },
+    {
+      "source": {
+        "catalog_number": "WDW16081",
+        "location": "Disney Springs, Disney's Pin Traders #5",
+        "description": "Spiderman \"1 of 8\", Marvel Spiderman logo, ©MARVEL",
+        "position": "1",
+        "coin_type": "Cent",
+        "orientation": "H",
+        "availability": "Current",
+        "image_url": "https://www.presscoins.com/images/coin_images/Downtown%20Disney/large/WDW16081.jpg",
+        "thumbnail_url": "https://www.presscoins.com/images/coin_images/Downtown%20Disney/small/WDW16081.gif"
+      },
+      "souvenir": {
+        "name": "Spiderman",
+        "continent": "América",
+        "country": "EUA",
+        "city": "Orlando",
+        "type": "pressed",
+        "condition": "Não Tenho",
+        "location_name": "Disney Springs",
+        "description": "Spiderman \"1 of 8\", Marvel Spiderman logo, ©MARVEL",
+        "display_shape": "oval",
+        "image_front": "https://www.presscoins.com/images/coin_images/Downtown%20Disney/large/WDW16081.jpg",
+        "image_back": "",
+        "notes": "Disney's Pin Traders #5 · Posição 1 · Catálogo Presscoins: WDW16081",
+        "reference_url": "https://www.presscoins.com/search/?availability=All&locations=All&search=WDW16081&limit=50&sort=catalog&cointype=All&Submit=Search&page=1",
+        "ordem": 31,
+        "hidden": false
+      }
+    },
+    {
+      "source": {
+        "catalog_number": "WDW16082",
+        "location": "Disney Springs, Disney's Pin Traders #5",
+        "description": "Nick Fury standing with arms crossed \"NICK FURY / 2 of 8\", Marvel logo, ©MARVEL",
+        "position": "2",
+        "coin_type": "Cent",
+        "orientation": "V",
+        "availability": "Current",
+        "image_url": "https://www.presscoins.com/images/coin_images/Downtown%20Disney/large/WDW16082.jpg",
+        "thumbnail_url": "https://www.presscoins.com/images/coin_images/Downtown%20Disney/small/WDW16082.gif"
+      },
+      "souvenir": {
+        "name": "Nick Fury",
+        "continent": "América",
+        "country": "EUA",
+        "city": "Orlando",
+        "type": "pressed",
+        "condition": "Não Tenho",
+        "location_name": "Disney Springs",
+        "description": "Nick Fury standing with arms crossed \"NICK FURY / 2 of 8\", Marvel logo, ©MARVEL",
+        "display_shape": "oval",
+        "image_front": "https://www.presscoins.com/images/coin_images/Downtown%20Disney/large/WDW16082.jpg",
+        "image_back": "",
+        "notes": "Disney's Pin Traders #5 · Posição 2 · Catálogo Presscoins: WDW16082",
+        "reference_url": "https://www.presscoins.com/search/?availability=All&locations=All&search=WDW16082&limit=50&sort=catalog&cointype=All&Submit=Search&page=1",
+        "ordem": 32,
+        "hidden": false
+      }
+    },
+    {
+      "source": {
+        "catalog_number": "WDW16083",
+        "location": "Disney Springs, Disney's Pin Traders #5",
+        "description": "Marvel Agents of S.H.I.E.L.D. logo \"3 of 8\", Marvel logo, ©MARVEL",
+        "position": "3",
+        "coin_type": "Cent",
+        "orientation": "V",
+        "availability": "Current",
+        "image_url": "https://www.presscoins.com/images/coin_images/Downtown%20Disney/large/WDW16083.jpg",
+        "thumbnail_url": "https://www.presscoins.com/images/coin_images/Downtown%20Disney/small/WDW16083.gif"
+      },
+      "souvenir": {
+        "name": "Marvel Agents of S.H.I.E.L.D. logo",
+        "continent": "América",
+        "country": "EUA",
+        "city": "Orlando",
+        "type": "pressed",
+        "condition": "Não Tenho",
+        "location_name": "Disney Springs",
+        "description": "Marvel Agents of S.H.I.E.L.D. logo \"3 of 8\", Marvel logo, ©MARVEL",
+        "display_shape": "oval",
+        "image_front": "https://www.presscoins.com/images/coin_images/Downtown%20Disney/large/WDW16083.jpg",
+        "image_back": "",
+        "notes": "Disney's Pin Traders #5 · Posição 3 · Catálogo Presscoins: WDW16083",
+        "reference_url": "https://www.presscoins.com/search/?availability=All&locations=All&search=WDW16083&limit=50&sort=catalog&cointype=All&Submit=Search&page=1",
+        "ordem": 33,
+        "hidden": false
+      }
+    },
+    {
+      "source": {
+        "catalog_number": "WDW16084",
+        "location": "Disney Springs, Disney's Pin Traders #5",
+        "description": "Ant-Man looking straight ahead \"ANT-MAN / 4 of 8\", Marvel logo, ©MARVEL",
+        "position": "4",
+        "coin_type": "Cent",
+        "orientation": "V",
+        "availability": "Current",
+        "image_url": "https://www.presscoins.com/images/coin_images/Downtown%20Disney/large/WDW16084.jpg",
+        "thumbnail_url": "https://www.presscoins.com/images/coin_images/Downtown%20Disney/small/WDW16084.gif"
+      },
+      "souvenir": {
+        "name": "Ant-Man",
+        "continent": "América",
+        "country": "EUA",
+        "city": "Orlando",
+        "type": "pressed",
+        "condition": "Não Tenho",
+        "location_name": "Disney Springs",
+        "description": "Ant-Man looking straight ahead \"ANT-MAN / 4 of 8\", Marvel logo, ©MARVEL",
+        "display_shape": "oval",
+        "image_front": "https://www.presscoins.com/images/coin_images/Downtown%20Disney/large/WDW16084.jpg",
+        "image_back": "",
+        "notes": "Disney's Pin Traders #5 · Posição 4 · Catálogo Presscoins: WDW16084",
+        "reference_url": "https://www.presscoins.com/search/?availability=All&locations=All&search=WDW16084&limit=50&sort=catalog&cointype=All&Submit=Search&page=1",
+        "ordem": 34,
+        "hidden": false
+      }
+    },
+    {
+      "source": {
+        "catalog_number": "WDW16085",
+        "location": "Disney Springs, Disney's Pin Traders #5",
+        "description": "Black Panther looking to the left \"BLACK PANTHER / 5 of 8\", Marvel logo, ©MARVEL",
+        "position": "5",
+        "coin_type": "Cent",
+        "orientation": "V",
+        "availability": "Current",
+        "image_url": "https://www.presscoins.com/images/coin_images/Downtown%20Disney/large/WDW16085.jpg",
+        "thumbnail_url": "https://www.presscoins.com/images/coin_images/Downtown%20Disney/small/WDW16085.gif"
+      },
+      "souvenir": {
+        "name": "Black Panther",
+        "continent": "América",
+        "country": "EUA",
+        "city": "Orlando",
+        "type": "pressed",
+        "condition": "Não Tenho",
+        "location_name": "Disney Springs",
+        "description": "Black Panther looking to the left \"BLACK PANTHER / 5 of 8\", Marvel logo, ©MARVEL",
+        "display_shape": "oval",
+        "image_front": "https://www.presscoins.com/images/coin_images/Downtown%20Disney/large/WDW16085.jpg",
+        "image_back": "",
+        "notes": "Disney's Pin Traders #5 · Posição 5 · Catálogo Presscoins: WDW16085",
+        "reference_url": "https://www.presscoins.com/search/?availability=All&locations=All&search=WDW16085&limit=50&sort=catalog&cointype=All&Submit=Search&page=1",
+        "ordem": 35,
+        "hidden": false
+      }
+    },
+    {
+      "source": {
+        "catalog_number": "WDW16086",
+        "location": "Disney Springs, Disney's Pin Traders #5",
+        "description": "Vision looking to the right \"VISION / 6 of 8\", Marvel logo, ©MARVEL",
+        "position": "6",
+        "coin_type": "Cent",
+        "orientation": "V",
+        "availability": "Current",
+        "image_url": "https://www.presscoins.com/images/coin_images/Downtown%20Disney/large/WDW16086.jpg",
+        "thumbnail_url": "https://www.presscoins.com/images/coin_images/Downtown%20Disney/small/WDW16086.gif"
+      },
+      "souvenir": {
+        "name": "Vision",
+        "continent": "América",
+        "country": "EUA",
+        "city": "Orlando",
+        "type": "pressed",
+        "condition": "Não Tenho",
+        "location_name": "Disney Springs",
+        "description": "Vision looking to the right \"VISION / 6 of 8\", Marvel logo, ©MARVEL",
+        "display_shape": "oval",
+        "image_front": "https://www.presscoins.com/images/coin_images/Downtown%20Disney/large/WDW16086.jpg",
+        "image_back": "",
+        "notes": "Disney's Pin Traders #5 · Posição 6 · Catálogo Presscoins: WDW16086",
+        "reference_url": "https://www.presscoins.com/search/?availability=All&locations=All&search=WDW16086&limit=50&sort=catalog&cointype=All&Submit=Search&page=1",
+        "ordem": 36,
+        "hidden": false
+      }
+    },
+    {
+      "source": {
+        "catalog_number": "WDW16087",
+        "location": "Disney Springs, Disney's Pin Traders #5",
+        "description": "War Machine looking straight ahead \"WAR MACHINE / 7 of 8\", Marvel logo, ©MARVEL",
+        "position": "7",
+        "coin_type": "Cent",
+        "orientation": "V",
+        "availability": "Current",
+        "image_url": "https://www.presscoins.com/images/coin_images/Downtown%20Disney/large/WDW16087.jpg",
+        "thumbnail_url": "https://www.presscoins.com/images/coin_images/Downtown%20Disney/small/WDW16087.gif"
+      },
+      "souvenir": {
+        "name": "War Machine",
+        "continent": "América",
+        "country": "EUA",
+        "city": "Orlando",
+        "type": "pressed",
+        "condition": "Não Tenho",
+        "location_name": "Disney Springs",
+        "description": "War Machine looking straight ahead \"WAR MACHINE / 7 of 8\", Marvel logo, ©MARVEL",
+        "display_shape": "oval",
+        "image_front": "https://www.presscoins.com/images/coin_images/Downtown%20Disney/large/WDW16087.jpg",
+        "image_back": "",
+        "notes": "Disney's Pin Traders #5 · Posição 7 · Catálogo Presscoins: WDW16087",
+        "reference_url": "https://www.presscoins.com/search/?availability=All&locations=All&search=WDW16087&limit=50&sort=catalog&cointype=All&Submit=Search&page=1",
+        "ordem": 37,
+        "hidden": false
+      }
+    },
+    {
+      "source": {
+        "catalog_number": "WDW16088",
+        "location": "Disney Springs, Disney's Pin Traders #5",
+        "description": "Falcon looking to the right \"FALCON / 8 of 8\", Marvel logo, ©MARVEL",
+        "position": "8",
+        "coin_type": "Cent",
+        "orientation": "V",
+        "availability": "Current",
+        "image_url": "https://www.presscoins.com/images/coin_images/Downtown%20Disney/large/WDW16088.jpg",
+        "thumbnail_url": "https://www.presscoins.com/images/coin_images/Downtown%20Disney/small/WDW16088.gif"
+      },
+      "souvenir": {
+        "name": "Falcon",
+        "continent": "América",
+        "country": "EUA",
+        "city": "Orlando",
+        "type": "pressed",
+        "condition": "Não Tenho",
+        "location_name": "Disney Springs",
+        "description": "Falcon looking to the right \"FALCON / 8 of 8\", Marvel logo, ©MARVEL",
+        "display_shape": "oval",
+        "image_front": "https://www.presscoins.com/images/coin_images/Downtown%20Disney/large/WDW16088.jpg",
+        "image_back": "",
+        "notes": "Disney's Pin Traders #5 · Posição 8 · Catálogo Presscoins: WDW16088",
+        "reference_url": "https://www.presscoins.com/search/?availability=All&locations=All&search=WDW16088&limit=50&sort=catalog&cointype=All&Submit=Search&page=1",
+        "ordem": 38,
+        "hidden": false
+      }
+    },
+    {
+      "source": {
+        "catalog_number": "WDW17016",
+        "location": "Disney Springs, AdventHealth Waterside Stage",
+        "description": "Lilo & Stitch standing and leaning against each other with arms crossed, Disney Springs logo",
+        "position": "1",
+        "coin_type": "Cent",
+        "orientation": "V",
+        "availability": "Current",
+        "image_url": "https://www.presscoins.com/images/coin_images/Downtown%20Disney/large/WDW17016.jpg",
+        "thumbnail_url": "https://www.presscoins.com/images/coin_images/Downtown%20Disney/small/WDW17016.gif"
+      },
+      "souvenir": {
+        "name": "Lilo & Stitch",
+        "continent": "América",
+        "country": "EUA",
+        "city": "Orlando",
+        "type": "pressed",
+        "condition": "Não Tenho",
+        "location_name": "Disney Springs",
+        "description": "Lilo & Stitch standing and leaning against each other with arms crossed, Disney Springs logo",
+        "display_shape": "oval",
+        "image_front": "https://www.presscoins.com/images/coin_images/Downtown%20Disney/large/WDW17016.jpg",
+        "image_back": "",
+        "notes": "AdventHealth Waterside Stage · Posição 1 · Catálogo Presscoins: WDW17016",
+        "reference_url": "https://www.presscoins.com/search/?availability=All&locations=All&search=WDW17016&limit=50&sort=catalog&cointype=All&Submit=Search&page=1",
+        "ordem": 39,
+        "hidden": false
+      }
+    },
+    {
+      "source": {
+        "catalog_number": "WDW17017",
+        "location": "Disney Springs, AdventHealth Waterside Stage",
+        "description": "Mickey standing with hands on Pluto's shoulders, Disney Springs logo",
+        "position": "2",
+        "coin_type": "Cent",
+        "orientation": "V",
+        "availability": "Current",
+        "image_url": "https://www.presscoins.com/images/coin_images/Downtown%20Disney/large/WDW17017.jpg",
+        "thumbnail_url": "https://www.presscoins.com/images/coin_images/Downtown%20Disney/small/WDW17017.gif"
+      },
+      "souvenir": {
+        "name": "Mickey",
+        "continent": "América",
+        "country": "EUA",
+        "city": "Orlando",
+        "type": "pressed",
+        "condition": "Não Tenho",
+        "location_name": "Disney Springs",
+        "description": "Mickey standing with hands on Pluto's shoulders, Disney Springs logo",
+        "display_shape": "oval",
+        "image_front": "https://www.presscoins.com/images/coin_images/Downtown%20Disney/large/WDW17017.jpg",
+        "image_back": "",
+        "notes": "AdventHealth Waterside Stage · Posição 2 · Catálogo Presscoins: WDW17017",
+        "reference_url": "https://www.presscoins.com/search/?availability=All&locations=All&search=WDW17017&limit=50&sort=catalog&cointype=All&Submit=Search&page=1",
+        "ordem": 40,
+        "hidden": false
+      }
+    },
+    {
+      "source": {
+        "catalog_number": "WDW17018",
+        "location": "Disney Springs, AdventHealth Waterside Stage",
+        "description": "Winnie the Pooh, Tigger, Piglet and Eeyore hugging each other, Disney Springs logo",
+        "position": "3",
+        "coin_type": "Cent",
+        "orientation": "V",
+        "availability": "Current",
+        "image_url": "https://www.presscoins.com/images/coin_images/Downtown%20Disney/large/WDW17018.jpg",
+        "thumbnail_url": "https://www.presscoins.com/images/coin_images/Downtown%20Disney/small/WDW17018.gif"
+      },
+      "souvenir": {
+        "name": "Winnie the Pooh",
+        "continent": "América",
+        "country": "EUA",
+        "city": "Orlando",
+        "type": "pressed",
+        "condition": "Não Tenho",
+        "location_name": "Disney Springs",
+        "description": "Winnie the Pooh, Tigger, Piglet and Eeyore hugging each other, Disney Springs logo",
+        "display_shape": "oval",
+        "image_front": "https://www.presscoins.com/images/coin_images/Downtown%20Disney/large/WDW17018.jpg",
+        "image_back": "",
+        "notes": "AdventHealth Waterside Stage · Posição 3 · Catálogo Presscoins: WDW17018",
+        "reference_url": "https://www.presscoins.com/search/?availability=All&locations=All&search=WDW17018&limit=50&sort=catalog&cointype=All&Submit=Search&page=1",
+        "ordem": 41,
+        "hidden": false
+      }
+    },
+    {
+      "source": {
+        "catalog_number": "WDW17019",
+        "location": "Disney Springs, AdventHealth Waterside Stage",
+        "description": "Donald Duck with Mickey ears and hand to ear listening, Disney Springs logo",
+        "position": "4",
+        "coin_type": "Cent",
+        "orientation": "V",
+        "availability": "Current",
+        "image_url": "https://www.presscoins.com/images/coin_images/Downtown%20Disney/large/WDW17019.jpg",
+        "thumbnail_url": "https://www.presscoins.com/images/coin_images/Downtown%20Disney/small/WDW17019.gif"
+      },
+      "souvenir": {
+        "name": "Donald Duck",
+        "continent": "América",
+        "country": "EUA",
+        "city": "Orlando",
+        "type": "pressed",
+        "condition": "Não Tenho",
+        "location_name": "Disney Springs",
+        "description": "Donald Duck with Mickey ears and hand to ear listening, Disney Springs logo",
+        "display_shape": "oval",
+        "image_front": "https://www.presscoins.com/images/coin_images/Downtown%20Disney/large/WDW17019.jpg",
+        "image_back": "",
+        "notes": "AdventHealth Waterside Stage · Posição 4 · Catálogo Presscoins: WDW17019",
+        "reference_url": "https://www.presscoins.com/search/?availability=All&locations=All&search=WDW17019&limit=50&sort=catalog&cointype=All&Submit=Search&page=1",
+        "ordem": 42,
+        "hidden": false
+      }
+    },
+    {
+      "source": {
+        "catalog_number": "WDW17024",
+        "location": "Disney Springs, Disney's Pin Traders #2",
+        "description": "X-wing Starfighter, Star Wars logo at bottom, ©LFL",
+        "position": "1",
+        "coin_type": "Cent",
+        "orientation": "H",
+        "availability": "Current",
+        "image_url": "https://www.presscoins.com/images/coin_images/Downtown%20Disney/large/WDW17024.jpg",
+        "thumbnail_url": "https://www.presscoins.com/images/coin_images/Downtown%20Disney/small/WDW17024.gif"
+      },
+      "souvenir": {
+        "name": "X-wing Starfighter",
+        "continent": "América",
+        "country": "EUA",
+        "city": "Orlando",
+        "type": "pressed",
+        "condition": "Não Tenho",
+        "location_name": "Disney Springs",
+        "description": "X-wing Starfighter, Star Wars logo at bottom, ©LFL",
+        "display_shape": "oval",
+        "image_front": "https://www.presscoins.com/images/coin_images/Downtown%20Disney/large/WDW17024.jpg",
+        "image_back": "",
+        "notes": "Disney's Pin Traders #2 · Posição 1 · Catálogo Presscoins: WDW17024",
+        "reference_url": "https://www.presscoins.com/search/?availability=All&locations=All&search=WDW17024&limit=50&sort=catalog&cointype=All&Submit=Search&page=1",
+        "ordem": 43,
+        "hidden": false
+      }
+    },
+    {
+      "source": {
+        "catalog_number": "WDW17025",
+        "location": "Disney Springs, Disney's Pin Traders #2",
+        "description": "Darth Vader facing right holding a lightsaber, Star Wars logo at bottom, ©LFL",
+        "position": "2",
+        "coin_type": "Cent",
+        "orientation": "V",
+        "availability": "Current",
+        "image_url": "https://www.presscoins.com/images/coin_images/Downtown%20Disney/large/WDW17025.jpg",
+        "thumbnail_url": "https://www.presscoins.com/images/coin_images/Downtown%20Disney/small/WDW17025.gif"
+      },
+      "souvenir": {
+        "name": "Darth Vader",
+        "continent": "América",
+        "country": "EUA",
+        "city": "Orlando",
+        "type": "pressed",
+        "condition": "Não Tenho",
+        "location_name": "Disney Springs",
+        "description": "Darth Vader facing right holding a lightsaber, Star Wars logo at bottom, ©LFL",
+        "display_shape": "oval",
+        "image_front": "https://www.presscoins.com/images/coin_images/Downtown%20Disney/large/WDW17025.jpg",
+        "image_back": "",
+        "notes": "Disney's Pin Traders #2 · Posição 2 · Catálogo Presscoins: WDW17025",
+        "reference_url": "https://www.presscoins.com/search/?availability=All&locations=All&search=WDW17025&limit=50&sort=catalog&cointype=All&Submit=Search&page=1",
+        "ordem": 44,
+        "hidden": false
+      }
+    },
+    {
+      "source": {
+        "catalog_number": "WDW17026",
+        "location": "Disney Springs, Disney's Pin Traders #2",
+        "description": "Luke Skywalker facing left holding a lightsaber, Star Wars logo at bottom, ©LFL",
+        "position": "3",
+        "coin_type": "Cent",
+        "orientation": "V",
+        "availability": "Current",
+        "image_url": "https://www.presscoins.com/images/coin_images/Downtown%20Disney/large/WDW17026.jpg",
+        "thumbnail_url": "https://www.presscoins.com/images/coin_images/Downtown%20Disney/small/WDW17026.gif"
+      },
+      "souvenir": {
+        "name": "Luke Skywalker",
+        "continent": "América",
+        "country": "EUA",
+        "city": "Orlando",
+        "type": "pressed",
+        "condition": "Não Tenho",
+        "location_name": "Disney Springs",
+        "description": "Luke Skywalker facing left holding a lightsaber, Star Wars logo at bottom, ©LFL",
+        "display_shape": "oval",
+        "image_front": "https://www.presscoins.com/images/coin_images/Downtown%20Disney/large/WDW17026.jpg",
+        "image_back": "",
+        "notes": "Disney's Pin Traders #2 · Posição 3 · Catálogo Presscoins: WDW17026",
+        "reference_url": "https://www.presscoins.com/search/?availability=All&locations=All&search=WDW17026&limit=50&sort=catalog&cointype=All&Submit=Search&page=1",
+        "ordem": 45,
+        "hidden": false
+      }
+    },
+    {
+      "source": {
+        "catalog_number": "WDW17027",
+        "location": "Disney Springs, Disney's Pin Traders #2",
+        "description": "TIE fighter, Star Wars logo at bottom, ©LFL",
+        "position": "4",
+        "coin_type": "Cent",
+        "orientation": "V",
+        "availability": "Current",
+        "image_url": "https://www.presscoins.com/images/coin_images/Downtown%20Disney/large/WDW17027.jpg",
+        "thumbnail_url": "https://www.presscoins.com/images/coin_images/Downtown%20Disney/small/WDW17027.gif"
+      },
+      "souvenir": {
+        "name": "TIE fighter",
+        "continent": "América",
+        "country": "EUA",
+        "city": "Orlando",
+        "type": "pressed",
+        "condition": "Não Tenho",
+        "location_name": "Disney Springs",
+        "description": "TIE fighter, Star Wars logo at bottom, ©LFL",
+        "display_shape": "oval",
+        "image_front": "https://www.presscoins.com/images/coin_images/Downtown%20Disney/large/WDW17027.jpg",
+        "image_back": "",
+        "notes": "Disney's Pin Traders #2 · Posição 4 · Catálogo Presscoins: WDW17027",
+        "reference_url": "https://www.presscoins.com/search/?availability=All&locations=All&search=WDW17027&limit=50&sort=catalog&cointype=All&Submit=Search&page=1",
+        "ordem": 46,
+        "hidden": false
+      }
+    },
+    {
+      "source": {
+        "catalog_number": "WDW17028",
+        "location": "Disney Springs, Disney's Pin Traders #2",
+        "description": "Millennium Falcon, Star Wars logo at top, ©LFL",
+        "position": "5",
+        "coin_type": "Cent",
+        "orientation": "H",
+        "availability": "Current",
+        "image_url": "https://www.presscoins.com/images/coin_images/Downtown%20Disney/large/WDW17028.jpg",
+        "thumbnail_url": "https://www.presscoins.com/images/coin_images/Downtown%20Disney/small/WDW17028.gif"
+      },
+      "souvenir": {
+        "name": "Millennium Falcon",
+        "continent": "América",
+        "country": "EUA",
+        "city": "Orlando",
+        "type": "pressed",
+        "condition": "Não Tenho",
+        "location_name": "Disney Springs",
+        "description": "Millennium Falcon, Star Wars logo at top, ©LFL",
+        "display_shape": "oval",
+        "image_front": "https://www.presscoins.com/images/coin_images/Downtown%20Disney/large/WDW17028.jpg",
+        "image_back": "",
+        "notes": "Disney's Pin Traders #2 · Posição 5 · Catálogo Presscoins: WDW17028",
+        "reference_url": "https://www.presscoins.com/search/?availability=All&locations=All&search=WDW17028&limit=50&sort=catalog&cointype=All&Submit=Search&page=1",
+        "ordem": 47,
+        "hidden": false
+      }
+    },
+    {
+      "source": {
+        "catalog_number": "WDW17029",
+        "location": "Disney Springs, Disney's Pin Traders #2",
+        "description": "Star Wars logo, ©LFL",
+        "position": "6",
+        "coin_type": "Cent",
+        "orientation": "H",
+        "availability": "Current",
+        "image_url": "https://www.presscoins.com/images/coin_images/Downtown%20Disney/large/WDW17029.jpg",
+        "thumbnail_url": "https://www.presscoins.com/images/coin_images/Downtown%20Disney/small/WDW17029.gif"
+      },
+      "souvenir": {
+        "name": "Star Wars logo",
+        "continent": "América",
+        "country": "EUA",
+        "city": "Orlando",
+        "type": "pressed",
+        "condition": "Não Tenho",
+        "location_name": "Disney Springs",
+        "description": "Star Wars logo, ©LFL",
+        "display_shape": "oval",
+        "image_front": "https://www.presscoins.com/images/coin_images/Downtown%20Disney/large/WDW17029.jpg",
+        "image_back": "",
+        "notes": "Disney's Pin Traders #2 · Posição 6 · Catálogo Presscoins: WDW17029",
+        "reference_url": "https://www.presscoins.com/search/?availability=All&locations=All&search=WDW17029&limit=50&sort=catalog&cointype=All&Submit=Search&page=1",
+        "ordem": 48,
+        "hidden": false
+      }
+    },
+    {
+      "source": {
+        "catalog_number": "WDW17030",
+        "location": "Disney Springs, Disney's Pin Traders #2",
+        "description": "R2-D2 facing left, Star Wars logo at bottom, ©LFL",
+        "position": "7",
+        "coin_type": "Cent",
+        "orientation": "V",
+        "availability": "Current",
+        "image_url": "https://www.presscoins.com/images/coin_images/Downtown%20Disney/large/WDW17030.jpg",
+        "thumbnail_url": "https://www.presscoins.com/images/coin_images/Downtown%20Disney/small/WDW17030.gif"
+      },
+      "souvenir": {
+        "name": "R2-D2",
+        "continent": "América",
+        "country": "EUA",
+        "city": "Orlando",
+        "type": "pressed",
+        "condition": "Não Tenho",
+        "location_name": "Disney Springs",
+        "description": "R2-D2 facing left, Star Wars logo at bottom, ©LFL",
+        "display_shape": "oval",
+        "image_front": "https://www.presscoins.com/images/coin_images/Downtown%20Disney/large/WDW17030.jpg",
+        "image_back": "",
+        "notes": "Disney's Pin Traders #2 · Posição 7 · Catálogo Presscoins: WDW17030",
+        "reference_url": "https://www.presscoins.com/search/?availability=All&locations=All&search=WDW17030&limit=50&sort=catalog&cointype=All&Submit=Search&page=1",
+        "ordem": 49,
+        "hidden": false
+      }
+    },
+    {
+      "source": {
+        "catalog_number": "WDW17031",
+        "location": "Disney Springs, Disney's Pin Traders #2",
+        "description": "Stormtrooper pointing blaster rifle to the left, Star Wars logo at bottom, ©LFL",
+        "position": "8",
+        "coin_type": "Cent",
+        "orientation": "V",
+        "availability": "Current",
+        "image_url": "https://www.presscoins.com/images/coin_images/Downtown%20Disney/large/WDW17031.jpg",
+        "thumbnail_url": "https://www.presscoins.com/images/coin_images/Downtown%20Disney/small/WDW17031.gif"
+      },
+      "souvenir": {
+        "name": "Stormtrooper",
+        "continent": "América",
+        "country": "EUA",
+        "city": "Orlando",
+        "type": "pressed",
+        "condition": "Não Tenho",
+        "location_name": "Disney Springs",
+        "description": "Stormtrooper pointing blaster rifle to the left, Star Wars logo at bottom, ©LFL",
+        "display_shape": "oval",
+        "image_front": "https://www.presscoins.com/images/coin_images/Downtown%20Disney/large/WDW17031.jpg",
+        "image_back": "",
+        "notes": "Disney's Pin Traders #2 · Posição 8 · Catálogo Presscoins: WDW17031",
+        "reference_url": "https://www.presscoins.com/search/?availability=All&locations=All&search=WDW17031&limit=50&sort=catalog&cointype=All&Submit=Search&page=1",
+        "ordem": 50,
+        "hidden": false
+      }
+    },
+    {
+      "source": {
+        "catalog_number": "WDW17075",
+        "location": "Disney Springs, Once Upon A Toy #1",
+        "description": "Buzz Lightyear running forward, Disney Toy Story logo at top, ©Disney/Pixar",
+        "position": "1",
+        "coin_type": "Cent",
+        "orientation": "V",
+        "availability": "Current",
+        "image_url": "https://www.presscoins.com/images/coin_images/Downtown%20Disney/large/WDW17075.jpg",
+        "thumbnail_url": "https://www.presscoins.com/images/coin_images/Downtown%20Disney/small/WDW17075.gif"
+      },
+      "souvenir": {
+        "name": "Buzz Lightyear",
+        "continent": "América",
+        "country": "EUA",
+        "city": "Orlando",
+        "type": "pressed",
+        "condition": "Não Tenho",
+        "location_name": "Disney Springs",
+        "description": "Buzz Lightyear running forward, Disney Toy Story logo at top, ©Disney/Pixar",
+        "display_shape": "oval",
+        "image_front": "https://www.presscoins.com/images/coin_images/Downtown%20Disney/large/WDW17075.jpg",
+        "image_back": "",
+        "notes": "Once Upon A Toy #1 · Posição 1 · Catálogo Presscoins: WDW17075",
+        "reference_url": "https://www.presscoins.com/search/?availability=All&locations=All&search=WDW17075&limit=50&sort=catalog&cointype=All&Submit=Search&page=1",
+        "ordem": 51,
+        "hidden": false
+      }
+    },
+    {
+      "source": {
+        "catalog_number": "WDW17076",
+        "location": "Disney Springs, Once Upon A Toy #1",
+        "description": "Mickey Mouse wearing a tuxedo with arms outstretched, Disney logo at the top",
+        "position": "2",
+        "coin_type": "Cent",
+        "orientation": "V",
+        "availability": "Current",
+        "image_url": "https://www.presscoins.com/images/coin_images/Downtown%20Disney/large/WDW17076.jpg",
+        "thumbnail_url": "https://www.presscoins.com/images/coin_images/Downtown%20Disney/small/WDW17076.gif"
+      },
+      "souvenir": {
+        "name": "Mickey Mouse",
+        "continent": "América",
+        "country": "EUA",
+        "city": "Orlando",
+        "type": "pressed",
+        "condition": "Não Tenho",
+        "location_name": "Disney Springs",
+        "description": "Mickey Mouse wearing a tuxedo with arms outstretched, Disney logo at the top",
+        "display_shape": "oval",
+        "image_front": "https://www.presscoins.com/images/coin_images/Downtown%20Disney/large/WDW17076.jpg",
+        "image_back": "",
+        "notes": "Once Upon A Toy #1 · Posição 2 · Catálogo Presscoins: WDW17076",
+        "reference_url": "https://www.presscoins.com/search/?availability=All&locations=All&search=WDW17076&limit=50&sort=catalog&cointype=All&Submit=Search&page=1",
+        "ordem": 52,
+        "hidden": false
+      }
+    },
+    {
+      "source": {
+        "catalog_number": "WDW17077",
+        "location": "Disney Springs, Once Upon A Toy #1",
+        "description": "Nemo & Dory with water bubbles on the left and right \"Nemo / Dory\"",
+        "position": "3",
+        "coin_type": "Cent",
+        "orientation": "V",
+        "availability": "Current",
+        "image_url": "https://www.presscoins.com/images/coin_images/Downtown%20Disney/large/WDW17077.jpg",
+        "thumbnail_url": "https://www.presscoins.com/images/coin_images/Downtown%20Disney/small/WDW17077.gif"
+      },
+      "souvenir": {
+        "name": "Nemo & Dory",
+        "continent": "América",
+        "country": "EUA",
+        "city": "Orlando",
+        "type": "pressed",
+        "condition": "Não Tenho",
+        "location_name": "Disney Springs",
+        "description": "Nemo & Dory with water bubbles on the left and right \"Nemo / Dory\"",
+        "display_shape": "oval",
+        "image_front": "https://www.presscoins.com/images/coin_images/Downtown%20Disney/large/WDW17077.jpg",
+        "image_back": "",
+        "notes": "Once Upon A Toy #1 · Posição 3 · Catálogo Presscoins: WDW17077",
+        "reference_url": "https://www.presscoins.com/search/?availability=All&locations=All&search=WDW17077&limit=50&sort=catalog&cointype=All&Submit=Search&page=1",
+        "ordem": 53,
+        "hidden": false
+      }
+    },
+    {
+      "source": {
+        "catalog_number": "WDW17078",
+        "location": "Disney Springs, Once Upon A Toy #1",
+        "description": "Little Green Man Alien squeeze toy holding an astro blaster, Disney Toy Story logo at top, ©Disney/Pixar",
+        "position": "4",
+        "coin_type": "Cent",
+        "orientation": "V",
+        "availability": "Current",
+        "image_url": "https://www.presscoins.com/images/coin_images/Downtown%20Disney/large/WDW17078.jpg",
+        "thumbnail_url": "https://www.presscoins.com/images/coin_images/Downtown%20Disney/small/WDW17078.gif"
+      },
+      "souvenir": {
+        "name": "Little Green Man Alien squeeze toy",
+        "continent": "América",
+        "country": "EUA",
+        "city": "Orlando",
+        "type": "pressed",
+        "condition": "Não Tenho",
+        "location_name": "Disney Springs",
+        "description": "Little Green Man Alien squeeze toy holding an astro blaster, Disney Toy Story logo at top, ©Disney/Pixar",
+        "display_shape": "oval",
+        "image_front": "https://www.presscoins.com/images/coin_images/Downtown%20Disney/large/WDW17078.jpg",
+        "image_back": "",
+        "notes": "Once Upon A Toy #1 · Posição 4 · Catálogo Presscoins: WDW17078",
+        "reference_url": "https://www.presscoins.com/search/?availability=All&locations=All&search=WDW17078&limit=50&sort=catalog&cointype=All&Submit=Search&page=1",
+        "ordem": 54,
+        "hidden": false
+      }
+    },
+    {
+      "source": {
+        "catalog_number": "WDW17094",
+        "location": "Disney Springs, Goofy's Candy Company",
+        "description": "Goofy flying up in the air holding balloons, \"GOOFY'S CANDY CO.\" at bottom",
+        "position": "1",
+        "coin_type": "Cent",
+        "orientation": "V",
+        "availability": "Current",
+        "image_url": "https://www.presscoins.com/images/coin_images/Downtown%20Disney/large/WDW17094.jpg",
+        "thumbnail_url": "https://www.presscoins.com/images/coin_images/Downtown%20Disney/small/WDW17094.gif"
+      },
+      "souvenir": {
+        "name": "Goofy",
+        "continent": "América",
+        "country": "EUA",
+        "city": "Orlando",
+        "type": "pressed",
+        "condition": "Não Tenho",
+        "location_name": "Disney Springs",
+        "description": "Goofy flying up in the air holding balloons, \"GOOFY'S CANDY CO.\" at bottom",
+        "display_shape": "oval",
+        "image_front": "https://www.presscoins.com/images/coin_images/Downtown%20Disney/large/WDW17094.jpg",
+        "image_back": "",
+        "notes": "Goofy's Candy Company · Posição 1 · Catálogo Presscoins: WDW17094",
+        "reference_url": "https://www.presscoins.com/search/?availability=All&locations=All&search=WDW17094&limit=50&sort=catalog&cointype=All&Submit=Search&page=1",
+        "ordem": 55,
+        "hidden": false
+      }
+    },
+    {
+      "source": {
+        "catalog_number": "WDW17095",
+        "location": "Disney Springs, Goofy's Candy Company",
+        "description": "Goofy sitting holding a spoon and eating a sundae, \"GOOFY'S CANDY CO.\" at bottom",
+        "position": "2",
+        "coin_type": "Cent",
+        "orientation": "V",
+        "availability": "Current",
+        "image_url": "https://www.presscoins.com/images/coin_images/Downtown%20Disney/large/WDW17095.jpg",
+        "thumbnail_url": "https://www.presscoins.com/images/coin_images/Downtown%20Disney/small/WDW17095.gif"
+      },
+      "souvenir": {
+        "name": "Goofy",
+        "continent": "América",
+        "country": "EUA",
+        "city": "Orlando",
+        "type": "pressed",
+        "condition": "Não Tenho",
+        "location_name": "Disney Springs",
+        "description": "Goofy sitting holding a spoon and eating a sundae, \"GOOFY'S CANDY CO.\" at bottom",
+        "display_shape": "oval",
+        "image_front": "https://www.presscoins.com/images/coin_images/Downtown%20Disney/large/WDW17095.jpg",
+        "image_back": "",
+        "notes": "Goofy's Candy Company · Posição 2 · Catálogo Presscoins: WDW17095",
+        "reference_url": "https://www.presscoins.com/search/?availability=All&locations=All&search=WDW17095&limit=50&sort=catalog&cointype=All&Submit=Search&page=1",
+        "ordem": 56,
+        "hidden": false
+      }
+    },
+    {
+      "source": {
+        "catalog_number": "WDW17096",
+        "location": "Disney Springs, Goofy's Candy Company",
+        "description": "Goofy walking left holding balloons and bags of popcorn trying to throw and catch popcorn in his mouth, \"GOOFY'S CANDY CO.\" at bottom",
+        "position": "3",
+        "coin_type": "Cent",
+        "orientation": "V",
+        "availability": "Current",
+        "image_url": "https://www.presscoins.com/images/coin_images/Downtown%20Disney/large/WDW17096.jpg",
+        "thumbnail_url": "https://www.presscoins.com/images/coin_images/Downtown%20Disney/small/WDW17096.gif"
+      },
+      "souvenir": {
+        "name": "Goofy",
+        "continent": "América",
+        "country": "EUA",
+        "city": "Orlando",
+        "type": "pressed",
+        "condition": "Não Tenho",
+        "location_name": "Disney Springs",
+        "description": "Goofy walking left holding balloons and bags of popcorn trying to throw and catch popcorn in his mouth, \"GOOFY'S CANDY CO.\" at bottom",
+        "display_shape": "oval",
+        "image_front": "https://www.presscoins.com/images/coin_images/Downtown%20Disney/large/WDW17096.jpg",
+        "image_back": "",
+        "notes": "Goofy's Candy Company · Posição 3 · Catálogo Presscoins: WDW17096",
+        "reference_url": "https://www.presscoins.com/search/?availability=All&locations=All&search=WDW17096&limit=50&sort=catalog&cointype=All&Submit=Search&page=1",
+        "ordem": 57,
+        "hidden": false
+      }
+    },
+    {
+      "source": {
+        "catalog_number": "WDW17097",
+        "location": "Disney Springs, Goofy's Candy Company",
+        "description": "Goofy sitting and resting head on hand, \"yur Friend! Goofy\" at bottom",
+        "position": "4",
+        "coin_type": "Cent",
+        "orientation": "V",
+        "availability": "Current",
+        "image_url": "https://www.presscoins.com/images/coin_images/Downtown%20Disney/large/WDW17097.jpg",
+        "thumbnail_url": "https://www.presscoins.com/images/coin_images/Downtown%20Disney/small/WDW17097.gif"
+      },
+      "souvenir": {
+        "name": "Goofy",
+        "continent": "América",
+        "country": "EUA",
+        "city": "Orlando",
+        "type": "pressed",
+        "condition": "Não Tenho",
+        "location_name": "Disney Springs",
+        "description": "Goofy sitting and resting head on hand, \"yur Friend! Goofy\" at bottom",
+        "display_shape": "oval",
+        "image_front": "https://www.presscoins.com/images/coin_images/Downtown%20Disney/large/WDW17097.jpg",
+        "image_back": "",
+        "notes": "Goofy's Candy Company · Posição 4 · Catálogo Presscoins: WDW17097",
+        "reference_url": "https://www.presscoins.com/search/?availability=All&locations=All&search=WDW17097&limit=50&sort=catalog&cointype=All&Submit=Search&page=1",
+        "ordem": 58,
+        "hidden": false
+      }
+    },
+    {
+      "source": {
+        "catalog_number": "WDW17101",
+        "location": "Disney Springs, Days of Christmas",
+        "description": "Jack Skellington, Tim Burton's The Nightmare Before Christmas logo at top",
+        "position": "1",
+        "coin_type": "Cent",
+        "orientation": "V",
+        "availability": "Current",
+        "image_url": "https://www.presscoins.com/images/coin_images/Downtown%20Disney/large/WDW17101.jpg",
+        "thumbnail_url": "https://www.presscoins.com/images/coin_images/Downtown%20Disney/small/WDW17101.gif"
+      },
+      "souvenir": {
+        "name": "Jack Skellington",
+        "continent": "América",
+        "country": "EUA",
+        "city": "Orlando",
+        "type": "pressed",
+        "condition": "Não Tenho",
+        "location_name": "Disney Springs",
+        "description": "Jack Skellington, Tim Burton's The Nightmare Before Christmas logo at top",
+        "display_shape": "oval",
+        "image_front": "https://www.presscoins.com/images/coin_images/Downtown%20Disney/large/WDW17101.jpg",
+        "image_back": "",
+        "notes": "Days of Christmas · Posição 1 · Catálogo Presscoins: WDW17101",
+        "reference_url": "https://www.presscoins.com/search/?availability=All&locations=All&search=WDW17101&limit=50&sort=catalog&cointype=All&Submit=Search&page=1",
+        "ordem": 59,
+        "hidden": false
+      }
+    },
+    {
+      "source": {
+        "catalog_number": "WDW17102",
+        "location": "Disney Springs, Days of Christmas",
+        "description": "Silhouette of Sally & Jack Skellington standing in the moonlight holding hands with large moon in background, Tim Burton's The Nightmare Before Christmas logo at top",
+        "position": "2",
+        "coin_type": "Cent",
+        "orientation": "V",
+        "availability": "Current",
+        "image_url": "https://www.presscoins.com/images/coin_images/Downtown%20Disney/large/WDW17102.jpg",
+        "thumbnail_url": "https://www.presscoins.com/images/coin_images/Downtown%20Disney/small/WDW17102.gif"
+      },
+      "souvenir": {
+        "name": "Silhouette of Sally & Jack Skellington",
+        "continent": "América",
+        "country": "EUA",
+        "city": "Orlando",
+        "type": "pressed",
+        "condition": "Não Tenho",
+        "location_name": "Disney Springs",
+        "description": "Silhouette of Sally & Jack Skellington standing in the moonlight holding hands with large moon in background, Tim Burton's The Nightmare Before Christmas logo at top",
+        "display_shape": "oval",
+        "image_front": "https://www.presscoins.com/images/coin_images/Downtown%20Disney/large/WDW17102.jpg",
+        "image_back": "",
+        "notes": "Days of Christmas · Posição 2 · Catálogo Presscoins: WDW17102",
+        "reference_url": "https://www.presscoins.com/search/?availability=All&locations=All&search=WDW17102&limit=50&sort=catalog&cointype=All&Submit=Search&page=1",
+        "ordem": 60,
+        "hidden": false
+      }
+    },
+    {
+      "source": {
+        "catalog_number": "WDW17103",
+        "location": "Disney Springs, Days of Christmas",
+        "description": "Zero and doghouse, Tim Burton's The Nightmare Before Christmas logo at top",
+        "position": "3",
+        "coin_type": "Cent",
+        "orientation": "V",
+        "availability": "Current",
+        "image_url": "https://www.presscoins.com/images/coin_images/Downtown%20Disney/large/WDW17103.jpg",
+        "thumbnail_url": "https://www.presscoins.com/images/coin_images/Downtown%20Disney/small/WDW17103.gif"
+      },
+      "souvenir": {
+        "name": "Zero and doghouse",
+        "continent": "América",
+        "country": "EUA",
+        "city": "Orlando",
+        "type": "pressed",
+        "condition": "Não Tenho",
+        "location_name": "Disney Springs",
+        "description": "Zero and doghouse, Tim Burton's The Nightmare Before Christmas logo at top",
+        "display_shape": "oval",
+        "image_front": "https://www.presscoins.com/images/coin_images/Downtown%20Disney/large/WDW17103.jpg",
+        "image_back": "",
+        "notes": "Days of Christmas · Posição 3 · Catálogo Presscoins: WDW17103",
+        "reference_url": "https://www.presscoins.com/search/?availability=All&locations=All&search=WDW17103&limit=50&sort=catalog&cointype=All&Submit=Search&page=1",
+        "ordem": 61,
+        "hidden": false
+      }
+    },
+    {
+      "source": {
+        "catalog_number": "WDW17104",
+        "location": "Disney Springs, Days of Christmas",
+        "description": "Oogie Boogie face, Tim Burton's The Nightmare Before Christmas logo at top",
+        "position": "4",
+        "coin_type": "Cent",
+        "orientation": "V",
+        "availability": "Current",
+        "image_url": "https://www.presscoins.com/images/coin_images/Downtown%20Disney/large/WDW17104.jpg",
+        "thumbnail_url": "https://www.presscoins.com/images/coin_images/Downtown%20Disney/small/WDW17104.gif"
+      },
+      "souvenir": {
+        "name": "Oogie Boogie face",
+        "continent": "América",
+        "country": "EUA",
+        "city": "Orlando",
+        "type": "pressed",
+        "condition": "Não Tenho",
+        "location_name": "Disney Springs",
+        "description": "Oogie Boogie face, Tim Burton's The Nightmare Before Christmas logo at top",
+        "display_shape": "oval",
+        "image_front": "https://www.presscoins.com/images/coin_images/Downtown%20Disney/large/WDW17104.jpg",
+        "image_back": "",
+        "notes": "Days of Christmas · Posição 4 · Catálogo Presscoins: WDW17104",
+        "reference_url": "https://www.presscoins.com/search/?availability=All&locations=All&search=WDW17104&limit=50&sort=catalog&cointype=All&Submit=Search&page=1",
+        "ordem": 62,
+        "hidden": false
+      }
+    },
+    {
+      "source": {
+        "catalog_number": "WDW17105",
+        "location": "Disney Springs, Days of Christmas",
+        "description": "Mayor of Halloween Town, Tim Burton's The Nightmare Before Christmas logo at top",
+        "position": "5",
+        "coin_type": "Cent",
+        "orientation": "V",
+        "availability": "Current",
+        "image_url": "https://www.presscoins.com/images/coin_images/Downtown%20Disney/large/WDW17105.jpg",
+        "thumbnail_url": "https://www.presscoins.com/images/coin_images/Downtown%20Disney/small/WDW17105.gif"
+      },
+      "souvenir": {
+        "name": "Mayor of Halloween Town",
+        "continent": "América",
+        "country": "EUA",
+        "city": "Orlando",
+        "type": "pressed",
+        "condition": "Não Tenho",
+        "location_name": "Disney Springs",
+        "description": "Mayor of Halloween Town, Tim Burton's The Nightmare Before Christmas logo at top",
+        "display_shape": "oval",
+        "image_front": "https://www.presscoins.com/images/coin_images/Downtown%20Disney/large/WDW17105.jpg",
+        "image_back": "",
+        "notes": "Days of Christmas · Posição 5 · Catálogo Presscoins: WDW17105",
+        "reference_url": "https://www.presscoins.com/search/?availability=All&locations=All&search=WDW17105&limit=50&sort=catalog&cointype=All&Submit=Search&page=1",
+        "ordem": 63,
+        "hidden": false
+      }
+    },
+    {
+      "source": {
+        "catalog_number": "WDW17106",
+        "location": "Disney Springs, Days of Christmas",
+        "description": "Sally with hands held together wearing a wedding dress veil, Tim Burton's The Nightmare Before Christmas logo at top",
+        "position": "6",
+        "coin_type": "Cent",
+        "orientation": "V",
+        "availability": "Current",
+        "image_url": "https://www.presscoins.com/images/coin_images/Downtown%20Disney/large/WDW17106.jpg",
+        "thumbnail_url": "https://www.presscoins.com/images/coin_images/Downtown%20Disney/small/WDW17106.gif"
+      },
+      "souvenir": {
+        "name": "Sally",
+        "continent": "América",
+        "country": "EUA",
+        "city": "Orlando",
+        "type": "pressed",
+        "condition": "Não Tenho",
+        "location_name": "Disney Springs",
+        "description": "Sally with hands held together wearing a wedding dress veil, Tim Burton's The Nightmare Before Christmas logo at top",
+        "display_shape": "oval",
+        "image_front": "https://www.presscoins.com/images/coin_images/Downtown%20Disney/large/WDW17106.jpg",
+        "image_back": "",
+        "notes": "Days of Christmas · Posição 6 · Catálogo Presscoins: WDW17106",
+        "reference_url": "https://www.presscoins.com/search/?availability=All&locations=All&search=WDW17106&limit=50&sort=catalog&cointype=All&Submit=Search&page=1",
+        "ordem": 64,
+        "hidden": false
+      }
+    },
+    {
+      "source": {
+        "catalog_number": "WDW17107",
+        "location": "Disney Springs, Days of Christmas",
+        "description": "Jack Skellington with hands clasped, Tim Burton's The Nightmare Before Christmas logo at top",
+        "position": "7",
+        "coin_type": "Cent",
+        "orientation": "V",
+        "availability": "Current",
+        "image_url": "https://www.presscoins.com/images/coin_images/Downtown%20Disney/large/WDW17107.jpg",
+        "thumbnail_url": "https://www.presscoins.com/images/coin_images/Downtown%20Disney/small/WDW17107.gif"
+      },
+      "souvenir": {
+        "name": "Jack Skellington",
+        "continent": "América",
+        "country": "EUA",
+        "city": "Orlando",
+        "type": "pressed",
+        "condition": "Não Tenho",
+        "location_name": "Disney Springs",
+        "description": "Jack Skellington with hands clasped, Tim Burton's The Nightmare Before Christmas logo at top",
+        "display_shape": "oval",
+        "image_front": "https://www.presscoins.com/images/coin_images/Downtown%20Disney/large/WDW17107.jpg",
+        "image_back": "",
+        "notes": "Days of Christmas · Posição 7 · Catálogo Presscoins: WDW17107",
+        "reference_url": "https://www.presscoins.com/search/?availability=All&locations=All&search=WDW17107&limit=50&sort=catalog&cointype=All&Submit=Search&page=1",
+        "ordem": 65,
+        "hidden": false
+      }
+    },
+    {
+      "source": {
+        "catalog_number": "WDW17108",
+        "location": "Disney Springs, Days of Christmas",
+        "description": "Barrel, Tim Burton's The Nightmare Before Christmas logo at top",
+        "position": "8",
+        "coin_type": "Cent",
+        "orientation": "V",
+        "availability": "Current",
+        "image_url": "https://www.presscoins.com/images/coin_images/Downtown%20Disney/large/WDW17108.jpg",
+        "thumbnail_url": "https://www.presscoins.com/images/coin_images/Downtown%20Disney/small/WDW17108.gif"
+      },
+      "souvenir": {
+        "name": "Barrel",
+        "continent": "América",
+        "country": "EUA",
+        "city": "Orlando",
+        "type": "pressed",
+        "condition": "Não Tenho",
+        "location_name": "Disney Springs",
+        "description": "Barrel, Tim Burton's The Nightmare Before Christmas logo at top",
+        "display_shape": "oval",
+        "image_front": "https://www.presscoins.com/images/coin_images/Downtown%20Disney/large/WDW17108.jpg",
+        "image_back": "",
+        "notes": "Days of Christmas · Posição 8 · Catálogo Presscoins: WDW17108",
+        "reference_url": "https://www.presscoins.com/search/?availability=All&locations=All&search=WDW17108&limit=50&sort=catalog&cointype=All&Submit=Search&page=1",
+        "ordem": 66,
+        "hidden": false
+      }
+    },
+    {
+      "source": {
+        "catalog_number": "WDW18016",
+        "location": "Disney Springs, Food Trucks at Exposition Park",
+        "description": "Minnie bending over to eat an ice cream cone that she is holding in her hand",
+        "position": "1",
+        "coin_type": "Cent",
+        "orientation": "V",
+        "availability": "Current",
+        "image_url": "https://www.presscoins.com/images/coin_images/Downtown%20Disney/large/WDW18016.jpg",
+        "thumbnail_url": "https://www.presscoins.com/images/coin_images/Downtown%20Disney/small/WDW18016.gif"
+      },
+      "souvenir": {
+        "name": "Minnie bending over to eat an ice cream cone",
+        "continent": "América",
+        "country": "EUA",
+        "city": "Orlando",
+        "type": "pressed",
+        "condition": "Não Tenho",
+        "location_name": "Disney Springs",
+        "description": "Minnie bending over to eat an ice cream cone that she is holding in her hand",
+        "display_shape": "oval",
+        "image_front": "https://www.presscoins.com/images/coin_images/Downtown%20Disney/large/WDW18016.jpg",
+        "image_back": "",
+        "notes": "Food Trucks at Exposition Park · Posição 1 · Catálogo Presscoins: WDW18016",
+        "reference_url": "https://www.presscoins.com/search/?availability=All&locations=All&search=WDW18016&limit=50&sort=catalog&cointype=All&Submit=Search&page=1",
+        "ordem": 67,
+        "hidden": false
+      }
+    },
+    {
+      "source": {
+        "catalog_number": "WDW18017",
+        "location": "Disney Springs, Food Trucks at Exposition Park",
+        "description": "Chef Goofy holding a platter with a turkey in one hand and fresh partially sliced bread on a platter in his other hand",
+        "position": "2",
+        "coin_type": "Cent",
+        "orientation": "V",
+        "availability": "Current",
+        "image_url": "https://www.presscoins.com/images/coin_images/Downtown%20Disney/large/WDW18017.jpg",
+        "thumbnail_url": "https://www.presscoins.com/images/coin_images/Downtown%20Disney/small/WDW18017.gif"
+      },
+      "souvenir": {
+        "name": "Chef Goofy",
+        "continent": "América",
+        "country": "EUA",
+        "city": "Orlando",
+        "type": "pressed",
+        "condition": "Não Tenho",
+        "location_name": "Disney Springs",
+        "description": "Chef Goofy holding a platter with a turkey in one hand and fresh partially sliced bread on a platter in his other hand",
+        "display_shape": "oval",
+        "image_front": "https://www.presscoins.com/images/coin_images/Downtown%20Disney/large/WDW18017.jpg",
+        "image_back": "",
+        "notes": "Food Trucks at Exposition Park · Posição 2 · Catálogo Presscoins: WDW18017",
+        "reference_url": "https://www.presscoins.com/search/?availability=All&locations=All&search=WDW18017&limit=50&sort=catalog&cointype=All&Submit=Search&page=1",
+        "ordem": 68,
+        "hidden": false
+      }
+    },
+    {
+      "source": {
+        "catalog_number": "WDW18018",
+        "location": "Disney Springs, Food Trucks at Exposition Park",
+        "description": "Chef Mickey holding up a sandwich on a plate",
+        "position": "3",
+        "coin_type": "Cent",
+        "orientation": "V",
+        "availability": "Current",
+        "image_url": "https://www.presscoins.com/images/coin_images/Downtown%20Disney/large/WDW18018.jpg",
+        "thumbnail_url": "https://www.presscoins.com/images/coin_images/Downtown%20Disney/small/WDW18018.gif"
+      },
+      "souvenir": {
+        "name": "Chef Mickey",
+        "continent": "América",
+        "country": "EUA",
+        "city": "Orlando",
+        "type": "pressed",
+        "condition": "Não Tenho",
+        "location_name": "Disney Springs",
+        "description": "Chef Mickey holding up a sandwich on a plate",
+        "display_shape": "oval",
+        "image_front": "https://www.presscoins.com/images/coin_images/Downtown%20Disney/large/WDW18018.jpg",
+        "image_back": "",
+        "notes": "Food Trucks at Exposition Park · Posição 3 · Catálogo Presscoins: WDW18018",
+        "reference_url": "https://www.presscoins.com/search/?availability=All&locations=All&search=WDW18018&limit=50&sort=catalog&cointype=All&Submit=Search&page=1",
+        "ordem": 69,
+        "hidden": false
+      }
+    },
+    {
+      "source": {
+        "catalog_number": "WDW18019",
+        "location": "Disney Springs, Food Trucks at Exposition Park",
+        "description": "Dopey sitting and holding a knife and fork getting ready to eat a piece of cake on a plate held in his lap",
+        "position": "4",
+        "coin_type": "Cent",
+        "orientation": "V",
+        "availability": "Current",
+        "image_url": "https://www.presscoins.com/images/coin_images/Downtown%20Disney/large/WDW18019.jpg",
+        "thumbnail_url": "https://www.presscoins.com/images/coin_images/Downtown%20Disney/small/WDW18019.gif"
+      },
+      "souvenir": {
+        "name": "Dopey",
+        "continent": "América",
+        "country": "EUA",
+        "city": "Orlando",
+        "type": "pressed",
+        "condition": "Não Tenho",
+        "location_name": "Disney Springs",
+        "description": "Dopey sitting and holding a knife and fork getting ready to eat a piece of cake on a plate held in his lap",
+        "display_shape": "oval",
+        "image_front": "https://www.presscoins.com/images/coin_images/Downtown%20Disney/large/WDW18019.jpg",
+        "image_back": "",
+        "notes": "Food Trucks at Exposition Park · Posição 4 · Catálogo Presscoins: WDW18019",
+        "reference_url": "https://www.presscoins.com/search/?availability=All&locations=All&search=WDW18019&limit=50&sort=catalog&cointype=All&Submit=Search&page=1",
+        "ordem": 70,
+        "hidden": false
+      }
+    },
+    {
+      "source": {
+        "catalog_number": "WDW18020",
+        "location": "Disney Springs, Town Square Firehouse (Restrooms Near Coca-Cola Store)",
+        "description": "Firefighter Donald holding a fire hose attached to a fire hydrant \"TOWN SQUARE FIREHOUSE\" at top left",
+        "position": "1",
+        "coin_type": "Cent",
+        "orientation": "H",
+        "availability": "Current",
+        "image_url": "https://www.presscoins.com/images/coin_images/Downtown%20Disney/large/WDW18020.jpg",
+        "thumbnail_url": "https://www.presscoins.com/images/coin_images/Downtown%20Disney/small/WDW18020.gif"
+      },
+      "souvenir": {
+        "name": "Firefighter Donald",
+        "continent": "América",
+        "country": "EUA",
+        "city": "Orlando",
+        "type": "pressed",
+        "condition": "Não Tenho",
+        "location_name": "Disney Springs",
+        "description": "Firefighter Donald holding a fire hose attached to a fire hydrant \"TOWN SQUARE FIREHOUSE\" at top left",
+        "display_shape": "oval",
+        "image_front": "https://www.presscoins.com/images/coin_images/Downtown%20Disney/large/WDW18020.jpg",
+        "image_back": "",
+        "notes": "Town Square Firehouse (Restrooms Near Coca-Cola Store) · Posição 1 · Catálogo Presscoins: WDW18020",
+        "reference_url": "https://www.presscoins.com/search/?availability=All&locations=All&search=WDW18020&limit=50&sort=catalog&cointype=All&Submit=Search&page=1",
+        "ordem": 71,
+        "hidden": false
+      }
+    },
+    {
+      "source": {
+        "catalog_number": "WDW18021",
+        "location": "Disney Springs, Town Square Firehouse (Restrooms Near Coca-Cola Store)",
+        "description": "Firefighter Mickey holding a fireman's axe over his shoulder \"TOWN SQUARE FIREHOUSE\" at bottom",
+        "position": "2",
+        "coin_type": "Cent",
+        "orientation": "V",
+        "availability": "Current",
+        "image_url": "https://www.presscoins.com/images/coin_images/Downtown%20Disney/large/WDW18021.jpg",
+        "thumbnail_url": "https://www.presscoins.com/images/coin_images/Downtown%20Disney/small/WDW18021.gif"
+      },
+      "souvenir": {
+        "name": "Firefighter Mickey",
+        "continent": "América",
+        "country": "EUA",
+        "city": "Orlando",
+        "type": "pressed",
+        "condition": "Não Tenho",
+        "location_name": "Disney Springs",
+        "description": "Firefighter Mickey holding a fireman's axe over his shoulder \"TOWN SQUARE FIREHOUSE\" at bottom",
+        "display_shape": "oval",
+        "image_front": "https://www.presscoins.com/images/coin_images/Downtown%20Disney/large/WDW18021.jpg",
+        "image_back": "",
+        "notes": "Town Square Firehouse (Restrooms Near Coca-Cola Store) · Posição 2 · Catálogo Presscoins: WDW18021",
+        "reference_url": "https://www.presscoins.com/search/?availability=All&locations=All&search=WDW18021&limit=50&sort=catalog&cointype=All&Submit=Search&page=1",
+        "ordem": 72,
+        "hidden": false
+      }
+    },
+    {
+      "source": {
+        "catalog_number": "WDW18022",
+        "location": "Disney Springs, Town Square Firehouse (Restrooms Near Coca-Cola Store)",
+        "description": "Pluto standing wearing a fireman's helmet \"TOWN SQUARE FIREHOUSE\" at bottom",
+        "position": "3",
+        "coin_type": "Cent",
+        "orientation": "V",
+        "availability": "Current",
+        "image_url": "https://www.presscoins.com/images/coin_images/Downtown%20Disney/large/WDW18022.jpg",
+        "thumbnail_url": "https://www.presscoins.com/images/coin_images/Downtown%20Disney/small/WDW18022.gif"
+      },
+      "souvenir": {
+        "name": "Pluto",
+        "continent": "América",
+        "country": "EUA",
+        "city": "Orlando",
+        "type": "pressed",
+        "condition": "Não Tenho",
+        "location_name": "Disney Springs",
+        "description": "Pluto standing wearing a fireman's helmet \"TOWN SQUARE FIREHOUSE\" at bottom",
+        "display_shape": "oval",
+        "image_front": "https://www.presscoins.com/images/coin_images/Downtown%20Disney/large/WDW18022.jpg",
+        "image_back": "",
+        "notes": "Town Square Firehouse (Restrooms Near Coca-Cola Store) · Posição 3 · Catálogo Presscoins: WDW18022",
+        "reference_url": "https://www.presscoins.com/search/?availability=All&locations=All&search=WDW18022&limit=50&sort=catalog&cointype=All&Submit=Search&page=1",
+        "ordem": 73,
+        "hidden": false
+      }
+    },
+    {
+      "source": {
+        "catalog_number": "WDW18023",
+        "location": "Disney Springs, Town Square Firehouse (Restrooms Near Coca-Cola Store)",
+        "description": "Red the Fire Truck from the Disney Pixar Cars movie \"TOWN SQUARE FIREHOUSE\" at bottom",
+        "position": "4",
+        "coin_type": "Cent",
+        "orientation": "V",
+        "availability": "Current",
+        "image_url": "https://www.presscoins.com/images/coin_images/Downtown%20Disney/large/WDW18023.jpg",
+        "thumbnail_url": "https://www.presscoins.com/images/coin_images/Downtown%20Disney/small/WDW18023.gif"
+      },
+      "souvenir": {
+        "name": "Red the Fire Truck from the Disney Pixar Cars…",
+        "continent": "América",
+        "country": "EUA",
+        "city": "Orlando",
+        "type": "pressed",
+        "condition": "Não Tenho",
+        "location_name": "Disney Springs",
+        "description": "Red the Fire Truck from the Disney Pixar Cars movie \"TOWN SQUARE FIREHOUSE\" at bottom",
+        "display_shape": "oval",
+        "image_front": "https://www.presscoins.com/images/coin_images/Downtown%20Disney/large/WDW18023.jpg",
+        "image_back": "",
+        "notes": "Town Square Firehouse (Restrooms Near Coca-Cola Store) · Posição 4 · Catálogo Presscoins: WDW18023",
+        "reference_url": "https://www.presscoins.com/search/?availability=All&locations=All&search=WDW18023&limit=50&sort=catalog&cointype=All&Submit=Search&page=1",
+        "ordem": 74,
+        "hidden": false
+      }
+    },
+    {
+      "source": {
+        "catalog_number": "WDW18100",
+        "location": "Disney Springs, World Of Disney #1",
+        "description": "Shy Mickey, World of Disney logo at top, \"DISNEY SPRINGS\" rotated 90 degrees and on left",
+        "position": "1",
+        "coin_type": "Cent",
+        "orientation": "V",
+        "availability": "Current",
+        "image_url": "https://www.presscoins.com/images/coin_images/Downtown%20Disney/large/WDW18100.jpg",
+        "thumbnail_url": "https://www.presscoins.com/images/coin_images/Downtown%20Disney/small/WDW18100.gif"
+      },
+      "souvenir": {
+        "name": "Shy Mickey",
+        "continent": "América",
+        "country": "EUA",
+        "city": "Orlando",
+        "type": "pressed",
+        "condition": "Não Tenho",
+        "location_name": "Disney Springs",
+        "description": "Shy Mickey, World of Disney logo at top, \"DISNEY SPRINGS\" rotated 90 degrees and on left",
+        "display_shape": "oval",
+        "image_front": "https://www.presscoins.com/images/coin_images/Downtown%20Disney/large/WDW18100.jpg",
+        "image_back": "",
+        "notes": "World Of Disney #1 · Posição 1 · Catálogo Presscoins: WDW18100",
+        "reference_url": "https://www.presscoins.com/search/?availability=All&locations=All&search=WDW18100&limit=50&sort=catalog&cointype=All&Submit=Search&page=1",
+        "ordem": 75,
+        "hidden": false
+      }
+    },
+    {
+      "source": {
+        "catalog_number": "WDW18101",
+        "location": "Disney Springs, World Of Disney #1",
+        "description": "Goofy behind and hugging Mickey and Donald, World of Disney logo and \"DISNEY SPRINGS\" at top",
+        "position": "2",
+        "coin_type": "Cent",
+        "orientation": "V",
+        "availability": "Current",
+        "image_url": "https://www.presscoins.com/images/coin_images/Downtown%20Disney/large/WDW18101.jpg",
+        "thumbnail_url": "https://www.presscoins.com/images/coin_images/Downtown%20Disney/small/WDW18101.gif"
+      },
+      "souvenir": {
+        "name": "Goofy",
+        "continent": "América",
+        "country": "EUA",
+        "city": "Orlando",
+        "type": "pressed",
+        "condition": "Não Tenho",
+        "location_name": "Disney Springs",
+        "description": "Goofy behind and hugging Mickey and Donald, World of Disney logo and \"DISNEY SPRINGS\" at top",
+        "display_shape": "oval",
+        "image_front": "https://www.presscoins.com/images/coin_images/Downtown%20Disney/large/WDW18101.jpg",
+        "image_back": "",
+        "notes": "World Of Disney #1 · Posição 2 · Catálogo Presscoins: WDW18101",
+        "reference_url": "https://www.presscoins.com/search/?availability=All&locations=All&search=WDW18101&limit=50&sort=catalog&cointype=All&Submit=Search&page=1",
+        "ordem": 76,
+        "hidden": false
+      }
+    },
+    {
+      "source": {
+        "catalog_number": "WDW18102",
+        "location": "Disney Springs, World Of Disney #1",
+        "description": "Dancing Minnie, World of Disney logo at top, \"DISNEY SPRINGS\" rotated 90 degrees and on left",
+        "position": "3",
+        "coin_type": "Cent",
+        "orientation": "V",
+        "availability": "Current",
+        "image_url": "https://www.presscoins.com/images/coin_images/Downtown%20Disney/large/WDW18102.jpg",
+        "thumbnail_url": "https://www.presscoins.com/images/coin_images/Downtown%20Disney/small/WDW18102.gif"
+      },
+      "souvenir": {
+        "name": "Dancing Minnie",
+        "continent": "América",
+        "country": "EUA",
+        "city": "Orlando",
+        "type": "pressed",
+        "condition": "Não Tenho",
+        "location_name": "Disney Springs",
+        "description": "Dancing Minnie, World of Disney logo at top, \"DISNEY SPRINGS\" rotated 90 degrees and on left",
+        "display_shape": "oval",
+        "image_front": "https://www.presscoins.com/images/coin_images/Downtown%20Disney/large/WDW18102.jpg",
+        "image_back": "",
+        "notes": "World Of Disney #1 · Posição 3 · Catálogo Presscoins: WDW18102",
+        "reference_url": "https://www.presscoins.com/search/?availability=All&locations=All&search=WDW18102&limit=50&sort=catalog&cointype=All&Submit=Search&page=1",
+        "ordem": 77,
+        "hidden": false
+      }
+    },
+    {
+      "source": {
+        "catalog_number": "WDW18103",
+        "location": "Disney Springs, World Of Disney #1",
+        "description": "Minnie and Mickey hugging, World of Disney logo and \"DISNEY SPRINGS\" at top",
+        "position": "4",
+        "coin_type": "Cent",
+        "orientation": "V",
+        "availability": "Current",
+        "image_url": "https://www.presscoins.com/images/coin_images/Downtown%20Disney/large/WDW18103.jpg",
+        "thumbnail_url": "https://www.presscoins.com/images/coin_images/Downtown%20Disney/small/WDW18103.gif"
+      },
+      "souvenir": {
+        "name": "Minnie and Mickey",
+        "continent": "América",
+        "country": "EUA",
+        "city": "Orlando",
+        "type": "pressed",
+        "condition": "Não Tenho",
+        "location_name": "Disney Springs",
+        "description": "Minnie and Mickey hugging, World of Disney logo and \"DISNEY SPRINGS\" at top",
+        "display_shape": "oval",
+        "image_front": "https://www.presscoins.com/images/coin_images/Downtown%20Disney/large/WDW18103.jpg",
+        "image_back": "",
+        "notes": "World Of Disney #1 · Posição 4 · Catálogo Presscoins: WDW18103",
+        "reference_url": "https://www.presscoins.com/search/?availability=All&locations=All&search=WDW18103&limit=50&sort=catalog&cointype=All&Submit=Search&page=1",
+        "ordem": 78,
+        "hidden": false
+      }
+    },
+    {
+      "source": {
+        "catalog_number": "WDW18104",
+        "location": "Disney Springs, World Of Disney #1",
+        "description": "Pluto sitting with bone in mouth, World of Disney logo and \"DISNEY SPRINGS\" at top",
+        "position": "5",
+        "coin_type": "Cent",
+        "orientation": "V",
+        "availability": "Current",
+        "image_url": "https://www.presscoins.com/images/coin_images/Downtown%20Disney/large/WDW18104.jpg",
+        "thumbnail_url": "https://www.presscoins.com/images/coin_images/Downtown%20Disney/small/WDW18104.gif"
+      },
+      "souvenir": {
+        "name": "Pluto",
+        "continent": "América",
+        "country": "EUA",
+        "city": "Orlando",
+        "type": "pressed",
+        "condition": "Não Tenho",
+        "location_name": "Disney Springs",
+        "description": "Pluto sitting with bone in mouth, World of Disney logo and \"DISNEY SPRINGS\" at top",
+        "display_shape": "oval",
+        "image_front": "https://www.presscoins.com/images/coin_images/Downtown%20Disney/large/WDW18104.jpg",
+        "image_back": "",
+        "notes": "World Of Disney #1 · Posição 5 · Catálogo Presscoins: WDW18104",
+        "reference_url": "https://www.presscoins.com/search/?availability=All&locations=All&search=WDW18104&limit=50&sort=catalog&cointype=All&Submit=Search&page=1",
+        "ordem": 79,
+        "hidden": false
+      }
+    },
+    {
+      "source": {
+        "catalog_number": "WDW18105",
+        "location": "Disney Springs, World Of Disney #1",
+        "description": "Angry Donald with arms crossed, World of Disney logo at top, \"DISNEY SPRING\" rotated 90 degrees and on left",
+        "position": "6",
+        "coin_type": "Cent",
+        "orientation": "V",
+        "availability": "Current",
+        "image_url": "https://www.presscoins.com/images/coin_images/Downtown%20Disney/large/WDW18105.jpg",
+        "thumbnail_url": "https://www.presscoins.com/images/coin_images/Downtown%20Disney/small/WDW18105.gif"
+      },
+      "souvenir": {
+        "name": "Angry Donald",
+        "continent": "América",
+        "country": "EUA",
+        "city": "Orlando",
+        "type": "pressed",
+        "condition": "Não Tenho",
+        "location_name": "Disney Springs",
+        "description": "Angry Donald with arms crossed, World of Disney logo at top, \"DISNEY SPRING\" rotated 90 degrees and on left",
+        "display_shape": "oval",
+        "image_front": "https://www.presscoins.com/images/coin_images/Downtown%20Disney/large/WDW18105.jpg",
+        "image_back": "",
+        "notes": "World Of Disney #1 · Posição 6 · Catálogo Presscoins: WDW18105",
+        "reference_url": "https://www.presscoins.com/search/?availability=All&locations=All&search=WDW18105&limit=50&sort=catalog&cointype=All&Submit=Search&page=1",
+        "ordem": 80,
+        "hidden": false
+      }
+    },
+    {
+      "source": {
+        "catalog_number": "WDW18106",
+        "location": "Disney Springs, World Of Disney #1",
+        "description": "Mickey and Donald standing and leaning on each other, World of Disney logo and \"DISNEY SPRINGS\" at top",
+        "position": "7",
+        "coin_type": "Cent",
+        "orientation": "V",
+        "availability": "Current",
+        "image_url": "https://www.presscoins.com/images/coin_images/Downtown%20Disney/large/WDW18106.jpg",
+        "thumbnail_url": "https://www.presscoins.com/images/coin_images/Downtown%20Disney/small/WDW18106.gif"
+      },
+      "souvenir": {
+        "name": "Mickey and Donald",
+        "continent": "América",
+        "country": "EUA",
+        "city": "Orlando",
+        "type": "pressed",
+        "condition": "Não Tenho",
+        "location_name": "Disney Springs",
+        "description": "Mickey and Donald standing and leaning on each other, World of Disney logo and \"DISNEY SPRINGS\" at top",
+        "display_shape": "oval",
+        "image_front": "https://www.presscoins.com/images/coin_images/Downtown%20Disney/large/WDW18106.jpg",
+        "image_back": "",
+        "notes": "World Of Disney #1 · Posição 7 · Catálogo Presscoins: WDW18106",
+        "reference_url": "https://www.presscoins.com/search/?availability=All&locations=All&search=WDW18106&limit=50&sort=catalog&cointype=All&Submit=Search&page=1",
+        "ordem": 81,
+        "hidden": false
+      }
+    },
+    {
+      "source": {
+        "catalog_number": "WDW18107",
+        "location": "Disney Springs, World Of Disney #1",
+        "description": "Goofy dancing, World of Disney logo and \"DISNEY SPRINGS\" at top",
+        "position": "8",
+        "coin_type": "Cent",
+        "orientation": "V",
+        "availability": "Current",
+        "image_url": "https://www.presscoins.com/images/coin_images/Downtown%20Disney/large/WDW18107.jpg",
+        "thumbnail_url": "https://www.presscoins.com/images/coin_images/Downtown%20Disney/small/WDW18107.gif"
+      },
+      "souvenir": {
+        "name": "Goofy",
+        "continent": "América",
+        "country": "EUA",
+        "city": "Orlando",
+        "type": "pressed",
+        "condition": "Não Tenho",
+        "location_name": "Disney Springs",
+        "description": "Goofy dancing, World of Disney logo and \"DISNEY SPRINGS\" at top",
+        "display_shape": "oval",
+        "image_front": "https://www.presscoins.com/images/coin_images/Downtown%20Disney/large/WDW18107.jpg",
+        "image_back": "",
+        "notes": "World Of Disney #1 · Posição 8 · Catálogo Presscoins: WDW18107",
+        "reference_url": "https://www.presscoins.com/search/?availability=All&locations=All&search=WDW18107&limit=50&sort=catalog&cointype=All&Submit=Search&page=1",
+        "ordem": 82,
+        "hidden": false
+      }
+    },
+    {
+      "source": {
+        "catalog_number": "WDW18108",
+        "location": "Disney Springs, World Of Disney #2",
+        "description": "Aladdin & Genie with arms crossed and standing back-to-back, World of Disney logo, \"DISNEY SPRINGS\" on left",
+        "position": "1",
+        "coin_type": "Cent",
+        "orientation": "V",
+        "availability": "Current",
+        "image_url": "https://www.presscoins.com/images/coin_images/Downtown%20Disney/large/WDW18108.jpg",
+        "thumbnail_url": "https://www.presscoins.com/images/coin_images/Downtown%20Disney/small/WDW18108.gif"
+      },
+      "souvenir": {
+        "name": "Aladdin & Genie",
+        "continent": "América",
+        "country": "EUA",
+        "city": "Orlando",
+        "type": "pressed",
+        "condition": "Não Tenho",
+        "location_name": "Disney Springs",
+        "description": "Aladdin & Genie with arms crossed and standing back-to-back, World of Disney logo, \"DISNEY SPRINGS\" on left",
+        "display_shape": "oval",
+        "image_front": "https://www.presscoins.com/images/coin_images/Downtown%20Disney/large/WDW18108.jpg",
+        "image_back": "",
+        "notes": "World Of Disney #2 · Posição 1 · Catálogo Presscoins: WDW18108",
+        "reference_url": "https://www.presscoins.com/search/?availability=All&locations=All&search=WDW18108&limit=50&sort=catalog&cointype=All&Submit=Search&page=1",
+        "ordem": 83,
+        "hidden": false
+      }
+    },
+    {
+      "source": {
+        "catalog_number": "WDW18109",
+        "location": "Disney Springs, World Of Disney #2",
+        "description": "Pocahontas sitting, World of Disney logo, \"DISNEY SPRINGS\" on left",
+        "position": "2",
+        "coin_type": "Cent",
+        "orientation": "V",
+        "availability": "Current",
+        "image_url": "https://www.presscoins.com/images/coin_images/Downtown%20Disney/large/WDW18109.jpg",
+        "thumbnail_url": "https://www.presscoins.com/images/coin_images/Downtown%20Disney/small/WDW18109.gif"
+      },
+      "souvenir": {
+        "name": "Pocahontas",
+        "continent": "América",
+        "country": "EUA",
+        "city": "Orlando",
+        "type": "pressed",
+        "condition": "Não Tenho",
+        "location_name": "Disney Springs",
+        "description": "Pocahontas sitting, World of Disney logo, \"DISNEY SPRINGS\" on left",
+        "display_shape": "oval",
+        "image_front": "https://www.presscoins.com/images/coin_images/Downtown%20Disney/large/WDW18109.jpg",
+        "image_back": "",
+        "notes": "World Of Disney #2 · Posição 2 · Catálogo Presscoins: WDW18109",
+        "reference_url": "https://www.presscoins.com/search/?availability=All&locations=All&search=WDW18109&limit=50&sort=catalog&cointype=All&Submit=Search&page=1",
+        "ordem": 84,
+        "hidden": false
+      }
+    },
+    {
+      "source": {
+        "catalog_number": "WDW18110",
+        "location": "Disney Springs, World Of Disney #2",
+        "description": "Alice facing right with arms raised, World of Disney logo at top, \"DISNEY SPRINGS\" on right",
+        "position": "3",
+        "coin_type": "Cent",
+        "orientation": "V",
+        "availability": "Current",
+        "image_url": "https://www.presscoins.com/images/coin_images/Downtown%20Disney/large/WDW18110.jpg",
+        "thumbnail_url": "https://www.presscoins.com/images/coin_images/Downtown%20Disney/small/WDW18110.gif"
+      },
+      "souvenir": {
+        "name": "Alice",
+        "continent": "América",
+        "country": "EUA",
+        "city": "Orlando",
+        "type": "pressed",
+        "condition": "Não Tenho",
+        "location_name": "Disney Springs",
+        "description": "Alice facing right with arms raised, World of Disney logo at top, \"DISNEY SPRINGS\" on right",
+        "display_shape": "oval",
+        "image_front": "https://www.presscoins.com/images/coin_images/Downtown%20Disney/large/WDW18110.jpg",
+        "image_back": "",
+        "notes": "World Of Disney #2 · Posição 3 · Catálogo Presscoins: WDW18110",
+        "reference_url": "https://www.presscoins.com/search/?availability=All&locations=All&search=WDW18110&limit=50&sort=catalog&cointype=All&Submit=Search&page=1",
+        "ordem": 85,
+        "hidden": false
+      }
+    },
+    {
+      "source": {
+        "catalog_number": "WDW18111",
+        "location": "Disney Springs, World Of Disney #2",
+        "description": "Ariel lying down \"DISNEY SPRINGS\" at top, World of Disney logo on left",
+        "position": "4",
+        "coin_type": "Cent",
+        "orientation": "H",
+        "availability": "Current",
+        "image_url": "https://www.presscoins.com/images/coin_images/Downtown%20Disney/large/WDW18111.jpg",
+        "thumbnail_url": "https://www.presscoins.com/images/coin_images/Downtown%20Disney/small/WDW18111.gif"
+      },
+      "souvenir": {
+        "name": "Ariel",
+        "continent": "América",
+        "country": "EUA",
+        "city": "Orlando",
+        "type": "pressed",
+        "condition": "Não Tenho",
+        "location_name": "Disney Springs",
+        "description": "Ariel lying down \"DISNEY SPRINGS\" at top, World of Disney logo on left",
+        "display_shape": "oval",
+        "image_front": "https://www.presscoins.com/images/coin_images/Downtown%20Disney/large/WDW18111.jpg",
+        "image_back": "",
+        "notes": "World Of Disney #2 · Posição 4 · Catálogo Presscoins: WDW18111",
+        "reference_url": "https://www.presscoins.com/search/?availability=All&locations=All&search=WDW18111&limit=50&sort=catalog&cointype=All&Submit=Search&page=1",
+        "ordem": 86,
+        "hidden": false
+      }
+    },
+    {
+      "source": {
+        "catalog_number": "WDW18112",
+        "location": "Disney Springs, World Of Disney #2",
+        "description": "Pinocchio sitting with Jiminy Cricket standing on Pinocchio's shoe, World of Disney logo and \"DISNEY SPRINGS\" at top",
+        "position": "5",
+        "coin_type": "Cent",
+        "orientation": "V",
+        "availability": "Current",
+        "image_url": "https://www.presscoins.com/images/coin_images/Downtown%20Disney/large/WDW18112.jpg",
+        "thumbnail_url": "https://www.presscoins.com/images/coin_images/Downtown%20Disney/small/WDW18112.gif"
+      },
+      "souvenir": {
+        "name": "Pinocchio",
+        "continent": "América",
+        "country": "EUA",
+        "city": "Orlando",
+        "type": "pressed",
+        "condition": "Não Tenho",
+        "location_name": "Disney Springs",
+        "description": "Pinocchio sitting with Jiminy Cricket standing on Pinocchio's shoe, World of Disney logo and \"DISNEY SPRINGS\" at top",
+        "display_shape": "oval",
+        "image_front": "https://www.presscoins.com/images/coin_images/Downtown%20Disney/large/WDW18112.jpg",
+        "image_back": "",
+        "notes": "World Of Disney #2 · Posição 5 · Catálogo Presscoins: WDW18112",
+        "reference_url": "https://www.presscoins.com/search/?availability=All&locations=All&search=WDW18112&limit=50&sort=catalog&cointype=All&Submit=Search&page=1",
+        "ordem": 87,
+        "hidden": false
+      }
+    },
+    {
+      "source": {
+        "catalog_number": "WDW18113",
+        "location": "Disney Springs, World Of Disney #2",
+        "description": "Up house with balloons, World of Disney logo and \"DISNEY SPRINGS\" at top, ©Disney/Pixar",
+        "position": "6",
+        "coin_type": "Cent",
+        "orientation": "V",
+        "availability": "Current",
+        "image_url": "https://www.presscoins.com/images/coin_images/Downtown%20Disney/large/WDW18113.jpg",
+        "thumbnail_url": "https://www.presscoins.com/images/coin_images/Downtown%20Disney/small/WDW18113.gif"
+      },
+      "souvenir": {
+        "name": "Up house",
+        "continent": "América",
+        "country": "EUA",
+        "city": "Orlando",
+        "type": "pressed",
+        "condition": "Não Tenho",
+        "location_name": "Disney Springs",
+        "description": "Up house with balloons, World of Disney logo and \"DISNEY SPRINGS\" at top, ©Disney/Pixar",
+        "display_shape": "oval",
+        "image_front": "https://www.presscoins.com/images/coin_images/Downtown%20Disney/large/WDW18113.jpg",
+        "image_back": "",
+        "notes": "World Of Disney #2 · Posição 6 · Catálogo Presscoins: WDW18113",
+        "reference_url": "https://www.presscoins.com/search/?availability=All&locations=All&search=WDW18113&limit=50&sort=catalog&cointype=All&Submit=Search&page=1",
+        "ordem": 88,
+        "hidden": false
+      }
+    },
+    {
+      "source": {
+        "catalog_number": "WDW18114",
+        "location": "Disney Springs, World Of Disney #2",
+        "description": "Mowgli sitting on Baloo, World of Disney logo at top, \"DISNEY SPRINGS\" on left",
+        "position": "7",
+        "coin_type": "Cent",
+        "orientation": "V",
+        "availability": "Current",
+        "image_url": "https://www.presscoins.com/images/coin_images/Downtown%20Disney/large/WDW18114.jpg",
+        "thumbnail_url": "https://www.presscoins.com/images/coin_images/Downtown%20Disney/small/WDW18114.gif"
+      },
+      "souvenir": {
+        "name": "Mowgli",
+        "continent": "América",
+        "country": "EUA",
+        "city": "Orlando",
+        "type": "pressed",
+        "condition": "Não Tenho",
+        "location_name": "Disney Springs",
+        "description": "Mowgli sitting on Baloo, World of Disney logo at top, \"DISNEY SPRINGS\" on left",
+        "display_shape": "oval",
+        "image_front": "https://www.presscoins.com/images/coin_images/Downtown%20Disney/large/WDW18114.jpg",
+        "image_back": "",
+        "notes": "World Of Disney #2 · Posição 7 · Catálogo Presscoins: WDW18114",
+        "reference_url": "https://www.presscoins.com/search/?availability=All&locations=All&search=WDW18114&limit=50&sort=catalog&cointype=All&Submit=Search&page=1",
+        "ordem": 89,
+        "hidden": false
+      }
+    },
+    {
+      "source": {
+        "catalog_number": "WDW18115",
+        "location": "Disney Springs, World Of Disney #2",
+        "description": "Jiminy Cricket standing with umbrella, World of Disney logo and \"DISNEY SPRINGS\" at top",
+        "position": "8",
+        "coin_type": "Cent",
+        "orientation": "V",
+        "availability": "Current",
+        "image_url": "https://www.presscoins.com/images/coin_images/Downtown%20Disney/large/WDW18115.jpg",
+        "thumbnail_url": "https://www.presscoins.com/images/coin_images/Downtown%20Disney/small/WDW18115.gif"
+      },
+      "souvenir": {
+        "name": "Jiminy Cricket",
+        "continent": "América",
+        "country": "EUA",
+        "city": "Orlando",
+        "type": "pressed",
+        "condition": "Não Tenho",
+        "location_name": "Disney Springs",
+        "description": "Jiminy Cricket standing with umbrella, World of Disney logo and \"DISNEY SPRINGS\" at top",
+        "display_shape": "oval",
+        "image_front": "https://www.presscoins.com/images/coin_images/Downtown%20Disney/large/WDW18115.jpg",
+        "image_back": "",
+        "notes": "World Of Disney #2 · Posição 8 · Catálogo Presscoins: WDW18115",
+        "reference_url": "https://www.presscoins.com/search/?availability=All&locations=All&search=WDW18115&limit=50&sort=catalog&cointype=All&Submit=Search&page=1",
+        "ordem": 90,
+        "hidden": false
+      }
+    },
+    {
+      "source": {
+        "catalog_number": "WDW18116",
+        "location": "Disney Springs, World Of Disney #3",
+        "description": "Winnie the Pooh sitting holding a jar of honey with bees flying around, World of Disney logo at top, \"DISNEY SPRING\" on left",
+        "position": "1",
+        "coin_type": "Cent",
+        "orientation": "V",
+        "availability": "Current",
+        "image_url": "https://www.presscoins.com/images/coin_images/Downtown%20Disney/large/WDW18116.jpg",
+        "thumbnail_url": "https://www.presscoins.com/images/coin_images/Downtown%20Disney/small/WDW18116.gif"
+      },
+      "souvenir": {
+        "name": "Winnie the Pooh",
+        "continent": "América",
+        "country": "EUA",
+        "city": "Orlando",
+        "type": "pressed",
+        "condition": "Não Tenho",
+        "location_name": "Disney Springs",
+        "description": "Winnie the Pooh sitting holding a jar of honey with bees flying around, World of Disney logo at top, \"DISNEY SPRING\" on left",
+        "display_shape": "oval",
+        "image_front": "https://www.presscoins.com/images/coin_images/Downtown%20Disney/large/WDW18116.jpg",
+        "image_back": "",
+        "notes": "World Of Disney #3 · Posição 1 · Catálogo Presscoins: WDW18116",
+        "reference_url": "https://www.presscoins.com/search/?availability=All&locations=All&search=WDW18116&limit=50&sort=catalog&cointype=All&Submit=Search&page=1",
+        "ordem": 91,
+        "hidden": false
+      }
+    },
+    {
+      "source": {
+        "catalog_number": "WDW18117",
+        "location": "Disney Springs, World Of Disney #3",
+        "description": "Roo using his tail to hold himself up with arms and legs outstretched, World of Disney logo and \"DISNEY SPRINGS\" at top",
+        "position": "2",
+        "coin_type": "Cent",
+        "orientation": "V",
+        "availability": "Current",
+        "image_url": "https://www.presscoins.com/images/coin_images/Downtown%20Disney/large/WDW18117.jpg",
+        "thumbnail_url": "https://www.presscoins.com/images/coin_images/Downtown%20Disney/small/WDW18117.gif"
+      },
+      "souvenir": {
+        "name": "Roo using his tail to hold himself up",
+        "continent": "América",
+        "country": "EUA",
+        "city": "Orlando",
+        "type": "pressed",
+        "condition": "Não Tenho",
+        "location_name": "Disney Springs",
+        "description": "Roo using his tail to hold himself up with arms and legs outstretched, World of Disney logo and \"DISNEY SPRINGS\" at top",
+        "display_shape": "oval",
+        "image_front": "https://www.presscoins.com/images/coin_images/Downtown%20Disney/large/WDW18117.jpg",
+        "image_back": "",
+        "notes": "World Of Disney #3 · Posição 2 · Catálogo Presscoins: WDW18117",
+        "reference_url": "https://www.presscoins.com/search/?availability=All&locations=All&search=WDW18117&limit=50&sort=catalog&cointype=All&Submit=Search&page=1",
+        "ordem": 92,
+        "hidden": false
+      }
+    },
+    {
+      "source": {
+        "catalog_number": "WDW18118",
+        "location": "Disney Springs, World Of Disney #3",
+        "description": "Worried Winnie the Pooh Rabbit touching mouth and facing right, World of Disney logo at top, \"DISNEY SPRINGS\" on right",
+        "position": "3",
+        "coin_type": "Cent",
+        "orientation": "V",
+        "availability": "Current",
+        "image_url": "https://www.presscoins.com/images/coin_images/Downtown%20Disney/large/WDW18118.jpg",
+        "thumbnail_url": "https://www.presscoins.com/images/coin_images/Downtown%20Disney/small/WDW18118.gif"
+      },
+      "souvenir": {
+        "name": "Worried Winnie the Pooh Rabbit touching mouth…",
+        "continent": "América",
+        "country": "EUA",
+        "city": "Orlando",
+        "type": "pressed",
+        "condition": "Não Tenho",
+        "location_name": "Disney Springs",
+        "description": "Worried Winnie the Pooh Rabbit touching mouth and facing right, World of Disney logo at top, \"DISNEY SPRINGS\" on right",
+        "display_shape": "oval",
+        "image_front": "https://www.presscoins.com/images/coin_images/Downtown%20Disney/large/WDW18118.jpg",
+        "image_back": "",
+        "notes": "World Of Disney #3 · Posição 3 · Catálogo Presscoins: WDW18118",
+        "reference_url": "https://www.presscoins.com/search/?availability=All&locations=All&search=WDW18118&limit=50&sort=catalog&cointype=All&Submit=Search&page=1",
+        "ordem": 93,
+        "hidden": false
+      }
+    },
+    {
+      "source": {
+        "catalog_number": "WDW18119",
+        "location": "Disney Springs, World Of Disney #3",
+        "description": "Eeyore sitting facing left, World of Disney logo and \"DISNEY SPRINGS\" at top",
+        "position": "4",
+        "coin_type": "Cent",
+        "orientation": "V",
+        "availability": "Current",
+        "image_url": "https://www.presscoins.com/images/coin_images/Downtown%20Disney/large/WDW18119.jpg",
+        "thumbnail_url": "https://www.presscoins.com/images/coin_images/Downtown%20Disney/small/WDW18119.gif"
+      },
+      "souvenir": {
+        "name": "Eeyore",
+        "continent": "América",
+        "country": "EUA",
+        "city": "Orlando",
+        "type": "pressed",
+        "condition": "Não Tenho",
+        "location_name": "Disney Springs",
+        "description": "Eeyore sitting facing left, World of Disney logo and \"DISNEY SPRINGS\" at top",
+        "display_shape": "oval",
+        "image_front": "https://www.presscoins.com/images/coin_images/Downtown%20Disney/large/WDW18119.jpg",
+        "image_back": "",
+        "notes": "World Of Disney #3 · Posição 4 · Catálogo Presscoins: WDW18119",
+        "reference_url": "https://www.presscoins.com/search/?availability=All&locations=All&search=WDW18119&limit=50&sort=catalog&cointype=All&Submit=Search&page=1",
+        "ordem": 94,
+        "hidden": false
+      }
+    },
+    {
+      "source": {
+        "catalog_number": "WDW18120",
+        "location": "Disney Springs, World Of Disney #3",
+        "description": "Piglet sitting with head on hand and turned to the left, World of Disney logo at top, \"DISNEY SPRINGS\" on left",
+        "position": "5",
+        "coin_type": "Cent",
+        "orientation": "V",
+        "availability": "Current",
+        "image_url": "https://www.presscoins.com/images/coin_images/Downtown%20Disney/large/WDW18120.jpg",
+        "thumbnail_url": "https://www.presscoins.com/images/coin_images/Downtown%20Disney/small/WDW18120.gif"
+      },
+      "souvenir": {
+        "name": "Piglet",
+        "continent": "América",
+        "country": "EUA",
+        "city": "Orlando",
+        "type": "pressed",
+        "condition": "Não Tenho",
+        "location_name": "Disney Springs",
+        "description": "Piglet sitting with head on hand and turned to the left, World of Disney logo at top, \"DISNEY SPRINGS\" on left",
+        "display_shape": "oval",
+        "image_front": "https://www.presscoins.com/images/coin_images/Downtown%20Disney/large/WDW18120.jpg",
+        "image_back": "",
+        "notes": "World Of Disney #3 · Posição 5 · Catálogo Presscoins: WDW18120",
+        "reference_url": "https://www.presscoins.com/search/?availability=All&locations=All&search=WDW18120&limit=50&sort=catalog&cointype=All&Submit=Search&page=1",
+        "ordem": 95,
+        "hidden": false
+      }
+    },
+    {
+      "source": {
+        "catalog_number": "WDW18121",
+        "location": "Disney Springs, World Of Disney #3",
+        "description": "Tigger looking forward, World of Disney logo and \"DISNEY SPRINGS\" at top",
+        "position": "6",
+        "coin_type": "Cent",
+        "orientation": "V",
+        "availability": "Current",
+        "image_url": "https://www.presscoins.com/images/coin_images/Downtown%20Disney/large/WDW18121.jpg",
+        "thumbnail_url": "https://www.presscoins.com/images/coin_images/Downtown%20Disney/small/WDW18121.gif"
+      },
+      "souvenir": {
+        "name": "Tigger",
+        "continent": "América",
+        "country": "EUA",
+        "city": "Orlando",
+        "type": "pressed",
+        "condition": "Não Tenho",
+        "location_name": "Disney Springs",
+        "description": "Tigger looking forward, World of Disney logo and \"DISNEY SPRINGS\" at top",
+        "display_shape": "oval",
+        "image_front": "https://www.presscoins.com/images/coin_images/Downtown%20Disney/large/WDW18121.jpg",
+        "image_back": "",
+        "notes": "World Of Disney #3 · Posição 6 · Catálogo Presscoins: WDW18121",
+        "reference_url": "https://www.presscoins.com/search/?availability=All&locations=All&search=WDW18121&limit=50&sort=catalog&cointype=All&Submit=Search&page=1",
+        "ordem": 96,
+        "hidden": false
+      }
+    },
+    {
+      "source": {
+        "catalog_number": "WDW18122",
+        "location": "Disney Springs, World Of Disney #3",
+        "description": "Winnie the Pooh Owl facing right, World of Disney logo and \"DISNEY SPRINGS\" at top",
+        "position": "7",
+        "coin_type": "Cent",
+        "orientation": "V",
+        "availability": "Current",
+        "image_url": "https://www.presscoins.com/images/coin_images/Downtown%20Disney/large/WDW18122.jpg",
+        "thumbnail_url": "https://www.presscoins.com/images/coin_images/Downtown%20Disney/small/WDW18122.gif"
+      },
+      "souvenir": {
+        "name": "Winnie the Pooh Owl",
+        "continent": "América",
+        "country": "EUA",
+        "city": "Orlando",
+        "type": "pressed",
+        "condition": "Não Tenho",
+        "location_name": "Disney Springs",
+        "description": "Winnie the Pooh Owl facing right, World of Disney logo and \"DISNEY SPRINGS\" at top",
+        "display_shape": "oval",
+        "image_front": "https://www.presscoins.com/images/coin_images/Downtown%20Disney/large/WDW18122.jpg",
+        "image_back": "",
+        "notes": "World Of Disney #3 · Posição 7 · Catálogo Presscoins: WDW18122",
+        "reference_url": "https://www.presscoins.com/search/?availability=All&locations=All&search=WDW18122&limit=50&sort=catalog&cointype=All&Submit=Search&page=1",
+        "ordem": 97,
+        "hidden": false
+      }
+    },
+    {
+      "source": {
+        "catalog_number": "WDW18123",
+        "location": "Disney Springs, World Of Disney #3",
+        "description": "Christopher Robin holding a balloon and bent over talking to Winnie the Pooh, World of Disney logo and \"DISNEY SPRINGS\" at top",
+        "position": "8",
+        "coin_type": "Cent",
+        "orientation": "V",
+        "availability": "Current",
+        "image_url": "https://www.presscoins.com/images/coin_images/Downtown%20Disney/large/WDW18123.jpg",
+        "thumbnail_url": "https://www.presscoins.com/images/coin_images/Downtown%20Disney/small/WDW18123.gif"
+      },
+      "souvenir": {
+        "name": "Christopher Robin",
+        "continent": "América",
+        "country": "EUA",
+        "city": "Orlando",
+        "type": "pressed",
+        "condition": "Não Tenho",
+        "location_name": "Disney Springs",
+        "description": "Christopher Robin holding a balloon and bent over talking to Winnie the Pooh, World of Disney logo and \"DISNEY SPRINGS\" at top",
+        "display_shape": "oval",
+        "image_front": "https://www.presscoins.com/images/coin_images/Downtown%20Disney/large/WDW18123.jpg",
+        "image_back": "",
+        "notes": "World Of Disney #3 · Posição 8 · Catálogo Presscoins: WDW18123",
+        "reference_url": "https://www.presscoins.com/search/?availability=All&locations=All&search=WDW18123&limit=50&sort=catalog&cointype=All&Submit=Search&page=1",
+        "ordem": 98,
+        "hidden": false
+      }
+    },
+    {
+      "source": {
+        "catalog_number": "WDW24054",
+        "location": "Disney Springs, Disney's Pin Traders #1",
+        "description": "Tigger, Winnie the Pooh and Piglet standing and looking forward",
+        "position": "1",
+        "coin_type": "Cent",
+        "orientation": "H",
+        "availability": "Current",
+        "image_url": "https://www.presscoins.com/images/coin_images/Downtown%20Disney/large/WDW24054.jpg",
+        "thumbnail_url": "https://www.presscoins.com/images/coin_images/Downtown%20Disney/small/WDW24054.gif"
+      },
+      "souvenir": {
+        "name": "Tigger",
+        "continent": "América",
+        "country": "EUA",
+        "city": "Orlando",
+        "type": "pressed",
+        "condition": "Não Tenho",
+        "location_name": "Disney Springs",
+        "description": "Tigger, Winnie the Pooh and Piglet standing and looking forward",
+        "display_shape": "oval",
+        "image_front": "https://www.presscoins.com/images/coin_images/Downtown%20Disney/large/WDW24054.jpg",
+        "image_back": "",
+        "notes": "Disney's Pin Traders #1 · Posição 1 · Catálogo Presscoins: WDW24054",
+        "reference_url": "https://www.presscoins.com/search/?availability=All&locations=All&search=WDW24054&limit=50&sort=catalog&cointype=All&Submit=Search&page=1",
+        "ordem": 99,
+        "hidden": false
+      }
+    },
+    {
+      "source": {
+        "catalog_number": "WDW24055",
+        "location": "Disney Springs, Disney's Pin Traders #1",
+        "description": "Mr. Incredible running holding Jack Jack, \"THE INCREDIBLES\" at top, ©Disney/Pixar",
+        "position": "2",
+        "coin_type": "Cent",
+        "orientation": "V",
+        "availability": "Current",
+        "image_url": "https://www.presscoins.com/images/coin_images/Downtown%20Disney/large/WDW24055.jpg",
+        "thumbnail_url": "https://www.presscoins.com/images/coin_images/Downtown%20Disney/small/WDW24055.gif"
+      },
+      "souvenir": {
+        "name": "Mr. Incredible",
+        "continent": "América",
+        "country": "EUA",
+        "city": "Orlando",
+        "type": "pressed",
+        "condition": "Não Tenho",
+        "location_name": "Disney Springs",
+        "description": "Mr. Incredible running holding Jack Jack, \"THE INCREDIBLES\" at top, ©Disney/Pixar",
+        "display_shape": "oval",
+        "image_front": "https://www.presscoins.com/images/coin_images/Downtown%20Disney/large/WDW24055.jpg",
+        "image_back": "",
+        "notes": "Disney's Pin Traders #1 · Posição 2 · Catálogo Presscoins: WDW24055",
+        "reference_url": "https://www.presscoins.com/search/?availability=All&locations=All&search=WDW24055&limit=50&sort=catalog&cointype=All&Submit=Search&page=1",
+        "ordem": 100,
+        "hidden": false
+      }
+    },
+    {
+      "source": {
+        "catalog_number": "WDW24056",
+        "location": "Disney Springs, Disney's Pin Traders #1",
+        "description": "Loki holding scepter looking right \"LOKI\", ©Marvel",
+        "position": "3",
+        "coin_type": "Cent",
+        "orientation": "H",
+        "availability": "Current",
+        "image_url": "https://www.presscoins.com/images/coin_images/Downtown%20Disney/large/WDW24056.jpg",
+        "thumbnail_url": "https://www.presscoins.com/images/coin_images/Downtown%20Disney/small/WDW24056.gif"
+      },
+      "souvenir": {
+        "name": "Loki",
+        "continent": "América",
+        "country": "EUA",
+        "city": "Orlando",
+        "type": "pressed",
+        "condition": "Não Tenho",
+        "location_name": "Disney Springs",
+        "description": "Loki holding scepter looking right \"LOKI\", ©Marvel",
+        "display_shape": "oval",
+        "image_front": "https://www.presscoins.com/images/coin_images/Downtown%20Disney/large/WDW24056.jpg",
+        "image_back": "",
+        "notes": "Disney's Pin Traders #1 · Posição 3 · Catálogo Presscoins: WDW24056",
+        "reference_url": "https://www.presscoins.com/search/?availability=All&locations=All&search=WDW24056&limit=50&sort=catalog&cointype=All&Submit=Search&page=1",
+        "ordem": 101,
+        "hidden": false
+      }
+    },
+    {
+      "source": {
+        "catalog_number": "WDW24057",
+        "location": "Disney Springs, Disney's Pin Traders #3",
+        "description": "Woody on right running toward a football to kick that is being held by 3 Little Green Men squeeze toy aliens, ©Disney/Pixar",
+        "position": "1",
+        "coin_type": "Cent",
+        "orientation": "H",
+        "availability": "Current",
+        "image_url": "https://www.presscoins.com/images/coin_images/Downtown%20Disney/large/WDW24057.jpg",
+        "thumbnail_url": "https://www.presscoins.com/images/coin_images/Downtown%20Disney/small/WDW24057.gif"
+      },
+      "souvenir": {
+        "name": "Woody",
+        "continent": "América",
+        "country": "EUA",
+        "city": "Orlando",
+        "type": "pressed",
+        "condition": "Não Tenho",
+        "location_name": "Disney Springs",
+        "description": "Woody on right running toward a football to kick that is being held by 3 Little Green Men squeeze toy aliens, ©Disney/Pixar",
+        "display_shape": "oval",
+        "image_front": "https://www.presscoins.com/images/coin_images/Downtown%20Disney/large/WDW24057.jpg",
+        "image_back": "",
+        "notes": "Disney's Pin Traders #3 · Posição 1 · Catálogo Presscoins: WDW24057",
+        "reference_url": "https://www.presscoins.com/search/?availability=All&locations=All&search=WDW24057&limit=50&sort=catalog&cointype=All&Submit=Search&page=1",
+        "ordem": 102,
+        "hidden": false
+      }
+    },
+    {
+      "source": {
+        "catalog_number": "WDW24058",
+        "location": "Disney Springs, Disney's Pin Traders #3",
+        "description": "Mickey on a motorcycle going to the right",
+        "position": "2",
+        "coin_type": "Cent",
+        "orientation": "H",
+        "availability": "Current",
+        "image_url": "https://www.presscoins.com/images/coin_images/Downtown%20Disney/large/WDW24058.jpg",
+        "thumbnail_url": "https://www.presscoins.com/images/coin_images/Downtown%20Disney/small/WDW24058.gif"
+      },
+      "souvenir": {
+        "name": "Mickey",
+        "continent": "América",
+        "country": "EUA",
+        "city": "Orlando",
+        "type": "pressed",
+        "condition": "Não Tenho",
+        "location_name": "Disney Springs",
+        "description": "Mickey on a motorcycle going to the right",
+        "display_shape": "oval",
+        "image_front": "https://www.presscoins.com/images/coin_images/Downtown%20Disney/large/WDW24058.jpg",
+        "image_back": "",
+        "notes": "Disney's Pin Traders #3 · Posição 2 · Catálogo Presscoins: WDW24058",
+        "reference_url": "https://www.presscoins.com/search/?availability=All&locations=All&search=WDW24058&limit=50&sort=catalog&cointype=All&Submit=Search&page=1",
+        "ordem": 103,
+        "hidden": false
+      }
+    },
+    {
+      "source": {
+        "catalog_number": "WDW24060",
+        "location": "Disney Springs, Disney's Pin Traders #4",
+        "description": "Silly Symphony Three Little Pigs",
+        "position": "2",
+        "coin_type": "Cent",
+        "orientation": "H",
+        "availability": "Current",
+        "image_url": "https://www.presscoins.com/images/coin_images/Downtown%20Disney/large/WDW24060.jpg",
+        "thumbnail_url": "https://www.presscoins.com/images/coin_images/Downtown%20Disney/small/WDW24060.gif"
+      },
+      "souvenir": {
+        "name": "Silly Symphony Three Little Pigs",
+        "continent": "América",
+        "country": "EUA",
+        "city": "Orlando",
+        "type": "pressed",
+        "condition": "Não Tenho",
+        "location_name": "Disney Springs",
+        "description": "Silly Symphony Three Little Pigs",
+        "display_shape": "oval",
+        "image_front": "https://www.presscoins.com/images/coin_images/Downtown%20Disney/large/WDW24060.jpg",
+        "image_back": "",
+        "notes": "Disney's Pin Traders #4 · Posição 2 · Catálogo Presscoins: WDW24060",
+        "reference_url": "https://www.presscoins.com/search/?availability=All&locations=All&search=WDW24060&limit=50&sort=catalog&cointype=All&Submit=Search&page=1",
+        "ordem": 104,
+        "hidden": false
+      }
+    },
+    {
+      "source": {
+        "catalog_number": "WDW25053",
+        "location": "Disney Springs, Rainforest Cafe",
+        "description": "Rainforest Cafe Orlando logo",
+        "position": "1",
+        "coin_type": "Cent",
+        "orientation": "H",
+        "availability": "Current",
+        "image_url": "https://www.presscoins.com/images/coin_images/Downtown%20Disney/large/WDW25053.jpg",
+        "thumbnail_url": "https://www.presscoins.com/images/coin_images/Downtown%20Disney/small/WDW25053.gif"
+      },
+      "souvenir": {
+        "name": "Rainforest Cafe Orlando logo",
+        "continent": "América",
+        "country": "EUA",
+        "city": "Orlando",
+        "type": "pressed",
+        "condition": "Não Tenho",
+        "location_name": "Disney Springs",
+        "description": "Rainforest Cafe Orlando logo",
+        "display_shape": "oval",
+        "image_front": "https://www.presscoins.com/images/coin_images/Downtown%20Disney/large/WDW25053.jpg",
+        "image_back": "",
+        "notes": "Rainforest Cafe · Posição 1 · Catálogo Presscoins: WDW25053",
+        "reference_url": "https://www.presscoins.com/search/?availability=All&locations=All&search=WDW25053&limit=50&sort=catalog&cointype=All&Submit=Search&page=1",
+        "ordem": 105,
+        "hidden": false
+      }
+    },
+    {
+      "source": {
+        "catalog_number": "WDW25054",
+        "location": "Disney Springs, Rainforest Cafe",
+        "description": "Tuki standing with trunk raised, Rainforest Cafe Orlando logo at top",
+        "position": "2",
+        "coin_type": "Cent",
+        "orientation": "V",
+        "availability": "Current",
+        "image_url": "https://www.presscoins.com/images/coin_images/Downtown%20Disney/large/WDW25054.jpg",
+        "thumbnail_url": "https://www.presscoins.com/images/coin_images/Downtown%20Disney/small/WDW25054.gif"
+      },
+      "souvenir": {
+        "name": "Tuki",
+        "continent": "América",
+        "country": "EUA",
+        "city": "Orlando",
+        "type": "pressed",
+        "condition": "Não Tenho",
+        "location_name": "Disney Springs",
+        "description": "Tuki standing with trunk raised, Rainforest Cafe Orlando logo at top",
+        "display_shape": "oval",
+        "image_front": "https://www.presscoins.com/images/coin_images/Downtown%20Disney/large/WDW25054.jpg",
+        "image_back": "",
+        "notes": "Rainforest Cafe · Posição 2 · Catálogo Presscoins: WDW25054",
+        "reference_url": "https://www.presscoins.com/search/?availability=All&locations=All&search=WDW25054&limit=50&sort=catalog&cointype=All&Submit=Search&page=1",
+        "ordem": 106,
+        "hidden": false
+      }
+    },
+    {
+      "source": {
+        "catalog_number": "WDW25055",
+        "location": "Disney Springs, Rainforest Cafe",
+        "description": "Bamba facing forward, Rainforest Cafe Orlando logo at bottom",
+        "position": "3",
+        "coin_type": "Cent",
+        "orientation": "V",
+        "availability": "Current",
+        "image_url": "https://www.presscoins.com/images/coin_images/Downtown%20Disney/large/WDW25055.jpg",
+        "thumbnail_url": "https://www.presscoins.com/images/coin_images/Downtown%20Disney/small/WDW25055.gif"
+      },
+      "souvenir": {
+        "name": "Bamba",
+        "continent": "América",
+        "country": "EUA",
+        "city": "Orlando",
+        "type": "pressed",
+        "condition": "Não Tenho",
+        "location_name": "Disney Springs",
+        "description": "Bamba facing forward, Rainforest Cafe Orlando logo at bottom",
+        "display_shape": "oval",
+        "image_front": "https://www.presscoins.com/images/coin_images/Downtown%20Disney/large/WDW25055.jpg",
+        "image_back": "",
+        "notes": "Rainforest Cafe · Posição 3 · Catálogo Presscoins: WDW25055",
+        "reference_url": "https://www.presscoins.com/search/?availability=All&locations=All&search=WDW25055&limit=50&sort=catalog&cointype=All&Submit=Search&page=1",
+        "ordem": 107,
+        "hidden": false
+      }
+    },
+    {
+      "source": {
+        "catalog_number": "WDW25056",
+        "location": "Disney Springs, Rainforest Cafe",
+        "description": "Ozzie laying to the right with head on hands, Rainforest Cafe Orlando logo at top",
+        "position": "4",
+        "coin_type": "Cent",
+        "orientation": "H",
+        "availability": "Current",
+        "image_url": "https://www.presscoins.com/images/coin_images/Downtown%20Disney/large/WDW25056.jpg",
+        "thumbnail_url": "https://www.presscoins.com/images/coin_images/Downtown%20Disney/small/WDW25056.gif"
+      },
+      "souvenir": {
+        "name": "Ozzie laying to the right",
+        "continent": "América",
+        "country": "EUA",
+        "city": "Orlando",
+        "type": "pressed",
+        "condition": "Não Tenho",
+        "location_name": "Disney Springs",
+        "description": "Ozzie laying to the right with head on hands, Rainforest Cafe Orlando logo at top",
+        "display_shape": "oval",
+        "image_front": "https://www.presscoins.com/images/coin_images/Downtown%20Disney/large/WDW25056.jpg",
+        "image_back": "",
+        "notes": "Rainforest Cafe · Posição 4 · Catálogo Presscoins: WDW25056",
+        "reference_url": "https://www.presscoins.com/search/?availability=All&locations=All&search=WDW25056&limit=50&sort=catalog&cointype=All&Submit=Search&page=1",
+        "ordem": 108,
+        "hidden": false
+      }
+    },
+    {
+      "source": {
+        "catalog_number": "WDW25057",
+        "location": "Disney Springs, Rainforest Cafe",
+        "description": "Nile facing forward with head above water, two palm trees in background, Rainforest Cafe Orlando logo at top",
+        "position": "5",
+        "coin_type": "Cent",
+        "orientation": "V",
+        "availability": "Current",
+        "image_url": "https://www.presscoins.com/images/coin_images/Downtown%20Disney/large/WDW25057.jpg",
+        "thumbnail_url": "https://www.presscoins.com/images/coin_images/Downtown%20Disney/small/WDW25057.gif"
+      },
+      "souvenir": {
+        "name": "Nile",
+        "continent": "América",
+        "country": "EUA",
+        "city": "Orlando",
+        "type": "pressed",
+        "condition": "Não Tenho",
+        "location_name": "Disney Springs",
+        "description": "Nile facing forward with head above water, two palm trees in background, Rainforest Cafe Orlando logo at top",
+        "display_shape": "oval",
+        "image_front": "https://www.presscoins.com/images/coin_images/Downtown%20Disney/large/WDW25057.jpg",
+        "image_back": "",
+        "notes": "Rainforest Cafe · Posição 5 · Catálogo Presscoins: WDW25057",
+        "reference_url": "https://www.presscoins.com/search/?availability=All&locations=All&search=WDW25057&limit=50&sort=catalog&cointype=All&Submit=Search&page=1",
+        "ordem": 109,
+        "hidden": false
+      }
+    },
+    {
+      "source": {
+        "catalog_number": "WDW25058",
+        "location": "Disney Springs, Rainforest Cafe",
+        "description": "Cha Cha standing with arm raised, Rainforest Cafe Orlando logo vertically on right",
+        "position": "6",
+        "coin_type": "Cent",
+        "orientation": "V",
+        "availability": "Current",
+        "image_url": "https://www.presscoins.com/images/coin_images/Downtown%20Disney/large/WDW25058.jpg",
+        "thumbnail_url": "https://www.presscoins.com/images/coin_images/Downtown%20Disney/small/WDW25058.gif"
+      },
+      "souvenir": {
+        "name": "Cha Cha",
+        "continent": "América",
+        "country": "EUA",
+        "city": "Orlando",
+        "type": "pressed",
+        "condition": "Não Tenho",
+        "location_name": "Disney Springs",
+        "description": "Cha Cha standing with arm raised, Rainforest Cafe Orlando logo vertically on right",
+        "display_shape": "oval",
+        "image_front": "https://www.presscoins.com/images/coin_images/Downtown%20Disney/large/WDW25058.jpg",
+        "image_back": "",
+        "notes": "Rainforest Cafe · Posição 6 · Catálogo Presscoins: WDW25058",
+        "reference_url": "https://www.presscoins.com/search/?availability=All&locations=All&search=WDW25058&limit=50&sort=catalog&cointype=All&Submit=Search&page=1",
+        "ordem": 110,
+        "hidden": false
+      }
+    },
+    {
+      "source": {
+        "catalog_number": "WDW25059",
+        "location": "Disney Springs, Rainforest Cafe",
+        "description": "Maya in a couched position going to the left, Rainforest Cafe Orlando logo at bottom",
+        "position": "7",
+        "coin_type": "Cent",
+        "orientation": "H",
+        "availability": "Current",
+        "image_url": "https://www.presscoins.com/images/coin_images/Downtown%20Disney/large/WDW25059.jpg",
+        "thumbnail_url": "https://www.presscoins.com/images/coin_images/Downtown%20Disney/small/WDW25059.gif"
+      },
+      "souvenir": {
+        "name": "Maya",
+        "continent": "América",
+        "country": "EUA",
+        "city": "Orlando",
+        "type": "pressed",
+        "condition": "Não Tenho",
+        "location_name": "Disney Springs",
+        "description": "Maya in a couched position going to the left, Rainforest Cafe Orlando logo at bottom",
+        "display_shape": "oval",
+        "image_front": "https://www.presscoins.com/images/coin_images/Downtown%20Disney/large/WDW25059.jpg",
+        "image_back": "",
+        "notes": "Rainforest Cafe · Posição 7 · Catálogo Presscoins: WDW25059",
+        "reference_url": "https://www.presscoins.com/search/?availability=All&locations=All&search=WDW25059&limit=50&sort=catalog&cointype=All&Submit=Search&page=1",
+        "ordem": 111,
+        "hidden": false
+      }
+    },
+    {
+      "source": {
+        "catalog_number": "WDW25060",
+        "location": "Disney Springs, Rainforest Cafe",
+        "description": "Rio flying to the right, Rainforest Cafe Orlando logo at bottom",
+        "position": "8",
+        "coin_type": "Cent",
+        "orientation": "H",
+        "availability": "Current",
+        "image_url": "https://www.presscoins.com/images/coin_images/Downtown%20Disney/large/WDW25060.jpg",
+        "thumbnail_url": "https://www.presscoins.com/images/coin_images/Downtown%20Disney/small/WDW25060.gif"
+      },
+      "souvenir": {
+        "name": "Rio",
+        "continent": "América",
+        "country": "EUA",
+        "city": "Orlando",
+        "type": "pressed",
+        "condition": "Não Tenho",
+        "location_name": "Disney Springs",
+        "description": "Rio flying to the right, Rainforest Cafe Orlando logo at bottom",
+        "display_shape": "oval",
+        "image_front": "https://www.presscoins.com/images/coin_images/Downtown%20Disney/large/WDW25060.jpg",
+        "image_back": "",
+        "notes": "Rainforest Cafe · Posição 8 · Catálogo Presscoins: WDW25060",
+        "reference_url": "https://www.presscoins.com/search/?availability=All&locations=All&search=WDW25060&limit=50&sort=catalog&cointype=All&Submit=Search&page=1",
+        "ordem": 112,
+        "hidden": false
+      }
+    },
+    {
+      "source": {
+        "catalog_number": "WDW25069",
+        "location": "Disney Springs, T-Rex Cafe",
+        "description": "Velociraptor, T-REX logo at top, \"ORLANDO\" at bottom",
+        "position": "1",
+        "coin_type": "Cent",
+        "orientation": "V",
+        "availability": "Current",
+        "image_url": "https://www.presscoins.com/images/coin_images/Downtown%20Disney/large/WDW25069.jpg",
+        "thumbnail_url": "https://www.presscoins.com/images/coin_images/Downtown%20Disney/small/WDW25069.gif"
+      },
+      "souvenir": {
+        "name": "Velociraptor",
+        "continent": "América",
+        "country": "EUA",
+        "city": "Orlando",
+        "type": "pressed",
+        "condition": "Não Tenho",
+        "location_name": "Disney Springs",
+        "description": "Velociraptor, T-REX logo at top, \"ORLANDO\" at bottom",
+        "display_shape": "oval",
+        "image_front": "https://www.presscoins.com/images/coin_images/Downtown%20Disney/large/WDW25069.jpg",
+        "image_back": "",
+        "notes": "T-Rex Cafe · Posição 1 · Catálogo Presscoins: WDW25069",
+        "reference_url": "https://www.presscoins.com/search/?availability=All&locations=All&search=WDW25069&limit=50&sort=catalog&cointype=All&Submit=Search&page=1",
+        "ordem": 113,
+        "hidden": false
+      }
+    },
+    {
+      "source": {
+        "catalog_number": "WDW25070",
+        "location": "Disney Springs, T-Rex Cafe",
+        "description": "Tyrannosaurus Rex, T-REX logo at top, \"ORLANDO\" at bottom",
+        "position": "2",
+        "coin_type": "Cent",
+        "orientation": "V",
+        "availability": "Current",
+        "image_url": "https://www.presscoins.com/images/coin_images/Downtown%20Disney/large/WDW25070.jpg",
+        "thumbnail_url": "https://www.presscoins.com/images/coin_images/Downtown%20Disney/small/WDW25070.gif"
+      },
+      "souvenir": {
+        "name": "Tyrannosaurus Rex",
+        "continent": "América",
+        "country": "EUA",
+        "city": "Orlando",
+        "type": "pressed",
+        "condition": "Não Tenho",
+        "location_name": "Disney Springs",
+        "description": "Tyrannosaurus Rex, T-REX logo at top, \"ORLANDO\" at bottom",
+        "display_shape": "oval",
+        "image_front": "https://www.presscoins.com/images/coin_images/Downtown%20Disney/large/WDW25070.jpg",
+        "image_back": "",
+        "notes": "T-Rex Cafe · Posição 2 · Catálogo Presscoins: WDW25070",
+        "reference_url": "https://www.presscoins.com/search/?availability=All&locations=All&search=WDW25070&limit=50&sort=catalog&cointype=All&Submit=Search&page=1",
+        "ordem": 114,
+        "hidden": false
+      }
+    },
+    {
+      "source": {
+        "catalog_number": "WDW25071",
+        "location": "Disney Springs, T-Rex Cafe",
+        "description": "Triceratops, T-REX logo at top, \"ORLANDO\" at bottom",
+        "position": "3",
+        "coin_type": "Cent",
+        "orientation": "V",
+        "availability": "Current",
+        "image_url": "https://www.presscoins.com/images/coin_images/Downtown%20Disney/large/WDW25071.jpg",
+        "thumbnail_url": "https://www.presscoins.com/images/coin_images/Downtown%20Disney/small/WDW25071.gif"
+      },
+      "souvenir": {
+        "name": "Triceratops",
+        "continent": "América",
+        "country": "EUA",
+        "city": "Orlando",
+        "type": "pressed",
+        "condition": "Não Tenho",
+        "location_name": "Disney Springs",
+        "description": "Triceratops, T-REX logo at top, \"ORLANDO\" at bottom",
+        "display_shape": "oval",
+        "image_front": "https://www.presscoins.com/images/coin_images/Downtown%20Disney/large/WDW25071.jpg",
+        "image_back": "",
+        "notes": "T-Rex Cafe · Posição 3 · Catálogo Presscoins: WDW25071",
+        "reference_url": "https://www.presscoins.com/search/?availability=All&locations=All&search=WDW25071&limit=50&sort=catalog&cointype=All&Submit=Search&page=1",
+        "ordem": 115,
+        "hidden": false
+      }
+    },
+    {
+      "source": {
+        "catalog_number": "WDW25072",
+        "location": "Disney Springs, T-Rex Cafe",
+        "description": "Octopus, T-REX logo at top, \"ORLANDO\" at bottom",
+        "position": "4",
+        "coin_type": "Cent",
+        "orientation": "V",
+        "availability": "Current",
+        "image_url": "https://www.presscoins.com/images/coin_images/Downtown%20Disney/large/WDW25072.jpg",
+        "thumbnail_url": "https://www.presscoins.com/images/coin_images/Downtown%20Disney/small/WDW25072.gif"
+      },
+      "souvenir": {
+        "name": "Octopus",
+        "continent": "América",
+        "country": "EUA",
+        "city": "Orlando",
+        "type": "pressed",
+        "condition": "Não Tenho",
+        "location_name": "Disney Springs",
+        "description": "Octopus, T-REX logo at top, \"ORLANDO\" at bottom",
+        "display_shape": "oval",
+        "image_front": "https://www.presscoins.com/images/coin_images/Downtown%20Disney/large/WDW25072.jpg",
+        "image_back": "",
+        "notes": "T-Rex Cafe · Posição 4 · Catálogo Presscoins: WDW25072",
+        "reference_url": "https://www.presscoins.com/search/?availability=All&locations=All&search=WDW25072&limit=50&sort=catalog&cointype=All&Submit=Search&page=1",
+        "ordem": 116,
+        "hidden": false
+      }
+    },
+    {
+      "source": {
+        "catalog_number": "WDW25073",
+        "location": "Disney Springs, T-Rex Cafe",
+        "description": "Heartford, Dexter, Tabitha & Cosmo behind T-REX sign \"ORLANDO\" at bottom",
+        "position": "5",
+        "coin_type": "Cent",
+        "orientation": "H",
+        "availability": "Current",
+        "image_url": "https://www.presscoins.com/images/coin_images/Downtown%20Disney/large/WDW25073.jpg",
+        "thumbnail_url": "https://www.presscoins.com/images/coin_images/Downtown%20Disney/small/WDW25073.gif"
+      },
+      "souvenir": {
+        "name": "Heartford",
+        "continent": "América",
+        "country": "EUA",
+        "city": "Orlando",
+        "type": "pressed",
+        "condition": "Não Tenho",
+        "location_name": "Disney Springs",
+        "description": "Heartford, Dexter, Tabitha & Cosmo behind T-REX sign \"ORLANDO\" at bottom",
+        "display_shape": "oval",
+        "image_front": "https://www.presscoins.com/images/coin_images/Downtown%20Disney/large/WDW25073.jpg",
+        "image_back": "",
+        "notes": "T-Rex Cafe · Posição 5 · Catálogo Presscoins: WDW25073",
+        "reference_url": "https://www.presscoins.com/search/?availability=All&locations=All&search=WDW25073&limit=50&sort=catalog&cointype=All&Submit=Search&page=1",
+        "ordem": 117,
+        "hidden": false
+      }
+    },
+    {
+      "source": {
+        "catalog_number": "WDW25074",
+        "location": "Disney Springs, T-Rex Cafe",
+        "description": "Wooly Mammoth, T-REX logo at top, \"ORLANDO\" at bottom",
+        "position": "6",
+        "coin_type": "Cent",
+        "orientation": "H",
+        "availability": "Current",
+        "image_url": "https://www.presscoins.com/images/coin_images/Downtown%20Disney/large/WDW25074.jpg",
+        "thumbnail_url": "https://www.presscoins.com/images/coin_images/Downtown%20Disney/small/WDW25074.gif"
+      },
+      "souvenir": {
+        "name": "Wooly Mammoth",
+        "continent": "América",
+        "country": "EUA",
+        "city": "Orlando",
+        "type": "pressed",
+        "condition": "Não Tenho",
+        "location_name": "Disney Springs",
+        "description": "Wooly Mammoth, T-REX logo at top, \"ORLANDO\" at bottom",
+        "display_shape": "oval",
+        "image_front": "https://www.presscoins.com/images/coin_images/Downtown%20Disney/large/WDW25074.jpg",
+        "image_back": "",
+        "notes": "T-Rex Cafe · Posição 6 · Catálogo Presscoins: WDW25074",
+        "reference_url": "https://www.presscoins.com/search/?availability=All&locations=All&search=WDW25074&limit=50&sort=catalog&cointype=All&Submit=Search&page=1",
+        "ordem": 118,
+        "hidden": false
+      }
+    },
+    {
+      "source": {
+        "catalog_number": "WDW25075",
+        "location": "Disney Springs, T-Rex Cafe",
+        "description": "Triceratops skeleton, T-REX logo at top, \"ORLANDO\" at bottom",
+        "position": "7",
+        "coin_type": "Cent",
+        "orientation": "H",
+        "availability": "Current",
+        "image_url": "https://www.presscoins.com/images/coin_images/Downtown%20Disney/large/WDW25075.jpg",
+        "thumbnail_url": "https://www.presscoins.com/images/coin_images/Downtown%20Disney/small/WDW25075.gif"
+      },
+      "souvenir": {
+        "name": "Triceratops skeleton",
+        "continent": "América",
+        "country": "EUA",
+        "city": "Orlando",
+        "type": "pressed",
+        "condition": "Não Tenho",
+        "location_name": "Disney Springs",
+        "description": "Triceratops skeleton, T-REX logo at top, \"ORLANDO\" at bottom",
+        "display_shape": "oval",
+        "image_front": "https://www.presscoins.com/images/coin_images/Downtown%20Disney/large/WDW25075.jpg",
+        "image_back": "",
+        "notes": "T-Rex Cafe · Posição 7 · Catálogo Presscoins: WDW25075",
+        "reference_url": "https://www.presscoins.com/search/?availability=All&locations=All&search=WDW25075&limit=50&sort=catalog&cointype=All&Submit=Search&page=1",
+        "ordem": 119,
+        "hidden": false
+      }
+    },
+    {
+      "source": {
+        "catalog_number": "WDW25076",
+        "location": "Disney Springs, T-Rex Cafe",
+        "description": "Tyrannosaurus Rex skeleton, T-REX logo at top, \"ORLANDO\" at bottom",
+        "position": "8",
+        "coin_type": "Cent",
+        "orientation": "H",
+        "availability": "Current",
+        "image_url": "https://www.presscoins.com/images/coin_images/Downtown%20Disney/large/WDW25076.jpg",
+        "thumbnail_url": "https://www.presscoins.com/images/coin_images/Downtown%20Disney/small/WDW25076.gif"
+      },
+      "souvenir": {
+        "name": "Tyrannosaurus Rex skeleton",
+        "continent": "América",
+        "country": "EUA",
+        "city": "Orlando",
+        "type": "pressed",
+        "condition": "Não Tenho",
+        "location_name": "Disney Springs",
+        "description": "Tyrannosaurus Rex skeleton, T-REX logo at top, \"ORLANDO\" at bottom",
+        "display_shape": "oval",
+        "image_front": "https://www.presscoins.com/images/coin_images/Downtown%20Disney/large/WDW25076.jpg",
+        "image_back": "",
+        "notes": "T-Rex Cafe · Posição 8 · Catálogo Presscoins: WDW25076",
+        "reference_url": "https://www.presscoins.com/search/?availability=All&locations=All&search=WDW25076&limit=50&sort=catalog&cointype=All&Submit=Search&page=1",
+        "ordem": 120,
+        "hidden": false
+      }
+    },
+    {
+      "source": {
+        "catalog_number": "WDW26001",
+        "location": "Disney Springs, Disney's Pin Traders #3",
+        "description": "Mickey facing left coming out the center of the zero in the large \"2026\"",
+        "position": "3",
+        "coin_type": "Cent",
+        "orientation": "H",
+        "availability": "Current",
+        "image_url": "https://www.presscoins.com/images/coin_images/Downtown%20Disney/large/WDW26001.jpg",
+        "thumbnail_url": "https://www.presscoins.com/images/coin_images/Downtown%20Disney/small/WDW26001.gif"
+      },
+      "souvenir": {
+        "name": "Mickey",
+        "continent": "América",
+        "country": "EUA",
+        "city": "Orlando",
+        "type": "pressed",
+        "condition": "Não Tenho",
+        "location_name": "Disney Springs",
+        "description": "Mickey facing left coming out the center of the zero in the large \"2026\"",
+        "display_shape": "oval",
+        "image_front": "https://www.presscoins.com/images/coin_images/Downtown%20Disney/large/WDW26001.jpg",
+        "image_back": "",
+        "notes": "Disney's Pin Traders #3 · Posição 3 · Catálogo Presscoins: WDW26001",
+        "reference_url": "https://www.presscoins.com/search/?availability=All&locations=All&search=WDW26001&limit=50&sort=catalog&cointype=All&Submit=Search&page=1",
+        "ordem": 121,
+        "hidden": false
+      }
+    },
+    {
+      "source": {
+        "catalog_number": "WDW26002",
+        "location": "Disney Springs, Disney's Pin Traders #4",
+        "description": "Minnie facing right with arms outstretched coming out the center of the zero in the large \"2026\"",
+        "position": "3",
+        "coin_type": "Cent",
+        "orientation": "H",
+        "availability": "Current",
+        "image_url": "https://www.presscoins.com/images/coin_images/Downtown%20Disney/large/WDW26002.jpg",
+        "thumbnail_url": "https://www.presscoins.com/images/coin_images/Downtown%20Disney/small/WDW26002.gif"
+      },
+      "souvenir": {
+        "name": "Minnie",
+        "continent": "América",
+        "country": "EUA",
+        "city": "Orlando",
+        "type": "pressed",
+        "condition": "Não Tenho",
+        "location_name": "Disney Springs",
+        "description": "Minnie facing right with arms outstretched coming out the center of the zero in the large \"2026\"",
+        "display_shape": "oval",
+        "image_front": "https://www.presscoins.com/images/coin_images/Downtown%20Disney/large/WDW26002.jpg",
+        "image_back": "",
+        "notes": "Disney's Pin Traders #4 · Posição 3 · Catálogo Presscoins: WDW26002",
+        "reference_url": "https://www.presscoins.com/search/?availability=All&locations=All&search=WDW26002&limit=50&sort=catalog&cointype=All&Submit=Search&page=1",
+        "ordem": 122,
+        "hidden": false
+      }
+    }
+  ]
+}

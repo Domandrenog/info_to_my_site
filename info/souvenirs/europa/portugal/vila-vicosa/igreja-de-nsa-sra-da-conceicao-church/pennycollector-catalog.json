@@ -1,0 +1,103 @@
+{
+  "status": "pending_review",
+  "base44_updated": false,
+  "import_ready": false,
+  "source": {
+    "site": "PennyCollector",
+    "location_id": "287378",
+    "url": "http://locations.pennycollector.com/Details.aspx?location=287378",
+    "location_name": "Igreja de Nsa. Sra. da Conceição (Church) ",
+    "address": "Rua de Estremoz 6",
+    "city": "Vila Viçosa ",
+    "zip_code": "7160-245",
+    "status": "Active",
+    "state": "",
+    "country": "Portugal",
+    "source_flagged_needs_update": false,
+    "retrieved_at": "2026-09-25T10:19:28+00:00",
+    "machine_count": 1,
+    "design_count": 2,
+    "machine_numbers": [
+      1
+    ],
+    "active_machine_numbers": [
+      1
+    ],
+    "retired_machine_numbers": [],
+    "active_design_count": 2,
+    "retired_design_count": 0,
+    "photo_policy": "A fotografia pertence à máquina e é partilhada pelos seus designs."
+  },
+  "items": [
+    {
+      "source": {
+        "machine_number": 1,
+        "machine_details": "Machine 1",
+        "position": 1,
+        "description": "'Nossa Senhora da Conceicao Padroeira De Portugal', statue of a Saint",
+        "orientation": "",
+        "machine_image_url": "http://locations.pennycollector.com/images/machine_bf94b617-7017-46de-a800-c347ef552ba1.jpg",
+        "availability": "active",
+        "location_id": "287378",
+        "image_scope": "machine",
+        "review_flags": [
+          "shared_machine_photo",
+          "missing_orientation"
+        ]
+      },
+      "souvenir": {
+        "name": "Nossa Senhora da Conceicao Padroeira De Portugal",
+        "continent": "Europa",
+        "country": "Portugal",
+        "city": "Vila Viçosa ",
+        "type": "pressed",
+        "condition": "Não Tenho",
+        "location_name": "Igreja de Nsa. Sra. da Conceição (Church)",
+        "description": "'Nossa Senhora da Conceicao Padroeira De Portugal', statue of a Saint",
+        "display_shape": "oval",
+        "image_front": "http://locations.pennycollector.com/images/machine_bf94b617-7017-46de-a800-c347ef552ba1.jpg",
+        "image_back": "",
+        "notes": "Machine 1 · Posição 1 · Orientação não indicada · PennyCollector location 287378 · Fotografia provisória partilhada da máquina",
+        "reference_url": "http://locations.pennycollector.com/Details.aspx?location=287378#machine-1-position-1",
+        "ordem": 1,
+        "hidden": false
+      },
+      "review_status": "pending"
+    },
+    {
+      "source": {
+        "machine_number": 1,
+        "machine_details": "Machine 1",
+        "position": 2,
+        "description": "'Santuário Nacional De Vila Viçosa ', Church building",
+        "orientation": "",
+        "machine_image_url": "http://locations.pennycollector.com/images/machine_bf94b617-7017-46de-a800-c347ef552ba1.jpg",
+        "availability": "active",
+        "location_id": "287378",
+        "image_scope": "machine",
+        "review_flags": [
+          "shared_machine_photo",
+          "missing_orientation"
+        ]
+      },
+      "souvenir": {
+        "name": "Santuário Nacional De Vila Viçosa",
+        "continent": "Europa",
+        "country": "Portugal",
+        "city": "Vila Viçosa ",
+        "type": "pressed",
+        "condition": "Não Tenho",
+        "location_name": "Igreja de Nsa. Sra. da Conceição (Church)",
+        "description": "'Santuário Nacional De Vila Viçosa ', Church building",
+        "display_shape": "oval",
+        "image_front": "http://locations.pennycollector.com/images/machine_bf94b617-7017-46de-a800-c347ef552ba1.jpg",
+        "image_back": "",
+        "notes": "Machine 1 · Posição 2 · Orientação não indicada · PennyCollector location 287378 · Fotografia provisória partilhada da máquina",
+        "reference_url": "http://locations.pennycollector.com/Details.aspx?location=287378#machine-1-position-2",
+        "ordem": 2,
+        "hidden": false
+      },
+      "review_status": "pending"
+    }
+  ]
+}

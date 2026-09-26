@@ -1,0 +1,181 @@
+{
+  "status": "ready_for_import",
+  "base44_updated": false,
+  "import_ready": true,
+  "source": {
+    "site": "PennyCollector",
+    "location_id": "394817",
+    "url": "http://locations.pennycollector.com/Details.aspx?location=394817",
+    "location_name": "Curral Das Freiras (Valley of the Nuns)",
+    "address": "Caminho da Padaria",
+    "city": "Curral Das Freiras (Madeira Island)",
+    "zip_code": "9030-314",
+    "status": "Active",
+    "state": "",
+    "country": "Portugal",
+    "source_flagged_needs_update": false,
+    "retrieved_at": "2026-09-25T10:18:02+00:00",
+    "machine_count": 1,
+    "design_count": 4,
+    "machine_numbers": [
+      1
+    ],
+    "active_machine_numbers": [
+      1
+    ],
+    "retired_machine_numbers": [],
+    "active_design_count": 4,
+    "retired_design_count": 0,
+    "photo_policy": "A fotografia pertence à máquina e é partilhada pelos seus designs."
+  },
+  "items": [
+    {
+      "source": {
+        "machine_number": 1,
+        "machine_details": "Machine 1",
+        "position": 1,
+        "description": "Nossa Senhora do Livramento",
+        "orientation": "",
+        "machine_image_url": "http://locations.pennycollector.com/images/machine_f2e9dd34-0e11-4789-82af-7d79f16c8f13.jpg",
+        "availability": "active",
+        "location_id": "394817",
+        "image_scope": "machine",
+        "review_flags": [
+          "shared_machine_photo",
+          "missing_orientation"
+        ]
+      },
+      "souvenir": {
+        "name": "Nossa Senhora do Livramento",
+        "continent": "Europa",
+        "country": "Portugal",
+        "city": "Curral Das Freiras (Madeira Island)",
+        "type": "pressed",
+        "condition": "Não Tenho",
+        "location_name": "Curral Das Freiras (Valley of the Nuns)",
+        "description": "Nossa Senhora do Livramento",
+        "display_shape": "oval",
+        "image_front": "http://locations.pennycollector.com/images/machine_f2e9dd34-0e11-4789-82af-7d79f16c8f13.jpg",
+        "image_back": "",
+        "notes": "Machine 1 · Posição 1 · Orientação não indicada · PennyCollector location 394817 · Fotografia provisória partilhada da máquina",
+        "reference_url": "http://locations.pennycollector.com/Details.aspx?location=394817#machine-1-position-1",
+        "ordem": 1,
+        "hidden": false
+      },
+      "review_status": "approved"
+    },
+    {
+      "source": {
+        "machine_number": 1,
+        "machine_details": "Machine 1",
+        "position": 2,
+        "description": "Traditional house",
+        "orientation": "",
+        "machine_image_url": "http://locations.pennycollector.com/images/machine_f2e9dd34-0e11-4789-82af-7d79f16c8f13.jpg",
+        "availability": "active",
+        "location_id": "394817",
+        "image_scope": "machine",
+        "review_flags": [
+          "shared_machine_photo",
+          "missing_orientation"
+        ]
+      },
+      "souvenir": {
+        "name": "Traditional house",
+        "continent": "Europa",
+        "country": "Portugal",
+        "city": "Curral Das Freiras (Madeira Island)",
+        "type": "pressed",
+        "condition": "Não Tenho",
+        "location_name": "Curral Das Freiras (Valley of the Nuns)",
+        "description": "Traditional house",
+        "display_shape": "oval",
+        "image_front": "http://locations.pennycollector.com/images/machine_f2e9dd34-0e11-4789-82af-7d79f16c8f13.jpg",
+        "image_back": "",
+        "notes": "Machine 1 · Posição 2 · Orientação não indicada · PennyCollector location 394817 · Fotografia provisória partilhada da máquina",
+        "reference_url": "http://locations.pennycollector.com/Details.aspx?location=394817#machine-1-position-2",
+        "ordem": 2,
+        "hidden": false
+      },
+      "review_status": "approved"
+    },
+    {
+      "source": {
+        "machine_number": 1,
+        "machine_details": "Machine 1",
+        "position": 3,
+        "description": "Nun",
+        "orientation": "",
+        "machine_image_url": "http://locations.pennycollector.com/images/machine_f2e9dd34-0e11-4789-82af-7d79f16c8f13.jpg",
+        "availability": "active",
+        "location_id": "394817",
+        "image_scope": "machine",
+        "review_flags": [
+          "shared_machine_photo",
+          "missing_orientation"
+        ]
+      },
+      "souvenir": {
+        "name": "Nun",
+        "continent": "Europa",
+        "country": "Portugal",
+        "city": "Curral Das Freiras (Madeira Island)",
+        "type": "pressed",
+        "condition": "Não Tenho",
+        "location_name": "Curral Das Freiras (Valley of the Nuns)",
+        "description": "Nun",
+        "display_shape": "oval",
+        "image_front": "http://locations.pennycollector.com/images/machine_f2e9dd34-0e11-4789-82af-7d79f16c8f13.jpg",
+        "image_back": "",
+        "notes": "Machine 1 · Posição 3 · Orientação não indicada · PennyCollector location 394817 · Fotografia provisória partilhada da máquina",
+        "reference_url": "http://locations.pennycollector.com/Details.aspx?location=394817#machine-1-position-3",
+        "ordem": 3,
+        "hidden": false
+      },
+      "review_status": "approved"
+    },
+    {
+      "source": {
+        "machine_number": 1,
+        "machine_details": "Machine 1",
+        "position": 4,
+        "description": "Island of Flowers",
+        "orientation": "",
+        "machine_image_url": "http://locations.pennycollector.com/images/machine_f2e9dd34-0e11-4789-82af-7d79f16c8f13.jpg",
+        "availability": "active",
+        "location_id": "394817",
+        "image_scope": "machine",
+        "review_flags": [
+          "shared_machine_photo",
+          "missing_orientation"
+        ]
+      },
+      "souvenir": {
+        "name": "Island of Flowers",
+        "continent": "Europa",
+        "country": "Portugal",
+        "city": "Curral Das Freiras (Madeira Island)",
+        "type": "pressed",
+        "condition": "Não Tenho",
+        "location_name": "Curral Das Freiras (Valley of the Nuns)",
+        "description": "Island of Flowers",
+        "display_shape": "oval",
+        "image_front": "http://locations.pennycollector.com/images/machine_f2e9dd34-0e11-4789-82af-7d79f16c8f13.jpg",
+        "image_back": "",
+        "notes": "Machine 1 · Posição 4 · Orientação não indicada · PennyCollector location 394817 · Fotografia provisória partilhada da máquina",
+        "reference_url": "http://locations.pennycollector.com/Details.aspx?location=394817#machine-1-position-4",
+        "ordem": 4,
+        "hidden": false
+      },
+      "review_status": "approved"
+    }
+  ],
+  "review": {
+    "approved": 4,
+    "skipped": 0,
+    "pending": 0,
+    "completed": true,
+    "updated_at": "2026-09-25T10:57:17+00:00",
+    "shared_machine_photos_accepted_as_temporary": true
+  }
+}

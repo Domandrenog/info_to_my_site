@@ -1,0 +1,1196 @@
+{
+  "status": "ready_for_import",
+  "base44_updated": false,
+  "import_ready": true,
+  "source": {
+    "site": "PennyCollector",
+    "location_id": "8143",
+    "url": "http://locations.pennycollector.com/Details.aspx?location=8143",
+    "location_name": "Faneuil Hall Marketplace, Quincy Market",
+    "address": "1 South Market Street",
+    "city": "Boston",
+    "zip_code": "02109",
+    "status": "Active",
+    "state": "MA",
+    "country": "United States",
+    "source_flagged_needs_update": false,
+    "retrieved_at": "2026-09-23T21:31:57+00:00",
+    "machine_count": 8,
+    "design_count": 32,
+    "machine_numbers": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8
+    ],
+    "active_machine_numbers": [
+      3,
+      4,
+      6
+    ],
+    "retired_machine_numbers": [
+      1,
+      2,
+      5,
+      7,
+      8
+    ],
+    "active_design_count": 12,
+    "retired_design_count": 20,
+    "photo_policy": "A fotografia pertence à máquina e é partilhada pelos seus designs."
+  },
+  "items": [
+    {
+      "source": {
+        "machine_number": 3,
+        "machine_details": "is on the south side outside by the ramp. Designs are:\n",
+        "position": 1,
+        "description": "The Massachusetts State House (not the Quincy Market building or Christian Science Church as originally noted)",
+        "orientation": "",
+        "machine_image_url": "http://locations.pennycollector.com/images/machine_858c1830-9b05-4973-b5d3-2f36d4fc9ce5.png",
+        "availability": "active",
+        "location_id": "8143",
+        "image_scope": "machine",
+        "review_flags": [
+          "shared_machine_photo",
+          "missing_orientation"
+        ]
+      },
+      "souvenir": {
+        "name": "The Massachusetts State House (not the Quincy Market…",
+        "continent": "América",
+        "country": "EUA",
+        "city": "Boston",
+        "type": "pressed",
+        "condition": "Não Tenho",
+        "location_name": "Faneuil Hall Marketplace, Quincy Market",
+        "description": "The Massachusetts State House (not the Quincy Market building or Christian Science Church as originally noted)",
+        "display_shape": "oval",
+        "image_front": "http://locations.pennycollector.com/images/machine_858c1830-9b05-4973-b5d3-2f36d4fc9ce5.png",
+        "image_back": "",
+        "notes": "Machine 3 · Posição 1 · Orientação não indicada · PennyCollector location 8143 · Fotografia provisória partilhada da máquina",
+        "reference_url": "http://locations.pennycollector.com/Details.aspx?location=8143#machine-3-position-1",
+        "ordem": 1,
+        "hidden": false
+      },
+      "review_status": "approved"
+    },
+    {
+      "source": {
+        "machine_number": 3,
+        "machine_details": "is on the south side outside by the ramp. Designs are:\n",
+        "position": 2,
+        "description": "Red Sox logo",
+        "orientation": "",
+        "machine_image_url": "http://locations.pennycollector.com/images/machine_858c1830-9b05-4973-b5d3-2f36d4fc9ce5.png",
+        "availability": "active",
+        "location_id": "8143",
+        "image_scope": "machine",
+        "review_flags": [
+          "shared_machine_photo",
+          "missing_orientation"
+        ]
+      },
+      "souvenir": {
+        "name": "Red Sox logo",
+        "continent": "América",
+        "country": "EUA",
+        "city": "Boston",
+        "type": "pressed",
+        "condition": "Não Tenho",
+        "location_name": "Faneuil Hall Marketplace, Quincy Market",
+        "description": "Red Sox logo",
+        "display_shape": "oval",
+        "image_front": "http://locations.pennycollector.com/images/machine_858c1830-9b05-4973-b5d3-2f36d4fc9ce5.png",
+        "image_back": "",
+        "notes": "Machine 3 · Posição 2 · Orientação não indicada · PennyCollector location 8143 · Fotografia provisória partilhada da máquina",
+        "reference_url": "http://locations.pennycollector.com/Details.aspx?location=8143#machine-3-position-2",
+        "ordem": 2,
+        "hidden": false
+      },
+      "review_status": "approved"
+    },
+    {
+      "source": {
+        "machine_number": 3,
+        "machine_details": "is on the south side outside by the ramp. Designs are:\n",
+        "position": 3,
+        "description": "Faneuil Hall Marketplace logo",
+        "orientation": "",
+        "machine_image_url": "http://locations.pennycollector.com/images/machine_858c1830-9b05-4973-b5d3-2f36d4fc9ce5.png",
+        "availability": "active",
+        "location_id": "8143",
+        "image_scope": "machine",
+        "review_flags": [
+          "shared_machine_photo",
+          "missing_orientation"
+        ]
+      },
+      "souvenir": {
+        "name": "Faneuil Hall Marketplace logo",
+        "continent": "América",
+        "country": "EUA",
+        "city": "Boston",
+        "type": "pressed",
+        "condition": "Não Tenho",
+        "location_name": "Faneuil Hall Marketplace, Quincy Market",
+        "description": "Faneuil Hall Marketplace logo",
+        "display_shape": "oval",
+        "image_front": "http://locations.pennycollector.com/images/machine_858c1830-9b05-4973-b5d3-2f36d4fc9ce5.png",
+        "image_back": "",
+        "notes": "Machine 3 · Posição 3 · Orientação não indicada · PennyCollector location 8143 · Fotografia provisória partilhada da máquina",
+        "reference_url": "http://locations.pennycollector.com/Details.aspx?location=8143#machine-3-position-3",
+        "ordem": 3,
+        "hidden": false
+      },
+      "review_status": "approved"
+    },
+    {
+      "source": {
+        "machine_number": 3,
+        "machine_details": "is on the south side outside by the ramp. Designs are:\n",
+        "position": 4,
+        "description": "David Ortiz baseball player",
+        "orientation": "",
+        "machine_image_url": "http://locations.pennycollector.com/images/machine_858c1830-9b05-4973-b5d3-2f36d4fc9ce5.png",
+        "availability": "active",
+        "location_id": "8143",
+        "image_scope": "machine",
+        "review_flags": [
+          "shared_machine_photo",
+          "missing_orientation"
+        ]
+      },
+      "souvenir": {
+        "name": "David Ortiz baseball player",
+        "continent": "América",
+        "country": "EUA",
+        "city": "Boston",
+        "type": "pressed",
+        "condition": "Não Tenho",
+        "location_name": "Faneuil Hall Marketplace, Quincy Market",
+        "description": "David Ortiz baseball player",
+        "display_shape": "oval",
+        "image_front": "http://locations.pennycollector.com/images/machine_858c1830-9b05-4973-b5d3-2f36d4fc9ce5.png",
+        "image_back": "",
+        "notes": "Machine 3 · Posição 4 · Orientação não indicada · PennyCollector location 8143 · Fotografia provisória partilhada da máquina",
+        "reference_url": "http://locations.pennycollector.com/Details.aspx?location=8143#machine-3-position-4",
+        "ordem": 4,
+        "hidden": false
+      },
+      "review_status": "approved"
+    },
+    {
+      "source": {
+        "machine_number": 4,
+        "machine_details": "is inside of the rotunda.\nDesigns are:\n",
+        "position": 1,
+        "description": "John F Kennedy, \"John F. Kennedy, 35th President\"",
+        "orientation": "",
+        "machine_image_url": "http://locations.pennycollector.com/images/machine_686fa5ca-e3d7-4472-a273-9a4a451afebb.jpg",
+        "availability": "active",
+        "location_id": "8143",
+        "image_scope": "machine",
+        "review_flags": [
+          "shared_machine_photo",
+          "missing_orientation"
+        ]
+      },
+      "souvenir": {
+        "name": "John F Kennedy, \"John F. Kennedy, 35th President",
+        "continent": "América",
+        "country": "EUA",
+        "city": "Boston",
+        "type": "pressed",
+        "condition": "Não Tenho",
+        "location_name": "Faneuil Hall Marketplace, Quincy Market",
+        "description": "John F Kennedy, \"John F. Kennedy, 35th President\"",
+        "display_shape": "oval",
+        "image_front": "http://locations.pennycollector.com/images/machine_686fa5ca-e3d7-4472-a273-9a4a451afebb.jpg",
+        "image_back": "",
+        "notes": "Machine 4 · Posição 1 · Orientação não indicada · PennyCollector location 8143 · Fotografia provisória partilhada da máquina",
+        "reference_url": "http://locations.pennycollector.com/Details.aspx?location=8143#machine-4-position-1",
+        "ordem": 5,
+        "hidden": false
+      },
+      "review_status": "approved"
+    },
+    {
+      "source": {
+        "machine_number": 4,
+        "machine_details": "is inside of the rotunda.\nDesigns are:\n",
+        "position": 2,
+        "description": "Faneuil Hall, \"Boston, Mass, Faneuil Hall\"",
+        "orientation": "",
+        "machine_image_url": "http://locations.pennycollector.com/images/machine_686fa5ca-e3d7-4472-a273-9a4a451afebb.jpg",
+        "availability": "active",
+        "location_id": "8143",
+        "image_scope": "machine",
+        "review_flags": [
+          "shared_machine_photo",
+          "missing_orientation"
+        ]
+      },
+      "souvenir": {
+        "name": "Faneuil Hall, \"Boston, Mass, Faneuil Hall",
+        "continent": "América",
+        "country": "EUA",
+        "city": "Boston",
+        "type": "pressed",
+        "condition": "Não Tenho",
+        "location_name": "Faneuil Hall Marketplace, Quincy Market",
+        "description": "Faneuil Hall, \"Boston, Mass, Faneuil Hall\"",
+        "display_shape": "oval",
+        "image_front": "http://locations.pennycollector.com/images/machine_686fa5ca-e3d7-4472-a273-9a4a451afebb.jpg",
+        "image_back": "",
+        "notes": "Machine 4 · Posição 2 · Orientação não indicada · PennyCollector location 8143 · Fotografia provisória partilhada da máquina",
+        "reference_url": "http://locations.pennycollector.com/Details.aspx?location=8143#machine-4-position-2",
+        "ordem": 6,
+        "hidden": false
+      },
+      "review_status": "approved"
+    },
+    {
+      "source": {
+        "machine_number": 4,
+        "machine_details": "is inside of the rotunda.\nDesigns are:\n",
+        "position": 3,
+        "description": "Minuteman statue, \"New England Patriots\"",
+        "orientation": "",
+        "machine_image_url": "http://locations.pennycollector.com/images/machine_686fa5ca-e3d7-4472-a273-9a4a451afebb.jpg",
+        "availability": "active",
+        "location_id": "8143",
+        "image_scope": "machine",
+        "review_flags": [
+          "shared_machine_photo",
+          "missing_orientation"
+        ]
+      },
+      "souvenir": {
+        "name": "Minuteman statue, \"New England Patriots",
+        "continent": "América",
+        "country": "EUA",
+        "city": "Boston",
+        "type": "pressed",
+        "condition": "Não Tenho",
+        "location_name": "Faneuil Hall Marketplace, Quincy Market",
+        "description": "Minuteman statue, \"New England Patriots\"",
+        "display_shape": "oval",
+        "image_front": "http://locations.pennycollector.com/images/machine_686fa5ca-e3d7-4472-a273-9a4a451afebb.jpg",
+        "image_back": "",
+        "notes": "Machine 4 · Posição 3 · Orientação não indicada · PennyCollector location 8143 · Fotografia provisória partilhada da máquina",
+        "reference_url": "http://locations.pennycollector.com/Details.aspx?location=8143#machine-4-position-3",
+        "ordem": 7,
+        "hidden": false
+      },
+      "review_status": "approved"
+    },
+    {
+      "source": {
+        "machine_number": 4,
+        "machine_details": "is inside of the rotunda.\nDesigns are:\n",
+        "position": 4,
+        "description": "Paul Revere on horseback, \"The British Are Coming\"",
+        "orientation": "",
+        "machine_image_url": "http://locations.pennycollector.com/images/machine_686fa5ca-e3d7-4472-a273-9a4a451afebb.jpg",
+        "availability": "active",
+        "location_id": "8143",
+        "image_scope": "machine",
+        "review_flags": [
+          "shared_machine_photo",
+          "missing_orientation"
+        ]
+      },
+      "souvenir": {
+        "name": "Paul Revere on horseback, \"The British Are Coming",
+        "continent": "América",
+        "country": "EUA",
+        "city": "Boston",
+        "type": "pressed",
+        "condition": "Não Tenho",
+        "location_name": "Faneuil Hall Marketplace, Quincy Market",
+        "description": "Paul Revere on horseback, \"The British Are Coming\"",
+        "display_shape": "oval",
+        "image_front": "http://locations.pennycollector.com/images/machine_686fa5ca-e3d7-4472-a273-9a4a451afebb.jpg",
+        "image_back": "",
+        "notes": "Machine 4 · Posição 4 · Orientação não indicada · PennyCollector location 8143 · Fotografia provisória partilhada da máquina",
+        "reference_url": "http://locations.pennycollector.com/Details.aspx?location=8143#machine-4-position-4",
+        "ordem": 8,
+        "hidden": false
+      },
+      "review_status": "approved"
+    },
+    {
+      "source": {
+        "machine_number": 6,
+        "machine_details": "is near the restrooms on the north side walkway when coming in from the plaza. Designs are:\n",
+        "position": 1,
+        "description": "'Battle of Bunker Hill', Soldier",
+        "orientation": "",
+        "machine_image_url": "http://locations.pennycollector.com/images/machine_f9d62d6f-4d29-4d7b-9796-cc4db11f44f3.png",
+        "availability": "active",
+        "location_id": "8143",
+        "image_scope": "machine",
+        "review_flags": [
+          "shared_machine_photo",
+          "missing_orientation"
+        ]
+      },
+      "souvenir": {
+        "name": "Battle of Bunker Hill",
+        "continent": "América",
+        "country": "EUA",
+        "city": "Boston",
+        "type": "pressed",
+        "condition": "Não Tenho",
+        "location_name": "Faneuil Hall Marketplace, Quincy Market",
+        "description": "'Battle of Bunker Hill', Soldier",
+        "display_shape": "oval",
+        "image_front": "http://locations.pennycollector.com/images/machine_f9d62d6f-4d29-4d7b-9796-cc4db11f44f3.png",
+        "image_back": "",
+        "notes": "Machine 6 · Posição 1 · Orientação não indicada · PennyCollector location 8143 · Fotografia provisória partilhada da máquina",
+        "reference_url": "http://locations.pennycollector.com/Details.aspx?location=8143#machine-6-position-1",
+        "ordem": 9,
+        "hidden": false
+      },
+      "review_status": "approved"
+    },
+    {
+      "source": {
+        "machine_number": 6,
+        "machine_details": "is near the restrooms on the north side walkway when coming in from the plaza. Designs are:\n",
+        "position": 2,
+        "description": "'Little Brewster island', Lighthouse",
+        "orientation": "",
+        "machine_image_url": "http://locations.pennycollector.com/images/machine_f9d62d6f-4d29-4d7b-9796-cc4db11f44f3.png",
+        "availability": "active",
+        "location_id": "8143",
+        "image_scope": "machine",
+        "review_flags": [
+          "shared_machine_photo",
+          "missing_orientation"
+        ]
+      },
+      "souvenir": {
+        "name": "Little Brewster island",
+        "continent": "América",
+        "country": "EUA",
+        "city": "Boston",
+        "type": "pressed",
+        "condition": "Não Tenho",
+        "location_name": "Faneuil Hall Marketplace, Quincy Market",
+        "description": "'Little Brewster island', Lighthouse",
+        "display_shape": "oval",
+        "image_front": "http://locations.pennycollector.com/images/machine_f9d62d6f-4d29-4d7b-9796-cc4db11f44f3.png",
+        "image_back": "",
+        "notes": "Machine 6 · Posição 2 · Orientação não indicada · PennyCollector location 8143 · Fotografia provisória partilhada da máquina",
+        "reference_url": "http://locations.pennycollector.com/Details.aspx?location=8143#machine-6-position-2",
+        "ordem": 10,
+        "hidden": false
+      },
+      "review_status": "approved"
+    },
+    {
+      "source": {
+        "machine_number": 6,
+        "machine_details": "is near the restrooms on the north side walkway when coming in from the plaza. Designs are:\n",
+        "position": 3,
+        "description": "'Massachusetts, The Bay State', Image of State",
+        "orientation": "",
+        "machine_image_url": "http://locations.pennycollector.com/images/machine_f9d62d6f-4d29-4d7b-9796-cc4db11f44f3.png",
+        "availability": "active",
+        "location_id": "8143",
+        "image_scope": "machine",
+        "review_flags": [
+          "shared_machine_photo",
+          "missing_orientation"
+        ]
+      },
+      "souvenir": {
+        "name": "Massachusetts, The Bay State",
+        "continent": "América",
+        "country": "EUA",
+        "city": "Boston",
+        "type": "pressed",
+        "condition": "Não Tenho",
+        "location_name": "Faneuil Hall Marketplace, Quincy Market",
+        "description": "'Massachusetts, The Bay State', Image of State",
+        "display_shape": "oval",
+        "image_front": "http://locations.pennycollector.com/images/machine_f9d62d6f-4d29-4d7b-9796-cc4db11f44f3.png",
+        "image_back": "",
+        "notes": "Machine 6 · Posição 3 · Orientação não indicada · PennyCollector location 8143 · Fotografia provisória partilhada da máquina",
+        "reference_url": "http://locations.pennycollector.com/Details.aspx?location=8143#machine-6-position-3",
+        "ordem": 11,
+        "hidden": false
+      },
+      "review_status": "approved"
+    },
+    {
+      "source": {
+        "machine_number": 6,
+        "machine_details": "is near the restrooms on the north side walkway when coming in from the plaza. Designs are:\n",
+        "position": 4,
+        "description": "'World Champions Boston Red Sox', Logo and trophies",
+        "orientation": "",
+        "machine_image_url": "http://locations.pennycollector.com/images/machine_f9d62d6f-4d29-4d7b-9796-cc4db11f44f3.png",
+        "availability": "active",
+        "location_id": "8143",
+        "image_scope": "machine",
+        "review_flags": [
+          "shared_machine_photo",
+          "missing_orientation"
+        ]
+      },
+      "souvenir": {
+        "name": "World Champions Boston Red Sox",
+        "continent": "América",
+        "country": "EUA",
+        "city": "Boston",
+        "type": "pressed",
+        "condition": "Não Tenho",
+        "location_name": "Faneuil Hall Marketplace, Quincy Market",
+        "description": "'World Champions Boston Red Sox', Logo and trophies",
+        "display_shape": "oval",
+        "image_front": "http://locations.pennycollector.com/images/machine_f9d62d6f-4d29-4d7b-9796-cc4db11f44f3.png",
+        "image_back": "",
+        "notes": "Machine 6 · Posição 4 · Orientação não indicada · PennyCollector location 8143 · Fotografia provisória partilhada da máquina",
+        "reference_url": "http://locations.pennycollector.com/Details.aspx?location=8143#machine-6-position-4",
+        "ordem": 12,
+        "hidden": false
+      },
+      "review_status": "approved"
+    },
+    {
+      "source": {
+        "machine_number": 1,
+        "machine_details": "Retired machine 1",
+        "position": 1,
+        "description": "Faneuil Hall Baston, Ma",
+        "orientation": "",
+        "machine_image_url": "http://locations.pennycollector.com/images/machine_0fd3406f-1566-4355-a72c-8c05118cfd08.jpg",
+        "availability": "retired",
+        "location_id": "8143",
+        "image_scope": "machine",
+        "review_flags": [
+          "shared_machine_photo",
+          "missing_orientation",
+          "retired_machine"
+        ]
+      },
+      "souvenir": {
+        "name": "Faneuil Hall Baston, Ma",
+        "continent": "América",
+        "country": "EUA",
+        "city": "Boston",
+        "type": "pressed",
+        "condition": "Não Tenho",
+        "location_name": "Faneuil Hall Marketplace, Quincy Market",
+        "description": "Faneuil Hall Baston, Ma",
+        "display_shape": "oval",
+        "image_front": "http://locations.pennycollector.com/images/machine_0fd3406f-1566-4355-a72c-8c05118cfd08.jpg",
+        "image_back": "",
+        "notes": "Máquina retirada 1 · Posição 1 · Orientação não indicada · PennyCollector location 8143 · Fotografia provisória partilhada da máquina",
+        "reference_url": "http://locations.pennycollector.com/Details.aspx?location=8143#retired-machine-1-position-1",
+        "ordem": 13,
+        "hidden": false
+      },
+      "review_status": "approved"
+    },
+    {
+      "source": {
+        "machine_number": 1,
+        "machine_details": "Retired machine 1",
+        "position": 2,
+        "description": "Lucky Penny",
+        "orientation": "",
+        "machine_image_url": "http://locations.pennycollector.com/images/machine_0fd3406f-1566-4355-a72c-8c05118cfd08.jpg",
+        "availability": "retired",
+        "location_id": "8143",
+        "image_scope": "machine",
+        "review_flags": [
+          "shared_machine_photo",
+          "missing_orientation",
+          "retired_machine"
+        ]
+      },
+      "souvenir": {
+        "name": "Lucky Penny",
+        "continent": "América",
+        "country": "EUA",
+        "city": "Boston",
+        "type": "pressed",
+        "condition": "Não Tenho",
+        "location_name": "Faneuil Hall Marketplace, Quincy Market",
+        "description": "Lucky Penny",
+        "display_shape": "oval",
+        "image_front": "http://locations.pennycollector.com/images/machine_0fd3406f-1566-4355-a72c-8c05118cfd08.jpg",
+        "image_back": "",
+        "notes": "Máquina retirada 1 · Posição 2 · Orientação não indicada · PennyCollector location 8143 · Fotografia provisória partilhada da máquina",
+        "reference_url": "http://locations.pennycollector.com/Details.aspx?location=8143#retired-machine-1-position-2",
+        "ordem": 14,
+        "hidden": false
+      },
+      "review_status": "approved"
+    },
+    {
+      "source": {
+        "machine_number": 1,
+        "machine_details": "Retired machine 1",
+        "position": 3,
+        "description": "Zakim Bridge",
+        "orientation": "",
+        "machine_image_url": "http://locations.pennycollector.com/images/machine_0fd3406f-1566-4355-a72c-8c05118cfd08.jpg",
+        "availability": "retired",
+        "location_id": "8143",
+        "image_scope": "machine",
+        "review_flags": [
+          "shared_machine_photo",
+          "missing_orientation",
+          "retired_machine"
+        ]
+      },
+      "souvenir": {
+        "name": "Zakim Bridge",
+        "continent": "América",
+        "country": "EUA",
+        "city": "Boston",
+        "type": "pressed",
+        "condition": "Não Tenho",
+        "location_name": "Faneuil Hall Marketplace, Quincy Market",
+        "description": "Zakim Bridge",
+        "display_shape": "oval",
+        "image_front": "http://locations.pennycollector.com/images/machine_0fd3406f-1566-4355-a72c-8c05118cfd08.jpg",
+        "image_back": "",
+        "notes": "Máquina retirada 1 · Posição 3 · Orientação não indicada · PennyCollector location 8143 · Fotografia provisória partilhada da máquina",
+        "reference_url": "http://locations.pennycollector.com/Details.aspx?location=8143#retired-machine-1-position-3",
+        "ordem": 15,
+        "hidden": false
+      },
+      "review_status": "approved"
+    },
+    {
+      "source": {
+        "machine_number": 1,
+        "machine_details": "Retired machine 1",
+        "position": 4,
+        "description": "The Ride of Paul Revere",
+        "orientation": "",
+        "machine_image_url": "http://locations.pennycollector.com/images/machine_0fd3406f-1566-4355-a72c-8c05118cfd08.jpg",
+        "availability": "retired",
+        "location_id": "8143",
+        "image_scope": "machine",
+        "review_flags": [
+          "shared_machine_photo",
+          "missing_orientation",
+          "retired_machine"
+        ]
+      },
+      "souvenir": {
+        "name": "The Ride of Paul Revere",
+        "continent": "América",
+        "country": "EUA",
+        "city": "Boston",
+        "type": "pressed",
+        "condition": "Não Tenho",
+        "location_name": "Faneuil Hall Marketplace, Quincy Market",
+        "description": "The Ride of Paul Revere",
+        "display_shape": "oval",
+        "image_front": "http://locations.pennycollector.com/images/machine_0fd3406f-1566-4355-a72c-8c05118cfd08.jpg",
+        "image_back": "",
+        "notes": "Máquina retirada 1 · Posição 4 · Orientação não indicada · PennyCollector location 8143 · Fotografia provisória partilhada da máquina",
+        "reference_url": "http://locations.pennycollector.com/Details.aspx?location=8143#retired-machine-1-position-4",
+        "ordem": 16,
+        "hidden": false
+      },
+      "review_status": "approved"
+    },
+    {
+      "source": {
+        "machine_number": 2,
+        "machine_details": "Retired machine 2",
+        "position": 1,
+        "description": "Boston Public Garden, Swan Boat",
+        "orientation": "",
+        "machine_image_url": "http://locations.pennycollector.com/images/machine_28e2b435-ac19-40c6-b6d3-04a70d8c0adb.gif",
+        "availability": "retired",
+        "location_id": "8143",
+        "image_scope": "machine",
+        "review_flags": [
+          "shared_machine_photo",
+          "missing_orientation",
+          "retired_machine"
+        ]
+      },
+      "souvenir": {
+        "name": "Boston Public Garden, Swan Boat",
+        "continent": "América",
+        "country": "EUA",
+        "city": "Boston",
+        "type": "pressed",
+        "condition": "Não Tenho",
+        "location_name": "Faneuil Hall Marketplace, Quincy Market",
+        "description": "Boston Public Garden, Swan Boat",
+        "display_shape": "oval",
+        "image_front": "http://locations.pennycollector.com/images/machine_28e2b435-ac19-40c6-b6d3-04a70d8c0adb.gif",
+        "image_back": "",
+        "notes": "Máquina retirada 2 · Posição 1 · Orientação não indicada · PennyCollector location 8143 · Fotografia provisória partilhada da máquina",
+        "reference_url": "http://locations.pennycollector.com/Details.aspx?location=8143#retired-machine-2-position-1",
+        "ordem": 17,
+        "hidden": false
+      },
+      "review_status": "approved"
+    },
+    {
+      "source": {
+        "machine_number": 2,
+        "machine_details": "Retired machine 2",
+        "position": 2,
+        "description": "Faneuil Hall Baston, Mass",
+        "orientation": "",
+        "machine_image_url": "http://locations.pennycollector.com/images/machine_28e2b435-ac19-40c6-b6d3-04a70d8c0adb.gif",
+        "availability": "retired",
+        "location_id": "8143",
+        "image_scope": "machine",
+        "review_flags": [
+          "shared_machine_photo",
+          "missing_orientation",
+          "retired_machine"
+        ]
+      },
+      "souvenir": {
+        "name": "Faneuil Hall Baston, Mass",
+        "continent": "América",
+        "country": "EUA",
+        "city": "Boston",
+        "type": "pressed",
+        "condition": "Não Tenho",
+        "location_name": "Faneuil Hall Marketplace, Quincy Market",
+        "description": "Faneuil Hall Baston, Mass",
+        "display_shape": "oval",
+        "image_front": "http://locations.pennycollector.com/images/machine_28e2b435-ac19-40c6-b6d3-04a70d8c0adb.gif",
+        "image_back": "",
+        "notes": "Máquina retirada 2 · Posição 2 · Orientação não indicada · PennyCollector location 8143 · Fotografia provisória partilhada da máquina",
+        "reference_url": "http://locations.pennycollector.com/Details.aspx?location=8143#retired-machine-2-position-2",
+        "ordem": 18,
+        "hidden": false
+      },
+      "review_status": "approved"
+    },
+    {
+      "source": {
+        "machine_number": 2,
+        "machine_details": "Retired machine 2",
+        "position": 3,
+        "description": "USS Constitution Old Ironsides 1797",
+        "orientation": "",
+        "machine_image_url": "http://locations.pennycollector.com/images/machine_28e2b435-ac19-40c6-b6d3-04a70d8c0adb.gif",
+        "availability": "retired",
+        "location_id": "8143",
+        "image_scope": "machine",
+        "review_flags": [
+          "shared_machine_photo",
+          "missing_orientation",
+          "retired_machine"
+        ]
+      },
+      "souvenir": {
+        "name": "USS Constitution Old Ironsides 1797",
+        "continent": "América",
+        "country": "EUA",
+        "city": "Boston",
+        "type": "pressed",
+        "condition": "Não Tenho",
+        "location_name": "Faneuil Hall Marketplace, Quincy Market",
+        "description": "USS Constitution Old Ironsides 1797",
+        "display_shape": "oval",
+        "image_front": "http://locations.pennycollector.com/images/machine_28e2b435-ac19-40c6-b6d3-04a70d8c0adb.gif",
+        "image_back": "",
+        "notes": "Máquina retirada 2 · Posição 3 · Orientação não indicada · PennyCollector location 8143 · Fotografia provisória partilhada da máquina",
+        "reference_url": "http://locations.pennycollector.com/Details.aspx?location=8143#retired-machine-2-position-3",
+        "ordem": 19,
+        "hidden": false
+      },
+      "review_status": "approved"
+    },
+    {
+      "source": {
+        "machine_number": 2,
+        "machine_details": "Retired machine 2",
+        "position": 4,
+        "description": "'Boston', skyline",
+        "orientation": "",
+        "machine_image_url": "http://locations.pennycollector.com/images/machine_28e2b435-ac19-40c6-b6d3-04a70d8c0adb.gif",
+        "availability": "retired",
+        "location_id": "8143",
+        "image_scope": "machine",
+        "review_flags": [
+          "shared_machine_photo",
+          "missing_orientation",
+          "retired_machine"
+        ]
+      },
+      "souvenir": {
+        "name": "Boston",
+        "continent": "América",
+        "country": "EUA",
+        "city": "Boston",
+        "type": "pressed",
+        "condition": "Não Tenho",
+        "location_name": "Faneuil Hall Marketplace, Quincy Market",
+        "description": "'Boston', skyline",
+        "display_shape": "oval",
+        "image_front": "http://locations.pennycollector.com/images/machine_28e2b435-ac19-40c6-b6d3-04a70d8c0adb.gif",
+        "image_back": "",
+        "notes": "Máquina retirada 2 · Posição 4 · Orientação não indicada · PennyCollector location 8143 · Fotografia provisória partilhada da máquina",
+        "reference_url": "http://locations.pennycollector.com/Details.aspx?location=8143#retired-machine-2-position-4",
+        "ordem": 20,
+        "hidden": false
+      },
+      "review_status": "approved"
+    },
+    {
+      "source": {
+        "machine_number": 5,
+        "machine_details": "Retired machine 5",
+        "position": 1,
+        "description": "Minute Man",
+        "orientation": "",
+        "machine_image_url": "http://locations.pennycollector.com/images/machine_a0e17339-c4b5-47f3-a468-1f5947dad0c8.jpg",
+        "availability": "retired",
+        "location_id": "8143",
+        "image_scope": "machine",
+        "review_flags": [
+          "shared_machine_photo",
+          "missing_orientation",
+          "retired_machine"
+        ]
+      },
+      "souvenir": {
+        "name": "Minute Man",
+        "continent": "América",
+        "country": "EUA",
+        "city": "Boston",
+        "type": "pressed",
+        "condition": "Não Tenho",
+        "location_name": "Faneuil Hall Marketplace, Quincy Market",
+        "description": "Minute Man",
+        "display_shape": "oval",
+        "image_front": "http://locations.pennycollector.com/images/machine_a0e17339-c4b5-47f3-a468-1f5947dad0c8.jpg",
+        "image_back": "",
+        "notes": "Máquina retirada 5 · Posição 1 · Orientação não indicada · PennyCollector location 8143 · Fotografia provisória partilhada da máquina",
+        "reference_url": "http://locations.pennycollector.com/Details.aspx?location=8143#retired-machine-5-position-1",
+        "ordem": 21,
+        "hidden": false
+      },
+      "review_status": "approved"
+    },
+    {
+      "source": {
+        "machine_number": 5,
+        "machine_details": "Retired machine 5",
+        "position": 2,
+        "description": "Old Ironsides",
+        "orientation": "",
+        "machine_image_url": "http://locations.pennycollector.com/images/machine_a0e17339-c4b5-47f3-a468-1f5947dad0c8.jpg",
+        "availability": "retired",
+        "location_id": "8143",
+        "image_scope": "machine",
+        "review_flags": [
+          "shared_machine_photo",
+          "missing_orientation",
+          "retired_machine"
+        ]
+      },
+      "souvenir": {
+        "name": "Old Ironsides",
+        "continent": "América",
+        "country": "EUA",
+        "city": "Boston",
+        "type": "pressed",
+        "condition": "Não Tenho",
+        "location_name": "Faneuil Hall Marketplace, Quincy Market",
+        "description": "Old Ironsides",
+        "display_shape": "oval",
+        "image_front": "http://locations.pennycollector.com/images/machine_a0e17339-c4b5-47f3-a468-1f5947dad0c8.jpg",
+        "image_back": "",
+        "notes": "Máquina retirada 5 · Posição 2 · Orientação não indicada · PennyCollector location 8143 · Fotografia provisória partilhada da máquina",
+        "reference_url": "http://locations.pennycollector.com/Details.aspx?location=8143#retired-machine-5-position-2",
+        "ordem": 22,
+        "hidden": false
+      },
+      "review_status": "approved"
+    },
+    {
+      "source": {
+        "machine_number": 5,
+        "machine_details": "Retired machine 5",
+        "position": 3,
+        "description": "Ouincy Market",
+        "orientation": "",
+        "machine_image_url": "http://locations.pennycollector.com/images/machine_a0e17339-c4b5-47f3-a468-1f5947dad0c8.jpg",
+        "availability": "retired",
+        "location_id": "8143",
+        "image_scope": "machine",
+        "review_flags": [
+          "shared_machine_photo",
+          "missing_orientation",
+          "retired_machine"
+        ]
+      },
+      "souvenir": {
+        "name": "Ouincy Market",
+        "continent": "América",
+        "country": "EUA",
+        "city": "Boston",
+        "type": "pressed",
+        "condition": "Não Tenho",
+        "location_name": "Faneuil Hall Marketplace, Quincy Market",
+        "description": "Ouincy Market",
+        "display_shape": "oval",
+        "image_front": "http://locations.pennycollector.com/images/machine_a0e17339-c4b5-47f3-a468-1f5947dad0c8.jpg",
+        "image_back": "",
+        "notes": "Máquina retirada 5 · Posição 3 · Orientação não indicada · PennyCollector location 8143 · Fotografia provisória partilhada da máquina",
+        "reference_url": "http://locations.pennycollector.com/Details.aspx?location=8143#retired-machine-5-position-3",
+        "ordem": 23,
+        "hidden": false
+      },
+      "review_status": "approved"
+    },
+    {
+      "source": {
+        "machine_number": 5,
+        "machine_details": "Retired machine 5",
+        "position": 4,
+        "description": "Fenway Park",
+        "orientation": "",
+        "machine_image_url": "http://locations.pennycollector.com/images/machine_a0e17339-c4b5-47f3-a468-1f5947dad0c8.jpg",
+        "availability": "retired",
+        "location_id": "8143",
+        "image_scope": "machine",
+        "review_flags": [
+          "shared_machine_photo",
+          "missing_orientation",
+          "retired_machine"
+        ]
+      },
+      "souvenir": {
+        "name": "Fenway Park",
+        "continent": "América",
+        "country": "EUA",
+        "city": "Boston",
+        "type": "pressed",
+        "condition": "Não Tenho",
+        "location_name": "Faneuil Hall Marketplace, Quincy Market",
+        "description": "Fenway Park",
+        "display_shape": "oval",
+        "image_front": "http://locations.pennycollector.com/images/machine_a0e17339-c4b5-47f3-a468-1f5947dad0c8.jpg",
+        "image_back": "",
+        "notes": "Máquina retirada 5 · Posição 4 · Orientação não indicada · PennyCollector location 8143 · Fotografia provisória partilhada da máquina",
+        "reference_url": "http://locations.pennycollector.com/Details.aspx?location=8143#retired-machine-5-position-4",
+        "ordem": 24,
+        "hidden": false
+      },
+      "review_status": "approved"
+    },
+    {
+      "source": {
+        "machine_number": 7,
+        "machine_details": "Retired machine 7",
+        "position": 1,
+        "description": "Boston Skyline",
+        "orientation": "",
+        "machine_image_url": "http://locations.pennycollector.com/images/machine_910dd734-d7ba-4291-b447-69ee209f53f2.jpg",
+        "availability": "retired",
+        "location_id": "8143",
+        "image_scope": "machine",
+        "review_flags": [
+          "shared_machine_photo",
+          "missing_orientation",
+          "retired_machine"
+        ]
+      },
+      "souvenir": {
+        "name": "Boston Skyline",
+        "continent": "América",
+        "country": "EUA",
+        "city": "Boston",
+        "type": "pressed",
+        "condition": "Não Tenho",
+        "location_name": "Faneuil Hall Marketplace, Quincy Market",
+        "description": "Boston Skyline",
+        "display_shape": "oval",
+        "image_front": "http://locations.pennycollector.com/images/machine_910dd734-d7ba-4291-b447-69ee209f53f2.jpg",
+        "image_back": "",
+        "notes": "Máquina retirada 7 · Posição 1 · Orientação não indicada · PennyCollector location 8143 · Fotografia provisória partilhada da máquina",
+        "reference_url": "http://locations.pennycollector.com/Details.aspx?location=8143#retired-machine-7-position-1",
+        "ordem": 25,
+        "hidden": false
+      },
+      "review_status": "approved"
+    },
+    {
+      "source": {
+        "machine_number": 7,
+        "machine_details": "Retired machine 7",
+        "position": 2,
+        "description": "Boston Common",
+        "orientation": "",
+        "machine_image_url": "http://locations.pennycollector.com/images/machine_910dd734-d7ba-4291-b447-69ee209f53f2.jpg",
+        "availability": "retired",
+        "location_id": "8143",
+        "image_scope": "machine",
+        "review_flags": [
+          "shared_machine_photo",
+          "missing_orientation",
+          "retired_machine"
+        ]
+      },
+      "souvenir": {
+        "name": "Boston Common",
+        "continent": "América",
+        "country": "EUA",
+        "city": "Boston",
+        "type": "pressed",
+        "condition": "Não Tenho",
+        "location_name": "Faneuil Hall Marketplace, Quincy Market",
+        "description": "Boston Common",
+        "display_shape": "oval",
+        "image_front": "http://locations.pennycollector.com/images/machine_910dd734-d7ba-4291-b447-69ee209f53f2.jpg",
+        "image_back": "",
+        "notes": "Máquina retirada 7 · Posição 2 · Orientação não indicada · PennyCollector location 8143 · Fotografia provisória partilhada da máquina",
+        "reference_url": "http://locations.pennycollector.com/Details.aspx?location=8143#retired-machine-7-position-2",
+        "ordem": 26,
+        "hidden": false
+      },
+      "review_status": "approved"
+    },
+    {
+      "source": {
+        "machine_number": 7,
+        "machine_details": "Retired machine 7",
+        "position": 3,
+        "description": "Historic Beacon Hill, Boston",
+        "orientation": "",
+        "machine_image_url": "http://locations.pennycollector.com/images/machine_910dd734-d7ba-4291-b447-69ee209f53f2.jpg",
+        "availability": "retired",
+        "location_id": "8143",
+        "image_scope": "machine",
+        "review_flags": [
+          "shared_machine_photo",
+          "missing_orientation",
+          "retired_machine"
+        ]
+      },
+      "souvenir": {
+        "name": "Historic Beacon Hill, Boston",
+        "continent": "América",
+        "country": "EUA",
+        "city": "Boston",
+        "type": "pressed",
+        "condition": "Não Tenho",
+        "location_name": "Faneuil Hall Marketplace, Quincy Market",
+        "description": "Historic Beacon Hill, Boston",
+        "display_shape": "oval",
+        "image_front": "http://locations.pennycollector.com/images/machine_910dd734-d7ba-4291-b447-69ee209f53f2.jpg",
+        "image_back": "",
+        "notes": "Máquina retirada 7 · Posição 3 · Orientação não indicada · PennyCollector location 8143 · Fotografia provisória partilhada da máquina",
+        "reference_url": "http://locations.pennycollector.com/Details.aspx?location=8143#retired-machine-7-position-3",
+        "ordem": 27,
+        "hidden": false
+      },
+      "review_status": "approved"
+    },
+    {
+      "source": {
+        "machine_number": 7,
+        "machine_details": "Retired machine 7",
+        "position": 4,
+        "description": "Boston's Best, Boston Baked beans",
+        "orientation": "",
+        "machine_image_url": "http://locations.pennycollector.com/images/machine_910dd734-d7ba-4291-b447-69ee209f53f2.jpg",
+        "availability": "retired",
+        "location_id": "8143",
+        "image_scope": "machine",
+        "review_flags": [
+          "shared_machine_photo",
+          "missing_orientation",
+          "retired_machine"
+        ]
+      },
+      "souvenir": {
+        "name": "Boston's Best, Boston Baked beans",
+        "continent": "América",
+        "country": "EUA",
+        "city": "Boston",
+        "type": "pressed",
+        "condition": "Não Tenho",
+        "location_name": "Faneuil Hall Marketplace, Quincy Market",
+        "description": "Boston's Best, Boston Baked beans",
+        "display_shape": "oval",
+        "image_front": "http://locations.pennycollector.com/images/machine_910dd734-d7ba-4291-b447-69ee209f53f2.jpg",
+        "image_back": "",
+        "notes": "Máquina retirada 7 · Posição 4 · Orientação não indicada · PennyCollector location 8143 · Fotografia provisória partilhada da máquina",
+        "reference_url": "http://locations.pennycollector.com/Details.aspx?location=8143#retired-machine-7-position-4",
+        "ordem": 28,
+        "hidden": false
+      },
+      "review_status": "approved"
+    },
+    {
+      "source": {
+        "machine_number": 8,
+        "machine_details": "Retired machine 8",
+        "position": 1,
+        "description": "Stegosaurus",
+        "orientation": "",
+        "machine_image_url": "http://locations.pennycollector.com/images/machine_9feb4cb0-961c-4534-98af-afec7d0d7c84.jpg",
+        "availability": "retired",
+        "location_id": "8143",
+        "image_scope": "machine",
+        "review_flags": [
+          "shared_machine_photo",
+          "missing_orientation",
+          "retired_machine"
+        ]
+      },
+      "souvenir": {
+        "name": "Stegosaurus",
+        "continent": "América",
+        "country": "EUA",
+        "city": "Boston",
+        "type": "pressed",
+        "condition": "Não Tenho",
+        "location_name": "Faneuil Hall Marketplace, Quincy Market",
+        "description": "Stegosaurus",
+        "display_shape": "oval",
+        "image_front": "http://locations.pennycollector.com/images/machine_9feb4cb0-961c-4534-98af-afec7d0d7c84.jpg",
+        "image_back": "",
+        "notes": "Máquina retirada 8 · Posição 1 · Orientação não indicada · PennyCollector location 8143 · Fotografia provisória partilhada da máquina",
+        "reference_url": "http://locations.pennycollector.com/Details.aspx?location=8143#retired-machine-8-position-1",
+        "ordem": 29,
+        "hidden": false
+      },
+      "review_status": "approved"
+    },
+    {
+      "source": {
+        "machine_number": 8,
+        "machine_details": "Retired machine 8",
+        "position": 2,
+        "description": "T Rex",
+        "orientation": "",
+        "machine_image_url": "http://locations.pennycollector.com/images/machine_9feb4cb0-961c-4534-98af-afec7d0d7c84.jpg",
+        "availability": "retired",
+        "location_id": "8143",
+        "image_scope": "machine",
+        "review_flags": [
+          "shared_machine_photo",
+          "missing_orientation",
+          "retired_machine"
+        ]
+      },
+      "souvenir": {
+        "name": "T Rex",
+        "continent": "América",
+        "country": "EUA",
+        "city": "Boston",
+        "type": "pressed",
+        "condition": "Não Tenho",
+        "location_name": "Faneuil Hall Marketplace, Quincy Market",
+        "description": "T Rex",
+        "display_shape": "oval",
+        "image_front": "http://locations.pennycollector.com/images/machine_9feb4cb0-961c-4534-98af-afec7d0d7c84.jpg",
+        "image_back": "",
+        "notes": "Máquina retirada 8 · Posição 2 · Orientação não indicada · PennyCollector location 8143 · Fotografia provisória partilhada da máquina",
+        "reference_url": "http://locations.pennycollector.com/Details.aspx?location=8143#retired-machine-8-position-2",
+        "ordem": 30,
+        "hidden": false
+      },
+      "review_status": "approved"
+    },
+    {
+      "source": {
+        "machine_number": 8,
+        "machine_details": "Retired machine 8",
+        "position": 3,
+        "description": "Triceratops",
+        "orientation": "",
+        "machine_image_url": "http://locations.pennycollector.com/images/machine_9feb4cb0-961c-4534-98af-afec7d0d7c84.jpg",
+        "availability": "retired",
+        "location_id": "8143",
+        "image_scope": "machine",
+        "review_flags": [
+          "shared_machine_photo",
+          "missing_orientation",
+          "retired_machine"
+        ]
+      },
+      "souvenir": {
+        "name": "Triceratops",
+        "continent": "América",
+        "country": "EUA",
+        "city": "Boston",
+        "type": "pressed",
+        "condition": "Não Tenho",
+        "location_name": "Faneuil Hall Marketplace, Quincy Market",
+        "description": "Triceratops",
+        "display_shape": "oval",
+        "image_front": "http://locations.pennycollector.com/images/machine_9feb4cb0-961c-4534-98af-afec7d0d7c84.jpg",
+        "image_back": "",
+        "notes": "Máquina retirada 8 · Posição 3 · Orientação não indicada · PennyCollector location 8143 · Fotografia provisória partilhada da máquina",
+        "reference_url": "http://locations.pennycollector.com/Details.aspx?location=8143#retired-machine-8-position-3",
+        "ordem": 31,
+        "hidden": false
+      },
+      "review_status": "approved"
+    },
+    {
+      "source": {
+        "machine_number": 8,
+        "machine_details": "Retired machine 8",
+        "position": 4,
+        "description": "Velociraptor",
+        "orientation": "",
+        "machine_image_url": "http://locations.pennycollector.com/images/machine_9feb4cb0-961c-4534-98af-afec7d0d7c84.jpg",
+        "availability": "retired",
+        "location_id": "8143",
+        "image_scope": "machine",
+        "review_flags": [
+          "shared_machine_photo",
+          "missing_orientation",
+          "retired_machine"
+        ]
+      },
+      "souvenir": {
+        "name": "Velociraptor",
+        "continent": "América",
+        "country": "EUA",
+        "city": "Boston",
+        "type": "pressed",
+        "condition": "Não Tenho",
+        "location_name": "Faneuil Hall Marketplace, Quincy Market",
+        "description": "Velociraptor",
+        "display_shape": "oval",
+        "image_front": "http://locations.pennycollector.com/images/machine_9feb4cb0-961c-4534-98af-afec7d0d7c84.jpg",
+        "image_back": "",
+        "notes": "Máquina retirada 8 · Posição 4 · Orientação não indicada · PennyCollector location 8143 · Fotografia provisória partilhada da máquina",
+        "reference_url": "http://locations.pennycollector.com/Details.aspx?location=8143#retired-machine-8-position-4",
+        "ordem": 32,
+        "hidden": false
+      },
+      "review_status": "approved"
+    }
+  ],
+  "review": {
+    "approved": 32,
+    "skipped": 0,
+    "pending": 0,
+    "completed": true,
+    "updated_at": "2026-09-25T10:57:13+00:00",
+    "shared_machine_photos_accepted_as_temporary": true
+  }
+}

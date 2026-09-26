@@ -1,0 +1,169 @@
+{
+  "status": "pending_review",
+  "base44_updated": false,
+  "import_ready": false,
+  "source": {
+    "site": "PennyCollector",
+    "location_id": "416218",
+    "url": "http://locations.pennycollector.com/Details.aspx?location=416218",
+    "location_name": "Malabar",
+    "address": "Rua Ferreira Borges, 187",
+    "city": "Coimbra",
+    "zip_code": "3000-200",
+    "status": "Active",
+    "state": "",
+    "country": "Portugal",
+    "source_flagged_needs_update": false,
+    "retrieved_at": "2026-09-25T10:17:54+00:00",
+    "machine_count": 1,
+    "design_count": 4,
+    "machine_numbers": [
+      1
+    ],
+    "active_machine_numbers": [
+      1
+    ],
+    "retired_machine_numbers": [],
+    "active_design_count": 4,
+    "retired_design_count": 0,
+    "photo_policy": "A fotografia pertence à máquina e é partilhada pelos seus designs."
+  },
+  "items": [
+    {
+      "source": {
+        "machine_number": 1,
+        "machine_details": "Machine 1 - Outside in front of store",
+        "position": 1,
+        "description": "Coimbra city skyline behind the Ponte de Santa Clara bridge with 'Coimbra'",
+        "orientation": "H",
+        "machine_image_url": "http://locations.pennycollector.com/images/machine_21bc0039-a7a4-40b1-92c4-9dbf08a2bb7e.jpg",
+        "availability": "active",
+        "location_id": "416218",
+        "image_scope": "machine",
+        "review_flags": [
+          "shared_machine_photo"
+        ]
+      },
+      "souvenir": {
+        "name": "Coimbra city skyline behind the Ponte de Santa Clara…",
+        "continent": "Europa",
+        "country": "Portugal",
+        "city": "Coimbra",
+        "type": "pressed",
+        "condition": "Não Tenho",
+        "location_name": "Malabar",
+        "description": "Coimbra city skyline behind the Ponte de Santa Clara bridge with 'Coimbra'",
+        "display_shape": "oval",
+        "image_front": "http://locations.pennycollector.com/images/machine_21bc0039-a7a4-40b1-92c4-9dbf08a2bb7e.jpg",
+        "image_back": "",
+        "notes": "Machine 1 · Posição 1 · Orientação horizontal · PennyCollector location 416218 · Fotografia provisória partilhada da máquina",
+        "reference_url": "http://locations.pennycollector.com/Details.aspx?location=416218#machine-1-position-1",
+        "ordem": 1,
+        "hidden": false
+      },
+      "review_status": "pending"
+    },
+    {
+      "source": {
+        "machine_number": 1,
+        "machine_details": "Machine 1 - Outside in front of store",
+        "position": 2,
+        "description": "Barcelos Rooster with 'Portugal'",
+        "orientation": "V",
+        "machine_image_url": "http://locations.pennycollector.com/images/machine_21bc0039-a7a4-40b1-92c4-9dbf08a2bb7e.jpg",
+        "availability": "active",
+        "location_id": "416218",
+        "image_scope": "machine",
+        "review_flags": [
+          "shared_machine_photo"
+        ]
+      },
+      "souvenir": {
+        "name": "Barcelos Rooster with 'Portugal",
+        "continent": "Europa",
+        "country": "Portugal",
+        "city": "Coimbra",
+        "type": "pressed",
+        "condition": "Não Tenho",
+        "location_name": "Malabar",
+        "description": "Barcelos Rooster with 'Portugal'",
+        "display_shape": "oval",
+        "image_front": "http://locations.pennycollector.com/images/machine_21bc0039-a7a4-40b1-92c4-9dbf08a2bb7e.jpg",
+        "image_back": "",
+        "notes": "Machine 1 · Posição 2 · Orientação vertical · PennyCollector location 416218 · Fotografia provisória partilhada da máquina",
+        "reference_url": "http://locations.pennycollector.com/Details.aspx?location=416218#machine-1-position-2",
+        "ordem": 2,
+        "hidden": false
+      },
+      "review_status": "pending"
+    },
+    {
+      "source": {
+        "machine_number": 1,
+        "machine_details": "Machine 1 - Outside in front of store",
+        "position": 3,
+        "description": "Our Lady of Fátima (Catholic title for the Virgin Mary) wearing a crown with 'Na Sra De Fatima Portugal'",
+        "orientation": "V",
+        "machine_image_url": "http://locations.pennycollector.com/images/machine_21bc0039-a7a4-40b1-92c4-9dbf08a2bb7e.jpg",
+        "availability": "active",
+        "location_id": "416218",
+        "image_scope": "machine",
+        "review_flags": [
+          "shared_machine_photo"
+        ]
+      },
+      "souvenir": {
+        "name": "Our Lady of Fátima (Catholic title for the Virgin Mary)…",
+        "continent": "Europa",
+        "country": "Portugal",
+        "city": "Coimbra",
+        "type": "pressed",
+        "condition": "Não Tenho",
+        "location_name": "Malabar",
+        "description": "Our Lady of Fátima (Catholic title for the Virgin Mary) wearing a crown with 'Na Sra De Fatima Portugal'",
+        "display_shape": "oval",
+        "image_front": "http://locations.pennycollector.com/images/machine_21bc0039-a7a4-40b1-92c4-9dbf08a2bb7e.jpg",
+        "image_back": "",
+        "notes": "Machine 1 · Posição 3 · Orientação vertical · PennyCollector location 416218 · Fotografia provisória partilhada da máquina",
+        "reference_url": "http://locations.pennycollector.com/Details.aspx?location=416218#machine-1-position-3",
+        "ordem": 3,
+        "hidden": false
+      },
+      "review_status": "pending"
+    },
+    {
+      "source": {
+        "machine_number": 1,
+        "machine_details": "Machine 1 - Outside in front of store",
+        "position": 4,
+        "description": "Center for Studies in Planning, Urbanism and Environmental Law building and University tower with 'Universidade De Coimbra'",
+        "orientation": "H",
+        "machine_image_url": "http://locations.pennycollector.com/images/machine_21bc0039-a7a4-40b1-92c4-9dbf08a2bb7e.jpg",
+        "availability": "active",
+        "location_id": "416218",
+        "image_scope": "machine",
+        "review_flags": [
+          "shared_machine_photo"
+        ]
+      },
+      "souvenir": {
+        "name": "Center for Studies in Planning, Urbanism and…",
+        "continent": "Europa",
+        "country": "Portugal",
+        "city": "Coimbra",
+        "type": "pressed",
+        "condition": "Não Tenho",
+        "location_name": "Malabar",
+        "description": "Center for Studies in Planning, Urbanism and Environmental Law building and University tower with 'Universidade De Coimbra'",
+        "display_shape": "oval",
+        "image_front": "http://locations.pennycollector.com/images/machine_21bc0039-a7a4-40b1-92c4-9dbf08a2bb7e.jpg",
+        "image_back": "",
+        "notes": "Machine 1 · Posição 4 · Orientação horizontal · PennyCollector location 416218 · Fotografia provisória partilhada da máquina",
+        "reference_url": "http://locations.pennycollector.com/Details.aspx?location=416218#machine-1-position-4",
+        "ordem": 4,
+        "hidden": false
+      },
+      "review_status": "pending"
+    }
+  ]
+}

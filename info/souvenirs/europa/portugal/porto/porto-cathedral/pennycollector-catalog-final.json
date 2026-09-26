@@ -1,0 +1,76 @@
+{
+  "status": "ready_for_import",
+  "base44_updated": false,
+  "import_ready": true,
+  "source": {
+    "site": "PennyCollector",
+    "location_id": "287467",
+    "url": "http://locations.pennycollector.com/Details.aspx?location=287467",
+    "location_name": "Porto Cathedral",
+    "address": "Terreiro da Sé, 4050-573 Porto",
+    "city": "Porto",
+    "zip_code": "",
+    "status": "Active",
+    "state": "",
+    "country": "Portugal",
+    "source_flagged_needs_update": false,
+    "retrieved_at": "2026-09-25T10:19:05+00:00",
+    "machine_count": 1,
+    "design_count": 1,
+    "machine_numbers": [
+      1
+    ],
+    "active_machine_numbers": [
+      1
+    ],
+    "retired_machine_numbers": [],
+    "active_design_count": 1,
+    "retired_design_count": 0,
+    "photo_policy": "A fotografia pertence à máquina e é partilhada pelos seus designs."
+  },
+  "items": [
+    {
+      "source": {
+        "machine_number": 1,
+        "machine_details": "Machine 1",
+        "position": 1,
+        "description": "Catedral Do Porto - Portugal. Feb 9, 2019: There is no a penny machine, only medallion",
+        "orientation": "",
+        "machine_image_url": "http://locations.pennycollector.com/images/machine_cb87ba43-85ec-41c7-8421-7ab1b38397bd.jpg",
+        "availability": "active",
+        "location_id": "287467",
+        "image_scope": "machine",
+        "review_flags": [
+          "shared_machine_photo",
+          "missing_orientation"
+        ]
+      },
+      "souvenir": {
+        "name": "Catedral Do Porto - Portugal. Feb 9, 2019: There is no a…",
+        "continent": "Europa",
+        "country": "Portugal",
+        "city": "Porto",
+        "type": "pressed",
+        "condition": "Não Tenho",
+        "location_name": "Porto Cathedral",
+        "description": "Catedral Do Porto - Portugal. Feb 9, 2019: There is no a penny machine, only medallion",
+        "display_shape": "oval",
+        "image_front": "http://locations.pennycollector.com/images/machine_cb87ba43-85ec-41c7-8421-7ab1b38397bd.jpg",
+        "image_back": "",
+        "notes": "Machine 1 · Posição 1 · Orientação não indicada · PennyCollector location 287467 · Fotografia provisória partilhada da máquina",
+        "reference_url": "http://locations.pennycollector.com/Details.aspx?location=287467#machine-1-position-1",
+        "ordem": 1,
+        "hidden": false
+      },
+      "review_status": "approved"
+    }
+  ],
+  "review": {
+    "approved": 1,
+    "skipped": 0,
+    "pending": 0,
+    "completed": true,
+    "updated_at": "2026-09-25T10:57:22+00:00",
+    "shared_machine_photos_accepted_as_temporary": true
+  }
+}

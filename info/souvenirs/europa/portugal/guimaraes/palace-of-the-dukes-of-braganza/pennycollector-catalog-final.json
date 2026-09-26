@@ -1,0 +1,146 @@
+{
+  "status": "ready_for_import",
+  "base44_updated": false,
+  "import_ready": true,
+  "source": {
+    "site": "PennyCollector",
+    "location_id": "287394",
+    "url": "http://locations.pennycollector.com/Details.aspx?location=287394",
+    "location_name": "Palace of the Dukes of Braganza",
+    "address": "Rue Conde Dom Henrique 3",
+    "city": "Guimarães",
+    "zip_code": "4800-412",
+    "status": "Active",
+    "state": "",
+    "country": "Portugal",
+    "source_flagged_needs_update": false,
+    "retrieved_at": "2026-09-25T10:18:33+00:00",
+    "machine_count": 1,
+    "design_count": 3,
+    "machine_numbers": [
+      1
+    ],
+    "active_machine_numbers": [
+      1
+    ],
+    "retired_machine_numbers": [],
+    "active_design_count": 3,
+    "retired_design_count": 0,
+    "photo_policy": "A fotografia pertence à máquina e é partilhada pelos seus designs."
+  },
+  "items": [
+    {
+      "source": {
+        "machine_number": 1,
+        "machine_details": "Machine 1",
+        "position": 1,
+        "description": "Don Afonso Henriques",
+        "orientation": "",
+        "machine_image_url": "http://locations.pennycollector.com/images/machine_8155d1b3-d605-43c5-b12a-6d3ba169c643.jpg",
+        "availability": "active",
+        "location_id": "287394",
+        "image_scope": "machine",
+        "review_flags": [
+          "shared_machine_photo",
+          "missing_orientation"
+        ]
+      },
+      "souvenir": {
+        "name": "Don Afonso Henriques",
+        "continent": "Europa",
+        "country": "Portugal",
+        "city": "Guimarães",
+        "type": "pressed",
+        "condition": "Não Tenho",
+        "location_name": "Palace of the Dukes of Braganza",
+        "description": "Don Afonso Henriques",
+        "display_shape": "oval",
+        "image_front": "http://locations.pennycollector.com/images/machine_8155d1b3-d605-43c5-b12a-6d3ba169c643.jpg",
+        "image_back": "",
+        "notes": "Machine 1 · Posição 1 · Orientação não indicada · PennyCollector location 287394 · Fotografia provisória partilhada da máquina",
+        "reference_url": "http://locations.pennycollector.com/Details.aspx?location=287394#machine-1-position-1",
+        "ordem": 1,
+        "hidden": false
+      },
+      "review_status": "approved"
+    },
+    {
+      "source": {
+        "machine_number": 1,
+        "machine_details": "Machine 1",
+        "position": 2,
+        "description": "Gao de Barcelos",
+        "orientation": "",
+        "machine_image_url": "http://locations.pennycollector.com/images/machine_8155d1b3-d605-43c5-b12a-6d3ba169c643.jpg",
+        "availability": "active",
+        "location_id": "287394",
+        "image_scope": "machine",
+        "review_flags": [
+          "shared_machine_photo",
+          "missing_orientation"
+        ]
+      },
+      "souvenir": {
+        "name": "Gao de Barcelos",
+        "continent": "Europa",
+        "country": "Portugal",
+        "city": "Guimarães",
+        "type": "pressed",
+        "condition": "Não Tenho",
+        "location_name": "Palace of the Dukes of Braganza",
+        "description": "Gao de Barcelos",
+        "display_shape": "oval",
+        "image_front": "http://locations.pennycollector.com/images/machine_8155d1b3-d605-43c5-b12a-6d3ba169c643.jpg",
+        "image_back": "",
+        "notes": "Machine 1 · Posição 2 · Orientação não indicada · PennyCollector location 287394 · Fotografia provisória partilhada da máquina",
+        "reference_url": "http://locations.pennycollector.com/Details.aspx?location=287394#machine-1-position-2",
+        "ordem": 2,
+        "hidden": false
+      },
+      "review_status": "approved"
+    },
+    {
+      "source": {
+        "machine_number": 1,
+        "machine_details": "Machine 1",
+        "position": 3,
+        "description": "Aquí Nasceu Portugal",
+        "orientation": "",
+        "machine_image_url": "http://locations.pennycollector.com/images/machine_8155d1b3-d605-43c5-b12a-6d3ba169c643.jpg",
+        "availability": "active",
+        "location_id": "287394",
+        "image_scope": "machine",
+        "review_flags": [
+          "shared_machine_photo",
+          "missing_orientation"
+        ]
+      },
+      "souvenir": {
+        "name": "Aquí Nasceu Portugal",
+        "continent": "Europa",
+        "country": "Portugal",
+        "city": "Guimarães",
+        "type": "pressed",
+        "condition": "Não Tenho",
+        "location_name": "Palace of the Dukes of Braganza",
+        "description": "Aquí Nasceu Portugal",
+        "display_shape": "oval",
+        "image_front": "http://locations.pennycollector.com/images/machine_8155d1b3-d605-43c5-b12a-6d3ba169c643.jpg",
+        "image_back": "",
+        "notes": "Machine 1 · Posição 3 · Orientação não indicada · PennyCollector location 287394 · Fotografia provisória partilhada da máquina",
+        "reference_url": "http://locations.pennycollector.com/Details.aspx?location=287394#machine-1-position-3",
+        "ordem": 3,
+        "hidden": false
+      },
+      "review_status": "approved"
+    }
+  ],
+  "review": {
+    "approved": 3,
+    "skipped": 0,
+    "pending": 0,
+    "completed": true,
+    "updated_at": "2026-09-25T10:57:20+00:00",
+    "shared_machine_photos_accepted_as_temporary": true
+  }
+}

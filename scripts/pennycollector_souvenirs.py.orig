@@ -893,10 +893,12 @@ def parse_inventory_active_designs(
         fallback_sequences = sequences + line_order_design_sequences(text)
         fallback_sequences += color_variant_design_sequences(text)
         unique: dict[
-            tuple[tuple[tuple[int, str], ...], str], DesignSequence
+            tuple[int, int, tuple[tuple[int, str], ...], str], DesignSequence
         ] = {}
         for sequence in fallback_sequences:
             key = (
+                sequence.start,
+                sequence.end,
                 sequence.entries,
                 normalized_machine_label(sequence.machine_hint),
             )

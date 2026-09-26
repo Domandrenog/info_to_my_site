@@ -1,0 +1,146 @@
+{
+  "status": "ready_for_import",
+  "base44_updated": false,
+  "import_ready": true,
+  "source": {
+    "site": "PennyCollector",
+    "location_id": "464184",
+    "url": "http://locations.pennycollector.com/Details.aspx?location=464184",
+    "location_name": "I Love Espichel Coffee Shop - Cabo Espichel",
+    "address": "Santuário de Nossa Senhora do Cabo Espichel",
+    "city": "Sesimbra",
+    "zip_code": "2970-191",
+    "status": "Active",
+    "state": "",
+    "country": "Portugal",
+    "source_flagged_needs_update": false,
+    "retrieved_at": "2026-09-25T10:19:18+00:00",
+    "machine_count": 1,
+    "design_count": 3,
+    "machine_numbers": [
+      1
+    ],
+    "active_machine_numbers": [
+      1
+    ],
+    "retired_machine_numbers": [],
+    "active_design_count": 3,
+    "retired_design_count": 0,
+    "photo_policy": "A fotografia pertence à máquina e é partilhada pelos seus designs."
+  },
+  "items": [
+    {
+      "source": {
+        "machine_number": 1,
+        "machine_details": "Machine 1",
+        "position": 1,
+        "description": "'Cabo Espichel, Portugal', courtyard with a cross",
+        "orientation": "",
+        "machine_image_url": "http://locations.pennycollector.com/images/machine_1de6e849-bac5-4785-b666-96acf8bb4fd9.jpg",
+        "availability": "active",
+        "location_id": "464184",
+        "image_scope": "machine",
+        "review_flags": [
+          "shared_machine_photo",
+          "missing_orientation"
+        ]
+      },
+      "souvenir": {
+        "name": "Cabo Espichel, Portugal",
+        "continent": "Europa",
+        "country": "Portugal",
+        "city": "Sesimbra",
+        "type": "pressed",
+        "condition": "Não Tenho",
+        "location_name": "I Love Espichel Coffee Shop - Cabo Espichel",
+        "description": "'Cabo Espichel, Portugal', courtyard with a cross",
+        "display_shape": "oval",
+        "image_front": "http://locations.pennycollector.com/images/machine_1de6e849-bac5-4785-b666-96acf8bb4fd9.jpg",
+        "image_back": "",
+        "notes": "Machine 1 · Posição 1 · Orientação não indicada · PennyCollector location 464184 · Fotografia provisória partilhada da máquina",
+        "reference_url": "http://locations.pennycollector.com/Details.aspx?location=464184#machine-1-position-1",
+        "ordem": 1,
+        "hidden": false
+      },
+      "review_status": "approved"
+    },
+    {
+      "source": {
+        "machine_number": 1,
+        "machine_details": "Machine 1",
+        "position": 2,
+        "description": "'I Love Espichel",
+        "orientation": "",
+        "machine_image_url": "http://locations.pennycollector.com/images/machine_1de6e849-bac5-4785-b666-96acf8bb4fd9.jpg",
+        "availability": "active",
+        "location_id": "464184",
+        "image_scope": "machine",
+        "review_flags": [
+          "shared_machine_photo",
+          "missing_orientation"
+        ]
+      },
+      "souvenir": {
+        "name": "I Love Espichel",
+        "continent": "Europa",
+        "country": "Portugal",
+        "city": "Sesimbra",
+        "type": "pressed",
+        "condition": "Não Tenho",
+        "location_name": "I Love Espichel Coffee Shop - Cabo Espichel",
+        "description": "'I Love Espichel",
+        "display_shape": "oval",
+        "image_front": "http://locations.pennycollector.com/images/machine_1de6e849-bac5-4785-b666-96acf8bb4fd9.jpg",
+        "image_back": "",
+        "notes": "Machine 1 · Posição 2 · Orientação não indicada · PennyCollector location 464184 · Fotografia provisória partilhada da máquina",
+        "reference_url": "http://locations.pennycollector.com/Details.aspx?location=464184#machine-1-position-2",
+        "ordem": 2,
+        "hidden": false
+      },
+      "review_status": "approved"
+    },
+    {
+      "source": {
+        "machine_number": 1,
+        "machine_details": "Machine 1",
+        "position": 3,
+        "description": "'Cabo Espichel, Portugal', area",
+        "orientation": "",
+        "machine_image_url": "http://locations.pennycollector.com/images/machine_1de6e849-bac5-4785-b666-96acf8bb4fd9.jpg",
+        "availability": "active",
+        "location_id": "464184",
+        "image_scope": "machine",
+        "review_flags": [
+          "shared_machine_photo",
+          "missing_orientation"
+        ]
+      },
+      "souvenir": {
+        "name": "Cabo Espichel, Portugal",
+        "continent": "Europa",
+        "country": "Portugal",
+        "city": "Sesimbra",
+        "type": "pressed",
+        "condition": "Não Tenho",
+        "location_name": "I Love Espichel Coffee Shop - Cabo Espichel",
+        "description": "'Cabo Espichel, Portugal', area",
+        "display_shape": "oval",
+        "image_front": "http://locations.pennycollector.com/images/machine_1de6e849-bac5-4785-b666-96acf8bb4fd9.jpg",
+        "image_back": "",
+        "notes": "Machine 1 · Posição 3 · Orientação não indicada · PennyCollector location 464184 · Fotografia provisória partilhada da máquina",
+        "reference_url": "http://locations.pennycollector.com/Details.aspx?location=464184#machine-1-position-3",
+        "ordem": 3,
+        "hidden": false
+      },
+      "review_status": "approved"
+    }
+  ],
+  "review": {
+    "approved": 3,
+    "skipped": 0,
+    "pending": 0,
+    "completed": true,
+    "updated_at": "2026-09-25T10:57:23+00:00",
+    "shared_machine_photos_accepted_as_temporary": true
+  }
+}

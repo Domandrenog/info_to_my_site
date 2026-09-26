@@ -1,0 +1,255 @@
+{
+  "status": "ready_for_import",
+  "base44_updated": false,
+  "import_ready": true,
+  "source": {
+    "site": "PennyCollector",
+    "location_id": "466754",
+    "url": "http://locations.pennycollector.com/Details.aspx?location=466754",
+    "location_name": "Santuário do Cristo Rei",
+    "address": "Avenida do Cristo Rei",
+    "city": "Almada",
+    "zip_code": "2800-058",
+    "status": "Active",
+    "state": "",
+    "country": "Portugal",
+    "source_flagged_needs_update": false,
+    "retrieved_at": "2026-09-25T10:17:38+00:00",
+    "machine_count": 3,
+    "design_count": 6,
+    "machine_numbers": [
+      1,
+      2,
+      3
+    ],
+    "active_machine_numbers": [
+      1,
+      2,
+      3
+    ],
+    "retired_machine_numbers": [],
+    "active_design_count": 6,
+    "retired_design_count": 0,
+    "photo_policy": "A fotografia pertence à máquina e é partilhada pelos seus designs."
+  },
+  "items": [
+    {
+      "source": {
+        "machine_number": 1,
+        "machine_details": "Token Machine 1",
+        "position": 1,
+        "description": "Cristo Rei looking to Lisbon",
+        "orientation": "",
+        "machine_image_url": "http://locations.pennycollector.com/images/machine_766caa61-1b5d-4efd-a17a-b31a8486b36b.jpg",
+        "availability": "active",
+        "location_id": "466754",
+        "image_scope": "machine",
+        "review_flags": [
+          "shared_machine_photo",
+          "missing_orientation"
+        ]
+      },
+      "souvenir": {
+        "name": "Cristo Rei looking to Lisbon",
+        "continent": "Europa",
+        "country": "Portugal",
+        "city": "Almada",
+        "type": "coin",
+        "condition": "Não Tenho",
+        "location_name": "Santuário do Cristo Rei",
+        "description": "Cristo Rei looking to Lisbon",
+        "display_shape": "oval",
+        "image_front": "http://locations.pennycollector.com/images/machine_766caa61-1b5d-4efd-a17a-b31a8486b36b.jpg",
+        "image_back": "",
+        "notes": "Machine 1 · Posição 1 · Orientação não indicada · PennyCollector location 466754 · Fotografia provisória partilhada da máquina",
+        "reference_url": "http://locations.pennycollector.com/Details.aspx?location=466754#machine-1-position-1",
+        "ordem": 1,
+        "hidden": false
+      },
+      "review_status": "approved"
+    },
+    {
+      "source": {
+        "machine_number": 1,
+        "machine_details": "Token Machine 1",
+        "position": 2,
+        "description": "Cristo Rei statue",
+        "orientation": "",
+        "machine_image_url": "http://locations.pennycollector.com/images/machine_766caa61-1b5d-4efd-a17a-b31a8486b36b.jpg",
+        "availability": "active",
+        "location_id": "466754",
+        "image_scope": "machine",
+        "review_flags": [
+          "shared_machine_photo",
+          "missing_orientation"
+        ]
+      },
+      "souvenir": {
+        "name": "Cristo Rei statue",
+        "continent": "Europa",
+        "country": "Portugal",
+        "city": "Almada",
+        "type": "coin",
+        "condition": "Não Tenho",
+        "location_name": "Santuário do Cristo Rei",
+        "description": "Cristo Rei statue",
+        "display_shape": "oval",
+        "image_front": "http://locations.pennycollector.com/images/machine_766caa61-1b5d-4efd-a17a-b31a8486b36b.jpg",
+        "image_back": "",
+        "notes": "Machine 1 · Posição 2 · Orientação não indicada · PennyCollector location 466754 · Fotografia provisória partilhada da máquina",
+        "reference_url": "http://locations.pennycollector.com/Details.aspx?location=466754#machine-1-position-2",
+        "ordem": 2,
+        "hidden": false
+      },
+      "review_status": "approved"
+    },
+    {
+      "source": {
+        "machine_number": 2,
+        "machine_details": "Token Machine 2",
+        "position": 1,
+        "description": "Cristo Rei statue",
+        "orientation": "",
+        "machine_image_url": "http://locations.pennycollector.com/images/machine_94b3f285-6ca9-4fed-a363-97a246321bfe.jpg",
+        "availability": "active",
+        "location_id": "466754",
+        "image_scope": "machine",
+        "review_flags": [
+          "shared_machine_photo",
+          "missing_orientation"
+        ]
+      },
+      "souvenir": {
+        "name": "Cristo Rei statue",
+        "continent": "Europa",
+        "country": "Portugal",
+        "city": "Almada",
+        "type": "coin",
+        "condition": "Não Tenho",
+        "location_name": "Santuário do Cristo Rei",
+        "description": "Cristo Rei statue",
+        "display_shape": "oval",
+        "image_front": "http://locations.pennycollector.com/images/machine_94b3f285-6ca9-4fed-a363-97a246321bfe.jpg",
+        "image_back": "",
+        "notes": "Machine 2 · Posição 1 · Orientação não indicada · PennyCollector location 466754 · Fotografia provisória partilhada da máquina",
+        "reference_url": "http://locations.pennycollector.com/Details.aspx?location=466754#machine-2-position-1",
+        "ordem": 3,
+        "hidden": false
+      },
+      "review_status": "approved"
+    },
+    {
+      "source": {
+        "machine_number": 2,
+        "machine_details": "Token Machine 2",
+        "position": 2,
+        "description": "Torre de Belém",
+        "orientation": "",
+        "machine_image_url": "http://locations.pennycollector.com/images/machine_94b3f285-6ca9-4fed-a363-97a246321bfe.jpg",
+        "availability": "active",
+        "location_id": "466754",
+        "image_scope": "machine",
+        "review_flags": [
+          "shared_machine_photo",
+          "missing_orientation"
+        ]
+      },
+      "souvenir": {
+        "name": "Torre de Belém",
+        "continent": "Europa",
+        "country": "Portugal",
+        "city": "Almada",
+        "type": "coin",
+        "condition": "Não Tenho",
+        "location_name": "Santuário do Cristo Rei",
+        "description": "Torre de Belém",
+        "display_shape": "oval",
+        "image_front": "http://locations.pennycollector.com/images/machine_94b3f285-6ca9-4fed-a363-97a246321bfe.jpg",
+        "image_back": "",
+        "notes": "Machine 2 · Posição 2 · Orientação não indicada · PennyCollector location 466754 · Fotografia provisória partilhada da máquina",
+        "reference_url": "http://locations.pennycollector.com/Details.aspx?location=466754#machine-2-position-2",
+        "ordem": 4,
+        "hidden": false
+      },
+      "review_status": "approved"
+    },
+    {
+      "source": {
+        "machine_number": 3,
+        "machine_details": "Token Machine 3",
+        "position": 1,
+        "description": "Cristo Rei statue",
+        "orientation": "",
+        "machine_image_url": "http://locations.pennycollector.com/images/clear.gif",
+        "availability": "active",
+        "location_id": "466754",
+        "image_scope": "machine",
+        "review_flags": [
+          "shared_machine_photo",
+          "missing_orientation"
+        ]
+      },
+      "souvenir": {
+        "name": "Cristo Rei statue",
+        "continent": "Europa",
+        "country": "Portugal",
+        "city": "Almada",
+        "type": "coin",
+        "condition": "Não Tenho",
+        "location_name": "Santuário do Cristo Rei",
+        "description": "Cristo Rei statue",
+        "display_shape": "oval",
+        "image_front": "http://locations.pennycollector.com/images/clear.gif",
+        "image_back": "",
+        "notes": "Machine 3 · Posição 1 · Orientação não indicada · PennyCollector location 466754 · Fotografia provisória partilhada da máquina",
+        "reference_url": "http://locations.pennycollector.com/Details.aspx?location=466754#machine-3-position-1",
+        "ordem": 5,
+        "hidden": false
+      },
+      "review_status": "approved"
+    },
+    {
+      "source": {
+        "machine_number": 3,
+        "machine_details": "Token Machine 3",
+        "position": 2,
+        "description": "Mosteiro dos Jerónimos",
+        "orientation": "",
+        "machine_image_url": "http://locations.pennycollector.com/images/clear.gif",
+        "availability": "active",
+        "location_id": "466754",
+        "image_scope": "machine",
+        "review_flags": [
+          "shared_machine_photo",
+          "missing_orientation"
+        ]
+      },
+      "souvenir": {
+        "name": "Mosteiro dos Jerónimos",
+        "continent": "Europa",
+        "country": "Portugal",
+        "city": "Almada",
+        "type": "coin",
+        "condition": "Não Tenho",
+        "location_name": "Santuário do Cristo Rei",
+        "description": "Mosteiro dos Jerónimos",
+        "display_shape": "oval",
+        "image_front": "http://locations.pennycollector.com/images/clear.gif",
+        "image_back": "",
+        "notes": "Machine 3 · Posição 2 · Orientação não indicada · PennyCollector location 466754 · Fotografia provisória partilhada da máquina",
+        "reference_url": "http://locations.pennycollector.com/Details.aspx?location=466754#machine-3-position-2",
+        "ordem": 6,
+        "hidden": false
+      },
+      "review_status": "approved"
+    }
+  ],
+  "review": {
+    "approved": 6,
+    "skipped": 0,
+    "pending": 0,
+    "completed": true,
+    "updated_at": "2026-09-25T10:57:14+00:00",
+    "shared_machine_photos_accepted_as_temporary": true
+  }
+}

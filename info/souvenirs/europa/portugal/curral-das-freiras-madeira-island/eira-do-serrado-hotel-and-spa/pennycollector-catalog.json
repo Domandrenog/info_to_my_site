@@ -1,0 +1,245 @@
+{
+  "status": "pending_review",
+  "base44_updated": false,
+  "import_ready": false,
+  "source": {
+    "site": "PennyCollector",
+    "location_id": "394816",
+    "url": "http://locations.pennycollector.com/Details.aspx?location=394816",
+    "location_name": "Eira Do Serrado Hotel and Spa ",
+    "address": "Eira Do Serrado",
+    "city": "Curral Das Freiras (Madeira Island)",
+    "zip_code": "9000-421",
+    "status": "Active",
+    "state": "",
+    "country": "Portugal",
+    "source_flagged_needs_update": false,
+    "retrieved_at": "2026-09-25T10:18:03+00:00",
+    "machine_count": 2,
+    "design_count": 6,
+    "machine_numbers": [
+      1,
+      2
+    ],
+    "active_machine_numbers": [
+      1,
+      2
+    ],
+    "retired_machine_numbers": [],
+    "active_design_count": 6,
+    "retired_design_count": 0,
+    "photo_policy": "A fotografia pertence à máquina e é partilhada pelos seus designs."
+  },
+  "items": [
+    {
+      "source": {
+        "machine_number": 1,
+        "machine_details": "Machine 1",
+        "position": 1,
+        "description": "Madeira Island",
+        "orientation": "",
+        "machine_image_url": "http://locations.pennycollector.com/images/machine_b5b1e237-0cc1-4c73-845f-c94ddf7a426a.jpg",
+        "availability": "active",
+        "location_id": "394816",
+        "image_scope": "machine",
+        "review_flags": [
+          "shared_machine_photo",
+          "missing_orientation"
+        ]
+      },
+      "souvenir": {
+        "name": "Madeira Island",
+        "continent": "Europa",
+        "country": "Portugal",
+        "city": "Curral Das Freiras (Madeira Island)",
+        "type": "pressed",
+        "condition": "Não Tenho",
+        "location_name": "Eira Do Serrado Hotel and Spa",
+        "description": "Madeira Island",
+        "display_shape": "oval",
+        "image_front": "http://locations.pennycollector.com/images/machine_b5b1e237-0cc1-4c73-845f-c94ddf7a426a.jpg",
+        "image_back": "",
+        "notes": "Machine 1 · Posição 1 · Orientação não indicada · PennyCollector location 394816 · Fotografia provisória partilhada da máquina",
+        "reference_url": "http://locations.pennycollector.com/Details.aspx?location=394816#machine-1-position-1",
+        "ordem": 1,
+        "hidden": false
+      },
+      "review_status": "pending"
+    },
+    {
+      "source": {
+        "machine_number": 1,
+        "machine_details": "Machine 1",
+        "position": 2,
+        "description": "Eira do Serrado (hotel and spa)",
+        "orientation": "",
+        "machine_image_url": "http://locations.pennycollector.com/images/machine_b5b1e237-0cc1-4c73-845f-c94ddf7a426a.jpg",
+        "availability": "active",
+        "location_id": "394816",
+        "image_scope": "machine",
+        "review_flags": [
+          "shared_machine_photo",
+          "missing_orientation"
+        ]
+      },
+      "souvenir": {
+        "name": "Eira do Serrado (hotel and spa)",
+        "continent": "Europa",
+        "country": "Portugal",
+        "city": "Curral Das Freiras (Madeira Island)",
+        "type": "pressed",
+        "condition": "Não Tenho",
+        "location_name": "Eira Do Serrado Hotel and Spa",
+        "description": "Eira do Serrado (hotel and spa)",
+        "display_shape": "oval",
+        "image_front": "http://locations.pennycollector.com/images/machine_b5b1e237-0cc1-4c73-845f-c94ddf7a426a.jpg",
+        "image_back": "",
+        "notes": "Machine 1 · Posição 2 · Orientação não indicada · PennyCollector location 394816 · Fotografia provisória partilhada da máquina",
+        "reference_url": "http://locations.pennycollector.com/Details.aspx?location=394816#machine-1-position-2",
+        "ordem": 2,
+        "hidden": false
+      },
+      "review_status": "pending"
+    },
+    {
+      "source": {
+        "machine_number": 1,
+        "machine_details": "Machine 1",
+        "position": 3,
+        "description": "Eira do Serrado (viewpoint)",
+        "orientation": "",
+        "machine_image_url": "http://locations.pennycollector.com/images/machine_b5b1e237-0cc1-4c73-845f-c94ddf7a426a.jpg",
+        "availability": "active",
+        "location_id": "394816",
+        "image_scope": "machine",
+        "review_flags": [
+          "shared_machine_photo",
+          "missing_orientation"
+        ]
+      },
+      "souvenir": {
+        "name": "Eira do Serrado (viewpoint)",
+        "continent": "Europa",
+        "country": "Portugal",
+        "city": "Curral Das Freiras (Madeira Island)",
+        "type": "pressed",
+        "condition": "Não Tenho",
+        "location_name": "Eira Do Serrado Hotel and Spa",
+        "description": "Eira do Serrado (viewpoint)",
+        "display_shape": "oval",
+        "image_front": "http://locations.pennycollector.com/images/machine_b5b1e237-0cc1-4c73-845f-c94ddf7a426a.jpg",
+        "image_back": "",
+        "notes": "Machine 1 · Posição 3 · Orientação não indicada · PennyCollector location 394816 · Fotografia provisória partilhada da máquina",
+        "reference_url": "http://locations.pennycollector.com/Details.aspx?location=394816#machine-1-position-3",
+        "ordem": 3,
+        "hidden": false
+      },
+      "review_status": "pending"
+    },
+    {
+      "source": {
+        "machine_number": 1,
+        "machine_details": "Machine 1",
+        "position": 4,
+        "description": "Santana (traditional house)",
+        "orientation": "",
+        "machine_image_url": "http://locations.pennycollector.com/images/machine_b5b1e237-0cc1-4c73-845f-c94ddf7a426a.jpg",
+        "availability": "active",
+        "location_id": "394816",
+        "image_scope": "machine",
+        "review_flags": [
+          "shared_machine_photo",
+          "missing_orientation"
+        ]
+      },
+      "souvenir": {
+        "name": "Santana (traditional house)",
+        "continent": "Europa",
+        "country": "Portugal",
+        "city": "Curral Das Freiras (Madeira Island)",
+        "type": "pressed",
+        "condition": "Não Tenho",
+        "location_name": "Eira Do Serrado Hotel and Spa",
+        "description": "Santana (traditional house)",
+        "display_shape": "oval",
+        "image_front": "http://locations.pennycollector.com/images/machine_b5b1e237-0cc1-4c73-845f-c94ddf7a426a.jpg",
+        "image_back": "",
+        "notes": "Machine 1 · Posição 4 · Orientação não indicada · PennyCollector location 394816 · Fotografia provisória partilhada da máquina",
+        "reference_url": "http://locations.pennycollector.com/Details.aspx?location=394816#machine-1-position-4",
+        "ordem": 4,
+        "hidden": false
+      },
+      "review_status": "pending"
+    },
+    {
+      "source": {
+        "machine_number": 2,
+        "machine_details": "Medallion  Machine 1",
+        "position": 1,
+        "description": "Gold - View of Nuns Valley",
+        "orientation": "",
+        "machine_image_url": "http://locations.pennycollector.com/images/machine_c56453de-536a-4032-b116-0e19e5c64b77.jpg",
+        "availability": "active",
+        "location_id": "394816",
+        "image_scope": "machine",
+        "review_flags": [
+          "shared_machine_photo",
+          "missing_orientation"
+        ]
+      },
+      "souvenir": {
+        "name": "Gold - View of Nuns Valley",
+        "continent": "Europa",
+        "country": "Portugal",
+        "city": "Curral Das Freiras (Madeira Island)",
+        "type": "coin",
+        "condition": "Não Tenho",
+        "location_name": "Eira Do Serrado Hotel and Spa",
+        "description": "Gold - View of Nuns Valley",
+        "display_shape": "oval",
+        "image_front": "http://locations.pennycollector.com/images/machine_c56453de-536a-4032-b116-0e19e5c64b77.jpg",
+        "image_back": "",
+        "notes": "Machine 2 · Posição 1 · Orientação não indicada · PennyCollector location 394816 · Fotografia provisória partilhada da máquina",
+        "reference_url": "http://locations.pennycollector.com/Details.aspx?location=394816#machine-2-position-1",
+        "ordem": 5,
+        "hidden": false
+      },
+      "review_status": "pending"
+    },
+    {
+      "source": {
+        "machine_number": 2,
+        "machine_details": "Medallion  Machine 1",
+        "position": 2,
+        "description": "Silver - View of Nuns Valley with viewpoint, Rear- Madeira Island",
+        "orientation": "",
+        "machine_image_url": "http://locations.pennycollector.com/images/machine_c56453de-536a-4032-b116-0e19e5c64b77.jpg",
+        "availability": "active",
+        "location_id": "394816",
+        "image_scope": "machine",
+        "review_flags": [
+          "shared_machine_photo",
+          "missing_orientation"
+        ]
+      },
+      "souvenir": {
+        "name": "Silver - View of Nuns Valley with viewpoint, Rear…",
+        "continent": "Europa",
+        "country": "Portugal",
+        "city": "Curral Das Freiras (Madeira Island)",
+        "type": "coin",
+        "condition": "Não Tenho",
+        "location_name": "Eira Do Serrado Hotel and Spa",
+        "description": "Silver - View of Nuns Valley with viewpoint, Rear- Madeira Island",
+        "display_shape": "oval",
+        "image_front": "http://locations.pennycollector.com/images/machine_c56453de-536a-4032-b116-0e19e5c64b77.jpg",
+        "image_back": "",
+        "notes": "Machine 2 · Posição 2 · Orientação não indicada · PennyCollector location 394816 · Fotografia provisória partilhada da máquina",
+        "reference_url": "http://locations.pennycollector.com/Details.aspx?location=394816#machine-2-position-2",
+        "ordem": 6,
+        "hidden": false
+      },
+      "review_status": "pending"
+    }
+  ]
+}

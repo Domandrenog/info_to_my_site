@@ -1,7 +1,7 @@
 {
-  "status": "pending_review",
+  "status": "ready_for_import",
   "base44_updated": false,
-  "import_ready": false,
+  "import_ready": true,
   "source": {
     "site": "PennyCollector",
     "location_id": "1851",
@@ -65,7 +65,7 @@
         "ordem": 1,
         "hidden": false
       },
-      "review_status": "pending"
+      "review_status": "approved"
     },
     {
       "source": {
@@ -98,7 +98,7 @@
         "ordem": 2,
         "hidden": false
       },
-      "review_status": "pending"
+      "review_status": "approved"
     },
     {
       "source": {
@@ -131,7 +131,7 @@
         "ordem": 3,
         "hidden": false
       },
-      "review_status": "pending"
+      "review_status": "approved"
     },
     {
       "source": {
@@ -164,7 +164,7 @@
         "ordem": 4,
         "hidden": false
       },
-      "review_status": "pending"
+      "review_status": "approved"
     },
     {
       "source": {
@@ -197,7 +197,7 @@
         "ordem": 5,
         "hidden": false
       },
-      "review_status": "pending"
+      "review_status": "approved"
     },
     {
       "source": {
@@ -230,7 +230,7 @@
         "ordem": 6,
         "hidden": false
       },
-      "review_status": "pending"
+      "review_status": "approved"
     },
     {
       "source": {
@@ -263,7 +263,7 @@
         "ordem": 7,
         "hidden": false
       },
-      "review_status": "pending"
+      "review_status": "approved"
     },
     {
       "source": {
@@ -296,7 +296,7 @@
         "ordem": 8,
         "hidden": false
       },
-      "review_status": "pending"
+      "review_status": "approved"
     },
     {
       "source": {
@@ -329,7 +329,7 @@
         "ordem": 9,
         "hidden": false
       },
-      "review_status": "pending"
+      "review_status": "approved"
     },
     {
       "source": {
@@ -362,7 +362,7 @@
         "ordem": 10,
         "hidden": false
       },
-      "review_status": "pending"
+      "review_status": "approved"
     },
     {
       "source": {
@@ -395,7 +395,7 @@
         "ordem": 11,
         "hidden": false
       },
-      "review_status": "pending"
+      "review_status": "approved"
     },
     {
       "source": {
@@ -428,7 +428,7 @@
         "ordem": 12,
         "hidden": false
       },
-      "review_status": "pending"
+      "review_status": "approved"
     },
     {
       "source": {
@@ -461,7 +461,7 @@
         "ordem": 13,
         "hidden": false
       },
-      "review_status": "pending"
+      "review_status": "approved"
     },
     {
       "source": {
@@ -494,7 +494,7 @@
         "ordem": 14,
         "hidden": false
       },
-      "review_status": "pending"
+      "review_status": "approved"
     },
     {
       "source": {
@@ -527,7 +527,7 @@
         "ordem": 15,
         "hidden": false
       },
-      "review_status": "pending"
+      "review_status": "approved"
     },
     {
       "source": {
@@ -560,7 +560,7 @@
         "ordem": 16,
         "hidden": false
       },
-      "review_status": "pending"
+      "review_status": "approved"
     },
     {
       "source": {
@@ -593,7 +593,7 @@
         "ordem": 17,
         "hidden": false
       },
-      "review_status": "pending"
+      "review_status": "approved"
     },
     {
       "source": {
@@ -626,7 +626,7 @@
         "ordem": 18,
         "hidden": false
       },
-      "review_status": "pending"
+      "review_status": "approved"
     },
     {
       "source": {
@@ -659,7 +659,7 @@
         "ordem": 19,
         "hidden": false
       },
-      "review_status": "pending"
+      "review_status": "approved"
     },
     {
       "source": {
@@ -692,7 +692,7 @@
         "ordem": 20,
         "hidden": false
       },
-      "review_status": "pending"
+      "review_status": "approved"
     },
     {
       "source": {
@@ -725,7 +725,7 @@
         "ordem": 21,
         "hidden": false
       },
-      "review_status": "pending"
+      "review_status": "approved"
     },
     {
       "source": {
@@ -758,7 +758,7 @@
         "ordem": 22,
         "hidden": false
       },
-      "review_status": "pending"
+      "review_status": "approved"
     },
     {
       "source": {
@@ -791,7 +791,7 @@
         "ordem": 23,
         "hidden": false
       },
-      "review_status": "pending"
+      "review_status": "approved"
     },
     {
       "source": {
@@ -824,7 +824,7 @@
         "ordem": 24,
         "hidden": false
       },
-      "review_status": "pending"
+      "review_status": "approved"
     },
     {
       "source": {
@@ -857,7 +857,7 @@
         "ordem": 25,
         "hidden": false
       },
-      "review_status": "pending"
+      "review_status": "approved"
     },
     {
       "source": {
@@ -890,7 +890,7 @@
         "ordem": 26,
         "hidden": false
       },
-      "review_status": "pending"
+      "review_status": "approved"
     },
     {
       "source": {
@@ -923,7 +923,7 @@
         "ordem": 27,
         "hidden": false
       },
-      "review_status": "pending"
+      "review_status": "approved"
     },
     {
       "source": {
@@ -956,7 +956,7 @@
         "ordem": 28,
         "hidden": false
       },
-      "review_status": "pending"
+      "review_status": "approved"
     },
     {
       "source": {
@@ -989,7 +989,7 @@
         "ordem": 29,
         "hidden": false
       },
-      "review_status": "pending"
+      "review_status": "approved"
     },
     {
       "source": {
@@ -1022,7 +1022,7 @@
         "ordem": 30,
         "hidden": false
       },
-      "review_status": "pending"
+      "review_status": "approved"
     },
     {
       "source": {
@@ -1056,7 +1056,7 @@
         "ordem": 31,
         "hidden": false
       },
-      "review_status": "pending"
+      "review_status": "approved"
     },
     {
       "source": {
@@ -1090,7 +1090,7 @@
         "ordem": 32,
         "hidden": false
       },
-      "review_status": "pending"
+      "review_status": "approved"
     },
     {
       "source": {
@@ -1123,7 +1123,7 @@
         "ordem": 33,
         "hidden": false
       },
-      "review_status": "pending"
+      "review_status": "approved"
     },
     {
       "source": {
@@ -1156,7 +1156,7 @@
         "ordem": 34,
         "hidden": false
       },
-      "review_status": "pending"
+      "review_status": "approved"
     },
     {
       "source": {
@@ -1189,7 +1189,7 @@
         "ordem": 35,
         "hidden": false
       },
-      "review_status": "pending"
+      "review_status": "approved"
     },
     {
       "source": {
@@ -1222,7 +1222,7 @@
         "ordem": 36,
         "hidden": false
       },
-      "review_status": "pending"
+      "review_status": "approved"
     },
     {
       "source": {
@@ -1255,7 +1255,7 @@
         "ordem": 37,
         "hidden": false
       },
-      "review_status": "pending"
+      "review_status": "approved"
     },
     {
       "source": {
@@ -1288,7 +1288,7 @@
         "ordem": 38,
         "hidden": false
       },
-      "review_status": "pending"
+      "review_status": "approved"
     },
     {
       "source": {
@@ -1321,7 +1321,7 @@
         "ordem": 39,
         "hidden": false
       },
-      "review_status": "pending"
+      "review_status": "approved"
     },
     {
       "source": {
@@ -1354,7 +1354,7 @@
         "ordem": 40,
         "hidden": false
       },
-      "review_status": "pending"
+      "review_status": "approved"
     },
     {
       "source": {
@@ -1387,7 +1387,7 @@
         "ordem": 41,
         "hidden": false
       },
-      "review_status": "pending"
+      "review_status": "approved"
     },
     {
       "source": {
@@ -1420,7 +1420,7 @@
         "ordem": 42,
         "hidden": false
       },
-      "review_status": "pending"
+      "review_status": "approved"
     },
     {
       "source": {
@@ -1453,7 +1453,7 @@
         "ordem": 43,
         "hidden": false
       },
-      "review_status": "pending"
+      "review_status": "approved"
     },
     {
       "source": {
@@ -1486,7 +1486,7 @@
         "ordem": 44,
         "hidden": false
       },
-      "review_status": "pending"
+      "review_status": "approved"
     },
     {
       "source": {
@@ -1521,7 +1521,7 @@
         "ordem": 45,
         "hidden": false
       },
-      "review_status": "pending"
+      "review_status": "approved"
     },
     {
       "source": {
@@ -1555,7 +1555,7 @@
         "ordem": 46,
         "hidden": false
       },
-      "review_status": "pending"
+      "review_status": "approved"
     },
     {
       "source": {
@@ -1589,7 +1589,7 @@
         "ordem": 47,
         "hidden": false
       },
-      "review_status": "pending"
+      "review_status": "approved"
     },
     {
       "source": {
@@ -1623,7 +1623,15 @@
         "ordem": 48,
         "hidden": false
       },
-      "review_status": "pending"
+      "review_status": "approved"
     }
-  ]
+  ],
+  "review": {
+    "approved": 48,
+    "skipped": 0,
+    "pending": 0,
+    "completed": true,
+    "updated_at": "2026-09-25T10:57:13+00:00",
+    "shared_machine_photos_accepted_as_temporary": true
+  }
 }

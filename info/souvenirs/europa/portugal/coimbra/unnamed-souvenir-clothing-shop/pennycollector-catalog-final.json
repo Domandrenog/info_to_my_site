@@ -1,0 +1,111 @@
+{
+  "status": "ready_for_import",
+  "base44_updated": false,
+  "import_ready": true,
+  "source": {
+    "site": "PennyCollector",
+    "location_id": "454164",
+    "url": "http://locations.pennycollector.com/Details.aspx?location=454164",
+    "location_name": "Unnamed Souvenir / Clothing Shop",
+    "address": "Rua Quebra Costas, 65-57",
+    "city": "Coimbra",
+    "zip_code": "3000-088",
+    "status": "Active",
+    "state": "",
+    "country": "Portugal",
+    "source_flagged_needs_update": false,
+    "retrieved_at": "2026-09-25T10:18:00+00:00",
+    "machine_count": 1,
+    "design_count": 2,
+    "machine_numbers": [
+      1
+    ],
+    "active_machine_numbers": [
+      1
+    ],
+    "retired_machine_numbers": [],
+    "active_design_count": 2,
+    "retired_design_count": 0,
+    "photo_policy": "A fotografia pertence à máquina e é partilhada pelos seus designs."
+  },
+  "items": [
+    {
+      "source": {
+        "machine_number": 1,
+        "machine_details": "Token Machine 1 - Outside in front",
+        "position": 1,
+        "description": "Obverse: (Gold colored) Old Cathedral of Coimbra building with 'Sé Velha Coimbra' / Reverse for both tokens: Eight stars surrounding an outline of the country of Portugal with 'National Tokens Portuguese Heritage'",
+        "orientation": "",
+        "machine_image_url": "http://locations.pennycollector.com/images/machine_d96afc38-6118-4a42-8a4a-bf1ee0b5a38a.jpg",
+        "availability": "active",
+        "location_id": "454164",
+        "image_scope": "machine",
+        "review_flags": [
+          "shared_machine_photo",
+          "missing_orientation"
+        ]
+      },
+      "souvenir": {
+        "name": "Obverse: (Gold colored) Old Cathedral of Coimbra…",
+        "continent": "Europa",
+        "country": "Portugal",
+        "city": "Coimbra",
+        "type": "coin",
+        "condition": "Não Tenho",
+        "location_name": "Unnamed Souvenir / Clothing Shop",
+        "description": "Obverse: (Gold colored) Old Cathedral of Coimbra building with 'Sé Velha Coimbra' / Reverse for both tokens: Eight stars surrounding an outline of the country of Portugal with 'National Tokens Portuguese Heritage'",
+        "display_shape": "oval",
+        "image_front": "http://locations.pennycollector.com/images/machine_d96afc38-6118-4a42-8a4a-bf1ee0b5a38a.jpg",
+        "image_back": "",
+        "notes": "Machine 1 · Posição 1 · Orientação não indicada · PennyCollector location 454164 · Fotografia provisória partilhada da máquina",
+        "reference_url": "http://locations.pennycollector.com/Details.aspx?location=454164#machine-1-position-1",
+        "ordem": 1,
+        "hidden": false
+      },
+      "review_status": "approved"
+    },
+    {
+      "source": {
+        "machine_number": 1,
+        "machine_details": "Token Machine 1 - Outside in front",
+        "position": 2,
+        "description": "Obverse: (Silver colored) Medieval Knight in full armor holding a shield and sword riding an armored horse with 'Coimbra Portugal' / Reverse for both tokens: Eight stars surrounding an outline of the country of Portugal with 'National Tokens Portuguese Heritage'",
+        "orientation": "",
+        "machine_image_url": "http://locations.pennycollector.com/images/machine_d96afc38-6118-4a42-8a4a-bf1ee0b5a38a.jpg",
+        "availability": "active",
+        "location_id": "454164",
+        "image_scope": "machine",
+        "review_flags": [
+          "shared_machine_photo",
+          "missing_orientation"
+        ]
+      },
+      "souvenir": {
+        "name": "Obverse: (Silver colored) Medieval Knight in full armor…",
+        "continent": "Europa",
+        "country": "Portugal",
+        "city": "Coimbra",
+        "type": "coin",
+        "condition": "Não Tenho",
+        "location_name": "Unnamed Souvenir / Clothing Shop",
+        "description": "Obverse: (Silver colored) Medieval Knight in full armor holding a shield and sword riding an armored horse with 'Coimbra Portugal' / Reverse for both tokens: Eight stars surrounding an outline of the country of Portugal with 'National Tokens Portuguese Heritage'",
+        "display_shape": "oval",
+        "image_front": "http://locations.pennycollector.com/images/machine_d96afc38-6118-4a42-8a4a-bf1ee0b5a38a.jpg",
+        "image_back": "",
+        "notes": "Machine 1 · Posição 2 · Orientação não indicada · PennyCollector location 454164 · Fotografia provisória partilhada da máquina",
+        "reference_url": "http://locations.pennycollector.com/Details.aspx?location=454164#machine-1-position-2",
+        "ordem": 2,
+        "hidden": false
+      },
+      "review_status": "approved"
+    }
+  ],
+  "review": {
+    "approved": 2,
+    "skipped": 0,
+    "pending": 0,
+    "completed": true,
+    "updated_at": "2026-09-25T10:57:17+00:00",
+    "shared_machine_photos_accepted_as_temporary": true
+  }
+}

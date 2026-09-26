@@ -1,0 +1,68 @@
+{
+  "status": "pending_review",
+  "base44_updated": false,
+  "import_ready": false,
+  "source": {
+    "site": "PennyCollector",
+    "location_id": "416208",
+    "url": "http://locations.pennycollector.com/Details.aspx?location=416208",
+    "location_name": "Hard Rock Cafe Rock Shop",
+    "address": "Avenida da Liberdade, 2",
+    "city": "Lisbon (Lisboa)",
+    "zip_code": "1250-144",
+    "status": "Active",
+    "state": "",
+    "country": "Portugal",
+    "source_flagged_needs_update": false,
+    "retrieved_at": "2026-09-25T10:18:44+00:00",
+    "machine_count": 1,
+    "design_count": 1,
+    "machine_numbers": [
+      1
+    ],
+    "active_machine_numbers": [
+      1
+    ],
+    "retired_machine_numbers": [],
+    "active_design_count": 1,
+    "retired_design_count": 0,
+    "photo_policy": "A fotografia pertence à máquina e é partilhada pelos seus designs."
+  },
+  "items": [
+    {
+      "source": {
+        "machine_number": 1,
+        "machine_details": "Token Machine 1 - Inside gift shop",
+        "position": 1,
+        "description": "Hard Rock logo with 'Hard Rock® Cafe Lisbon / Guitar pick with 'All Is One'",
+        "orientation": "",
+        "machine_image_url": "http://locations.pennycollector.com/images/machine_cb3d7ec9-bb77-453d-9f50-c1f6f6382585.jpg",
+        "availability": "active",
+        "location_id": "416208",
+        "image_scope": "machine",
+        "review_flags": [
+          "shared_machine_photo",
+          "missing_orientation"
+        ]
+      },
+      "souvenir": {
+        "name": "Hard Rock logo with 'Hard Rock® Cafe Lisbon / Guitar…",
+        "continent": "Europa",
+        "country": "Portugal",
+        "city": "Lisbon (Lisboa)",
+        "type": "coin",
+        "condition": "Não Tenho",
+        "location_name": "Hard Rock Cafe Rock Shop",
+        "description": "Hard Rock logo with 'Hard Rock® Cafe Lisbon / Guitar pick with 'All Is One'",
+        "display_shape": "oval",
+        "image_front": "http://locations.pennycollector.com/images/machine_cb3d7ec9-bb77-453d-9f50-c1f6f6382585.jpg",
+        "image_back": "",
+        "notes": "Machine 1 · Posição 1 · Orientação não indicada · PennyCollector location 416208 · Fotografia provisória partilhada da máquina",
+        "reference_url": "http://locations.pennycollector.com/Details.aspx?location=416208#machine-1-position-1",
+        "ordem": 1,
+        "hidden": false
+      },
+      "review_status": "pending"
+    }
+  ]
+}

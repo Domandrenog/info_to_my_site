@@ -1,0 +1,181 @@
+{
+  "status": "ready_for_import",
+  "base44_updated": false,
+  "import_ready": true,
+  "source": {
+    "site": "PennyCollector",
+    "location_id": "336733",
+    "url": "http://locations.pennycollector.com/Details.aspx?location=336733",
+    "location_name": "Snack-Bar O Planalto da Fóia",
+    "address": "Alto da Fóia, 8550-274 Monchique",
+    "city": "Fóia, Monchique",
+    "zip_code": "8550-274",
+    "status": "Active",
+    "state": "",
+    "country": "Portugal",
+    "source_flagged_needs_update": false,
+    "retrieved_at": "2026-09-25T10:18:15+00:00",
+    "machine_count": 1,
+    "design_count": 4,
+    "machine_numbers": [
+      1
+    ],
+    "active_machine_numbers": [
+      1
+    ],
+    "retired_machine_numbers": [],
+    "active_design_count": 4,
+    "retired_design_count": 0,
+    "photo_policy": "A fotografia pertence à máquina e é partilhada pelos seus designs."
+  },
+  "items": [
+    {
+      "source": {
+        "machine_number": 1,
+        "machine_details": "Machine",
+        "position": 1,
+        "description": "San Antonio, Foia', statue",
+        "orientation": "",
+        "machine_image_url": "http://locations.pennycollector.com/images/machine_aae43e01-a0d7-4a76-ac4d-13284c522871.jpg",
+        "availability": "active",
+        "location_id": "336733",
+        "image_scope": "machine",
+        "review_flags": [
+          "shared_machine_photo",
+          "missing_orientation"
+        ]
+      },
+      "souvenir": {
+        "name": "San Antonio, Foia', statue",
+        "continent": "Europa",
+        "country": "Portugal",
+        "city": "Fóia, Monchique",
+        "type": "pressed",
+        "condition": "Não Tenho",
+        "location_name": "Snack-Bar O Planalto da Fóia",
+        "description": "San Antonio, Foia', statue",
+        "display_shape": "oval",
+        "image_front": "http://locations.pennycollector.com/images/machine_aae43e01-a0d7-4a76-ac4d-13284c522871.jpg",
+        "image_back": "",
+        "notes": "Machine 1 · Posição 1 · Orientação não indicada · PennyCollector location 336733 · Fotografia provisória partilhada da máquina",
+        "reference_url": "http://locations.pennycollector.com/Details.aspx?location=336733#machine-1-position-1",
+        "ordem": 1,
+        "hidden": false
+      },
+      "review_status": "approved"
+    },
+    {
+      "source": {
+        "machine_number": 1,
+        "machine_details": "Machine",
+        "position": 2,
+        "description": "'Chamine Tipica Do Algarve', lighthouse",
+        "orientation": "",
+        "machine_image_url": "http://locations.pennycollector.com/images/machine_aae43e01-a0d7-4a76-ac4d-13284c522871.jpg",
+        "availability": "active",
+        "location_id": "336733",
+        "image_scope": "machine",
+        "review_flags": [
+          "shared_machine_photo",
+          "missing_orientation"
+        ]
+      },
+      "souvenir": {
+        "name": "Chamine Tipica Do Algarve",
+        "continent": "Europa",
+        "country": "Portugal",
+        "city": "Fóia, Monchique",
+        "type": "pressed",
+        "condition": "Não Tenho",
+        "location_name": "Snack-Bar O Planalto da Fóia",
+        "description": "'Chamine Tipica Do Algarve', lighthouse",
+        "display_shape": "oval",
+        "image_front": "http://locations.pennycollector.com/images/machine_aae43e01-a0d7-4a76-ac4d-13284c522871.jpg",
+        "image_back": "",
+        "notes": "Machine 1 · Posição 2 · Orientação não indicada · PennyCollector location 336733 · Fotografia provisória partilhada da máquina",
+        "reference_url": "http://locations.pennycollector.com/Details.aspx?location=336733#machine-1-position-2",
+        "ordem": 2,
+        "hidden": false
+      },
+      "review_status": "approved"
+    },
+    {
+      "source": {
+        "machine_number": 1,
+        "machine_details": "Machine",
+        "position": 3,
+        "description": "'Portugal', Goose",
+        "orientation": "",
+        "machine_image_url": "http://locations.pennycollector.com/images/machine_aae43e01-a0d7-4a76-ac4d-13284c522871.jpg",
+        "availability": "active",
+        "location_id": "336733",
+        "image_scope": "machine",
+        "review_flags": [
+          "shared_machine_photo",
+          "missing_orientation"
+        ]
+      },
+      "souvenir": {
+        "name": "Portugal",
+        "continent": "Europa",
+        "country": "Portugal",
+        "city": "Fóia, Monchique",
+        "type": "pressed",
+        "condition": "Não Tenho",
+        "location_name": "Snack-Bar O Planalto da Fóia",
+        "description": "'Portugal', Goose",
+        "display_shape": "oval",
+        "image_front": "http://locations.pennycollector.com/images/machine_aae43e01-a0d7-4a76-ac4d-13284c522871.jpg",
+        "image_back": "",
+        "notes": "Machine 1 · Posição 3 · Orientação não indicada · PennyCollector location 336733 · Fotografia provisória partilhada da máquina",
+        "reference_url": "http://locations.pennycollector.com/Details.aspx?location=336733#machine-1-position-3",
+        "ordem": 3,
+        "hidden": false
+      },
+      "review_status": "approved"
+    },
+    {
+      "source": {
+        "machine_number": 1,
+        "machine_details": "Machine",
+        "position": 4,
+        "description": "'Monchique', mountain. GPS:37°18'57.00\"N, 8°35'33.24\"W",
+        "orientation": "",
+        "machine_image_url": "http://locations.pennycollector.com/images/machine_aae43e01-a0d7-4a76-ac4d-13284c522871.jpg",
+        "availability": "active",
+        "location_id": "336733",
+        "image_scope": "machine",
+        "review_flags": [
+          "shared_machine_photo",
+          "missing_orientation"
+        ]
+      },
+      "souvenir": {
+        "name": "Monchique",
+        "continent": "Europa",
+        "country": "Portugal",
+        "city": "Fóia, Monchique",
+        "type": "pressed",
+        "condition": "Não Tenho",
+        "location_name": "Snack-Bar O Planalto da Fóia",
+        "description": "'Monchique', mountain. GPS:37°18'57.00\"N, 8°35'33.24\"W",
+        "display_shape": "oval",
+        "image_front": "http://locations.pennycollector.com/images/machine_aae43e01-a0d7-4a76-ac4d-13284c522871.jpg",
+        "image_back": "",
+        "notes": "Machine 1 · Posição 4 · Orientação não indicada · PennyCollector location 336733 · Fotografia provisória partilhada da máquina",
+        "reference_url": "http://locations.pennycollector.com/Details.aspx?location=336733#machine-1-position-4",
+        "ordem": 4,
+        "hidden": false
+      },
+      "review_status": "approved"
+    }
+  ],
+  "review": {
+    "approved": 4,
+    "skipped": 0,
+    "pending": 0,
+    "completed": true,
+    "updated_at": "2026-09-25T10:57:18+00:00",
+    "shared_machine_photos_accepted_as_temporary": true
+  }
+}

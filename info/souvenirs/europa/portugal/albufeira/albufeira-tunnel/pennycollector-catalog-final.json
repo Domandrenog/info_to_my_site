@@ -1,0 +1,181 @@
+{
+  "status": "ready_for_import",
+  "base44_updated": false,
+  "import_ready": true,
+  "source": {
+    "site": "PennyCollector",
+    "location_id": "406952",
+    "url": "http://locations.pennycollector.com/Details.aspx?location=406952",
+    "location_name": "Albufeira Tunnel ",
+    "address": "R.5 de Outubro 3 1",
+    "city": "Albufeira ",
+    "zip_code": "8200-146",
+    "status": "Active",
+    "state": "",
+    "country": "Portugal",
+    "source_flagged_needs_update": false,
+    "retrieved_at": "2026-09-25T10:17:30+00:00",
+    "machine_count": 1,
+    "design_count": 4,
+    "machine_numbers": [
+      1
+    ],
+    "active_machine_numbers": [
+      1
+    ],
+    "retired_machine_numbers": [],
+    "active_design_count": 4,
+    "retired_design_count": 0,
+    "photo_policy": "A fotografia pertence à máquina e é partilhada pelos seus designs."
+  },
+  "items": [
+    {
+      "source": {
+        "machine_number": 1,
+        "machine_details": "Machine 1",
+        "position": 1,
+        "description": "Peneco Beach with rock formation",
+        "orientation": "",
+        "machine_image_url": "http://locations.pennycollector.com/images/machine_b7890259-2ff9-4380-9a64-e551400824bf.jpg",
+        "availability": "active",
+        "location_id": "406952",
+        "image_scope": "machine",
+        "review_flags": [
+          "shared_machine_photo",
+          "missing_orientation"
+        ]
+      },
+      "souvenir": {
+        "name": "Peneco Beach with rock formation",
+        "continent": "Europa",
+        "country": "Portugal",
+        "city": "Albufeira ",
+        "type": "pressed",
+        "condition": "Não Tenho",
+        "location_name": "Albufeira Tunnel",
+        "description": "Peneco Beach with rock formation",
+        "display_shape": "oval",
+        "image_front": "http://locations.pennycollector.com/images/machine_b7890259-2ff9-4380-9a64-e551400824bf.jpg",
+        "image_back": "",
+        "notes": "Machine 1 · Posição 1 · Orientação não indicada · PennyCollector location 406952 · Fotografia provisória partilhada da máquina",
+        "reference_url": "http://locations.pennycollector.com/Details.aspx?location=406952#machine-1-position-1",
+        "ordem": 1,
+        "hidden": false
+      },
+      "review_status": "approved"
+    },
+    {
+      "source": {
+        "machine_number": 1,
+        "machine_details": "Machine 1",
+        "position": 2,
+        "description": "Albufeira Tunnel",
+        "orientation": "",
+        "machine_image_url": "http://locations.pennycollector.com/images/machine_b7890259-2ff9-4380-9a64-e551400824bf.jpg",
+        "availability": "active",
+        "location_id": "406952",
+        "image_scope": "machine",
+        "review_flags": [
+          "shared_machine_photo",
+          "missing_orientation"
+        ]
+      },
+      "souvenir": {
+        "name": "Albufeira Tunnel",
+        "continent": "Europa",
+        "country": "Portugal",
+        "city": "Albufeira ",
+        "type": "pressed",
+        "condition": "Não Tenho",
+        "location_name": "Albufeira Tunnel",
+        "description": "Albufeira Tunnel",
+        "display_shape": "oval",
+        "image_front": "http://locations.pennycollector.com/images/machine_b7890259-2ff9-4380-9a64-e551400824bf.jpg",
+        "image_back": "",
+        "notes": "Machine 1 · Posição 2 · Orientação não indicada · PennyCollector location 406952 · Fotografia provisória partilhada da máquina",
+        "reference_url": "http://locations.pennycollector.com/Details.aspx?location=406952#machine-1-position-2",
+        "ordem": 2,
+        "hidden": false
+      },
+      "review_status": "approved"
+    },
+    {
+      "source": {
+        "machine_number": 1,
+        "machine_details": "Machine 1",
+        "position": 3,
+        "description": "Peneco Beach with pedal boat and slide",
+        "orientation": "",
+        "machine_image_url": "http://locations.pennycollector.com/images/machine_b7890259-2ff9-4380-9a64-e551400824bf.jpg",
+        "availability": "active",
+        "location_id": "406952",
+        "image_scope": "machine",
+        "review_flags": [
+          "shared_machine_photo",
+          "missing_orientation"
+        ]
+      },
+      "souvenir": {
+        "name": "Peneco Beach with pedal boat and slide",
+        "continent": "Europa",
+        "country": "Portugal",
+        "city": "Albufeira ",
+        "type": "pressed",
+        "condition": "Não Tenho",
+        "location_name": "Albufeira Tunnel",
+        "description": "Peneco Beach with pedal boat and slide",
+        "display_shape": "oval",
+        "image_front": "http://locations.pennycollector.com/images/machine_b7890259-2ff9-4380-9a64-e551400824bf.jpg",
+        "image_back": "",
+        "notes": "Machine 1 · Posição 3 · Orientação não indicada · PennyCollector location 406952 · Fotografia provisória partilhada da máquina",
+        "reference_url": "http://locations.pennycollector.com/Details.aspx?location=406952#machine-1-position-3",
+        "ordem": 3,
+        "hidden": false
+      },
+      "review_status": "approved"
+    },
+    {
+      "source": {
+        "machine_number": 1,
+        "machine_details": "Machine 1",
+        "position": 4,
+        "description": "Art Museum",
+        "orientation": "",
+        "machine_image_url": "http://locations.pennycollector.com/images/machine_b7890259-2ff9-4380-9a64-e551400824bf.jpg",
+        "availability": "active",
+        "location_id": "406952",
+        "image_scope": "machine",
+        "review_flags": [
+          "shared_machine_photo",
+          "missing_orientation"
+        ]
+      },
+      "souvenir": {
+        "name": "Art Museum",
+        "continent": "Europa",
+        "country": "Portugal",
+        "city": "Albufeira ",
+        "type": "pressed",
+        "condition": "Não Tenho",
+        "location_name": "Albufeira Tunnel",
+        "description": "Art Museum",
+        "display_shape": "oval",
+        "image_front": "http://locations.pennycollector.com/images/machine_b7890259-2ff9-4380-9a64-e551400824bf.jpg",
+        "image_back": "",
+        "notes": "Machine 1 · Posição 4 · Orientação não indicada · PennyCollector location 406952 · Fotografia provisória partilhada da máquina",
+        "reference_url": "http://locations.pennycollector.com/Details.aspx?location=406952#machine-1-position-4",
+        "ordem": 4,
+        "hidden": false
+      },
+      "review_status": "approved"
+    }
+  ],
+  "review": {
+    "approved": 4,
+    "skipped": 0,
+    "pending": 0,
+    "completed": true,
+    "updated_at": "2026-09-25T10:57:13+00:00",
+    "shared_machine_photos_accepted_as_temporary": true
+  }
+}

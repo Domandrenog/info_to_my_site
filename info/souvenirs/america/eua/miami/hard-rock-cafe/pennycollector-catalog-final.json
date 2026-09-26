@@ -1,0 +1,167 @@
+{
+  "status": "ready_for_import",
+  "base44_updated": false,
+  "import_ready": true,
+  "source": {
+    "site": "PennyCollector",
+    "location_id": "352061",
+    "url": "http://locations.pennycollector.com/Details.aspx?location=352061",
+    "location_name": "Hard Rock Cafe",
+    "address": "401 Biscayne Boulevard Suite R-200 (Second floor)",
+    "city": "Miami",
+    "zip_code": "33132-1967",
+    "status": "Gone",
+    "state": "FL",
+    "country": "United States",
+    "source_flagged_needs_update": false,
+    "retrieved_at": "2026-09-23T18:12:49+00:00",
+    "machine_count": 1,
+    "design_count": 4,
+    "machine_numbers": [
+      1
+    ],
+    "photo_policy": "A fotografia pertence à máquina e é partilhada pelos seus designs."
+  },
+  "items": [
+    {
+      "source": {
+        "machine_number": 1,
+        "machine_details": "is just inside the Rock Shop, just to the right of the elevator when you walk through the main doors. Cost to press: $1.01 each design. Designs all have a beaded border with 'Hard Rock Cafe Miami':\n",
+        "position": 1,
+        "description": "Miami city skyline inside a guitar pick",
+        "orientation": "V",
+        "machine_image_url": "http://locations.pennycollector.com/images/machine_2aa9ed5f-13c9-4ea1-ab12-fb422bad319d.jpg",
+        "location_id": "352061",
+        "image_scope": "machine",
+        "review_flags": [
+          "shared_machine_photo"
+        ]
+      },
+      "souvenir": {
+        "name": "Miami city skyline inside a guitar pick",
+        "continent": "América",
+        "country": "EUA",
+        "city": "Miami",
+        "type": "pressed",
+        "condition": "Não Tenho",
+        "location_name": "Hard Rock Cafe",
+        "description": "Miami city skyline inside a guitar pick",
+        "display_shape": "oval",
+        "image_front": "http://locations.pennycollector.com/images/machine_2aa9ed5f-13c9-4ea1-ab12-fb422bad319d.jpg",
+        "image_back": "",
+        "notes": "Machine 1 · Posição 1 · Orientação vertical · PennyCollector location 352061 · Fotografia provisória partilhada da máquina",
+        "reference_url": "http://locations.pennycollector.com/Details.aspx?location=352061#machine-1-position-1",
+        "ordem": 1,
+        "hidden": false
+      },
+      "review_status": "approved"
+    },
+    {
+      "source": {
+        "machine_number": 1,
+        "machine_details": "is just inside the Rock Shop, just to the right of the elevator when you walk through the main doors. Cost to press: $1.01 each design. Designs all have a beaded border with 'Hard Rock Cafe Miami':\n",
+        "position": 2,
+        "description": "Hard Rock Cafe logo",
+        "orientation": "H",
+        "machine_image_url": "http://locations.pennycollector.com/images/machine_2aa9ed5f-13c9-4ea1-ab12-fb422bad319d.jpg",
+        "location_id": "352061",
+        "image_scope": "machine",
+        "review_flags": [
+          "shared_machine_photo"
+        ]
+      },
+      "souvenir": {
+        "name": "Hard Rock Cafe logo",
+        "continent": "América",
+        "country": "EUA",
+        "city": "Miami",
+        "type": "pressed",
+        "condition": "Não Tenho",
+        "location_name": "Hard Rock Cafe",
+        "description": "Hard Rock Cafe logo",
+        "display_shape": "oval",
+        "image_front": "http://locations.pennycollector.com/images/machine_2aa9ed5f-13c9-4ea1-ab12-fb422bad319d.jpg",
+        "image_back": "",
+        "notes": "Machine 1 · Posição 2 · Orientação horizontal · PennyCollector location 352061 · Fotografia provisória partilhada da máquina",
+        "reference_url": "http://locations.pennycollector.com/Details.aspx?location=352061#machine-1-position-2",
+        "ordem": 2,
+        "hidden": false
+      },
+      "review_status": "approved"
+    },
+    {
+      "source": {
+        "machine_number": 1,
+        "machine_details": "is just inside the Rock Shop, just to the right of the elevator when you walk through the main doors. Cost to press: $1.01 each design. Designs all have a beaded border with 'Hard Rock Cafe Miami':\n",
+        "position": 3,
+        "description": "Tee shirt with logo",
+        "orientation": "H",
+        "machine_image_url": "http://locations.pennycollector.com/images/machine_2aa9ed5f-13c9-4ea1-ab12-fb422bad319d.jpg",
+        "location_id": "352061",
+        "image_scope": "machine",
+        "review_flags": [
+          "shared_machine_photo"
+        ]
+      },
+      "souvenir": {
+        "name": "Tee shirt with logo",
+        "continent": "América",
+        "country": "EUA",
+        "city": "Miami",
+        "type": "pressed",
+        "condition": "Não Tenho",
+        "location_name": "Hard Rock Cafe",
+        "description": "Tee shirt with logo",
+        "display_shape": "oval",
+        "image_front": "http://locations.pennycollector.com/images/machine_2aa9ed5f-13c9-4ea1-ab12-fb422bad319d.jpg",
+        "image_back": "",
+        "notes": "Machine 1 · Posição 3 · Orientação horizontal · PennyCollector location 352061 · Fotografia provisória partilhada da máquina",
+        "reference_url": "http://locations.pennycollector.com/Details.aspx?location=352061#machine-1-position-3",
+        "ordem": 3,
+        "hidden": false
+      },
+      "review_status": "approved"
+    },
+    {
+      "source": {
+        "machine_number": 1,
+        "machine_details": "is just inside the Rock Shop, just to the right of the elevator when you walk through the main doors. Cost to press: $1.01 each design. Designs all have a beaded border with 'Hard Rock Cafe Miami':\n",
+        "position": 4,
+        "description": "Gibson Les Paul guitar",
+        "orientation": "H",
+        "machine_image_url": "http://locations.pennycollector.com/images/machine_2aa9ed5f-13c9-4ea1-ab12-fb422bad319d.jpg",
+        "location_id": "352061",
+        "image_scope": "machine",
+        "review_flags": [
+          "shared_machine_photo"
+        ]
+      },
+      "souvenir": {
+        "name": "Gibson Les Paul guitar",
+        "continent": "América",
+        "country": "EUA",
+        "city": "Miami",
+        "type": "pressed",
+        "condition": "Não Tenho",
+        "location_name": "Hard Rock Cafe",
+        "description": "Gibson Les Paul guitar",
+        "display_shape": "oval",
+        "image_front": "http://locations.pennycollector.com/images/machine_2aa9ed5f-13c9-4ea1-ab12-fb422bad319d.jpg",
+        "image_back": "",
+        "notes": "Machine 1 · Posição 4 · Orientação horizontal · PennyCollector location 352061 · Fotografia provisória partilhada da máquina",
+        "reference_url": "http://locations.pennycollector.com/Details.aspx?location=352061#machine-1-position-4",
+        "ordem": 4,
+        "hidden": false
+      },
+      "review_status": "approved"
+    }
+  ],
+  "review": {
+    "approved": 4,
+    "skipped": 0,
+    "pending": 0,
+    "completed": true,
+    "updated_at": "2026-09-25T10:57:13+00:00",
+    "shared_machine_photos_accepted_as_temporary": true
+  }
+}

@@ -1,0 +1,101 @@
+{
+  "status": "pending_review",
+  "base44_updated": false,
+  "import_ready": false,
+  "source": {
+    "site": "PennyCollector",
+    "location_id": "328310",
+    "url": "http://locations.pennycollector.com/Details.aspx?location=328310",
+    "location_name": "Sé Nova do Santíssimo Nome de Jesus de Coimbra (New Cathedral)",
+    "address": "Largo Feira dos Estudantes ",
+    "city": "Coimbra",
+    "zip_code": "3000-213",
+    "status": "Active",
+    "state": "",
+    "country": "Portugal",
+    "source_flagged_needs_update": false,
+    "retrieved_at": "2026-09-25T10:17:57+00:00",
+    "machine_count": 1,
+    "design_count": 2,
+    "machine_numbers": [
+      1
+    ],
+    "active_machine_numbers": [
+      1
+    ],
+    "retired_machine_numbers": [],
+    "active_design_count": 2,
+    "retired_design_count": 0,
+    "photo_policy": "A fotografia pertence à máquina e é partilhada pelos seus designs."
+  },
+  "items": [
+    {
+      "source": {
+        "machine_number": 1,
+        "machine_details": "Machine 1 - Inside entry lobby to the right",
+        "position": 1,
+        "description": "University of Coimbra viewed from the Mondego river",
+        "orientation": "H",
+        "machine_image_url": "http://locations.pennycollector.com/images/machine_e315c576-6361-4d23-b895-a47a2662b75f.jpg",
+        "availability": "active",
+        "location_id": "328310",
+        "image_scope": "machine",
+        "review_flags": [
+          "shared_machine_photo"
+        ]
+      },
+      "souvenir": {
+        "name": "University of Coimbra viewed from the Mondego river",
+        "continent": "Europa",
+        "country": "Portugal",
+        "city": "Coimbra",
+        "type": "pressed",
+        "condition": "Não Tenho",
+        "location_name": "Sé Nova do Santíssimo Nome de Jesus de Coimbra (New Cathedral)",
+        "description": "University of Coimbra viewed from the Mondego river",
+        "display_shape": "oval",
+        "image_front": "http://locations.pennycollector.com/images/machine_e315c576-6361-4d23-b895-a47a2662b75f.jpg",
+        "image_back": "",
+        "notes": "Machine 1 · Posição 1 · Orientação horizontal · PennyCollector location 328310 · Fotografia provisória partilhada da máquina",
+        "reference_url": "http://locations.pennycollector.com/Details.aspx?location=328310#machine-1-position-1",
+        "ordem": 1,
+        "hidden": false
+      },
+      "review_status": "pending"
+    },
+    {
+      "source": {
+        "machine_number": 1,
+        "machine_details": "Machine 1 - Inside entry lobby to the right",
+        "position": 2,
+        "description": "Front facade of the new Cathedral building",
+        "orientation": "V",
+        "machine_image_url": "http://locations.pennycollector.com/images/machine_e315c576-6361-4d23-b895-a47a2662b75f.jpg",
+        "availability": "active",
+        "location_id": "328310",
+        "image_scope": "machine",
+        "review_flags": [
+          "shared_machine_photo"
+        ]
+      },
+      "souvenir": {
+        "name": "Front facade of the new Cathedral building",
+        "continent": "Europa",
+        "country": "Portugal",
+        "city": "Coimbra",
+        "type": "pressed",
+        "condition": "Não Tenho",
+        "location_name": "Sé Nova do Santíssimo Nome de Jesus de Coimbra (New Cathedral)",
+        "description": "Front facade of the new Cathedral building",
+        "display_shape": "oval",
+        "image_front": "http://locations.pennycollector.com/images/machine_e315c576-6361-4d23-b895-a47a2662b75f.jpg",
+        "image_back": "",
+        "notes": "Machine 1 · Posição 2 · Orientação vertical · PennyCollector location 328310 · Fotografia provisória partilhada da máquina",
+        "reference_url": "http://locations.pennycollector.com/Details.aspx?location=328310#machine-1-position-2",
+        "ordem": 2,
+        "hidden": false
+      },
+      "review_status": "pending"
+    }
+  ]
+}

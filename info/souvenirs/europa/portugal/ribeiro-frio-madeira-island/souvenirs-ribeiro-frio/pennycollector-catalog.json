@@ -1,0 +1,173 @@
+{
+  "status": "pending_review",
+  "base44_updated": false,
+  "import_ready": false,
+  "source": {
+    "site": "PennyCollector",
+    "location_id": "424919",
+    "url": "http://locations.pennycollector.com/Details.aspx?location=424919",
+    "location_name": "Souvenirs Ribeiro Frio",
+    "address": "Ribeiro Frio ",
+    "city": "Ribeiro Frio (Madeira Island)",
+    "zip_code": "9230-209",
+    "status": "Active",
+    "state": "",
+    "country": "Portugal",
+    "source_flagged_needs_update": false,
+    "retrieved_at": "2026-09-25T10:19:14+00:00",
+    "machine_count": 1,
+    "design_count": 4,
+    "machine_numbers": [
+      1
+    ],
+    "active_machine_numbers": [
+      1
+    ],
+    "retired_machine_numbers": [],
+    "active_design_count": 4,
+    "retired_design_count": 0,
+    "photo_policy": "A fotografia pertence à máquina e é partilhada pelos seus designs."
+  },
+  "items": [
+    {
+      "source": {
+        "machine_number": 1,
+        "machine_details": "Machine 1",
+        "position": 1,
+        "description": "Nossa Senhora de Fátima",
+        "orientation": "",
+        "machine_image_url": "http://locations.pennycollector.com/images/machine_5d79fba4-8bd1-44d3-9e7e-720db8b307c8.jpg",
+        "availability": "active",
+        "location_id": "424919",
+        "image_scope": "machine",
+        "review_flags": [
+          "shared_machine_photo",
+          "missing_orientation"
+        ]
+      },
+      "souvenir": {
+        "name": "Nossa Senhora de Fátima",
+        "continent": "Europa",
+        "country": "Portugal",
+        "city": "Ribeiro Frio (Madeira Island)",
+        "type": "pressed",
+        "condition": "Não Tenho",
+        "location_name": "Souvenirs Ribeiro Frio",
+        "description": "Nossa Senhora de Fátima",
+        "display_shape": "oval",
+        "image_front": "http://locations.pennycollector.com/images/machine_5d79fba4-8bd1-44d3-9e7e-720db8b307c8.jpg",
+        "image_back": "",
+        "notes": "Machine 1 · Posição 1 · Orientação não indicada · PennyCollector location 424919 · Fotografia provisória partilhada da máquina",
+        "reference_url": "http://locations.pennycollector.com/Details.aspx?location=424919#machine-1-position-1",
+        "ordem": 1,
+        "hidden": false
+      },
+      "review_status": "pending"
+    },
+    {
+      "source": {
+        "machine_number": 1,
+        "machine_details": "Machine 1",
+        "position": 2,
+        "description": "Trout farm",
+        "orientation": "",
+        "machine_image_url": "http://locations.pennycollector.com/images/machine_5d79fba4-8bd1-44d3-9e7e-720db8b307c8.jpg",
+        "availability": "active",
+        "location_id": "424919",
+        "image_scope": "machine",
+        "review_flags": [
+          "shared_machine_photo",
+          "missing_orientation"
+        ]
+      },
+      "souvenir": {
+        "name": "Trout farm",
+        "continent": "Europa",
+        "country": "Portugal",
+        "city": "Ribeiro Frio (Madeira Island)",
+        "type": "pressed",
+        "condition": "Não Tenho",
+        "location_name": "Souvenirs Ribeiro Frio",
+        "description": "Trout farm",
+        "display_shape": "oval",
+        "image_front": "http://locations.pennycollector.com/images/machine_5d79fba4-8bd1-44d3-9e7e-720db8b307c8.jpg",
+        "image_back": "",
+        "notes": "Machine 1 · Posição 2 · Orientação não indicada · PennyCollector location 424919 · Fotografia provisória partilhada da máquina",
+        "reference_url": "http://locations.pennycollector.com/Details.aspx?location=424919#machine-1-position-2",
+        "ordem": 2,
+        "hidden": false
+      },
+      "review_status": "pending"
+    },
+    {
+      "source": {
+        "machine_number": 1,
+        "machine_details": "Machine 1",
+        "position": 3,
+        "description": "Chapel",
+        "orientation": "",
+        "machine_image_url": "http://locations.pennycollector.com/images/machine_5d79fba4-8bd1-44d3-9e7e-720db8b307c8.jpg",
+        "availability": "active",
+        "location_id": "424919",
+        "image_scope": "machine",
+        "review_flags": [
+          "shared_machine_photo",
+          "missing_orientation"
+        ]
+      },
+      "souvenir": {
+        "name": "Chapel",
+        "continent": "Europa",
+        "country": "Portugal",
+        "city": "Ribeiro Frio (Madeira Island)",
+        "type": "pressed",
+        "condition": "Não Tenho",
+        "location_name": "Souvenirs Ribeiro Frio",
+        "description": "Chapel",
+        "display_shape": "oval",
+        "image_front": "http://locations.pennycollector.com/images/machine_5d79fba4-8bd1-44d3-9e7e-720db8b307c8.jpg",
+        "image_back": "",
+        "notes": "Machine 1 · Posição 3 · Orientação não indicada · PennyCollector location 424919 · Fotografia provisória partilhada da máquina",
+        "reference_url": "http://locations.pennycollector.com/Details.aspx?location=424919#machine-1-position-3",
+        "ordem": 3,
+        "hidden": false
+      },
+      "review_status": "pending"
+    },
+    {
+      "source": {
+        "machine_number": 1,
+        "machine_details": "Machine 1",
+        "position": 4,
+        "description": "Madeira Island",
+        "orientation": "",
+        "machine_image_url": "http://locations.pennycollector.com/images/machine_5d79fba4-8bd1-44d3-9e7e-720db8b307c8.jpg",
+        "availability": "active",
+        "location_id": "424919",
+        "image_scope": "machine",
+        "review_flags": [
+          "shared_machine_photo",
+          "missing_orientation"
+        ]
+      },
+      "souvenir": {
+        "name": "Madeira Island",
+        "continent": "Europa",
+        "country": "Portugal",
+        "city": "Ribeiro Frio (Madeira Island)",
+        "type": "pressed",
+        "condition": "Não Tenho",
+        "location_name": "Souvenirs Ribeiro Frio",
+        "description": "Madeira Island",
+        "display_shape": "oval",
+        "image_front": "http://locations.pennycollector.com/images/machine_5d79fba4-8bd1-44d3-9e7e-720db8b307c8.jpg",
+        "image_back": "",
+        "notes": "Machine 1 · Posição 4 · Orientação não indicada · PennyCollector location 424919 · Fotografia provisória partilhada da máquina",
+        "reference_url": "http://locations.pennycollector.com/Details.aspx?location=424919#machine-1-position-4",
+        "ordem": 4,
+        "hidden": false
+      },
+      "review_status": "pending"
+    }
+  ]
+}

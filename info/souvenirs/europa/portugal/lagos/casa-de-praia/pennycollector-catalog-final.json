@@ -1,0 +1,109 @@
+{
+  "status": "ready_for_import",
+  "base44_updated": false,
+  "import_ready": true,
+  "source": {
+    "site": "PennyCollector",
+    "location_id": "390324",
+    "url": "http://locations.pennycollector.com/Details.aspx?location=390324",
+    "location_name": "Casa de Praia",
+    "address": "R. Afonso de Almeida 31, 8600-674 Lagos, Portugal",
+    "city": "Lagos",
+    "zip_code": "8600-674",
+    "status": "Active",
+    "state": "",
+    "country": "Portugal",
+    "source_flagged_needs_update": false,
+    "retrieved_at": "2026-09-25T10:18:37+00:00",
+    "machine_count": 1,
+    "design_count": 2,
+    "machine_numbers": [
+      1
+    ],
+    "active_machine_numbers": [
+      1
+    ],
+    "retired_machine_numbers": [],
+    "active_design_count": 2,
+    "retired_design_count": 0,
+    "photo_policy": "A fotografia pertence à máquina e é partilhada pelos seus designs."
+  },
+  "items": [
+    {
+      "source": {
+        "machine_number": 1,
+        "machine_details": "Machine 1",
+        "position": 1,
+        "description": "City of Lagos, with 'Lagos'",
+        "orientation": "H",
+        "machine_image_url": "http://locations.pennycollector.com/images/machine_409529cd-7293-484e-b175-2f4d513e8236.jpg",
+        "availability": "active",
+        "location_id": "390324",
+        "image_scope": "machine",
+        "review_flags": [
+          "shared_machine_photo"
+        ]
+      },
+      "souvenir": {
+        "name": "City of Lagos",
+        "continent": "Europa",
+        "country": "Portugal",
+        "city": "Lagos",
+        "type": "pressed",
+        "condition": "Não Tenho",
+        "location_name": "Casa de Praia",
+        "description": "City of Lagos, with 'Lagos'",
+        "display_shape": "oval",
+        "image_front": "http://locations.pennycollector.com/images/machine_409529cd-7293-484e-b175-2f4d513e8236.jpg",
+        "image_back": "",
+        "notes": "Machine 1 · Posição 1 · Orientação horizontal · PennyCollector location 390324 · Fotografia provisória partilhada da máquina",
+        "reference_url": "http://locations.pennycollector.com/Details.aspx?location=390324#machine-1-position-1",
+        "ordem": 1,
+        "hidden": false
+      },
+      "review_status": "approved"
+    },
+    {
+      "source": {
+        "machine_number": 1,
+        "machine_details": "Machine 1",
+        "position": 2,
+        "description": "Beach with 'Lagos'",
+        "orientation": "H",
+        "machine_image_url": "http://locations.pennycollector.com/images/machine_409529cd-7293-484e-b175-2f4d513e8236.jpg",
+        "availability": "active",
+        "location_id": "390324",
+        "image_scope": "machine",
+        "review_flags": [
+          "shared_machine_photo"
+        ]
+      },
+      "souvenir": {
+        "name": "Beach with 'Lagos",
+        "continent": "Europa",
+        "country": "Portugal",
+        "city": "Lagos",
+        "type": "pressed",
+        "condition": "Não Tenho",
+        "location_name": "Casa de Praia",
+        "description": "Beach with 'Lagos'",
+        "display_shape": "oval",
+        "image_front": "http://locations.pennycollector.com/images/machine_409529cd-7293-484e-b175-2f4d513e8236.jpg",
+        "image_back": "",
+        "notes": "Machine 1 · Posição 2 · Orientação horizontal · PennyCollector location 390324 · Fotografia provisória partilhada da máquina",
+        "reference_url": "http://locations.pennycollector.com/Details.aspx?location=390324#machine-1-position-2",
+        "ordem": 2,
+        "hidden": false
+      },
+      "review_status": "approved"
+    }
+  ],
+  "review": {
+    "approved": 2,
+    "skipped": 0,
+    "pending": 0,
+    "completed": true,
+    "updated_at": "2026-09-25T10:57:20+00:00",
+    "shared_machine_photos_accepted_as_temporary": true
+  }
+}

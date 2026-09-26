@@ -1,0 +1,143 @@
+{
+  "status": "ready_for_import",
+  "base44_updated": false,
+  "import_ready": true,
+  "source": {
+    "site": "PennyCollector",
+    "location_id": "287170",
+    "url": "http://locations.pennycollector.com/Details.aspx?location=287170",
+    "location_name": "Santuário de Nossa Senhora da Nazaré (Sanctuary of Our Lady of Na",
+    "address": "Largo de Nossa Senhora da Nazaré",
+    "city": "Nazaré",
+    "zip_code": "2450-065",
+    "status": "Active",
+    "state": "",
+    "country": "Portugal",
+    "source_flagged_needs_update": false,
+    "retrieved_at": "2026-09-25T10:19:00+00:00",
+    "machine_count": 1,
+    "design_count": 3,
+    "machine_numbers": [
+      1
+    ],
+    "active_machine_numbers": [
+      1
+    ],
+    "retired_machine_numbers": [],
+    "active_design_count": 3,
+    "retired_design_count": 0,
+    "photo_policy": "A fotografia pertence à máquina e é partilhada pelos seus designs."
+  },
+  "items": [
+    {
+      "source": {
+        "machine_number": 1,
+        "machine_details": "Machine 1 - Outside in front of the gift shop",
+        "position": 1,
+        "description": "Mary of Nazareth with 'Nossa Senhora Da Nazara'",
+        "orientation": "V",
+        "machine_image_url": "http://locations.pennycollector.com/images/machine_f126aaea-515d-490d-adc6-fd6f5f29bf98.jpg",
+        "availability": "active",
+        "location_id": "287170",
+        "image_scope": "machine",
+        "review_flags": [
+          "shared_machine_photo"
+        ]
+      },
+      "souvenir": {
+        "name": "Mary of Nazareth with 'Nossa Senhora Da Nazara",
+        "continent": "Europa",
+        "country": "Portugal",
+        "city": "Nazaré",
+        "type": "pressed",
+        "condition": "Não Tenho",
+        "location_name": "Santuário de Nossa Senhora da Nazaré (Sanctuary of Our Lady of Na",
+        "description": "Mary of Nazareth with 'Nossa Senhora Da Nazara'",
+        "display_shape": "oval",
+        "image_front": "http://locations.pennycollector.com/images/machine_f126aaea-515d-490d-adc6-fd6f5f29bf98.jpg",
+        "image_back": "",
+        "notes": "Machine 1 · Posição 1 · Orientação vertical · PennyCollector location 287170 · Fotografia provisória partilhada da máquina",
+        "reference_url": "http://locations.pennycollector.com/Details.aspx?location=287170#machine-1-position-1",
+        "ordem": 1,
+        "hidden": false
+      },
+      "review_status": "approved"
+    },
+    {
+      "source": {
+        "machine_number": 1,
+        "machine_details": "Machine 1 - Outside in front of the gift shop",
+        "position": 2,
+        "description": "Nazareth Sanctuary with 'Santuario Nazare'",
+        "orientation": "H",
+        "machine_image_url": "http://locations.pennycollector.com/images/machine_f126aaea-515d-490d-adc6-fd6f5f29bf98.jpg",
+        "availability": "active",
+        "location_id": "287170",
+        "image_scope": "machine",
+        "review_flags": [
+          "shared_machine_photo"
+        ]
+      },
+      "souvenir": {
+        "name": "Nazareth Sanctuary with 'Santuario Nazare",
+        "continent": "Europa",
+        "country": "Portugal",
+        "city": "Nazaré",
+        "type": "pressed",
+        "condition": "Não Tenho",
+        "location_name": "Santuário de Nossa Senhora da Nazaré (Sanctuary of Our Lady of Na",
+        "description": "Nazareth Sanctuary with 'Santuario Nazare'",
+        "display_shape": "oval",
+        "image_front": "http://locations.pennycollector.com/images/machine_f126aaea-515d-490d-adc6-fd6f5f29bf98.jpg",
+        "image_back": "",
+        "notes": "Machine 1 · Posição 2 · Orientação horizontal · PennyCollector location 287170 · Fotografia provisória partilhada da máquina",
+        "reference_url": "http://locations.pennycollector.com/Details.aspx?location=287170#machine-1-position-2",
+        "ordem": 2,
+        "hidden": false
+      },
+      "review_status": "approved"
+    },
+    {
+      "source": {
+        "machine_number": 1,
+        "machine_details": "Machine 1 - Outside in front of the gift shop",
+        "position": 3,
+        "description": "Pictorial of the Virgin Mary intercession with 'Milagre Nossa Nazare'",
+        "orientation": "V",
+        "machine_image_url": "http://locations.pennycollector.com/images/machine_f126aaea-515d-490d-adc6-fd6f5f29bf98.jpg",
+        "availability": "active",
+        "location_id": "287170",
+        "image_scope": "machine",
+        "review_flags": [
+          "shared_machine_photo"
+        ]
+      },
+      "souvenir": {
+        "name": "Pictorial of the Virgin Mary intercession with 'Milagre…",
+        "continent": "Europa",
+        "country": "Portugal",
+        "city": "Nazaré",
+        "type": "pressed",
+        "condition": "Não Tenho",
+        "location_name": "Santuário de Nossa Senhora da Nazaré (Sanctuary of Our Lady of Na",
+        "description": "Pictorial of the Virgin Mary intercession with 'Milagre Nossa Nazare'",
+        "display_shape": "oval",
+        "image_front": "http://locations.pennycollector.com/images/machine_f126aaea-515d-490d-adc6-fd6f5f29bf98.jpg",
+        "image_back": "",
+        "notes": "Machine 1 · Posição 3 · Orientação vertical · PennyCollector location 287170 · Fotografia provisória partilhada da máquina",
+        "reference_url": "http://locations.pennycollector.com/Details.aspx?location=287170#machine-1-position-3",
+        "ordem": 3,
+        "hidden": false
+      },
+      "review_status": "approved"
+    }
+  ],
+  "review": {
+    "approved": 3,
+    "skipped": 0,
+    "pending": 0,
+    "completed": true,
+    "updated_at": "2026-09-25T10:57:21+00:00",
+    "shared_machine_photos_accepted_as_temporary": true
+  }
+}

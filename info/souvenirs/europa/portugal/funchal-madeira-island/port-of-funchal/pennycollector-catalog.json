@@ -1,0 +1,245 @@
+{
+  "status": "pending_review",
+  "base44_updated": false,
+  "import_ready": false,
+  "source": {
+    "site": "PennyCollector",
+    "location_id": "395155",
+    "url": "http://locations.pennycollector.com/Details.aspx?location=395155",
+    "location_name": "Port of Funchal",
+    "address": "23 Av. Sá Carneiro ",
+    "city": "Funchal (Madeira Island)",
+    "zip_code": "9004-518",
+    "status": "Active",
+    "state": "",
+    "country": "Portugal",
+    "source_flagged_needs_update": false,
+    "retrieved_at": "2026-09-25T10:18:27+00:00",
+    "machine_count": 2,
+    "design_count": 6,
+    "machine_numbers": [
+      1,
+      2
+    ],
+    "active_machine_numbers": [
+      1,
+      2
+    ],
+    "retired_machine_numbers": [],
+    "active_design_count": 6,
+    "retired_design_count": 0,
+    "photo_policy": "A fotografia pertence à máquina e é partilhada pelos seus designs."
+  },
+  "items": [
+    {
+      "source": {
+        "machine_number": 1,
+        "machine_details": "Machine 1",
+        "position": 1,
+        "description": "Funchal Cathedral",
+        "orientation": "",
+        "machine_image_url": "http://locations.pennycollector.com/images/machine_f60876c3-bf6e-4b6a-bdb3-4b96f91892ea.jpg",
+        "availability": "active",
+        "location_id": "395155",
+        "image_scope": "machine",
+        "review_flags": [
+          "shared_machine_photo",
+          "missing_orientation"
+        ]
+      },
+      "souvenir": {
+        "name": "Funchal Cathedral",
+        "continent": "Europa",
+        "country": "Portugal",
+        "city": "Funchal (Madeira Island)",
+        "type": "pressed",
+        "condition": "Não Tenho",
+        "location_name": "Port of Funchal",
+        "description": "Funchal Cathedral",
+        "display_shape": "oval",
+        "image_front": "http://locations.pennycollector.com/images/machine_f60876c3-bf6e-4b6a-bdb3-4b96f91892ea.jpg",
+        "image_back": "",
+        "notes": "Machine 1 · Posição 1 · Orientação não indicada · PennyCollector location 395155 · Fotografia provisória partilhada da máquina",
+        "reference_url": "http://locations.pennycollector.com/Details.aspx?location=395155#machine-1-position-1",
+        "ordem": 1,
+        "hidden": false
+      },
+      "review_status": "pending"
+    },
+    {
+      "source": {
+        "machine_number": 1,
+        "machine_details": "Machine 1",
+        "position": 2,
+        "description": "Funchal view",
+        "orientation": "",
+        "machine_image_url": "http://locations.pennycollector.com/images/machine_f60876c3-bf6e-4b6a-bdb3-4b96f91892ea.jpg",
+        "availability": "active",
+        "location_id": "395155",
+        "image_scope": "machine",
+        "review_flags": [
+          "shared_machine_photo",
+          "missing_orientation"
+        ]
+      },
+      "souvenir": {
+        "name": "Funchal view",
+        "continent": "Europa",
+        "country": "Portugal",
+        "city": "Funchal (Madeira Island)",
+        "type": "pressed",
+        "condition": "Não Tenho",
+        "location_name": "Port of Funchal",
+        "description": "Funchal view",
+        "display_shape": "oval",
+        "image_front": "http://locations.pennycollector.com/images/machine_f60876c3-bf6e-4b6a-bdb3-4b96f91892ea.jpg",
+        "image_back": "",
+        "notes": "Machine 1 · Posição 2 · Orientação não indicada · PennyCollector location 395155 · Fotografia provisória partilhada da máquina",
+        "reference_url": "http://locations.pennycollector.com/Details.aspx?location=395155#machine-1-position-2",
+        "ordem": 2,
+        "hidden": false
+      },
+      "review_status": "pending"
+    },
+    {
+      "source": {
+        "machine_number": 1,
+        "machine_details": "Machine 1",
+        "position": 3,
+        "description": "Santana traditional house",
+        "orientation": "",
+        "machine_image_url": "http://locations.pennycollector.com/images/machine_f60876c3-bf6e-4b6a-bdb3-4b96f91892ea.jpg",
+        "availability": "active",
+        "location_id": "395155",
+        "image_scope": "machine",
+        "review_flags": [
+          "shared_machine_photo",
+          "missing_orientation"
+        ]
+      },
+      "souvenir": {
+        "name": "Santana traditional house",
+        "continent": "Europa",
+        "country": "Portugal",
+        "city": "Funchal (Madeira Island)",
+        "type": "pressed",
+        "condition": "Não Tenho",
+        "location_name": "Port of Funchal",
+        "description": "Santana traditional house",
+        "display_shape": "oval",
+        "image_front": "http://locations.pennycollector.com/images/machine_f60876c3-bf6e-4b6a-bdb3-4b96f91892ea.jpg",
+        "image_back": "",
+        "notes": "Machine 1 · Posição 3 · Orientação não indicada · PennyCollector location 395155 · Fotografia provisória partilhada da máquina",
+        "reference_url": "http://locations.pennycollector.com/Details.aspx?location=395155#machine-1-position-3",
+        "ordem": 3,
+        "hidden": false
+      },
+      "review_status": "pending"
+    },
+    {
+      "source": {
+        "machine_number": 1,
+        "machine_details": "Machine 1",
+        "position": 4,
+        "description": "Madeira Island",
+        "orientation": "",
+        "machine_image_url": "http://locations.pennycollector.com/images/machine_f60876c3-bf6e-4b6a-bdb3-4b96f91892ea.jpg",
+        "availability": "active",
+        "location_id": "395155",
+        "image_scope": "machine",
+        "review_flags": [
+          "shared_machine_photo",
+          "missing_orientation"
+        ]
+      },
+      "souvenir": {
+        "name": "Madeira Island",
+        "continent": "Europa",
+        "country": "Portugal",
+        "city": "Funchal (Madeira Island)",
+        "type": "pressed",
+        "condition": "Não Tenho",
+        "location_name": "Port of Funchal",
+        "description": "Madeira Island",
+        "display_shape": "oval",
+        "image_front": "http://locations.pennycollector.com/images/machine_f60876c3-bf6e-4b6a-bdb3-4b96f91892ea.jpg",
+        "image_back": "",
+        "notes": "Machine 1 · Posição 4 · Orientação não indicada · PennyCollector location 395155 · Fotografia provisória partilhada da máquina",
+        "reference_url": "http://locations.pennycollector.com/Details.aspx?location=395155#machine-1-position-4",
+        "ordem": 4,
+        "hidden": false
+      },
+      "review_status": "pending"
+    },
+    {
+      "source": {
+        "machine_number": 2,
+        "machine_details": "Medallion Machine 1",
+        "position": 1,
+        "description": "Gold - A view over Funchal",
+        "orientation": "",
+        "machine_image_url": "http://locations.pennycollector.com/images/machine_606290ad-d1d9-4fdc-9ac4-b9ce555ae9d7.jpg",
+        "availability": "active",
+        "location_id": "395155",
+        "image_scope": "machine",
+        "review_flags": [
+          "shared_machine_photo",
+          "missing_orientation"
+        ]
+      },
+      "souvenir": {
+        "name": "Gold - A view over Funchal",
+        "continent": "Europa",
+        "country": "Portugal",
+        "city": "Funchal (Madeira Island)",
+        "type": "coin",
+        "condition": "Não Tenho",
+        "location_name": "Port of Funchal",
+        "description": "Gold - A view over Funchal",
+        "display_shape": "oval",
+        "image_front": "http://locations.pennycollector.com/images/machine_606290ad-d1d9-4fdc-9ac4-b9ce555ae9d7.jpg",
+        "image_back": "",
+        "notes": "Machine 2 · Posição 1 · Orientação não indicada · PennyCollector location 395155 · Fotografia provisória partilhada da máquina",
+        "reference_url": "http://locations.pennycollector.com/Details.aspx?location=395155#machine-2-position-1",
+        "ordem": 5,
+        "hidden": false
+      },
+      "review_status": "pending"
+    },
+    {
+      "source": {
+        "machine_number": 2,
+        "machine_details": "Medallion Machine 1",
+        "position": 2,
+        "description": "Silver - A view over Funchal, Rear- Madeira Island",
+        "orientation": "",
+        "machine_image_url": "http://locations.pennycollector.com/images/machine_606290ad-d1d9-4fdc-9ac4-b9ce555ae9d7.jpg",
+        "availability": "active",
+        "location_id": "395155",
+        "image_scope": "machine",
+        "review_flags": [
+          "shared_machine_photo",
+          "missing_orientation"
+        ]
+      },
+      "souvenir": {
+        "name": "Silver - A view over Funchal, Rear- Madeira Island",
+        "continent": "Europa",
+        "country": "Portugal",
+        "city": "Funchal (Madeira Island)",
+        "type": "coin",
+        "condition": "Não Tenho",
+        "location_name": "Port of Funchal",
+        "description": "Silver - A view over Funchal, Rear- Madeira Island",
+        "display_shape": "oval",
+        "image_front": "http://locations.pennycollector.com/images/machine_606290ad-d1d9-4fdc-9ac4-b9ce555ae9d7.jpg",
+        "image_back": "",
+        "notes": "Machine 2 · Posição 2 · Orientação não indicada · PennyCollector location 395155 · Fotografia provisória partilhada da máquina",
+        "reference_url": "http://locations.pennycollector.com/Details.aspx?location=395155#machine-2-position-2",
+        "ordem": 6,
+        "hidden": false
+      },
+      "review_status": "pending"
+    }
+  ]
+}

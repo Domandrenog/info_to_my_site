@@ -1,0 +1,210 @@
+{
+  "status": "pending_review",
+  "base44_updated": false,
+  "import_ready": false,
+  "source": {
+    "site": "PennyCollector",
+    "location_id": "344094",
+    "url": "http://locations.pennycollector.com/Details.aspx?location=344094",
+    "location_name": "Praia da Rocha",
+    "address": "Av. Tomás Cabreira 8",
+    "city": "Portimão",
+    "zip_code": "8500-802",
+    "status": "Active",
+    "state": "",
+    "country": "Portugal",
+    "source_flagged_needs_update": false,
+    "retrieved_at": "2026-09-25T10:19:04+00:00",
+    "machine_count": 2,
+    "design_count": 5,
+    "machine_numbers": [
+      1,
+      2
+    ],
+    "active_machine_numbers": [
+      1,
+      2
+    ],
+    "retired_machine_numbers": [],
+    "active_design_count": 5,
+    "retired_design_count": 0,
+    "photo_policy": "A fotografia pertence à máquina e é partilhada pelos seus designs."
+  },
+  "items": [
+    {
+      "source": {
+        "machine_number": 1,
+        "machine_details": "Machine 1",
+        "position": 1,
+        "description": "'Portimao', boats on the water and city skyline",
+        "orientation": "",
+        "machine_image_url": "http://locations.pennycollector.com/images/machine_40fea727-17f8-4569-9063-601e04c24a1b.jpg",
+        "availability": "active",
+        "location_id": "344094",
+        "image_scope": "machine",
+        "review_flags": [
+          "shared_machine_photo",
+          "missing_orientation"
+        ]
+      },
+      "souvenir": {
+        "name": "Portimao",
+        "continent": "Europa",
+        "country": "Portugal",
+        "city": "Portimão",
+        "type": "pressed",
+        "condition": "Não Tenho",
+        "location_name": "Praia da Rocha",
+        "description": "'Portimao', boats on the water and city skyline",
+        "display_shape": "oval",
+        "image_front": "http://locations.pennycollector.com/images/machine_40fea727-17f8-4569-9063-601e04c24a1b.jpg",
+        "image_back": "",
+        "notes": "Machine 1 · Posição 1 · Orientação não indicada · PennyCollector location 344094 · Fotografia provisória partilhada da máquina",
+        "reference_url": "http://locations.pennycollector.com/Details.aspx?location=344094#machine-1-position-1",
+        "ordem": 1,
+        "hidden": false
+      },
+      "review_status": "pending"
+    },
+    {
+      "source": {
+        "machine_number": 1,
+        "machine_details": "Machine 1",
+        "position": 2,
+        "description": "'Portugal', Galo de Barcelos",
+        "orientation": "",
+        "machine_image_url": "http://locations.pennycollector.com/images/machine_40fea727-17f8-4569-9063-601e04c24a1b.jpg",
+        "availability": "active",
+        "location_id": "344094",
+        "image_scope": "machine",
+        "review_flags": [
+          "shared_machine_photo",
+          "missing_orientation"
+        ]
+      },
+      "souvenir": {
+        "name": "Portugal",
+        "continent": "Europa",
+        "country": "Portugal",
+        "city": "Portimão",
+        "type": "pressed",
+        "condition": "Não Tenho",
+        "location_name": "Praia da Rocha",
+        "description": "'Portugal', Galo de Barcelos",
+        "display_shape": "oval",
+        "image_front": "http://locations.pennycollector.com/images/machine_40fea727-17f8-4569-9063-601e04c24a1b.jpg",
+        "image_back": "",
+        "notes": "Machine 1 · Posição 2 · Orientação não indicada · PennyCollector location 344094 · Fotografia provisória partilhada da máquina",
+        "reference_url": "http://locations.pennycollector.com/Details.aspx?location=344094#machine-1-position-2",
+        "ordem": 2,
+        "hidden": false
+      },
+      "review_status": "pending"
+    },
+    {
+      "source": {
+        "machine_number": 1,
+        "machine_details": "Machine 1",
+        "position": 3,
+        "description": "'Praia Da Rocha', Harbor area with city skyline behind",
+        "orientation": "",
+        "machine_image_url": "http://locations.pennycollector.com/images/machine_40fea727-17f8-4569-9063-601e04c24a1b.jpg",
+        "availability": "active",
+        "location_id": "344094",
+        "image_scope": "machine",
+        "review_flags": [
+          "shared_machine_photo",
+          "missing_orientation"
+        ]
+      },
+      "souvenir": {
+        "name": "Praia Da Rocha",
+        "continent": "Europa",
+        "country": "Portugal",
+        "city": "Portimão",
+        "type": "pressed",
+        "condition": "Não Tenho",
+        "location_name": "Praia da Rocha",
+        "description": "'Praia Da Rocha', Harbor area with city skyline behind",
+        "display_shape": "oval",
+        "image_front": "http://locations.pennycollector.com/images/machine_40fea727-17f8-4569-9063-601e04c24a1b.jpg",
+        "image_back": "",
+        "notes": "Machine 1 · Posição 3 · Orientação não indicada · PennyCollector location 344094 · Fotografia provisória partilhada da máquina",
+        "reference_url": "http://locations.pennycollector.com/Details.aspx?location=344094#machine-1-position-3",
+        "ordem": 3,
+        "hidden": false
+      },
+      "review_status": "pending"
+    },
+    {
+      "source": {
+        "machine_number": 2,
+        "machine_details": "Machine 2",
+        "position": 1,
+        "description": "'Praia DE Rocha, Algarve', Image of a shoreline/ Rear- 'Moneda Commemorativa Portugal, Edicao Limitada', Island with shield in it",
+        "orientation": "",
+        "machine_image_url": "http://locations.pennycollector.com/images/machine_17d40e58-762c-4e73-a01d-825ea6730035.jpg",
+        "availability": "active",
+        "location_id": "344094",
+        "image_scope": "machine",
+        "review_flags": [
+          "shared_machine_photo",
+          "missing_orientation"
+        ]
+      },
+      "souvenir": {
+        "name": "Praia DE Rocha, Algarve",
+        "continent": "Europa",
+        "country": "Portugal",
+        "city": "Portimão",
+        "type": "pressed",
+        "condition": "Não Tenho",
+        "location_name": "Praia da Rocha",
+        "description": "'Praia DE Rocha, Algarve', Image of a shoreline/ Rear- 'Moneda Commemorativa Portugal, Edicao Limitada', Island with shield in it",
+        "display_shape": "oval",
+        "image_front": "http://locations.pennycollector.com/images/machine_17d40e58-762c-4e73-a01d-825ea6730035.jpg",
+        "image_back": "",
+        "notes": "Machine 2 · Posição 1 · Orientação não indicada · PennyCollector location 344094 · Fotografia provisória partilhada da máquina",
+        "reference_url": "http://locations.pennycollector.com/Details.aspx?location=344094#machine-2-position-1",
+        "ordem": 4,
+        "hidden": false
+      },
+      "review_status": "pending"
+    },
+    {
+      "source": {
+        "machine_number": 2,
+        "machine_details": "Machine 2",
+        "position": 2,
+        "description": "'Praia DE Rocha, Algarve', Image of a shoreline/ Rear- 'Moneda Commemorativa Portugal, Edicao Limitada', Island with shield in it. Details updated A Tait www.scottishpennies.com",
+        "orientation": "",
+        "machine_image_url": "http://locations.pennycollector.com/images/machine_17d40e58-762c-4e73-a01d-825ea6730035.jpg",
+        "availability": "active",
+        "location_id": "344094",
+        "image_scope": "machine",
+        "review_flags": [
+          "shared_machine_photo",
+          "missing_orientation"
+        ]
+      },
+      "souvenir": {
+        "name": "Praia DE Rocha, Algarve",
+        "continent": "Europa",
+        "country": "Portugal",
+        "city": "Portimão",
+        "type": "pressed",
+        "condition": "Não Tenho",
+        "location_name": "Praia da Rocha",
+        "description": "'Praia DE Rocha, Algarve', Image of a shoreline/ Rear- 'Moneda Commemorativa Portugal, Edicao Limitada', Island with shield in it. Details updated A Tait www.scottishpennies.com",
+        "display_shape": "oval",
+        "image_front": "http://locations.pennycollector.com/images/machine_17d40e58-762c-4e73-a01d-825ea6730035.jpg",
+        "image_back": "",
+        "notes": "Machine 2 · Posição 2 · Orientação não indicada · PennyCollector location 344094 · Fotografia provisória partilhada da máquina",
+        "reference_url": "http://locations.pennycollector.com/Details.aspx?location=344094#machine-2-position-2",
+        "ordem": 5,
+        "hidden": false
+      },
+      "review_status": "pending"
+    }
+  ]
+}

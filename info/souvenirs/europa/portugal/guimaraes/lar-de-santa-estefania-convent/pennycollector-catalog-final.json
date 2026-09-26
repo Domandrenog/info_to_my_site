@@ -1,0 +1,253 @@
+{
+  "status": "ready_for_import",
+  "base44_updated": false,
+  "import_ready": true,
+  "source": {
+    "site": "PennyCollector",
+    "location_id": "427608",
+    "url": "http://locations.pennycollector.com/Details.aspx?location=427608",
+    "location_name": "Lar de Santa Estefânia (Convent)",
+    "address": "Largo Martins Sarmento 57",
+    "city": "Guimarães",
+    "zip_code": "",
+    "status": "Active",
+    "state": "",
+    "country": "Portugal",
+    "source_flagged_needs_update": false,
+    "retrieved_at": "2026-09-25T10:18:31+00:00",
+    "machine_count": 2,
+    "design_count": 6,
+    "machine_numbers": [
+      1,
+      2
+    ],
+    "active_machine_numbers": [
+      1,
+      2
+    ],
+    "retired_machine_numbers": [],
+    "active_design_count": 6,
+    "retired_design_count": 0,
+    "photo_policy": "A fotografia pertence à máquina e é partilhada pelos seus designs."
+  },
+  "items": [
+    {
+      "source": {
+        "machine_number": 1,
+        "machine_details": "Machine 1",
+        "position": 1,
+        "description": "'Telefffico Guimarães', Tram on wire",
+        "orientation": "",
+        "machine_image_url": "http://locations.pennycollector.com/images/machine_90dec15f-00cf-4874-a656-22b477b99b92.jpeg",
+        "availability": "active",
+        "location_id": "427608",
+        "image_scope": "machine",
+        "review_flags": [
+          "shared_machine_photo",
+          "missing_orientation"
+        ]
+      },
+      "souvenir": {
+        "name": "Telefffico Guimarães",
+        "continent": "Europa",
+        "country": "Portugal",
+        "city": "Guimarães",
+        "type": "pressed",
+        "condition": "Não Tenho",
+        "location_name": "Lar de Santa Estefânia (Convent)",
+        "description": "'Telefffico Guimarães', Tram on wire",
+        "display_shape": "oval",
+        "image_front": "http://locations.pennycollector.com/images/machine_90dec15f-00cf-4874-a656-22b477b99b92.jpeg",
+        "image_back": "",
+        "notes": "Machine 1 · Posição 1 · Orientação não indicada · PennyCollector location 427608 · Fotografia provisória partilhada da máquina",
+        "reference_url": "http://locations.pennycollector.com/Details.aspx?location=427608#machine-1-position-1",
+        "ordem": 1,
+        "hidden": false
+      },
+      "review_status": "approved"
+    },
+    {
+      "source": {
+        "machine_number": 1,
+        "machine_details": "Machine 1",
+        "position": 2,
+        "description": "'Cantrarinha Dos Namorados Guimarães'",
+        "orientation": "",
+        "machine_image_url": "http://locations.pennycollector.com/images/machine_90dec15f-00cf-4874-a656-22b477b99b92.jpeg",
+        "availability": "active",
+        "location_id": "427608",
+        "image_scope": "machine",
+        "review_flags": [
+          "shared_machine_photo",
+          "missing_orientation"
+        ]
+      },
+      "souvenir": {
+        "name": "Cantrarinha Dos Namorados Guimarães",
+        "continent": "Europa",
+        "country": "Portugal",
+        "city": "Guimarães",
+        "type": "pressed",
+        "condition": "Não Tenho",
+        "location_name": "Lar de Santa Estefânia (Convent)",
+        "description": "'Cantrarinha Dos Namorados Guimarães'",
+        "display_shape": "oval",
+        "image_front": "http://locations.pennycollector.com/images/machine_90dec15f-00cf-4874-a656-22b477b99b92.jpeg",
+        "image_back": "",
+        "notes": "Machine 1 · Posição 2 · Orientação não indicada · PennyCollector location 427608 · Fotografia provisória partilhada da máquina",
+        "reference_url": "http://locations.pennycollector.com/Details.aspx?location=427608#machine-1-position-2",
+        "ordem": 2,
+        "hidden": false
+      },
+      "review_status": "approved"
+    },
+    {
+      "source": {
+        "machine_number": 1,
+        "machine_details": "Machine 1",
+        "position": 3,
+        "description": "'Guimarães' Castle",
+        "orientation": "",
+        "machine_image_url": "http://locations.pennycollector.com/images/machine_90dec15f-00cf-4874-a656-22b477b99b92.jpeg",
+        "availability": "active",
+        "location_id": "427608",
+        "image_scope": "machine",
+        "review_flags": [
+          "shared_machine_photo",
+          "missing_orientation"
+        ]
+      },
+      "souvenir": {
+        "name": "Guimarães",
+        "continent": "Europa",
+        "country": "Portugal",
+        "city": "Guimarães",
+        "type": "pressed",
+        "condition": "Não Tenho",
+        "location_name": "Lar de Santa Estefânia (Convent)",
+        "description": "'Guimarães' Castle",
+        "display_shape": "oval",
+        "image_front": "http://locations.pennycollector.com/images/machine_90dec15f-00cf-4874-a656-22b477b99b92.jpeg",
+        "image_back": "",
+        "notes": "Machine 1 · Posição 3 · Orientação não indicada · PennyCollector location 427608 · Fotografia provisória partilhada da máquina",
+        "reference_url": "http://locations.pennycollector.com/Details.aspx?location=427608#machine-1-position-3",
+        "ordem": 3,
+        "hidden": false
+      },
+      "review_status": "approved"
+    },
+    {
+      "source": {
+        "machine_number": 2,
+        "machine_details": "Machine 2",
+        "position": 1,
+        "description": "'Galo De Barcelos Portugal', Bird",
+        "orientation": "",
+        "machine_image_url": "http://locations.pennycollector.com/images/machine_c4d4260e-2f09-41ca-95f3-6fc9057ff315.jpg",
+        "availability": "active",
+        "location_id": "427608",
+        "image_scope": "machine",
+        "review_flags": [
+          "shared_machine_photo",
+          "missing_orientation"
+        ]
+      },
+      "souvenir": {
+        "name": "Galo De Barcelos Portugal",
+        "continent": "Europa",
+        "country": "Portugal",
+        "city": "Guimarães",
+        "type": "pressed",
+        "condition": "Não Tenho",
+        "location_name": "Lar de Santa Estefânia (Convent)",
+        "description": "'Galo De Barcelos Portugal', Bird",
+        "display_shape": "oval",
+        "image_front": "http://locations.pennycollector.com/images/machine_c4d4260e-2f09-41ca-95f3-6fc9057ff315.jpg",
+        "image_back": "",
+        "notes": "Machine 2 · Posição 1 · Orientação não indicada · PennyCollector location 427608 · Fotografia provisória partilhada da máquina",
+        "reference_url": "http://locations.pennycollector.com/Details.aspx?location=427608#machine-2-position-1",
+        "ordem": 4,
+        "hidden": false
+      },
+      "review_status": "approved"
+    },
+    {
+      "source": {
+        "machine_number": 2,
+        "machine_details": "Machine 2",
+        "position": 2,
+        "description": "'Don Afonso Henriques Guimarães', Roman soldier",
+        "orientation": "",
+        "machine_image_url": "http://locations.pennycollector.com/images/machine_c4d4260e-2f09-41ca-95f3-6fc9057ff315.jpg",
+        "availability": "active",
+        "location_id": "427608",
+        "image_scope": "machine",
+        "review_flags": [
+          "shared_machine_photo",
+          "missing_orientation"
+        ]
+      },
+      "souvenir": {
+        "name": "Don Afonso Henriques Guimarães",
+        "continent": "Europa",
+        "country": "Portugal",
+        "city": "Guimarães",
+        "type": "pressed",
+        "condition": "Não Tenho",
+        "location_name": "Lar de Santa Estefânia (Convent)",
+        "description": "'Don Afonso Henriques Guimarães', Roman soldier",
+        "display_shape": "oval",
+        "image_front": "http://locations.pennycollector.com/images/machine_c4d4260e-2f09-41ca-95f3-6fc9057ff315.jpg",
+        "image_back": "",
+        "notes": "Machine 2 · Posição 2 · Orientação não indicada · PennyCollector location 427608 · Fotografia provisória partilhada da máquina",
+        "reference_url": "http://locations.pennycollector.com/Details.aspx?location=427608#machine-2-position-2",
+        "ordem": 5,
+        "hidden": false
+      },
+      "review_status": "approved"
+    },
+    {
+      "source": {
+        "machine_number": 2,
+        "machine_details": "Machine 2",
+        "position": 3,
+        "description": "Aqui Nascue Portugal', Castle",
+        "orientation": "",
+        "machine_image_url": "http://locations.pennycollector.com/images/machine_c4d4260e-2f09-41ca-95f3-6fc9057ff315.jpg",
+        "availability": "active",
+        "location_id": "427608",
+        "image_scope": "machine",
+        "review_flags": [
+          "shared_machine_photo",
+          "missing_orientation"
+        ]
+      },
+      "souvenir": {
+        "name": "Aqui Nascue Portugal', Castle",
+        "continent": "Europa",
+        "country": "Portugal",
+        "city": "Guimarães",
+        "type": "pressed",
+        "condition": "Não Tenho",
+        "location_name": "Lar de Santa Estefânia (Convent)",
+        "description": "Aqui Nascue Portugal', Castle",
+        "display_shape": "oval",
+        "image_front": "http://locations.pennycollector.com/images/machine_c4d4260e-2f09-41ca-95f3-6fc9057ff315.jpg",
+        "image_back": "",
+        "notes": "Machine 2 · Posição 3 · Orientação não indicada · PennyCollector location 427608 · Fotografia provisória partilhada da máquina",
+        "reference_url": "http://locations.pennycollector.com/Details.aspx?location=427608#machine-2-position-3",
+        "ordem": 6,
+        "hidden": false
+      },
+      "review_status": "approved"
+    }
+  ],
+  "review": {
+    "approved": 6,
+    "skipped": 0,
+    "pending": 0,
+    "completed": true,
+    "updated_at": "2026-09-25T10:57:20+00:00",
+    "shared_machine_photos_accepted_as_temporary": true
+  }
+}

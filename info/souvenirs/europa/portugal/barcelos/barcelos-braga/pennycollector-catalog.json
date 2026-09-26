@@ -1,0 +1,138 @@
+{
+  "status": "pending_review",
+  "base44_updated": false,
+  "import_ready": false,
+  "source": {
+    "site": "PennyCollector",
+    "location_id": "436717",
+    "url": "http://locations.pennycollector.com/Details.aspx?location=436717",
+    "location_name": "Barcelos, Braga",
+    "address": "Largo da Porta Nova 19, 4750-329 Barcelos, Portogallo",
+    "city": "Barcelos",
+    "zip_code": "4750-329",
+    "status": "Active",
+    "state": "",
+    "country": "Portugal",
+    "source_flagged_needs_update": false,
+    "retrieved_at": "2026-09-25T10:17:39+00:00",
+    "machine_count": 1,
+    "design_count": 3,
+    "machine_numbers": [
+      1
+    ],
+    "active_machine_numbers": [
+      1
+    ],
+    "retired_machine_numbers": [],
+    "active_design_count": 3,
+    "retired_design_count": 0,
+    "photo_policy": "A fotografia pertence à máquina e é partilhada pelos seus designs."
+  },
+  "items": [
+    {
+      "source": {
+        "machine_number": 1,
+        "machine_details": "Machine 1",
+        "position": 1,
+        "description": "The Rooster",
+        "orientation": "",
+        "machine_image_url": "http://locations.pennycollector.com/images/clear.gif",
+        "availability": "active",
+        "location_id": "436717",
+        "image_scope": "machine",
+        "review_flags": [
+          "shared_machine_photo",
+          "missing_orientation"
+        ]
+      },
+      "souvenir": {
+        "name": "The Rooster",
+        "continent": "Europa",
+        "country": "Portugal",
+        "city": "Barcelos",
+        "type": "pressed",
+        "condition": "Não Tenho",
+        "location_name": "Barcelos, Braga",
+        "description": "The Rooster",
+        "display_shape": "oval",
+        "image_front": "http://locations.pennycollector.com/images/clear.gif",
+        "image_back": "",
+        "notes": "Machine 1 · Posição 1 · Orientação não indicada · PennyCollector location 436717 · Fotografia provisória partilhada da máquina",
+        "reference_url": "http://locations.pennycollector.com/Details.aspx?location=436717#machine-1-position-1",
+        "ordem": 1,
+        "hidden": false
+      },
+      "review_status": "pending"
+    },
+    {
+      "source": {
+        "machine_number": 1,
+        "machine_details": "Machine 1",
+        "position": 2,
+        "description": "The tower",
+        "orientation": "",
+        "machine_image_url": "http://locations.pennycollector.com/images/clear.gif",
+        "availability": "active",
+        "location_id": "436717",
+        "image_scope": "machine",
+        "review_flags": [
+          "shared_machine_photo",
+          "missing_orientation"
+        ]
+      },
+      "souvenir": {
+        "name": "The tower",
+        "continent": "Europa",
+        "country": "Portugal",
+        "city": "Barcelos",
+        "type": "pressed",
+        "condition": "Não Tenho",
+        "location_name": "Barcelos, Braga",
+        "description": "The tower",
+        "display_shape": "oval",
+        "image_front": "http://locations.pennycollector.com/images/clear.gif",
+        "image_back": "",
+        "notes": "Machine 1 · Posição 2 · Orientação não indicada · PennyCollector location 436717 · Fotografia provisória partilhada da máquina",
+        "reference_url": "http://locations.pennycollector.com/Details.aspx?location=436717#machine-1-position-2",
+        "ordem": 2,
+        "hidden": false
+      },
+      "review_status": "pending"
+    },
+    {
+      "source": {
+        "machine_number": 1,
+        "machine_details": "Machine 1",
+        "position": 3,
+        "description": "The Medieval Bridge design",
+        "orientation": "",
+        "machine_image_url": "http://locations.pennycollector.com/images/clear.gif",
+        "availability": "active",
+        "location_id": "436717",
+        "image_scope": "machine",
+        "review_flags": [
+          "shared_machine_photo",
+          "missing_orientation"
+        ]
+      },
+      "souvenir": {
+        "name": "The Medieval Bridge design",
+        "continent": "Europa",
+        "country": "Portugal",
+        "city": "Barcelos",
+        "type": "pressed",
+        "condition": "Não Tenho",
+        "location_name": "Barcelos, Braga",
+        "description": "The Medieval Bridge design",
+        "display_shape": "oval",
+        "image_front": "http://locations.pennycollector.com/images/clear.gif",
+        "image_back": "",
+        "notes": "Machine 1 · Posição 3 · Orientação não indicada · PennyCollector location 436717 · Fotografia provisória partilhada da máquina",
+        "reference_url": "http://locations.pennycollector.com/Details.aspx?location=436717#machine-1-position-3",
+        "ordem": 3,
+        "hidden": false
+      },
+      "review_status": "pending"
+    }
+  ]
+}

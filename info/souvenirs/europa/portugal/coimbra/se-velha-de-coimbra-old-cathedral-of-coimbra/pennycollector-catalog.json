@@ -1,0 +1,67 @@
+{
+  "status": "pending_review",
+  "base44_updated": false,
+  "import_ready": false,
+  "source": {
+    "site": "PennyCollector",
+    "location_id": "287464",
+    "url": "http://locations.pennycollector.com/Details.aspx?location=287464",
+    "location_name": "Sé Velha De Coimbra (Old Cathedral of Coimbra)",
+    "address": "Largo da Sé Velha",
+    "city": "Coimbra",
+    "zip_code": "3000-383",
+    "status": "Active",
+    "state": "",
+    "country": "Portugal",
+    "source_flagged_needs_update": false,
+    "retrieved_at": "2026-09-25T10:17:59+00:00",
+    "machine_count": 1,
+    "design_count": 1,
+    "machine_numbers": [
+      2
+    ],
+    "active_machine_numbers": [
+      2
+    ],
+    "retired_machine_numbers": [],
+    "active_design_count": 1,
+    "retired_design_count": 0,
+    "photo_policy": "A fotografia pertence à máquina e é partilhada pelos seus designs."
+  },
+  "items": [
+    {
+      "source": {
+        "machine_number": 2,
+        "machine_details": "Machine 2 - In the hallway to the cloister",
+        "position": 1,
+        "description": "Front facade of the old Cathedral building with 'Sé Velha Coimbra'",
+        "orientation": "H",
+        "machine_image_url": "http://locations.pennycollector.com/images/machine_c5153f93-3398-469f-9470-0354cc4b2d7f.jpg",
+        "availability": "active",
+        "location_id": "287464",
+        "image_scope": "machine",
+        "review_flags": [
+          "shared_machine_photo"
+        ]
+      },
+      "souvenir": {
+        "name": "Front facade of the old Cathedral building with 'Sé…",
+        "continent": "Europa",
+        "country": "Portugal",
+        "city": "Coimbra",
+        "type": "pressed",
+        "condition": "Não Tenho",
+        "location_name": "Sé Velha De Coimbra (Old Cathedral of Coimbra)",
+        "description": "Front facade of the old Cathedral building with 'Sé Velha Coimbra'",
+        "display_shape": "oval",
+        "image_front": "http://locations.pennycollector.com/images/machine_c5153f93-3398-469f-9470-0354cc4b2d7f.jpg",
+        "image_back": "",
+        "notes": "Machine 2 · Posição 1 · Orientação horizontal · PennyCollector location 287464 · Fotografia provisória partilhada da máquina",
+        "reference_url": "http://locations.pennycollector.com/Details.aspx?location=287464#machine-2-position-1",
+        "ordem": 1,
+        "hidden": false
+      },
+      "review_status": "pending"
+    }
+  ]
+}

@@ -1,0 +1,173 @@
+{
+  "status": "pending_review",
+  "base44_updated": false,
+  "import_ready": false,
+  "source": {
+    "site": "PennyCollector",
+    "location_id": "394499",
+    "url": "http://locations.pennycollector.com/Details.aspx?location=394499",
+    "location_name": "Funchal Cathedral",
+    "address": "Rua do Aljube",
+    "city": "Funchal (Madeira Island)",
+    "zip_code": "9000-067",
+    "status": "Active",
+    "state": "",
+    "country": "Portugal",
+    "source_flagged_needs_update": false,
+    "retrieved_at": "2026-09-25T10:18:22+00:00",
+    "machine_count": 1,
+    "design_count": 4,
+    "machine_numbers": [
+      1
+    ],
+    "active_machine_numbers": [
+      1
+    ],
+    "retired_machine_numbers": [],
+    "active_design_count": 4,
+    "retired_design_count": 0,
+    "photo_policy": "A fotografia pertence à máquina e é partilhada pelos seus designs."
+  },
+  "items": [
+    {
+      "source": {
+        "machine_number": 1,
+        "machine_details": "Machine 1",
+        "position": 1,
+        "description": "Cathedral",
+        "orientation": "",
+        "machine_image_url": "http://locations.pennycollector.com/images/machine_2cde75cb-1e2a-49d1-a7b2-2ea781ebdd7f.jpg",
+        "availability": "active",
+        "location_id": "394499",
+        "image_scope": "machine",
+        "review_flags": [
+          "shared_machine_photo",
+          "missing_orientation"
+        ]
+      },
+      "souvenir": {
+        "name": "Cathedral",
+        "continent": "Europa",
+        "country": "Portugal",
+        "city": "Funchal (Madeira Island)",
+        "type": "pressed",
+        "condition": "Não Tenho",
+        "location_name": "Funchal Cathedral",
+        "description": "Cathedral",
+        "display_shape": "oval",
+        "image_front": "http://locations.pennycollector.com/images/machine_2cde75cb-1e2a-49d1-a7b2-2ea781ebdd7f.jpg",
+        "image_back": "",
+        "notes": "Machine 1 · Posição 1 · Orientação não indicada · PennyCollector location 394499 · Fotografia provisória partilhada da máquina",
+        "reference_url": "http://locations.pennycollector.com/Details.aspx?location=394499#machine-1-position-1",
+        "ordem": 1,
+        "hidden": false
+      },
+      "review_status": "pending"
+    },
+    {
+      "source": {
+        "machine_number": 1,
+        "machine_details": "Machine 1",
+        "position": 2,
+        "description": "Funchal",
+        "orientation": "",
+        "machine_image_url": "http://locations.pennycollector.com/images/machine_2cde75cb-1e2a-49d1-a7b2-2ea781ebdd7f.jpg",
+        "availability": "active",
+        "location_id": "394499",
+        "image_scope": "machine",
+        "review_flags": [
+          "shared_machine_photo",
+          "missing_orientation"
+        ]
+      },
+      "souvenir": {
+        "name": "Funchal",
+        "continent": "Europa",
+        "country": "Portugal",
+        "city": "Funchal (Madeira Island)",
+        "type": "pressed",
+        "condition": "Não Tenho",
+        "location_name": "Funchal Cathedral",
+        "description": "Funchal",
+        "display_shape": "oval",
+        "image_front": "http://locations.pennycollector.com/images/machine_2cde75cb-1e2a-49d1-a7b2-2ea781ebdd7f.jpg",
+        "image_back": "",
+        "notes": "Machine 1 · Posição 2 · Orientação não indicada · PennyCollector location 394499 · Fotografia provisória partilhada da máquina",
+        "reference_url": "http://locations.pennycollector.com/Details.aspx?location=394499#machine-1-position-2",
+        "ordem": 2,
+        "hidden": false
+      },
+      "review_status": "pending"
+    },
+    {
+      "source": {
+        "machine_number": 1,
+        "machine_details": "Machine 1",
+        "position": 3,
+        "description": "Bailinho da Madeira (local folk song)",
+        "orientation": "",
+        "machine_image_url": "http://locations.pennycollector.com/images/machine_2cde75cb-1e2a-49d1-a7b2-2ea781ebdd7f.jpg",
+        "availability": "active",
+        "location_id": "394499",
+        "image_scope": "machine",
+        "review_flags": [
+          "shared_machine_photo",
+          "missing_orientation"
+        ]
+      },
+      "souvenir": {
+        "name": "Bailinho da Madeira (local folk song)",
+        "continent": "Europa",
+        "country": "Portugal",
+        "city": "Funchal (Madeira Island)",
+        "type": "pressed",
+        "condition": "Não Tenho",
+        "location_name": "Funchal Cathedral",
+        "description": "Bailinho da Madeira (local folk song)",
+        "display_shape": "oval",
+        "image_front": "http://locations.pennycollector.com/images/machine_2cde75cb-1e2a-49d1-a7b2-2ea781ebdd7f.jpg",
+        "image_back": "",
+        "notes": "Machine 1 · Posição 3 · Orientação não indicada · PennyCollector location 394499 · Fotografia provisória partilhada da máquina",
+        "reference_url": "http://locations.pennycollector.com/Details.aspx?location=394499#machine-1-position-3",
+        "ordem": 3,
+        "hidden": false
+      },
+      "review_status": "pending"
+    },
+    {
+      "source": {
+        "machine_number": 1,
+        "machine_details": "Machine 1",
+        "position": 4,
+        "description": "Madeira Island",
+        "orientation": "",
+        "machine_image_url": "http://locations.pennycollector.com/images/machine_2cde75cb-1e2a-49d1-a7b2-2ea781ebdd7f.jpg",
+        "availability": "active",
+        "location_id": "394499",
+        "image_scope": "machine",
+        "review_flags": [
+          "shared_machine_photo",
+          "missing_orientation"
+        ]
+      },
+      "souvenir": {
+        "name": "Madeira Island",
+        "continent": "Europa",
+        "country": "Portugal",
+        "city": "Funchal (Madeira Island)",
+        "type": "pressed",
+        "condition": "Não Tenho",
+        "location_name": "Funchal Cathedral",
+        "description": "Madeira Island",
+        "display_shape": "oval",
+        "image_front": "http://locations.pennycollector.com/images/machine_2cde75cb-1e2a-49d1-a7b2-2ea781ebdd7f.jpg",
+        "image_back": "",
+        "notes": "Machine 1 · Posição 4 · Orientação não indicada · PennyCollector location 394499 · Fotografia provisória partilhada da máquina",
+        "reference_url": "http://locations.pennycollector.com/Details.aspx?location=394499#machine-1-position-4",
+        "ordem": 4,
+        "hidden": false
+      },
+      "review_status": "pending"
+    }
+  ]
+}
