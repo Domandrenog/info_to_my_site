@@ -14,6 +14,7 @@ from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any, Callable
 
+from scripts.catalog_paths import country_directory, country_slug
 from scripts.import_base44_coins import (
     DEFAULT_BASE44_URL,
     DEFAULT_MAX_RETRIES,
@@ -38,6 +39,12 @@ DEFAULT_ENTITIES = (
     "User",
 )
 COLLECTIBLE_ENTITIES = ("Coin", "SpecialCoin", "CountryNote", "Souvenir")
+COUNTRY_VIEW_FILENAMES = {
+    "Coin": "normal.json",
+    "SpecialCoin": "collection.json",
+    "CountryNote": "notes.json",
+    "Souvenir": "souvenir.json",
+}
 ENTITY_NAME_RE = re.compile(r"^[A-Za-z][A-Za-z0-9_]*$")
 
 
@@ -274,6 +281,93 @@ def build_complete_item_views(
     return views, summary
 
 
+def build_country_exports(
+    records_by_entity: dict[str, list[dict[str, Any]]],
+    complete_views: dict[str, list[dict[str, Any]]],
+) -> list[dict[str, Any]]:
+    country_locations: dict[str, tuple[str, str, Path]] = {}
+    grouped: dict[tuple[Path, str], dict[str, Any]] = {}
+
+    for entity, filename in COUNTRY_VIEW_FILENAMES.items():
+        for entry in complete_views.get(entity, []):
+            record = entry["record"]
+            country = str(record.get("country") or "").strip()
+            continent = str(record.get("continent") or "").strip()
+            if not country or not continent:
+                raise RuntimeError(
+                    f"{entity} {record.get('id')}: país ou continente em falta."
+                )
+            relative_directory = country_directory(
+                country,
+                continent,
+                root=Path(),
+            )
+            country_key = country_slug(country)
+            previous_location = country_locations.get(country_key)
+            location = (continent, country, relative_directory)
+            if (
+                previous_location is not None
+                and previous_location[2] != relative_directory
+            ):
+                raise RuntimeError(
+                    f"O país {country} aparece em mais de um continente no backup."
+                )
+            country_locations[country_key] = previous_location or location
+            group = grouped.setdefault(
+                (relative_directory, filename),
+                {
+                    "continent": continent,
+                    "country": country,
+                    "kind": filename.removesuffix(".json"),
+                    "file": relative_directory / filename,
+                    "records": [],
+                },
+            )
+            group["records"].append(entry)
+
+    for settings in records_by_entity.get("CountrySettings", []):
+        country = str(settings.get("country") or "").strip()
+        if not country:
+            raise RuntimeError(
+                f"CountrySettings {settings.get('id')}: país em falta."
+            )
+        if country == "__global__":
+            relative_directory = Path("global")
+            group = grouped.setdefault(
+                (relative_directory, "settings.json"),
+                {
+                    "continent": "global",
+                    "country": country,
+                    "kind": "settings",
+                    "global": True,
+                    "file": relative_directory / "settings.json",
+                    "records": [],
+                },
+            )
+            group["records"].append(settings)
+            continue
+        location = country_locations.get(country_slug(country))
+        if location is None:
+            relative_directory = country_directory(country, root=Path())
+            continent = relative_directory.parent.name
+            location = (continent, country, relative_directory)
+            country_locations[country_slug(country)] = location
+        continent, canonical_country, relative_directory = location
+        group = grouped.setdefault(
+            (relative_directory, "settings.json"),
+            {
+                "continent": continent,
+                "country": canonical_country,
+                "kind": "settings",
+                "file": relative_directory / "settings.json",
+                "records": [],
+            },
+        )
+        group["records"].append(settings)
+
+    return sorted(grouped.values(), key=lambda entry: entry["file"].as_posix())
+
+
 def load_previous_entity_records(
     previous_backup: Path,
     entity: str,
@@ -479,6 +573,37 @@ def create_backup(
                 }
             )
 
+        country_exports = build_country_exports(records_by_entity, complete_views)
+        manifest_country_exports: list[dict[str, Any]] = []
+        for export in country_exports:
+            relative_path = export["file"]
+            target = temporary / relative_path
+            target.parent.mkdir(parents=True, exist_ok=True)
+            directory = target.parent
+            while directory != temporary:
+                directory.chmod(0o700)
+                directory = directory.parent
+            content = json_bytes(export["records"])
+            write_private_file(target, content)
+            checksum = sha256_bytes(content)
+            verified_file(
+                target,
+                expected_sha256=checksum,
+                expected_count=len(export["records"]),
+            )
+            manifest_country_exports.append(
+                {
+                    "continent": export["continent"],
+                    "country": export["country"],
+                    "kind": export["kind"],
+                    "global": bool(export.get("global")),
+                    "file": relative_path.as_posix(),
+                    "records": len(export["records"]),
+                    "bytes": len(content),
+                    "sha256": checksum,
+                }
+            )
+
         change_report = build_change_report(
             previous_backup,
             records_by_entity,
@@ -508,6 +633,7 @@ def create_backup(
                 "binary_assets_downloaded": False,
                 "all_api_fields_preserved": True,
                 "complete_item_views": True,
+                "country_tree": "<continente>/<pais>/<tipo>.json",
                 "change_tracking_from_previous_backup": True,
                 "note": (
                     "Todos os campos devolvidos pela API são preservados. Os URLs das "
@@ -517,9 +643,17 @@ def create_backup(
             "totals": {
                 "entities": len(manifest_entities),
                 "records": total_records,
+                "countries": len(
+                    {
+                        Path(entry["file"]).parent
+                        for entry in manifest_country_exports
+                        if not entry["global"]
+                    }
+                ),
             },
             "entities": manifest_entities,
             "complete_item_views": manifest_views,
+            "country_exports": manifest_country_exports,
             "relationships": relationship_summary,
             "changes_since_previous": {
                 "file": change_report_relative_path.as_posix(),
@@ -539,6 +673,10 @@ def create_backup(
         ]
         checksum_lines.extend(
             f"{entry['sha256']}  {entry['file']}" for entry in manifest_views
+        )
+        checksum_lines.extend(
+            f"{entry['sha256']}  {entry['file']}"
+            for entry in manifest_country_exports
         )
         checksum_lines.append(
             f"{change_report_checksum}  {change_report_relative_path.as_posix()}"
@@ -562,6 +700,7 @@ def create_backup(
     output_fn(f"Entidades: {len(manifest_entities)}")
     output_fn(f"Registos: {total_records}")
     output_fn(f"Itens completos: {relationship_summary['items']}")
+    output_fn(f"Países organizados: {manifest['totals']['countries']}")
     output_fn(
         "Variantes associadas: "
         f"{relationship_summary['coin_variants']['linked']}/"

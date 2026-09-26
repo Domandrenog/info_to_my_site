@@ -112,10 +112,59 @@ class Base44BackupTests(unittest.TestCase):
         self.assertEqual(changes["modified"][0]["previous"]["url_ucoin"], "old")
         self.assertEqual(changes["modified"][0]["current"]["url_ucoin"], "new")
 
+    def test_country_exports_use_canonical_continent_country_and_type_paths(self) -> None:
+        records = {
+            "Coin": [
+                {"id": "c1", "continent": "Europa", "country": "Croácia"},
+                {"id": "c2", "continent": "Europa", "country": "Croácia"},
+            ],
+            "CountrySettings": [
+                {"id": "cs1", "country": "Croácia"},
+                {"id": "global", "country": "__global__"},
+            ],
+        }
+        views, _summary = backup.build_complete_item_views(records)
+        exports = backup.build_country_exports(records, views)
+        by_path = {entry["file"].as_posix(): entry for entry in exports}
+
+        normal = by_path["europa/croatia/normal.json"]
+        self.assertEqual(
+            [entry["record"]["id"] for entry in normal["records"]],
+            ["c1", "c2"],
+        )
+        self.assertEqual(
+            by_path["europa/croatia/settings.json"]["records"],
+            [{"id": "cs1", "country": "Croácia"}],
+        )
+        self.assertEqual(
+            by_path["global/settings.json"]["records"],
+            [{"id": "global", "country": "__global__"}],
+        )
+
     def test_complete_backup_writes_manifest_checksums_and_private_files(self) -> None:
         records = {
-            "Coin": [{"id": "2", "name": "Second"}, {"id": "1", "name": "First"}],
-            "Souvenir": [{"id": "s1", "name": "Memory"}],
+            "Coin": [
+                {
+                    "id": "2",
+                    "name": "Second",
+                    "continent": "Europa",
+                    "country": "Portugal",
+                },
+                {
+                    "id": "1",
+                    "name": "First",
+                    "continent": "Europa",
+                    "country": "Portugal",
+                },
+            ],
+            "Souvenir": [
+                {
+                    "id": "s1",
+                    "name": "Memory",
+                    "continent": "América",
+                    "country": "EUA",
+                }
+            ],
         }
         clients = {entity: FakeClient(values) for entity, values in records.items()}
         created_at = datetime(2026, 9, 26, 10, 30, tzinfo=timezone.utc)
@@ -134,7 +183,10 @@ class Base44BackupTests(unittest.TestCase):
 
             self.assertEqual(destination.name, "base44-20260926T103000Z")
             self.assertEqual(manifest["status"], "complete")
-            self.assertEqual(manifest["totals"], {"entities": 2, "records": 3})
+            self.assertEqual(
+                manifest["totals"],
+                {"entities": 2, "records": 3, "countries": 2},
+            )
             self.assertFalse(manifest["scope"]["binary_assets_downloaded"])
             self.assertTrue(manifest["scope"]["all_api_fields_preserved"])
             self.assertEqual(manifest["relationships"]["items"], 3)
@@ -148,6 +200,15 @@ class Base44BackupTests(unittest.TestCase):
             self.assertIn(f"{expected_checksum}  entities/Coin.json", checksum_lines)
             self.assertTrue((destination / "views" / "Coin-complete.json").exists())
             self.assertTrue((destination / "changes-since-previous.json").exists())
+            country_coin_path = destination / "europa" / "portugal" / "normal.json"
+            self.assertTrue(country_coin_path.exists())
+            self.assertEqual(
+                len(json.loads(country_coin_path.read_text(encoding="utf-8"))),
+                2,
+            )
+            self.assertTrue(
+                (destination / "america" / "eua" / "souvenir.json").exists()
+            )
             self.assertEqual(clients["Coin"].calls[-1], ({}, 1, 2))
 
 

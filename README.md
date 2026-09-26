@@ -16,6 +16,10 @@ python3 backup.py
 
 Cada execução cria `backups/base44-<data UTC>/`, com:
 
+- `<continente>/<pais>/normal.json`: todas as moedas normais do país num único
+  JSON, cada uma com o registo completo, variantes e descobertas; quando
+  aplicável, a mesma pasta inclui `collection.json`, `notes.json`,
+  `souvenir.json` e `settings.json`;
 - `entities/`: cópia bruta integral de todos os campos devolvidos pela API;
 - `views/*-complete.json`: cada moeda, nota e souvenir com o respetivo estado
   (`Tenho`, `Não Tenho`, etc.), links, fotografias, aquisição, variantes e todas
