@@ -1,0 +1,214 @@
+{
+  "status": "ready_for_import",
+  "base44_updated": false,
+  "import_ready": true,
+  "source": {
+    "site": "PennyCollector",
+    "location_id": "414903",
+    "url": "http://locations.pennycollector.com/Details.aspx?location=414903",
+    "location_name": "Casa Miradouro Regional Gifts",
+    "address": "Largo de Nossa Senhora da Nazaré 14",
+    "city": "Nazaré",
+    "zip_code": "2450-065",
+    "status": "Active",
+    "state": "",
+    "country": "Portugal",
+    "source_flagged_needs_update": false,
+    "retrieved_at": "2026-09-26T22:36:33+00:00",
+    "machine_count": 2,
+    "design_count": 5,
+    "machine_numbers": [
+      1,
+      2
+    ],
+    "active_machine_numbers": [
+      1,
+      2
+    ],
+    "retired_machine_numbers": [],
+    "active_design_count": 5,
+    "retired_design_count": 0,
+    "photo_policy": "A fotografia pertence à máquina e é partilhada pelos seus designs."
+  },
+  "items": [
+    {
+      "source": {
+        "machine_number": 1,
+        "machine_details": "Machine 1 - Outside in front of store",
+        "position": 1,
+        "description": "View of Forte de São Miguel Arcanjo and the Atlantic ocean with 'Mirador de Nazaré'",
+        "orientation": "H",
+        "machine_image_url": "http://locations.pennycollector.com/images/machine_c3bebec0-60d5-45e0-8852-fedad8365c4b.jpg",
+        "availability": "active",
+        "location_id": "414903",
+        "image_scope": "machine",
+        "review_flags": [
+          "shared_machine_photo"
+        ]
+      },
+      "souvenir": {
+        "name": "View of Forte de São Miguel Arcanjo and the Atlantic…",
+        "continent": "Europa",
+        "country": "Portugal",
+        "city": "Nazaré",
+        "type": "pressed",
+        "condition": "Não Tenho",
+        "location_name": "Casa Miradouro Regional Gifts",
+        "description": "View of Forte de São Miguel Arcanjo and the Atlantic ocean with 'Mirador de Nazaré'",
+        "display_shape": "oval",
+        "image_front": "http://locations.pennycollector.com/images/machine_c3bebec0-60d5-45e0-8852-fedad8365c4b.jpg",
+        "image_back": "",
+        "notes": "Machine 1 · Posição 1 · Orientação horizontal · PennyCollector location 414903 · Fotografia provisória partilhada da máquina",
+        "reference_url": "http://locations.pennycollector.com/Details.aspx?location=414903#machine-1-position-1",
+        "ordem": 1,
+        "hidden": false
+      },
+      "review_status": "approved"
+    },
+    {
+      "source": {
+        "machine_number": 1,
+        "machine_details": "Machine 1 - Outside in front of store",
+        "position": 2,
+        "description": "Side and front view of the Ascensor da Nazaré with 'Funicular",
+        "orientation": "V",
+        "machine_image_url": "http://locations.pennycollector.com/images/machine_c3bebec0-60d5-45e0-8852-fedad8365c4b.jpg",
+        "availability": "active",
+        "location_id": "414903",
+        "image_scope": "machine",
+        "review_flags": [
+          "shared_machine_photo"
+        ]
+      },
+      "souvenir": {
+        "name": "Side and front view of the Ascensor da Nazaré with…",
+        "continent": "Europa",
+        "country": "Portugal",
+        "city": "Nazaré",
+        "type": "pressed",
+        "condition": "Não Tenho",
+        "location_name": "Casa Miradouro Regional Gifts",
+        "description": "Side and front view of the Ascensor da Nazaré with 'Funicular",
+        "display_shape": "oval",
+        "image_front": "http://locations.pennycollector.com/images/machine_c3bebec0-60d5-45e0-8852-fedad8365c4b.jpg",
+        "image_back": "",
+        "notes": "Machine 1 · Posição 2 · Orientação vertical · PennyCollector location 414903 · Fotografia provisória partilhada da máquina",
+        "reference_url": "http://locations.pennycollector.com/Details.aspx?location=414903#machine-1-position-2",
+        "ordem": 2,
+        "hidden": false
+      },
+      "review_status": "approved"
+    },
+    {
+      "source": {
+        "machine_number": 1,
+        "machine_details": "Machine 1 - Outside in front of store",
+        "position": 3,
+        "description": "Woman standing next to a Fisherman holding a rope with 'Casal Tipico de Nazaré'",
+        "orientation": "V",
+        "machine_image_url": "http://locations.pennycollector.com/images/machine_c3bebec0-60d5-45e0-8852-fedad8365c4b.jpg",
+        "availability": "active",
+        "location_id": "414903",
+        "image_scope": "machine",
+        "review_flags": [
+          "shared_machine_photo"
+        ]
+      },
+      "souvenir": {
+        "name": "Woman standing next to a Fisherman holding a rope with…",
+        "continent": "Europa",
+        "country": "Portugal",
+        "city": "Nazaré",
+        "type": "pressed",
+        "condition": "Não Tenho",
+        "location_name": "Casa Miradouro Regional Gifts",
+        "description": "Woman standing next to a Fisherman holding a rope with 'Casal Tipico de Nazaré'",
+        "display_shape": "oval",
+        "image_front": "http://locations.pennycollector.com/images/machine_c3bebec0-60d5-45e0-8852-fedad8365c4b.jpg",
+        "image_back": "",
+        "notes": "Machine 1 · Posição 3 · Orientação vertical · PennyCollector location 414903 · Fotografia provisória partilhada da máquina",
+        "reference_url": "http://locations.pennycollector.com/Details.aspx?location=414903#machine-1-position-3",
+        "ordem": 3,
+        "hidden": false
+      },
+      "review_status": "approved"
+    },
+    {
+      "source": {
+        "machine_number": 1,
+        "machine_details": "Machine 1 - Outside in front of store",
+        "position": 4,
+        "description": "View of Forte de São Miguel Arcanjo and a 100 foot wave with 'Onda gigante Nazaré'",
+        "orientation": "H",
+        "machine_image_url": "http://locations.pennycollector.com/images/machine_c3bebec0-60d5-45e0-8852-fedad8365c4b.jpg",
+        "availability": "active",
+        "location_id": "414903",
+        "image_scope": "machine",
+        "review_flags": [
+          "shared_machine_photo"
+        ]
+      },
+      "souvenir": {
+        "name": "View of Forte de São Miguel Arcanjo and a 100 foot wave…",
+        "continent": "Europa",
+        "country": "Portugal",
+        "city": "Nazaré",
+        "type": "pressed",
+        "condition": "Não Tenho",
+        "location_name": "Casa Miradouro Regional Gifts",
+        "description": "View of Forte de São Miguel Arcanjo and a 100 foot wave with 'Onda gigante Nazaré'",
+        "display_shape": "oval",
+        "image_front": "http://locations.pennycollector.com/images/machine_c3bebec0-60d5-45e0-8852-fedad8365c4b.jpg",
+        "image_back": "",
+        "notes": "Machine 1 · Posição 4 · Orientação horizontal · PennyCollector location 414903 · Fotografia provisória partilhada da máquina",
+        "reference_url": "http://locations.pennycollector.com/Details.aspx?location=414903#machine-1-position-4",
+        "ordem": 4,
+        "hidden": false
+      },
+      "review_status": "approved"
+    },
+    {
+      "source": {
+        "machine_number": 2,
+        "machine_details": "Token Machine 1 - Outside in front of store",
+        "position": 1,
+        "description": "Obverse: Forte de São Miguel Arcanjo in front of a 100 foot wave with 'As Maiores Ondas Do Mundo Nazaré' (The Biggest Waves in the World Nazare) / Reverse: The Portuguese central shield inside an outline of the country of Portugal with 'Moneda Commemorative Portugal Edição Limitada Prensacar Tokens'",
+        "orientation": "",
+        "machine_image_url": "http://locations.pennycollector.com/images/machine_3542b088-7a77-4a3a-a754-a1e5c2437921.jpg",
+        "availability": "active",
+        "location_id": "414903",
+        "image_scope": "machine",
+        "review_flags": [
+          "shared_machine_photo",
+          "missing_orientation"
+        ]
+      },
+      "souvenir": {
+        "name": "Obverse: Forte de São Miguel Arcanjo in front of a 100…",
+        "continent": "Europa",
+        "country": "Portugal",
+        "city": "Nazaré",
+        "type": "coin",
+        "condition": "Não Tenho",
+        "location_name": "Casa Miradouro Regional Gifts",
+        "description": "Obverse: Forte de São Miguel Arcanjo in front of a 100 foot wave with 'As Maiores Ondas Do Mundo Nazaré' (The Biggest Waves in the World Nazare) / Reverse: The Portuguese central shield inside an outline of the country of Portugal with 'Moneda Commemorative Portugal Edição Limitada Prensacar Tokens'",
+        "display_shape": "oval",
+        "image_front": "http://locations.pennycollector.com/images/machine_3542b088-7a77-4a3a-a754-a1e5c2437921.jpg",
+        "image_back": "",
+        "notes": "Machine 2 · Posição 1 · Orientação não indicada · PennyCollector location 414903 · Fotografia provisória partilhada da máquina",
+        "reference_url": "http://locations.pennycollector.com/Details.aspx?location=414903#machine-2-position-1",
+        "ordem": 5,
+        "hidden": false
+      },
+      "review_status": "approved"
+    }
+  ],
+  "review": {
+    "approved": 5,
+    "skipped": 0,
+    "pending": 0,
+    "completed": true,
+    "updated_at": "2026-09-26T23:12:57+00:00",
+    "shared_machine_photos_accepted_as_temporary": true
+  }
+}
