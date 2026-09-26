@@ -4,6 +4,28 @@ Pipeline em Python para recolher moedas do uCoin por país, transformar o catál
 
 Também inclui um fluxo separado para recolher moedas prensadas do Presscoins como souvenirs, com pré-visualização local e sem escrever automaticamente no Site Base44.
 
+## Backup completo do Site Base44
+
+O ficheiro `backup.py` guarda, em modo exclusivamente de leitura, todos os
+registos das oito entidades documentadas da app: `CoinVariant`, `SpecialCoin`,
+`CountryNote`, `CountrySettings`, `Coin`, `CoinSighting`, `Souvenir` e `User`.
+
+```bash
+python3 backup.py
+```
+
+Cada execução cria `backups/base44-<data UTC>/`, com um JSON por entidade,
+`manifest.json`, `SHA256SUMS` e contagens verificadas. A pasta `backups/` não é
+versionada porque pode conter dados pessoais e detalhes privados da coleção; os
+ficheiros são criados com permissões privadas. O backup preserva os URLs das
+fotografias, mas não descarrega os respetivos ficheiros binários.
+
+Para excluir, por exemplo, a entidade de utilizadores:
+
+```bash
+python3 backup.py --exclude-entity User
+```
+
 ```mermaid
 flowchart LR
 	subgraph S1["1. Abrir browser"]

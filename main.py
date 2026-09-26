@@ -133,6 +133,18 @@ def explain_prerequisites() -> None:
     print("   Importar e preparar catálogos do uCoin > Importar um país — processo completo")
 
 
+def action_backup_base44() -> None:
+    title("Backup completo do Site Base44")
+    print(
+        "Guarda todas as entidades conhecidas numa pasta privada e datada em backups/. "
+        "Esta operação é exclusivamente de leitura."
+    )
+    run_step(
+        "Criar backup completo do Site Base44",
+        [sys.executable, "backup.py"],
+    )
+
+
 def default_catalog_path(country: str, continent: str = "") -> str:
     return str(country_directory(country, continent) / "ucoin-catalog.json")
 
@@ -1576,6 +1588,7 @@ def menu() -> None:
         print("1) Pré-requisitos")
         print("2) Moedas normais")
         print("3) Souvenirs")
+        print("4) Backup completo do Site Base44")
         print("0) Sair")
 
         choice = ask_text("Escolhe uma opcao", "1")
@@ -1585,6 +1598,8 @@ def menu() -> None:
             menu_importar_ucoin()
         elif choice == "3":
             menu_souvenirs()
+        elif choice == "4":
+            action_backup_base44()
         elif choice == "0":
             print("A sair.")
             return

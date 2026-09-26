@@ -29,6 +29,32 @@ PLANS = [
 
 
 class MainTrackingActionTests(unittest.TestCase):
+    @patch("main.action_backup_base44")
+    @patch("main.title")
+    @patch("main.ask_text", side_effect=["4", "0"])
+    def test_main_menu_exposes_complete_base44_backup(
+        self,
+        _ask_text,
+        _title,
+        backup_action,
+    ) -> None:
+        with (
+            patch("builtins.input", return_value=""),
+            redirect_stdout(io.StringIO()) as output,
+        ):
+            main.menu()
+
+        self.assertIn("4) Backup completo do Site Base44", output.getvalue())
+        backup_action.assert_called_once_with()
+
+    @patch("main.run_step", return_value=0)
+    @patch("main.title")
+    def test_base44_backup_action_runs_root_backup_script(self, _title, run_step) -> None:
+        main.action_backup_base44()
+
+        command = run_step.call_args.args[1]
+        self.assertEqual(command[-1], "backup.py")
+
     @patch("main.run_step", return_value=0)
     @patch("main.title")
     @patch("main.ask_text", side_effect=["Magic Kingdom", "2", "", "Orlando"])

@@ -1,6 +1,9 @@
 # Local secrets
 .env
 
+# Complete Base44 backups (may contain personal and collection data)
+backups/
+
 # Python
 __pycache__/
 *.py[cod]
