@@ -14,11 +14,24 @@ registos das oito entidades documentadas da app: `CoinVariant`, `SpecialCoin`,
 python3 backup.py
 ```
 
-Cada execução cria `backups/base44-<data UTC>/`, com um JSON por entidade,
-`manifest.json`, `SHA256SUMS` e contagens verificadas. A pasta `backups/` não é
-versionada porque pode conter dados pessoais e detalhes privados da coleção; os
-ficheiros são criados com permissões privadas. O backup preserva os URLs das
-fotografias, mas não descarrega os respetivos ficheiros binários.
+Cada execução cria `backups/base44-<data UTC>/`, com:
+
+- `entities/`: cópia bruta integral de todos os campos devolvidos pela API;
+- `views/*-complete.json`: cada moeda, nota e souvenir com o respetivo estado
+  (`Tenho`, `Não Tenho`, etc.), links, fotografias, aquisição, variantes e todas
+  as descobertas associadas, incluindo quem encontrou;
+- `views/unmatched-relations-complete.json`: relações antigas ou órfãs, mantidas
+  explicitamente para não perder dados;
+- `changes-since-previous.json`: registos criados, apagados e modificados desde
+  o backup anterior; em cada modificação guarda o valor completo anterior e o
+  atual;
+- `manifest.json` e `SHA256SUMS`, com contagens e integridade verificadas.
+
+A pasta `backups/` não é versionada porque pode conter dados pessoais e detalhes
+privados da coleção; os ficheiros são criados com permissões privadas. O backup
+preserva os URLs das fotografias, mas não descarrega os respetivos ficheiros
+binários. O primeiro backup funciona como base: a API não permite recuperar
+versões históricas anteriores a essa primeira cópia.
 
 Para excluir, por exemplo, a entidade de utilizadores:
 

@@ -24,7 +24,7 @@ from scripts.import_base44_coins import (
 )
 
 
-BACKUP_FORMAT_VERSION = 1
+BACKUP_FORMAT_VERSION = 2
 DEFAULT_OUTPUT_ROOT = Path("backups")
 DEFAULT_PAGE_SIZE = 1000
 DEFAULT_ENTITIES = (
@@ -37,6 +37,7 @@ DEFAULT_ENTITIES = (
     "Souvenir",
     "User",
 )
+COLLECTIBLE_ENTITIES = ("Coin", "SpecialCoin", "CountryNote", "Souvenir")
 ENTITY_NAME_RE = re.compile(r"^[A-Za-z][A-Za-z0-9_]*$")
 
 
@@ -115,12 +116,13 @@ def fetch_entity_records(
             raise RuntimeError(f"{entity}: a resposta contém registos inválidos.")
         for record in page_records:
             record_id = str(record.get("id") or "").strip()
-            if record_id and record_id in seen_ids:
+            if not record_id:
+                raise RuntimeError(f"{entity}: foi devolvido um registo sem ID.")
+            if record_id in seen_ids:
                 raise RuntimeError(
                     f"{entity}: o registo {record_id} apareceu em mais de uma página."
                 )
-            if record_id:
-                seen_ids.add(record_id)
+            seen_ids.add(record_id)
             records.append(record)
         output_fn(
             f"{entity}: página {page} — {len(page_records)} registos "
@@ -171,6 +173,221 @@ def unique_destination(output_root: Path, timestamp: str) -> Path:
     return destination
 
 
+def previous_backup_directory(output_root: Path) -> Path | None:
+    latest_path = output_root / "LATEST"
+    if not latest_path.exists():
+        return None
+    backup_name = latest_path.read_text(encoding="utf-8").strip()
+    if not backup_name or Path(backup_name).name != backup_name:
+        raise RuntimeError(f"Ponteiro de backup inválido em {latest_path}.")
+    previous = output_root / backup_name
+    if not previous.is_dir():
+        raise RuntimeError(f"O backup anterior indicado em {latest_path} não existe.")
+    return previous
+
+
+def build_complete_item_views(
+    records_by_entity: dict[str, list[dict[str, Any]]],
+) -> tuple[dict[str, list[dict[str, Any]]], dict[str, Any]]:
+    views: dict[str, list[dict[str, Any]]] = {}
+    item_index: dict[str, tuple[str, dict[str, Any]]] = {}
+    for entity in COLLECTIBLE_ENTITIES:
+        if entity not in records_by_entity:
+            continue
+        entries: list[dict[str, Any]] = []
+        for record in records_by_entity[entity]:
+            record_id = str(record["id"])
+            if record_id in item_index:
+                previous_entity = item_index[record_id][0]
+                raise RuntimeError(
+                    f"ID {record_id} repetido entre {previous_entity} e {entity}."
+                )
+            entry = {
+                "entity": entity,
+                "record": record,
+                "variants": [],
+                "sightings": [],
+            }
+            item_index[record_id] = (entity, entry)
+            entries.append(entry)
+        views[entity] = entries
+
+    unmatched_relations: list[dict[str, Any]] = []
+    variant_records = records_by_entity.get("CoinVariant", [])
+    linked_variants = 0
+    for variant in variant_records:
+        target = item_index.get(str(variant.get("coin_id") or ""))
+        if target is not None and target[0] == "Coin":
+            target[1]["variants"].append(variant)
+            linked_variants += 1
+        else:
+            unmatched_relations.append(
+                {
+                    "relation_entity": "CoinVariant",
+                    "reason": "coin_id sem moeda correspondente no âmbito deste backup",
+                    "record": variant,
+                }
+            )
+
+    sighting_records = records_by_entity.get("CoinSighting", [])
+    linked_sightings = 0
+    for sighting in sighting_records:
+        item_target = item_index.get(str(sighting.get("item_id") or ""))
+        coin_target = item_index.get(str(sighting.get("coin_id") or ""))
+        if item_target is not None and coin_target is not None and item_target is not coin_target:
+            unmatched_relations.append(
+                {
+                    "relation_entity": "CoinSighting",
+                    "reason": "item_id e coin_id apontam para itens diferentes",
+                    "record": sighting,
+                }
+            )
+            continue
+        target = item_target or coin_target
+        if target is not None:
+            target[1]["sightings"].append(sighting)
+            linked_sightings += 1
+        else:
+            unmatched_relations.append(
+                {
+                    "relation_entity": "CoinSighting",
+                    "reason": "item_id/coin_id sem item correspondente no âmbito deste backup",
+                    "record": sighting,
+                }
+            )
+
+    views["unmatched-relations"] = unmatched_relations
+    summary = {
+        "items": sum(len(views.get(entity, [])) for entity in COLLECTIBLE_ENTITIES),
+        "coin_variants": {
+            "total": len(variant_records),
+            "linked": linked_variants,
+            "unmatched": len(variant_records) - linked_variants,
+        },
+        "coin_sightings": {
+            "total": len(sighting_records),
+            "linked": linked_sightings,
+            "unmatched": len(sighting_records) - linked_sightings,
+        },
+        "unmatched_relations": len(unmatched_relations),
+    }
+    return views, summary
+
+
+def load_previous_entity_records(
+    previous_backup: Path,
+    entity: str,
+) -> list[dict[str, Any]] | None:
+    path = previous_backup / "entities" / f"{entity}.json"
+    if not path.exists():
+        return None
+    payload = json.loads(path.read_text(encoding="utf-8"))
+    if not isinstance(payload, list) or any(not isinstance(record, dict) for record in payload):
+        raise RuntimeError(f"Backup anterior inválido: {path}.")
+    return payload
+
+
+def changed_record_fields(
+    previous: dict[str, Any],
+    current: dict[str, Any],
+) -> list[str]:
+    keys = previous.keys() | current.keys()
+    return sorted(
+        key
+        for key in keys
+        if (key in previous) != (key in current) or previous.get(key) != current.get(key)
+    )
+
+
+def build_change_report(
+    previous_backup: Path | None,
+    records_by_entity: dict[str, list[dict[str, Any]]],
+    *,
+    created_at: str,
+) -> dict[str, Any]:
+    entity_reports: list[dict[str, Any]] = []
+    total_created = 0
+    total_modified = 0
+    total_deleted = 0
+    total_unchanged = 0
+    for entity, current_records in records_by_entity.items():
+        previous_records = (
+            load_previous_entity_records(previous_backup, entity)
+            if previous_backup is not None
+            else None
+        )
+        if previous_records is None:
+            entity_reports.append(
+                {
+                    "entity": entity,
+                    "status": "baseline",
+                    "current_records": len(current_records),
+                    "created": [],
+                    "modified": [],
+                    "deleted": [],
+                    "unchanged": 0,
+                }
+            )
+            continue
+
+        previous_by_id = {str(record["id"]): record for record in previous_records}
+        current_by_id = {str(record["id"]): record for record in current_records}
+        created = [
+            current_by_id[record_id]
+            for record_id in sorted(current_by_id.keys() - previous_by_id.keys())
+        ]
+        deleted = [
+            previous_by_id[record_id]
+            for record_id in sorted(previous_by_id.keys() - current_by_id.keys())
+        ]
+        modified = [
+            {
+                "id": record_id,
+                "changed_fields": changed_record_fields(
+                    previous_by_id[record_id], current_by_id[record_id]
+                ),
+                "previous": previous_by_id[record_id],
+                "current": current_by_id[record_id],
+            }
+            for record_id in sorted(current_by_id.keys() & previous_by_id.keys())
+            if current_by_id[record_id] != previous_by_id[record_id]
+        ]
+        unchanged = len(current_by_id.keys() & previous_by_id.keys()) - len(modified)
+        total_created += len(created)
+        total_modified += len(modified)
+        total_deleted += len(deleted)
+        total_unchanged += unchanged
+        entity_reports.append(
+            {
+                "entity": entity,
+                "status": "compared",
+                "previous_records": len(previous_records),
+                "current_records": len(current_records),
+                "created": created,
+                "modified": modified,
+                "deleted": deleted,
+                "unchanged": unchanged,
+            }
+        )
+
+    return {
+        "created_at": created_at,
+        "previous_backup": previous_backup.name if previous_backup is not None else None,
+        "baseline": previous_backup is None,
+        "totals": {
+            "created": total_created,
+            "modified": total_modified,
+            "deleted": total_deleted,
+            "unchanged": total_unchanged,
+        },
+        "entities": entity_reports,
+        "note": (
+            "Cada alteração inclui o registo completo anterior e atual. "
+            "O primeiro backup é a base; alterações anteriores a essa base não estão disponíveis."
+        ),
+    }
+
+
 def create_backup(
     *,
     output_root: Path,
@@ -186,6 +403,7 @@ def create_backup(
     timestamp = started.strftime("%Y%m%dT%H%M%SZ")
     output_root.mkdir(parents=True, exist_ok=True)
     output_root.chmod(0o700)
+    previous_backup = previous_backup_directory(output_root)
     destination = unique_destination(output_root, timestamp)
 
     with tempfile.TemporaryDirectory(
@@ -198,6 +416,7 @@ def create_backup(
         entity_directory.chmod(0o700)
 
         manifest_entities: list[dict[str, Any]] = []
+        records_by_entity: dict[str, list[dict[str, Any]]] = {}
         total_records = 0
         output_fn(f"Backup Base44: {len(entities)} entidades")
         for index, entity in enumerate(entities, start=1):
@@ -211,6 +430,7 @@ def create_backup(
                 page_size=page_size,
                 output_fn=output_fn,
             )
+            records_by_entity[entity] = records
             content = json_bytes(records)
             relative_path = Path("entities") / f"{entity}.json"
             target = temporary / relative_path
@@ -237,6 +457,42 @@ def create_backup(
             output_fn(f"{entity}: guardado e verificado — {len(records)} registos")
 
         completed_at = iso_now()
+        view_directory = temporary / "views"
+        view_directory.mkdir()
+        view_directory.chmod(0o700)
+        complete_views, relationship_summary = build_complete_item_views(records_by_entity)
+        manifest_views: list[dict[str, Any]] = []
+        for view_name, records in complete_views.items():
+            relative_path = Path("views") / f"{view_name}-complete.json"
+            content = json_bytes(records)
+            target = temporary / relative_path
+            write_private_file(target, content)
+            checksum = sha256_bytes(content)
+            verified_file(target, expected_sha256=checksum, expected_count=len(records))
+            manifest_views.append(
+                {
+                    "view": view_name,
+                    "file": relative_path.as_posix(),
+                    "records": len(records),
+                    "bytes": len(content),
+                    "sha256": checksum,
+                }
+            )
+
+        change_report = build_change_report(
+            previous_backup,
+            records_by_entity,
+            created_at=completed_at,
+        )
+        change_report_relative_path = Path("changes-since-previous.json")
+        change_report_content = json_bytes(change_report)
+        change_report_checksum = sha256_bytes(change_report_content)
+        change_report_path = temporary / change_report_relative_path
+        write_private_file(change_report_path, change_report_content)
+        loaded_change_report = json.loads(change_report_path.read_text(encoding="utf-8"))
+        if loaded_change_report != change_report:
+            raise RuntimeError("O relatório de alterações não ficou íntegro.")
+
         manifest = {
             "format_version": BACKUP_FORMAT_VERSION,
             "status": "complete",
@@ -250,13 +506,28 @@ def create_backup(
             "scope": {
                 "entities": entities,
                 "binary_assets_downloaded": False,
-                "note": "Os URLs das imagens são preservados; os ficheiros binários não são descarregados.",
+                "all_api_fields_preserved": True,
+                "complete_item_views": True,
+                "change_tracking_from_previous_backup": True,
+                "note": (
+                    "Todos os campos devolvidos pela API são preservados. Os URLs das "
+                    "imagens são guardados; os ficheiros binários não são descarregados."
+                ),
             },
             "totals": {
                 "entities": len(manifest_entities),
                 "records": total_records,
             },
             "entities": manifest_entities,
+            "complete_item_views": manifest_views,
+            "relationships": relationship_summary,
+            "changes_since_previous": {
+                "file": change_report_relative_path.as_posix(),
+                "previous_backup": change_report["previous_backup"],
+                "totals": change_report["totals"],
+                "bytes": len(change_report_content),
+                "sha256": change_report_checksum,
+            },
         }
         manifest_content = json_bytes(manifest)
         manifest_path = temporary / "manifest.json"
@@ -266,6 +537,12 @@ def create_backup(
         checksum_lines = [
             f"{entry['sha256']}  {entry['file']}" for entry in manifest_entities
         ]
+        checksum_lines.extend(
+            f"{entry['sha256']}  {entry['file']}" for entry in manifest_views
+        )
+        checksum_lines.append(
+            f"{change_report_checksum}  {change_report_relative_path.as_posix()}"
+        )
         checksum_lines.append(
             f"{sha256_bytes(manifest_content)}  manifest.json"
         )
@@ -284,6 +561,23 @@ def create_backup(
     output_fn(f"Pasta: {destination}")
     output_fn(f"Entidades: {len(manifest_entities)}")
     output_fn(f"Registos: {total_records}")
+    output_fn(f"Itens completos: {relationship_summary['items']}")
+    output_fn(
+        "Variantes associadas: "
+        f"{relationship_summary['coin_variants']['linked']}/"
+        f"{relationship_summary['coin_variants']['total']}"
+    )
+    output_fn(
+        "Descobertas associadas: "
+        f"{relationship_summary['coin_sightings']['linked']}/"
+        f"{relationship_summary['coin_sightings']['total']}"
+    )
+    output_fn(
+        "Alterações desde o backup anterior: "
+        f"{change_report['totals']['created']} criadas · "
+        f"{change_report['totals']['modified']} modificadas · "
+        f"{change_report['totals']['deleted']} apagadas"
+    )
     output_fn("Site Base44: nenhuma alteração efetuada.")
     return destination, manifest
 
