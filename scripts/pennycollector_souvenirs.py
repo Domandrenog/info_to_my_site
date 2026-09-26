@@ -731,11 +731,44 @@ def active_description_text(source_html: str) -> str:
         (
             r"\bRetired(?:\s+(?:Machines?(?:\s*/\s*Designs?)?|Designs?)"
             r"|\s+(?:(?:Token|Medallion)\s+)?(?:Machine\s+)?\d+)\s*:"
+            r"|\bMachine\s+\d+\s*-\s*Retired\b"
         ),
         text,
         flags=re.IGNORECASE,
     )
     return text[: retired.start()] if retired else text
+
+
+def recognized_active_design_count(source_html: str) -> int:
+    """Count non-overlapping written designs even when the catalogue is incomplete."""
+    text = active_description_text(source_html)
+    candidates = (
+        numbered_design_sequences(text)
+        + token_obverse_sequences(text)
+        + single_token_side_sequences(text)
+        + line_order_design_sequences(text)
+        + color_variant_design_sequences(text)
+    )
+    unique = {
+        (sequence.start, sequence.end, sequence.entries): sequence
+        for sequence in candidates
+        if sequence.entries
+    }
+    ordered = sorted(unique.values(), key=lambda sequence: (sequence.end, sequence.start))
+    if not ordered:
+        return 0
+
+    best: list[int] = []
+    for index, sequence in enumerate(ordered):
+        compatible = 0
+        for previous_index in range(index - 1, -1, -1):
+            if ordered[previous_index].end <= sequence.start:
+                compatible = best[previous_index]
+                break
+        with_sequence = compatible + len(sequence.entries)
+        without_sequence = best[-1] if best else 0
+        best.append(max(with_sequence, without_sequence))
+    return best[-1]
 
 
 def sequence_machine_score(machine_name: str, sequence: DesignSequence) -> int | None:
@@ -1210,7 +1243,11 @@ def parse_designs(
         if len(inventory_designs) == expected_active and len(designs) <= expected_active:
             designs = inventory_designs
         elif complete_inventory and len(designs) != expected_active:
-            found = max(len(designs), len(inventory_designs))
+            found = max(
+                len(designs),
+                len(inventory_designs),
+                recognized_active_design_count(source_html),
+            )
             raise ValueError(
                 f"A página indica {expected_active} designs atuais, mas só foi "
                 f"possível interpretar {found}; não foi criado um catálogo parcial."

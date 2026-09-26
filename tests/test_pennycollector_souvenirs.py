@@ -544,6 +544,16 @@ class PennyCollectorSouvenirsTests(unittest.TestCase):
         with self.assertRaisesRegex(ValueError, "indica 2 designs atuais.*catálogo parcial"):
             parse_designs(MISSING_DESCRIPTIONS_HTML)
 
+    def test_partial_catalog_error_reports_written_design_count(self) -> None:
+        source_html = MISSING_DESCRIPTIONS_HTML.replace(
+            ">2</option>", ">4</option>"
+        ).replace(
+            "The machine is beside the entrance.",
+            "Machine 1: 1) Only described design.",
+        )
+        with self.assertRaisesRegex(ValueError, "interpretar 1;.*catálogo parcial"):
+            parse_designs(source_html)
+
     def test_catalog_is_review_only_and_uses_machine_photo_scope(self) -> None:
         designs, metadata = parse_designs(SAMPLE_HTML)
 
