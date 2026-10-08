@@ -70,7 +70,7 @@ flowchart LR
 	end
 
 	subgraph S7["7. Importar para Base44"]
-		G["Cria ou atualiza Coin por country + url_ucoin<br/><code>import_base44_coins.py</code>"]
+		G["Cria apenas Coin em falta por country + url_ucoin<br/><code>import_base44_coins.py</code>"]
 	end
 
 	A --> B --> C --> D --> E --> F --> G
@@ -261,7 +261,7 @@ Confirma que o `.env` tem `BASE44_APP_ID` e `BASE44_API_KEY`, depois corre:
 python3 -m scripts.import_base44_coins --input info/paises/asia/india/app-catalog.json --continent Ásia --create-only --missing-only --batch-size 2 --request-delay 3 --rate-limit-delay 60 --max-retries 6
 ```
 
-Este comando adiciona apenas moedas que ainda não existem para esse país, usando `country + url_ucoin` para evitar duplicados.
+Este comando adiciona apenas moedas que ainda não existem para esse país, usando `country + url_ucoin` para evitar duplicados. Moedas existentes não são modificadas e uma moeda normal sem `url_ucoin` não é criada.
 
 ## Adicionar países da API sem catálogo local
 
@@ -454,7 +454,7 @@ Confirma primeiro o payload sem escrever nada na app:
 python3 -m scripts.import_base44_coins --input info/paises/asia/india/app-catalog.json --continent Ásia --dry-run
 ```
 
-Para criar ou atualizar apenas uma moeda de teste:
+Para tentar criar apenas uma moeda de teste (se já existir, fica intocada):
 
 ```bash
 python3 -m scripts.import_base44_coins --input info/paises/asia/india/app-catalog.json --continent Ásia --create-only --limit 1
@@ -465,6 +465,8 @@ Para adicionar apenas moedas que faltam, sem apagar nada, e com pausas para evit
 ```bash
 python3 -m scripts.import_base44_coins --input info/paises/asia/india/app-catalog.json --continent Ásia --create-only --missing-only --batch-size 2 --request-delay 3 --rate-limit-delay 60 --max-retries 6
 ```
+
+Nos dois modos de criação, a identidade de uma moeda normal é exclusivamente `country + url_ucoin`. O importador carrega primeiro as moedas existentes do país, cria apenas as identidades ausentes e apresenta separadamente moedas existentes, URLs em falta, correspondências múltiplas e entradas duplicadas no catálogo. Nunca faz `PUT` ou `DELETE` nestes modos.
 
 Para substituir todas as moedas desse país na entidade `Coin`:
 

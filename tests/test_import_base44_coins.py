@@ -8,7 +8,50 @@ from urllib.error import URLError
 from scripts import import_base44_coins
 
 
+class FakeCoinClient:
+    def __init__(
+        self,
+        existing: list[dict[str, object]] | None = None,
+        *,
+        fail_on_bulk_call: int = 0,
+    ) -> None:
+        self.existing = list(existing or [])
+        self.fail_on_bulk_call = fail_on_bulk_call
+        self.filter_calls: list[tuple[dict[str, object], int, int]] = []
+        self.bulk_calls: list[list[dict[str, object]]] = []
+        self.update_calls: list[tuple[str, dict[str, object]]] = []
+        self.delete_calls: list[dict[str, object]] = []
+        self.bulk_attempts = 0
+
+    def filter(self, query, limit=1, skip=0):
+        self.filter_calls.append((dict(query), limit, skip))
+        country = query.get("country")
+        matches = [record for record in self.existing if record.get("country") == country]
+        return matches[skip : skip + limit]
+
+    def bulk_create(self, records):
+        self.bulk_attempts += 1
+        if self.fail_on_bulk_call == self.bulk_attempts:
+            raise RuntimeError("original create failure")
+        self.bulk_calls.append([dict(record) for record in records])
+
+    def update(self, record_id, record):
+        self.update_calls.append((record_id, dict(record)))
+
+    def delete_many(self, query):
+        self.delete_calls.append(dict(query))
+
+
 class ImportBase44CoinsTests(unittest.TestCase):
+    @staticmethod
+    def coin(index: int, *, url: str | None = None) -> dict[str, object]:
+        return {
+            "country": "Portugal",
+            "name": f"{index} euro",
+            "years": f"20{index:02d}",
+            "url_ucoin": url if url is not None else f"https://pt.ucoin.net/coin/{index}",
+        }
+
     def test_to_coin_record_maps_app_catalogue_fields(self) -> None:
         period = {"title": "Índia › República da Índia › 1957 - 2026"}
         coin = {
@@ -86,45 +129,14 @@ class ImportBase44CoinsTests(unittest.TestCase):
                 1,
             )
 
-    def test_matching_existing_record_prefers_url_ucoin(self) -> None:
-        class FakeClient:
-            def __init__(self) -> None:
-                self.queries = []
+    def test_classification_uses_only_country_and_ucoin_url(self) -> None:
+        record = self.coin(1)
+        existing = [{**record, "id": "coin-1", "name": "different", "years": "1900"}]
 
-            def filter(self, query, limit=1):
-                self.queries.append(query)
-                if "url_ucoin" in query:
-                    return [{"id": "existing"}]
-                return []
+        plan = import_base44_coins.classify_normal_coin_records([record], existing)
 
-        client = FakeClient()
-        record = {"country": "Índia", "name": "1 naya paisa", "url_ucoin": "https://pt.ucoin.net/coin/example"}
-        self.assertEqual(import_base44_coins.matching_existing_record(client, record), {"id": "existing"})
-        self.assertEqual(client.queries[0], {"country": "Índia", "url_ucoin": "https://pt.ucoin.net/coin/example"})
-
-    def test_matching_existing_record_does_not_fallback_to_name_when_url_is_present(self) -> None:
-        class FakeClient:
-            def __init__(self) -> None:
-                self.queries = []
-
-            def filter(self, query, limit=1):
-                self.queries.append(query)
-                if "url_ucoin" in query:
-                    return []
-                return [{"id": "same-name-different-years"}]
-
-        client = FakeClient()
-        record = {"country": "Índia", "name": "1 naya paisa", "url_ucoin": "https://pt.ucoin.net/coin/new"}
-        self.assertIsNone(import_base44_coins.matching_existing_record(client, record))
-        self.assertEqual(client.queries, [{"country": "Índia", "url_ucoin": "https://pt.ucoin.net/coin/new"}])
-
-    def test_existing_url_set_uses_only_non_empty_urls(self) -> None:
-        urls = import_base44_coins.existing_url_set([
-            {"url_ucoin": "https://pt.ucoin.net/coin/a"},
-            {"url_ucoin": ""},
-            {"name": "missing url"},
-        ])
-        self.assertEqual(urls, {"https://pt.ucoin.net/coin/a"})
+        self.assertEqual(plan.already_existing, [(record, existing[0])])
+        self.assertEqual(plan.to_create, [])
 
     def test_request_wraps_network_errors(self) -> None:
         client = import_base44_coins.Base44Client(
@@ -138,29 +150,161 @@ class ImportBase44CoinsTests(unittest.TestCase):
             with self.assertRaisesRegex(RuntimeError, "Network is unreachable"):
                 client.bulk_create([{"name": "5 cêntimos"}])
 
-    def test_create_only_prints_progress_for_each_record(self) -> None:
-        class FakeClient:
-            def filter(self, query, limit=1):
-                return []
-
-            def bulk_create(self, records):
-                pass
-
-        records = [
-            {"country": "Índia", "name": "1 paisa", "url_ucoin": "https://example.com/1"},
-            {"country": "Índia", "name": "2 paisa", "url_ucoin": "https://example.com/2"},
-        ]
+    def test_a_missing_url_in_base44_is_created_once(self) -> None:
+        client = FakeCoinClient()
+        record = self.coin(1)
         output = io.StringIO()
         with (
             patch.object(import_base44_coins, "mark_numisvault_stats_stale") as marker,
             redirect_stdout(output),
         ):
-            imported = import_base44_coins.create_only(FakeClient(), records, allow_duplicates=False)
+            imported = import_base44_coins.create_only(client, [record])
 
-        self.assertEqual(imported, 2)
+        self.assertEqual(imported, 1)
+        self.assertEqual(client.bulk_calls, [[record]])
+        self.assertEqual(client.update_calls, [])
+        self.assertEqual(client.delete_calls, [])
         marker.assert_called_once()
-        self.assertIn("Created: 1/2 — 1 paisa", output.getvalue())
-        self.assertIn("Created: 2/2 — 2 paisa", output.getvalue())
+        self.assertIn("Created: 1/1 — Portugal — 1 euro", output.getvalue())
+        self.assertIn("Portugal | 1 euro | 2001 | https://pt.ucoin.net/coin/1", output.getvalue())
+
+    def test_b_single_existing_match_receives_zero_writes_and_is_reported(self) -> None:
+        record = self.coin(1)
+        client = FakeCoinClient([{**record, "id": "existing-1", "hidden": True}])
+        output = io.StringIO()
+        with (
+            patch.object(import_base44_coins, "mark_numisvault_stats_stale") as marker,
+            redirect_stdout(output),
+        ):
+            imported = import_base44_coins.create_only(client, [record])
+
+        self.assertEqual(imported, 0)
+        self.assertEqual(client.bulk_calls, [])
+        self.assertEqual(client.update_calls, [])
+        self.assertEqual(client.delete_calls, [])
+        marker.assert_not_called()
+        self.assertIn("ALREADY EXISTED — NOT MODIFIED (1)", output.getvalue())
+        self.assertIn("Already existed — untouched: 1", output.getvalue())
+
+    def test_c_missing_input_ucoin_url_is_not_created_and_is_reported(self) -> None:
+        record = self.coin(1, url="   ")
+        client = FakeCoinClient()
+        output = io.StringIO()
+        with (
+            patch.object(import_base44_coins, "mark_numisvault_stats_stale") as marker,
+            redirect_stdout(output),
+        ):
+            imported = import_base44_coins.create_only(client, [record])
+
+        self.assertEqual(imported, 0)
+        self.assertEqual(client.bulk_calls, [])
+        marker.assert_not_called()
+        self.assertIn("MISSING UCOIN URL — NOT CREATED (1)", output.getvalue())
+        self.assertIn("Portugal | 1 euro | 2001", output.getvalue())
+
+    def test_d_multiple_existing_matches_receive_zero_writes_and_are_reported(self) -> None:
+        record = self.coin(1)
+        existing = [
+            {**record, "id": "duplicate-1", "name": "stored one"},
+            {**record, "id": "duplicate-2", "name": "stored two"},
+        ]
+        client = FakeCoinClient(existing)
+        output = io.StringIO()
+        with (
+            patch.object(import_base44_coins, "mark_numisvault_stats_stale") as marker,
+            redirect_stdout(output),
+        ):
+            imported = import_base44_coins.create_only(client, [record])
+
+        self.assertEqual(imported, 0)
+        self.assertEqual(client.bulk_calls, [])
+        self.assertEqual(client.update_calls, [])
+        self.assertEqual(client.delete_calls, [])
+        marker.assert_not_called()
+        self.assertIn("MULTIPLE EXISTING MATCHES — MANUAL REVIEW (1)", output.getvalue())
+        self.assertIn("Base44 ID: duplicate-1 | Name: stored one", output.getvalue())
+        self.assertIn("Base44 ID: duplicate-2 | Name: stored two", output.getvalue())
+
+    def test_e_duplicate_input_url_is_created_at_most_once_and_reported(self) -> None:
+        first = self.coin(1)
+        duplicate = {**first, "name": "duplicate catalogue row"}
+        client = FakeCoinClient()
+        output = io.StringIO()
+        with (
+            patch.object(import_base44_coins, "mark_numisvault_stats_stale") as marker,
+            redirect_stdout(output),
+        ):
+            imported = import_base44_coins.create_missing_only(
+                client, [first, duplicate], "Portugal", batch_size=10
+            )
+
+        self.assertEqual(imported, 1)
+        self.assertEqual(client.bulk_calls, [[first]])
+        marker.assert_called_once()
+        self.assertIn("DUPLICATE INPUT — NOT CREATED AGAIN (1)", output.getvalue())
+        self.assertIn("Duplicate input entries: 1", output.getvalue())
+
+    def test_f_95_existing_and_5_missing_create_only_missing_without_put_or_delete(self) -> None:
+        records = [self.coin(index) for index in range(1, 101)]
+        existing = [{**record, "id": f"existing-{index}"} for index, record in enumerate(records[:95], start=1)]
+        client = FakeCoinClient(existing)
+        output = io.StringIO()
+        with (
+            patch.object(import_base44_coins, "mark_numisvault_stats_stale") as marker,
+            redirect_stdout(output),
+        ):
+            imported = import_base44_coins.create_only(client, records)
+
+        self.assertEqual(imported, 5)
+        self.assertEqual(len(client.bulk_calls), 5)
+        self.assertEqual(client.update_calls, [])
+        self.assertEqual(client.delete_calls, [])
+        self.assertEqual(len(client.filter_calls), 1)
+        marker.assert_called_once()
+        self.assertIn("Already existed — untouched: 95", output.getvalue())
+        for record in records[:95]:
+            self.assertIn(import_base44_coins.coin_report_line(record), output.getvalue())
+
+    def test_g_100_existing_perform_no_writes_and_do_not_mark_adminstats(self) -> None:
+        records = [self.coin(index) for index in range(1, 101)]
+        existing = [{**record, "id": f"existing-{index}"} for index, record in enumerate(records, start=1)]
+        client = FakeCoinClient(existing)
+        with (
+            patch.object(import_base44_coins, "mark_numisvault_stats_stale") as marker,
+            redirect_stdout(io.StringIO()),
+        ):
+            imported = import_base44_coins.create_missing_only(
+                client, records, "Portugal", batch_size=10
+            )
+
+        self.assertEqual(imported, 0)
+        self.assertEqual(client.bulk_calls, [])
+        self.assertEqual(client.update_calls, [])
+        self.assertEqual(client.delete_calls, [])
+        marker.assert_not_called()
+
+    def test_h_partial_create_failure_marks_adminstats_and_preserves_error(self) -> None:
+        records = [self.coin(index) for index in range(1, 4)]
+        client = FakeCoinClient(fail_on_bulk_call=2)
+        output = io.StringIO()
+        with (
+            patch.object(import_base44_coins, "mark_numisvault_stats_stale") as marker,
+            redirect_stdout(output),
+            self.assertRaisesRegex(RuntimeError, "original create failure"),
+        ):
+            import_base44_coins.create_only(client, records)
+
+        marker.assert_called_once()
+        self.assertEqual(client.bulk_calls, [[records[0]]])
+        self.assertIn("CREATED (1)", output.getvalue())
+        self.assertIn("FAILED CREATES (2)", output.getvalue())
+
+    def test_allow_duplicates_is_explicitly_disabled_before_api_access(self) -> None:
+        client = FakeCoinClient()
+        with self.assertRaisesRegex(ValueError, "disabled"):
+            import_base44_coins.create_only(client, [self.coin(1)], allow_duplicates=True)
+        self.assertEqual(client.filter_calls, [])
+        self.assertEqual(client.bulk_calls, [])
 
     def test_format_duration_uses_readable_portuguese_style(self) -> None:
         self.assertEqual(import_base44_coins.format_duration(1.75, precise=True), "1,8 s")

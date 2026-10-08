@@ -8,6 +8,7 @@ import json
 import os
 import sys
 import time
+from dataclasses import dataclass, field
 from pathlib import Path
 from typing import Any
 from urllib.error import HTTPError, URLError
@@ -50,7 +51,11 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--create-only", action="store_true", help="Create records without deleting anything first.")
     parser.add_argument("--replace", action="store_true", help="Delete existing Coin records for the country, then recreate.")
     parser.add_argument("--missing-only", action="store_true", help="With --create-only, only create records whose country/url_ucoin is missing.")
-    parser.add_argument("--allow-duplicates", action="store_true", help="With --create-only, do not skip existing country/name records.")
+    parser.add_argument(
+        "--allow-duplicates",
+        action="store_true",
+        help="Disabled legacy option: normal Coin imports always protect country + url_ucoin identity.",
+    )
     parser.add_argument("--limit", type=int, default=0, help="Import only the first N records.")
     parser.add_argument("--batch-size", type=int, default=10, help="Records per bulk create request.")
     parser.add_argument("--request-delay", type=float, default=DEFAULT_REQUEST_DELAY_SECONDS, help="Seconds to pause after each Base44 request.")
@@ -278,20 +283,71 @@ def existing_records_for_country(client: Base44Client, country: str) -> list[dic
         skip += page_size
 
 
-def existing_url_set(records: list[dict[str, Any]]) -> set[str]:
-    return {record["url_ucoin"] for record in records if isinstance(record.get("url_ucoin"), str) and record["url_ucoin"]}
+@dataclass
+class NormalCoinImportPlan:
+    """Complete, mutually-exclusive classification for a normal Coin import."""
+
+    prepared_count: int
+    to_create: list[dict[str, Any]] = field(default_factory=list)
+    already_existing: list[tuple[dict[str, Any], dict[str, Any]]] = field(default_factory=list)
+    missing_ucoin_url: list[dict[str, Any]] = field(default_factory=list)
+    multiple_existing_matches: list[
+        tuple[dict[str, Any], list[dict[str, Any]]]
+    ] = field(default_factory=list)
+    duplicate_input: list[dict[str, Any]] = field(default_factory=list)
 
 
-def matching_existing_record(client: Base44Client, record: dict[str, Any]) -> dict[str, Any] | None:
-    if record.get("url_ucoin"):
-        result = client.filter({"country": record["country"], "url_ucoin": record["url_ucoin"]}, limit=1)
-        if isinstance(result, list) and result:
-            return result[0]
-        return None
-    result = client.filter({"country": record["country"], "name": record["name"]}, limit=1)
-    if isinstance(result, list) and result:
-        return result[0]
-    return None
+def required_text(value: Any) -> str:
+    return value.strip() if isinstance(value, str) else ""
+
+
+def normal_coin_identity(record: dict[str, Any]) -> tuple[str, str]:
+    """Return the only identity accepted by the normal Coin creation flow."""
+
+    return required_text(record.get("country")), required_text(record.get("url_ucoin"))
+
+
+def existing_records_by_identity(
+    records: list[dict[str, Any]],
+) -> dict[tuple[str, str], list[dict[str, Any]]]:
+    lookup: dict[tuple[str, str], list[dict[str, Any]]] = {}
+    for record in records:
+        identity = normal_coin_identity(record)
+        if not identity[0] or not identity[1]:
+            continue
+        lookup.setdefault(identity, []).append(record)
+    return lookup
+
+
+def classify_normal_coin_records(
+    records: list[dict[str, Any]],
+    existing_records: list[dict[str, Any]],
+) -> NormalCoinImportPlan:
+    """Classify every input before any Base44 mutation is attempted."""
+
+    plan = NormalCoinImportPlan(prepared_count=len(records))
+    existing_by_identity = existing_records_by_identity(existing_records)
+    seen_input_identities: set[tuple[str, str]] = set()
+
+    for record in records:
+        identity = normal_coin_identity(record)
+        if not identity[1]:
+            plan.missing_ucoin_url.append(record)
+            continue
+        if identity in seen_input_identities:
+            plan.duplicate_input.append(record)
+            continue
+        seen_input_identities.add(identity)
+
+        matches = existing_by_identity.get(identity, [])
+        if not matches:
+            plan.to_create.append(record)
+        elif len(matches) == 1:
+            plan.already_existing.append((record, matches[0]))
+        else:
+            plan.multiple_existing_matches.append((record, matches))
+
+    return plan
 
 
 def format_duration(seconds: float, *, precise: bool = False) -> str:
@@ -310,71 +366,200 @@ def format_duration(seconds: float, *, precise: bool = False) -> str:
     return f"{remaining_seconds}s"
 
 
-def create_only(client: Base44Client, records: list[dict[str, Any]], allow_duplicates: bool) -> int:
-    created = 0
-    updated = 0
-    total = len(records)
+def print_pre_write_summary(plan: NormalCoinImportPlan) -> None:
+    print("\nNormal Coins prepared: %d" % plan.prepared_count)
+    print(f"To create: {len(plan.to_create)}")
+    print(f"Already exist: {len(plan.already_existing)}")
+    print(f"Missing uCoin URL: {len(plan.missing_ucoin_url)}")
+    print(f"Multiple Base44 matches: {len(plan.multiple_existing_matches)}")
+    print(f"Duplicate input entries: {len(plan.duplicate_input)}")
+
+
+def coin_report_line(record: dict[str, Any], *, include_url: bool = True) -> str:
+    parts = [
+        required_text(record.get("country")) or "(country missing)",
+        required_text(record.get("name")) or "(name missing)",
+        required_text(record.get("years")) or "(years missing)",
+    ]
+    if include_url:
+        parts.append(required_text(record.get("url_ucoin")) or "(uCoin URL missing)")
+    return " | ".join(parts)
+
+
+def print_coin_section(
+    title: str,
+    records: list[dict[str, Any]],
+    *,
+    include_url: bool = True,
+) -> None:
+    print(f"\n{title} ({len(records)})")
+    if not records:
+        print("(none)")
+        return
+    for record in records:
+        print(coin_report_line(record, include_url=include_url))
+
+
+def print_import_report(
+    plan: NormalCoinImportPlan,
+    created: list[dict[str, Any]],
+    failed_creates: list[dict[str, Any]],
+) -> None:
+    print_coin_section("CREATED", created)
+    print_coin_section(
+        "ALREADY EXISTED — NOT MODIFIED",
+        [record for record, _existing in plan.already_existing],
+    )
+    print_coin_section(
+        "MISSING UCOIN URL — NOT CREATED",
+        plan.missing_ucoin_url,
+        include_url=False,
+    )
+
+    print(
+        "\nMULTIPLE EXISTING MATCHES — MANUAL REVIEW "
+        f"({len(plan.multiple_existing_matches)})"
+    )
+    if not plan.multiple_existing_matches:
+        print("(none)")
+    else:
+        for record, matches in plan.multiple_existing_matches:
+            print(coin_report_line(record))
+            for match in matches:
+                match_id = required_text(match.get("id")) or "(ID missing)"
+                match_name = required_text(match.get("name")) or "(name missing)"
+                match_years = required_text(match.get("years")) or "(years missing)"
+                print(
+                    f"  - Base44 ID: {match_id} | Name: {match_name} | "
+                    f"Years: {match_years}"
+                )
+
+    print_coin_section(
+        "DUPLICATE INPUT — NOT CREATED AGAIN",
+        plan.duplicate_input,
+    )
+    print_coin_section("FAILED CREATES", failed_creates)
+
+    print("\nFINAL SUMMARY")
+    print(f"Created: {len(created)}")
+    print(f"Already existed — untouched: {len(plan.already_existing)}")
+    print(f"Missing uCoin URL: {len(plan.missing_ucoin_url)}")
+    print(f"Multiple existing matches: {len(plan.multiple_existing_matches)}")
+    print(f"Duplicate input entries: {len(plan.duplicate_input)}")
+    print(f"Failed creates: {len(failed_creates)}")
+
+
+def selected_country(records: list[dict[str, Any]], country: str = "") -> str:
+    selected = required_text(country)
+    record_countries = {
+        required_text(record.get("country"))
+        for record in records
+        if required_text(record.get("country"))
+    }
+    if selected and any(record_country != selected for record_country in record_countries):
+        raise ValueError("Normal Coin input contains records outside the selected country.")
+    if selected:
+        return selected
+    if len(record_countries) > 1:
+        raise ValueError("Normal Coin creation accepts one country per import.")
+    return next(iter(record_countries), "")
+
+
+def create_missing_normal_coins(
+    client: Base44Client,
+    records: list[dict[str, Any]],
+    *,
+    country: str = "",
+    batch_size: int = 1,
+) -> int:
+    """Create only normal Coins absent by exact country + url_ucoin identity."""
+
+    country = selected_country(records, country)
+    existing = existing_records_for_country(client, country) if country else []
+    plan = classify_normal_coin_records(records, existing)
+    print_pre_write_summary(plan)
+
+    created: list[dict[str, Any]] = []
+    failed_creates: list[dict[str, Any]] = []
     import_started_at = time.monotonic()
-    total_record_duration = 0.0
-    with MutationRun(
-        lambda: mark_numisvault_stats_stale(client), mutation_label="Coin record"
-    ) as mutations:
-        for index, record in enumerate(records, start=1):
-            progress = f"{index}/{total}"
-            record_started_at = time.monotonic()
-            operation = "Created"
-            if not allow_duplicates:
-                existing = matching_existing_record(client, record)
-                if existing is not None:
-                    record_id = existing.get("id")
-                    if isinstance(record_id, str) and record_id:
-                        client.update(record_id, record)
-                        mutations.record_success()
-                        updated += 1
-                        operation = "Updated"
-                    else:
-                        operation = "Skipped existing without id"
-                else:
-                    client.bulk_create([record])
-                    mutations.record_success()
-                    created += 1
-            else:
-                client.bulk_create([record])
-                mutations.record_success()
-                created += 1
+    total_request_duration = 0.0
+    batches = chunk(plan.to_create, max(1, batch_size))
 
-            record_duration = time.monotonic() - record_started_at
-            total_record_duration += record_duration
-            elapsed = time.monotonic() - import_started_at
-            remaining = total - index
-            estimated_remaining = (total_record_duration / index) * remaining
-            remaining_text = "concluído" if not remaining else f"~{format_duration(estimated_remaining)}"
-            print(
-                f"{operation}: {progress} — {record['name']} "
-                f"[demorou nesta: {format_duration(record_duration, precise=True)} "
-                f"| decorrido: {format_duration(elapsed)} | restante: {remaining_text}]"
-            )
-    print(f"Create-only summary: created={created}, updated={updated}")
-    return created + updated
+    try:
+        with MutationRun(
+            lambda: mark_numisvault_stats_stale(client), mutation_label="Coin record"
+        ) as mutations:
+            for batch in batches:
+                request_started_at = time.monotonic()
+                client.bulk_create(batch)
+                request_duration = time.monotonic() - request_started_at
+                total_request_duration += request_duration
+                mutations.record_success(len(batch))
+
+                successful_after_batch = len(created) + len(batch)
+                for record in batch:
+                    created.append(record)
+                    completed = len(created)
+                    remaining = len(plan.to_create) - completed
+                    estimated_remaining = (
+                        (total_request_duration / successful_after_batch) * remaining
+                        if successful_after_batch
+                        else 0.0
+                    )
+                    remaining_text = (
+                        "concluído"
+                        if not remaining
+                        else f"~{format_duration(estimated_remaining)}"
+                    )
+                    print(
+                        f"Created: {completed}/{len(plan.to_create)} — "
+                        f"{required_text(record.get('country'))} — "
+                        f"{required_text(record.get('name'))} "
+                        f"[demorou neste pedido: "
+                        f"{format_duration(request_duration, precise=True)} | "
+                        f"decorrido: {format_duration(time.monotonic() - import_started_at)} "
+                        f"| restante: {remaining_text}]"
+                    )
+    except Exception:
+        failed_creates = plan.to_create[len(created) :]
+        print_import_report(plan, created, failed_creates)
+        raise
+
+    print_import_report(plan, created, failed_creates)
+    return len(created)
 
 
-def create_missing_only(client: Base44Client, records: list[dict[str, Any]], country: str, batch_size: int) -> int:
-    existing_urls = existing_url_set(existing_records_for_country(client, country))
-    missing = [record for record in records if not record.get("url_ucoin") or record["url_ucoin"] not in existing_urls]
-    if not missing:
-        print("Missing-only summary: created=0, already_present=%d" % len(records))
-        return 0
-    created = 0
-    with MutationRun(
-        lambda: mark_numisvault_stats_stale(client), mutation_label="Coin record"
-    ) as mutations:
-        for batch in chunk(missing, max(1, batch_size)):
-            client.bulk_create(batch)
-            mutations.record_success(len(batch))
-            created += len(batch)
-            print(f"Created {len(batch)} missing records")
-    print(f"Missing-only summary: created={created}, already_present={len(records) - created}")
-    return created
+def create_only(
+    client: Base44Client,
+    records: list[dict[str, Any]],
+    allow_duplicates: bool = False,
+    country: str = "",
+) -> int:
+    if allow_duplicates:
+        raise ValueError(
+            "--allow-duplicates is disabled for normal Coin creation; "
+            "country + url_ucoin protection cannot be bypassed."
+        )
+    return create_missing_normal_coins(
+        client,
+        records,
+        country=country,
+        batch_size=1,
+    )
+
+
+def create_missing_only(
+    client: Base44Client,
+    records: list[dict[str, Any]],
+    country: str,
+    batch_size: int,
+) -> int:
+    return create_missing_normal_coins(
+        client,
+        records,
+        country=country,
+        batch_size=batch_size,
+    )
 
 
 def replace_country(client: Base44Client, records: list[dict[str, Any]], country: str) -> int:
@@ -397,6 +582,11 @@ def main() -> int:
     args = parse_args()
     if args.replace and args.create_only:
         raise ValueError("Use only one of --replace or --create-only")
+    if args.allow_duplicates:
+        raise ValueError(
+            "--allow-duplicates is disabled for normal Coin creation; "
+            "country + url_ucoin protection cannot be bypassed."
+        )
     if not args.replace and not args.create_only:
         args.dry_run = True
     catalogue = read_json(args.input)
@@ -416,7 +606,12 @@ def main() -> int:
         if args.missing_only:
             created = create_missing_only(client, records, options["country"], args.batch_size)
         else:
-            created = create_only(client, records, args.allow_duplicates)
+            created = create_only(
+                client,
+                records,
+                args.allow_duplicates,
+                country=options["country"],
+            )
     else:
         created = replace_country(client, records, options["country"])
     print(f"Base44 import complete. Created {created} records.")
