@@ -14,6 +14,7 @@ from urllib.parse import urlparse
 
 from scripts import check_site_coin_differences as checker
 from scripts import import_base44_coins
+from scripts.admin_stats_sync import MutationRun, mark_numisvault_stats_stale
 from scripts.catalog_paths import CATALOG_ROOT, continent_label_for_country, find_country_directory
 
 
@@ -1489,6 +1490,27 @@ def apply_plan(
         max_retries=args.max_retries,
     )
     client = import_base44_coins.create_client(client_args)
+    with MutationRun(
+        lambda: mark_numisvault_stats_stale(client), mutation_label="Coin record"
+    ) as mutations:
+        return _apply_plan_with_client(
+            args,
+            country_name,
+            plan,
+            client,
+            mutations,
+            application_results,
+        )
+
+
+def _apply_plan_with_client(
+    args: argparse.Namespace,
+    country_name: str,
+    plan: dict[str, Any],
+    client: Any,
+    mutations: MutationRun,
+    application_results: list[dict[str, Any]] | None = None,
+) -> dict[str, int]:
 
     updated = 0
     created = 0
@@ -1557,6 +1579,7 @@ def apply_plan(
                         payload = dict(current)
                         payload.update(fields_to_write)
                         client.update(record_id, payload)
+                        mutations.record_success()
 
                         verified = client.request("GET", f"{client.base_url}/{record_id}")
                         if not isinstance(verified, dict):
@@ -1666,6 +1689,7 @@ def apply_plan(
 
             if verified_record is None:
                 client.bulk_create([record])
+                mutations.record_success()
                 verification = client.filter(
                     lookup_query,
                     limit=10,

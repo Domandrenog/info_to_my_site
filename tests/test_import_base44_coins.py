@@ -151,10 +151,14 @@ class ImportBase44CoinsTests(unittest.TestCase):
             {"country": "Índia", "name": "2 paisa", "url_ucoin": "https://example.com/2"},
         ]
         output = io.StringIO()
-        with redirect_stdout(output):
+        with (
+            patch.object(import_base44_coins, "mark_numisvault_stats_stale") as marker,
+            redirect_stdout(output),
+        ):
             imported = import_base44_coins.create_only(FakeClient(), records, allow_duplicates=False)
 
         self.assertEqual(imported, 2)
+        marker.assert_called_once()
         self.assertIn("Created: 1/2 — 1 paisa", output.getvalue())
         self.assertIn("Created: 2/2 — 2 paisa", output.getvalue())
 

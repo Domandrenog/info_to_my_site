@@ -29,6 +29,7 @@ BACKUP_FORMAT_VERSION = 2
 DEFAULT_OUTPUT_ROOT = Path("backups")
 DEFAULT_PAGE_SIZE = 1000
 DEFAULT_ENTITIES = (
+    "AdminStats",
     "CoinVariant",
     "SpecialCoin",
     "CountryNote",

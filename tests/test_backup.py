@@ -25,6 +25,7 @@ class Base44BackupTests(unittest.TestCase):
         self.assertEqual(
             backup.selected_entities([], []),
             [
+                "AdminStats",
                 "CoinVariant",
                 "SpecialCoin",
                 "CountryNote",

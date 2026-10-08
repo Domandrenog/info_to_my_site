@@ -326,13 +326,17 @@ class ImportBase44SouvenirsTests(unittest.TestCase):
             for index in range(1, 6)
         ]
 
-        with redirect_stdout(io.StringIO()) as output:
+        with (
+            patch.object(import_base44_souvenirs, "mark_numisvault_stats_stale") as marker,
+            redirect_stdout(io.StringIO()) as output,
+        ):
             created = import_base44_souvenirs.create_missing_records(
                 client, records, batch_size=2
             )
 
         self.assertEqual(created, 5)
         self.assertEqual([len(batch) for batch in client.batches], [2, 2, 1])
+        marker.assert_called_once_with(client)
         self.assertIn("5/5 (100.0%)", output.getvalue())
 
     def test_loading_existing_souvenirs_reports_progress_by_country(self) -> None:

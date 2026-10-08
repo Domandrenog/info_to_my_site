@@ -1044,6 +1044,7 @@ class FixSiteIssuesApplyTests(unittest.TestCase):
 
         with (
             patch.object(fix_site_issues_api.import_base44_coins, "create_client", return_value=client),
+            patch.object(fix_site_issues_api, "mark_numisvault_stats_stale"),
             redirect_stdout(io.StringIO()) as output,
         ):
             application_results: list[dict[str, object]] = []
@@ -1064,6 +1065,7 @@ class FixSiteIssuesApplyTests(unittest.TestCase):
 
         with (
             patch.object(fix_site_issues_api.import_base44_coins, "create_client", return_value=client),
+            patch.object(fix_site_issues_api, "mark_numisvault_stats_stale"),
             redirect_stdout(io.StringIO()) as second_output,
         ):
             second_results: list[dict[str, object]] = []
@@ -1112,6 +1114,7 @@ class FixSiteIssuesApplyTests(unittest.TestCase):
 
         with (
             patch.object(fix_site_issues_api.import_base44_coins, "create_client", return_value=client),
+            patch.object(fix_site_issues_api, "mark_numisvault_stats_stale"),
             redirect_stdout(io.StringIO()),
         ):
             application_results: list[dict[str, object]] = []
@@ -1175,6 +1178,7 @@ class FixSiteIssuesApplyTests(unittest.TestCase):
 
         with (
             patch.object(fix_site_issues_api.import_base44_coins, "create_client", return_value=client),
+            patch.object(fix_site_issues_api, "mark_numisvault_stats_stale"),
             redirect_stdout(io.StringIO()) as output,
         ):
             result = fix_site_issues_api.apply_plan(args, "", plan)

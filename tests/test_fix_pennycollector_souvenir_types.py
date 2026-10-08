@@ -4,6 +4,7 @@ import json
 import tempfile
 import unittest
 from pathlib import Path
+from unittest.mock import patch
 
 from scripts.fix_pennycollector_souvenir_types import (
     apply_corrections,
@@ -85,8 +86,12 @@ class FixPennyCollectorSouvenirTypesTests(unittest.TestCase):
                 self.updates.append((record_id, payload))
 
         client = FakeClient()
-        apply_corrections(client, corrections)
+        with patch(
+            "scripts.fix_pennycollector_souvenir_types.mark_numisvault_stats_stale"
+        ) as marker:
+            apply_corrections(client, corrections)
         self.assertEqual(client.updates, [("record-1", {"type": "coin"})])
+        marker.assert_called_once_with(client)
 
 
 if __name__ == "__main__":

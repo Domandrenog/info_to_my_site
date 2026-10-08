@@ -14,6 +14,7 @@ from urllib.error import HTTPError, URLError
 from urllib.parse import quote, urlencode
 from urllib.request import Request, urlopen
 
+from scripts.admin_stats_sync import MutationRun, mark_numisvault_stats_stale
 from scripts.catalog_paths import continent_label_for_country
 
 
@@ -158,12 +159,27 @@ class Base44Client:
     ) -> None:
         self.app_id = app_id
         self.api_key = api_key
+        self.server_url = server_url.rstrip("/")
+        self.entity_name = entity_name
         self.base_url = (
-            f"{server_url.rstrip('/')}/api/apps/{quote(app_id)}/entities/{quote(entity_name)}"
+            f"{self.server_url}/api/apps/{quote(app_id)}/entities/{quote(entity_name)}"
         )
         self.request_delay_seconds = max(0.0, request_delay_seconds)
         self.rate_limit_delay_seconds = max(0.0, rate_limit_delay_seconds)
         self.max_retries = max(0, max_retries)
+
+    def for_entity(self, entity_name: str) -> "Base44Client":
+        """Return a client for another entity with identical auth/retry settings."""
+
+        return Base44Client(
+            app_id=self.app_id,
+            api_key=self.api_key,
+            server_url=self.server_url,
+            request_delay_seconds=self.request_delay_seconds,
+            rate_limit_delay_seconds=self.rate_limit_delay_seconds,
+            max_retries=self.max_retries,
+            entity_name=entity_name,
+        )
 
     def request(self, method: str, url: str, payload: Any | None = None) -> Any:
         body = None if payload is None else json.dumps(payload).encode("utf-8")
@@ -300,38 +316,44 @@ def create_only(client: Base44Client, records: list[dict[str, Any]], allow_dupli
     total = len(records)
     import_started_at = time.monotonic()
     total_record_duration = 0.0
-    for index, record in enumerate(records, start=1):
-        progress = f"{index}/{total}"
-        record_started_at = time.monotonic()
-        operation = "Created"
-        if not allow_duplicates:
-            existing = matching_existing_record(client, record)
-            if existing is not None:
-                record_id = existing.get("id")
-                if isinstance(record_id, str) and record_id:
-                    client.update(record_id, record)
-                    updated += 1
-                    operation = "Updated"
+    with MutationRun(
+        lambda: mark_numisvault_stats_stale(client), mutation_label="Coin record"
+    ) as mutations:
+        for index, record in enumerate(records, start=1):
+            progress = f"{index}/{total}"
+            record_started_at = time.monotonic()
+            operation = "Created"
+            if not allow_duplicates:
+                existing = matching_existing_record(client, record)
+                if existing is not None:
+                    record_id = existing.get("id")
+                    if isinstance(record_id, str) and record_id:
+                        client.update(record_id, record)
+                        mutations.record_success()
+                        updated += 1
+                        operation = "Updated"
+                    else:
+                        operation = "Skipped existing without id"
                 else:
-                    operation = "Skipped existing without id"
+                    client.bulk_create([record])
+                    mutations.record_success()
+                    created += 1
             else:
                 client.bulk_create([record])
+                mutations.record_success()
                 created += 1
-        else:
-            client.bulk_create([record])
-            created += 1
 
-        record_duration = time.monotonic() - record_started_at
-        total_record_duration += record_duration
-        elapsed = time.monotonic() - import_started_at
-        remaining = total - index
-        estimated_remaining = (total_record_duration / index) * remaining
-        remaining_text = "concluído" if not remaining else f"~{format_duration(estimated_remaining)}"
-        print(
-            f"{operation}: {progress} — {record['name']} "
-            f"[demorou nesta: {format_duration(record_duration, precise=True)} "
-            f"| decorrido: {format_duration(elapsed)} | restante: {remaining_text}]"
-        )
+            record_duration = time.monotonic() - record_started_at
+            total_record_duration += record_duration
+            elapsed = time.monotonic() - import_started_at
+            remaining = total - index
+            estimated_remaining = (total_record_duration / index) * remaining
+            remaining_text = "concluído" if not remaining else f"~{format_duration(estimated_remaining)}"
+            print(
+                f"{operation}: {progress} — {record['name']} "
+                f"[demorou nesta: {format_duration(record_duration, precise=True)} "
+                f"| decorrido: {format_duration(elapsed)} | restante: {remaining_text}]"
+            )
     print(f"Create-only summary: created={created}, updated={updated}")
     return created + updated
 
@@ -343,22 +365,31 @@ def create_missing_only(client: Base44Client, records: list[dict[str, Any]], cou
         print("Missing-only summary: created=0, already_present=%d" % len(records))
         return 0
     created = 0
-    for batch in chunk(missing, max(1, batch_size)):
-        client.bulk_create(batch)
-        created += len(batch)
-        print(f"Created {len(batch)} missing records")
+    with MutationRun(
+        lambda: mark_numisvault_stats_stale(client), mutation_label="Coin record"
+    ) as mutations:
+        for batch in chunk(missing, max(1, batch_size)):
+            client.bulk_create(batch)
+            mutations.record_success(len(batch))
+            created += len(batch)
+            print(f"Created {len(batch)} missing records")
     print(f"Missing-only summary: created={created}, already_present={len(records) - created}")
     return created
 
 
 def replace_country(client: Base44Client, records: list[dict[str, Any]], country: str) -> int:
-    print(f"Deleting existing Coin records for {country}...")
-    client.delete_many({"country": country})
     created = 0
-    for batch in chunk(records, BULK_SIZE):
-        client.bulk_create(batch)
-        created += len(batch)
-        print(f"Created {len(batch)} records")
+    with MutationRun(
+        lambda: mark_numisvault_stats_stale(client), mutation_label="Coin operation"
+    ) as mutations:
+        print(f"Deleting existing Coin records for {country}...")
+        client.delete_many({"country": country})
+        mutations.record_success()
+        for batch in chunk(records, BULK_SIZE):
+            client.bulk_create(batch)
+            mutations.record_success(len(batch))
+            created += len(batch)
+            print(f"Created {len(batch)} records")
     return created
 
 

@@ -11,6 +11,7 @@ from pathlib import Path
 from typing import Any
 
 from scripts import import_base44_souvenirs
+from scripts.admin_stats_sync import MutationRun, mark_numisvault_stats_stale
 from scripts.import_base44_coins import format_duration
 from scripts.pennycollector_souvenirs import (
     normalize_pennycollector_catalog_types,
@@ -214,20 +215,24 @@ def write_catalog_repairs(
 
 def apply_corrections(client: Any, corrections: list[dict[str, Any]]) -> None:
     started_at = time.monotonic()
-    for index, correction in enumerate(corrections, start=1):
-        item_started_at = time.monotonic()
-        client.update(correction["id"], {"type": correction["desired_type"]})
-        elapsed = time.monotonic() - started_at
-        remaining_count = len(corrections) - index
-        estimated = (elapsed / index) * remaining_count
-        print(
-            f"Atualizado: {index}/{len(corrections)} ({index / len(corrections) * 100:.1f}%) "
-            f"— {correction['country']} — {correction['location_name']} — "
-            f"{correction['name']} [faltam: {remaining_count} | "
-            f"demorou nesta: {format_duration(time.monotonic() - item_started_at, precise=True)} "
-            f"| decorrido: {format_duration(elapsed)} | restante: ~{format_duration(estimated)}] "
-            f"— type: {correction['current_type']} → {correction['desired_type']}"
-        )
+    with MutationRun(
+        lambda: mark_numisvault_stats_stale(client), mutation_label="Souvenir record"
+    ) as mutations:
+        for index, correction in enumerate(corrections, start=1):
+            item_started_at = time.monotonic()
+            client.update(correction["id"], {"type": correction["desired_type"]})
+            mutations.record_success()
+            elapsed = time.monotonic() - started_at
+            remaining_count = len(corrections) - index
+            estimated = (elapsed / index) * remaining_count
+            print(
+                f"Atualizado: {index}/{len(corrections)} ({index / len(corrections) * 100:.1f}%) "
+                f"— {correction['country']} — {correction['location_name']} — "
+                f"{correction['name']} [faltam: {remaining_count} | "
+                f"demorou nesta: {format_duration(time.monotonic() - item_started_at, precise=True)} "
+                f"| decorrido: {format_duration(elapsed)} | restante: ~{format_duration(estimated)}] "
+                f"— type: {correction['current_type']} → {correction['desired_type']}"
+            )
 
 
 def load_existing(client: Any, desired: list[dict[str, Any]]) -> list[dict[str, Any]]:

@@ -15,6 +15,7 @@ from pathlib import Path
 from typing import Any
 from urllib.parse import parse_qs, urlparse
 
+from scripts.admin_stats_sync import MutationRun, mark_numisvault_stats_stale
 from scripts.import_base44_coins import (
     DEFAULT_BASE44_URL,
     DEFAULT_MAX_RETRIES,
@@ -482,23 +483,27 @@ def create_missing_records(
     created = 0
     started_at = time.monotonic()
     batches = chunks(records, max(1, batch_size))
-    for batch_index, batch in enumerate(batches, start=1):
-        batch_started_at = time.monotonic()
-        client.bulk_create(batch)
-        created += len(batch)
-        elapsed = time.monotonic() - started_at
-        average_batch = elapsed / batch_index
-        remaining_seconds = average_batch * (len(batches) - batch_index)
-        percent = created / len(records) * 100
-        remaining = len(records) - created
-        first_name = batch[0]["name"]
-        last_name = batch[-1]["name"]
-        batch_label = first_name if len(batch) == 1 else f"{first_name} → {last_name}"
-        print(
-            f"Criados: {created}/{len(records)} ({percent:.1f}%) — {batch_label} "
-            f"[faltam: {remaining} | lote: {format_duration(time.monotonic() - batch_started_at, precise=True)} "
-            f"| decorrido: {format_duration(elapsed)} | restante: ~{format_duration(remaining_seconds)}]"
-        )
+    with MutationRun(
+        lambda: mark_numisvault_stats_stale(client), mutation_label="Souvenir record"
+    ) as mutations:
+        for batch_index, batch in enumerate(batches, start=1):
+            batch_started_at = time.monotonic()
+            client.bulk_create(batch)
+            mutations.record_success(len(batch))
+            created += len(batch)
+            elapsed = time.monotonic() - started_at
+            average_batch = elapsed / batch_index
+            remaining_seconds = average_batch * (len(batches) - batch_index)
+            percent = created / len(records) * 100
+            remaining = len(records) - created
+            first_name = batch[0]["name"]
+            last_name = batch[-1]["name"]
+            batch_label = first_name if len(batch) == 1 else f"{first_name} → {last_name}"
+            print(
+                f"Criados: {created}/{len(records)} ({percent:.1f}%) — {batch_label} "
+                f"[faltam: {remaining} | lote: {format_duration(time.monotonic() - batch_started_at, precise=True)} "
+                f"| decorrido: {format_duration(elapsed)} | restante: ~{format_duration(remaining_seconds)}]"
+            )
     return created
 
 
