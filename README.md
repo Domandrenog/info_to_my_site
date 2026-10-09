@@ -56,6 +56,47 @@ Para excluir, por exemplo, a entidade de utilizadores:
 python3 backup.py --exclude-entity User
 ```
 
+### Plano privado para separar as comemorativas dos EUA
+
+Depois de criar um backup completo, este comando gera o plano exato para mover
+as comemorativas dos EUA de `Coin` para `SpecialCoin`:
+
+```bash
+python3 -m scripts.build_eua_commemorative_migration_manifest
+```
+
+O comando lê o backup indicado em `backups/LATEST`; não carrega credenciais,
+não usa a rede e não faz qualquer leitura ou alteração no Site Base44. Por
+omissão cria uma pasta privada
+`backups/migrations/eua-commemorativas-<data UTC>/`, que continua excluída do
+Git, com:
+
+- `manifest.json`: os 238 registos comemorativos completos, todas as variantes
+  e descobertas associadas, sempre com o ID e os dados originais ao lado do
+  payload proposto para `SpecialCoin`;
+- `summary.json`: contagens por programa, denominação, estado e raridade;
+- `SHA256SUMS`: checksums dos dois ficheiros.
+
+A seleção é intencionalmente rígida: exige 250 moedas dos EUA, exatamente 238
+comemorativas distribuídas pelos dez programas conhecidos, 12 moedas normais e
+nenhuma `SpecialCoin` dos EUA já existente no backup. Também valida os IDs e as
+relações de cada `CoinVariant` e `CoinSighting`. Se algum destes contratos mudar,
+o processo termina sem publicar um manifesto parcial.
+
+O manifesto não autoriza apagar as moedas originais e deixa todos os novos IDs
+por preencher. O campo `rarity`, que não existe no modelo documentado de
+`SpecialCoin`, fica preservado como dado de origem. Estados não documentados no
+destino, como `Incompleto`, aparecem explicitamente no resumo para revisão antes
+de qualquer futura execução.
+
+Para usar deliberadamente outro backup ou outra pasta de saída:
+
+```bash
+python3 -m scripts.build_eua_commemorative_migration_manifest \
+  --backup backups/base44-AAAAmmddTHHMMSSZ \
+  --output-root backups/migrations
+```
+
 ```mermaid
 flowchart LR
 	subgraph S1["1. Abrir browser"]
