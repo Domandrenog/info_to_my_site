@@ -25,12 +25,13 @@ from scripts.import_base44_coins import (
 )
 
 
-BACKUP_FORMAT_VERSION = 2
+BACKUP_FORMAT_VERSION = 3
 DEFAULT_OUTPUT_ROOT = Path("backups")
 DEFAULT_PAGE_SIZE = 1000
 DEFAULT_ENTITIES = (
     "AdminStats",
     "CoinVariant",
+    "SpecialCoinVariant",
     "SpecialCoin",
     "CountryNote",
     "CountrySettings",
@@ -237,6 +238,25 @@ def build_complete_item_views(
                 }
             )
 
+    special_variant_records = records_by_entity.get("SpecialCoinVariant", [])
+    linked_special_variants = 0
+    for variant in special_variant_records:
+        target = item_index.get(str(variant.get("special_coin_id") or ""))
+        if target is not None and target[0] == "SpecialCoin":
+            target[1]["variants"].append(variant)
+            linked_special_variants += 1
+        else:
+            unmatched_relations.append(
+                {
+                    "relation_entity": "SpecialCoinVariant",
+                    "reason": (
+                        "special_coin_id sem moeda de coleção correspondente "
+                        "no âmbito deste backup"
+                    ),
+                    "record": variant,
+                }
+            )
+
     sighting_records = records_by_entity.get("CoinSighting", [])
     linked_sightings = 0
     for sighting in sighting_records:
@@ -271,6 +291,11 @@ def build_complete_item_views(
             "total": len(variant_records),
             "linked": linked_variants,
             "unmatched": len(variant_records) - linked_variants,
+        },
+        "special_coin_variants": {
+            "total": len(special_variant_records),
+            "linked": linked_special_variants,
+            "unmatched": len(special_variant_records) - linked_special_variants,
         },
         "coin_sightings": {
             "total": len(sighting_records),
@@ -703,9 +728,14 @@ def create_backup(
     output_fn(f"Itens completos: {relationship_summary['items']}")
     output_fn(f"Países organizados: {manifest['totals']['countries']}")
     output_fn(
-        "Variantes associadas: "
+        "Variantes normais associadas: "
         f"{relationship_summary['coin_variants']['linked']}/"
         f"{relationship_summary['coin_variants']['total']}"
+    )
+    output_fn(
+        "Variantes de coleção associadas: "
+        f"{relationship_summary['special_coin_variants']['linked']}/"
+        f"{relationship_summary['special_coin_variants']['total']}"
     )
     output_fn(
         "Descobertas associadas: "

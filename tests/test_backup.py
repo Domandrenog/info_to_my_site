@@ -27,6 +27,7 @@ class Base44BackupTests(unittest.TestCase):
             [
                 "AdminStats",
                 "CoinVariant",
+                "SpecialCoinVariant",
                 "SpecialCoin",
                 "CountryNote",
                 "CountrySettings",
@@ -56,9 +57,24 @@ class Base44BackupTests(unittest.TestCase):
         views, summary = backup.build_complete_item_views(
             {
                 "Coin": [{"id": "c1", "condition": "Tenho", "url_ucoin": "u"}],
+                "SpecialCoin": [
+                    {"id": "sc1", "condition": "Tenho", "url_ucoin": "special-u"}
+                ],
                 "Souvenir": [{"id": "s1", "condition": "Não Tenho"}],
                 "CoinVariant": [
                     {"id": "v1", "coin_id": "c1", "condition": "Má Qualidade"}
+                ],
+                "SpecialCoinVariant": [
+                    {
+                        "id": "sv1",
+                        "special_coin_id": "sc1",
+                        "condition": "Tenho",
+                    },
+                    {
+                        "id": "sv2",
+                        "special_coin_id": "missing",
+                        "condition": "Não Tenho",
+                    },
                 ],
                 "CoinSighting": [
                     {
@@ -68,6 +84,13 @@ class Base44BackupTests(unittest.TestCase):
                         "username": "finder",
                     },
                     {"id": "f2", "coin_id": "s1", "username": "finder-2"},
+                    {
+                        "id": "f-special",
+                        "coin_id": "sc1",
+                        "item_id": "sc1",
+                        "item_type": "special_coin",
+                        "username": "finder-special",
+                    },
                     {"id": "f3", "coin_id": "missing", "username": "orphan"},
                 ],
             }
@@ -75,11 +98,49 @@ class Base44BackupTests(unittest.TestCase):
 
         self.assertEqual(views["Coin"][0]["record"]["condition"], "Tenho")
         self.assertEqual(views["Coin"][0]["variants"][0]["id"], "v1")
+        self.assertEqual(views["SpecialCoin"][0]["variants"][0]["id"], "sv1")
+        self.assertEqual(
+            views["SpecialCoin"][0]["sightings"][0]["id"], "f-special"
+        )
         self.assertEqual(views["Coin"][0]["sightings"][0]["username"], "finder")
         self.assertEqual(views["Souvenir"][0]["sightings"][0]["id"], "f2")
-        self.assertEqual(len(views["unmatched-relations"]), 1)
-        self.assertEqual(summary["coin_variants"], {"total": 1, "linked": 1, "unmatched": 0})
-        self.assertEqual(summary["coin_sightings"], {"total": 3, "linked": 2, "unmatched": 1})
+        self.assertEqual(len(views["unmatched-relations"]), 2)
+        self.assertEqual(
+            summary["coin_variants"],
+            {"total": 1, "linked": 1, "unmatched": 0},
+        )
+        self.assertEqual(
+            summary["special_coin_variants"],
+            {"total": 2, "linked": 1, "unmatched": 1},
+        )
+        self.assertEqual(
+            summary["coin_sightings"],
+            {"total": 4, "linked": 3, "unmatched": 1},
+        )
+
+    def test_special_coin_variant_cannot_attach_to_normal_coin(self) -> None:
+        views, summary = backup.build_complete_item_views(
+            {
+                "Coin": [{"id": "shared-id"}],
+                "SpecialCoinVariant": [
+                    {
+                        "id": "sv1",
+                        "special_coin_id": "shared-id",
+                        "condition": "Tenho",
+                    }
+                ],
+            }
+        )
+
+        self.assertEqual(views["Coin"][0]["variants"], [])
+        self.assertEqual(
+            summary["special_coin_variants"],
+            {"total": 1, "linked": 0, "unmatched": 1},
+        )
+        self.assertEqual(
+            views["unmatched-relations"][0]["relation_entity"],
+            "SpecialCoinVariant",
+        )
 
     def test_change_report_preserves_previous_and_current_full_records(self) -> None:
         with tempfile.TemporaryDirectory() as temp_dir:
@@ -184,6 +245,7 @@ class Base44BackupTests(unittest.TestCase):
 
             self.assertEqual(destination.name, "base44-20260926T103000Z")
             self.assertEqual(manifest["status"], "complete")
+            self.assertEqual(manifest["format_version"], 3)
             self.assertEqual(
                 manifest["totals"],
                 {"entities": 2, "records": 3, "countries": 2},

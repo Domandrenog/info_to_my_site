@@ -7,8 +7,9 @@ Também inclui um fluxo separado para recolher moedas prensadas do Presscoins co
 ## Backup completo do Site Base44
 
 O ficheiro `backup.py` guarda, em modo exclusivamente de leitura, todos os
-registos das oito entidades documentadas da app: `CoinVariant`, `SpecialCoin`,
-`CountryNote`, `CountrySettings`, `Coin`, `CoinSighting`, `Souvenir` e `User`.
+registos das dez entidades conhecidas da app: `AdminStats`, `CoinVariant`,
+`SpecialCoinVariant`, `SpecialCoin`, `CountryNote`, `CountrySettings`, `Coin`,
+`CoinSighting`, `Souvenir` e `User`.
 
 ```bash
 python3 backup.py
@@ -18,14 +19,16 @@ Cada execução cria `backups/base44-<data UTC>/`, com:
 
 - `<continente>/<pais>/normal.json`: todas as moedas normais do país num único
   JSON, cada uma com o registo completo, variantes e descobertas; quando
-  aplicável, a mesma pasta inclui `collection.json`, `notes.json`,
+  aplicável, a mesma pasta inclui `collection.json`, com cada `SpecialCoin`
+  acompanhado pelas respetivas `SpecialCoinVariant`, além de `notes.json`,
   `souvenir.json` e `settings.json`;
 - `entities/`: cópia bruta integral de todos os campos devolvidos pela API;
 - `views/*-complete.json`: cada moeda, nota e souvenir com o respetivo estado
   (`Tenho`, `Não Tenho`, etc.), links, fotografias, aquisição, variantes e todas
   as descobertas associadas, incluindo quem encontrou;
 - `views/unmatched-relations-complete.json`: relações antigas ou órfãs, mantidas
-  explicitamente para não perder dados;
+  explicitamente para não perder dados, incluindo `CoinVariant`,
+  `SpecialCoinVariant` ou `CoinSighting` sem item correspondente;
 - `changes-since-previous.json`: registos criados, apagados e modificados desde
   o backup anterior; em cada modificação guarda o valor completo anterior e o
   atual;
@@ -36,6 +39,16 @@ privados da coleção; os ficheiros são criados com permissões privadas. O bac
 preserva os URLs das fotografias, mas não descarrega os respetivos ficheiros
 binários. O primeiro backup funciona como base: a API não permite recuperar
 versões históricas anteriores a essa primeira cópia.
+
+### Variantes de moedas de coleção
+
+As variantes das moedas normais continuam em `CoinVariant`, ligadas por
+`coin_id`. As variantes de moedas comemorativas/coleção ficam em
+`SpecialCoinVariant`, ligadas por `special_coin_id`, e preservam todos os campos
+devolvidos pela API, incluindo `tag`, `condition`, `adquirida_por`,
+`data_aquisicao` e `ordem`. Uma variante só é associada quando o respetivo pai é
+da entidade correta; relações inválidas ficam no relatório de órfãs em vez de
+serem descartadas.
 
 Para excluir, por exemplo, a entidade de utilizadores:
 
