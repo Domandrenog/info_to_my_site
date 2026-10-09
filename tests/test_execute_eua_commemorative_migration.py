@@ -72,6 +72,8 @@ def make_state():
         "updated_at": "2026-10-09T00:00:00+00:00",
         "capabilities": {},
         "created_special_coins": {},
+        "created_special_coin_variants": {},
+        "updated_sightings": {},
         "safety": {
             "source_coin_deletions": 0,
             "source_variant_mutations": 0,
@@ -108,15 +110,28 @@ class FakeSpecialCoinClient:
         return created
 
     def request(self, method, url, payload=None):
+        record_id = url.rsplit("/", 1)[-1]
+        if method == "GET":
+            matches = [record for record in self.records if record.get("id") == record_id]
+            if len(matches) != 1:
+                raise AssertionError(f"Unknown record: {record_id}")
+            return dict(matches[0])
         if method != "DELETE":
             raise AssertionError(f"Unexpected method: {method}")
-        record_id = url.rsplit("/", 1)[-1]
         before = len(self.records)
         self.records = [record for record in self.records if record.get("id") != record_id]
         if len(self.records) == before:
             raise AssertionError(f"Unknown record: {record_id}")
         self.deleted += 1
         return None
+
+    def update(self, record_id, patch):
+        for index, record in enumerate(self.records):
+            if record.get("id") == record_id:
+                updated = {**record, **patch, "updated_date": "after-update"}
+                self.records[index] = updated
+                return updated
+        raise AssertionError(f"Unknown record: {record_id}")
 
 
 class FakeBaseClient:
@@ -127,6 +142,72 @@ class FakeBaseClient:
         client = FakeSpecialCoinClient()
         client.records = [dict(record) for record in self.records_by_entity[entity]]
         return client
+
+
+def make_relation_manifest_and_state():
+    manifest = make_manifest()
+    state = make_state()
+    for index, item in enumerate(manifest["items"], start=1):
+        target_id = f"special-parent-{index:03d}"
+        state["created_special_coins"][item["source_coin_id"]] = {
+            "target_special_coin_id": target_id
+        }
+        if index <= 137:
+            item["source_record"]["has_variants"] = True
+            for variant_index, tag in enumerate(("P", "D"), start=1):
+                variant_id = f"variant-{index:03d}-{variant_index}"
+                source_variant = {
+                    "id": variant_id,
+                    "coin_id": item["source_coin_id"],
+                    "tag": tag,
+                    "condition": "Tenho" if tag == "P" else "Não Tenho",
+                    "adquirida_por": "",
+                    "data_aquisicao": "",
+                    "ordem": variant_index,
+                }
+                item["variants"].append(
+                    {
+                        "source_coin_variant_id": variant_id,
+                        "source_record": source_variant,
+                        "target_special_coin_variant_id": None,
+                        "target_payload_without_parent_id": {
+                            field: source_variant.get(field)
+                            for field in (
+                                "tag",
+                                "condition",
+                                "adquirida_por",
+                                "data_aquisicao",
+                                "ordem",
+                            )
+                        },
+                    }
+                )
+        if index <= 112:
+            sighting_id = f"sighting-{index:03d}"
+            source_sighting = {
+                "id": sighting_id,
+                "coin_id": item["source_coin_id"],
+                "item_id": item["source_coin_id"],
+                "item_type": "normal_coin",
+                "coin_name": item["source_record"]["name"],
+                "years": item["source_record"]["years"],
+                "variant_tag": None,
+                "updated_date": "before-update",
+            }
+            item["sightings"].append(
+                {
+                    "source_coin_sighting_id": sighting_id,
+                    "source_record": source_sighting,
+                    "planned_patch_after_target_creation": {
+                        "coin_id": None,
+                        "item_id": None,
+                        "item_type": "special_coin",
+                        "coin_name": item["target_special_coin_payload"]["name"],
+                        "years": item["target_special_coin_payload"]["year"],
+                    },
+                }
+            )
+    return manifest, state
 
 
 class UsaCommemorativeMigrationExecutorTests(unittest.TestCase):
@@ -246,6 +327,85 @@ class UsaCommemorativeMigrationExecutorTests(unittest.TestCase):
             executor.verify_live_source_snapshot(
                 manifest, FakeBaseClient(changed_records)
             )
+
+    def test_variant_plans_map_274_old_variants_to_confirmed_new_parents(self):
+        manifest, state = make_relation_manifest_and_state()
+
+        plans = executor.special_variant_plans(manifest, state)
+
+        self.assertEqual(len(plans), 274)
+        self.assertEqual(plans[0]["source_coin_variant_id"], "variant-001-1")
+        self.assertEqual(
+            plans[0]["target_payload"]["special_coin_id"],
+            "special-parent-001",
+        )
+        self.assertEqual(plans[0]["target_payload"]["tag"], "P")
+        self.assertNotIn("coin_id", plans[0]["target_payload"])
+
+    def test_variant_resume_adopts_existing_and_creates_only_missing_record(self):
+        manifest, state = make_relation_manifest_and_state()
+        plans = executor.special_variant_plans(manifest, state)
+        client = FakeSpecialCoinClient()
+        for index, plan in enumerate(plans[:-1], start=1):
+            client.records.append(dict(plan["target_payload"], id=f"sv-{index:03d}"))
+
+        with tempfile.TemporaryDirectory() as temp_dir, patch.object(
+            executor, "mark_numisvault_stats_stale", return_value=False
+        ):
+            created = executor.execute_variant_creations(
+                artifact=Path(temp_dir),
+                manifest=manifest,
+                state=state,
+                read_client=client,
+                write_client=client,
+                admin_client=object(),
+            )
+            saved = executor.read_json(Path(temp_dir) / executor.STATE_FILENAME)
+
+        self.assertEqual(created, 1)
+        self.assertEqual(client.created, 1)
+        self.assertEqual(len(client.records), 274)
+        self.assertEqual(len(saved["created_special_coin_variants"]), 274)
+        self.assertEqual(saved["safety"]["source_variant_mutations"], 0)
+
+    def test_sighting_resume_adopts_relinked_and_updates_only_pending_record(self):
+        manifest, state = make_relation_manifest_and_state()
+        plans = executor.sighting_relink_plans(manifest, state)
+        client = FakeSpecialCoinClient()
+        for plan in plans[:-1]:
+            client.records.append(
+                dict(
+                    executor.expected_relinked_sighting(plan),
+                    updated_date="already-relinked",
+                )
+            )
+        client.records.append(dict(plans[-1]["source_record"]))
+
+        with tempfile.TemporaryDirectory() as temp_dir, patch.object(
+            executor, "mark_numisvault_stats_stale", return_value=False
+        ):
+            updated = executor.execute_sighting_relinks(
+                artifact=Path(temp_dir),
+                manifest=manifest,
+                state=state,
+                read_client=client,
+                write_client=client,
+                admin_client=object(),
+            )
+            saved = executor.read_json(Path(temp_dir) / executor.STATE_FILENAME)
+
+        self.assertEqual(updated, 1)
+        self.assertEqual(len(saved["updated_sightings"]), 112)
+        self.assertEqual(saved["safety"]["source_sighting_mutations"], 112)
+        self.assertEqual(saved["safety"]["source_coin_deletions"], 0)
+        self.assertEqual(saved["safety"]["source_variant_mutations"], 0)
+        final = next(
+            record
+            for record in client.records
+            if record["id"] == plans[-1]["source_coin_sighting_id"]
+        )
+        self.assertEqual(final["item_type"], "special_coin")
+        self.assertEqual(final["item_id"], "special-parent-112")
 
 
 if __name__ == "__main__":

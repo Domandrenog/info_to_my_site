@@ -136,6 +136,26 @@ Mesmo este último comando mantém as 238 moedas `Coin` originais, todas as
 uma eventual eliminação das origens pertencem a fases posteriores, com backup e
 autorização separados.
 
+Depois de confirmar os 238 pais, as relações são migradas em duas fases
+independentes e retomáveis:
+
+```bash
+# Cria 274 SpecialCoinVariant e mantém as CoinVariant antigas intactas
+python3 -m scripts.execute_eua_commemorative_migration \
+  --apply-variants-create-only --yes
+
+# Religa 112 CoinSighting aos novos pais; não apaga moedas ou variantes
+python3 -m scripts.execute_eua_commemorative_migration \
+  --apply-sighting-relinks --yes
+```
+
+O segundo comando só fica disponível quando as 274 variantes novas estiverem
+confirmadas. Cada descoberta é atualizada apenas nos campos relacionais
+`coin_id`, `item_id`, `item_type`, `coin_name` e `years`; utilizador, estado,
+qualidade, data, notas e `variant_tag` são preservados e comparados novamente
+depois do `PUT`. Os checkpoints guardam o registo completo anterior e o resultado
+verificado. Continuam sem existir opções de eliminação neste executor.
+
 ```mermaid
 flowchart LR
 	subgraph S1["1. Abrir browser"]
