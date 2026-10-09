@@ -97,6 +97,45 @@ python3 -m scripts.build_eua_commemorative_migration_manifest \
   --output-root backups/migrations
 ```
 
+#### Execução create-only com canário e checkpoint
+
+O executor da fase seguinte lê o mesmo manifesto verificado e, por desenho,
+apenas consegue criar pais `SpecialCoin`. Não contém qualquer modo para apagar
+`Coin`, nem para alterar variantes ou descobertas:
+
+```bash
+# Só valida o plano local; não usa a rede
+python3 -m scripts.execute_eua_commemorative_migration
+
+# Compara com o estado atual do Base44; apenas GET
+python3 -m scripts.execute_eua_commemorative_migration --check-live
+
+# Confirma que SpecialCoin aceita Incompleto e apaga imediatamente o probe
+python3 -m scripts.execute_eua_commemorative_migration --probe-incomplete --yes
+
+# Cria e verifica exatamente uma moeda real simples
+python3 -m scripts.execute_eua_commemorative_migration --apply-canary --yes
+```
+
+Cada criação é confirmada novamente por
+`country + name + commemorative_name + year`. O ficheiro privado
+`execution-state.json`, guardado atomicamente dentro da pasta do manifesto,
+regista a relação entre o ID antigo e o novo ID. Assim, uma execução interrompida
+pode continuar sem repetir moedas; uma correspondência múltipla, um registo
+alterado ou um checkpoint cujo destino desapareceu bloqueiam a continuação.
+
+Só depois de validar o canário no site se deve criar os restantes pais:
+
+```bash
+python3 -m scripts.execute_eua_commemorative_migration \
+  --apply-all-create-only --yes
+```
+
+Mesmo este último comando mantém as 238 moedas `Coin` originais, todas as
+`CoinVariant` e todas as `CoinSighting` intocadas. A migração dessas relações e
+uma eventual eliminação das origens pertencem a fases posteriores, com backup e
+autorização separados.
+
 ```mermaid
 flowchart LR
 	subgraph S1["1. Abrir browser"]
