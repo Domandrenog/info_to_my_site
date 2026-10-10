@@ -156,6 +156,36 @@ qualidade, data, notas e `variant_tag` são preservados e comparados novamente
 depois do `PUT`. Os checkpoints guardam o registo completo anterior e o resultado
 verificado. Continuam sem existir opções de eliminação neste executor.
 
+#### Adicionar as comemorativas dos EUA entretanto detetadas em falta
+
+O catálogo revisto
+`info/paises/america/eua/special-coins-missing-approved.json` contém sete
+emissões confirmadas no uCoin que não faziam parte da migração inicial: três de
+2026, as três denominações comemorativas de 1976 e a meia moeda de dólar de
+Booker T. Washington em prata. Inclui 24 variantes aprovadas e exclui todas as
+variantes `S` por decisão explícita. A exceção histórica está documentada no
+próprio catálogo: o uCoin classifica os `S` de Booker T. Washington como UNC,
+mas estes continuam fora do lote aprovado.
+
+```bash
+# Mostra apenas o lote local aprovado
+python3 -m scripts.import_missing_eua_special_coins
+
+# Confirma o que já existe no Site Base44, apenas com leituras
+python3 -m scripts.import_missing_eua_special_coins --check-live
+
+# Cria e verifica somente os pais e variantes ainda em falta
+python3 -m scripts.import_missing_eua_special_coins \
+  --apply-all-create-only --yes
+```
+
+O executor exige a base anterior de 238 `SpecialCoin` dos EUA, recusa URLs,
+identidades ou ordens ambíguas e guarda um checkpoint privado depois de cada
+criação. Uma execução interrompida pode ser retomada. O script não atualiza nem
+apaga moedas ou variantes e nunca cria uma variante `S`; depois de criações
+confirmadas, apenas pode marcar `AdminStats.needs_rebuild=true`, para a app
+reconstruir os agregados a partir dos novos dados.
+
 ```mermaid
 flowchart LR
 	subgraph S1["1. Abrir browser"]

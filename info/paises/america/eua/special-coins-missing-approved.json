@@ -1,0 +1,425 @@
+{
+  "format_version": 1,
+  "kind": "eua_missing_special_coins",
+  "status": "approved_by_user",
+  "approved_at": "2026-10-10",
+  "country": "EUA",
+  "continent": "América",
+  "scope": "Comemorativas do uCoin em falta no Site Base44, entre 1946 e 2026",
+  "variant_policy": {
+    "include": "Variantes aprovadas destinadas a circulação ou coleção normal",
+    "exclude": "Todas as variantes com marca S, por decisão explícita do utilizador",
+    "booker_t_washington_note": "O uCoin classifica as variantes S de 1946-1951 como UNC, não como proof; continuam excluídas para respeitar a decisão explícita."
+  },
+  "items": [
+    {
+      "key": "2026-minnesota-mobile-refrigeration",
+      "source": {
+        "ucoin_url": "https://en.ucoin.net/coin/usa-1-dollar-2026/?tid=189797",
+        "coin_type": "Commemorative coins",
+        "composition": "Manganese-Brass plated Copper",
+        "excluded_variants": [
+          "S"
+        ]
+      },
+      "payload": {
+        "continent": "América",
+        "has_variants": true,
+        "image_frente": "https://i.ucoin.net/coin/87/082/87082928-1/usa-1-dollar-2026.jpg",
+        "adquirida_por": "",
+        "data_aquisicao": "",
+        "local_compra": null,
+        "url_ucoin": "https://pt.ucoin.net/coin/usa-1-dollar-2026/?tid=189797",
+        "condition": "Não Tenho",
+        "name": "1 dólar",
+        "commemorative_name": "Minnesota. Refrigeração móvel",
+        "valor_pago": null,
+        "country": "EUA",
+        "ordem": 251,
+        "hidden": false,
+        "year": "2026",
+        "moeda_valor": "EUR",
+        "url_numista": null,
+        "notes": "Inovação americana",
+        "image_verso": "https://i.ucoin.net/coin/87/082/87082928-2/usa-1-dollar-2026.jpg"
+      },
+      "variants": [
+        {
+          "tag": "P",
+          "condition": "Não Tenho",
+          "adquirida_por": null,
+          "data_aquisicao": null,
+          "ordem": 1
+        },
+        {
+          "tag": "D",
+          "condition": "Não Tenho",
+          "adquirida_por": null,
+          "data_aquisicao": null,
+          "ordem": 2
+        }
+      ]
+    },
+    {
+      "key": "2026-wisconsin-cray-1",
+      "source": {
+        "ucoin_url": "https://en.ucoin.net/coin/usa-1-dollar-2026/?tid=189796",
+        "coin_type": "Commemorative coins",
+        "composition": "Manganese-Brass plated Copper",
+        "excluded_variants": [
+          "S"
+        ]
+      },
+      "payload": {
+        "continent": "América",
+        "has_variants": true,
+        "image_frente": "https://i.ucoin.net/coin/86/160/86160453-1/usa-1-dollar-2026.jpg",
+        "adquirida_por": "",
+        "data_aquisicao": "",
+        "local_compra": null,
+        "url_ucoin": "https://pt.ucoin.net/coin/usa-1-dollar-2026/?tid=189796",
+        "condition": "Não Tenho",
+        "name": "1 dólar",
+        "commemorative_name": "Wisconsin. Supercomputador Cray-1",
+        "valor_pago": null,
+        "country": "EUA",
+        "ordem": 252,
+        "hidden": false,
+        "year": "2026",
+        "moeda_valor": "EUR",
+        "url_numista": null,
+        "notes": "Inovação americana",
+        "image_verso": "https://i.ucoin.net/coin/86/160/86160453-2/usa-1-dollar-2026.jpg"
+      },
+      "variants": [
+        {
+          "tag": "P",
+          "condition": "Não Tenho",
+          "adquirida_por": null,
+          "data_aquisicao": null,
+          "ordem": 1
+        },
+        {
+          "tag": "D",
+          "condition": "Não Tenho",
+          "adquirida_por": null,
+          "data_aquisicao": null,
+          "ordem": 2
+        }
+      ]
+    },
+    {
+      "key": "2026-independence-250-dollar",
+      "source": {
+        "ucoin_url": "https://en.ucoin.net/coin/usa-1-dollar-2026/?tid=195362",
+        "coin_type": "Commemorative coins",
+        "composition": "Manganese-Brass plated Copper",
+        "excluded_variants": []
+      },
+      "payload": {
+        "continent": "América",
+        "has_variants": true,
+        "image_frente": "https://i.ucoin.net/coin/87/538/87538813-1/usa-1-dollar-2026.jpg",
+        "adquirida_por": "",
+        "data_aquisicao": "",
+        "local_compra": null,
+        "url_ucoin": "https://pt.ucoin.net/coin/usa-1-dollar-2026/?tid=195362",
+        "condition": "Não Tenho",
+        "name": "1 dólar",
+        "commemorative_name": "250º Aniversário - Independência dos EUA",
+        "valor_pago": null,
+        "country": "EUA",
+        "ordem": 253,
+        "hidden": false,
+        "year": "2026",
+        "moeda_valor": "EUR",
+        "url_numista": null,
+        "notes": "Independência dos EUA",
+        "image_verso": "https://i.ucoin.net/coin/87/538/87538813-2/usa-1-dollar-2026.jpg"
+      },
+      "variants": [
+        {
+          "tag": "Sem marca",
+          "condition": "Não Tenho",
+          "adquirida_por": null,
+          "data_aquisicao": null,
+          "ordem": 1
+        },
+        {
+          "tag": "4th",
+          "condition": "Não Tenho",
+          "adquirida_por": null,
+          "data_aquisicao": null,
+          "ordem": 2
+        }
+      ]
+    },
+    {
+      "key": "1976-independence-quarter",
+      "source": {
+        "ucoin_url": "https://en.ucoin.net/coin/usa-1-4-dollar-1976/?tid=12097",
+        "coin_type": "Commemorative coins",
+        "composition": "Copper-Nickel plated Copper",
+        "excluded_variants": [
+          "S (proof)"
+        ]
+      },
+      "payload": {
+        "continent": "América",
+        "has_variants": true,
+        "image_frente": "https://i.ucoin.net/coin/36/314/36314556-1/usa-1-4-dollar-1976.jpg",
+        "adquirida_por": "",
+        "data_aquisicao": "",
+        "local_compra": null,
+        "url_ucoin": "https://pt.ucoin.net/coin/usa-1-4-dollar-1976/?tid=12097",
+        "condition": "Não Tenho",
+        "name": "25 cents",
+        "commemorative_name": "200º Aniversário - Independência dos EUA",
+        "valor_pago": null,
+        "country": "EUA",
+        "ordem": 254,
+        "hidden": false,
+        "year": "1976",
+        "moeda_valor": "EUR",
+        "url_numista": null,
+        "notes": "Independência dos EUA",
+        "image_verso": "https://i.ucoin.net/coin/36/314/36314556-2/usa-1-4-dollar-1976.jpg"
+      },
+      "variants": [
+        {
+          "tag": "Sem marca",
+          "condition": "Não Tenho",
+          "adquirida_por": null,
+          "data_aquisicao": null,
+          "ordem": 1
+        },
+        {
+          "tag": "D",
+          "condition": "Não Tenho",
+          "adquirida_por": null,
+          "data_aquisicao": null,
+          "ordem": 2
+        }
+      ]
+    },
+    {
+      "key": "1976-independence-half-dollar",
+      "source": {
+        "ucoin_url": "https://en.ucoin.net/coin/usa-1-2-dollar-1976/?tid=12176",
+        "coin_type": "Commemorative coins",
+        "composition": "Copper-Nickel plated Copper",
+        "excluded_variants": [
+          "S (proof)"
+        ]
+      },
+      "payload": {
+        "continent": "América",
+        "has_variants": true,
+        "image_frente": "https://i.ucoin.net/coin/36/314/36314461-1/usa-1-2-dollar-1976.jpg",
+        "adquirida_por": "",
+        "data_aquisicao": "",
+        "local_compra": null,
+        "url_ucoin": "https://pt.ucoin.net/coin/usa-1-2-dollar-1976/?tid=12176",
+        "condition": "Não Tenho",
+        "name": "50 cents",
+        "commemorative_name": "200º Aniversário - Independência dos EUA",
+        "valor_pago": null,
+        "country": "EUA",
+        "ordem": 255,
+        "hidden": false,
+        "year": "1976",
+        "moeda_valor": "EUR",
+        "url_numista": null,
+        "notes": "Independência dos EUA",
+        "image_verso": "https://i.ucoin.net/coin/36/314/36314461-2/usa-1-2-dollar-1976.jpg"
+      },
+      "variants": [
+        {
+          "tag": "Sem marca",
+          "condition": "Não Tenho",
+          "adquirida_por": null,
+          "data_aquisicao": null,
+          "ordem": 1
+        },
+        {
+          "tag": "D",
+          "condition": "Não Tenho",
+          "adquirida_por": null,
+          "data_aquisicao": null,
+          "ordem": 2
+        }
+      ]
+    },
+    {
+      "key": "1976-independence-dollar",
+      "source": {
+        "ucoin_url": "https://en.ucoin.net/coin/usa-1-dollar-1976/?tid=12185",
+        "coin_type": "Commemorative coins",
+        "composition": "Copper-Nickel plated Copper",
+        "excluded_variants": [
+          "S (proof)"
+        ]
+      },
+      "payload": {
+        "continent": "América",
+        "has_variants": true,
+        "image_frente": "https://i.ucoin.net/coin/48/762/48762901-1/usa-1-dollar-1976.jpg",
+        "adquirida_por": "",
+        "data_aquisicao": "",
+        "local_compra": null,
+        "url_ucoin": "https://pt.ucoin.net/coin/usa-1-dollar-1976/?tid=12185",
+        "condition": "Não Tenho",
+        "name": "1 dólar",
+        "commemorative_name": "200º Aniversário - Independência dos EUA",
+        "valor_pago": null,
+        "country": "EUA",
+        "ordem": 256,
+        "hidden": false,
+        "year": "1976",
+        "moeda_valor": "EUR",
+        "url_numista": null,
+        "notes": "Independência dos EUA",
+        "image_verso": "https://i.ucoin.net/coin/48/762/48762901-2/usa-1-dollar-1976.jpg"
+      },
+      "variants": [
+        {
+          "tag": "Sem marca",
+          "condition": "Não Tenho",
+          "adquirida_por": null,
+          "data_aquisicao": null,
+          "ordem": 1
+        },
+        {
+          "tag": "D",
+          "condition": "Não Tenho",
+          "adquirida_por": null,
+          "data_aquisicao": null,
+          "ordem": 2
+        }
+      ]
+    },
+    {
+      "key": "1946-1951-booker-t-washington",
+      "source": {
+        "ucoin_url": "https://en.ucoin.net/coin/usa-1-2-dollar-1946-1951/?tid=37583",
+        "coin_type": "Commemorative coins",
+        "composition": "Silver 0.900",
+        "excluded_variants": [
+          "1946 S (UNC no uCoin)",
+          "1947 S (UNC no uCoin)",
+          "1948 S (UNC no uCoin)",
+          "1949 S (UNC no uCoin)",
+          "1950 S (UNC no uCoin)",
+          "1951 S (UNC no uCoin)"
+        ]
+      },
+      "payload": {
+        "continent": "América",
+        "has_variants": true,
+        "image_frente": "https://i.ucoin.net/coin/43/734/43734195-1/usa-1-2-dollar-1947.jpg",
+        "adquirida_por": "",
+        "data_aquisicao": "",
+        "local_compra": null,
+        "url_ucoin": "https://pt.ucoin.net/coin/usa-1-2-dollar-1946-1951/?tid=37583",
+        "condition": "Não Tenho",
+        "name": "50 cents",
+        "commemorative_name": "Booker Taliaferro Washington",
+        "valor_pago": null,
+        "country": "EUA",
+        "ordem": 257,
+        "hidden": false,
+        "year": "1946 - 1951",
+        "moeda_valor": "EUR",
+        "url_numista": null,
+        "notes": "Comemorativas históricas",
+        "image_verso": "https://i.ucoin.net/coin/43/734/43734195-2/usa-1-2-dollar-1947.jpg"
+      },
+      "variants": [
+        {
+          "tag": "1946",
+          "condition": "Não Tenho",
+          "adquirida_por": null,
+          "data_aquisicao": null,
+          "ordem": 1
+        },
+        {
+          "tag": "1946 D",
+          "condition": "Não Tenho",
+          "adquirida_por": null,
+          "data_aquisicao": null,
+          "ordem": 2
+        },
+        {
+          "tag": "1947",
+          "condition": "Não Tenho",
+          "adquirida_por": null,
+          "data_aquisicao": null,
+          "ordem": 3
+        },
+        {
+          "tag": "1947 D",
+          "condition": "Não Tenho",
+          "adquirida_por": null,
+          "data_aquisicao": null,
+          "ordem": 4
+        },
+        {
+          "tag": "1948",
+          "condition": "Não Tenho",
+          "adquirida_por": null,
+          "data_aquisicao": null,
+          "ordem": 5
+        },
+        {
+          "tag": "1948 D",
+          "condition": "Não Tenho",
+          "adquirida_por": null,
+          "data_aquisicao": null,
+          "ordem": 6
+        },
+        {
+          "tag": "1949",
+          "condition": "Não Tenho",
+          "adquirida_por": null,
+          "data_aquisicao": null,
+          "ordem": 7
+        },
+        {
+          "tag": "1949 D",
+          "condition": "Não Tenho",
+          "adquirida_por": null,
+          "data_aquisicao": null,
+          "ordem": 8
+        },
+        {
+          "tag": "1950",
+          "condition": "Não Tenho",
+          "adquirida_por": null,
+          "data_aquisicao": null,
+          "ordem": 9
+        },
+        {
+          "tag": "1950 D",
+          "condition": "Não Tenho",
+          "adquirida_por": null,
+          "data_aquisicao": null,
+          "ordem": 10
+        },
+        {
+          "tag": "1951",
+          "condition": "Não Tenho",
+          "adquirida_por": null,
+          "data_aquisicao": null,
+          "ordem": 11
+        },
+        {
+          "tag": "1951 D",
+          "condition": "Não Tenho",
+          "adquirida_por": null,
+          "data_aquisicao": null,
+          "ordem": 12
+        }
+      ]
+    }
+  ]
+}
