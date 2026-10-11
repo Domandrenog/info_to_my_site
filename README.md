@@ -186,6 +186,46 @@ apaga moedas ou variantes e nunca cria uma variante `S`; depois de criações
 confirmadas, apenas pode marcar `AdminStats.needs_rebuild=true`, para a app
 reconstruir os agregados a partir dos novos dados.
 
+#### Corrigir URLs uCoin e pares de fotografias da coleção dos EUA
+
+O plano revisto
+`info/paises/america/eua/special-coin-ucoin-corrections-approved.json` associa
+os 245 `SpecialCoin` dos EUA a 245 URLs uCoin distintos. Para os 238 registos
+antigos preenche `url_ucoin`; corrige 157 versos cuja proveniência pertencia a
+outra moeda. Preserva 81 versos que já formavam o par certo com a frente. A
+única correção de frente é explícita: o registo `California. Steve Jobs` tinha
+a imagem do `Wisconsin. Supercomputer Cray-1`, embora sejam dois tipos e dois
+registos diferentes.
+
+```bash
+# Mostra o plano local, sem rede
+python3 -m scripts.fix_eua_special_coin_ucoin_links
+
+# Valida todas as pré-condições no Site Base44, apenas com leituras
+python3 -m scripts.fix_eua_special_coin_ucoin_links --check-live
+
+# Atualiza só os campos ainda pendentes e verifica cada PUT por GET
+python3 -m scripts.fix_eua_special_coin_ucoin_links --apply --yes
+```
+
+O executor aceita somente `url_ucoin`, `image_verso` e a única
+`image_frente` aprovada. Recusa alterações de identidade, valores live
+inesperados, URLs repetidos ou uma cobertura diferente dos 241 tipos do período
+1981–2026. Não cria nem elimina registos, guarda um checkpoint privado após
+cada escrita e é retomável.
+
+Para auditorias futuras, os temas oficiais podem ser recolhidos das páginas de
+detalhe com um fluxo separado e exclusivamente de leitura:
+
+```bash
+python3 -m scripts.ucoin_detail_subjects UCOIN_CATALOG.json \
+  --output UCOIN_DETAIL_SUBJECTS.json --incognito
+```
+
+O coletor valida país e `tid`, rejeita páginas de bloqueio mesmo quando o uCoin
+mantém o URL pedido, espera cinco segundos entre páginas, faz pausas por lote e,
+por omissão, para ao primeiro bloqueio. O output é incremental e retomável.
+
 ```mermaid
 flowchart LR
 	subgraph S1["1. Abrir browser"]

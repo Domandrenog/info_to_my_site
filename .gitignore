@@ -11,6 +11,7 @@ __pycache__/
 
 # Browser/session state
 .ucoin-profile/
+.ucoin-detail-profile/
 
 # Atomic write temporary files
 *.tmp
