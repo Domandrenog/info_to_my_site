@@ -110,6 +110,31 @@ VISUALLY_VERIFIED_EXISTING_BACKS = {
     ("50 cents", "250º Aniversário - Independência dos EUA", "2026"),
 }
 
+# Some uCoin catalogue entries replace an older one-sided sample with a newer
+# complete pair.  In those cases the missing side must come from the current
+# catalogue pair; deriving it from the old sample asset can produce a URL that
+# never existed.  Polly Cooper is the confirmed example: 82978124-2 was a
+# valid reverse, but 82978124-1 returns 404.  The current type 189799 exposes
+# the verified Sacagawea obverse as 83847230-1.
+OFFICIAL_CATALOG_BACK_SIDES = {
+    ("1 dólar", "Polly Cooper", "2026"): "obverse",
+}
+
+# The first correction run wrote this inferred-but-nonexistent URL before the
+# browser download exposed the 404.  Accept it only as a known intermediate
+# value so the corrected plan can replace it; no other unexpected live value
+# is allowed through reconciliation.
+APPROVED_INTERMEDIATE_FIELD_VALUES = {
+    (
+        "6ac90a623b0299311facfb57",
+        "image_verso",
+    ): frozenset(
+        {
+            "https://i.ucoin.net/coin/82/978/82978124-1/usa-1-dollar-2026.jpg",
+        }
+    ),
+}
+
 # This old record is labelled Steve Jobs but both external-image provenance and
 # the downloaded front point to the Cray-1 type.  The official Steve Jobs page
 # is tid=189798; use its thematic reverse as the collection front and its
@@ -393,6 +418,17 @@ def build_plan(
                     f"Faltam as fotografias oficiais de {identity}."
                 )
             corrected_backs += 1
+        elif identity in OFFICIAL_CATALOG_BACK_SIDES:
+            images = coin.get("images") or {}
+            current["image_verso"] = record.get("image_verso")
+            target["image_verso"] = normalize_image_url(
+                str(images.get(OFFICIAL_CATALOG_BACK_SIDES[identity]) or "")
+            )
+            if not target["image_verso"]:
+                raise MigrationExecutionError(
+                    f"Falta o verso oficial atual de {identity}."
+                )
+            corrected_backs += 1
         elif front_asset and back_asset and front_asset == back_asset:
             paired_backs += 1
         elif front_asset and back_asset and front_asset != back_asset:
@@ -629,7 +665,13 @@ def reconcile_live(
             actual_value = record.get(field)
             if actual_value == target_value:
                 continue
-            if actual_value != item["current"][field]:
+            allowed_current_values = {
+                item["current"][field],
+                *APPROVED_INTERMEDIATE_FIELD_VALUES.get(
+                    (item["id"], field), frozenset()
+                ),
+            }
+            if actual_value not in allowed_current_values:
                 raise MigrationExecutionError(
                     f"Conflito em {item['id']}.{field}: valor live inesperado."
                 )

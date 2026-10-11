@@ -41,6 +41,11 @@ class UsaSpecialCoinUcoinLinkFixTests(unittest.TestCase):
 
         self.assertEqual(len(corrected), 157)
         for item in corrected:
+            identity = (
+                item["identity"]["name"],
+                item["identity"]["commemorative_name"],
+                item["identity"]["year"],
+            )
             if "image_frente" in item["set"]:
                 self.assertEqual(
                     item["identity"]["commemorative_name"],
@@ -49,6 +54,16 @@ class UsaSpecialCoinUcoinLinkFixTests(unittest.TestCase):
                 self.assertNotEqual(
                     fixer.image_asset_id(item["match"]["source_external_front"]),
                     fixer.image_asset_id(item["set"]["image_frente"]),
+                )
+                continue
+            if identity in fixer.OFFICIAL_CATALOG_BACK_SIDES:
+                self.assertEqual(identity, ("1 dólar", "Polly Cooper", "2026"))
+                self.assertEqual(
+                    item["set"]["image_verso"],
+                    "https://i.ucoin.net/coin/83/847/83847230-1/usa-1-dollar-2026.jpg",
+                )
+                self.assertEqual(
+                    fixer.image_side(item["set"]["image_verso"]), "obverse"
                 )
                 continue
             source_front = item["match"]["source_external_front"]
@@ -78,7 +93,11 @@ class UsaSpecialCoinUcoinLinkFixTests(unittest.TestCase):
     def test_fully_applied_state_is_idempotent_and_has_245_unique_urls(self) -> None:
         plan, _digest = fixer.load_plan(PLAN_PATH)
         backup = json.loads(BACKUP_PATH.read_text(encoding="utf-8"))
-        live = [copy.deepcopy(record) for record in backup if record.get("country") == "EUA"]
+        live = [
+            copy.deepcopy(record)
+            for record in backup
+            if record.get("country") == "EUA"
+        ]
         by_id = {record["id"]: record for record in live}
         for item in plan["updates"]:
             by_id[item["id"]].update(item["set"])
@@ -90,6 +109,39 @@ class UsaSpecialCoinUcoinLinkFixTests(unittest.TestCase):
         urls = [record["url_ucoin"] for record in live]
         self.assertEqual(len(urls), 245)
         self.assertEqual(len(set(urls)), 245)
+
+    def test_polly_cooper_404_value_is_accepted_only_as_pending_intermediate(self) -> None:
+        plan, _digest = fixer.load_plan(PLAN_PATH)
+        backup = json.loads(BACKUP_PATH.read_text(encoding="utf-8"))
+        live = [
+            copy.deepcopy(record)
+            for record in backup
+            if record.get("country") == "EUA"
+        ]
+        by_id = {record["id"]: record for record in live}
+        for item in plan["updates"]:
+            by_id[item["id"]].update(item["set"])
+
+        polly_id = "6ac90a623b0299311facfb57"
+        broken_url = next(
+            iter(fixer.APPROVED_INTERMEDIATE_FIELD_VALUES[(polly_id, "image_verso")])
+        )
+        by_id[polly_id]["image_verso"] = broken_url
+
+        pending, complete = fixer.reconcile_live(plan, live)
+
+        self.assertEqual(len(pending), 1)
+        self.assertEqual(len(complete), 237)
+        self.assertEqual(pending[0]["id"], polly_id)
+        self.assertEqual(
+            pending[0]["patch"],
+            {
+                "image_verso": (
+                    "https://i.ucoin.net/coin/83/847/83847230-1/"
+                    "usa-1-dollar-2026.jpg"
+                )
+            },
+        )
 
     def test_unexpected_live_field_value_blocks_the_whole_operation(self) -> None:
         plan, _digest = fixer.load_plan(PLAN_PATH)
