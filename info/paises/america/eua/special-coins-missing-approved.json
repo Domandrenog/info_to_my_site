@@ -25,7 +25,7 @@
       "payload": {
         "continent": "América",
         "has_variants": true,
-        "image_frente": "https://i.ucoin.net/coin/87/082/87082928-1/usa-1-dollar-2026.jpg",
+        "image_frente": "https://i.ucoin.net/coin/87/082/87082928-2/usa-1-dollar-2026.jpg",
         "adquirida_por": "",
         "data_aquisicao": "",
         "local_compra": null,
@@ -41,7 +41,7 @@
         "moeda_valor": "EUR",
         "url_numista": null,
         "notes": "Inovação americana",
-        "image_verso": "https://i.ucoin.net/coin/87/082/87082928-2/usa-1-dollar-2026.jpg"
+        "image_verso": "https://i.ucoin.net/coin/87/082/87082928-1/usa-1-dollar-2026.jpg"
       },
       "variants": [
         {
@@ -73,7 +73,7 @@
       "payload": {
         "continent": "América",
         "has_variants": true,
-        "image_frente": "https://i.ucoin.net/coin/86/160/86160453-1/usa-1-dollar-2026.jpg",
+        "image_frente": "https://i.ucoin.net/coin/86/160/86160453-2/usa-1-dollar-2026.jpg",
         "adquirida_por": "",
         "data_aquisicao": "",
         "local_compra": null,
@@ -89,7 +89,7 @@
         "moeda_valor": "EUR",
         "url_numista": null,
         "notes": "Inovação americana",
-        "image_verso": "https://i.ucoin.net/coin/86/160/86160453-2/usa-1-dollar-2026.jpg"
+        "image_verso": "https://i.ucoin.net/coin/86/160/86160453-1/usa-1-dollar-2026.jpg"
       },
       "variants": [
         {
