@@ -236,6 +236,24 @@ revistos numa futura fase de limpeza. O script é exclusivamente de leitura: nã
 carrega credenciais, não autoriza a eliminação e não contém qualquer operação
 `DELETE`.
 
+Depois de uma auditoria sem bloqueios e de um backup final criado imediatamente
+antes da operação, a limpeza usa somente os IDs fechados por essa auditoria:
+
+```bash
+# Repete a comparação com o estado live, sem apagar
+python3 -m scripts.cleanup_eua_legacy_commemoratives --check-live
+
+# Remove primeiro 274 CoinVariant e depois 238 Coin antigas
+python3 -m scripts.cleanup_eua_legacy_commemoratives --apply --yes
+```
+
+Cada `DELETE` é individual e nunca é repetido automaticamente. O executor grava
+um checkpoint privado depois de cada remoção, pode continuar uma execução
+interrompida e recusa qualquer alteração live fora do conjunto previsto. No fim,
+confirma que `SpecialCoin`, `SpecialCoinVariant` e `CoinSighting` permaneceram
+intactas, marca `AdminStats.needs_rebuild=true` e grava o resultado em
+`backups/audits/eua-cleanup-<backup>.json`.
+
 Para auditorias futuras, os temas oficiais podem ser recolhidos das páginas de
 detalhe com um fluxo separado e exclusivamente de leitura:
 
