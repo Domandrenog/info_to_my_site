@@ -214,6 +214,28 @@ inesperados, URLs repetidos ou uma cobertura diferente dos 241 tipos do período
 1981–2026. Não cria nem elimina registos, guarda um checkpoint privado após
 cada escrita e é retomável.
 
+#### Auditoria dos EUA antes de apagar as origens antigas
+
+Depois de importar as moedas normais e criar um backup completo, a auditoria
+pré-limpeza compara offline `Coin`, `CoinVariant`, `SpecialCoin`,
+`SpecialCoinVariant` e `CoinSighting` com os catálogos aprovados e os
+checkpoints da migração:
+
+```bash
+python3 -m scripts.audit_eua_pre_cleanup
+```
+
+Por omissão lê o backup indicado em `backups/LATEST` e grava um relatório
+privado em `backups/audits/eua-pre-cleanup-<backup>.json`. A auditoria exige as
+30 moedas normais, as 245 moedas de coleção, as 298 variantes de coleção e as
+112 sinalizações comemorativas religadas. Também confirma que nenhuma
+sinalização continua ligada às 238 `Coin` antigas.
+
+O relatório enumera os 238 pais e as 274 variantes antigas que poderão ser
+revistos numa futura fase de limpeza. O script é exclusivamente de leitura: não
+carrega credenciais, não autoriza a eliminação e não contém qualquer operação
+`DELETE`.
+
 Para auditorias futuras, os temas oficiais podem ser recolhidos das páginas de
 detalhe com um fluxo separado e exclusivamente de leitura:
 

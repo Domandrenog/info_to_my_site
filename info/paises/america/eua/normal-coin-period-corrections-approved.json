@@ -1,0 +1,47 @@
+{
+  "format_version": 1,
+  "kind": "eua_existing_normal_coin_period_corrections",
+  "status": "approved_by_user",
+  "approved_at": "2026-10-12",
+  "country": "EUA",
+  "purpose": "Remover duas sobreposições antigas depois de criar os tipos normais separados, preservando todos os restantes dados.",
+  "safety": {
+    "allowed_fields": [
+      "years"
+    ],
+    "creates": 0,
+    "deletes": 0
+  },
+  "updates": [
+    {
+      "record_id": "69fbb08559a47e0846e2f9b1",
+      "denomination": "1 dime",
+      "identity": {
+        "country": "EUA",
+        "name": "Dime - Torch/Oak/Olive",
+        "url_ucoin": "https://pt.ucoin.net/coin/usa-1-dime-1965-2025/?tid=11650"
+      },
+      "current": {
+        "years": "1946-2026"
+      },
+      "set": {
+        "years": "1965 - 2026"
+      }
+    },
+    {
+      "record_id": "69fbb0f39d04e1015dea7f3c",
+      "denomination": "½ dólar",
+      "identity": {
+        "country": "EUA",
+        "name": "Half Dollar - Kennedy Portrait",
+        "url_ucoin": "https://pt.ucoin.net/coin/usa-1-2-dollar-1977-2025/?tid=11788"
+      },
+      "current": {
+        "years": "1964-2026"
+      },
+      "set": {
+        "years": "1977 - 2026"
+      }
+    }
+  ]
+}

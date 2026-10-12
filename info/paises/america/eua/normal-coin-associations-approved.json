@@ -1,0 +1,66 @@
+{
+  "format_version": 1,
+  "kind": "eua_existing_normal_coin_associations",
+  "status": "approved_by_user",
+  "approved_at": "2026-10-12",
+  "country": "EUA",
+  "purpose": "Associar três moedas normais já existentes aos tipos uCoin corretos antes da importação create-only, sem duplicar nem perder dados.",
+  "safety": {
+    "allowed_fields": [
+      "url_ucoin",
+      "years"
+    ],
+    "creates": 0,
+    "deletes": 0,
+    "preserve_existing_collection_data": true
+  },
+  "updates": [
+    {
+      "record_id": "69fbb07731ca7cea1ab5d213",
+      "denomination": "1 cêntimo",
+      "identity": {
+        "country": "EUA",
+        "name": "Penny - Memorial Building",
+        "years": "1959-1982"
+      },
+      "current": {
+        "url_ucoin": null
+      },
+      "set": {
+        "url_ucoin": "https://pt.ucoin.net/coin/usa-1-cent-1959-1982/?tid=11496"
+      }
+    },
+    {
+      "record_id": "69fbb07f14a0b335bc86fedb",
+      "denomination": "5 cêntimos",
+      "identity": {
+        "country": "EUA",
+        "name": "Nickel - Monticello (clássico)",
+        "years": "1938-2003"
+      },
+      "current": {
+        "url_ucoin": null,
+        "years": "1938-2003"
+      },
+      "set": {
+        "url_ucoin": "https://pt.ucoin.net/coin/usa-5-cents-1946-2003/?tid=11530",
+        "years": "1946 - 2003"
+      }
+    },
+    {
+      "record_id": "69fbb087a4c9f42ee6ccb722",
+      "denomination": "¼ dólar",
+      "identity": {
+        "country": "EUA",
+        "name": "Quarter - Washington Quarter",
+        "years": "1965-1998"
+      },
+      "current": {
+        "url_ucoin": null
+      },
+      "set": {
+        "url_ucoin": "https://pt.ucoin.net/coin/usa-1-4-dollar-1965-1998/?tid=11720"
+      }
+    }
+  ]
+}
