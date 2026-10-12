@@ -1,0 +1,204 @@
+{
+  "format_version": 1,
+  "kind": "eua_normal_coin_metadata_normalization",
+  "status": "approved_by_user",
+  "approved_at": "2026-10-12",
+  "country": "EUA",
+  "purpose": "Uniformizar todas as denominações das moedas normais dos EUA e manter notes com a época política do catálogo, como nos restantes países.",
+  "correction": {
+    "status": "approved_by_user",
+    "approved_at": "2026-10-12",
+    "reason": "O campo notes das moedas normais é derivado do ruler da época, não do nome da série.",
+    "final_notes": "Estados Unidos da América",
+    "supersedes_notes_in_updates_set": true
+  },
+  "safety": {
+    "allowed_fields": ["name", "years", "notes"],
+    "expected_live_records": 30,
+    "creates": 0,
+    "deletes": 0,
+    "preserve_urls_images_condition_variants_and_sightings": true
+  },
+  "updates": [
+    {
+      "id": "6acc20af83e35b2de0abb204",
+      "url_ucoin": "https://pt.ucoin.net/coin/usa-1-dime-1946-1964/?tid=11939",
+      "current": {"name": "1 dime", "years": "1946 - 1964", "notes": "Estados Unidos da América"},
+      "set": {"name": "1 dime", "years": "1946 - 1964", "notes": "Roosevelt Dime"}
+    },
+    {
+      "id": "6acc20b224d4a89fd64a0559",
+      "url_ucoin": "https://pt.ucoin.net/coin/usa-1-4-dollar-1932-1964/?tid=12082",
+      "current": {"name": "¼ dólar", "years": "1932 - 1964", "notes": "Estados Unidos da América"},
+      "set": {"name": "¼ dólar", "years": "1932 - 1964", "notes": "Washington Quarter"}
+    },
+    {
+      "id": "6acc20b64caf75cf78a6072d",
+      "url_ucoin": "https://pt.ucoin.net/coin/usa-1-2-dollar-1948-1963/?tid=12121",
+      "current": {"name": "½ dólar", "years": "1948 - 1963", "notes": "Estados Unidos da América"},
+      "set": {"name": "½ dólar", "years": "1948 - 1963", "notes": "Franklin Half Dollar"}
+    },
+    {
+      "id": "6acc20b9cf8c0c32b90bcc52",
+      "url_ucoin": "https://pt.ucoin.net/coin/usa-1-2-dollar-1964/?tid=12160",
+      "current": {"name": "½ dólar", "years": "1964", "notes": "Estados Unidos da América"},
+      "set": {"name": "½ dólar", "years": "1964", "notes": "Kennedy Half Dollar"}
+    },
+    {
+      "id": "6acc20bc130f7f7c2c8de8d0",
+      "url_ucoin": "https://pt.ucoin.net/coin/usa-1-2-dollar-1965-1970/?tid=12162",
+      "current": {"name": "½ dólar", "years": "1965 - 1970", "notes": "Estados Unidos da América"},
+      "set": {"name": "½ dólar", "years": "1965 - 1970", "notes": "Kennedy Half Dollar"}
+    },
+    {
+      "id": "6acc20c027ba92c4ddcec313",
+      "url_ucoin": "https://pt.ucoin.net/coin/usa-1-2-dollar-1971-1974/?tid=12168",
+      "current": {"name": "½ dólar", "years": "1971 - 1974", "notes": "Estados Unidos da América"},
+      "set": {"name": "½ dólar", "years": "1971 - 1974", "notes": "Kennedy Half Dollar"}
+    },
+    {
+      "id": "6acc20c3de17fa48b1dd9038",
+      "url_ucoin": "https://pt.ucoin.net/coin/usa-1-dollar-1971-1978/?tid=12177",
+      "current": {"name": "1 dólar", "years": "1971 - 1978", "notes": "Estados Unidos da América"},
+      "set": {"name": "1 dólar", "years": "1971 - 1978", "notes": "Eisenhower Dollar"}
+    },
+    {
+      "id": "6acc20c75fb50dbf970c3ca0",
+      "url_ucoin": "https://pt.ucoin.net/coin/usa-1-cent-1943/?tid=19914",
+      "current": {"name": "1 cêntimo", "years": "1943", "notes": "Estados Unidos da América"},
+      "set": {"name": "1 cêntimo", "years": "1943", "notes": "Wheat Penny"}
+    },
+    {
+      "id": "6acc20cae789490ae5ad2d0b",
+      "url_ucoin": "https://pt.ucoin.net/coin/usa-1-cent-1944-1946/?tid=11848",
+      "current": {"name": "1 cêntimo", "years": "1944 - 1946", "notes": "Estados Unidos da América"},
+      "set": {"name": "1 cêntimo", "years": "1944 - 1946", "notes": "Wheat Penny"}
+    },
+    {
+      "id": "6acc20cdef9bda23d8a83cd9",
+      "url_ucoin": "https://pt.ucoin.net/coin/usa-5-cents-1913/?tid=19926",
+      "current": {"name": "5 cêntimos", "years": "1913", "notes": "Estados Unidos da América"},
+      "set": {"name": "5 cêntimos", "years": "1913", "notes": "Buffalo Nickel"}
+    },
+    {
+      "id": "6acc20d1328c59eb709086a6",
+      "url_ucoin": "https://pt.ucoin.net/coin/usa-5-cents-1913-1938/?tid=19927",
+      "current": {"name": "5 cêntimos", "years": "1913 - 1938", "notes": "Estados Unidos da América"},
+      "set": {"name": "5 cêntimos", "years": "1913 - 1938", "notes": "Buffalo Nickel"}
+    },
+    {
+      "id": "6acc20d4dd4b1361a56cc8f1",
+      "url_ucoin": "https://pt.ucoin.net/coin/usa-5-cents-1938-1942/?tid=19948",
+      "current": {"name": "5 cêntimos", "years": "1938 - 1942", "notes": "Estados Unidos da América"},
+      "set": {"name": "5 cêntimos", "years": "1938 - 1942", "notes": "Jefferson Nickel"}
+    },
+    {
+      "id": "69fbb076083092607d90ee2b",
+      "url_ucoin": "https://pt.ucoin.net/coin/usa-1-cent-1909-1958/?tid=19840",
+      "current": {"name": "Penny - Wheat Ears", "years": "1909-1958", "notes": "Wheat Penny"},
+      "set": {"name": "1 cêntimo", "years": "1909 - 1958", "notes": "Wheat Penny"}
+    },
+    {
+      "id": "6acc20d8d068b35c017e0cb7",
+      "url_ucoin": "https://pt.ucoin.net/coin/usa-5-cents-1942-1945/?tid=19953",
+      "current": {"name": "5 cêntimos", "years": "1942 - 1945", "notes": "Estados Unidos da América"},
+      "set": {"name": "5 cêntimos", "years": "1942 - 1945", "notes": "Jefferson Nickel"}
+    },
+    {
+      "id": "69fbb07731ca7cea1ab5d213",
+      "url_ucoin": "https://pt.ucoin.net/coin/usa-1-cent-1959-1982/?tid=11496",
+      "current": {"name": "Penny - Memorial Building", "years": "1959-1982", "notes": "Lincoln Memorial"},
+      "set": {"name": "1 cêntimo", "years": "1959 - 1982", "notes": "Lincoln Memorial"}
+    },
+    {
+      "id": "69fbb078f05dc4872bc7660a",
+      "url_ucoin": "https://pt.ucoin.net/coin/usa-1-cent-1983-2008/?tid=11498",
+      "current": {"name": "Penny - Memorial Building", "years": "1983-2008", "notes": "Lincoln Memorial"},
+      "set": {"name": "1 cêntimo", "years": "1983 - 2008", "notes": "Lincoln Memorial"}
+    },
+    {
+      "id": "6acc20db0469fd8ef9f686de",
+      "url_ucoin": "https://pt.ucoin.net/coin/usa-1-dime-1916-1945/?tid=20153",
+      "current": {"name": "1 dime", "years": "1916 - 1945", "notes": "Estados Unidos da América"},
+      "set": {"name": "1 dime", "years": "1916 - 1945", "notes": "Mercury Dime"}
+    },
+    {
+      "id": "69fbb0799ab2af2d9cfb525b",
+      "url_ucoin": "https://pt.ucoin.net/coin/usa-1-cent-2010-2025/?tid=11528",
+      "current": {"name": "Penny - Union Shield", "years": "2010-2026", "notes": "Lincoln Shield"},
+      "set": {"name": "1 cêntimo", "years": "2010 - 2026", "notes": "Lincoln Shield"}
+    },
+    {
+      "id": "6acc20deb06a2e514d8f702f",
+      "url_ucoin": "https://pt.ucoin.net/coin/usa-1-4-dollar-1916-1917/?tid=24056",
+      "current": {"name": "¼ dólar", "years": "1916 - 1917", "notes": "Estados Unidos da América"},
+      "set": {"name": "¼ dólar", "years": "1916 - 1917", "notes": "Standing Liberty Quarter"}
+    },
+    {
+      "id": "6acc20e23937659c64663986",
+      "url_ucoin": "https://pt.ucoin.net/coin/usa-1-4-dollar-1917-1930/?tid=20231",
+      "current": {"name": "¼ dólar", "years": "1917 - 1930", "notes": "Estados Unidos da América"},
+      "set": {"name": "¼ dólar", "years": "1917 - 1930", "notes": "Standing Liberty Quarter"}
+    },
+    {
+      "id": "6acc20e53b7ef252b40c669a",
+      "url_ucoin": "https://pt.ucoin.net/coin/usa-1-2-dollar-1916-1947/?tid=20273",
+      "current": {"name": "½ dólar", "years": "1916 - 1947", "notes": "Estados Unidos da América"},
+      "set": {"name": "½ dólar", "years": "1916 - 1947", "notes": "Walking Liberty Half Dollar"}
+    },
+    {
+      "id": "69fbb07f14a0b335bc86fedb",
+      "url_ucoin": "https://pt.ucoin.net/coin/usa-5-cents-1946-2003/?tid=11530",
+      "current": {"name": "Nickel - Monticello (clássico)", "years": "1946 - 2003", "notes": "Jefferson Nickel"},
+      "set": {"name": "5 cêntimos", "years": "1946 - 2003", "notes": "Jefferson Nickel"}
+    },
+    {
+      "id": "6acc20e9a24b2bd661b9a92e",
+      "url_ucoin": "https://pt.ucoin.net/coin/usa-1-dollar-1921-1935/?tid=20316",
+      "current": {"name": "1 dólar", "years": "1921 - 1935", "notes": "Estados Unidos da América"},
+      "set": {"name": "1 dólar", "years": "1921 - 1935", "notes": "Peace Dollar"}
+    },
+    {
+      "id": "69fbb08591c0b3d67620a8be",
+      "url_ucoin": "https://pt.ucoin.net/coin/usa-5-cents-2006-2025/?tid=11557",
+      "current": {"name": "Nickel - Monticello (moderno)", "years": "2006-2026", "notes": "Jefferson Nickel"},
+      "set": {"name": "5 cêntimos", "years": "2006 - 2026", "notes": "Jefferson Nickel"}
+    },
+    {
+      "id": "69fbb08559a47e0846e2f9b1",
+      "url_ucoin": "https://pt.ucoin.net/coin/usa-1-dime-1965-2025/?tid=11650",
+      "current": {"name": "Dime - Torch/Oak/Olive", "years": "1965 - 2026", "notes": "Roosevelt Dime"},
+      "set": {"name": "1 dime", "years": "1965 - 2026", "notes": "Roosevelt Dime"}
+    },
+    {
+      "id": "69fbb087a4c9f42ee6ccb722",
+      "url_ucoin": "https://pt.ucoin.net/coin/usa-1-4-dollar-1965-1998/?tid=11720",
+      "current": {"name": "Quarter - Washington Quarter", "years": "1965-1998", "notes": "Washington Quarter"},
+      "set": {"name": "¼ dólar", "years": "1965 - 1998", "notes": "Washington Quarter"}
+    },
+    {
+      "id": "69fbb0f6d32d51c789043ac1",
+      "url_ucoin": "https://pt.ucoin.net/coin/usa-1-dollar-2000-2008/?tid=11834",
+      "current": {"name": "Dollar - Sacagawea", "years": "2000-2008", "notes": "Sacagawea Dollar"},
+      "set": {"name": "1 dólar", "years": "2000 - 2008", "notes": "Sacagawea Dollar"}
+    },
+    {
+      "id": "69fbb0f58a93113048b328bb",
+      "url_ucoin": "https://pt.ucoin.net/coin/usa-1-dollar-1979-1999/?tid=11831",
+      "current": {"name": "Dollar - Susan B. Anthony Dollar", "years": "1979-1999", "notes": "Susan B. Anthony Dollar"},
+      "set": {"name": "1 dólar", "years": "1979 - 1999", "notes": "Susan B. Anthony Dollar"}
+    },
+    {
+      "id": "69fbb0f39d04e1015dea7f3c",
+      "url_ucoin": "https://pt.ucoin.net/coin/usa-1-2-dollar-1977-2025/?tid=11788",
+      "current": {"name": "Half Dollar - Kennedy Portrait", "years": "1977 - 2026", "notes": "Kennedy Half Dollar"},
+      "set": {"name": "½ dólar", "years": "1977 - 2026", "notes": "Kennedy Half Dollar"}
+    },
+    {
+      "id": "69fbb0e0bcb956db9870f376",
+      "url_ucoin": "https://pt.ucoin.net/coin/usa-1-4-dollar-2021/?tid=106576",
+      "current": {"name": "Quarter - George Washington - Cruzando o Delaware", "years": "2021", "notes": ""},
+      "set": {"name": "¼ dólar", "years": "2021", "notes": "Cruzando o Delaware"}
+    }
+  ]
+}

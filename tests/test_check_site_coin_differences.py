@@ -706,6 +706,68 @@ class AllCoinsPathTests(unittest.TestCase):
         self.assertIn("missing_notes", issue_types)
         self.assertIn("missing_url_ucoin", issue_types)
 
+    def test_exact_ucoin_url_associates_visible_name_mismatch(self) -> None:
+        with tempfile.TemporaryDirectory() as temp_dir:
+            root = Path(temp_dir)
+            paises_dir = root / "paises"
+            country_dir = paises_dir / "america" / "eua"
+            country_dir.mkdir(parents=True)
+            detail_url = "https://pt.ucoin.net/coin/usa-1-dollar-1979-1999/?tid=11831"
+            coin = {
+                "denomination": "1 dólar",
+                "issuePeriod": "1979 - 1999",
+                "detailUrl": detail_url,
+                "obverseImage": "",
+                "reverseImage": "",
+            }
+            (country_dir / "app-catalog.json").write_text(
+                json.dumps(
+                    {
+                        "country": "Estados Unidos da América",
+                        "periods": [
+                            {"title": "EUA › EUA › 1981 - 2026", "coins": [coin]},
+                            {"title": "EUA › EUA › 1951 - 1980", "coins": [coin]},
+                        ],
+                    }
+                ),
+                encoding="utf-8",
+            )
+            all_coins_dir = root / "All_Coins"
+            image_dir = all_coins_dir / "fotos" / "paises" / "America" / "EUA" / "normal"
+            image_dir.mkdir(parents=True)
+            (image_dir / "links-internos.txt").write_text("", encoding="utf-8")
+            (image_dir / "links-externos.txt").write_text("", encoding="utf-8")
+            api_record = {
+                "id": "record-dollar",
+                "country": "EUA",
+                "name": "Dollar - Susan B. Anthony Dollar",
+                "years": "1979-1999",
+                "notes": "Susan B. Anthony Dollar",
+                "url_ucoin": detail_url,
+                "image_frente": "",
+                "image_verso": "",
+            }
+
+            with patch.dict("os.environ", {"BASE44_APP_ID": "app-id"}):
+                report = compare_country(
+                    paises_dir,
+                    all_coins_dir,
+                    "eua",
+                    "app-catalog.json",
+                    include_markdown_as_issue=False,
+                    check_api=True,
+                    include_warnings=False,
+                    api_records_by_country={"eua": [api_record]},
+                )
+
+        self.assertEqual(report["summary"]["analyzed_coins"], 1)
+        self.assertEqual(len(report["coins_with_issues"]), 1)
+        result = report["coins_with_issues"][0]
+        self.assertTrue(result["siteUrl"].endswith("/record-dollar"))
+        issue_types = [issue["type"] for issue in result["issues"]]
+        self.assertNotIn("missing_api_coin_record", issue_types)
+        self.assertIn("mismatched_name", issue_types)
+
     def test_unique_name_and_year_associate_coin_without_source_photos(self) -> None:
         with tempfile.TemporaryDirectory() as temp_dir:
             root = Path(temp_dir)

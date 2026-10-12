@@ -956,11 +956,18 @@ def compare_country(
     image_matched_ucoin_urls: list[str] = []
     audited_api_record_ids: set[str] = set()
     analyzed_coin_count = 0
+    analyzed_ucoin_urls: set[str] = set()
 
     for period, coin in iter_coins(data):
-        analyzed_coin_count += 1
         ucoin_url = str(coin.get("detailUrl") or "")
         detail_norm = normalize_url(ucoin_url)[0]
+        # The same uCoin type can be listed in more than one historical
+        # period.  It is still one logical coin type and one Base44 record.
+        if detail_norm and detail_norm in analyzed_ucoin_urls:
+            continue
+        if detail_norm:
+            analyzed_ucoin_urls.add(detail_norm)
+        analyzed_coin_count += 1
         expected_detail_slug = detail_stem(ucoin_url)
         expected_image_urls: set[str] = set()
         expected_images_by_side: dict[str, str] = {}
@@ -1007,24 +1014,34 @@ def compare_country(
                     coin_issues.append(make_finding("detail_image_slug_mismatch", field, value=image_slug, missing_value=expected_detail_slug))
 
         if check_api and api_records is not None:
-            matches = [
+            exact_url_matches = [
+                record
+                for record in api_records
+                if isinstance(record, dict)
+                and detail_norm
+                and normalize_url(str(record.get("url_ucoin") or ""))[0]
+                == detail_norm
+            ]
+            matches = exact_url_matches or [
                 record
                 for record in api_records
                 if isinstance(record, dict) and record_matches_image_map(record, expected_image_urls, reverse)
             ]
             confirmed_record_id = confirmed_equivalences.get(detail_norm, "") if detail_norm else ""
 
-            matches = disambiguate_image_matches(
-                matches,
-                str(coin.get("denomination") or ""),
-                str(coin.get("issuePeriod") or ""),
-            )
+            if not exact_url_matches:
+                matches = disambiguate_image_matches(
+                    matches,
+                    str(coin.get("denomination") or ""),
+                    str(coin.get("issuePeriod") or ""),
+                )
 
             # Matching photos make this a strong candidate, but a visibly
             # different name must still be confirmed by the user before the
             # records are treated as the same coin and renamed.
             if (
                 len(matches) == 1
+                and not exact_url_matches
                 and not confirmed_record_id
                 and not visible_name_matches(
                     str(matches[0].get("name") or ""),
