@@ -254,6 +254,23 @@ confirma que `SpecialCoin`, `SpecialCoinVariant` e `CoinSighting` permaneceram
 intactas, marca `AdminStats.needs_rebuild=true` e grava o resultado em
 `backups/audits/eua-cleanup-<backup>.json`.
 
+Os 40 Presidential Dollars podem ser apresentados pela ordem histórica dos
+presidentes, mantendo o intervalo `ordem=50–89` do programa e adicionando o
+ordinal ao tema (`1st - George Washington`, `2nd - John Adams`, etc.):
+
+```bash
+# Validação live sem escrita
+python3 -m scripts.update_eua_presidential_dollars --check-live
+
+# Atualiza somente commemorative_name e ordem
+python3 -m scripts.update_eua_presidential_dollars --apply --yes
+```
+
+O plano documenta o salto do 38th para o 40th porque não existe uma moeda do
+39th no conjunto atual. Grover Cleveland aparece corretamente como 22nd e 24th.
+O executor não altera fotografias, links, estados, aquisições, variantes ou
+sinalizações.
+
 Para auditorias futuras, os temas oficiais podem ser recolhidos das páginas de
 detalhe com um fluxo separado e exclusivamente de leitura:
 
