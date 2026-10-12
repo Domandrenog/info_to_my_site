@@ -4,6 +4,25 @@ Pipeline em Python para recolher moedas do uCoin por país, transformar o catál
 
 Também inclui um fluxo separado para recolher moedas prensadas do Presscoins como souvenirs, com pré-visualização local e sem escrever automaticamente no Site Base44.
 
+## Catálogos locais do Site
+
+As moedas normais de cada país continuam guardadas em `app-catalog.json`. Para
+as moedas de coleção dos EUA existe o catálogo público equivalente:
+
+```text
+info/paises/america/eua/special-app-catalog.json
+```
+
+Esse ficheiro guarda os 11 programas, as moedas, a ordem, os links, as
+fotografias e a estrutura das variantes. Não guarda IDs da API, estado de posse,
+aquisição, utilizadores nem sinalizações. Para o regenerar a partir do último
+backup completo e verificar depois que não ficou desatualizado:
+
+```bash
+python3 -m scripts.generate_special_app_catalog
+python3 -m scripts.generate_special_app_catalog --check
+```
+
 ## Backup completo do Site Base44
 
 O ficheiro `backup.py` guarda, em modo exclusivamente de leitura, todos os
