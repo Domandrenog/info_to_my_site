@@ -40,6 +40,33 @@ class ImportEuaNormalCoinVariantsTests(unittest.TestCase):
         self.assertEqual(plan["safety"]["coin_creates"], 0)
         self.assertEqual(plan["safety"]["coin_deletes"], 0)
 
+    def test_scope_can_be_limited_to_one_approved_parent(self) -> None:
+        target = next(
+            item
+            for item in self.plan["items"]
+            if item["name"] == "1 cêntimo" and item["years"] == "1909 - 1958"
+        )
+
+        scoped = importer.select_plan_scope(self.plan, target["coin_id"])
+        parent = next(
+            record for record in self.parents() if record["id"] == target["coin_id"]
+        )
+        state = importer.reconcile_live(scoped, [parent], [])
+
+        self.assertEqual(importer.scope_counts(scoped), (1, 129, 0))
+        self.assertEqual(state["existing"], 0)
+        self.assertEqual(state["pending"], 129)
+
+    def test_scope_rejects_a_coin_outside_the_approved_plan(self) -> None:
+        with self.assertRaisesRegex(
+            importer.NormalCoinVariantError, "não existe uma única vez"
+        ):
+            importer.select_plan_scope(self.plan, "coin-fora-do-plano")
+        with self.assertRaisesRegex(
+            importer.NormalCoinVariantError, "não existe uma única vez"
+        ):
+            importer.select_plan_scope(self.plan, "")
+
     def test_reconcile_accepts_existing_variants_without_modifying_them(self) -> None:
         first = self.plan["items"][0]
         variants = [

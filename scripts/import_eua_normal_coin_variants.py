@@ -78,6 +78,13 @@ def parse_args(argv: list[str] | None = None) -> argparse.Namespace:
         )
     )
     parser.add_argument("--plan", type=Path, default=DEFAULT_PLAN)
+    parser.add_argument(
+        "--coin-id",
+        help=(
+            "Limita a verificação/importação a um único Coin ID incluído no "
+            "plano aprovado."
+        ),
+    )
     modes = parser.add_mutually_exclusive_group()
     modes.add_argument(
         "--check-live",
@@ -179,6 +186,27 @@ def load_plan(path: Path) -> dict[str, Any]:
     return plan
 
 
+def select_plan_scope(plan: dict[str, Any], coin_id: str | None) -> dict[str, Any]:
+    """Return the full approved plan or a strict one-parent runtime view."""
+
+    if coin_id is None:
+        return plan
+    normalized = coin_id.strip()
+    matches = [item for item in plan["items"] if item["coin_id"] == normalized]
+    if len(matches) != 1:
+        raise NormalCoinVariantError(
+            f"O Coin ID {normalized!r} não existe uma única vez no plano aprovado."
+        )
+    return {**plan, "items": matches}
+
+
+def scope_counts(plan: dict[str, Any]) -> tuple[int, int, int]:
+    parents = len(plan["items"])
+    variants = sum(len(item["variants"]) for item in plan["items"])
+    proof_only = sum(len(item["excluded_proof_only"]) for item in plan["items"])
+    return parents, variants, proof_only
+
+
 def records_by_id(records: list[dict[str, Any]], *, label: str) -> dict[str, dict[str, Any]]:
     indexed: dict[str, dict[str, Any]] = {}
     for record in records:
@@ -246,9 +274,11 @@ def reconcile_live(
     live_parents: list[dict[str, Any]],
     live_variants: list[dict[str, Any]],
 ) -> dict[str, Any]:
-    if len(live_parents) != EXPECTED_PARENTS:
+    expected_parents, expected_variants, _ = scope_counts(plan)
+    if len(live_parents) != expected_parents:
         raise NormalCoinVariantError(
-            f"Esperavam-se 30 Coin normais dos EUA; existem {len(live_parents)}."
+            f"Esperavam-se {expected_parents} Coin normais dos EUA neste âmbito; "
+            f"existem {len(live_parents)}."
         )
     parent_by_id = records_by_id(live_parents, label="Coin EUA")
     planned_ids = {item["coin_id"] for item in plan["items"]}
@@ -308,8 +338,10 @@ def reconcile_live(
             }
         )
 
-    if total_existing + total_pending != EXPECTED_VARIANTS:
-        raise NormalCoinVariantError("A reconciliação não cobre as 1.239 variantes.")
+    if total_existing + total_pending != expected_variants:
+        raise NormalCoinVariantError(
+            f"A reconciliação não cobre as {expected_variants} variantes deste âmbito."
+        )
     return {
         "items": item_states,
         "existing": total_existing,
@@ -320,17 +352,21 @@ def reconcile_live(
 
 
 def print_plan(plan: dict[str, Any], state: dict[str, Any] | None = None) -> None:
+    parent_count, variant_count, proof_count = scope_counts(plan)
     print("VARIANTES — MOEDAS NORMAIS DOS EUA")
-    print(f"Moedas no plano: {len(plan['items'])}")
-    print(f"Variantes válidas no uCoin: {EXPECTED_VARIANTS}")
-    print(f"Linhas exclusivamente Proof excluídas: {EXPECTED_PROOF_EXCLUSIONS}")
+    print(f"Moedas neste âmbito: {parent_count}")
+    if parent_count == 1:
+        item = plan["items"][0]
+        print(f"Moeda selecionada: {item['name']} ({item['years']}) — {item['coin_id']}")
+    print(f"Variantes válidas no uCoin: {variant_count}")
+    print(f"Linhas exclusivamente Proof excluídas: {proof_count}")
     print("Novas variantes: condition=Não Tenho")
     print("CoinVariant existentes: nenhuma alteração e nenhuma eliminação")
     print("Coin: apenas has_variants pode mudar; nenhuma criação ou eliminação")
     if state is not None:
-        print(f"Já existentes no Site Base44: {state['existing']}/{EXPECTED_VARIANTS}")
-        print(f"Ainda por criar: {state['pending']}/{EXPECTED_VARIANTS}")
-        print(f"Pais a marcar com variantes: {state['flags_pending']}/{EXPECTED_PARENTS}")
+        print(f"Já existentes no Site Base44: {state['existing']}/{variant_count}")
+        print(f"Ainda por criar: {state['pending']}/{variant_count}")
+        print(f"Pais a marcar com variantes: {state['flags_pending']}/{parent_count}")
 
 
 def create_batch_and_verify(
@@ -507,7 +543,11 @@ def apply_missing(
 
 
 def live_state(plan: dict[str, Any], base_client: Base44Client) -> dict[str, Any]:
-    parents = fetch_all(base_client.for_entity("Coin"), {"country": "EUA"})
+    parent_client = base_client.for_entity("Coin")
+    if len(plan["items"]) == EXPECTED_PARENTS:
+        parents = fetch_all(parent_client, {"country": "EUA"})
+    else:
+        parents = [get_record(parent_client, item["coin_id"]) for item in plan["items"]]
     variant_client = base_client.for_entity("CoinVariant")
     variants: list[dict[str, Any]] = []
     # A global CoinVariant listing spans several pages.  During eventual
@@ -524,7 +564,7 @@ def run(argv: list[str] | None = None) -> int:
     if args.apply and not args.yes:
         raise NormalCoinVariantError("--apply exige --yes.")
     plan_path = args.plan if args.plan.is_absolute() else PROJECT_ROOT / args.plan
-    plan = load_plan(plan_path)
+    plan = select_plan_scope(load_plan(plan_path), args.coin_id)
     if not (args.check_live or args.apply):
         print_plan(plan)
         print("Modo local: nenhuma chamada à API e nenhuma alteração.")
@@ -548,9 +588,10 @@ def run(argv: list[str] | None = None) -> int:
             batch_size=args.batch_size,
         )
         final_state = live_state(plan, base_client)
-        if final_state["pending"] or final_state["existing"] != EXPECTED_VARIANTS:
+        _, expected_variants, _ = scope_counts(plan)
+        if final_state["pending"] or final_state["existing"] != expected_variants:
             raise NormalCoinVariantError(
-                "A verificação final não confirmou as 1.239 variantes."
+                f"A verificação final não confirmou as {expected_variants} variantes."
             )
         if final_state["flags_pending"]:
             raise NormalCoinVariantError(
@@ -558,7 +599,7 @@ def run(argv: list[str] | None = None) -> int:
             )
     print(
         f"Concluído: {created} CoinVariant criadas; {flags_updated} pais atualizados; "
-        "1.239/1.239 variantes confirmadas."
+        f"{expected_variants}/{expected_variants} variantes confirmadas."
     )
     return 0
 
