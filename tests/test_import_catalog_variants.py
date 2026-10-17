@@ -100,6 +100,28 @@ class ImportCatalogVariantsTests(unittest.TestCase):
         self.assertEqual(country, "Portugal")
         self.assertEqual(specs, [])
 
+    def test_identical_duplicate_ucoin_url_is_aggregated_once(self) -> None:
+        catalogue = normal_catalog()
+        duplicate = copy.deepcopy(catalogue["periods"][0]["coins"][0])
+        catalogue["periods"].append({"coins": [duplicate]})
+
+        country, specs = importer.catalogue_specs(catalogue, "normal")
+
+        self.assertEqual(country, "Portugal")
+        self.assertEqual(len(specs), 1)
+        self.assertEqual(specs[0].detail_url, duplicate["detailUrl"])
+
+    def test_conflicting_duplicate_ucoin_url_is_rejected(self) -> None:
+        catalogue = normal_catalog()
+        duplicate = copy.deepcopy(catalogue["periods"][0]["coins"][0])
+        duplicate["variants"][1]["tag"] = "2022"
+        catalogue["periods"].append({"coins": [duplicate]})
+
+        with self.assertRaisesRegex(
+            importer.CatalogVariantError, "Dados de variantes contraditórios"
+        ):
+            importer.catalogue_specs(catalogue, "normal")
+
     def test_normal_import_creates_only_missing_and_then_sets_parent_flag(self) -> None:
         store = {
             "Coin": [

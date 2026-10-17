@@ -135,8 +135,8 @@ def normalized_variants(coin: dict[str, Any], label: str) -> tuple[tuple[str, in
 def catalogue_specs(
     catalogue: dict[str, Any], catalog_type: str
 ) -> tuple[str, list[VariantSpec]]:
-    specs: list[VariantSpec] = []
-    seen_urls: set[str] = set()
+    specs_by_url: dict[str, VariantSpec] = {}
+    seen_by_url: dict[str, tuple[str, tuple[tuple[str, int], ...]]] = {}
     if catalog_type == "normal":
         country = str(catalogue.get("country") or "").strip()
         groups = catalogue.get("periods", [])
@@ -164,13 +164,23 @@ def catalogue_specs(
             ).strip()
             label = f"{denomination} ({years})" if years else denomination
             variants = normalized_variants(coin, label)
-            if not variants:
+            if not detail_url:
+                if variants:
+                    raise CatalogVariantError(f"URL uCoin ausente em {label}.")
                 continue
-            if not detail_url or detail_url in seen_urls:
-                raise CatalogVariantError(f"URL uCoin ausente ou repetido em {label}.")
-            seen_urls.add(detail_url)
-            specs.append(VariantSpec(detail_url, label, variants))
-    return country, specs
+            identity = (label, variants)
+            previous = seen_by_url.get(detail_url)
+            if previous is not None:
+                if previous != identity:
+                    raise CatalogVariantError(
+                        f"Dados de variantes contraditórios para {detail_url}: "
+                        f"{previous[0]} versus {label}."
+                    )
+                continue
+            seen_by_url[detail_url] = identity
+            if variants:
+                specs_by_url[detail_url] = VariantSpec(detail_url, label, variants)
+    return country, list(specs_by_url.values())
 
 
 def fetch_all(client: Any, query: dict[str, Any]) -> list[dict[str, Any]]:
