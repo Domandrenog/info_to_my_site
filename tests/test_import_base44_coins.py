@@ -1,7 +1,10 @@
 import argparse
 import io
+import json
+import tempfile
 import unittest
 from contextlib import redirect_stdout
+from pathlib import Path
 from unittest.mock import patch
 from urllib.error import URLError
 
@@ -309,6 +312,141 @@ class ImportBase44CoinsTests(unittest.TestCase):
     def test_format_duration_uses_readable_portuguese_style(self) -> None:
         self.assertEqual(import_base44_coins.format_duration(1.75, precise=True), "1,8 s")
         self.assertEqual(import_base44_coins.format_duration(102), "1m 42s")
+
+    def test_successful_real_import_publishes_the_country_catalog(self) -> None:
+        with tempfile.TemporaryDirectory() as temporary:
+            catalog_path = Path(temporary) / "app-catalog.json"
+            catalog_path.write_text(
+                json.dumps(
+                    {
+                        "country": "Portugal",
+                        "periods": [
+                            {
+                                "coins": [
+                                    {
+                                        "denomination": "1 euro",
+                                        "availability": "circulating",
+                                        "detailUrl": "https://pt.ucoin.net/coin/1",
+                                    }
+                                ]
+                            }
+                        ],
+                    }
+                ),
+                encoding="utf-8",
+            )
+            args = argparse.Namespace(
+                replace=False,
+                create_only=True,
+                allow_duplicates=False,
+                input=str(catalog_path),
+                country="",
+                continent="Europa",
+                condition="Não Tenho",
+                limit=0,
+                dry_run=False,
+                missing_only=False,
+                batch_size=10,
+                request_delay=0,
+                rate_limit_delay=0,
+                max_retries=0,
+                no_git_push=False,
+                git_commit_message="",
+            )
+            with (
+                patch.object(import_base44_coins, "parse_args", return_value=args),
+                patch.object(import_base44_coins, "validate_country_publication"),
+                patch.object(import_base44_coins, "create_client", return_value=object()),
+                patch.object(import_base44_coins, "create_only", return_value=1),
+                patch.object(import_base44_coins, "publish_country_catalog") as publish,
+                redirect_stdout(io.StringIO()),
+            ):
+                result = import_base44_coins.main()
+
+            self.assertEqual(result, 0)
+            publish.assert_called_once_with(
+                import_base44_coins.PROJECT_ROOT,
+                catalog_path,
+                "Portugal",
+                commit_message="",
+            )
+
+    def test_dry_run_never_publishes(self) -> None:
+        with tempfile.TemporaryDirectory() as temporary:
+            catalog_path = Path(temporary) / "app-catalog.json"
+            catalog_path.write_text(
+                json.dumps({"country": "Portugal", "periods": []}),
+                encoding="utf-8",
+            )
+            args = argparse.Namespace(
+                replace=False,
+                create_only=False,
+                allow_duplicates=False,
+                input=str(catalog_path),
+                country="",
+                continent="Europa",
+                condition="Não Tenho",
+                limit=0,
+                dry_run=True,
+                missing_only=False,
+                batch_size=10,
+                request_delay=0,
+                rate_limit_delay=0,
+                max_retries=0,
+                no_git_push=False,
+                git_commit_message="",
+            )
+            with (
+                patch.object(import_base44_coins, "parse_args", return_value=args),
+                patch.object(import_base44_coins, "validate_country_publication") as validate,
+                patch.object(import_base44_coins, "publish_country_catalog") as publish,
+                redirect_stdout(io.StringIO()),
+            ):
+                result = import_base44_coins.main()
+
+            self.assertEqual(result, 0)
+            validate.assert_not_called()
+            publish.assert_not_called()
+
+    def test_git_preflight_failure_stops_before_base44_access(self) -> None:
+        with tempfile.TemporaryDirectory() as temporary:
+            catalog_path = Path(temporary) / "app-catalog.json"
+            catalog_path.write_text(
+                json.dumps({"country": "Portugal", "periods": []}),
+                encoding="utf-8",
+            )
+            args = argparse.Namespace(
+                replace=False,
+                create_only=True,
+                allow_duplicates=False,
+                input=str(catalog_path),
+                country="",
+                continent="Europa",
+                condition="Não Tenho",
+                limit=0,
+                dry_run=False,
+                missing_only=False,
+                batch_size=10,
+                request_delay=0,
+                rate_limit_delay=0,
+                max_retries=0,
+                no_git_push=False,
+                git_commit_message="",
+            )
+            with (
+                patch.object(import_base44_coins, "parse_args", return_value=args),
+                patch.object(
+                    import_base44_coins,
+                    "validate_country_publication",
+                    side_effect=import_base44_coins.GitPublishError("staged alheio"),
+                ),
+                patch.object(import_base44_coins, "create_client") as create_client,
+                redirect_stdout(io.StringIO()),
+                self.assertRaisesRegex(RuntimeError, "Base44 não foi alterada"),
+            ):
+                import_base44_coins.main()
+
+            create_client.assert_not_called()
 
 
 if __name__ == "__main__":

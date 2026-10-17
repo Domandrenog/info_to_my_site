@@ -476,6 +476,7 @@ def action_import_base44(
 ) -> None:
     title("Importar para Base44")
     print("Este passo envia app-catalog.json para a entidade Coin na Base44.")
+    print("Após uma importação real, publica automaticamente os outputs finais no GitHub.")
     print("Escolhe modo com cuidado para evitar escrita indevida.")
 
     if country is None:

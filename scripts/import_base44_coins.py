@@ -17,6 +17,11 @@ from urllib.request import Request, urlopen
 
 from scripts.admin_stats_sync import MutationRun, mark_numisvault_stats_stale
 from scripts.catalog_paths import continent_label_for_country
+from scripts.git_publish import (
+    GitPublishError,
+    publish_country_catalog,
+    validate_country_publication,
+)
 
 
 AVAILABILITY_TO_RARITY = {
@@ -39,6 +44,7 @@ DEFAULT_BASE44_URL = "https://base44.app"
 DEFAULT_REQUEST_DELAY_SECONDS = 1.5
 DEFAULT_RATE_LIMIT_DELAY_SECONDS = 30.0
 DEFAULT_MAX_RETRIES = 5
+PROJECT_ROOT = Path(__file__).resolve().parent.parent
 
 
 def parse_args() -> argparse.Namespace:
@@ -61,6 +67,16 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--request-delay", type=float, default=DEFAULT_REQUEST_DELAY_SECONDS, help="Seconds to pause after each Base44 request.")
     parser.add_argument("--rate-limit-delay", type=float, default=DEFAULT_RATE_LIMIT_DELAY_SECONDS, help="Seconds to wait after HTTP 429.")
     parser.add_argument("--max-retries", type=int, default=DEFAULT_MAX_RETRIES, help="Maximum retries for HTTP 429 and temporary server errors.")
+    parser.add_argument(
+        "--no-git-push",
+        action="store_true",
+        help="Depois de uma importação real, não faz commit/push dos outputs finais do país.",
+    )
+    parser.add_argument(
+        "--git-commit-message",
+        default="",
+        help="Mensagem opcional para o commit automático do catálogo do país.",
+    )
     return parser.parse_args()
 
 
@@ -601,6 +617,14 @@ def main() -> int:
     if args.dry_run:
         print("Dry-run only. Nothing was written to Base44.")
         return 0
+    if not args.no_git_push:
+        try:
+            validate_country_publication(PROJECT_ROOT, Path(args.input))
+        except GitPublishError as exc:
+            raise RuntimeError(
+                "A publicação Git automática não está pronta; a Base44 não foi "
+                f"alterada: {exc}"
+            ) from exc
     client = create_client(args)
     if args.create_only:
         if args.missing_only:
@@ -615,6 +639,21 @@ def main() -> int:
     else:
         created = replace_country(client, records, options["country"])
     print(f"Base44 import complete. Created {created} records.")
+    if args.no_git_push:
+        print("Git: publicação automática desativada por --no-git-push.")
+    else:
+        try:
+            publish_country_catalog(
+                PROJECT_ROOT,
+                Path(args.input),
+                options["country"],
+                commit_message=args.git_commit_message,
+            )
+        except GitPublishError as exc:
+            raise RuntimeError(
+                "A importação Base44 terminou, mas o commit/push automático falhou: "
+                f"{exc}"
+            ) from exc
     return 0
 
 
