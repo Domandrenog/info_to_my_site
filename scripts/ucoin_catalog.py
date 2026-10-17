@@ -19,7 +19,7 @@ import unicodedata
 from pathlib import Path
 from shutil import which
 from urllib.error import URLError
-from urllib.parse import quote, urljoin, urlparse
+from urllib.parse import parse_qs, quote, urljoin, urlparse
 from urllib.request import urlopen
 
 PROJECT_ROOT = Path(__file__).resolve().parent.parent
@@ -466,6 +466,14 @@ def page_requires_ucoin_pro(page) -> bool:
     return is_ucoin_pro_paywall_text(text)
 
 
+def login_redirect_references_coin(url: str) -> bool:
+    parsed = urlparse(url)
+    if "/login/" not in parsed.path:
+        return False
+    references = parse_qs(parsed.query).get("ref", [])
+    return any(reference.startswith("/coin/") for reference in references)
+
+
 def open_ucoin_detail_page(
     page,
     detail_url: str,
@@ -487,9 +495,12 @@ def open_ucoin_detail_page(
         status = response.status if response is not None else None
         final_url = str(page.url)
         redirected_to_login = "/login/" in final_url
-        # Restrict the PRO check to the login/paywall redirect. The same
-        # promotional wording may appear elsewhere on otherwise usable pages.
-        if redirected_to_login and page_requires_ucoin_pro(page):
+        # A coin-specific login redirect is the shape used by the uCoin PRO
+        # restriction. Do not ask for a login that cannot unlock the variants.
+        # The text check covers translated/alternative paywall redirects too.
+        if redirected_to_login and (
+            login_redirect_references_coin(final_url) or page_requires_ucoin_pro(page)
+        ):
             return VARIANT_STATUS_PRO_REQUIRED
         if status == 200 and not redirected_to_login:
             return DETAIL_PAGE_LOADED

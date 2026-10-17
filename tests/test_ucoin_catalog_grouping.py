@@ -17,6 +17,7 @@ from scripts.ucoin_catalog import (
     finalize_variant_rows,
     is_ucoin_pro_paywall_text,
     launch_incognito_chromium,
+    login_redirect_references_coin,
     open_ucoin_detail_page,
     remove_stale_scrape_error,
 )
@@ -103,6 +104,37 @@ class UCoinCatalogueGroupingTests(unittest.TestCase):
             )
         )
 
+    def test_detects_coin_specific_login_redirect_as_restricted(self) -> None:
+        self.assertTrue(
+            login_redirect_references_coin(
+                "https://pt.ucoin.net/login/?ref=/coin/portugal-100-reis-1838-1843/?tid=63603"
+            )
+        )
+        self.assertFalse(login_redirect_references_coin("https://pt.ucoin.net/login/"))
+
+    @patch("builtins.input")
+    def test_variant_page_skips_coin_login_redirect_even_without_paywall_text(
+        self, user_input
+    ) -> None:
+        detail_url = "https://pt.ucoin.net/coin/portugal-100-reis-1838-1843/?tid=63603"
+        page = self.DetailPage(
+            ["https://pt.ucoin.net/login/?ref=/coin/portugal-100-reis-1838-1843/?tid=63603"],
+            [200],
+            [""],
+        )
+
+        status = open_ucoin_detail_page(
+            page,
+            detail_url,
+            label="100 reis",
+            issue_period="1838 - 1843",
+            timeout_seconds=60,
+            login_retries=2,
+        )
+
+        self.assertEqual(status, VARIANT_STATUS_PRO_REQUIRED)
+        user_input.assert_not_called()
+
     @patch("builtins.input")
     def test_variant_page_skips_pro_content_without_asking_for_login(self, user_input) -> None:
         detail_url = "https://pt.ucoin.net/coin/portugal-100-reis-1838-1843/?tid=63603"
@@ -149,7 +181,7 @@ class UCoinCatalogueGroupingTests(unittest.TestCase):
         detail_url = "https://pt.ucoin.net/coin/portugal-100-reis-1838-1843/?tid=63603"
         page = self.DetailPage(
             [
-                "https://pt.ucoin.net/login/?ref=/coin/portugal-100-reis-1838-1843/",
+                "https://pt.ucoin.net/login/",
                 detail_url,
             ],
             [200, 200],
