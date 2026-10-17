@@ -1,0 +1,121 @@
+{
+  "country": "Vietnam",
+  "periods": [
+    {
+      "title": "Vietnam › República Socialista › 1976 - 2012",
+      "ruler": "República Socialista",
+      "startYear": 1976,
+      "endYear": 2012,
+      "coins": [
+        {
+          "denomination": "1 hao",
+          "value": 1.0,
+          "unit": "hao",
+          "issuePeriod": "1976",
+          "startYear": 1976,
+          "endYear": 1976,
+          "availability": "historical",
+          "detailUrl": "https://pt.ucoin.net/coin/vietnam-1-hao-1976/?tid=24404",
+          "obverseImage": "https://i.ucoin.net/coin/58/929/58929340-1s/vietnam-1-hao-1976.jpg",
+          "reverseImage": "https://i.ucoin.net/coin/58/929/58929340-2s/vietnam-1-hao-1976.jpg"
+        },
+        {
+          "denomination": "2 hao",
+          "value": 2.0,
+          "unit": "hao",
+          "issuePeriod": "1976",
+          "startYear": 1976,
+          "endYear": 1976,
+          "availability": "historical",
+          "detailUrl": "https://pt.ucoin.net/coin/vietnam-2-hao-1976/?tid=24405",
+          "obverseImage": "https://i.ucoin.net/coin/77/160/77160566-1s/vietnam-2-hao-1976.jpg",
+          "reverseImage": "https://i.ucoin.net/coin/77/160/77160566-2s/vietnam-2-hao-1976.jpg"
+        },
+        {
+          "denomination": "5 hao",
+          "value": 5.0,
+          "unit": "hao",
+          "issuePeriod": "1976",
+          "startYear": 1976,
+          "endYear": 1976,
+          "availability": "historical",
+          "detailUrl": "https://pt.ucoin.net/coin/vietnam-5-hao-1976/?tid=24406",
+          "obverseImage": "https://i.ucoin.net/coin/73/878/73878374-1s/vietnam-5-hao-1976.jpg",
+          "reverseImage": "https://i.ucoin.net/coin/73/878/73878374-2s/vietnam-5-hao-1976.jpg"
+        },
+        {
+          "denomination": "1 dong",
+          "value": 1.0,
+          "unit": "dong",
+          "issuePeriod": "1976",
+          "startYear": 1976,
+          "endYear": 1976,
+          "availability": "historical",
+          "detailUrl": "https://pt.ucoin.net/coin/vietnam-1-dong-1976/?tid=24407",
+          "obverseImage": "https://i.ucoin.net/coin/75/171/75171277-1s/vietnam-1-dong-1976.jpg",
+          "reverseImage": "https://i.ucoin.net/coin/75/171/75171277-2s/vietnam-1-dong-1976.jpg"
+        },
+        {
+          "denomination": "200 dong",
+          "value": 200.0,
+          "unit": "dong",
+          "issuePeriod": "2003",
+          "startYear": 2003,
+          "endYear": 2003,
+          "availability": "scarce",
+          "detailUrl": "https://pt.ucoin.net/coin/vietnam-200-dong-2003/?tid=24536",
+          "obverseImage": "https://i.ucoin.net/coin/37/880/37880330-1s/vietnam-200-dong-2003.jpg",
+          "reverseImage": "https://i.ucoin.net/coin/37/880/37880330-2s/vietnam-200-dong-2003.jpg"
+        },
+        {
+          "denomination": "500 dong",
+          "value": 500.0,
+          "unit": "dong",
+          "issuePeriod": "2003",
+          "startYear": 2003,
+          "endYear": 2003,
+          "availability": "scarce",
+          "detailUrl": "https://pt.ucoin.net/coin/vietnam-500-dong-2003/?tid=24537",
+          "obverseImage": "https://i.ucoin.net/coin/37/880/37880334-1s/vietnam-500-dong-2003.jpg",
+          "reverseImage": "https://i.ucoin.net/coin/37/880/37880334-2s/vietnam-500-dong-2003.jpg"
+        },
+        {
+          "denomination": "1000 dong",
+          "value": 1000.0,
+          "unit": "dong",
+          "issuePeriod": "2003",
+          "startYear": 2003,
+          "endYear": 2003,
+          "availability": "scarce",
+          "detailUrl": "https://pt.ucoin.net/coin/vietnam-1000-dong-2003/?tid=24538",
+          "obverseImage": "https://i.ucoin.net/coin/37/880/37880340-1s/vietnam-1000-dong-2003.jpg",
+          "reverseImage": "https://i.ucoin.net/coin/37/880/37880340-2s/vietnam-1000-dong-2003.jpg"
+        },
+        {
+          "denomination": "2000 dong",
+          "value": 2000.0,
+          "unit": "dong",
+          "issuePeriod": "2003",
+          "startYear": 2003,
+          "endYear": 2003,
+          "availability": "scarce",
+          "detailUrl": "https://pt.ucoin.net/coin/vietnam-2000-dong-2003/?tid=24733",
+          "obverseImage": "https://i.ucoin.net/coin/37/880/37880344-1s/vietnam-2000-dong-2003.jpg",
+          "reverseImage": "https://i.ucoin.net/coin/37/880/37880344-2s/vietnam-2000-dong-2003.jpg"
+        },
+        {
+          "denomination": "5000 dong",
+          "value": 5000.0,
+          "unit": "dong",
+          "issuePeriod": "2003",
+          "startYear": 2003,
+          "endYear": 2003,
+          "availability": "scarce",
+          "detailUrl": "https://pt.ucoin.net/coin/vietnam-5000-dong-2003/?tid=24734",
+          "obverseImage": "https://i.ucoin.net/coin/37/880/37880350-1s/vietnam-5000-dong-2003.jpg",
+          "reverseImage": "https://i.ucoin.net/coin/37/880/37880350-2s/vietnam-5000-dong-2003.jpg"
+        }
+      ]
+    }
+  ]
+}
