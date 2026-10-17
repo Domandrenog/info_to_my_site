@@ -17,9 +17,9 @@
         "latestIssueYear": null
       },
       "historical": {
-        "count": 99,
-        "earliestIssueYear": 1920,
-        "latestIssueYear": 2002
+        "count": 0,
+        "earliestIssueYear": null,
+        "latestIssueYear": null
       }
     }
   }

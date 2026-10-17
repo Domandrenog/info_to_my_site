@@ -1,0 +1,297 @@
+{
+  "country": "Lituânia",
+  "periods": [
+    {
+      "title": "Lituânia › União Europeia (Euro) › 2015 - 2026",
+      "ruler": "União Europeia (Euro)",
+      "startYear": 2015,
+      "endYear": 2026,
+      "coins": [
+        {
+          "denomination": "1 cêntimo de euro",
+          "value": 1.0,
+          "unit": "cêntimo de euro",
+          "issuePeriod": "2015 - 2026",
+          "startYear": 2015,
+          "endYear": 2026,
+          "availability": "circulating",
+          "detailUrl": "https://pt.ucoin.net/coin/lithuania-1-euro-cent-2015-2026/?tid=40558",
+          "obverseImage": "https://i.ucoin.net/coin/46/899/46899528-1s/lithuania-1-euro-cent-2015.jpg",
+          "reverseImage": "https://i.ucoin.net/coin/46/899/46899528-2s/lithuania-1-euro-cent-2015.jpg"
+        },
+        {
+          "denomination": "2 cêntimos de euro",
+          "value": 2.0,
+          "unit": "cêntimos de euro",
+          "issuePeriod": "2015 - 2026",
+          "startYear": 2015,
+          "endYear": 2026,
+          "availability": "circulating",
+          "detailUrl": "https://pt.ucoin.net/coin/lithuania-2-euro-cent-2015-2026/?tid=40559",
+          "obverseImage": "https://i.ucoin.net/coin/58/582/58582194-1s/lithuania-2-euro-cent-2022.jpg",
+          "reverseImage": "https://i.ucoin.net/coin/58/582/58582194-2s/lithuania-2-euro-cent-2022.jpg"
+        },
+        {
+          "denomination": "5 cêntimos de euro",
+          "value": 5.0,
+          "unit": "cêntimos de euro",
+          "issuePeriod": "2015 - 2026",
+          "startYear": 2015,
+          "endYear": 2026,
+          "availability": "circulating",
+          "detailUrl": "https://pt.ucoin.net/coin/lithuania-5-euro-cent-2015-2026/?tid=40560",
+          "obverseImage": "https://i.ucoin.net/coin/46/899/46899533-1s/lithuania-5-euro-cent-2015.jpg",
+          "reverseImage": "https://i.ucoin.net/coin/46/899/46899533-2s/lithuania-5-euro-cent-2015.jpg"
+        },
+        {
+          "denomination": "10 cêntimos de euro",
+          "value": 10.0,
+          "unit": "cêntimos de euro",
+          "issuePeriod": "2015 - 2026",
+          "startYear": 2015,
+          "endYear": 2026,
+          "availability": "circulating",
+          "detailUrl": "https://pt.ucoin.net/coin/lithuania-10-euro-cent-2015-2026/?tid=40561",
+          "obverseImage": "https://i.ucoin.net/coin/58/582/58582240-1s/lithuania-10-euro-cent-2017.jpg",
+          "reverseImage": "https://i.ucoin.net/coin/58/582/58582240-2s/lithuania-10-euro-cent-2017.jpg"
+        },
+        {
+          "denomination": "20 cêntimos de euro",
+          "value": 20.0,
+          "unit": "cêntimos de euro",
+          "issuePeriod": "2015 - 2026",
+          "startYear": 2015,
+          "endYear": 2026,
+          "availability": "circulating",
+          "detailUrl": "https://pt.ucoin.net/coin/lithuania-20-euro-cent-2015-2026/?tid=40562",
+          "obverseImage": "https://i.ucoin.net/coin/46/899/46899538-1s/lithuania-20-euro-cent-2015.jpg",
+          "reverseImage": "https://i.ucoin.net/coin/46/899/46899538-2s/lithuania-20-euro-cent-2015.jpg"
+        },
+        {
+          "denomination": "50 cêntimos de euro",
+          "value": 50.0,
+          "unit": "cêntimos de euro",
+          "issuePeriod": "2015 - 2026",
+          "startYear": 2015,
+          "endYear": 2026,
+          "availability": "circulating",
+          "detailUrl": "https://pt.ucoin.net/coin/lithuania-50-euro-cent-2015-2026/?tid=40563",
+          "obverseImage": "https://i.ucoin.net/coin/46/899/46899542-1s/lithuania-50-euro-cent-2019.jpg",
+          "reverseImage": "https://i.ucoin.net/coin/46/899/46899542-2s/lithuania-50-euro-cent-2019.jpg"
+        },
+        {
+          "denomination": "1 euro",
+          "value": 1.0,
+          "unit": "euro",
+          "issuePeriod": "2015 - 2026",
+          "startYear": 2015,
+          "endYear": 2026,
+          "availability": "circulating",
+          "detailUrl": "https://pt.ucoin.net/coin/lithuania-1-euro-2015-2026/?tid=40564",
+          "obverseImage": "https://i.ucoin.net/coin/46/899/46899547-1s/lithuania-1-euro-2015.jpg",
+          "reverseImage": "https://i.ucoin.net/coin/46/899/46899547-2s/lithuania-1-euro-2015.jpg"
+        },
+        {
+          "denomination": "2 euro",
+          "value": 2.0,
+          "unit": "euro",
+          "issuePeriod": "2015 - 2026",
+          "startYear": 2015,
+          "endYear": 2026,
+          "availability": "circulating",
+          "detailUrl": "https://pt.ucoin.net/coin/lithuania-2-euro-2015-2026/?tid=40565",
+          "obverseImage": "https://i.ucoin.net/coin/50/418/50418317-1s/lithuania-2-euro-2015.jpg",
+          "reverseImage": "https://i.ucoin.net/coin/50/418/50418317-2s/lithuania-2-euro-2015.jpg"
+        }
+      ]
+    },
+    {
+      "title": "Lituânia › Segunda República (Lituânia) › 1991 - 2014",
+      "ruler": "Segunda República (Lituânia)",
+      "startYear": 1991,
+      "endYear": 2014,
+      "coins": [
+        {
+          "denomination": "1 centas",
+          "value": 1.0,
+          "unit": "centas",
+          "issuePeriod": "1991",
+          "startYear": 1991,
+          "endYear": 1991,
+          "availability": "withdrawn",
+          "detailUrl": "https://pt.ucoin.net/coin/lithuania-1-centas-1991/?tid=4927",
+          "obverseImage": "https://i.ucoin.net/coin/65/507/65507648-1s/lithuania-1-centas-1991.jpg",
+          "reverseImage": "https://i.ucoin.net/coin/65/507/65507648-2s/lithuania-1-centas-1991.jpg"
+        },
+        {
+          "denomination": "2 centas",
+          "value": 2.0,
+          "unit": "centas",
+          "issuePeriod": "1991",
+          "startYear": 1991,
+          "endYear": 1991,
+          "availability": "withdrawn",
+          "detailUrl": "https://pt.ucoin.net/coin/lithuania-2-centas-1991/?tid=4928",
+          "obverseImage": "https://i.ucoin.net/coin/51/667/51667898-1s/lithuania-2-centas-1991.jpg",
+          "reverseImage": "https://i.ucoin.net/coin/51/667/51667898-2s/lithuania-2-centas-1991.jpg"
+        },
+        {
+          "denomination": "5 centas",
+          "value": 5.0,
+          "unit": "centas",
+          "issuePeriod": "1991",
+          "startYear": 1991,
+          "endYear": 1991,
+          "availability": "withdrawn",
+          "detailUrl": "https://pt.ucoin.net/coin/lithuania-5-centas-1991/?tid=4929",
+          "obverseImage": "https://i.ucoin.net/coin/45/850/45850588-1s/lithuania-5-centas-1991.jpg",
+          "reverseImage": "https://i.ucoin.net/coin/45/850/45850588-2s/lithuania-5-centas-1991.jpg"
+        },
+        {
+          "denomination": "10 centas",
+          "value": 10.0,
+          "unit": "centas",
+          "issuePeriod": "1991",
+          "startYear": 1991,
+          "endYear": 1991,
+          "availability": "withdrawn",
+          "detailUrl": "https://pt.ucoin.net/coin/lithuania-10-centas-1991/?tid=4930",
+          "obverseImage": "https://i.ucoin.net/coin/45/850/45850598-1s/lithuania-10-centas-1991.jpg",
+          "reverseImage": "https://i.ucoin.net/coin/45/850/45850598-2s/lithuania-10-centas-1991.jpg"
+        },
+        {
+          "denomination": "10 centas",
+          "value": 10.0,
+          "unit": "centas",
+          "issuePeriod": "1997 - 2014",
+          "startYear": 1997,
+          "endYear": 2014,
+          "availability": "withdrawn",
+          "detailUrl": "https://pt.ucoin.net/coin/lithuania-10-centas-1997-2014/?tid=4936",
+          "obverseImage": "https://i.ucoin.net/coin/62/464/62464102-1s/lithuania-10-centas-2008.jpg",
+          "reverseImage": "https://i.ucoin.net/coin/62/464/62464102-2s/lithuania-10-centas-2008.jpg"
+        },
+        {
+          "denomination": "20 centas",
+          "value": 20.0,
+          "unit": "centas",
+          "issuePeriod": "1991",
+          "startYear": 1991,
+          "endYear": 1991,
+          "availability": "withdrawn",
+          "detailUrl": "https://pt.ucoin.net/coin/lithuania-20-centas-1991/?tid=4931",
+          "obverseImage": "https://i.ucoin.net/coin/65/507/65507763-1s/lithuania-20-centas-1991.jpg",
+          "reverseImage": "https://i.ucoin.net/coin/65/507/65507763-2s/lithuania-20-centas-1991.jpg"
+        },
+        {
+          "denomination": "20 centas",
+          "value": 20.0,
+          "unit": "centas",
+          "issuePeriod": "1997 - 2014",
+          "startYear": 1997,
+          "endYear": 2014,
+          "availability": "withdrawn",
+          "detailUrl": "https://pt.ucoin.net/coin/lithuania-20-centas-1997-2014/?tid=4944",
+          "obverseImage": "https://i.ucoin.net/coin/0/5/5358-1s/lithuania-20-centas-2007.jpg",
+          "reverseImage": "https://i.ucoin.net/coin/0/5/5358-2s/lithuania-20-centas-2007.jpg"
+        },
+        {
+          "denomination": "50 centas",
+          "value": 50.0,
+          "unit": "centas",
+          "issuePeriod": "1991",
+          "startYear": 1991,
+          "endYear": 1991,
+          "availability": "withdrawn",
+          "detailUrl": "https://pt.ucoin.net/coin/lithuania-50-centas-1991/?tid=4932",
+          "obverseImage": "https://i.ucoin.net/coin/45/850/45850619-1s/lithuania-50-centas-1991.jpg",
+          "reverseImage": "https://i.ucoin.net/coin/45/850/45850619-2s/lithuania-50-centas-1991.jpg"
+        },
+        {
+          "denomination": "50 centas",
+          "value": 50.0,
+          "unit": "centas",
+          "issuePeriod": "1997 - 2014",
+          "startYear": 1997,
+          "endYear": 2014,
+          "availability": "withdrawn",
+          "detailUrl": "https://pt.ucoin.net/coin/lithuania-50-centas-1997-2014/?tid=4951",
+          "obverseImage": "https://i.ucoin.net/coin/45/850/45850760-1s/lithuania-50-centas-2000.jpg",
+          "reverseImage": "https://i.ucoin.net/coin/45/850/45850760-2s/lithuania-50-centas-2000.jpg"
+        },
+        {
+          "denomination": "1 litas",
+          "value": 1.0,
+          "unit": "litas",
+          "issuePeriod": "1991",
+          "startYear": 1991,
+          "endYear": 1991,
+          "availability": "withdrawn",
+          "detailUrl": "https://pt.ucoin.net/coin/lithuania-1-litas-1991/?tid=4933",
+          "obverseImage": "https://i.ucoin.net/coin/27/051/27051249-1s/lithuania-1-litas-1991.jpg",
+          "reverseImage": "https://i.ucoin.net/coin/27/051/27051249-2s/lithuania-1-litas-1991.jpg"
+        },
+        {
+          "denomination": "1 litas",
+          "value": 1.0,
+          "unit": "litas",
+          "issuePeriod": "1998 - 2014",
+          "startYear": 1998,
+          "endYear": 2014,
+          "availability": "withdrawn",
+          "detailUrl": "https://pt.ucoin.net/coin/lithuania-1-litas-1998-2014/?tid=4956",
+          "obverseImage": "https://i.ucoin.net/coin/45/850/45850816-1s/lithuania-1-litas-2008.jpg",
+          "reverseImage": "https://i.ucoin.net/coin/45/850/45850816-2s/lithuania-1-litas-2008.jpg"
+        },
+        {
+          "denomination": "2 litas",
+          "value": 2.0,
+          "unit": "litas",
+          "issuePeriod": "1991",
+          "startYear": 1991,
+          "endYear": 1991,
+          "availability": "withdrawn",
+          "detailUrl": "https://pt.ucoin.net/coin/lithuania-2-litas-1991/?tid=4934",
+          "obverseImage": "https://i.ucoin.net/coin/6/367/6367593-1s/lithuania-2-litas-1991.jpg",
+          "reverseImage": "https://i.ucoin.net/coin/6/367/6367593-2s/lithuania-2-litas-1991.jpg"
+        },
+        {
+          "denomination": "2 litas",
+          "value": 2.0,
+          "unit": "litas",
+          "issuePeriod": "1998 - 2014",
+          "startYear": 1998,
+          "endYear": 2014,
+          "availability": "withdrawn",
+          "detailUrl": "https://pt.ucoin.net/coin/lithuania-2-litas-1998-2014/?tid=4962",
+          "obverseImage": "https://i.ucoin.net/coin/14/688/14688982-1s/lithuania-2-litas-2008.jpg",
+          "reverseImage": "https://i.ucoin.net/coin/14/688/14688982-2s/lithuania-2-litas-2008.jpg"
+        },
+        {
+          "denomination": "5 litas",
+          "value": 5.0,
+          "unit": "litas",
+          "issuePeriod": "1991",
+          "startYear": 1991,
+          "endYear": 1991,
+          "availability": "withdrawn",
+          "detailUrl": "https://pt.ucoin.net/coin/lithuania-5-litas-1991/?tid=4935",
+          "obverseImage": "https://i.ucoin.net/coin/63/831/63831553-1s/lithuania-5-litas-1991.jpg",
+          "reverseImage": "https://i.ucoin.net/coin/63/831/63831553-2s/lithuania-5-litas-1991.jpg"
+        },
+        {
+          "denomination": "5 litas",
+          "value": 5.0,
+          "unit": "litas",
+          "issuePeriod": "1998 - 2014",
+          "startYear": 1998,
+          "endYear": 2014,
+          "availability": "withdrawn",
+          "detailUrl": "https://pt.ucoin.net/coin/lithuania-5-litas-1998-2014/?tid=4969",
+          "obverseImage": "https://i.ucoin.net/coin/54/089/54089679-1s/lithuania-5-litas-1999.jpg",
+          "reverseImage": "https://i.ucoin.net/coin/54/089/54089679-2s/lithuania-5-litas-1999.jpg"
+        }
+      ]
+    }
+  ]
+}
