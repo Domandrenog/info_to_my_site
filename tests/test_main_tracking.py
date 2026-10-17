@@ -29,6 +29,10 @@ PLANS = [
 
 
 class MainTrackingActionTests(unittest.TestCase):
+    @patch("main.ask_text", return_value="europa")
+    def test_ask_continent_returns_canonical_label(self, _ask_text) -> None:
+        self.assertEqual(main.ask_continent("Portugal"), "Europa")
+
     @patch("main.action_import_base44")
     @patch("main.run_step", return_value=0)
     @patch("main.add_browser_mode", side_effect=lambda command: command.append("--attach-cdp"))

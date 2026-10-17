@@ -13,6 +13,7 @@ from types import SimpleNamespace
 from scripts import fix_site_issues_api
 from scripts.catalog_paths import (
     CATALOG_ROOT,
+    CONTINENT_LABELS,
     continent_label_for_country,
     country_directory,
     normalize_continent,
@@ -177,8 +178,7 @@ def ask_continent(country: str) -> str:
     while True:
         continent = ask_text("Continente (Europa|America|Asia|Africa|Oceania)", default)
         try:
-            normalize_continent(continent)
-            return continent
+            return CONTINENT_LABELS[normalize_continent(continent)]
         except ValueError as exc:
             print(exc)
 

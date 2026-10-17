@@ -16,7 +16,11 @@ from urllib.parse import quote, urlencode
 from urllib.request import Request, urlopen
 
 from scripts.admin_stats_sync import MutationRun, mark_numisvault_stats_stale
-from scripts.catalog_paths import continent_label_for_country
+from scripts.catalog_paths import (
+    CONTINENT_LABELS,
+    continent_label_for_country,
+    normalize_continent,
+)
 from scripts.git_publish import (
     GitPublishError,
     publish_country_catalog,
@@ -146,9 +150,23 @@ def resolve_options(args: argparse.Namespace, catalogue: dict[str, Any]) -> dict
     country = args.country or catalogue.get("country")
     if not isinstance(country, str) or not country:
         raise ValueError("Country missing in JSON. Pass --country.")
-    continent = args.continent or COUNTRY_TO_CONTINENT.get(country, "") or continent_label_for_country(country)
+    configured_continent = (
+        args.continent
+        or COUNTRY_TO_CONTINENT.get(country, "")
+        or continent_label_for_country(country)
+    )
+    try:
+        continent = CONTINENT_LABELS[normalize_continent(configured_continent)]
+    except ValueError as exc:
+        raise ValueError(
+            f"Invalid or missing continent for {country}. Pass --continent "
+            "Europa|América|Ásia|África|Oceânia."
+        ) from exc
     if continent not in VALID_CONTINENTS:
-        raise ValueError(f"Invalid or missing continent for {country}. Pass --continent Europa|América|Ásia|África|Oceânia.")
+        raise ValueError(
+            f"Invalid or missing continent for {country}. Pass --continent "
+            "Europa|América|Ásia|África|Oceânia."
+        )
     return {"country": country, "continent": continent, "condition": args.condition}
 
 

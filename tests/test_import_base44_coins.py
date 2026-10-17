@@ -124,6 +124,24 @@ class ImportBase44CoinsTests(unittest.TestCase):
         options = import_base44_coins.resolve_options(args, {"country": "Austrália"})
         self.assertEqual(options["continent"], "Oceânia")
 
+    def test_resolve_options_normalizes_cli_continent(self) -> None:
+        for provided, expected in (
+            ("europa", "Europa"),
+            ("america", "América"),
+            ("AMÉRICA", "América"),
+            ("asia", "Ásia"),
+            ("africa", "África"),
+            ("oceania", "Oceânia"),
+        ):
+            with self.subTest(provided=provided):
+                args = argparse.Namespace(
+                    country="", continent=provided, condition="Não Tenho"
+                )
+                options = import_base44_coins.resolve_options(
+                    args, {"country": "Portugal"}
+                )
+                self.assertEqual(options["continent"], expected)
+
     def test_unsupported_availability_fails(self) -> None:
         with self.assertRaises(ValueError):
             import_base44_coins.to_coin_record(
