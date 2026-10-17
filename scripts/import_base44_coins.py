@@ -6,6 +6,7 @@ from __future__ import annotations
 import argparse
 import json
 import os
+import re
 import sys
 import time
 from dataclasses import dataclass, field
@@ -125,6 +126,70 @@ def flatten_coins(catalogue: dict[str, Any]) -> list[tuple[dict[str, Any], dict[
             if isinstance(coin, dict):
                 entries.append((period, coin))
     return entries
+
+
+def normalized_denomination(value: Any) -> str:
+    """Return the grouping key used for normal Coin display order."""
+
+    return " ".join(str(value or "").casefold().split())
+
+
+def issue_period_sort_key(coin: dict[str, Any]) -> tuple[int, int]:
+    """Sort issues of one denomination from the oldest period to the newest."""
+
+    years = [
+        int(value)
+        for value in re.findall(r"\d{3,4}", str(coin.get("issuePeriod") or ""))
+    ]
+    if not years:
+        return (10**9, 10**9)
+    return (years[0], years[-1])
+
+
+def ordered_coin_entries(
+    entries: list[tuple[dict[str, Any], dict[str, Any]]],
+) -> list[tuple[dict[str, Any], dict[str, Any]]]:
+    """Keep equal denominations together while preserving denomination order.
+
+    Denomination blocks retain the order in which each denomination first
+    appears in the catalogue. Inside each block, issues are chronological.
+    This prevents a period-based uCoin catalogue from scattering, for example,
+    ``1 escudo`` throughout the Site Base44 gallery.
+    """
+
+    group_order: dict[str, int] = {}
+    decorated: list[
+        tuple[int, tuple[int, int], int, tuple[dict[str, Any], dict[str, Any]]]
+    ] = []
+    for source_index, entry in enumerate(entries):
+        _period, coin = entry
+        key = normalized_denomination(coin.get("denomination"))
+        group_order.setdefault(key, len(group_order))
+        decorated.append(
+            (group_order[key], issue_period_sort_key(coin), source_index, entry)
+        )
+    decorated.sort(key=lambda item: item[:3])
+    return [item[3] for item in decorated]
+
+
+def fallback_catalog_orders(
+    entries: list[tuple[dict[str, Any], dict[str, Any]]],
+) -> list[int]:
+    """Return gap-free fallback orders, sharing an order for duplicate URLs."""
+
+    next_order = 1
+    order_by_url: dict[str, int] = {}
+    result: list[int] = []
+    for _period, coin in entries:
+        detail_url = str(coin.get("detailUrl") or "").strip()
+        if detail_url and detail_url in order_by_url:
+            result.append(order_by_url[detail_url])
+            continue
+        result.append(next_order)
+        if detail_url:
+            order_by_url[detail_url] = next_order
+        next_order += 1
+    return result
 
 
 def build_name(coin: dict[str, Any]) -> str:
@@ -656,9 +721,11 @@ def main() -> int:
     entries = flatten_coins(catalogue)
     if args.limit > 0:
         entries = entries[: args.limit]
+    entries = ordered_coin_entries(entries)
+    fallback_orders = fallback_catalog_orders(entries)
     records = [
-        to_coin_record(entry, options, index + 1)
-        for index, entry in enumerate(entries)
+        to_coin_record(entry, options, fallback_order)
+        for entry, fallback_order in zip(entries, fallback_orders, strict=True)
     ]
     print(f"Prepared {len(records)} Coin records for {options['country']} ({options['continent']}).")
     if include_variants:

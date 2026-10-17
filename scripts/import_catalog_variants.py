@@ -261,13 +261,38 @@ def build_live_plan(
 
 def print_plan(plan: VariantImportPlan) -> None:
     label = "moedas normais" if plan.catalog_type == "normal" else "moedas de coleção"
+    complete = [
+        parent
+        for parent in plan.parents
+        if not parent.missing and not parent.flag_pending
+    ]
+    selector_only = [
+        parent
+        for parent in plan.parents
+        if not parent.missing and parent.flag_pending
+    ]
+    variants_and_selector = [parent for parent in plan.parents if parent.missing]
     print(f"Variantes — {label} — {plan.country}")
     print(f"Moedas com variantes no catálogo: {len(plan.parents)}")
     print(f"Variantes pedidas: {plan.expected}")
     print(f"Já existentes e preservadas: {plan.existing}")
     print(f"Em falta para criar: {plan.missing}")
     print(f"Pais a marcar com has_variants: {plan.flags_pending}")
+    print(f"Já completamente corretas: {len(complete)}")
     print("Atualizações/remoções de variantes existentes: 0")
+
+    if selector_only:
+        print("\nApenas ativar o seletor (todas as variantes já existem):")
+        for parent in selector_only:
+            print(f"- {parent.spec.label}: {len(parent.spec.variants)} variantes")
+    if variants_and_selector:
+        print("\nCriar variantes em falta:")
+        for parent in variants_and_selector:
+            suffix = " e ativar o seletor" if parent.flag_pending else ""
+            print(
+                f"- {parent.spec.label}: {len(parent.missing)} em falta"
+                f"{suffix}"
+            )
 
 
 def get_record(client: Any, record_id: str) -> dict[str, Any]:

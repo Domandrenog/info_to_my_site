@@ -114,6 +114,34 @@ class ImportBase44CoinsTests(unittest.TestCase):
         )
         self.assertEqual(record["ordem"], 84)
 
+    def test_catalogue_order_groups_denominations_and_sorts_periods(self) -> None:
+        entries = [
+            ({}, {"denomination": "1 escudo", "issuePeriod": "1986 - 2001"}),
+            ({}, {"denomination": "5 escudos", "issuePeriod": "1986 - 2001"}),
+            ({}, {"denomination": "1 escudo", "issuePeriod": "1927 - 1968"}),
+            ({}, {"denomination": "1 ESCUDO", "issuePeriod": "1969 - 1979"}),
+        ]
+
+        ordered = import_base44_coins.ordered_coin_entries(entries)
+
+        self.assertEqual(
+            [coin["issuePeriod"] for _period, coin in ordered],
+            ["1927 - 1968", "1969 - 1979", "1986 - 2001", "1986 - 2001"],
+        )
+        self.assertEqual(ordered[-1][1]["denomination"], "5 escudos")
+
+    def test_duplicate_ucoin_urls_do_not_leave_order_gaps(self) -> None:
+        entries = [
+            ({}, {"detailUrl": "https://ucoin.test/one"}),
+            ({}, {"detailUrl": "https://ucoin.test/one"}),
+            ({}, {"detailUrl": "https://ucoin.test/two"}),
+        ]
+
+        self.assertEqual(
+            import_base44_coins.fallback_catalog_orders(entries),
+            [1, 1, 2],
+        )
+
     def test_resolve_options_detects_india_continent(self) -> None:
         args = argparse.Namespace(country="", continent="", condition="Não Tenho")
         options = import_base44_coins.resolve_options(args, {"country": "Índia"})
