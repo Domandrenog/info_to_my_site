@@ -47,6 +47,7 @@ def catalog() -> dict:
         "country": "Portugal",
         "periods": [
             {
+                "ruler": "República Portuguesa",
                 "coins": [
                     {
                         "denomination": "1 escudo",
@@ -58,6 +59,21 @@ def catalog() -> dict:
                         "issuePeriod": "1986 - 2001",
                         "detailUrl": "https://ucoin.test/five",
                     },
+                ],
+            },
+            {
+                "ruler": "ECU",
+                "coins": [
+                    {
+                        "denomination": "1 escudo",
+                        "issuePeriod": "1991",
+                        "detailUrl": "https://ucoin.test/ecu-one",
+                    },
+                ],
+            },
+            {
+                "ruler": "República Portuguesa",
+                "coins": [
                     {
                         "denomination": "1 escudo",
                         "issuePeriod": "1927 - 1968",
@@ -96,6 +112,14 @@ def store() -> dict[str, list[dict]]:
                 "url_ucoin": "https://ucoin.test/one-old",
                 "ordem": 3,
             },
+            {
+                "id": "ecu",
+                "country": "Portugal",
+                "name": "1 escudo",
+                "years": "1991",
+                "url_ucoin": "https://ucoin.test/ecu-one",
+                "ordem": 4,
+            },
         ],
         "AdminStats": [{"id": "stats", "needs_rebuild": True}],
     }
@@ -113,6 +137,8 @@ class SyncCatalogCoinOrderTests(unittest.TestCase):
                 ("5 escudos (1986 - 2001)", 3),
             ],
         )
+        self.assertEqual(plan.specs[-1].period_label, "ECU")
+        self.assertEqual(plan.specs[-1].desired_order, 4)
 
     def test_apply_changes_only_order(self) -> None:
         data = store()
@@ -130,7 +156,7 @@ class SyncCatalogCoinOrderTests(unittest.TestCase):
         marker.assert_called_once_with(base)
         self.assertEqual(
             {item["id"]: item["ordem"] for item in data["Coin"]},
-            {"old": 1, "new": 2, "five": 3},
+            {"old": 1, "new": 2, "five": 3, "ecu": 4},
         )
         self.assertEqual(
             {

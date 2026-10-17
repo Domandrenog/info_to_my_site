@@ -149,27 +149,50 @@ def issue_period_sort_key(coin: dict[str, Any]) -> tuple[int, int]:
 def ordered_coin_entries(
     entries: list[tuple[dict[str, Any], dict[str, Any]]],
 ) -> list[tuple[dict[str, Any], dict[str, Any]]]:
-    """Keep equal denominations together while preserving denomination order.
+    """Keep equal denominations together inside the same displayed period.
 
-    Denomination blocks retain the order in which each denomination first
-    appears in the catalogue. Inside each block, issues are chronological.
-    This prevents a period-based uCoin catalogue from scattering, for example,
-    ``1 escudo`` throughout the Site Base44 gallery.
+    Period and denomination blocks retain their first catalogue appearance.
+    Inside each denomination block, issues are chronological. The period key is
+    the same notes value sent to Base44, because separate uCoin sections may be
+    displayed under the same period (for example, ``República Portuguesa``).
     """
 
-    group_order: dict[str, int] = {}
+    period_order: dict[str, int] = {}
+    denomination_order: dict[tuple[str, str], int] = {}
+    denomination_count_by_period: dict[str, int] = {}
     decorated: list[
-        tuple[int, tuple[int, int], int, tuple[dict[str, Any], dict[str, Any]]]
+        tuple[
+            int,
+            int,
+            tuple[int, int],
+            int,
+            tuple[dict[str, Any], dict[str, Any]],
+        ]
     ] = []
     for source_index, entry in enumerate(entries):
-        _period, coin = entry
-        key = normalized_denomination(coin.get("denomination"))
-        group_order.setdefault(key, len(group_order))
+        period, coin = entry
+        period_key = normalized_denomination(build_notes(period, coin))
+        denomination_key = normalized_denomination(coin.get("denomination"))
+        period_order.setdefault(period_key, len(period_order))
+        group_key = (period_key, denomination_key)
+        if group_key not in denomination_order:
+            denomination_order[group_key] = denomination_count_by_period.get(
+                period_key, 0
+            )
+            denomination_count_by_period[period_key] = (
+                denomination_order[group_key] + 1
+            )
         decorated.append(
-            (group_order[key], issue_period_sort_key(coin), source_index, entry)
+            (
+                period_order[period_key],
+                denomination_order[group_key],
+                issue_period_sort_key(coin),
+                source_index,
+                entry,
+            )
         )
-    decorated.sort(key=lambda item: item[:3])
-    return [item[3] for item in decorated]
+    decorated.sort(key=lambda item: item[:4])
+    return [item[4] for item in decorated]
 
 
 def fallback_catalog_orders(

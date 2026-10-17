@@ -21,6 +21,7 @@ from scripts.import_base44_coins import (
     DEFAULT_MAX_RETRIES,
     DEFAULT_RATE_LIMIT_DELAY_SECONDS,
     DEFAULT_REQUEST_DELAY_SECONDS,
+    build_notes,
     create_client,
     existing_records_for_country,
     fallback_catalog_orders,
@@ -37,6 +38,7 @@ class CoinOrderError(RuntimeError):
 @dataclass(frozen=True)
 class OrderSpec:
     detail_url: str
+    period_label: str
     denomination: str
     years: str
     desired_order: int
@@ -101,13 +103,20 @@ def catalogue_order_specs(catalogue: dict[str, Any]) -> tuple[str, list[OrderSpe
     entries = ordered_coin_entries(flatten_coins(catalogue))
     fallback_orders = fallback_catalog_orders(entries)
     specs_by_url: dict[str, OrderSpec] = {}
-    for (_period, coin), desired_order in zip(entries, fallback_orders, strict=True):
+    for (period, coin), desired_order in zip(entries, fallback_orders, strict=True):
         detail_url = str(coin.get("detailUrl") or "").strip()
+        period_label = build_notes(period, coin)
         denomination = str(coin.get("denomination") or "Moeda").strip()
         years = str(coin.get("issuePeriod") or "").strip()
         if not detail_url:
             raise CoinOrderError(f"URL uCoin ausente em {denomination} ({years}).")
-        spec = OrderSpec(detail_url, denomination, years, desired_order)
+        spec = OrderSpec(
+            detail_url,
+            period_label,
+            denomination,
+            years,
+            desired_order,
+        )
         previous = specs_by_url.get(detail_url)
         if previous is not None and previous != spec:
             raise CoinOrderError(
@@ -162,13 +171,19 @@ def build_live_plan(
     return CoinOrderPlan(selected_country, specs, updates, unchanged)
 
 
-def grouped_blocks(specs: list[OrderSpec]) -> list[tuple[str, list[OrderSpec]]]:
-    blocks: list[tuple[str, list[OrderSpec]]] = []
+def grouped_blocks(
+    specs: list[OrderSpec],
+) -> list[tuple[str, str, list[OrderSpec]]]:
+    blocks: list[tuple[str, str, list[OrderSpec]]] = []
     for spec in specs:
-        if blocks and blocks[-1][0].casefold() == spec.denomination.casefold():
-            blocks[-1][1].append(spec)
+        same_period = blocks and blocks[-1][0].casefold() == spec.period_label.casefold()
+        same_denomination = (
+            blocks and blocks[-1][1].casefold() == spec.denomination.casefold()
+        )
+        if same_period and same_denomination:
+            blocks[-1][2].append(spec)
         else:
-            blocks.append((spec.denomination, [spec]))
+            blocks.append((spec.period_label, spec.denomination, [spec]))
     return blocks
 
 
@@ -178,13 +193,14 @@ def print_plan(plan: CoinOrderPlan) -> None:
     print(f"Já na ordem correta: {len(plan.unchanged)}")
     print(f"Ordens a corrigir: {len(plan.updates)}")
     print("Outros campos a alterar: 0")
-    print("\nBlocos com várias emissões da mesma denominação:")
-    for denomination, specs in grouped_blocks(plan.specs):
+    print("\nBlocos com várias emissões da mesma denominação e período:")
+    for period_label, denomination, specs in grouped_blocks(plan.specs):
         if len(specs) < 2:
             continue
         periods = ", ".join(spec.years for spec in specs)
         print(
-            f"- {denomination}: {len(specs)} moedas · ordens "
+            f"- {period_label or 'Sem período'} — {denomination}: "
+            f"{len(specs)} moedas · ordens "
             f"{specs[0].desired_order}–{specs[-1].desired_order} · {periods}"
         )
 

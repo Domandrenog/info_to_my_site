@@ -114,21 +114,40 @@ class ImportBase44CoinsTests(unittest.TestCase):
         )
         self.assertEqual(record["ordem"], 84)
 
-    def test_catalogue_order_groups_denominations_and_sorts_periods(self) -> None:
+    def test_catalogue_order_groups_denominations_inside_display_period(self) -> None:
         entries = [
-            ({}, {"denomination": "1 escudo", "issuePeriod": "1986 - 2001"}),
-            ({}, {"denomination": "5 escudos", "issuePeriod": "1986 - 2001"}),
-            ({}, {"denomination": "1 escudo", "issuePeriod": "1927 - 1968"}),
-            ({}, {"denomination": "1 ESCUDO", "issuePeriod": "1969 - 1979"}),
+            (
+                {"ruler": "República Portuguesa"},
+                {"denomination": "1 escudo", "issuePeriod": "1986 - 2001"},
+            ),
+            (
+                {"ruler": "ECU"},
+                {"denomination": "1 escudo", "issuePeriod": "1991"},
+            ),
+            (
+                {"ruler": "República Portuguesa"},
+                {"denomination": "5 escudos", "issuePeriod": "1986 - 2001"},
+            ),
+            (
+                {"ruler": "República Portuguesa"},
+                {"denomination": "1 escudo", "issuePeriod": "1927 - 1968"},
+            ),
         ]
 
         ordered = import_base44_coins.ordered_coin_entries(entries)
 
         self.assertEqual(
-            [coin["issuePeriod"] for _period, coin in ordered],
-            ["1927 - 1968", "1969 - 1979", "1986 - 2001", "1986 - 2001"],
+            [
+                (period["ruler"], coin["denomination"], coin["issuePeriod"])
+                for period, coin in ordered
+            ],
+            [
+                ("República Portuguesa", "1 escudo", "1927 - 1968"),
+                ("República Portuguesa", "1 escudo", "1986 - 2001"),
+                ("República Portuguesa", "5 escudos", "1986 - 2001"),
+                ("ECU", "1 escudo", "1991"),
+            ],
         )
-        self.assertEqual(ordered[-1][1]["denomination"], "5 escudos")
 
     def test_duplicate_ucoin_urls_do_not_leave_order_gaps(self) -> None:
         entries = [
