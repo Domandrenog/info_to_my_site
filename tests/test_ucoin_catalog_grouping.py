@@ -70,11 +70,15 @@ class UCoinCatalogueGroupingTests(unittest.TestCase):
             self.statuses = iter(statuses)
             self.url = ""
             self.goto_calls: list[str] = []
+            self.bring_to_front_calls = 0
 
         def goto(self, url: str, **_kwargs):
             self.goto_calls.append(url)
             self.url = next(self.urls)
             return argparse.Namespace(status=next(self.statuses))
+
+        def bring_to_front(self) -> None:
+            self.bring_to_front_calls += 1
 
     @patch("builtins.input", return_value="")
     def test_variant_page_retries_same_coin_after_manual_login(self, _input) -> None:
@@ -97,6 +101,7 @@ class UCoinCatalogueGroupingTests(unittest.TestCase):
         )
 
         self.assertEqual(page.goto_calls, [detail_url, detail_url])
+        self.assertEqual(page.bring_to_front_calls, 1)
 
     @patch("builtins.input", return_value="")
     def test_variant_page_stops_cleanly_when_login_persists(self, _input) -> None:

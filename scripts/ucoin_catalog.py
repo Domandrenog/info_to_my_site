@@ -472,12 +472,27 @@ def open_ucoin_detail_page(
                 "retomar nesta moeda."
             )
 
+        tab_brought_to_front = True
+        try:
+            page.bring_to_front()
+        except Exception:  # noqa: BLE001 - losing focus must not lose the checkpoint
+            tab_brought_to_front = False
+
         print("", flush=True)
         print("#" * 72, flush=True)
         print("UCOIN PEDIU LOGIN — PROGRESSO GUARDADO", flush=True)
         print("#" * 72, flush=True)
         print(f"Moeda pendente: {label} ({issue_period})", flush=True)
-        print("Conclui o login/challenge no browser que já está aberto.", flush=True)
+        if tab_brought_to_front:
+            print("A aba de login do uCoin foi trazida para a frente.", flush=True)
+        else:
+            print("Não foi possível trazer automaticamente a aba para a frente.", flush=True)
+        print(f"Endereço aberto: {final_url}", flush=True)
+        print(
+            "Se não vires a aba, abre esse endereço no Chromium ligado à porta 9222.",
+            flush=True,
+        )
+        print("Conclui o login/challenge nessa janela.", flush=True)
         try:
             input("Carrega Enter para repetir apenas esta moeda... ")
         except EOFError as exc:
