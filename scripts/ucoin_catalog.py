@@ -749,6 +749,13 @@ def write_output(path: str, payload: dict[str, object]) -> None:
     target.write_text(json.dumps(payload, ensure_ascii=False, indent=2), encoding="utf-8")
 
 
+def remove_stale_scrape_error(output_path: Path) -> None:
+    try:
+        output_path.with_name("scrape-error.json").unlink()
+    except FileNotFoundError:
+        pass
+
+
 def default_output_dir(country: str, period: str | None, continent: str = "") -> Path:
     return country_directory(country, continent)
 
@@ -798,6 +805,7 @@ def main() -> int:
         report = scrape_catalog(args, output_dir)
         report["output_path"] = str(output_path)
         write_output(str(output_path), report)
+        remove_stale_scrape_error(output_path)
     except Exception as exc:  # noqa: BLE001
         error_report = {
             "country": args.country,

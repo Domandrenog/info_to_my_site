@@ -15,6 +15,7 @@ from scripts.ucoin_catalog import (
     finalize_variant_rows,
     launch_incognito_chromium,
     open_ucoin_detail_page,
+    remove_stale_scrape_error,
 )
 from ucoin_to_mysite.catalog_parser import crawl_ucoin_catalogue, parse_catalogue_page
 
@@ -180,6 +181,19 @@ class UCoinCatalogueGroupingTests(unittest.TestCase):
         self.assertEqual(len(saved["items"]), 2)
         self.assertEqual(summary["coinsWithVariants"], 2)
         self.assertEqual(summary["variants"], 4)
+
+    def test_successful_scrape_removes_only_stale_error_report(self) -> None:
+        with TemporaryDirectory() as temporary:
+            output_path = Path(temporary) / "ucoin-catalog.json"
+            error_path = output_path.with_name("scrape-error.json")
+            checkpoint_path = output_path.with_name("ucoin-variants-scan.json")
+            error_path.write_text("{}", encoding="utf-8")
+            checkpoint_path.write_text("{}", encoding="utf-8")
+
+            remove_stale_scrape_error(output_path)
+
+            self.assertFalse(error_path.exists())
+            self.assertTrue(checkpoint_path.exists())
 
     def test_variant_rows_include_unc_and_bu_but_exclude_proof_only(self) -> None:
         result = finalize_variant_rows(
