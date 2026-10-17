@@ -1,15 +1,20 @@
 from __future__ import annotations
 
 import argparse
+import json
 import unittest
+from pathlib import Path
+from tempfile import TemporaryDirectory
 from unittest.mock import Mock, patch
 
 from tests.test_ucoin_catalog_parser import coin
 from scripts.ucoin_catalog import (
     build_country_url,
+    collect_catalogue_variants,
     filter_periods_by_start_year,
     finalize_variant_rows,
     launch_incognito_chromium,
+    open_ucoin_detail_page,
 )
 from ucoin_to_mysite.catalog_parser import crawl_ucoin_catalogue, parse_catalogue_page
 
@@ -58,6 +63,124 @@ def grouped_coin(tid: int, pid: str = "24", value: str | None = None) -> str:
 
 
 class UCoinCatalogueGroupingTests(unittest.TestCase):
+    class DetailPage:
+        def __init__(self, urls: list[str], statuses: list[int]) -> None:
+            self.urls = iter(urls)
+            self.statuses = iter(statuses)
+            self.url = ""
+            self.goto_calls: list[str] = []
+
+        def goto(self, url: str, **_kwargs):
+            self.goto_calls.append(url)
+            self.url = next(self.urls)
+            return argparse.Namespace(status=next(self.statuses))
+
+    @patch("builtins.input", return_value="")
+    def test_variant_page_retries_same_coin_after_manual_login(self, _input) -> None:
+        detail_url = "https://pt.ucoin.net/coin/portugal-100-reis-1838-1843/?tid=63603"
+        page = self.DetailPage(
+            [
+                "https://pt.ucoin.net/login/?ref=/coin/portugal-100-reis-1838-1843/",
+                detail_url,
+            ],
+            [200, 200],
+        )
+
+        open_ucoin_detail_page(
+            page,
+            detail_url,
+            label="100 reis",
+            issue_period="1838 - 1843",
+            timeout_seconds=60,
+            login_retries=2,
+        )
+
+        self.assertEqual(page.goto_calls, [detail_url, detail_url])
+
+    @patch("builtins.input", return_value="")
+    def test_variant_page_stops_cleanly_when_login_persists(self, _input) -> None:
+        detail_url = "https://pt.ucoin.net/coin/test"
+        page = self.DetailPage(
+            ["https://pt.ucoin.net/login/", "https://pt.ucoin.net/login/"],
+            [200, 200],
+        )
+
+        with self.assertRaisesRegex(RuntimeError, "progresso anterior continua guardado"):
+            open_ucoin_detail_page(
+                page,
+                detail_url,
+                label="100 reis",
+                issue_period="1838 - 1843",
+                timeout_seconds=60,
+                login_retries=1,
+            )
+
+    def test_variant_resume_preserves_checkpoint_and_counts_repeated_urls(self) -> None:
+        first_url = "https://pt.ucoin.net/coin/portugal-a"
+        second_url = "https://pt.ucoin.net/coin/portugal-b"
+        coins = [
+            {
+                "detailUrl": detail_url,
+                "denomination": {"displayName": label},
+                "issuePeriod": {"displayValue": years},
+            }
+            for detail_url, label, years in (
+                (first_url, "1 real", "1900"),
+                (second_url, "2 reis", "1901"),
+                (first_url, "1 real", "1900"),
+            )
+        ]
+        checkpoint = {
+            "country": "Portugal",
+            "completed": 3,
+            "expected": 3,
+            "items": [
+                {
+                    "detailUrl": first_url,
+                    "status": "collected",
+                    "variants": [
+                        {"tag": "A", "order": 0},
+                        {"tag": "B", "order": 1},
+                    ],
+                    "excludedProofOnlyVariants": [],
+                },
+                {
+                    "detailUrl": second_url,
+                    "status": "no_multiple_variants",
+                    "variants": [],
+                    "excludedProofOnlyVariants": [],
+                },
+            ],
+        }
+
+        with TemporaryDirectory() as temporary:
+            output_dir = Path(temporary)
+            checkpoint_path = output_dir / "ucoin-variants-scan.json"
+            checkpoint_path.write_text(json.dumps(checkpoint), encoding="utf-8")
+            page = Mock()
+
+            summary = collect_catalogue_variants(
+                page,
+                {"country": "Portugal", "periods": [{"coins": coins}]},
+                argparse.Namespace(
+                    timeout=60,
+                    variant_delay=0,
+                    variant_batch_size=10,
+                    variant_batch_pause=0,
+                    variant_login_retries=2,
+                ),
+                output_dir,
+            )
+
+            saved = json.loads(checkpoint_path.read_text(encoding="utf-8"))
+
+        page.goto.assert_not_called()
+        self.assertEqual(saved["completed"], 3)
+        self.assertEqual(saved["uniqueDetailUrls"], 2)
+        self.assertEqual(len(saved["items"]), 2)
+        self.assertEqual(summary["coinsWithVariants"], 2)
+        self.assertEqual(summary["variants"], 4)
+
     def test_variant_rows_include_unc_and_bu_but_exclude_proof_only(self) -> None:
         result = finalize_variant_rows(
             "2025",

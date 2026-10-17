@@ -13,6 +13,7 @@ from scripts.ucoin_catalog import (
     cdp_is_available,
     extract_coin_variants,
     launch_incognito_chromium,
+    open_ucoin_detail_page,
     write_json_atomic,
 )
 
@@ -40,6 +41,15 @@ def parse_args(argv: list[str] | None = None) -> argparse.Namespace:
     parser.add_argument("--delay", type=float, default=5.0)
     parser.add_argument("--batch-size", type=int, default=10)
     parser.add_argument("--batch-pause", type=float, default=20.0)
+    parser.add_argument(
+        "--login-retries",
+        type=int,
+        default=2,
+        help=(
+            "Número de vezes que permite resolver um login/challenge no browser "
+            "e repetir apenas a moeda atual."
+        ),
+    )
     parser.add_argument(
         "--refresh",
         action="store_true",
@@ -134,17 +144,14 @@ def run(argv: list[str] | None = None) -> int:
             if visited:
                 page.wait_for_timeout(max(0, int(args.delay * 1000)))
             detail_url = str(coin["detailUrl"])
-            response = page.goto(
+            open_ucoin_detail_page(
+                page,
                 detail_url,
-                wait_until="domcontentloaded",
-                timeout=max(1, args.timeout) * 1000,
+                label=denomination,
+                issue_period=years,
+                timeout_seconds=args.timeout,
+                login_retries=args.login_retries,
             )
-            status = response.status if response is not None else None
-            if status != 200 or "/login/" in page.url:
-                raise CatalogVariantError(
-                    f"A recolha parou em {denomination} ({years}): "
-                    f"HTTP {status}, URL final {page.url}."
-                )
             page.wait_for_timeout(1000)
             result = extract_coin_variants(page, years, detail_url)
             variants = result["variants"]

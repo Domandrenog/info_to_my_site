@@ -129,6 +129,15 @@ def parse_args() -> argparse.Namespace:
         default=20.0,
         help="Pausa longa entre lotes da recolha de variantes.",
     )
+    parser.add_argument(
+        "--variant-login-retries",
+        type=int,
+        default=2,
+        help=(
+            "Número de vezes que permite resolver um login/challenge no browser "
+            "e repetir apenas a moeda atual."
+        ),
+    )
     return parser.parse_args()
 
 
@@ -424,6 +433,61 @@ def write_json_atomic(path: Path, payload: object) -> None:
     temporary.replace(path)
 
 
+def open_ucoin_detail_page(
+    page,
+    detail_url: str,
+    *,
+    label: str,
+    issue_period: str,
+    timeout_seconds: int,
+    login_retries: int,
+) -> None:
+    """Open one coin page and recover interactively from uCoin login redirects."""
+
+    retries = max(0, login_retries)
+    for attempt in range(retries + 1):
+        response = page.goto(
+            detail_url,
+            wait_until="domcontentloaded",
+            timeout=max(1, timeout_seconds) * 1000,
+        )
+        status = response.status if response is not None else None
+        final_url = str(page.url)
+        redirected_to_login = "/login/" in final_url
+        if status == 200 and not redirected_to_login:
+            return
+
+        if not redirected_to_login:
+            raise RuntimeError(
+                f"A recolha de variantes parou em {label} ({issue_period}): "
+                f"HTTP {status}, URL final {final_url}. "
+                "O progresso anterior continua guardado."
+            )
+
+        if attempt >= retries:
+            raise RuntimeError(
+                f"A recolha de variantes continua a pedir login em "
+                f"{label} ({issue_period}), após {retries} tentativa(s) manual(is). "
+                "O progresso anterior continua guardado; volta a executar para "
+                "retomar nesta moeda."
+            )
+
+        print("", flush=True)
+        print("#" * 72, flush=True)
+        print("UCOIN PEDIU LOGIN — PROGRESSO GUARDADO", flush=True)
+        print("#" * 72, flush=True)
+        print(f"Moeda pendente: {label} ({issue_period})", flush=True)
+        print("Conclui o login/challenge no browser que já está aberto.", flush=True)
+        try:
+            input("Carrega Enter para repetir apenas esta moeda... ")
+        except EOFError as exc:
+            raise RuntimeError(
+                f"O uCoin pediu login em {label} ({issue_period}), mas o terminal "
+                "não permite confirmar a sessão manual. O progresso anterior "
+                "continua guardado; volta a executar para retomar nesta moeda."
+            ) from exc
+
+
 def collect_catalogue_variants(
     page,
     report: dict[str, object],
@@ -448,7 +512,18 @@ def collect_catalogue_variants(
         except (OSError, json.JSONDecodeError, AttributeError):
             cached_by_url = {}
 
-    collected_by_url: dict[str, dict[str, object]] = {}
+    current_urls = {
+        str(coin.get("detailUrl") or "").strip() for coin in coins
+    }
+    cached_by_url = {
+        detail_url: item
+        for detail_url, item in cached_by_url.items()
+        if detail_url in current_urls
+    }
+    # Keep every previously completed URL in memory before rewriting the
+    # checkpoint. This prevents a second interruption from discarding entries
+    # that the resumed loop has not printed yet.
+    collected_by_url: dict[str, dict[str, object]] = dict(cached_by_url)
     visited_this_run = 0
     for position, coin in enumerate(coins, start=1):
         detail_url = str(coin.get("detailUrl") or "").strip()
@@ -468,17 +543,14 @@ def collect_catalogue_variants(
         else:
             if visited_this_run:
                 page.wait_for_timeout(max(0, int(args.variant_delay * 1000)))
-            response = page.goto(
+            open_ucoin_detail_page(
+                page,
                 detail_url,
-                wait_until="domcontentloaded",
-                timeout=max(1, args.timeout) * 1000,
+                label=label,
+                issue_period=issue_period,
+                timeout_seconds=args.timeout,
+                login_retries=args.variant_login_retries,
             )
-            status = response.status if response is not None else None
-            if status != 200 or "/login/" in page.url:
-                raise RuntimeError(
-                    f"A recolha de variantes parou em {label} ({issue_period}): "
-                    f"HTTP {status}, URL final {page.url}."
-                )
             page.wait_for_timeout(1000)
             result = extract_coin_variants(page, issue_period, detail_url)
             visited_this_run += 1
@@ -494,17 +566,17 @@ def collect_catalogue_variants(
             "variants": variants,
             "excludedProofOnlyVariants": proof_only,
         }
+        completed_positions = sum(
+            str(item.get("detailUrl") or "") in collected_by_url for item in coins
+        )
         write_json_atomic(
             checkpoint_path,
             {
                 "country": report.get("country"),
-                "completed": len(collected_by_url),
+                "completed": completed_positions,
                 "expected": len(coins),
-                "items": [
-                    collected_by_url[str(item.get("detailUrl") or "")]
-                    for item in coins
-                    if str(item.get("detailUrl") or "") in collected_by_url
-                ],
+                "uniqueDetailUrls": len(collected_by_url),
+                "items": list(collected_by_url.values()),
             },
         )
         source = "retomado" if cached is not None else "recolhido"
@@ -527,11 +599,10 @@ def collect_catalogue_variants(
 
     summary = {
         "coinsScanned": len(coins),
-        "coinsWithVariants": sum(bool(item.get("variants")) for item in collected_by_url.values()),
-        "variants": sum(len(item.get("variants", [])) for item in collected_by_url.values()),
+        "coinsWithVariants": sum(bool(coin.get("variants")) for coin in coins),
+        "variants": sum(len(coin.get("variants", [])) for coin in coins),
         "proofOnlyExcluded": sum(
-            len(item.get("excludedProofOnlyVariants", []))
-            for item in collected_by_url.values()
+            len(coin.get("excludedProofOnlyVariants", [])) for coin in coins
         ),
     }
     print(
