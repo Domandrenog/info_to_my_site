@@ -103,6 +103,32 @@ def parse_args() -> argparse.Namespace:
         action="store_true",
         help="Tenta page=N+1 quando a paginação HTML não mostra links seguintes.",
     )
+    parser.add_argument(
+        "--include-variants",
+        action="store_true",
+        help=(
+            "Visita cada moeda e recolhe variantes UNC/BU; linhas exclusivamente "
+            "Proof ficam excluídas."
+        ),
+    )
+    parser.add_argument(
+        "--variant-delay",
+        type=float,
+        default=5.0,
+        help="Pausa entre páginas de moedas durante a recolha de variantes.",
+    )
+    parser.add_argument(
+        "--variant-batch-size",
+        type=int,
+        default=10,
+        help="Número de moedas entre pausas longas da recolha de variantes.",
+    )
+    parser.add_argument(
+        "--variant-batch-pause",
+        type=float,
+        default=20.0,
+        help="Pausa longa entre lotes da recolha de variantes.",
+    )
     return parser.parse_args()
 
 
@@ -247,6 +273,276 @@ def fetch_catalogue_page(page, url: str, args: argparse.Namespace) -> CatalogueF
     return CatalogueFetchResponse(html=page.content(), final_url=page.url)
 
 
+VARIANT_MARK_LABELS = {
+    "D_": "D (sem FG)",
+    "D_FG": "D (FG)",
+    "D|ob": "D (anverso)",
+    "D|rv": "D (reverso)",
+    "S|ob": "S (anverso)",
+    "S|rv": "S (reverso)",
+}
+VARIANT_SCAN_FILENAME = "ucoin-variants-scan.json"
+
+
+def has_mintage(value: object) -> bool:
+    text = str(value or "").strip()
+    return text != "-" and bool(re.search(r"\d|\+", text))
+
+
+def normalize_variant_mark(value: object) -> str:
+    mark = " ".join(str(value or "").split())
+    return VARIANT_MARK_LABELS.get(mark, mark)
+
+
+def variant_sort_key(mark: str) -> tuple[int, str]:
+    first = mark.split(" ", 1)[0].split("-", 1)[0]
+    return ({"": 0, "P": 1, "D": 2, "S": 3, "W": 4}.get(first, 50), mark)
+
+
+def variant_tag(*, year: str, mark: str, single_year: bool) -> str:
+    normalized_mark = normalize_variant_mark(mark)
+    if single_year:
+        return normalized_mark or "Sem marca"
+    return f"{year} {normalized_mark}".strip()
+
+
+def finalize_variant_rows(
+    issue_period: str,
+    rows: list[dict[str, str]],
+    detail_url: str,
+) -> dict[str, object]:
+    single_year = bool(re.fullmatch(r"\d{4}", issue_period.strip()))
+    included: list[tuple[int, tuple[int, str], str]] = []
+    excluded: list[tuple[int, tuple[int, str], str]] = []
+    for row in rows:
+        year = row["year"]
+        normalized_mark = normalize_variant_mark(row.get("mark"))
+        tag = variant_tag(year=year, mark=normalized_mark, single_year=single_year)
+        sort_key = (int(year), variant_sort_key(normalized_mark), tag)
+        if has_mintage(row.get("unc")) or has_mintage(row.get("bu")):
+            included.append(sort_key)
+        elif has_mintage(row.get("proof")):
+            excluded.append(sort_key)
+
+    included_tags = [entry[2] for entry in sorted(included)]
+    proof_only_tags = [entry[2] for entry in sorted(excluded)]
+    if len(included_tags) != len(set(included_tags)):
+        raise RuntimeError(f"Variantes repetidas na tabela de {detail_url}.")
+    if set(included_tags) & set(proof_only_tags):
+        raise RuntimeError(f"Uma variante normal também aparece como Proof em {detail_url}.")
+
+    variants = (
+        [{"tag": tag, "order": index} for index, tag in enumerate(included_tags)]
+        if len(included_tags) >= 2
+        else []
+    )
+    return {
+        "status": "collected" if variants else "no_multiple_variants",
+        "variants": variants,
+        "excludedProofOnlyVariants": proof_only_tags,
+    }
+
+
+def extract_coin_variants(page, issue_period: str, detail_url: str) -> dict[str, object]:
+    """Read one uCoin mintage table without treating Proof-only rows as variants."""
+
+    display_by_row_id: dict[str, dict[str, str]] = {}
+    for row in page.locator("tr").all():
+        anchors = row.locator('a[href^="#Year-"]')
+        if not anchors.count():
+            continue
+        href = anchors.first.get_attribute("href") or ""
+        cells = [" ".join(cell.inner_text().split()) for cell in row.locator("th,td").all()]
+        if len(cells) >= 2:
+            display_by_row_id[href.lstrip("#")] = {
+                "mark": cells[1],
+                "description": row.get_attribute("title") or "",
+            }
+
+    selected = None
+    mode = ""
+    for table in page.locator("table").all():
+        if not table.locator("thead").count():
+            continue
+        headers = " ".join(table.locator("thead").inner_text().split())
+        if not all(label in headers for label in ("UNC", "BU", "Proof")):
+            continue
+        if "Ano" in headers:
+            selected = table
+            mode = "multi"
+            break
+        if "Casa Moeda" in headers:
+            selected = table
+            mode = "single"
+            break
+    if selected is None:
+        return {
+            "status": "no_mintage_table",
+            "variants": [],
+            "excludedProofOnlyVariants": [],
+        }
+
+    single_year = bool(re.fullmatch(r"\d{4}", issue_period.strip()))
+    if mode == "single" and not single_year:
+        raise RuntimeError(f"Tabela de ano único inesperada em {detail_url}.")
+
+    rows: list[dict[str, str]] = []
+    for row in selected.locator("tbody tr").all():
+        cells = [" ".join(cell.inner_text().split()) for cell in row.locator("th,td").all()]
+        if mode == "multi":
+            if len(cells) < 5 or not re.fullmatch(r"\d{4}", cells[0]):
+                continue
+            year, generic_mark, unc, bu, proof = cells[:5]
+            row_id = row.get_attribute("id") or ""
+            display = display_by_row_id.get(row_id, {})
+            mark = display.get("mark", generic_mark)
+        else:
+            if len(cells) < 5:
+                continue
+            year = issue_period.strip()
+            mark = cells[1]
+            unc, bu, proof = cells[2:5]
+        rows.append(
+            {
+                "year": year,
+                "mark": mark,
+                "unc": unc,
+                "bu": bu,
+                "proof": proof,
+            }
+        )
+    return finalize_variant_rows(issue_period, rows, detail_url)
+
+
+def write_json_atomic(path: Path, payload: object) -> None:
+    path.parent.mkdir(parents=True, exist_ok=True)
+    temporary = path.with_name(f".{path.name}.tmp")
+    temporary.write_text(
+        json.dumps(payload, ensure_ascii=False, indent=2) + "\n",
+        encoding="utf-8",
+    )
+    temporary.replace(path)
+
+
+def collect_catalogue_variants(
+    page,
+    report: dict[str, object],
+    args: argparse.Namespace,
+    output_dir: Path,
+) -> dict[str, int]:
+    coins = [
+        coin
+        for period in report.get("periods", [])
+        if isinstance(period, dict)
+        for coin in period.get("coins", [])
+        if isinstance(coin, dict)
+    ]
+    checkpoint_path = output_dir / VARIANT_SCAN_FILENAME
+    cached_by_url: dict[str, dict[str, object]] = {}
+    if checkpoint_path.is_file():
+        try:
+            checkpoint = json.loads(checkpoint_path.read_text(encoding="utf-8"))
+            for item in checkpoint.get("items", []):
+                if isinstance(item, dict) and isinstance(item.get("detailUrl"), str):
+                    cached_by_url[item["detailUrl"]] = item
+        except (OSError, json.JSONDecodeError, AttributeError):
+            cached_by_url = {}
+
+    collected_by_url: dict[str, dict[str, object]] = {}
+    visited_this_run = 0
+    for position, coin in enumerate(coins, start=1):
+        detail_url = str(coin.get("detailUrl") or "").strip()
+        issue = coin.get("issuePeriod") if isinstance(coin.get("issuePeriod"), dict) else {}
+        denomination = coin.get("denomination") if isinstance(coin.get("denomination"), dict) else {}
+        issue_period = str(issue.get("displayValue") or "").strip()
+        label = str(denomination.get("displayName") or "Moeda").strip()
+        cached = cached_by_url.get(detail_url)
+        if cached is not None:
+            result = {
+                "status": cached.get("status"),
+                "variants": cached.get("variants", []),
+                "excludedProofOnlyVariants": cached.get(
+                    "excludedProofOnlyVariants", []
+                ),
+            }
+        else:
+            if visited_this_run:
+                page.wait_for_timeout(max(0, int(args.variant_delay * 1000)))
+            response = page.goto(
+                detail_url,
+                wait_until="domcontentloaded",
+                timeout=max(1, args.timeout) * 1000,
+            )
+            status = response.status if response is not None else None
+            if status != 200 or "/login/" in page.url:
+                raise RuntimeError(
+                    f"A recolha de variantes parou em {label} ({issue_period}): "
+                    f"HTTP {status}, URL final {page.url}."
+                )
+            page.wait_for_timeout(1000)
+            result = extract_coin_variants(page, issue_period, detail_url)
+            visited_this_run += 1
+
+        variants = result.get("variants", [])
+        proof_only = result.get("excludedProofOnlyVariants", [])
+        coin["hasVariants"] = bool(variants)
+        coin["variants"] = variants
+        coin["excludedProofOnlyVariants"] = proof_only
+        collected_by_url[detail_url] = {
+            "detailUrl": detail_url,
+            "status": result.get("status"),
+            "variants": variants,
+            "excludedProofOnlyVariants": proof_only,
+        }
+        write_json_atomic(
+            checkpoint_path,
+            {
+                "country": report.get("country"),
+                "completed": len(collected_by_url),
+                "expected": len(coins),
+                "items": [
+                    collected_by_url[str(item.get("detailUrl") or "")]
+                    for item in coins
+                    if str(item.get("detailUrl") or "") in collected_by_url
+                ],
+            },
+        )
+        source = "retomado" if cached is not None else "recolhido"
+        print(
+            f"Variantes {position}/{len(coins)} — {label} ({issue_period}) — "
+            f"{len(variants)} válidas · {len(proof_only)} Proof excluídas · {source}",
+            flush=True,
+        )
+        if (
+            cached is None
+            and args.variant_batch_size > 0
+            and visited_this_run % args.variant_batch_size == 0
+            and position < len(coins)
+        ):
+            print(
+                f"Pausa segura de {args.variant_batch_pause:.0f}s entre lotes...",
+                flush=True,
+            )
+            page.wait_for_timeout(max(0, int(args.variant_batch_pause * 1000)))
+
+    summary = {
+        "coinsScanned": len(coins),
+        "coinsWithVariants": sum(bool(item.get("variants")) for item in collected_by_url.values()),
+        "variants": sum(len(item.get("variants", [])) for item in collected_by_url.values()),
+        "proofOnlyExcluded": sum(
+            len(item.get("excludedProofOnlyVariants", []))
+            for item in collected_by_url.values()
+        ),
+    }
+    print(
+        "Recolha de variantes concluída: "
+        f"{summary['coinsWithVariants']}/{summary['coinsScanned']} moedas com variantes; "
+        f"{summary['variants']} variantes; "
+        f"{summary['proofOnlyExcluded']} Proof excluídas."
+    )
+    return summary
+
+
 def filter_periods_by_start_year(periods: list[object], start_year: int | None) -> list[object]:
     if start_year is None:
         return periods
@@ -361,6 +657,13 @@ def scrape_catalog(args: argparse.Namespace, output_dir: Path) -> dict[str, obje
             report["warnings"] = crawl_result["warnings"]
             report["pagination"] = crawl_result["pagination"]
             report["count"] = sum(len(period.get("coins", [])) for period in report["periods"])
+            if args.include_variants:
+                report["variantCollection"] = collect_catalogue_variants(
+                    page,
+                    report,
+                    args,
+                    output_dir,
+                )
             return report
         finally:
             if context is not None and browser is None:

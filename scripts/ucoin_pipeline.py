@@ -41,6 +41,11 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--retries", type=int, default=2, help="Retries per temporary page failure.")
     parser.add_argument("--sequential-fallback", action="store_true", help="Try page=N+1 if pagination links are incomplete.")
     parser.add_argument(
+        "--include-variants",
+        action="store_true",
+        help="Collect non-Proof uCoin variants and keep them in the final catalogue.",
+    )
+    parser.add_argument(
         "--no-wait-for-final",
         action="store_true",
         help="Only create app-catalog-pending.json and do not wait for app-catalog-final.json.",
@@ -87,6 +92,8 @@ def build_scrape_command(args: argparse.Namespace) -> list[str]:
         command.append("--headless")
     if args.sequential_fallback:
         command.append("--sequential-fallback")
+    if args.include_variants:
+        command.append("--include-variants")
     return command
 
 

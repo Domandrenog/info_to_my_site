@@ -40,6 +40,28 @@ class GenerateResumeJsonTests(unittest.TestCase):
         )
         self.assertNotIn("images", parsed)
 
+    def test_to_resume_coin_preserves_collected_variants(self) -> None:
+        source = {
+            **FULL_COIN,
+            "hasVariants": True,
+            "variants": [
+                {"tag": "2023 P", "order": 0},
+                {"tag": "2023 D", "order": 1},
+            ],
+            "excludedProofOnlyVariants": ["2023 S"],
+        }
+
+        parsed = generate_resume_json.to_resume_coin(
+            source, generate_resume_json.PENDING_AVAILABILITY
+        )
+
+        self.assertTrue(parsed["hasVariants"])
+        self.assertEqual([item["tag"] for item in parsed["variants"]], ["2023 P", "2023 D"])
+        self.assertEqual(parsed["excludedProofOnlyVariants"], ["2023 S"])
+        generate_resume_json.validate_resume_catalogue(
+            {"country": "Canadá", "periods": [{"coins": [parsed]}]}, 1
+        )
+
     def test_build_resume_catalogue_has_no_design_groups(self) -> None:
         full_catalogue = {
             "country": "Canadá",

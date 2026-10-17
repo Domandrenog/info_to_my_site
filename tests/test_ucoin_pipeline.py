@@ -24,6 +24,7 @@ def args(**overrides):
         "max_pages": 50,
         "retries": 2,
         "sequential_fallback": False,
+        "include_variants": False,
         "no_wait_for_final": False,
         "cleanup_intermediate": False,
     }
@@ -65,6 +66,11 @@ class UCoinPipelineTests(unittest.TestCase):
         command = ucoin_pipeline.build_scrape_command(args(continent="Ásia"))
         self.assertIn("--continent", command)
         self.assertIn("Ásia", command)
+
+    def test_scrape_command_can_collect_variants(self) -> None:
+        command = ucoin_pipeline.build_scrape_command(args(include_variants=True))
+
+        self.assertIn("--include-variants", command)
 
     def test_generate_command_waits_for_final_by_default(self) -> None:
         command = ucoin_pipeline.build_generate_command(args(), Path("info/paises/asia/india/ucoin-catalog.json"))

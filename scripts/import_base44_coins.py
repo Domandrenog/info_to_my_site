@@ -22,6 +22,12 @@ from scripts.git_publish import (
     publish_country_catalog,
     validate_country_publication,
 )
+from scripts.import_catalog_variants import (
+    apply_plan as apply_variant_plan,
+    build_live_plan as build_variant_live_plan,
+    catalogue_specs,
+    print_plan as print_variant_plan,
+)
 
 
 AVAILABILITY_TO_RARITY = {
@@ -76,6 +82,14 @@ def parse_args() -> argparse.Namespace:
         "--git-commit-message",
         default="",
         help="Mensagem opcional para o commit automático do catálogo do país.",
+    )
+    parser.add_argument(
+        "--include-variants",
+        action="store_true",
+        help=(
+            "Depois das moedas principais, cria apenas CoinVariant em falta "
+            "a partir das variantes guardadas no catálogo."
+        ),
     )
     return parser.parse_args()
 
@@ -138,7 +152,11 @@ def resolve_options(args: argparse.Namespace, catalogue: dict[str, Any]) -> dict
     return {"country": country, "continent": continent, "condition": args.condition}
 
 
-def to_coin_record(entry: tuple[dict[str, Any], dict[str, Any]], options: dict[str, str], ordem: int) -> dict[str, Any]:
+def to_coin_record(
+    entry: tuple[dict[str, Any], dict[str, Any]],
+    options: dict[str, str],
+    ordem: int,
+) -> dict[str, Any]:
     period, coin = entry
     availability = coin.get("availability")
     rarity = AVAILABILITY_TO_RARITY.get(str(availability))
@@ -153,6 +171,8 @@ def to_coin_record(entry: tuple[dict[str, Any], dict[str, Any]], options: dict[s
         "years": coin.get("issuePeriod") or "",
         "condition": options["condition"],
         "rarity": rarity,
+        # The flag is enabled only after the requested CoinVariant records have
+        # been created and independently confirmed.
         "has_variants": False,
         "image_frente": coin.get("obverseImage") or "",
         "image_verso": coin.get("reverseImage") or "",
@@ -607,11 +627,30 @@ def main() -> int:
         args.dry_run = True
     catalogue = read_json(args.input)
     options = resolve_options(args, catalogue)
+    include_variants = bool(getattr(args, "include_variants", False))
+    if include_variants:
+        _variant_country, variant_specs = catalogue_specs(catalogue, "normal")
+        if not variant_specs:
+            raise ValueError(
+                "Pediste variantes, mas o catálogo não contém nenhuma. "
+                "Repete a recolha do uCoin com variantes ativadas."
+            )
     entries = flatten_coins(catalogue)
     if args.limit > 0:
         entries = entries[: args.limit]
-    records = [to_coin_record(entry, options, index + 1) for index, entry in enumerate(entries)]
+    records = [
+        to_coin_record(entry, options, index + 1)
+        for index, entry in enumerate(entries)
+    ]
     print(f"Prepared {len(records)} Coin records for {options['country']} ({options['continent']}).")
+    if include_variants:
+        scoped_urls = {required_text(record.get("url_ucoin")) for record in records}
+        scoped_specs = [spec for spec in variant_specs if spec.detail_url in scoped_urls]
+        print(
+            "Prepared variants: "
+            f"{sum(len(spec.variants) for spec in scoped_specs)} em "
+            f"{len(scoped_specs)} moedas."
+        )
     if records:
         print(json.dumps(records[0], ensure_ascii=False, indent=2))
     if args.dry_run:
@@ -639,6 +678,26 @@ def main() -> int:
     else:
         created = replace_country(client, records, options["country"])
     print(f"Base44 import complete. Created {created} records.")
+    if include_variants:
+        allowed_urls = {required_text(record.get("url_ucoin")) for record in records}
+        variant_plan = build_variant_live_plan(
+            client,
+            catalogue,
+            catalog_type="normal",
+            country=options["country"],
+            allowed_urls=allowed_urls,
+        )
+        print_variant_plan(variant_plan)
+        variants_created, variant_flags = apply_variant_plan(
+            client,
+            variant_plan,
+            batch_size=min(50, max(1, args.batch_size)),
+        )
+        print(
+            "Base44 variant import complete. "
+            f"Created {variants_created} CoinVariant records; "
+            f"updated {variant_flags} parent flags."
+        )
     if args.no_git_push:
         print("Git: publicação automática desativada por --no-git-push.")
     else:

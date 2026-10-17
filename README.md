@@ -733,6 +733,36 @@ Para substituir todas as moedas desse país na entidade `Coin`:
 python3 -m scripts.import_base44_coins --input info/paises/asia/india/app-catalog.json --continent Ásia --replace
 ```
 
+### Variantes opcionais do uCoin
+
+No processo completo do menu, a pergunta `Recolher e importar também as
+variantes do uCoin?` controla todo o fluxo. Se responderes não, o comportamento
+continua igual e são importadas apenas as moedas principais. Se responderes sim:
+
+- a mesma sessão do browser visita a tabela de cunhagem de cada moeda;
+- são incluídas linhas com emissão UNC ou BU;
+- linhas exclusivamente Proof ficam registadas como excluídas;
+- o progresso fica em `ucoin-variants-scan.json`, permitindo retomar depois de
+  um bloqueio ou interrupção;
+- as variantes seguem no `app-catalog.json` e são criadas em `CoinVariant` só
+  depois da moeda principal existir;
+- variantes já existentes mantêm condição, ordem e restantes dados;
+- `Coin.has_variants` só passa a `true` depois de todas as variantes pedidas
+  terem sido confirmadas.
+
+O comando equivalente é:
+
+```bash
+python3 -m scripts.ucoin_pipeline India --continent Ásia --attach-cdp \
+  --no-manual-session --include-variants
+```
+
+Para moedas de coleção, o menu principal inclui `Moedas de coleção`, onde um
+`special-app-catalog.json` pode ser enriquecido a partir do uCoin e depois
+comparado/importado para `SpecialCoinVariant`. Este fluxo também é create-only:
+não atualiza nem apaga variantes existentes. Por política, variantes `S` das
+moedas de coleção ficam de fora, além das linhas exclusivamente Proof.
+
 O `--replace` apaga apenas registos `Coin` com `country` igual ao país do JSON e recria as moedas a partir do ficheiro final.
 
 ### Mapeamento Base44

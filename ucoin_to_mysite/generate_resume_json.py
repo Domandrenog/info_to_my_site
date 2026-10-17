@@ -50,6 +50,7 @@ COINS_AVAILABILITY_EXCEL_FILENAME = "coins-availability.xlsx"
 AVAILABILITY_RESEARCH_FILENAME = "availability-research.json"
 AVAILABILITY_RESEARCH_ERRORS_FILENAME = "availability-research-errors.json"
 PENDING_DIFFERENCES_FILENAME = "differences-pending.json"
+UCOIN_VARIANT_SCAN_FILENAME = "ucoin-variants-scan.json"
 
 
 class ResearchFailure(Exception):
@@ -575,7 +576,7 @@ def to_resume_coin(coin: dict[str, Any], availability: str) -> dict[str, Any]:
     denomination = coin.get("denomination") if isinstance(coin.get("denomination"), dict) else {}
     issue_period = coin.get("issuePeriod") if isinstance(coin.get("issuePeriod"), dict) else {}
     images = coin.get("images") if isinstance(coin.get("images"), dict) else {}
-    return {
+    result = {
         "denomination": denomination.get("displayName"),
         "value": denomination.get("value"),
         "unit": denomination.get("unit"),
@@ -587,6 +588,17 @@ def to_resume_coin(coin: dict[str, Any], availability: str) -> dict[str, Any]:
         "obverseImage": images.get("obverse"),
         "reverseImage": images.get("reverse"),
     }
+    if "variants" in coin or "hasVariants" in coin:
+        variants = coin.get("variants") if isinstance(coin.get("variants"), list) else []
+        proof_only = (
+            coin.get("excludedProofOnlyVariants")
+            if isinstance(coin.get("excludedProofOnlyVariants"), list)
+            else []
+        )
+        result["hasVariants"] = bool(variants)
+        result["variants"] = variants
+        result["excludedProofOnlyVariants"] = proof_only
+    return result
 
 
 def build_resume_catalogue(full_catalogue: dict[str, Any], research: dict[str, Any] | None = None, *, use_research: bool = False) -> dict[str, Any]:
@@ -758,7 +770,8 @@ def validate_resume_catalogue(value: Any, expected_coin_count: int) -> None:
     if forbidden_top_level.intersection(value):
         raise ValueError("app catalogue contains forbidden top-level technical fields")
     coin_count = 0
-    allowed_coin_keys = {"denomination", "value", "unit", "issuePeriod", "startYear", "endYear", "availability", "detailUrl", "obverseImage", "reverseImage"}
+    required_coin_keys = {"denomination", "value", "unit", "issuePeriod", "startYear", "endYear", "availability", "detailUrl", "obverseImage", "reverseImage"}
+    variant_coin_keys = {"hasVariants", "variants", "excludedProofOnlyVariants"}
     forbidden_coin_keys = {
         "imageExampleYear",
         "subject",
@@ -788,8 +801,34 @@ def validate_resume_catalogue(value: Any, expected_coin_count: int) -> None:
             raise ValueError("resume period must contain coins[]")
         for coin in period["coins"]:
             coin_count += 1
-            if set(coin.keys()) != allowed_coin_keys:
+            coin_keys = set(coin.keys())
+            if not required_coin_keys.issubset(coin_keys) or coin_keys - required_coin_keys - variant_coin_keys:
                 raise ValueError(f"resume coin has invalid fields: {sorted(coin.keys())}")
+            present_variant_keys = coin_keys & variant_coin_keys
+            if present_variant_keys and present_variant_keys != variant_coin_keys:
+                raise ValueError("resume coin has incomplete variant metadata")
+            if present_variant_keys:
+                variants = coin.get("variants")
+                proof_only = coin.get("excludedProofOnlyVariants")
+                if not isinstance(variants, list) or not isinstance(proof_only, list):
+                    raise ValueError("resume coin variants must be arrays")
+                tags: set[str] = set()
+                for index, variant in enumerate(variants):
+                    if not isinstance(variant, dict):
+                        raise ValueError("resume coin variant must be an object")
+                    tag = str(variant.get("tag") or "").strip()
+                    order = variant.get("order")
+                    if not tag or tag in tags or not isinstance(order, int):
+                        raise ValueError("resume coin variant has invalid tag/order")
+                    tags.add(tag)
+                    if order != index:
+                        raise ValueError("resume coin variant order is not sequential")
+                if bool(coin.get("hasVariants")) != bool(variants):
+                    raise ValueError("hasVariants does not match variants")
+                if any(not isinstance(tag, str) or not tag.strip() for tag in proof_only):
+                    raise ValueError("excluded Proof variant is invalid")
+                if tags & {str(tag).strip() for tag in proof_only}:
+                    raise ValueError("normal and Proof-only variants overlap")
             if forbidden_coin_keys.intersection(coin):
                 raise ValueError("resume coin contains forbidden fields")
             if isinstance(coin.get("denomination"), dict) or isinstance(coin.get("issuePeriod"), dict):
@@ -824,7 +863,7 @@ def sha256_file(path: str) -> str:
 
 def cleanup_intermediate_files(final_input_path: str) -> None:
     folder = Path(final_input_path).parent
-    for filename in (UCOIN_CATALOG_FILENAME, PENDING_APP_CATALOG_FILENAME, FINAL_APP_CATALOG_INPUT_FILENAME, PENDING_DIFFERENCES_FILENAME):
+    for filename in (UCOIN_CATALOG_FILENAME, UCOIN_VARIANT_SCAN_FILENAME, PENDING_APP_CATALOG_FILENAME, FINAL_APP_CATALOG_INPUT_FILENAME, PENDING_DIFFERENCES_FILENAME):
         target = folder / filename
         if not target.exists():
             continue
@@ -908,6 +947,29 @@ async def generate_final_outputs(args: argparse.Namespace, final_input_path: str
     if not isinstance(final_catalogue, dict):
         raise ValueError("final input must contain a JSON object")
     expected_coin_count = sum(len(period.get("coins", [])) for period in final_catalogue.get("periods", []))
+    source_path = Path(final_input_path).with_name(UCOIN_CATALOG_FILENAME)
+    if source_path.is_file():
+        source_catalogue = load_full_catalogue(str(source_path))
+        variants_by_url = {
+            normalize_detail_url(str(coin.get("detailUrl") or "")): coin
+            for period in source_catalogue.get("periods", [])
+            for coin in period.get("coins", [])
+            if isinstance(coin, dict) and ("variants" in coin or "hasVariants" in coin)
+        }
+        for period in final_catalogue.get("periods", []):
+            for coin in period.get("coins", []):
+                source_coin = variants_by_url.get(
+                    normalize_detail_url(str(coin.get("detailUrl") or ""))
+                )
+                if source_coin is None:
+                    continue
+                variants = source_coin.get("variants")
+                proof_only = source_coin.get("excludedProofOnlyVariants")
+                coin["variants"] = variants if isinstance(variants, list) else []
+                coin["hasVariants"] = bool(coin["variants"])
+                coin["excludedProofOnlyVariants"] = (
+                    proof_only if isinstance(proof_only, list) else []
+                )
     validate_resume_catalogue(final_catalogue, expected_coin_count)
     validate_final_availability_catalogue(final_catalogue)
     app_catalogue = without_statistics(final_catalogue)

@@ -247,6 +247,14 @@ def action_pipeline() -> None:
     if start_year is not None:
         command.extend(["--start-year", str(start_year)])
 
+    include_variants = ask_yes_no(
+        "Recolher e importar também as variantes do uCoin?",
+        default=False,
+    )
+    if include_variants:
+        print("Serão incluídas variantes UNC/BU; emissões exclusivamente Proof ficam de fora.")
+        command.append("--include-variants")
+
     add_browser_mode(command)
 
     if ask_yes_no("Apagar ficheiros intermédios e deixar só os outputs finais?", default=True):
@@ -257,6 +265,7 @@ def action_pipeline() -> None:
             country=country,
             continent=continent,
             input_path=default_app_catalog_path(country, continent),
+            include_variants=include_variants,
         )
 
 
@@ -288,6 +297,10 @@ def action_collect_country_pending() -> None:
     start_year = ask_int("Start year (opcional)", default=None, allow_empty=True)
     if start_year is not None:
         command.extend(["--start-year", str(start_year)])
+
+    if ask_yes_no("Recolher também as variantes do uCoin?", default=False):
+        print("Serão incluídas variantes UNC/BU; emissões exclusivamente Proof ficam de fora.")
+        command.append("--include-variants")
 
     add_browser_mode(command)
 
@@ -473,6 +486,7 @@ def action_import_base44(
     country: str | None = None,
     continent: str | None = None,
     input_path: str | None = None,
+    include_variants: bool | None = None,
 ) -> None:
     title("Importar para Base44")
     print("Este passo envia app-catalog.json para a entidade Coin na Base44.")
@@ -492,6 +506,27 @@ def action_import_base44(
             print("Quiseste dizer:")
             for path in suggestions:
                 print(f"- {path.relative_to(PROJECT_DIR)}")
+        return
+
+    try:
+        input_catalogue = json.loads(Path(input_path).read_text(encoding="utf-8"))
+    except (OSError, UnicodeDecodeError, json.JSONDecodeError) as exc:
+        print(f"Não foi possível ler o catálogo: {exc}")
+        return
+    variants_in_catalogue = sum(
+        len(coin.get("variants", []))
+        for period in input_catalogue.get("periods", [])
+        if isinstance(period, dict)
+        for coin in period.get("coins", [])
+        if isinstance(coin, dict) and isinstance(coin.get("variants"), list)
+    )
+    if include_variants is None:
+        include_variants = variants_in_catalogue > 0 and ask_yes_no(
+            f"Importar também as {variants_in_catalogue} variantes recolhidas?",
+            default=True,
+        )
+    if include_variants and variants_in_catalogue == 0:
+        print("O catálogo não contém variantes recolhidas; a importação foi cancelada.")
         return
 
     command = [
@@ -522,6 +557,9 @@ def action_import_base44(
     else:
         print("Modo invalido. Cancelado.")
         return
+
+    if include_variants:
+        command.append("--include-variants")
 
     run_step("Import Base44", command)
 
@@ -1583,6 +1621,83 @@ def menu_souvenirs() -> None:
             input("\nCarrega Enter para continuar...")
 
 
+def action_collect_collection_variants() -> None:
+    title("Moedas de coleção — recolher variantes do uCoin")
+    catalog = ask_text(
+        "Catálogo de coleção",
+        "info/paises/america/eua/special-app-catalog.json",
+    )
+    if not Path(catalog).is_file():
+        print(f"Ficheiro não encontrado: {catalog}")
+        return
+    command = [
+        sys.executable,
+        "-m",
+        "scripts.collect_catalog_variants",
+        "--catalog",
+        catalog,
+        "--catalog-type",
+        "special",
+    ]
+    add_browser_mode(command)
+    if ask_yes_no("Voltar a verificar moedas que já têm variantes recolhidas?", default=False):
+        command.append("--refresh")
+    if run_step("Recolher variantes das moedas de coleção", command) == 0:
+        print("As variantes ficaram guardadas no catálogo; o Site ainda não foi alterado.")
+
+
+def action_import_collection_variants() -> None:
+    title("Moedas de coleção — variantes no Site Base44")
+    catalog = ask_text(
+        "Catálogo de coleção",
+        "info/paises/america/eua/special-app-catalog.json",
+    )
+    if not Path(catalog).is_file():
+        print(f"Ficheiro não encontrado: {catalog}")
+        return
+    country = ask_text("País no Site Base44 (opcional)", "EUA")
+    print("1) Verificar o que falta, sem alterar o Site")
+    print("2) Criar apenas variantes em falta")
+    choice = ask_text("Escolhe uma opção", "1")
+    command = [
+        sys.executable,
+        "-m",
+        "scripts.import_catalog_variants",
+        "--catalog",
+        catalog,
+        "--catalog-type",
+        "special",
+        "--country",
+        country,
+    ]
+    if choice == "1":
+        command.append("--check-live")
+    elif choice == "2":
+        command.extend(["--apply", "--yes"])
+    else:
+        print("Opção inválida. Cancelado.")
+        return
+    run_step("Variantes das moedas de coleção", command)
+
+
+def menu_collection_coins() -> None:
+    while True:
+        title("Moedas de coleção")
+        print("1) Recolher variantes do uCoin para um catálogo")
+        print("2) Verificar/importar variantes para o Site Base44")
+        print("3) Voltar")
+        choice = ask_text("Escolhe uma opção", "1")
+        if choice == "1":
+            action_collect_collection_variants()
+        elif choice == "2":
+            action_import_collection_variants()
+        elif choice == "3":
+            return
+        else:
+            print("Opção inválida.")
+        input("\nCarrega Enter para continuar...")
+
+
 def menu() -> None:
     while True:
         title("uCoin to MySite - Menu principal")
@@ -1590,6 +1705,7 @@ def menu() -> None:
         print("2) Moedas normais")
         print("3) Souvenirs")
         print("4) Backup completo do Site Base44")
+        print("5) Moedas de coleção")
         print("0) Sair")
 
         choice = ask_text("Escolhe uma opcao", "1")
@@ -1601,6 +1717,8 @@ def menu() -> None:
             menu_souvenirs()
         elif choice == "4":
             action_backup_base44()
+        elif choice == "5":
+            menu_collection_coins()
         elif choice == "0":
             print("A sair.")
             return

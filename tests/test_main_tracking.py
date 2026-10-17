@@ -29,6 +29,38 @@ PLANS = [
 
 
 class MainTrackingActionTests(unittest.TestCase):
+    @patch("main.action_import_base44")
+    @patch("main.run_step", return_value=0)
+    @patch("main.add_browser_mode", side_effect=lambda command: command.append("--attach-cdp"))
+    @patch("main.ask_yes_no", side_effect=[True, True])
+    @patch("main.ask_int", return_value=None)
+    @patch("main.ask_country_link_name", return_value="")
+    @patch("main.ask_continent", return_value="Ásia")
+    @patch("main.ask_text", return_value="Vietnam")
+    @patch("main.title")
+    def test_full_country_pipeline_can_collect_and_import_variants(
+        self,
+        _title,
+        _ask_text,
+        _continent,
+        _link_name,
+        _start_year,
+        _yes_no,
+        _browser,
+        run_step,
+        import_base44,
+    ) -> None:
+        main.action_pipeline()
+
+        command = run_step.call_args.args[1]
+        self.assertIn("--include-variants", command)
+        import_base44.assert_called_once_with(
+            country="Vietnam",
+            continent="Ásia",
+            input_path="info/paises/asia/vietnam/app-catalog.json",
+            include_variants=True,
+        )
+
     @patch("main.action_backup_base44")
     @patch("main.title")
     @patch("main.ask_text", side_effect=["4", "0"])

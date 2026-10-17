@@ -5,7 +5,12 @@ import unittest
 from unittest.mock import Mock, patch
 
 from tests.test_ucoin_catalog_parser import coin
-from scripts.ucoin_catalog import build_country_url, filter_periods_by_start_year, launch_incognito_chromium
+from scripts.ucoin_catalog import (
+    build_country_url,
+    filter_periods_by_start_year,
+    finalize_variant_rows,
+    launch_incognito_chromium,
+)
 from ucoin_to_mysite.catalog_parser import crawl_ucoin_catalogue, parse_catalogue_page
 
 
@@ -53,6 +58,29 @@ def grouped_coin(tid: int, pid: str = "24", value: str | None = None) -> str:
 
 
 class UCoinCatalogueGroupingTests(unittest.TestCase):
+    def test_variant_rows_include_unc_and_bu_but_exclude_proof_only(self) -> None:
+        result = finalize_variant_rows(
+            "2025",
+            [
+                {"year": "2025", "mark": "P", "unc": "10 000", "bu": "-", "proof": "-"},
+                {"year": "2025", "mark": "D", "unc": "-", "bu": "2 000", "proof": "-"},
+                {"year": "2025", "mark": "S", "unc": "-", "bu": "-", "proof": "1 000"},
+            ],
+            "https://pt.ucoin.net/coin/test",
+        )
+
+        self.assertEqual(result["variants"], [{"tag": "P", "order": 0}, {"tag": "D", "order": 1}])
+        self.assertEqual(result["excludedProofOnlyVariants"], ["S"])
+
+    def test_single_mintage_row_does_not_create_a_variant_selector(self) -> None:
+        result = finalize_variant_rows(
+            "2025",
+            [{"year": "2025", "mark": "", "unc": "1", "bu": "-", "proof": "-"}],
+            "https://pt.ucoin.net/coin/test",
+        )
+
+        self.assertFalse(result["variants"])
+
     @patch("scripts.ucoin_catalog.time.sleep")
     @patch("scripts.ucoin_catalog.subprocess.Popen")
     @patch("scripts.ucoin_catalog.resolve_browser_executable", return_value="/usr/bin/chromium")
