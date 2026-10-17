@@ -15,6 +15,7 @@ import re
 import subprocess
 import time
 import sys
+import unicodedata
 from pathlib import Path
 from shutil import which
 from urllib.error import URLError
@@ -291,6 +292,11 @@ VARIANT_MARK_LABELS = {
     "S|rv": "S (reverso)",
 }
 VARIANT_SCAN_FILENAME = "ucoin-variants-scan.json"
+VARIANT_STATUS_PRO_REQUIRED = "ucoin_pro_required"
+DETAIL_PAGE_LOADED = "loaded"
+VARIANT_COLLECTION_COMPLETE_STATUSES = frozenset(
+    {"collected", "no_multiple_variants", "no_mintage_table", VARIANT_STATUS_PRO_REQUIRED}
+)
 
 
 def has_mintage(value: object) -> bool:
@@ -433,6 +439,33 @@ def write_json_atomic(path: Path, payload: object) -> None:
     temporary.replace(path)
 
 
+def is_ucoin_pro_paywall_text(value: object) -> bool:
+    normalized = unicodedata.normalize("NFKD", str(value or ""))
+    normalized = "".join(char for char in normalized if not unicodedata.combining(char))
+    normalized = " ".join(re.sub(r"[^a-z0-9]+", " ", normalized.casefold()).split())
+    portuguese = (
+        "acesso completo" in normalized
+        and ("subscricao" in normalized or "assinatura" in normalized)
+        and "membro pro" in normalized
+    )
+    english = (
+        "full access" in normalized
+        and ("pro membership" in normalized or "pro member" in normalized)
+    )
+    return portuguese or english
+
+
+def page_requires_ucoin_pro(page) -> bool:
+    try:
+        text = page.locator("body").inner_text(timeout=2000)
+    except Exception:  # noqa: BLE001 - fallback supports partial/error pages
+        try:
+            text = page.content()
+        except Exception:  # noqa: BLE001 - absence of readable content is not proof
+            return False
+    return is_ucoin_pro_paywall_text(text)
+
+
 def open_ucoin_detail_page(
     page,
     detail_url: str,
@@ -441,7 +474,7 @@ def open_ucoin_detail_page(
     issue_period: str,
     timeout_seconds: int,
     login_retries: int,
-) -> None:
+) -> str:
     """Open one coin page and recover interactively from uCoin login redirects."""
 
     retries = max(0, login_retries)
@@ -454,8 +487,12 @@ def open_ucoin_detail_page(
         status = response.status if response is not None else None
         final_url = str(page.url)
         redirected_to_login = "/login/" in final_url
+        # Restrict the PRO check to the login/paywall redirect. The same
+        # promotional wording may appear elsewhere on otherwise usable pages.
+        if redirected_to_login and page_requires_ucoin_pro(page):
+            return VARIANT_STATUS_PRO_REQUIRED
         if status == 200 and not redirected_to_login:
-            return
+            return DETAIL_PAGE_LOADED
 
         if not redirected_to_login:
             raise RuntimeError(
@@ -558,7 +595,7 @@ def collect_catalogue_variants(
         else:
             if visited_this_run:
                 page.wait_for_timeout(max(0, int(args.variant_delay * 1000)))
-            open_ucoin_detail_page(
+            page_status = open_ucoin_detail_page(
                 page,
                 detail_url,
                 label=label,
@@ -566,18 +603,27 @@ def collect_catalogue_variants(
                 timeout_seconds=args.timeout,
                 login_retries=args.variant_login_retries,
             )
-            page.wait_for_timeout(1000)
-            result = extract_coin_variants(page, issue_period, detail_url)
+            if page_status == VARIANT_STATUS_PRO_REQUIRED:
+                result = {
+                    "status": VARIANT_STATUS_PRO_REQUIRED,
+                    "variants": [],
+                    "excludedProofOnlyVariants": [],
+                }
+            else:
+                page.wait_for_timeout(1000)
+                result = extract_coin_variants(page, issue_period, detail_url)
             visited_this_run += 1
 
         variants = result.get("variants", [])
         proof_only = result.get("excludedProofOnlyVariants", [])
+        result_status = str(result.get("status") or "")
         coin["hasVariants"] = bool(variants)
         coin["variants"] = variants
         coin["excludedProofOnlyVariants"] = proof_only
+        coin["variantCollectionStatus"] = result_status
         collected_by_url[detail_url] = {
             "detailUrl": detail_url,
-            "status": result.get("status"),
+            "status": result_status,
             "variants": variants,
             "excludedProofOnlyVariants": proof_only,
         }
@@ -595,11 +641,18 @@ def collect_catalogue_variants(
             },
         )
         source = "retomado" if cached is not None else "recolhido"
-        print(
-            f"Variantes {position}/{len(coins)} — {label} ({issue_period}) — "
-            f"{len(variants)} válidas · {len(proof_only)} Proof excluídas · {source}",
-            flush=True,
-        )
+        if result_status == VARIANT_STATUS_PRO_REQUIRED:
+            print(
+                f"Variantes {position}/{len(coins)} — {label} ({issue_period}) — "
+                f"ignoradas: requer subscrição uCoin PRO · {source}",
+                flush=True,
+            )
+        else:
+            print(
+                f"Variantes {position}/{len(coins)} — {label} ({issue_period}) — "
+                f"{len(variants)} válidas · {len(proof_only)} Proof excluídas · {source}",
+                flush=True,
+            )
         if (
             cached is None
             and args.variant_batch_size > 0
@@ -619,12 +672,17 @@ def collect_catalogue_variants(
         "proofOnlyExcluded": sum(
             len(coin.get("excludedProofOnlyVariants", [])) for coin in coins
         ),
+        "proRestricted": sum(
+            coin.get("variantCollectionStatus") == VARIANT_STATUS_PRO_REQUIRED
+            for coin in coins
+        ),
     }
     print(
         "Recolha de variantes concluída: "
         f"{summary['coinsWithVariants']}/{summary['coinsScanned']} moedas com variantes; "
         f"{summary['variants']} variantes; "
-        f"{summary['proofOnlyExcluded']} Proof excluídas."
+        f"{summary['proofOnlyExcluded']} Proof excluídas; "
+        f"{summary['proRestricted']} ignoradas por requererem uCoin PRO."
     )
     return summary
 

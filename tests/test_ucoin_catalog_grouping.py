@@ -9,10 +9,13 @@ from unittest.mock import Mock, patch
 
 from tests.test_ucoin_catalog_parser import coin
 from scripts.ucoin_catalog import (
+    DETAIL_PAGE_LOADED,
+    VARIANT_STATUS_PRO_REQUIRED,
     build_country_url,
     collect_catalogue_variants,
     filter_periods_by_start_year,
     finalize_variant_rows,
+    is_ucoin_pro_paywall_text,
     launch_incognito_chromium,
     open_ucoin_detail_page,
     remove_stale_scrape_error,
@@ -65,20 +68,81 @@ def grouped_coin(tid: int, pid: str = "24", value: str | None = None) -> str:
 
 class UCoinCatalogueGroupingTests(unittest.TestCase):
     class DetailPage:
-        def __init__(self, urls: list[str], statuses: list[int]) -> None:
+        def __init__(
+            self,
+            urls: list[str],
+            statuses: list[int],
+            body_texts: list[str] | None = None,
+        ) -> None:
             self.urls = iter(urls)
             self.statuses = iter(statuses)
+            self.body_texts = iter(body_texts or [""] * len(urls))
             self.url = ""
+            self.body_text = ""
             self.goto_calls: list[str] = []
             self.bring_to_front_calls = 0
 
         def goto(self, url: str, **_kwargs):
             self.goto_calls.append(url)
             self.url = next(self.urls)
+            self.body_text = next(self.body_texts)
             return argparse.Namespace(status=next(self.statuses))
 
         def bring_to_front(self) -> None:
             self.bring_to_front_calls += 1
+
+        def locator(self, selector: str):
+            if selector != "body":
+                raise AssertionError(selector)
+            return argparse.Namespace(inner_text=lambda **_kwargs: self.body_text)
+
+    def test_detects_portuguese_ucoin_pro_paywall(self) -> None:
+        self.assertTrue(
+            is_ucoin_pro_paywall_text(
+                "Desbloqueie o acesso completo com uma subscrição de membro PRO."
+            )
+        )
+
+    @patch("builtins.input")
+    def test_variant_page_skips_pro_content_without_asking_for_login(self, user_input) -> None:
+        detail_url = "https://pt.ucoin.net/coin/portugal-100-reis-1838-1843/?tid=63603"
+        page = self.DetailPage(
+            ["https://pt.ucoin.net/login/?ref=/coin/portugal-100-reis-1838-1843/"],
+            [200],
+            ["Desbloqueie o acesso completo com uma subscrição de membro PRO."],
+        )
+
+        status = open_ucoin_detail_page(
+            page,
+            detail_url,
+            label="100 reis",
+            issue_period="1838 - 1843",
+            timeout_seconds=60,
+            login_retries=2,
+        )
+
+        self.assertEqual(status, VARIANT_STATUS_PRO_REQUIRED)
+        self.assertEqual(page.bring_to_front_calls, 0)
+        user_input.assert_not_called()
+
+    def test_pro_promotion_does_not_hide_an_accessible_coin_page(self) -> None:
+        detail_url = "https://pt.ucoin.net/coin/portugal-100-reis-1838-1843/?tid=63603"
+        page = self.DetailPage(
+            [detail_url],
+            [200],
+            ["Desbloqueie o acesso completo com uma subscrição de membro PRO."],
+        )
+
+        status = open_ucoin_detail_page(
+            page,
+            detail_url,
+            label="100 reis",
+            issue_period="1838 - 1843",
+            timeout_seconds=60,
+            login_retries=2,
+        )
+
+        self.assertEqual(status, DETAIL_PAGE_LOADED)
 
     @patch("builtins.input", return_value="")
     def test_variant_page_retries_same_coin_after_manual_login(self, _input) -> None:
@@ -186,6 +250,42 @@ class UCoinCatalogueGroupingTests(unittest.TestCase):
         self.assertEqual(len(saved["items"]), 2)
         self.assertEqual(summary["coinsWithVariants"], 2)
         self.assertEqual(summary["variants"], 4)
+
+    def test_catalogue_variant_collection_checkpoints_and_skips_pro_coin(self) -> None:
+        detail_url = "https://pt.ucoin.net/coin/portugal-100-reis-1838-1843/?tid=63603"
+        coin = {
+            "detailUrl": detail_url,
+            "denomination": {"displayName": "100 reis"},
+            "issuePeriod": {"displayValue": "1838 - 1843"},
+        }
+        page = self.DetailPage(
+            ["https://pt.ucoin.net/login/?ref=/coin/portugal-100-reis-1838-1843/"],
+            [200],
+            ["Desbloqueie o acesso completo com uma subscrição de membro PRO."],
+        )
+
+        with TemporaryDirectory() as temporary:
+            output_dir = Path(temporary)
+            summary = collect_catalogue_variants(
+                page,
+                {"country": "Portugal", "periods": [{"coins": [coin]}]},
+                argparse.Namespace(
+                    timeout=60,
+                    variant_delay=0,
+                    variant_batch_size=0,
+                    variant_batch_pause=0,
+                    variant_login_retries=2,
+                ),
+                output_dir,
+            )
+            checkpoint = json.loads(
+                (output_dir / "ucoin-variants-scan.json").read_text(encoding="utf-8")
+            )
+
+        self.assertEqual(coin["variantCollectionStatus"], VARIANT_STATUS_PRO_REQUIRED)
+        self.assertFalse(coin["hasVariants"])
+        self.assertEqual(summary["proRestricted"], 1)
+        self.assertEqual(checkpoint["items"][0]["status"], VARIANT_STATUS_PRO_REQUIRED)
 
     def test_successful_scrape_removes_only_stale_error_report(self) -> None:
         with TemporaryDirectory() as temporary:

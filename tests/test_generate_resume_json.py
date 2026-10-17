@@ -49,6 +49,7 @@ class GenerateResumeJsonTests(unittest.TestCase):
                 {"tag": "2023 D", "order": 1},
             ],
             "excludedProofOnlyVariants": ["2023 S"],
+            "variantCollectionStatus": "collected",
         }
 
         parsed = generate_resume_json.to_resume_coin(
@@ -58,6 +59,7 @@ class GenerateResumeJsonTests(unittest.TestCase):
         self.assertTrue(parsed["hasVariants"])
         self.assertEqual([item["tag"] for item in parsed["variants"]], ["2023 P", "2023 D"])
         self.assertEqual(parsed["excludedProofOnlyVariants"], ["2023 S"])
+        self.assertEqual(parsed["variantCollectionStatus"], "collected")
         generate_resume_json.validate_resume_catalogue(
             {"country": "Canadá", "periods": [{"coins": [parsed]}]}, 1
         )

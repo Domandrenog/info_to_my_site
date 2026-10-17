@@ -51,6 +51,12 @@ AVAILABILITY_RESEARCH_FILENAME = "availability-research.json"
 AVAILABILITY_RESEARCH_ERRORS_FILENAME = "availability-research-errors.json"
 PENDING_DIFFERENCES_FILENAME = "differences-pending.json"
 UCOIN_VARIANT_SCAN_FILENAME = "ucoin-variants-scan.json"
+VARIANT_COLLECTION_STATUSES = {
+    "collected",
+    "no_multiple_variants",
+    "no_mintage_table",
+    "ucoin_pro_required",
+}
 
 
 class ResearchFailure(Exception):
@@ -598,6 +604,9 @@ def to_resume_coin(coin: dict[str, Any], availability: str) -> dict[str, Any]:
         result["hasVariants"] = bool(variants)
         result["variants"] = variants
         result["excludedProofOnlyVariants"] = proof_only
+        status = coin.get("variantCollectionStatus")
+        if isinstance(status, str) and status:
+            result["variantCollectionStatus"] = status
     return result
 
 
@@ -771,7 +780,8 @@ def validate_resume_catalogue(value: Any, expected_coin_count: int) -> None:
         raise ValueError("app catalogue contains forbidden top-level technical fields")
     coin_count = 0
     required_coin_keys = {"denomination", "value", "unit", "issuePeriod", "startYear", "endYear", "availability", "detailUrl", "obverseImage", "reverseImage"}
-    variant_coin_keys = {"hasVariants", "variants", "excludedProofOnlyVariants"}
+    required_variant_coin_keys = {"hasVariants", "variants", "excludedProofOnlyVariants"}
+    optional_variant_coin_keys = {"variantCollectionStatus"}
     forbidden_coin_keys = {
         "imageExampleYear",
         "subject",
@@ -802,10 +812,16 @@ def validate_resume_catalogue(value: Any, expected_coin_count: int) -> None:
         for coin in period["coins"]:
             coin_count += 1
             coin_keys = set(coin.keys())
-            if not required_coin_keys.issubset(coin_keys) or coin_keys - required_coin_keys - variant_coin_keys:
+            if (
+                not required_coin_keys.issubset(coin_keys)
+                or coin_keys
+                - required_coin_keys
+                - required_variant_coin_keys
+                - optional_variant_coin_keys
+            ):
                 raise ValueError(f"resume coin has invalid fields: {sorted(coin.keys())}")
-            present_variant_keys = coin_keys & variant_coin_keys
-            if present_variant_keys and present_variant_keys != variant_coin_keys:
+            present_variant_keys = coin_keys & required_variant_coin_keys
+            if present_variant_keys and present_variant_keys != required_variant_coin_keys:
                 raise ValueError("resume coin has incomplete variant metadata")
             if present_variant_keys:
                 variants = coin.get("variants")
@@ -829,6 +845,11 @@ def validate_resume_catalogue(value: Any, expected_coin_count: int) -> None:
                     raise ValueError("excluded Proof variant is invalid")
                 if tags & {str(tag).strip() for tag in proof_only}:
                     raise ValueError("normal and Proof-only variants overlap")
+            status = coin.get("variantCollectionStatus")
+            if status is not None and (not isinstance(status, str) or not status.strip()):
+                raise ValueError("variantCollectionStatus must be a non-empty string")
+            if isinstance(status, str) and status not in VARIANT_COLLECTION_STATUSES:
+                raise ValueError(f"invalid variantCollectionStatus: {status}")
             if forbidden_coin_keys.intersection(coin):
                 raise ValueError("resume coin contains forbidden fields")
             if isinstance(coin.get("denomination"), dict) or isinstance(coin.get("issuePeriod"), dict):
@@ -970,6 +991,9 @@ async def generate_final_outputs(args: argparse.Namespace, final_input_path: str
                 coin["excludedProofOnlyVariants"] = (
                     proof_only if isinstance(proof_only, list) else []
                 )
+                status = source_coin.get("variantCollectionStatus")
+                if isinstance(status, str) and status:
+                    coin["variantCollectionStatus"] = status
     validate_resume_catalogue(final_catalogue, expected_coin_count)
     validate_final_availability_catalogue(final_catalogue)
     app_catalogue = without_statistics(final_catalogue)

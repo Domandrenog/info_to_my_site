@@ -10,6 +10,8 @@ from typing import Any
 
 from scripts.import_catalog_variants import CatalogVariantError, detect_catalog_type
 from scripts.ucoin_catalog import (
+    VARIANT_COLLECTION_COMPLETE_STATUSES,
+    VARIANT_STATUS_PRO_REQUIRED,
     cdp_is_available,
     extract_coin_variants,
     launch_incognito_chromium,
@@ -131,20 +133,30 @@ def run(argv: list[str] | None = None) -> int:
     try:
         for position, coin in enumerate(coins, start=1):
             denomination, years = coin_label(coin, catalog_type)
+            collection_status = str(coin.get("variantCollectionStatus") or "")
             if (
                 not args.refresh
-                and isinstance(coin.get("variants"), list)
-                and bool(coin["variants"])
+                and (
+                    collection_status in VARIANT_COLLECTION_COMPLETE_STATUSES
+                    or (
+                        isinstance(coin.get("variants"), list)
+                        and bool(coin["variants"])
+                    )
+                )
             ):
+                if collection_status == VARIANT_STATUS_PRO_REQUIRED:
+                    message = "ignoradas: requer subscrição uCoin PRO"
+                else:
+                    message = "já verificadas"
                 print(
-                    f"Variantes {position}/{len(coins)} — {denomination} ({years}) — já recolhidas",
+                    f"Variantes {position}/{len(coins)} — {denomination} ({years}) — {message}",
                     flush=True,
                 )
                 continue
             if visited:
                 page.wait_for_timeout(max(0, int(args.delay * 1000)))
             detail_url = str(coin["detailUrl"])
-            open_ucoin_detail_page(
+            page_status = open_ucoin_detail_page(
                 page,
                 detail_url,
                 label=denomination,
@@ -152,8 +164,15 @@ def run(argv: list[str] | None = None) -> int:
                 timeout_seconds=args.timeout,
                 login_retries=args.login_retries,
             )
-            page.wait_for_timeout(1000)
-            result = extract_coin_variants(page, years, detail_url)
+            if page_status == VARIANT_STATUS_PRO_REQUIRED:
+                result = {
+                    "status": VARIANT_STATUS_PRO_REQUIRED,
+                    "variants": [],
+                    "excludedProofOnlyVariants": [],
+                }
+            else:
+                page.wait_for_timeout(1000)
+                result = extract_coin_variants(page, years, detail_url)
             variants = result["variants"]
             excluded_by_policy: list[dict[str, Any]] = []
             if catalog_type == "special":
@@ -176,16 +195,24 @@ def run(argv: list[str] | None = None) -> int:
             coin["excludedProofOnlyVariants"] = result[
                 "excludedProofOnlyVariants"
             ]
+            coin["variantCollectionStatus"] = result["status"]
             if catalog_type == "special":
                 coin["excludedCollectionSVariants"] = excluded_by_policy
             write_json_atomic(args.catalog, catalogue)
             visited += 1
-            print(
-                f"Variantes {position}/{len(coins)} — {denomination} ({years}) — "
-                f"{len(coin['variants'])} válidas · "
-                f"{len(coin['excludedProofOnlyVariants'])} Proof excluídas",
-                flush=True,
-            )
+            if result["status"] == VARIANT_STATUS_PRO_REQUIRED:
+                print(
+                    f"Variantes {position}/{len(coins)} — {denomination} ({years}) — "
+                    "ignoradas: requer subscrição uCoin PRO",
+                    flush=True,
+                )
+            else:
+                print(
+                    f"Variantes {position}/{len(coins)} — {denomination} ({years}) — "
+                    f"{len(coin['variants'])} válidas · "
+                    f"{len(coin['excludedProofOnlyVariants'])} Proof excluídas",
+                    flush=True,
+                )
             if (
                 args.batch_size > 0
                 and visited % args.batch_size == 0
@@ -204,9 +231,14 @@ def run(argv: list[str] | None = None) -> int:
         if isinstance(coin.get("variants"), list)
     )
     with_variants = sum(bool(coin.get("variants")) for coin in coins)
+    pro_restricted = sum(
+        coin.get("variantCollectionStatus") == VARIANT_STATUS_PRO_REQUIRED
+        for coin in coins
+    )
     print(
         f"Concluído: {with_variants}/{len(coins)} moedas com variantes; "
-        f"{variants} variantes guardadas em {args.catalog}."
+        f"{variants} variantes guardadas em {args.catalog}; "
+        f"{pro_restricted} ignoradas por requererem uCoin PRO."
     )
     print("Site Base44: nenhuma alteração efetuada.")
     return 0
