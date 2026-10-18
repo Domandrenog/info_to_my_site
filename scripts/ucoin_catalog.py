@@ -460,6 +460,29 @@ def parse_variant_table_cells(
     }
 
 
+def variant_issue_period(issue: dict[str, object]) -> str:
+    """Prefer uCoin's structured year for a single-year commemorative issue.
+
+    Some commemoratives put the event title in ``displayValue`` even though
+    ``startYear`` and ``endYear`` identify one exact year.  The detail page then
+    correctly exposes the single-year mint table, so using the title would make
+    that valid table look contradictory.
+    """
+
+    display_value = str(issue.get("displayValue") or "").strip()
+    start_year = issue.get("startYear")
+    end_year = issue.get("endYear")
+    if (
+        isinstance(start_year, int)
+        and not isinstance(start_year, bool)
+        and isinstance(end_year, int)
+        and not isinstance(end_year, bool)
+        and start_year == end_year
+    ):
+        return str(start_year)
+    return display_value
+
+
 def extract_coin_variants(page, issue_period: str, detail_url: str) -> dict[str, object]:
     """Read one uCoin mintage table without treating Proof-only rows as variants."""
 
@@ -694,7 +717,7 @@ def collect_catalogue_variants(
         detail_url = str(coin.get("detailUrl") or "").strip()
         issue = coin.get("issuePeriod") if isinstance(coin.get("issuePeriod"), dict) else {}
         denomination = coin.get("denomination") if isinstance(coin.get("denomination"), dict) else {}
-        issue_period = str(issue.get("displayValue") or "").strip()
+        issue_period = variant_issue_period(issue)
         label = str(denomination.get("displayName") or "Moeda").strip()
         cached = cached_by_url.get(detail_url)
         if cached is not None:

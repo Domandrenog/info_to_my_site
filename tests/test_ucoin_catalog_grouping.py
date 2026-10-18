@@ -21,6 +21,7 @@ from scripts.ucoin_catalog import (
     open_ucoin_detail_page,
     parse_variant_table_cells,
     remove_stale_scrape_error,
+    variant_issue_period,
 )
 from ucoin_to_mysite.catalog_parser import crawl_ucoin_catalogue, parse_catalogue_page
 
@@ -401,6 +402,30 @@ class UCoinCatalogueGroupingTests(unittest.TestCase):
                 "bu": "-",
                 "proof": "-",
             },
+        )
+
+    def test_variant_issue_period_prefers_structured_single_year_over_subject(self) -> None:
+        self.assertEqual(
+            variant_issue_period(
+                {
+                    "displayValue": "Jornada Mundial da Juventude 2023 Lisboa",
+                    "startYear": 2023,
+                    "endYear": 2023,
+                }
+            ),
+            "2023",
+        )
+
+    def test_variant_issue_period_keeps_a_real_range(self) -> None:
+        self.assertEqual(
+            variant_issue_period(
+                {
+                    "displayValue": "2020 - 2024",
+                    "startYear": 2020,
+                    "endYear": 2024,
+                }
+            ),
+            "2020 - 2024",
         )
 
     @patch("scripts.ucoin_catalog.time.sleep")

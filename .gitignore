@@ -25,3 +25,8 @@ info/paises/all-rarities-prompt.txt
 info/paises/all-differences.json
 info/paises/*/*/*-differences.json
 info/paises/*/*/*-autofix-plan.json
+
+# Resumable uCoin scrape checkpoints and transient failure reports
+info/paises/*/*/ucoin-variants-scan.json
+info/paises/*/*/ucoin-*-variants-scan.json
+info/paises/*/*/scrape-error.json
