@@ -91,10 +91,34 @@ class GenerateResumeJsonTests(unittest.TestCase):
             ]
         }
         resume = generate_resume_json.build_resume_catalogue(full_catalogue, research)
+        self.assertEqual(resume["catalogType"], "normal")
+        self.assertEqual(resume["ucoinCoinType"], "normal")
         self.assertEqual(resume["country"], "Canadá")
         self.assertNotIn("designs", resume["periods"][0])
         self.assertEqual(resume["periods"][0]["coins"][0]["availability"], "still needed to calculate")
         generate_resume_json.validate_resume_catalogue(resume, 1)
+
+    def test_normal_source_contract_rejects_commemoratives(self) -> None:
+        source = {
+            "coinTypeFilter": {"requested": "normal"},
+            "periods": [
+                {
+                    "coins": [
+                        {
+                            "denomination": {"displayName": "25 escudos"},
+                            "circulationType": "Comemorativa",
+                        }
+                    ]
+                }
+            ],
+        }
+
+        with self.assertRaisesRegex(ValueError, "Circulação normal"):
+            generate_resume_json.validate_normal_ucoin_source(source)
+
+    def test_normal_source_contract_rejects_unfiltered_catalogue(self) -> None:
+        with self.assertRaisesRegex(ValueError, "--coin-type normal"):
+            generate_resume_json.validate_normal_ucoin_source({"periods": []})
 
     def test_build_resume_catalogue_can_still_use_research_when_requested(self) -> None:
         full_catalogue = {

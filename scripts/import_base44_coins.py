@@ -117,6 +117,22 @@ def read_json(path: str) -> dict[str, Any]:
     return payload
 
 
+def validate_normal_catalogue_contract(catalogue: dict[str, Any]) -> None:
+    """Reject catalogues explicitly intended for a non-normal entity."""
+
+    catalog_type = catalogue.get("catalogType")
+    ucoin_coin_type = catalogue.get("ucoinCoinType")
+    if catalog_type is not None and catalog_type != "normal":
+        raise ValueError(
+            f"Este importador aceita apenas catalogType=normal; recebeu {catalog_type!r}."
+        )
+    if ucoin_coin_type is not None and ucoin_coin_type != "normal":
+        raise ValueError(
+            "Este importador aceita apenas moedas uCoin de Circulação normal; "
+            f"recebeu ucoinCoinType={ucoin_coin_type!r}."
+        )
+
+
 def flatten_coins(catalogue: dict[str, Any]) -> list[tuple[dict[str, Any], dict[str, Any]]]:
     entries: list[tuple[dict[str, Any], dict[str, Any]]] = []
     for period in catalogue.get("periods", []):
@@ -732,6 +748,7 @@ def main() -> int:
     if not args.replace and not args.create_only:
         args.dry_run = True
     catalogue = read_json(args.input)
+    validate_normal_catalogue_contract(catalogue)
     options = resolve_options(args, catalogue)
     include_variants = bool(getattr(args, "include_variants", False))
     if include_variants:

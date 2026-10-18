@@ -72,6 +72,12 @@ class UCoinPipelineTests(unittest.TestCase):
 
         self.assertIn("--include-variants", command)
 
+    def test_scrape_command_explicitly_accepts_only_normal_coins(self) -> None:
+        command = ucoin_pipeline.build_scrape_command(args())
+
+        type_index = command.index("--coin-type")
+        self.assertEqual(command[type_index + 1], "normal")
+
     def test_generate_command_waits_for_final_by_default(self) -> None:
         command = ucoin_pipeline.build_generate_command(args(), Path("info/paises/asia/india/ucoin-catalog.json"))
         self.assertIn("--wait-for-final", command)

@@ -68,6 +68,7 @@ class MissingCountryTrackingPlanTests(unittest.TestCase):
         command = build_collection_command(plan, browser_args=["--attach-cdp"])
 
         self.assertIn("--no-wait-for-final", command)
+        self.assertEqual(command[command.index("--coin-type") + 1], "normal")
         self.assertEqual(command[command.index("--start-year") + 1], "1966")
         self.assertNotIn("scripts.import_base44_coins", command)
 

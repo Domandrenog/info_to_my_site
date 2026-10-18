@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Run the complete uCoin-to-app catalogue workflow."""
+"""Run the complete normal-coin uCoin-to-app catalogue workflow."""
 
 from __future__ import annotations
 
@@ -17,7 +17,12 @@ from scripts.ucoin_catalog import UCOIN_CATALOG_FILENAME
 
 
 def parse_args() -> argparse.Namespace:
-    parser = argparse.ArgumentParser(description="Run uCoin scrape and app catalogue generation in sequence.")
+    parser = argparse.ArgumentParser(
+        description=(
+            "Run the normal-coin uCoin scrape and app catalogue generation in "
+            "sequence. Only uCoin 'Circulação normal' records are accepted."
+        )
+    )
     parser.add_argument("country", help="Country to scrape, e.g. India or Canada.")
     parser.add_argument("period", nargs="?", default=None, help="Optional period filter passed to scripts.ucoin_catalog.")
     parser.add_argument("--country-link-name", default="", help="Country name/slug to use in uCoin country= URL parameter when different.")
@@ -27,6 +32,15 @@ def parse_args() -> argparse.Namespace:
         help="Continent used in info/paises/<continent>/<country> when it cannot be inferred.",
     )
     parser.add_argument("--start-year", type=int, help="Keep only coins whose issue start year is at least this year.")
+    parser.add_argument(
+        "--coin-type",
+        choices=("normal",),
+        default="normal",
+        help=(
+            "Safety contract for this pipeline. Only 'normal' is accepted; "
+            "commemoratives use the separate collection flow."
+        ),
+    )
     parser.add_argument("--output-dir", default="", help="Destination folder. Defaults to info/paises/<continent>/<country-slug>.")
     parser.add_argument("--catalog-output", default="", help="Explicit ucoin-catalog.json output path.")
     browser_mode = parser.add_mutually_exclusive_group()
@@ -69,6 +83,7 @@ def build_scrape_command(args: argparse.Namespace) -> list[str]:
     command = [sys.executable, "-m", "scripts.ucoin_catalog", args.country]
     if args.period:
         command.append(args.period)
+    command.extend(["--coin-type", getattr(args, "coin_type", "normal")])
     command.extend(["--json", "--timeout", str(args.timeout), "--max-pages", str(args.max_pages), "--retries", str(args.retries)])
     if args.country_link_name:
         command.extend(["--country-link-name", args.country_link_name])

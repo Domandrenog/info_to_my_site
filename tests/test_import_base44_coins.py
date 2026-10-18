@@ -83,6 +83,17 @@ class ImportBase44CoinsTests(unittest.TestCase):
         self.assertEqual(record["notes"], "República da Índia")
         self.assertEqual(record["ordem"], 1)
 
+    def test_normal_import_rejects_explicit_special_catalogue(self) -> None:
+        with self.assertRaisesRegex(ValueError, "catalogType=normal"):
+            import_base44_coins.validate_normal_catalogue_contract(
+                {"catalogType": "special", "ucoinCoinType": "commemorative"}
+            )
+
+    def test_normal_import_accepts_explicit_normal_catalogue(self) -> None:
+        import_base44_coins.validate_normal_catalogue_contract(
+            {"catalogType": "normal", "ucoinCoinType": "normal"}
+        )
+
     def test_notes_prefer_period_ruler_when_available(self) -> None:
         record = import_base44_coins.to_coin_record(
             ({"title": "Índia › República da Índia › 1957 - 2026", "ruler": "República da Índia"}, {"denomination": "1", "availability": "withdrawn"}),

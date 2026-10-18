@@ -154,6 +154,21 @@ def default_app_catalog_path(country: str, continent: str = "") -> str:
     return str(country_directory(country, continent) / "app-catalog.json")
 
 
+def default_commemorative_catalog_path(country: str, continent: str = "") -> str:
+    return str(
+        country_directory(country, continent) / "ucoin-commemorative-catalog.json"
+    )
+
+
+def default_commemorative_variant_scan_path(
+    country: str, continent: str = ""
+) -> str:
+    return str(
+        country_directory(country, continent)
+        / "ucoin-commemorative-variants-scan.json"
+    )
+
+
 def suggest_app_catalog_paths(input_path: str) -> list[Path]:
     """Return nearby local app catalogue paths for a misspelled country folder."""
     catalogues = sorted((PROJECT_DIR / CATALOG_ROOT).glob("*/*/app-catalog.json"))
@@ -237,7 +252,16 @@ def action_pipeline() -> None:
 
     continent = ask_continent(country)
 
-    command = [sys.executable, "-m", "scripts.ucoin_pipeline", country, "--continent", continent]
+    command = [
+        sys.executable,
+        "-m",
+        "scripts.ucoin_pipeline",
+        country,
+        "--continent",
+        continent,
+        "--coin-type",
+        "normal",
+    ]
 
     country_link_name = ask_country_link_name()
     if country_link_name:
@@ -287,6 +311,8 @@ def action_collect_country_pending() -> None:
         country,
         "--continent",
         continent,
+        "--coin-type",
+        "normal",
         "--no-wait-for-final",
     ]
 
@@ -1646,6 +1672,56 @@ def action_collect_collection_variants() -> None:
         print("As variantes ficaram guardadas no catálogo; o Site ainda não foi alterado.")
 
 
+def action_collect_commemorative_country() -> None:
+    title("Moedas de coleção — recolher comemorativas do uCoin")
+    print("Recolhe exclusivamente registos que o uCoin classifica como Comemorativa.")
+    print("Circulação normal, Moeda de coleção e Proof não entram neste catálogo.")
+    print("Esta operação não altera o Site Base44.")
+
+    country = ask_text("País (ex: Portugal, Canada)")
+    if not country:
+        print("País obrigatório.")
+        return
+    continent = ask_continent(country)
+    output_path = default_commemorative_catalog_path(country, continent)
+    command = [
+        sys.executable,
+        "-m",
+        "scripts.ucoin_catalog",
+        country,
+        "--continent",
+        continent,
+        "--coin-type",
+        "commemorative",
+        "--json",
+        "--output",
+        output_path,
+    ]
+
+    country_link_name = ask_country_link_name()
+    if country_link_name:
+        command.extend(["--country-link-name", country_link_name])
+
+    start_year = ask_int("Start year (opcional)", default=None, allow_empty=True)
+    if start_year is not None:
+        command.extend(["--start-year", str(start_year)])
+
+    if ask_yes_no("Recolher também as variantes do uCoin?", default=False):
+        print("Serão incluídas variantes UNC/BU; emissões exclusivamente Proof ficam de fora.")
+        command.extend(
+            [
+                "--include-variants",
+                "--variant-scan-output",
+                default_commemorative_variant_scan_path(country, continent),
+            ]
+        )
+
+    add_browser_mode(command)
+    if run_step("Recolher comemorativas do uCoin", command) == 0:
+        print(f"Catálogo comemorativo guardado em: {output_path}")
+        print("O Site Base44 não foi alterado.")
+
+
 def action_import_collection_variants() -> None:
     title("Moedas de coleção — variantes no Site Base44")
     catalog = ask_text(
@@ -1683,15 +1759,18 @@ def action_import_collection_variants() -> None:
 def menu_collection_coins() -> None:
     while True:
         title("Moedas de coleção")
-        print("1) Recolher variantes do uCoin para um catálogo")
-        print("2) Verificar/importar variantes para o Site Base44")
-        print("3) Voltar")
+        print("1) Recolher moedas comemorativas de um país")
+        print("2) Recolher variantes do uCoin para um catálogo")
+        print("3) Verificar/importar variantes para o Site Base44")
+        print("4) Voltar")
         choice = ask_text("Escolhe uma opção", "1")
         if choice == "1":
-            action_collect_collection_variants()
+            action_collect_commemorative_country()
         elif choice == "2":
-            action_import_collection_variants()
+            action_collect_collection_variants()
         elif choice == "3":
+            action_import_collection_variants()
+        elif choice == "4":
             return
         else:
             print("Opção inválida.")

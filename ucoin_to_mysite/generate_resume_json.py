@@ -179,6 +179,48 @@ def get_fallback_availability(period: dict[str, Any]) -> str:
     return "circulating"
 
 
+def validate_normal_ucoin_source(catalogue: dict[str, Any]) -> None:
+    """Reject unfiltered or non-normal technical catalogues.
+
+    The normal app catalogue must never depend only on the caller choosing the
+    right filename. The scraper records its explicit filter and every retained
+    row must still identify itself as normal circulation.
+    """
+
+    filter_contract = catalogue.get("coinTypeFilter")
+    if not isinstance(filter_contract, dict) or filter_contract.get("requested") != "normal":
+        raise ValueError(
+            "O catálogo técnico não confirma --coin-type normal. "
+            "Repete a recolha pelo fluxo Moedas normais."
+        )
+    invalid: list[str] = []
+    for period in catalogue.get("periods", []):
+        if not isinstance(period, dict):
+            continue
+        for coin in period.get("coins", []):
+            if not isinstance(coin, dict):
+                continue
+            if normalize_text(coin.get("circulationType")) != "circulação-normal":
+                denomination = coin.get("denomination")
+                if isinstance(denomination, dict):
+                    denomination = denomination.get("displayName")
+                invalid.append(str(denomination or coin.get("detailUrl") or "Moeda"))
+    if invalid:
+        preview = ", ".join(invalid[:5])
+        raise ValueError(
+            f"O catálogo normal contém {len(invalid)} moeda(s) sem a classificação "
+            f"'Circulação normal': {preview}."
+        )
+
+
+def validate_normal_app_catalogue_contract(catalogue: dict[str, Any]) -> None:
+    if catalogue.get("catalogType") != "normal" or catalogue.get("ucoinCoinType") != "normal":
+        raise ValueError(
+            "O catálogo final não contém o contrato normal/normal. "
+            "Gera-o novamente pelo fluxo Moedas normais."
+        )
+
+
 def fallback_research_result(period: dict[str, Any], message: str) -> dict[str, Any]:
     availability = get_fallback_availability(period)
     return {
@@ -640,7 +682,12 @@ def build_resume_catalogue(full_catalogue: dict[str, Any], research: dict[str, A
         )
     if source_coin_count != resume_coin_count:
         raise ValueError(f"Coin count mismatch: source={source_coin_count} resume={resume_coin_count}")
-    return {"country": full_catalogue.get("country"), "periods": periods}
+    return {
+        "catalogType": "normal",
+        "ucoinCoinType": "normal",
+        "country": full_catalogue.get("country"),
+        "periods": periods,
+    }
 
 
 def build_availability_statistics(catalogue: dict[str, Any]) -> dict[str, Any]:
@@ -971,6 +1018,9 @@ async def generate_final_outputs(args: argparse.Namespace, final_input_path: str
     source_path = Path(final_input_path).with_name(UCOIN_CATALOG_FILENAME)
     if source_path.is_file():
         source_catalogue = load_full_catalogue(str(source_path))
+        validate_normal_ucoin_source(source_catalogue)
+        final_catalogue["catalogType"] = "normal"
+        final_catalogue["ucoinCoinType"] = "normal"
         variants_by_url = {
             normalize_detail_url(str(coin.get("detailUrl") or "")): coin
             for period in source_catalogue.get("periods", [])
@@ -994,6 +1044,7 @@ async def generate_final_outputs(args: argparse.Namespace, final_input_path: str
                 status = source_coin.get("variantCollectionStatus")
                 if isinstance(status, str) and status:
                     coin["variantCollectionStatus"] = status
+    validate_normal_app_catalogue_contract(final_catalogue)
     validate_resume_catalogue(final_catalogue, expected_coin_count)
     validate_final_availability_catalogue(final_catalogue)
     app_catalogue = without_statistics(final_catalogue)
@@ -1021,6 +1072,7 @@ async def main() -> None:
 
     input_hash_before = sha256_file(args.input)
     full_catalogue = load_full_catalogue(args.input)
+    validate_normal_ucoin_source(full_catalogue)
     inputs = build_research_inputs(full_catalogue)
     research = {"generatedAt": utc_now_iso(), "provider": "external-placeholder", "entries": []}
     errors: list[dict[str, Any]] = []

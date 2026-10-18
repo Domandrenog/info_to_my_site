@@ -757,11 +757,22 @@ python3 -m scripts.ucoin_pipeline India --continent Ásia --attach-cdp \
   --no-manual-session --include-variants
 ```
 
+O pipeline normal passa sempre `--coin-type normal` ao scraper. Isso significa
+que apenas entradas classificadas pelo uCoin como `Circulação normal` chegam ao
+`app-catalog.json`; `Comemorativa`, `Moeda de coleção`, Proof e tipos
+desconhecidos ficam excluídos antes da recolha de variantes e da importação.
+Não é permitido inferir o tipo pelo período, denominação ou metal.
+
 Para moedas de coleção, o menu principal inclui `Moedas de coleção`, onde um
-`special-app-catalog.json` pode ser enriquecido a partir do uCoin e depois
-comparado/importado para `SpecialCoinVariant`. Este fluxo também é create-only:
-não atualiza nem apaga variantes existentes. Por política, variantes `S` das
-moedas de coleção ficam de fora, além das linhas exclusivamente Proof.
+país pode ser recolhido usando explicitamente `--coin-type commemorative`. Esse
+catálogo técnico inclui apenas as entradas `Comemorativa` do uCoin e é guardado
+como `ucoin-commemorative-catalog.json`, separado do catálogo normal. As
+categorias `Moeda de coleção` e Proof continuam excluídas. Um
+`special-app-catalog.json` já aprovado também pode ser enriquecido a partir do
+uCoin e depois comparado/importado para `SpecialCoinVariant`. Este fluxo é
+create-only: não atualiza nem apaga variantes existentes. Por política,
+variantes `S` das moedas de coleção ficam de fora, além das linhas
+exclusivamente Proof.
 
 O `--replace` apaga apenas registos `Coin` com `country` igual ao país do JSON e recria as moedas a partir do ficheiro final.
 

@@ -32,6 +32,12 @@ from ucoin_to_mysite.catalog_parser import CatalogueFetchError, CatalogueFetchRe
 
 DEFAULT_BASE_URL = "https://pt.ucoin.net/catalog/"
 UCOIN_CATALOG_FILENAME = "ucoin-catalog.json"
+COIN_TYPE_CHOICES = ("normal", "commemorative", "collection", "all")
+COIN_TYPE_LABELS = {
+    "normal": "Circulação normal",
+    "commemorative": "Comemorativa",
+    "collection": "Moeda de coleção",
+}
 
 
 def parse_args() -> argparse.Namespace:
@@ -98,6 +104,16 @@ def parse_args() -> argparse.Namespace:
         type=int,
         help="Mantém apenas moedas/periodos cujo ano inicial seja maior ou igual a este ano.",
     )
+    parser.add_argument(
+        "--coin-type",
+        choices=COIN_TYPE_CHOICES,
+        default="normal",
+        help=(
+            "Tipo uCoin a recolher: normal=Circulação normal (default), "
+            "commemorative=Comemorativa, collection=Moeda de coleção ou "
+            "all=todos explicitamente."
+        ),
+    )
     parser.add_argument("--retries", type=int, default=2, help="Tentativas extra para erros temporários por página.")
     parser.add_argument(
         "--sequential-fallback",
@@ -137,6 +153,14 @@ def parse_args() -> argparse.Namespace:
         help=(
             "Número de vezes que permite resolver um login/challenge no browser "
             "e repetir apenas a moeda atual."
+        ),
+    )
+    parser.add_argument(
+        "--variant-scan-output",
+        default="",
+        help=(
+            "Checkpoint da recolha de variantes. Por omissão usa "
+            "ucoin-variants-scan.json junto ao catálogo."
         ),
     )
     return parser.parse_args()
@@ -600,7 +624,12 @@ def collect_catalogue_variants(
         for coin in period.get("coins", [])
         if isinstance(coin, dict)
     ]
-    checkpoint_path = output_dir / VARIANT_SCAN_FILENAME
+    configured_checkpoint = str(getattr(args, "variant_scan_output", "") or "").strip()
+    checkpoint_path = (
+        Path(configured_checkpoint)
+        if configured_checkpoint
+        else output_dir / VARIANT_SCAN_FILENAME
+    )
     cached_by_url: dict[str, dict[str, object]] = {}
     if checkpoint_path.is_file():
         try:
@@ -756,6 +785,70 @@ def filter_periods_by_start_year(periods: list[object], start_year: int | None) 
     return filtered_periods
 
 
+def normalize_circulation_type(value: object) -> str:
+    normalized = unicodedata.normalize("NFKD", str(value or ""))
+    ascii_value = normalized.encode("ascii", "ignore").decode("ascii")
+    return " ".join(ascii_value.casefold().split())
+
+
+def classify_circulation_type(value: object) -> str:
+    normalized = normalize_circulation_type(value)
+    aliases = {
+        "circulacao normal": "normal",
+        "normal circulation": "normal",
+        "comemorativa": "commemorative",
+        "commemorative": "commemorative",
+        "moeda de colecao": "collection",
+        "collection coin": "collection",
+    }
+    return aliases.get(normalized, "unknown")
+
+
+def filter_periods_by_coin_type(
+    periods: list[object], coin_type: str
+) -> tuple[list[object], dict[str, object]]:
+    """Keep only the explicitly requested uCoin category.
+
+    Unknown or missing labels are deliberately excluded from a typed scrape.
+    This is a fail-closed boundary: a new uCoin label cannot silently enter the
+    normal ``Coin`` catalogue.
+    """
+
+    if coin_type not in COIN_TYPE_CHOICES:
+        raise ValueError(f"Tipo de moeda uCoin inválido: {coin_type}")
+
+    counts = {key: 0 for key in (*COIN_TYPE_CHOICES[:-1], "unknown")}
+    selected = 0
+    total = 0
+    filtered_periods: list[object] = []
+    for period in periods:
+        if not isinstance(period, dict):
+            continue
+        filtered_coins: list[dict[str, object]] = []
+        for coin in period.get("coins", []):
+            if not isinstance(coin, dict):
+                continue
+            total += 1
+            category = classify_circulation_type(coin.get("circulationType"))
+            counts[category] += 1
+            if coin_type == "all" or category == coin_type:
+                filtered_coins.append(coin)
+                selected += 1
+        if filtered_coins:
+            filtered_period = dict(period)
+            filtered_period["coins"] = filtered_coins
+            filtered_periods.append(filtered_period)
+
+    return filtered_periods, {
+        "requested": coin_type,
+        "requestedLabel": COIN_TYPE_LABELS.get(coin_type, "Todos"),
+        "foundByType": counts,
+        "found": total,
+        "selected": selected,
+        "excluded": total - selected,
+    }
+
+
 def scrape_catalog(args: argparse.Namespace, output_dir: Path) -> dict[str, object]:
     try:
         from playwright.sync_api import sync_playwright
@@ -844,7 +937,13 @@ def scrape_catalog(args: argparse.Namespace, output_dir: Path) -> dict[str, obje
 
             report["country"] = crawl_result.get("country") or report["country"]
             report["startYearFilter"] = args.start_year
-            report["periods"] = filter_periods_by_start_year(crawl_result["periods"], args.start_year)
+            coin_type = getattr(args, "coin_type", "normal")
+            year_filtered_periods = filter_periods_by_start_year(
+                crawl_result["periods"], args.start_year
+            )
+            report["periods"], report["coinTypeFilter"] = (
+                filter_periods_by_coin_type(year_filtered_periods, coin_type)
+            )
             report["warnings"] = crawl_result["warnings"]
             report["pagination"] = crawl_result["pagination"]
             report["count"] = sum(len(period.get("coins", [])) for period in report["periods"])
@@ -900,6 +999,10 @@ def print_human(report: dict[str, object]) -> None:
 
     print(f"country={report.get('country')}")
     print(f"period={report.get('period')}")
+    coin_type_filter = report.get("coinTypeFilter")
+    if isinstance(coin_type_filter, dict):
+        print(f"coin_type={coin_type_filter.get('requested')}")
+        print(f"excluded_by_coin_type={coin_type_filter.get('excluded', 0)}")
     print(f"count={report.get('count', 0)}")
     print(f"url={report.get('final_url')}")
     print("")

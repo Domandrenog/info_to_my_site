@@ -58,12 +58,45 @@ class MainTrackingActionTests(unittest.TestCase):
 
         command = run_step.call_args.args[1]
         self.assertIn("--include-variants", command)
+        type_index = command.index("--coin-type")
+        self.assertEqual(command[type_index + 1], "normal")
         import_base44.assert_called_once_with(
             country="Vietnam",
             continent="Ásia",
             input_path="info/paises/asia/vietnam/app-catalog.json",
             include_variants=True,
         )
+
+    @patch("main.run_step", return_value=0)
+    @patch("main.add_browser_mode", side_effect=lambda command: command.append("--attach-cdp"))
+    @patch("main.ask_yes_no", return_value=True)
+    @patch("main.ask_int", return_value=1980)
+    @patch("main.ask_country_link_name", return_value="portugal")
+    @patch("main.ask_continent", return_value="Europa")
+    @patch("main.ask_text", return_value="Portugal")
+    @patch("main.title")
+    def test_collection_country_scrape_accepts_only_commemoratives(
+        self,
+        _title,
+        _ask_text,
+        _continent,
+        _link_name,
+        _start_year,
+        _yes_no,
+        _browser,
+        run_step,
+    ) -> None:
+        main.action_collect_commemorative_country()
+
+        command = run_step.call_args.args[1]
+        type_index = command.index("--coin-type")
+        self.assertEqual(command[type_index + 1], "commemorative")
+        self.assertIn("--include-variants", command)
+        self.assertIn("--variant-scan-output", command)
+        self.assertTrue(
+            any(value.endswith("ucoin-commemorative-catalog.json") for value in command)
+        )
+        self.assertNotIn("scripts.ucoin_pipeline", command)
 
     @patch("main.action_backup_base44")
     @patch("main.title")

@@ -140,6 +140,8 @@ def build_collection_command(
         str(plan["continent"]),
         "--country-link-name",
         str(plan["ucoin_country_link_name"]),
+        "--coin-type",
+        "normal",
         "--no-wait-for-final",
     ]
     start_year = plan_start_year(plan)
