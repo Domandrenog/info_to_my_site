@@ -44,6 +44,7 @@ class FakeBaseClient:
 
 def catalog() -> dict:
     return {
+        "coinOrder": "value_then_issue",
         "country": "Portugal",
         "periods": [
             {
@@ -51,11 +52,15 @@ def catalog() -> dict:
                 "coins": [
                     {
                         "denomination": "1 escudo",
+                        "value": 1,
+                        "unit": "escudo",
                         "issuePeriod": "1986 - 2001",
                         "detailUrl": "https://ucoin.test/one-new",
                     },
                     {
                         "denomination": "5 escudos",
+                        "value": 5,
+                        "unit": "escudos",
                         "issuePeriod": "1986 - 2001",
                         "detailUrl": "https://ucoin.test/five",
                     },
@@ -66,6 +71,8 @@ def catalog() -> dict:
                 "coins": [
                     {
                         "denomination": "1 escudo",
+                        "value": 1,
+                        "unit": "escudo",
                         "issuePeriod": "1991",
                         "detailUrl": "https://ucoin.test/ecu-one",
                     },
@@ -76,6 +83,8 @@ def catalog() -> dict:
                 "coins": [
                     {
                         "denomination": "1 escudo",
+                        "value": 1,
+                        "unit": "escudo",
                         "issuePeriod": "1927 - 1968",
                         "detailUrl": "https://ucoin.test/one-old",
                     },

@@ -172,6 +172,41 @@ class ImportBase44CoinsTests(unittest.TestCase):
             [1, 1, 2],
         )
 
+    def test_opted_in_catalogue_orders_portugal_denominations_by_value(self) -> None:
+        period = {"ruler": "República Portuguesa"}
+        entries = [
+            (period, {"denomination": "1 escudo", "value": 1, "unit": "escudo", "issuePeriod": "1986 - 2001"}),
+            (period, {"denomination": "5 escudos", "value": 5, "unit": "escudos", "issuePeriod": "1986 - 2001"}),
+            (period, {"denomination": "2.5 escudos", "value": 2.5, "unit": "escudos", "issuePeriod": "1963 - 1985"}),
+            (period, {"denomination": "50 centavos", "value": 50, "unit": "centavos", "issuePeriod": "1969 - 1979"}),
+            (period, {"denomination": "1 escudo", "value": 1, "unit": "escudo", "issuePeriod": "1927 - 1968"}),
+        ]
+
+        ordered = import_base44_coins.ordered_coin_entries(
+            entries, value_then_issue=True
+        )
+
+        self.assertEqual(
+            [
+                (coin["denomination"], coin["issuePeriod"])
+                for _period, coin in ordered
+            ],
+            [
+                ("50 centavos", "1969 - 1979"),
+                ("1 escudo", "1927 - 1968"),
+                ("1 escudo", "1986 - 2001"),
+                ("2.5 escudos", "1963 - 1985"),
+                ("5 escudos", "1986 - 2001"),
+            ],
+        )
+
+    def test_portugal_thousands_label_overrides_truncated_numeric_value(self) -> None:
+        key = import_base44_coins.denomination_value_sort_key(
+            {"denomination": "10.000 reis", "value": 10, "unit": "reis"}
+        )
+
+        self.assertEqual(key[0], 10000)
+
     def test_resolve_options_detects_india_continent(self) -> None:
         args = argparse.Namespace(country="", continent="", condition="Não Tenho")
         options = import_base44_coins.resolve_options(args, {"country": "Índia"})

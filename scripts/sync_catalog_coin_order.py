@@ -28,6 +28,7 @@ from scripts.import_base44_coins import (
     flatten_coins,
     format_duration,
     ordered_coin_entries,
+    VALUE_THEN_ISSUE_ORDER,
 )
 
 
@@ -100,7 +101,10 @@ def catalogue_order_specs(catalogue: dict[str, Any]) -> tuple[str, list[OrderSpe
     if not country:
         raise CoinOrderError("O país está ausente no catálogo.")
 
-    entries = ordered_coin_entries(flatten_coins(catalogue))
+    entries = ordered_coin_entries(
+        flatten_coins(catalogue),
+        value_then_issue=catalogue.get("coinOrder") == VALUE_THEN_ISSUE_ORDER,
+    )
     fallback_orders = fallback_catalog_orders(entries)
     specs_by_url: dict[str, OrderSpec] = {}
     for (period, coin), desired_order in zip(entries, fallback_orders, strict=True):

@@ -162,15 +162,65 @@ def issue_period_sort_key(coin: dict[str, Any]) -> tuple[int, int]:
     return (years[0], years[-1])
 
 
+VALUE_THEN_ISSUE_ORDER = "value_then_issue"
+_PORTUGAL_UNIT_SCALES = {
+    "centavo": 0.01,
+    "centavos": 0.01,
+    "cêntimo": 0.01,
+    "cêntimos": 0.01,
+    "cêntimo de euro": 0.01,
+    "cêntimos de euro": 0.01,
+    "escudo": 1.0,
+    "escudos": 1.0,
+    "euro": 1.0,
+    "euros": 1.0,
+    "real": 1.0,
+    "reis": 1.0,
+    "réis": 1.0,
+}
+
+
+def denomination_value_sort_key(coin: dict[str, Any]) -> tuple[float, str]:
+    """Return a monetary ordering key for an explicitly opted-in catalogue."""
+
+    denomination = normalized_denomination(coin.get("denomination"))
+    raw_value = coin.get("value")
+    thousands = re.match(r"^\s*(\d{1,3}(?:\.\d{3})+)\b", denomination)
+    if thousands is not None:
+        # uCoin may expose Portuguese thousands punctuation in the label while
+        # its numeric field contains only the leading component (10.000 -> 10).
+        raw_value = int(thousands.group(1).replace(".", ""))
+    if isinstance(raw_value, bool) or not isinstance(raw_value, (int, float)):
+        match = re.search(r"\d+(?:[.,]\d+)?", denomination)
+        if match is None:
+            raise ValueError(
+                f"Não foi possível ordenar a denominação por valor: {denomination!r}."
+            )
+        raw_value = float(match.group(0).replace(",", "."))
+    unit = normalized_denomination(coin.get("unit"))
+    if not unit:
+        unit = re.sub(r"^\s*\d+(?:[.,]\d+)?\s*", "", denomination)
+    scale = _PORTUGAL_UNIT_SCALES.get(unit)
+    if scale is None:
+        raise ValueError(
+            f"Unidade sem regra explícita para ordenação monetária: {unit!r}."
+        )
+    return (float(raw_value) * scale, denomination)
+
+
 def ordered_coin_entries(
     entries: list[tuple[dict[str, Any], dict[str, Any]]],
+    *,
+    value_then_issue: bool = False,
 ) -> list[tuple[dict[str, Any], dict[str, Any]]]:
     """Keep equal denominations together inside the same displayed period.
 
-    Period and denomination blocks retain their first catalogue appearance.
-    Inside each denomination block, issues are chronological. The period key is
-    the same notes value sent to Base44, because separate uCoin sections may be
-    displayed under the same period (for example, ``República Portuguesa``).
+    Period blocks retain their first catalogue appearance. Denominations either
+    retain their first appearance or, for an explicitly opted-in catalogue,
+    follow their monetary value. Inside each denomination block, issues are
+    chronological. The period key is the same notes value sent to Base44,
+    because separate uCoin sections may be displayed under the same period
+    (for example, ``República Portuguesa``).
     """
 
     period_order: dict[str, int] = {}
@@ -179,7 +229,7 @@ def ordered_coin_entries(
     decorated: list[
         tuple[
             int,
-            int,
+            tuple[Any, ...],
             tuple[int, int],
             int,
             tuple[dict[str, Any], dict[str, Any]],
@@ -198,10 +248,15 @@ def ordered_coin_entries(
             denomination_count_by_period[period_key] = (
                 denomination_order[group_key] + 1
             )
+        group_order: tuple[Any, ...]
+        if value_then_issue:
+            group_order = denomination_value_sort_key(coin)
+        else:
+            group_order = (denomination_order[group_key], denomination_key)
         decorated.append(
             (
                 period_order[period_key],
-                denomination_order[group_key],
+                group_order,
                 issue_period_sort_key(coin),
                 source_index,
                 entry,
@@ -774,7 +829,10 @@ def main() -> int:
     entries = flatten_coins(catalogue)
     if args.limit > 0:
         entries = entries[: args.limit]
-    entries = ordered_coin_entries(entries)
+    entries = ordered_coin_entries(
+        entries,
+        value_then_issue=catalogue.get("coinOrder") == VALUE_THEN_ISSUE_ORDER,
+    )
     fallback_orders = fallback_catalog_orders(entries)
     records = [
         to_coin_record(entry, options, fallback_order)
