@@ -229,6 +229,39 @@ class ImportBase44CoinsTests(unittest.TestCase):
             with self.assertRaisesRegex(RuntimeError, "Network is unreachable"):
                 client.bulk_create([{"name": "5 cêntimos"}])
 
+    def test_request_sends_personal_access_token_as_bearer(self) -> None:
+        client = import_base44_coins.Base44Client(
+            "app-id",
+            "personal-access-token",
+            request_delay_seconds=0,
+            rate_limit_delay_seconds=0,
+            max_retries=0,
+        )
+
+        class Response:
+            def __enter__(self):
+                return self
+
+            def __exit__(self, *_args):
+                return False
+
+            def read(self):
+                return b"[]"
+
+        captured = []
+
+        def open_request(request, timeout):
+            captured.append((request, timeout))
+            return Response()
+
+        with patch("scripts.import_base44_coins.urlopen", side_effect=open_request):
+            self.assertEqual(client.filter({"country": "Portugal"}), [])
+
+        request, timeout = captured[0]
+        self.assertEqual(request.get_header("Authorization"), "Bearer personal-access-token")
+        self.assertIsNone(request.get_header("Api_key"))
+        self.assertEqual(timeout, 60)
+
     def test_a_missing_url_in_base44_is_created_once(self) -> None:
         client = FakeCoinClient()
         record = self.coin(1)

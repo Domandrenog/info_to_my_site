@@ -117,7 +117,10 @@ def fetch_entity_records(
     skip = 0
     while True:
         page += 1
-        result = client.filter({}, limit=page_size, skip=skip)
+        # Base44's default order is ``-created_date``. Many bulk-created rows
+        # share that timestamp, so a skip boundary can otherwise repeat or omit
+        # records. The immutable unique ID provides a deterministic total order.
+        result = client.filter({}, limit=page_size, skip=skip, sort="id")
         if not isinstance(result, list):
             raise RuntimeError(f"{entity}: resposta inesperada do Site Base44: {result!r}")
         page_records = [record for record in result if isinstance(record, dict)]

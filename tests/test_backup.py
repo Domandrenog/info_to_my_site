@@ -15,8 +15,8 @@ class FakeClient:
         self.records = records
         self.calls = []
 
-    def filter(self, query, *, limit, skip):
-        self.calls.append((query, limit, skip))
+    def filter(self, query, *, limit, skip, sort=""):
+        self.calls.append((query, limit, skip, sort))
         return self.records[skip : skip + limit]
 
 
@@ -52,6 +52,20 @@ class Base44BackupTests(unittest.TestCase):
                 page_size=2,
                 output_fn=lambda _message: None,
             )
+
+    def test_pagination_uses_a_stable_unique_sort(self) -> None:
+        client = FakeClient([{"id": "1"}, {"id": "2"}, {"id": "3"}])
+
+        records, pages = backup.fetch_entity_records(
+            client,
+            "Coin",
+            page_size=2,
+            output_fn=lambda _message: None,
+        )
+
+        self.assertEqual([record["id"] for record in records], ["1", "2", "3"])
+        self.assertEqual(pages, 2)
+        self.assertTrue(all(call[3] == "id" for call in client.calls))
 
     def test_complete_views_attach_variants_and_who_found_each_item(self) -> None:
         views, summary = backup.build_complete_item_views(
@@ -272,7 +286,7 @@ class Base44BackupTests(unittest.TestCase):
             self.assertTrue(
                 (destination / "america" / "eua" / "souvenir.json").exists()
             )
-            self.assertEqual(clients["Coin"].calls[-1], ({}, 1, 2))
+            self.assertEqual(clients["Coin"].calls[-1], ({}, 1, 2, "id"))
 
 
 if __name__ == "__main__":

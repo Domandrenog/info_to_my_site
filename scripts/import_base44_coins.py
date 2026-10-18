@@ -354,7 +354,7 @@ class Base44Client:
                 "Accept": "application/json",
                 "Content-Type": "application/json",
                 "X-App-Id": self.app_id,
-                "api_key": self.api_key,
+                "Authorization": f"Bearer {self.api_key}",
             },
         )
         for attempt in range(self.max_retries + 1):
@@ -386,8 +386,21 @@ class Base44Client:
                 raise RuntimeError(f"Base44 request failed: {exc.reason}") from exc
         raise RuntimeError("Base44 request failed after retries")
 
-    def filter(self, query: dict[str, Any], limit: int = 1, skip: int = 0) -> Any:
-        params = urlencode({"q": json.dumps(query, ensure_ascii=False), "limit": str(limit), "skip": str(skip)})
+    def filter(
+        self,
+        query: dict[str, Any],
+        limit: int = 1,
+        skip: int = 0,
+        sort: str = "",
+    ) -> Any:
+        values = {
+            "q": json.dumps(query, ensure_ascii=False),
+            "limit": str(limit),
+            "skip": str(skip),
+        }
+        if sort:
+            values["sort"] = sort
+        params = urlencode(values)
         return self.request("GET", f"{self.base_url}?{params}")
 
     def delete_many(self, query: dict[str, Any]) -> Any:
