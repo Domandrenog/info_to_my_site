@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Generate the public catalogue of USA collection coins from a verified backup.
+"""Generate a public catalogue of collection coins from a verified backup.
 
 The generated catalogue is the ``SpecialCoin`` equivalent of the normal
 ``app-catalog.json``.  It deliberately contains only descriptive catalogue
@@ -62,6 +62,10 @@ def parse_args(argv: list[str] | None = None) -> argparse.Namespace:
     )
     parser.add_argument("--backup-root", type=Path, default=DEFAULT_BACKUP_ROOT)
     parser.add_argument("--output", type=Path, default=DEFAULT_OUTPUT)
+    parser.add_argument("--source-export", type=Path, default=SOURCE_EXPORT)
+    parser.add_argument("--country", default=COUNTRY_NAME)
+    parser.add_argument("--site-country", default=SITE_COUNTRY)
+    parser.add_argument("--continent", default=CONTINENT)
     parser.add_argument(
         "--check",
         action="store_true",
@@ -128,7 +132,13 @@ def parse_checksums(path: Path) -> dict[str, str]:
     return checksums
 
 
-def load_verified_export(backup_directory: Path) -> list[dict[str, Any]]:
+def load_verified_export(
+    backup_directory: Path,
+    *,
+    source_export: Path = SOURCE_EXPORT,
+    site_country: str = SITE_COUNTRY,
+    continent: str = CONTINENT,
+) -> list[dict[str, Any]]:
     manifest_path = backup_directory / "manifest.json"
     manifest = read_json(manifest_path)
     if not isinstance(manifest, dict) or manifest.get("status") != "complete":
@@ -144,33 +154,39 @@ def load_verified_export(backup_directory: Path) -> list[dict[str, Any]]:
     matches = [
         item
         for item in exports
-        if isinstance(item, dict) and item.get("file") == SOURCE_EXPORT.as_posix()
+        if isinstance(item, dict) and item.get("file") == source_export.as_posix()
     ]
     if len(matches) != 1:
         raise SpecialCatalogError(
-            f"Era esperado exatamente um export {SOURCE_EXPORT}; encontrados: {len(matches)}."
+            f"Era esperado exatamente um export {source_export}; encontrados: {len(matches)}."
         )
     metadata = matches[0]
     if (
-        metadata.get("country") != SITE_COUNTRY
-        or metadata.get("continent") != CONTINENT
+        metadata.get("country") != site_country
+        or metadata.get("continent") != continent
         or metadata.get("kind") != "collection"
     ):
-        raise SpecialCatalogError("Os metadados do catálogo dos EUA não são canónicos.")
+        raise SpecialCatalogError(
+            f"Os metadados do catálogo de {site_country} não são canónicos."
+        )
 
-    source_path = backup_directory / SOURCE_EXPORT
+    source_path = backup_directory / source_export
     if not source_path.is_file():
-        raise SpecialCatalogError(f"Falta o export de coleção dos EUA: {source_path}")
+        raise SpecialCatalogError(
+            f"Falta o export de coleção de {site_country}: {source_path}"
+        )
     digest = sha256_file(source_path)
     if metadata.get("sha256") != digest:
         raise SpecialCatalogError("O checksum do export não corresponde ao manifest.")
     checksums = parse_checksums(backup_directory / "SHA256SUMS")
-    if checksums.get(SOURCE_EXPORT.as_posix()) != digest:
+    if checksums.get(source_export.as_posix()) != digest:
         raise SpecialCatalogError("O checksum do export não corresponde a SHA256SUMS.")
 
     entries = read_json(source_path)
     if not isinstance(entries, list) or not entries:
-        raise SpecialCatalogError("O export de coleção dos EUA está vazio ou é inválido.")
+        raise SpecialCatalogError(
+            f"O export de coleção de {site_country} está vazio ou é inválido."
+        )
     if metadata.get("records") != len(entries):
         raise SpecialCatalogError("A contagem do export não corresponde ao manifest.")
     return entries
@@ -185,6 +201,16 @@ def _required_text(record: dict[str, Any], field: str) -> str:
     return value.strip()
 
 
+def _image_url(record: dict[str, Any], field: str) -> str:
+    """Return a normalized image URL while preserving a known missing photo."""
+    value = record.get(field)
+    if not isinstance(value, str):
+        raise SpecialCatalogError(
+            f"Campo de fotografia inválido em SpecialCoin: {field}={value!r}"
+        )
+    return value.strip()
+
+
 def _coin_sort_key(coin: dict[str, Any]) -> tuple[Any, ...]:
     return (
         coin["order"],
@@ -194,7 +220,13 @@ def _coin_sort_key(coin: dict[str, Any]) -> tuple[Any, ...]:
     )
 
 
-def build_catalog(entries: list[dict[str, Any]]) -> dict[str, Any]:
+def build_catalog(
+    entries: list[dict[str, Any]],
+    *,
+    country_name: str = COUNTRY_NAME,
+    site_country: str = SITE_COUNTRY,
+    continent: str = CONTINENT,
+) -> dict[str, Any]:
     programmes: dict[str, list[dict[str, Any]]] = defaultdict(list)
     identities: set[tuple[str, str, str]] = set()
     urls: set[str] = set()
@@ -213,7 +245,7 @@ def build_catalog(entries: list[dict[str, Any]]) -> dict[str, Any]:
             raise SpecialCatalogError(
                 "SpecialCoin sem campos obrigatórios: " + ", ".join(missing_fields)
             )
-        if record.get("country") != SITE_COUNTRY or record.get("continent") != CONTINENT:
+        if record.get("country") != site_country or record.get("continent") != continent:
             raise SpecialCatalogError("O export contém uma SpecialCoin de outro país.")
 
         parent_id = _required_text(record, "id")
@@ -226,8 +258,8 @@ def build_catalog(entries: list[dict[str, Any]]) -> dict[str, Any]:
         year = _required_text(record, "year")
         programme = _required_text(record, "notes")
         detail_url = _required_text(record, "url_ucoin")
-        obverse_image = _required_text(record, "image_frente")
-        reverse_image = _required_text(record, "image_verso")
+        obverse_image = _image_url(record, "image_frente")
+        reverse_image = _image_url(record, "image_verso")
         order = record.get("ordem")
         if not isinstance(order, int):
             raise SpecialCatalogError(f"Ordem inválida em {denomination}: {order!r}")
@@ -296,9 +328,9 @@ def build_catalog(entries: list[dict[str, Any]]) -> dict[str, Any]:
     return {
         "formatVersion": CATALOG_FORMAT_VERSION,
         "catalogType": "special",
-        "country": COUNTRY_NAME,
-        "siteCountry": SITE_COUNTRY,
-        "continent": CONTINENT,
+        "country": country_name,
+        "siteCountry": site_country,
+        "continent": continent,
         "programmes": public_programmes,
         "summary": {
             "programmes": len(public_programmes),
@@ -330,7 +362,17 @@ def main(argv: list[str] | None = None) -> int:
     backup_directory = resolve_backup_directory(
         backup=args.backup, backup_root=args.backup_root
     )
-    catalog = build_catalog(load_verified_export(backup_directory))
+    catalog = build_catalog(
+        load_verified_export(
+            backup_directory,
+            source_export=args.source_export,
+            site_country=args.site_country,
+            continent=args.continent,
+        ),
+        country_name=args.country,
+        site_country=args.site_country,
+        continent=args.continent,
+    )
     content = json_bytes(catalog)
 
     if args.check:

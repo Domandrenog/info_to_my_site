@@ -1,0 +1,276 @@
+{
+  "formatVersion": 1,
+  "catalogType": "special",
+  "country": "Portugal",
+  "siteCountry": "Portugal",
+  "continent": "Europa",
+  "programmes": [
+    {
+      "title": "ECU",
+      "coins": [
+        {
+          "denomination": "2½ ECUs",
+          "commemorativeName": "Infante D. Henrique \"O Navegador\"",
+          "year": "1991",
+          "order": 1,
+          "detailUrl": "https://pt.ucoin.net/coin/portugal-2-1-2-ecu-1991/?tid=76446",
+          "numistaUrl": "",
+          "obverseImage": "https://raw.githubusercontent.com/Domandrenog/All_Coins/main/fotos/paises/Europa/Portugal/normal/frente/portugal-2-1-2-ecu-1991.jpg",
+          "reverseImage": "https://raw.githubusercontent.com/Domandrenog/All_Coins/main/fotos/paises/Europa/Portugal/normal/tras/portugal-2-1-2-ecu-1991.jpg",
+          "hidden": false,
+          "hasVariants": false,
+          "variants": []
+        },
+        {
+          "denomination": "2½ ECUs",
+          "commemorativeName": "João II",
+          "year": "1992",
+          "order": 2,
+          "detailUrl": "https://pt.ucoin.net/coin/portugal-2-1-2-ecu-1992/?tid=76454",
+          "numistaUrl": "",
+          "obverseImage": "https://raw.githubusercontent.com/Domandrenog/All_Coins/main/fotos/paises/Europa/Portugal/normal/frente/portugal-2-1-2-ecu-1992.jpg",
+          "reverseImage": "https://raw.githubusercontent.com/Domandrenog/All_Coins/main/fotos/paises/Europa/Portugal/normal/tras/portugal-2-1-2-ecu-1992.jpg",
+          "hidden": false,
+          "hasVariants": false,
+          "variants": []
+        },
+        {
+          "denomination": "2½ ECUs",
+          "commemorativeName": "Bartolomeu Dias",
+          "year": "1993",
+          "order": 3,
+          "detailUrl": "https://pt.ucoin.net/coin/portugal-2-1-2-ecu-1993/?tid=76577",
+          "numistaUrl": "",
+          "obverseImage": "https://raw.githubusercontent.com/Domandrenog/All_Coins/main/fotos/paises/Europa/Portugal/normal/frente/portugal-2-1-2-ecu-1993.jpg",
+          "reverseImage": "https://raw.githubusercontent.com/Domandrenog/All_Coins/main/fotos/paises/Europa/Portugal/normal/tras/portugal-2-1-2-ecu-1993.jpg",
+          "hidden": false,
+          "hasVariants": false,
+          "variants": []
+        },
+        {
+          "denomination": "2½ ECUs",
+          "commemorativeName": "Tesouros Numismáticos - Português de D. Manuel I",
+          "year": "1994",
+          "order": 4,
+          "detailUrl": "https://pt.ucoin.net/coin/portugal-2-1-2-ecu-1994/?tid=76456",
+          "numistaUrl": "",
+          "obverseImage": "https://raw.githubusercontent.com/Domandrenog/All_Coins/main/fotos/paises/Europa/Portugal/normal/frente/portugal-2-1-2-ecu-1994.jpg",
+          "reverseImage": "https://raw.githubusercontent.com/Domandrenog/All_Coins/main/fotos/paises/Europa/Portugal/normal/tras/portugal-2-1-2-ecu-1994.jpg",
+          "hidden": false,
+          "hasVariants": false,
+          "variants": []
+        },
+        {
+          "denomination": "2½ ECUs",
+          "commemorativeName": "Vasco da Gama",
+          "year": "1995",
+          "order": 5,
+          "detailUrl": "https://pt.ucoin.net/coin/portugal-2-1-2-ecu-1995/?tid=76250",
+          "numistaUrl": "",
+          "obverseImage": "https://raw.githubusercontent.com/Domandrenog/All_Coins/main/fotos/paises/Europa/Portugal/normal/frente/portugal-2-1-2-ecu-1995.jpg",
+          "reverseImage": "https://raw.githubusercontent.com/Domandrenog/All_Coins/main/fotos/paises/Europa/Portugal/normal/tras/portugal-2-1-2-ecu-1995.jpg",
+          "hidden": false,
+          "hasVariants": false,
+          "variants": []
+        },
+        {
+          "denomination": "2½ ECUs",
+          "commemorativeName": "Pedro Alvares Cabral",
+          "year": "1996",
+          "order": 6,
+          "detailUrl": "https://pt.ucoin.net/coin/portugal-2-1-2-ecu-1996/?tid=76238",
+          "numistaUrl": "",
+          "obverseImage": "https://raw.githubusercontent.com/Domandrenog/All_Coins/main/fotos/paises/Europa/Portugal/normal/frente/portugal-2-1-2-ecu-1996.jpg",
+          "reverseImage": "https://raw.githubusercontent.com/Domandrenog/All_Coins/main/fotos/paises/Europa/Portugal/normal/tras/portugal-2-1-2-ecu-1996.jpg",
+          "hidden": false,
+          "hasVariants": false,
+          "variants": []
+        },
+        {
+          "denomination": "5 euro",
+          "commemorativeName": "Filipa de Lencastre",
+          "year": "1996",
+          "order": 7,
+          "detailUrl": "https://pt.ucoin.net/coin/portugal-5-euro-1996/?tid=76581",
+          "numistaUrl": "",
+          "obverseImage": "https://raw.githubusercontent.com/Domandrenog/All_Coins/main/fotos/paises/Europa/Portugal/normal/frente/portugal-5-euro-1996.jpg",
+          "reverseImage": "https://raw.githubusercontent.com/Domandrenog/All_Coins/main/fotos/paises/Europa/Portugal/normal/tras/portugal-5-euro-1996.jpg",
+          "hidden": false,
+          "hasVariants": false,
+          "variants": []
+        },
+        {
+          "denomination": "2½ ECUs",
+          "commemorativeName": "Fernão de Magalhães",
+          "year": "1997",
+          "order": 8,
+          "detailUrl": "https://pt.ucoin.net/coin/portugal-2-1-2-ecu-1997/?tid=76237",
+          "numistaUrl": "",
+          "obverseImage": "https://raw.githubusercontent.com/Domandrenog/All_Coins/main/fotos/paises/Europa/Portugal/normal/frente/portugal-2-1-2-ecu-1997.jpg",
+          "reverseImage": "https://raw.githubusercontent.com/Domandrenog/All_Coins/main/fotos/paises/Europa/Portugal/normal/tras/portugal-2-1-2-ecu-1997.jpg",
+          "hidden": false,
+          "hasVariants": false,
+          "variants": []
+        },
+        {
+          "denomination": "5 euro",
+          "commemorativeName": "Isabel de Portugal",
+          "year": "1997",
+          "order": 9,
+          "detailUrl": "https://pt.ucoin.net/coin/portugal-5-euro-1997/?tid=76582",
+          "numistaUrl": "",
+          "obverseImage": "https://raw.githubusercontent.com/Domandrenog/All_Coins/main/fotos/paises/Europa/Portugal/normal/frente/portugal-5-euro-1997.jpg",
+          "reverseImage": "https://raw.githubusercontent.com/Domandrenog/All_Coins/main/fotos/paises/Europa/Portugal/normal/tras/portugal-5-euro-1997.jpg",
+          "hidden": false,
+          "hasVariants": false,
+          "variants": []
+        },
+        {
+          "denomination": "2½ ECUs",
+          "commemorativeName": "Afonso de Albuquerque",
+          "year": "1998",
+          "order": 10,
+          "detailUrl": "https://pt.ucoin.net/coin/portugal-2-1-2-ecu-1998/?tid=76251",
+          "numistaUrl": "",
+          "obverseImage": "https://raw.githubusercontent.com/Domandrenog/All_Coins/main/fotos/paises/Europa/Portugal/normal/frente/portugal-2-1-2-ecu-1998.jpg",
+          "reverseImage": "https://raw.githubusercontent.com/Domandrenog/All_Coins/main/fotos/paises/Europa/Portugal/normal/tras/portugal-2-1-2-ecu-1998.jpg",
+          "hidden": false,
+          "hasVariants": false,
+          "variants": []
+        },
+        {
+          "denomination": "2½ ECUs",
+          "commemorativeName": "Rainhas da Europa – D. Leonor de Portugal",
+          "year": "1998",
+          "order": 11,
+          "detailUrl": "https://pt.ucoin.net/coin/portugal-2-1-2-ecu-1998/?tid=108505",
+          "numistaUrl": "",
+          "obverseImage": "",
+          "reverseImage": "",
+          "hidden": false,
+          "hasVariants": false,
+          "variants": []
+        },
+        {
+          "denomination": "5 euro",
+          "commemorativeName": "Rainhas da Europa – D. Leonor de Portugal",
+          "year": "1998",
+          "order": 12,
+          "detailUrl": "https://pt.ucoin.net/coin/portugal-5-euro-1998/?tid=76583",
+          "numistaUrl": "",
+          "obverseImage": "https://raw.githubusercontent.com/Domandrenog/All_Coins/main/fotos/paises/Europa/Portugal/normal/frente/portugal-5-euro-1998.jpg",
+          "reverseImage": "https://raw.githubusercontent.com/Domandrenog/All_Coins/main/fotos/paises/Europa/Portugal/normal/tras/portugal-5-euro-1998.jpg",
+          "hidden": false,
+          "hasVariants": false,
+          "variants": []
+        }
+      ]
+    },
+    {
+      "title": "Região Autónoma dos Açores",
+      "coins": [
+        {
+          "denomination": "25 escudos",
+          "commemorativeName": "Região Autónoma dos Açores",
+          "year": "1981",
+          "order": 13,
+          "detailUrl": "https://pt.ucoin.net/coin/azores-25-escudos-1981/?tid=21647",
+          "numistaUrl": "",
+          "obverseImage": "https://raw.githubusercontent.com/Domandrenog/All_Coins/main/fotos/paises/Europa/Portugal/normal/frente/azores-25-escudos-1981.jpg",
+          "reverseImage": "https://raw.githubusercontent.com/Domandrenog/All_Coins/main/fotos/paises/Europa/Portugal/normal/tras/azores-25-escudos-1981.jpg",
+          "hidden": false,
+          "hasVariants": false,
+          "variants": []
+        },
+        {
+          "denomination": "100 escudos",
+          "commemorativeName": "Açores",
+          "year": "1981",
+          "order": 14,
+          "detailUrl": "https://pt.ucoin.net/coin/azores-100-escudos-1981/?tid=21512",
+          "numistaUrl": "",
+          "obverseImage": "https://raw.githubusercontent.com/Domandrenog/All_Coins/main/fotos/paises/Europa/Portugal/normal/frente/azores-100-escudos-1981.jpg",
+          "reverseImage": "https://raw.githubusercontent.com/Domandrenog/All_Coins/main/fotos/paises/Europa/Portugal/normal/tras/azores-100-escudos-1981.jpg",
+          "hidden": false,
+          "hasVariants": false,
+          "variants": []
+        },
+        {
+          "denomination": "100 escudos",
+          "commemorativeName": "Açores",
+          "year": "1986",
+          "order": 15,
+          "detailUrl": "https://pt.ucoin.net/coin/azores-100-escudos-1986/?tid=17784",
+          "numistaUrl": "",
+          "obverseImage": "https://raw.githubusercontent.com/Domandrenog/All_Coins/main/fotos/paises/Europa/Portugal/normal/frente/azores-100-escudos-1986.jpg",
+          "reverseImage": "https://raw.githubusercontent.com/Domandrenog/All_Coins/main/fotos/paises/Europa/Portugal/normal/tras/azores-100-escudos-1986.jpg",
+          "hidden": false,
+          "hasVariants": false,
+          "variants": []
+        },
+        {
+          "denomination": "100 escudos",
+          "commemorativeName": "Portugal Universal – Antero de Quental",
+          "year": "1991",
+          "order": 16,
+          "detailUrl": "https://pt.ucoin.net/coin/azores-100-escudos-1991/?tid=16923",
+          "numistaUrl": "",
+          "obverseImage": "https://raw.githubusercontent.com/Domandrenog/All_Coins/main/fotos/paises/Europa/Portugal/normal/frente/azores-100-escudos-1991.jpg",
+          "reverseImage": "https://raw.githubusercontent.com/Domandrenog/All_Coins/main/fotos/paises/Europa/Portugal/normal/tras/azores-100-escudos-1991.jpg",
+          "hidden": false,
+          "hasVariants": false,
+          "variants": []
+        },
+        {
+          "denomination": "100 escudos",
+          "commemorativeName": "Autonomia dos Açores",
+          "year": "1995",
+          "order": 17,
+          "detailUrl": "https://pt.ucoin.net/coin/azores-100-escudos-1995/?tid=16924",
+          "numistaUrl": "",
+          "obverseImage": "https://raw.githubusercontent.com/Domandrenog/All_Coins/main/fotos/paises/Europa/Portugal/normal/frente/azores-100-escudos-1995.jpg",
+          "reverseImage": "https://raw.githubusercontent.com/Domandrenog/All_Coins/main/fotos/paises/Europa/Portugal/normal/tras/azores-100-escudos-1995.jpg",
+          "hidden": false,
+          "hasVariants": false,
+          "variants": []
+        }
+      ]
+    },
+    {
+      "title": "Região Autónoma da Madeira",
+      "coins": [
+        {
+          "denomination": "25 escudos",
+          "commemorativeName": "Região Autónoma da Madeira",
+          "year": "1981",
+          "order": 18,
+          "detailUrl": "https://pt.ucoin.net/coin/madeira_islands-25-escudos-1981/?tid=29018",
+          "numistaUrl": "",
+          "obverseImage": "https://raw.githubusercontent.com/Domandrenog/All_Coins/main/fotos/paises/Europa/Portugal/normal/frente/madeira-islands-25-escudos-1981.jpg",
+          "reverseImage": "https://raw.githubusercontent.com/Domandrenog/All_Coins/main/fotos/paises/Europa/Portugal/normal/tras/madeira-islands-25-escudos-1981.jpg",
+          "hidden": false,
+          "hasVariants": false,
+          "variants": []
+        },
+        {
+          "denomination": "100 escudos",
+          "commemorativeName": "Região Autónoma da Madeira",
+          "year": "1981",
+          "order": 19,
+          "detailUrl": "https://pt.ucoin.net/coin/madeira_islands-100-escudos-1981/?tid=21513",
+          "numistaUrl": "",
+          "obverseImage": "https://raw.githubusercontent.com/Domandrenog/All_Coins/main/fotos/paises/Europa/Portugal/normal/frente/madeira-islands-100-escudos-1981.jpg",
+          "reverseImage": "https://raw.githubusercontent.com/Domandrenog/All_Coins/main/fotos/paises/Europa/Portugal/normal/tras/madeira-islands-100-escudos-1981.jpg",
+          "hidden": false,
+          "hasVariants": false,
+          "variants": []
+        }
+      ]
+    }
+  ],
+  "summary": {
+    "programmes": 3,
+    "coins": 19,
+    "variants": 0
+  }
+}

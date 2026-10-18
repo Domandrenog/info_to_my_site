@@ -8,6 +8,9 @@ from scripts import generate_special_app_catalog as generator
 
 
 CATALOG_PATH = Path("info/paises/america/eua/special-app-catalog.json")
+PORTUGAL_CATALOG_PATH = Path(
+    "info/paises/europa/portugal/special-app-catalog.json"
+)
 PRIVATE_FIELDS = {
     "id",
     "special_coin_id",
@@ -88,6 +91,42 @@ class GenerateSpecialAppCatalogTests(unittest.TestCase):
         with self.assertRaisesRegex(generator.SpecialCatalogError, "pai errado"):
             generator.build_catalog([entry])
 
+    def test_build_catalog_supports_portugal_without_changing_usa_defaults(self) -> None:
+        entry = backup_entry()
+        entry["record"].update(
+            {
+                "country": "Portugal",
+                "continent": "Europa",
+                "name": "2½ ECUs",
+                "commemorative_name": 'Infante D. Henrique "O Navegador"',
+                "year": "1991",
+                "notes": "ECU",
+            }
+        )
+
+        catalog = generator.build_catalog(
+            [entry],
+            country_name="Portugal",
+            site_country="Portugal",
+            continent="Europa",
+        )
+
+        self.assertEqual(catalog["country"], "Portugal")
+        self.assertEqual(catalog["siteCountry"], "Portugal")
+        self.assertEqual(catalog["continent"], "Europa")
+        self.assertEqual(catalog["programmes"][0]["title"], "ECU")
+
+    def test_build_catalog_preserves_known_missing_photos(self) -> None:
+        entry = backup_entry()
+        entry["record"]["image_frente"] = ""
+        entry["record"]["image_verso"] = ""
+
+        catalog = generator.build_catalog([entry])
+
+        coin = catalog["programmes"][0]["coins"][0]
+        self.assertEqual(coin["obverseImage"], "")
+        self.assertEqual(coin["reverseImage"], "")
+
     def test_committed_catalog_has_the_complete_current_scope(self) -> None:
         catalog = json.loads(CATALOG_PATH.read_text(encoding="utf-8"))
 
@@ -122,6 +161,33 @@ class GenerateSpecialAppCatalogTests(unittest.TestCase):
         self.assertEqual(names[21], "22nd - Grover Cleveland")
         self.assertEqual(names[23], "24th - Grover Cleveland")
         self.assertEqual(names[-1], "41st - George Herbert Walker Bush")
+
+    def test_committed_portugal_catalog_has_the_migrated_collection(self) -> None:
+        catalog = json.loads(PORTUGAL_CATALOG_PATH.read_text(encoding="utf-8"))
+
+        self.assertEqual(catalog["country"], "Portugal")
+        self.assertEqual(catalog["siteCountry"], "Portugal")
+        self.assertEqual(catalog["continent"], "Europa")
+        self.assertEqual(
+            catalog["summary"], {"programmes": 3, "coins": 19, "variants": 0}
+        )
+        self.assertEqual(
+            [programme["title"] for programme in catalog["programmes"]],
+            ["ECU", "Região Autónoma dos Açores", "Região Autónoma da Madeira"],
+        )
+        coins = [
+            coin
+            for programme in catalog["programmes"]
+            for coin in programme["coins"]
+        ]
+        self.assertEqual([coin["order"] for coin in coins], list(range(1, 20)))
+        self.assertEqual(
+            sum(not coin["obverseImage"] or not coin["reverseImage"] for coin in coins),
+            1,
+        )
+        serialized = json.dumps(catalog, ensure_ascii=False)
+        for field in PRIVATE_FIELDS:
+            self.assertNotIn(f'"{field}"', serialized)
 
 
 if __name__ == "__main__":
