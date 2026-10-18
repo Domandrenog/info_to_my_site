@@ -3,6 +3,7 @@ from __future__ import annotations
 import unittest
 
 from scripts.ucoin_catalog import (
+    apply_coin_type_to_catalog_url,
     classify_circulation_type,
     filter_periods_by_coin_type,
 )
@@ -63,6 +64,26 @@ class UCoinCoinTypeFilterTests(unittest.TestCase):
 
         self.assertEqual(len(periods[0]["coins"]), 5)
         self.assertEqual(summary["excluded"], 0)
+
+    def test_catalog_url_selects_the_ucoin_category_before_scraping(self) -> None:
+        base = "https://pt.ucoin.net/catalog/?country=portugal&page=2&type=3"
+
+        self.assertEqual(
+            apply_coin_type_to_catalog_url(base, "normal"),
+            "https://pt.ucoin.net/catalog/?country=portugal&page=2&type=1",
+        )
+        self.assertEqual(
+            apply_coin_type_to_catalog_url(base, "commemorative"),
+            "https://pt.ucoin.net/catalog/?country=portugal&page=2&type=2",
+        )
+        self.assertEqual(
+            apply_coin_type_to_catalog_url(base, "collection"),
+            "https://pt.ucoin.net/catalog/?country=portugal&page=2&type=3",
+        )
+        self.assertEqual(
+            apply_coin_type_to_catalog_url(base, "all"),
+            "https://pt.ucoin.net/catalog/?country=portugal&page=2",
+        )
 
 
 if __name__ == "__main__":

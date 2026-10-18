@@ -19,7 +19,7 @@ import unicodedata
 from pathlib import Path
 from shutil import which
 from urllib.error import URLError
-from urllib.parse import parse_qs, quote, urljoin, urlparse
+from urllib.parse import parse_qs, parse_qsl, quote, urlencode, urljoin, urlparse, urlunparse
 from urllib.request import urlopen
 
 PROJECT_ROOT = Path(__file__).resolve().parent.parent
@@ -37,6 +37,11 @@ COIN_TYPE_LABELS = {
     "normal": "Circulação normal",
     "commemorative": "Comemorativa",
     "collection": "Moeda de coleção",
+}
+UCOIN_CATALOG_TYPE_VALUES = {
+    "normal": "1",
+    "commemorative": "2",
+    "collection": "3",
 }
 
 
@@ -233,6 +238,38 @@ def build_country_url(base_url: str, country: str, country_link_name: str = "") 
     if "country=" in base_url:
         return base_url
     return f"{base_url.rstrip('/')}/?country={country_slug}" if base_url.endswith("catalog/") else f"{base_url}{separator}country={country_slug}"
+
+
+def apply_coin_type_to_catalog_url(url: str, coin_type: str) -> str:
+    """Select the requested category on uCoin before pagination starts.
+
+    Filtering the parsed rows alone is insufficient because the unfiltered
+    catalogue can omit whole categories or mix rows from related territories.
+    The explicit uCoin ``type`` query is therefore the first safety boundary;
+    ``filter_periods_by_coin_type`` remains a second, fail-closed boundary.
+    """
+
+    if coin_type not in COIN_TYPE_CHOICES:
+        raise ValueError(f"Tipo de moeda uCoin inválido: {coin_type}")
+    parsed = urlparse(url)
+    query = [
+        (key, value)
+        for key, value in parse_qsl(parsed.query, keep_blank_values=True)
+        if key != "type"
+    ]
+    type_value = UCOIN_CATALOG_TYPE_VALUES.get(coin_type)
+    if type_value is not None:
+        query.append(("type", type_value))
+    return urlunparse(
+        (
+            parsed.scheme,
+            parsed.netloc,
+            parsed.path,
+            parsed.params,
+            urlencode(query),
+            parsed.fragment,
+        )
+    )
 
 
 def auto_scroll(page) -> None:
@@ -859,7 +896,11 @@ def scrape_catalog(args: argparse.Namespace, output_dir: Path) -> dict[str, obje
     if manual_session and args.headless:
         raise RuntimeError("--headless não pode ser usado com sessão manual ativa. Usa --no-manual-session.")
 
-    page_url = build_country_url(args.base_url, args.country, args.country_link_name)
+    coin_type = getattr(args, "coin_type", "normal")
+    page_url = apply_coin_type_to_catalog_url(
+        build_country_url(args.base_url, args.country, args.country_link_name),
+        coin_type,
+    )
     report: dict[str, object] = {
         "country": args.country,
         "period": args.period,
@@ -937,7 +978,6 @@ def scrape_catalog(args: argparse.Namespace, output_dir: Path) -> dict[str, obje
 
             report["country"] = crawl_result.get("country") or report["country"]
             report["startYearFilter"] = args.start_year
-            coin_type = getattr(args, "coin_type", "normal")
             year_filtered_periods = filter_periods_by_start_year(
                 crawl_result["periods"], args.start_year
             )

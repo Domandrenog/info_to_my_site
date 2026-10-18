@@ -63,13 +63,22 @@ def read_catalog(path: Path) -> list[dict[str, Any]]:
     periods = payload.get("periods") if isinstance(payload, dict) else None
     if not isinstance(periods, list):
         raise RuntimeError("Catálogo sem periods.")
-    coins = [
-        coin
-        for period in periods
-        if isinstance(period, dict)
-        for coin in period.get("coins", [])
-        if isinstance(coin, dict)
-    ]
+    catalog_country = str(payload.get("country") or "").strip()
+    coins: list[dict[str, Any]] = []
+    for period in periods:
+        if not isinstance(period, dict):
+            continue
+        period_country = str(period.get("country") or catalog_country).strip()
+        for coin in period.get("coins", []):
+            if not isinstance(coin, dict):
+                continue
+            coins.append(
+                {
+                    **coin,
+                    "_catalogCountry": catalog_country,
+                    "_periodCountry": period_country,
+                }
+            )
     if not coins:
         raise RuntimeError("Catálogo sem moedas.")
     return coins
@@ -83,19 +92,38 @@ def expected_tid(url: str) -> int | None:
         return None
 
 
-def valid_detail_item(item: dict[str, Any]) -> bool:
+def valid_detail_item(
+    item: dict[str, Any], source_coin: dict[str, Any] | None = None
+) -> bool:
     url = str(item.get("detailUrl") or "")
     tid = expected_tid(url)
-    h1 = str(item.get("h1") or "").casefold()
+    h1 = str(item.get("h1") or "").strip().casefold()
+    expected_countries = {
+        str(value or "").strip().casefold()
+        for value in (
+            (source_coin or {}).get("_catalogCountry"),
+            (source_coin or {}).get("_periodCountry"),
+            item.get("catalogCountry"),
+            item.get("periodCountry"),
+        )
+        if str(value or "").strip()
+    }
+    country_matches = any(
+        h1 == country or h1.startswith(f"{country} ")
+        for country in expected_countries
+    )
     return (
         tid is not None
         and item.get("ucoinTypeId") == tid
-        and (h1.startswith("estados unidos da américa ") or h1.startswith("usa "))
+        and bool(expected_countries)
+        and country_matches
         and bool(str(item.get("subject") or "").strip())
     )
 
 
-def read_existing(path: Path) -> tuple[dict[str, dict[str, Any]], int]:
+def read_existing(
+    path: Path, coins_by_url: dict[str, dict[str, Any]]
+) -> tuple[dict[str, dict[str, Any]], int]:
     if not path.exists():
         return {}, 0
     payload = json.loads(path.read_text(encoding="utf-8"))
@@ -107,7 +135,8 @@ def read_existing(path: Path) -> tuple[dict[str, dict[str, Any]], int]:
     for item in items:
         if not isinstance(item, dict) or not item.get("detailUrl"):
             raise RuntimeError("Output existente contém um item inválido.")
-        if not valid_detail_item(item):
+        source_coin = coins_by_url.get(str(item["detailUrl"]))
+        if source_coin is None or not valid_detail_item(item, source_coin):
             rejected += 1
             continue
         result[str(item["detailUrl"])] = item
@@ -150,8 +179,7 @@ def extract_metadata(page: Any) -> dict[str, Any]:
           ]);
           const h1 = clean(document.querySelector('h1')?.textContent);
           const subject = headings.find((value) =>
-            !ignored.has(value) && value !== h1 &&
-            !/^(Estados Unidos da América|USA)\s+.+\d{4}/i.test(value)
+            !ignored.has(value) && value !== h1
           ) || '';
           return {documentTitle: document.title, h1, subject, headings};
         }
@@ -180,9 +208,11 @@ def collect_one(
                 "detailUrl": url,
                 "finalUrl": page.url,
                 "status": status,
+                "catalogCountry": coin.get("_catalogCountry"),
+                "periodCountry": coin.get("_periodCountry"),
                 **metadata,
             }
-            if not valid_detail_item(result):
+            if not valid_detail_item(result, coin):
                 raise RuntimeError(
                     f"Conteúdo inesperado ou bloqueado: {metadata.get('h1')!r}"
                 )
@@ -207,7 +237,12 @@ def run(args: argparse.Namespace) -> int:
 
     coins = read_catalog(args.catalog)
     selected = coins[: args.max_items] if args.max_items > 0 else coins
-    existing, rejected = read_existing(args.output)
+    coins_by_url = {
+        str(coin.get("detailUrl") or "").strip(): coin
+        for coin in coins
+        if str(coin.get("detailUrl") or "").strip()
+    }
+    existing, rejected = read_existing(args.output, coins_by_url)
     if rejected:
         print(
             f"Descartadas {rejected} respostas inválidas/bloqueadas do progresso anterior."
