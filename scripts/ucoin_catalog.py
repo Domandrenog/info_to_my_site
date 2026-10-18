@@ -358,6 +358,47 @@ def finalize_variant_rows(
     }
 
 
+def parse_variant_table_cells(
+    *,
+    mode: str,
+    cells: list[str],
+    issue_period: str,
+    display_mark: str = "",
+) -> dict[str, str] | None:
+    """Map the visible uCoin mintage columns without shifting UNC/BU/Proof.
+
+    Multi-year rows are ``year, UNC, BU, Proof, rarity, price``. Single-year
+    rows may either include a separate mint-mark column or contain only the
+    mint description followed by UNC, BU and Proof.
+    """
+
+    if mode == "multi":
+        if len(cells) < 4 or not re.fullmatch(r"\d{4}", cells[0]):
+            return None
+        year = cells[0]
+        unc, bu, proof = cells[1:4]
+        mark = display_mark
+    elif mode == "single":
+        year = issue_period.strip()
+        if len(cells) >= 5:
+            mark = cells[1]
+            unc, bu, proof = cells[2:5]
+        elif len(cells) >= 4:
+            mark = ""
+            unc, bu, proof = cells[1:4]
+        else:
+            return None
+    else:
+        raise RuntimeError(f"Modo de tabela de variantes inválido: {mode}.")
+    return {
+        "year": year,
+        "mark": mark,
+        "unc": unc,
+        "bu": bu,
+        "proof": proof,
+    }
+
+
 def extract_coin_variants(page, issue_period: str, detail_url: str) -> dict[str, object]:
     """Read one uCoin mintage table without treating Proof-only rows as variants."""
 
@@ -405,27 +446,22 @@ def extract_coin_variants(page, issue_period: str, detail_url: str) -> dict[str,
     for row in selected.locator("tbody tr").all():
         cells = [" ".join(cell.inner_text().split()) for cell in row.locator("th,td").all()]
         if mode == "multi":
-            if len(cells) < 5 or not re.fullmatch(r"\d{4}", cells[0]):
-                continue
-            year, generic_mark, unc, bu, proof = cells[:5]
             row_id = row.get_attribute("id") or ""
             display = display_by_row_id.get(row_id, {})
-            mark = display.get("mark", generic_mark)
+            parsed = parse_variant_table_cells(
+                mode=mode,
+                cells=cells,
+                issue_period=issue_period,
+                display_mark=display.get("mark", ""),
+            )
         else:
-            if len(cells) < 5:
-                continue
-            year = issue_period.strip()
-            mark = cells[1]
-            unc, bu, proof = cells[2:5]
-        rows.append(
-            {
-                "year": year,
-                "mark": mark,
-                "unc": unc,
-                "bu": bu,
-                "proof": proof,
-            }
-        )
+            parsed = parse_variant_table_cells(
+                mode=mode,
+                cells=cells,
+                issue_period=issue_period,
+            )
+        if parsed is not None:
+            rows.append(parsed)
     return finalize_variant_rows(issue_period, rows, detail_url)
 
 

@@ -4,6 +4,7 @@
 from __future__ import annotations
 
 import argparse
+from copy import deepcopy
 import json
 from pathlib import Path
 from typing import Any
@@ -57,6 +58,12 @@ def parse_args(argv: list[str] | None = None) -> argparse.Namespace:
         action="store_true",
         help="Volta a consultar moedas que já tenham metadados de variantes.",
     )
+    parser.add_argument(
+        "--detail-url",
+        action="append",
+        default=[],
+        help="Limita a recolha ao URL uCoin exato; pode ser repetido.",
+    )
     return parser.parse_args(argv)
 
 
@@ -79,10 +86,65 @@ def catalog_coins(catalogue: dict[str, Any], catalog_type: str) -> list[dict[str
         for coin in group.get("coins", [])
         if isinstance(coin, dict)
     ]
-    urls = [str(coin.get("detailUrl") or "").strip() for coin in result]
-    if any(not url for url in urls) or len(urls) != len(set(urls)):
-        raise CatalogVariantError("O catálogo contém URLs uCoin ausentes ou repetidos.")
-    return result
+    unique: list[dict[str, Any]] = []
+    identity_by_url: dict[str, tuple[str, str]] = {}
+    for coin in result:
+        detail_url = str(coin.get("detailUrl") or "").strip()
+        if not detail_url:
+            raise CatalogVariantError("O catálogo contém um URL uCoin ausente.")
+        identity = coin_label(coin, catalog_type)
+        previous = identity_by_url.get(detail_url)
+        if previous is not None:
+            if previous != identity:
+                raise CatalogVariantError(
+                    f"O URL uCoin repetido tem moedas contraditórias: {detail_url}."
+                )
+            continue
+        identity_by_url[detail_url] = identity
+        unique.append(coin)
+    return unique
+
+
+def propagate_variant_metadata(
+    catalogue: dict[str, Any],
+    catalog_type: str,
+    source: dict[str, Any],
+) -> None:
+    """Keep identical duplicate URL entries synchronized in the catalogue."""
+
+    detail_url = str(source.get("detailUrl") or "").strip()
+    group_key = "periods" if catalog_type == "normal" else "programmes"
+    fields = (
+        "variants",
+        "hasVariants",
+        "excludedProofOnlyVariants",
+        "variantCollectionStatus",
+        "excludedCollectionSVariants",
+    )
+    for group in catalogue.get(group_key, []):
+        if not isinstance(group, dict):
+            continue
+        for coin in group.get("coins", []):
+            if not isinstance(coin, dict) or str(coin.get("detailUrl") or "").strip() != detail_url:
+                continue
+            for field in fields:
+                if field in source:
+                    coin[field] = deepcopy(source[field])
+
+
+def select_catalog_coins(
+    coins: list[dict[str, Any]], detail_urls: list[str]
+) -> list[dict[str, Any]]:
+    requested = {value.strip() for value in detail_urls if value.strip()}
+    if not requested:
+        return coins
+    by_url = {str(coin.get("detailUrl") or "").strip(): coin for coin in coins}
+    unknown = sorted(requested - set(by_url))
+    if unknown:
+        raise CatalogVariantError(
+            "Os seguintes URLs não existem no catálogo: " + ", ".join(unknown)
+        )
+    return [coin for coin in coins if str(coin.get("detailUrl") or "").strip() in requested]
 
 
 def coin_label(coin: dict[str, Any], catalog_type: str) -> tuple[str, str]:
@@ -104,7 +166,9 @@ def run(argv: list[str] | None = None) -> int:
     args = parse_args(argv)
     catalogue = load_catalog(args.catalog)
     catalog_type = detect_catalog_type(catalogue, args.catalog_type)
-    coins = catalog_coins(catalogue, catalog_type)
+    coins = select_catalog_coins(
+        catalog_coins(catalogue, catalog_type), args.detail_url
+    )
 
     incognito_process = None
     if args.incognito:
@@ -198,6 +262,7 @@ def run(argv: list[str] | None = None) -> int:
             coin["variantCollectionStatus"] = result["status"]
             if catalog_type == "special":
                 coin["excludedCollectionSVariants"] = excluded_by_policy
+            propagate_variant_metadata(catalogue, catalog_type, coin)
             write_json_atomic(args.catalog, catalogue)
             visited += 1
             if result["status"] == VARIANT_STATUS_PRO_REQUIRED:

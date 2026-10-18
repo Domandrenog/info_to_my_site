@@ -75,6 +75,12 @@ def parse_args(argv: list[str] | None = None) -> argparse.Namespace:
         default="auto",
     )
     parser.add_argument("--country", default="")
+    parser.add_argument(
+        "--detail-url",
+        action="append",
+        default=[],
+        help="Limita a operação ao URL uCoin exato; pode ser repetido.",
+    )
     modes = parser.add_mutually_exclusive_group()
     modes.add_argument("--check-live", action="store_true")
     modes.add_argument("--apply", action="store_true")
@@ -435,6 +441,16 @@ def run(argv: list[str] | None = None) -> int:
     catalogue = load_catalog(args.catalog)
     selected_type = detect_catalog_type(catalogue, args.catalog_type)
     catalog_country, specs = catalogue_specs(catalogue, selected_type)
+    requested_urls = {value.strip() for value in args.detail_url if value.strip()}
+    known_urls = {spec.detail_url for spec in specs}
+    unknown_urls = sorted(requested_urls - known_urls)
+    if unknown_urls:
+        raise CatalogVariantError(
+            "Os seguintes URLs não têm variantes no catálogo: "
+            + ", ".join(unknown_urls)
+        )
+    if requested_urls:
+        specs = [spec for spec in specs if spec.detail_url in requested_urls]
     if not (args.check_live or args.apply):
         expected = sum(len(spec.variants) for spec in specs)
         print(f"Tipo: {selected_type}")
@@ -452,6 +468,7 @@ def run(argv: list[str] | None = None) -> int:
         catalogue,
         catalog_type=selected_type,
         country=args.country,
+        allowed_urls=requested_urls or None,
     )
     print_plan(plan)
     if args.check_live:

@@ -19,6 +19,7 @@ from scripts.ucoin_catalog import (
     launch_incognito_chromium,
     login_redirect_references_coin,
     open_ucoin_detail_page,
+    parse_variant_table_cells,
     remove_stale_scrape_error,
 )
 from ucoin_to_mysite.catalog_parser import crawl_ucoin_catalogue, parse_catalogue_page
@@ -354,6 +355,53 @@ class UCoinCatalogueGroupingTests(unittest.TestCase):
         )
 
         self.assertFalse(result["variants"])
+
+    def test_multi_year_columns_do_not_shift_unc_into_the_mint_mark(self) -> None:
+        parsed = parse_variant_table_cells(
+            mode="multi",
+            cells=["1979", "61.652.000", "-", "-", "A", "€ 0,20"],
+            issue_period="1969 - 1979",
+        )
+
+        self.assertEqual(
+            parsed,
+            {
+                "year": "1979",
+                "mark": "",
+                "unc": "61.652.000",
+                "bu": "-",
+                "proof": "-",
+            },
+        )
+
+    def test_multi_year_row_preserves_display_variant_mark(self) -> None:
+        parsed = parse_variant_table_cells(
+            mode="multi",
+            cells=["1976", "+", "-", "-", "", ""],
+            issue_period="1969 - 1979",
+            display_mark="↑↑",
+        )
+
+        self.assertEqual(parsed["mark"], "↑↑")
+        self.assertEqual(parsed["unc"], "+")
+
+    def test_single_year_table_without_mark_column_is_supported(self) -> None:
+        parsed = parse_variant_table_cells(
+            mode="single",
+            cells=["Portugal, Lisboa (INCM)", "270.000", "-", "-"],
+            issue_period="1981",
+        )
+
+        self.assertEqual(
+            parsed,
+            {
+                "year": "1981",
+                "mark": "",
+                "unc": "270.000",
+                "bu": "-",
+                "proof": "-",
+            },
+        )
 
     @patch("scripts.ucoin_catalog.time.sleep")
     @patch("scripts.ucoin_catalog.subprocess.Popen")
