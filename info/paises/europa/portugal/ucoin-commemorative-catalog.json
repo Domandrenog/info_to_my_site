@@ -1,0 +1,5344 @@
+{
+  "country": "Portugal",
+  "period": null,
+  "page_url": "https://pt.ucoin.net/catalog/?country=portugal&type=2",
+  "periods": [
+    {
+      "periodId": 321,
+      "fullTitle": "Portugal › União Europeia (Euro) › 2002 - 2026",
+      "country": "Portugal",
+      "rulerOrPeriodName": "União Europeia (Euro)",
+      "startYear": 2002,
+      "endYear": 2026,
+      "currencyDescription": "1 euro = 100 cêntimos",
+      "coins": [
+        {
+          "denomination": {
+            "displayName": "2 euro",
+            "value": 2.0,
+            "unit": "euro"
+          },
+          "issuePeriod": {
+            "displayValue": "2007",
+            "startYear": 2007,
+            "endYear": 2007
+          },
+          "imageExampleYear": 2007,
+          "subject": "2007",
+          "composition": "Bimetálica",
+          "weightGrams": 8.5,
+          "diameterMm": 25.75,
+          "catalogue": {
+            "type": "KM",
+            "number": "772",
+            "displayValue": "KM# 772"
+          },
+          "circulationType": "Comemorativa",
+          "ucoinTypeId": 1076,
+          "ucoinPeriodId": 321,
+          "detailPath": "/coin/portugal-2-euro-2007/?tid=1076",
+          "detailUrl": "https://pt.ucoin.net/coin/portugal-2-euro-2007/?tid=1076",
+          "images": {
+            "obverse": "https://i.ucoin.net/coin/6/381/6381098-1s/portugal-2-euro-2007.jpg",
+            "reverse": "https://i.ucoin.net/coin/6/381/6381098-2s/portugal-2-euro-2007.jpg"
+          },
+          "hasVariants": false,
+          "variants": [],
+          "excludedProofOnlyVariants": [],
+          "variantCollectionStatus": "no_multiple_variants"
+        },
+        {
+          "denomination": {
+            "displayName": "2 euro",
+            "value": 2.0,
+            "unit": "euro"
+          },
+          "issuePeriod": {
+            "displayValue": "2008",
+            "startYear": 2008,
+            "endYear": 2008
+          },
+          "imageExampleYear": 2008,
+          "subject": "2008",
+          "composition": "Bimetálica",
+          "weightGrams": 8.5,
+          "diameterMm": 25.75,
+          "catalogue": {
+            "type": "KM",
+            "number": "784",
+            "displayValue": "KM# 784"
+          },
+          "circulationType": "Comemorativa",
+          "ucoinTypeId": 1096,
+          "ucoinPeriodId": 321,
+          "detailPath": "/coin/portugal-2-euro-2008/?tid=1096",
+          "detailUrl": "https://pt.ucoin.net/coin/portugal-2-euro-2008/?tid=1096",
+          "images": {
+            "obverse": "https://i.ucoin.net/coin/35/764/35764729-1s/portugal-2-euro-2008.jpg",
+            "reverse": "https://i.ucoin.net/coin/35/764/35764729-2s/portugal-2-euro-2008.jpg"
+          },
+          "hasVariants": false,
+          "variants": [],
+          "excludedProofOnlyVariants": [],
+          "variantCollectionStatus": "no_multiple_variants"
+        },
+        {
+          "denomination": {
+            "displayName": "2 euro",
+            "value": 2.0,
+            "unit": "euro"
+          },
+          "issuePeriod": {
+            "displayValue": "2009",
+            "startYear": 2009,
+            "endYear": 2009
+          },
+          "imageExampleYear": 2009,
+          "subject": "2009",
+          "composition": "Bimetálica",
+          "weightGrams": 8.5,
+          "diameterMm": 25.75,
+          "catalogue": {
+            "type": "KM",
+            "number": "786",
+            "displayValue": "KM# 786"
+          },
+          "circulationType": "Comemorativa",
+          "ucoinTypeId": 4361,
+          "ucoinPeriodId": 321,
+          "detailPath": "/coin/portugal-2-euro-2009/?tid=4361",
+          "detailUrl": "https://pt.ucoin.net/coin/portugal-2-euro-2009/?tid=4361",
+          "images": {
+            "obverse": "https://i.ucoin.net/coin/21/100/21100143-1s/portugal-2-euro-2009.jpg",
+            "reverse": "https://i.ucoin.net/coin/21/100/21100143-2s/portugal-2-euro-2009.jpg"
+          },
+          "hasVariants": false,
+          "variants": [],
+          "excludedProofOnlyVariants": [],
+          "variantCollectionStatus": "no_multiple_variants"
+        },
+        {
+          "denomination": {
+            "displayName": "2 euro",
+            "value": 2.0,
+            "unit": "euro"
+          },
+          "issuePeriod": {
+            "displayValue": "2010",
+            "startYear": 2010,
+            "endYear": 2010
+          },
+          "imageExampleYear": 2010,
+          "subject": "2010",
+          "composition": "Bimetálica",
+          "weightGrams": 8.5,
+          "diameterMm": 25.75,
+          "catalogue": {
+            "type": "KM",
+            "number": "796",
+            "displayValue": "KM# 796"
+          },
+          "circulationType": "Comemorativa",
+          "ucoinTypeId": 8968,
+          "ucoinPeriodId": 321,
+          "detailPath": "/coin/portugal-2-euro-2010/?tid=8968",
+          "detailUrl": "https://pt.ucoin.net/coin/portugal-2-euro-2010/?tid=8968",
+          "images": {
+            "obverse": "https://i.ucoin.net/coin/21/100/21100116-1s/portugal-2-euro-2010.jpg",
+            "reverse": "https://i.ucoin.net/coin/21/100/21100116-2s/portugal-2-euro-2010.jpg"
+          },
+          "hasVariants": false,
+          "variants": [],
+          "excludedProofOnlyVariants": [],
+          "variantCollectionStatus": "no_multiple_variants"
+        },
+        {
+          "denomination": {
+            "displayName": "2 euro",
+            "value": 2.0,
+            "unit": "euro"
+          },
+          "issuePeriod": {
+            "displayValue": "2011",
+            "startYear": 2011,
+            "endYear": 2011
+          },
+          "imageExampleYear": 2011,
+          "subject": "2011",
+          "composition": "Bimetálica",
+          "weightGrams": 8.5,
+          "diameterMm": 25.75,
+          "catalogue": {
+            "type": "KM",
+            "number": "804",
+            "displayValue": "KM# 804"
+          },
+          "circulationType": "Comemorativa",
+          "ucoinTypeId": 13026,
+          "ucoinPeriodId": 321,
+          "detailPath": "/coin/portugal-2-euro-2011/?tid=13026",
+          "detailUrl": "https://pt.ucoin.net/coin/portugal-2-euro-2011/?tid=13026",
+          "images": {
+            "obverse": "https://i.ucoin.net/coin/15/644/15644973-1s/portugal-2-euro-2011.jpg",
+            "reverse": "https://i.ucoin.net/coin/15/644/15644973-2s/portugal-2-euro-2011.jpg"
+          },
+          "hasVariants": false,
+          "variants": [],
+          "excludedProofOnlyVariants": [],
+          "variantCollectionStatus": "no_multiple_variants"
+        },
+        {
+          "denomination": {
+            "displayName": "2 euro",
+            "value": 2.0,
+            "unit": "euro"
+          },
+          "issuePeriod": {
+            "displayValue": "2012",
+            "startYear": 2012,
+            "endYear": 2012
+          },
+          "imageExampleYear": 2012,
+          "subject": "2012",
+          "composition": "Bimetálica",
+          "weightGrams": 8.5,
+          "diameterMm": 25.75,
+          "catalogue": {
+            "type": "KM",
+            "number": "813",
+            "displayValue": "KM# 813"
+          },
+          "circulationType": "Comemorativa",
+          "ucoinTypeId": 16953,
+          "ucoinPeriodId": 321,
+          "detailPath": "/coin/portugal-2-euro-2012/?tid=16953",
+          "detailUrl": "https://pt.ucoin.net/coin/portugal-2-euro-2012/?tid=16953",
+          "images": {
+            "obverse": "https://i.ucoin.net/coin/14/868/14868791-1s/portugal-2-euro-2012.jpg",
+            "reverse": "https://i.ucoin.net/coin/14/868/14868791-2s/portugal-2-euro-2012.jpg"
+          },
+          "hasVariants": false,
+          "variants": [],
+          "excludedProofOnlyVariants": [],
+          "variantCollectionStatus": "no_multiple_variants"
+        },
+        {
+          "denomination": {
+            "displayName": "2 euro",
+            "value": 2.0,
+            "unit": "euro"
+          },
+          "issuePeriod": {
+            "displayValue": "2013",
+            "startYear": 2013,
+            "endYear": 2013
+          },
+          "imageExampleYear": 2013,
+          "subject": "2013",
+          "composition": "Bimetálica",
+          "weightGrams": 8.5,
+          "diameterMm": 25.75,
+          "catalogue": {
+            "type": "KM",
+            "number": "848",
+            "displayValue": "KM# 848"
+          },
+          "circulationType": "Comemorativa",
+          "ucoinTypeId": 23516,
+          "ucoinPeriodId": 321,
+          "detailPath": "/coin/portugal-2-euro-2013/?tid=23516",
+          "detailUrl": "https://pt.ucoin.net/coin/portugal-2-euro-2013/?tid=23516",
+          "images": {
+            "obverse": "https://i.ucoin.net/coin/21/100/21100003-1s/portugal-2-euro-2013.jpg",
+            "reverse": "https://i.ucoin.net/coin/21/100/21100003-2s/portugal-2-euro-2013.jpg"
+          },
+          "hasVariants": false,
+          "variants": [],
+          "excludedProofOnlyVariants": [],
+          "variantCollectionStatus": "no_multiple_variants"
+        },
+        {
+          "denomination": {
+            "displayName": "2 euro",
+            "value": 2.0,
+            "unit": "euro"
+          },
+          "issuePeriod": {
+            "displayValue": "2014",
+            "startYear": 2014,
+            "endYear": 2014
+          },
+          "imageExampleYear": 2014,
+          "subject": "2014",
+          "composition": "Bimetálica",
+          "weightGrams": 8.5,
+          "diameterMm": 25.75,
+          "catalogue": {
+            "type": "KM",
+            "number": "839",
+            "displayValue": "KM# 839"
+          },
+          "circulationType": "Comemorativa",
+          "ucoinTypeId": 39511,
+          "ucoinPeriodId": 321,
+          "detailPath": "/coin/portugal-2-euro-2014/?tid=39511",
+          "detailUrl": "https://pt.ucoin.net/coin/portugal-2-euro-2014/?tid=39511",
+          "images": {
+            "obverse": "https://i.ucoin.net/coin/21/099/21099983-1s/portugal-2-euro-2014.jpg",
+            "reverse": "https://i.ucoin.net/coin/21/099/21099983-2s/portugal-2-euro-2014.jpg"
+          },
+          "hasVariants": false,
+          "variants": [],
+          "excludedProofOnlyVariants": [],
+          "variantCollectionStatus": "no_multiple_variants"
+        },
+        {
+          "denomination": {
+            "displayName": "2 euro",
+            "value": 2.0,
+            "unit": "euro"
+          },
+          "issuePeriod": {
+            "displayValue": "2014",
+            "startYear": 2014,
+            "endYear": 2014
+          },
+          "imageExampleYear": 2014,
+          "subject": "2014",
+          "composition": "Bimetálica",
+          "weightGrams": 8.5,
+          "diameterMm": 25.75,
+          "catalogue": {
+            "type": "KM",
+            "number": "844",
+            "displayValue": "KM# 844"
+          },
+          "circulationType": "Comemorativa",
+          "ucoinTypeId": 33755,
+          "ucoinPeriodId": 321,
+          "detailPath": "/coin/portugal-2-euro-2014/?tid=33755",
+          "detailUrl": "https://pt.ucoin.net/coin/portugal-2-euro-2014/?tid=33755",
+          "images": {
+            "obverse": "https://i.ucoin.net/coin/21/099/21099971-1s/portugal-2-euro-2014.jpg",
+            "reverse": "https://i.ucoin.net/coin/21/099/21099971-2s/portugal-2-euro-2014.jpg"
+          },
+          "hasVariants": false,
+          "variants": [],
+          "excludedProofOnlyVariants": [],
+          "variantCollectionStatus": "no_multiple_variants"
+        },
+        {
+          "denomination": {
+            "displayName": "2 euro",
+            "value": 2.0,
+            "unit": "euro"
+          },
+          "issuePeriod": {
+            "displayValue": "2015",
+            "startYear": 2015,
+            "endYear": 2015
+          },
+          "imageExampleYear": 2015,
+          "subject": "2015",
+          "composition": "Bimetálica",
+          "weightGrams": 8.5,
+          "diameterMm": 25.75,
+          "catalogue": {
+            "type": "KM",
+            "number": "849",
+            "displayValue": "KM# 849"
+          },
+          "circulationType": "Comemorativa",
+          "ucoinTypeId": 48598,
+          "ucoinPeriodId": 321,
+          "detailPath": "/coin/portugal-2-euro-2015/?tid=48598",
+          "detailUrl": "https://pt.ucoin.net/coin/portugal-2-euro-2015/?tid=48598",
+          "images": {
+            "obverse": "https://i.ucoin.net/coin/21/099/21099883-1s/portugal-2-euro-2015.jpg",
+            "reverse": "https://i.ucoin.net/coin/21/099/21099883-2s/portugal-2-euro-2015.jpg"
+          },
+          "hasVariants": false,
+          "variants": [],
+          "excludedProofOnlyVariants": [],
+          "variantCollectionStatus": "no_multiple_variants"
+        },
+        {
+          "denomination": {
+            "displayName": "2 euro",
+            "value": 2.0,
+            "unit": "euro"
+          },
+          "issuePeriod": {
+            "displayValue": "2015",
+            "startYear": 2015,
+            "endYear": 2015
+          },
+          "imageExampleYear": 2015,
+          "subject": "2015",
+          "composition": "Bimetálica",
+          "weightGrams": 8.5,
+          "diameterMm": 25.75,
+          "catalogue": {
+            "type": "KM",
+            "number": "850",
+            "displayValue": "KM# 850"
+          },
+          "circulationType": "Comemorativa",
+          "ucoinTypeId": 46048,
+          "ucoinPeriodId": 321,
+          "detailPath": "/coin/portugal-2-euro-2015/?tid=46048",
+          "detailUrl": "https://pt.ucoin.net/coin/portugal-2-euro-2015/?tid=46048",
+          "images": {
+            "obverse": "https://i.ucoin.net/coin/21/099/21099855-1s/portugal-2-euro-2015.jpg",
+            "reverse": "https://i.ucoin.net/coin/21/099/21099855-2s/portugal-2-euro-2015.jpg"
+          },
+          "hasVariants": false,
+          "variants": [],
+          "excludedProofOnlyVariants": [],
+          "variantCollectionStatus": "no_multiple_variants"
+        },
+        {
+          "denomination": {
+            "displayName": "2 euro",
+            "value": 2.0,
+            "unit": "euro"
+          },
+          "issuePeriod": {
+            "displayValue": "2016",
+            "startYear": 2016,
+            "endYear": 2016
+          },
+          "imageExampleYear": 2016,
+          "subject": "2016",
+          "composition": "Bimetálica",
+          "weightGrams": 8.5,
+          "diameterMm": 25.75,
+          "catalogue": {
+            "type": "KM",
+            "number": "866",
+            "displayValue": "KM# 866"
+          },
+          "circulationType": "Comemorativa",
+          "ucoinTypeId": 60703,
+          "ucoinPeriodId": 321,
+          "detailPath": "/coin/portugal-2-euro-2016/?tid=60703",
+          "detailUrl": "https://pt.ucoin.net/coin/portugal-2-euro-2016/?tid=60703",
+          "images": {
+            "obverse": "https://i.ucoin.net/coin/21/099/21099840-1s/portugal-2-euro-2016.jpg",
+            "reverse": "https://i.ucoin.net/coin/21/099/21099840-2s/portugal-2-euro-2016.jpg"
+          },
+          "hasVariants": false,
+          "variants": [],
+          "excludedProofOnlyVariants": [],
+          "variantCollectionStatus": "no_multiple_variants"
+        },
+        {
+          "denomination": {
+            "displayName": "2 euro",
+            "value": 2.0,
+            "unit": "euro"
+          },
+          "issuePeriod": {
+            "displayValue": "2016",
+            "startYear": 2016,
+            "endYear": 2016
+          },
+          "imageExampleYear": 2016,
+          "subject": "2016",
+          "composition": "Bimetálica",
+          "weightGrams": 8.5,
+          "diameterMm": 25.75,
+          "catalogue": {
+            "type": "KM",
+            "number": "867",
+            "displayValue": "KM# 867"
+          },
+          "circulationType": "Comemorativa",
+          "ucoinTypeId": 57854,
+          "ucoinPeriodId": 321,
+          "detailPath": "/coin/portugal-2-euro-2016/?tid=57854",
+          "detailUrl": "https://pt.ucoin.net/coin/portugal-2-euro-2016/?tid=57854",
+          "images": {
+            "obverse": "https://i.ucoin.net/coin/21/099/21099826-1s/portugal-2-euro-2016.jpg",
+            "reverse": "https://i.ucoin.net/coin/21/099/21099826-2s/portugal-2-euro-2016.jpg"
+          },
+          "hasVariants": false,
+          "variants": [],
+          "excludedProofOnlyVariants": [],
+          "variantCollectionStatus": "no_multiple_variants"
+        },
+        {
+          "denomination": {
+            "displayName": "2 euro",
+            "value": 2.0,
+            "unit": "euro"
+          },
+          "issuePeriod": {
+            "displayValue": "2017",
+            "startYear": 2017,
+            "endYear": 2017
+          },
+          "imageExampleYear": 2017,
+          "subject": "2017",
+          "composition": "Bimetálica",
+          "weightGrams": 8.5,
+          "diameterMm": 25.75,
+          "catalogue": {
+            "type": "KM",
+            "number": "872.1",
+            "displayValue": "KM# 872.1"
+          },
+          "circulationType": "Comemorativa",
+          "ucoinTypeId": 72234,
+          "ucoinPeriodId": 321,
+          "detailPath": "/coin/portugal-2-euro-2017/?tid=72234",
+          "detailUrl": "https://pt.ucoin.net/coin/portugal-2-euro-2017/?tid=72234",
+          "images": {
+            "obverse": "https://i.ucoin.net/coin/34/368/34368847-1s/portugal-2-euro-2017.jpg",
+            "reverse": "https://i.ucoin.net/coin/34/368/34368847-2s/portugal-2-euro-2017.jpg"
+          },
+          "hasVariants": false,
+          "variants": [],
+          "excludedProofOnlyVariants": [],
+          "variantCollectionStatus": "no_multiple_variants"
+        },
+        {
+          "denomination": {
+            "displayName": "2 euro",
+            "value": 2.0,
+            "unit": "euro"
+          },
+          "issuePeriod": {
+            "displayValue": "2017",
+            "startYear": 2017,
+            "endYear": 2017
+          },
+          "imageExampleYear": 2017,
+          "subject": "2017",
+          "composition": "Bimetálica",
+          "weightGrams": 8.5,
+          "diameterMm": 25.75,
+          "catalogue": {
+            "type": "KM",
+            "number": "873",
+            "displayValue": "KM# 873"
+          },
+          "circulationType": "Comemorativa",
+          "ucoinTypeId": 74367,
+          "ucoinPeriodId": 321,
+          "detailPath": "/coin/portugal-2-euro-2017/?tid=74367",
+          "detailUrl": "https://pt.ucoin.net/coin/portugal-2-euro-2017/?tid=74367",
+          "images": {
+            "obverse": "https://i.ucoin.net/coin/34/369/34369846-1s/portugal-2-euro-2017.jpg",
+            "reverse": "https://i.ucoin.net/coin/34/369/34369846-2s/portugal-2-euro-2017.jpg"
+          },
+          "hasVariants": false,
+          "variants": [],
+          "excludedProofOnlyVariants": [],
+          "variantCollectionStatus": "no_multiple_variants"
+        },
+        {
+          "denomination": {
+            "displayName": "2 euro",
+            "value": 2.0,
+            "unit": "euro"
+          },
+          "issuePeriod": {
+            "displayValue": "2018",
+            "startYear": 2018,
+            "endYear": 2018
+          },
+          "imageExampleYear": 2018,
+          "subject": "2018",
+          "composition": "Bimetálica",
+          "weightGrams": 8.5,
+          "diameterMm": 25.75,
+          "catalogue": {
+            "type": "UC",
+            "number": "105",
+            "displayValue": "UC# 105"
+          },
+          "circulationType": "Comemorativa",
+          "ucoinTypeId": 77746,
+          "ucoinPeriodId": 321,
+          "detailPath": "/coin/portugal-2-euro-2018/?tid=77746",
+          "detailUrl": "https://pt.ucoin.net/coin/portugal-2-euro-2018/?tid=77746",
+          "images": {
+            "obverse": "https://i.ucoin.net/coin/18/104/18104021-1s/portugal-2-euro-2018.jpg",
+            "reverse": "https://i.ucoin.net/coin/18/104/18104021-2s/portugal-2-euro-2018.jpg"
+          },
+          "hasVariants": false,
+          "variants": [],
+          "excludedProofOnlyVariants": [],
+          "variantCollectionStatus": "no_multiple_variants"
+        },
+        {
+          "denomination": {
+            "displayName": "2 euro",
+            "value": 2.0,
+            "unit": "euro"
+          },
+          "issuePeriod": {
+            "displayValue": "2018",
+            "startYear": 2018,
+            "endYear": 2018
+          },
+          "imageExampleYear": 2018,
+          "subject": "2018",
+          "composition": "Bimetálica",
+          "weightGrams": 8.5,
+          "diameterMm": 25.75,
+          "catalogue": {
+            "type": "UC",
+            "number": "106",
+            "displayValue": "UC# 106"
+          },
+          "circulationType": "Comemorativa",
+          "ucoinTypeId": 78895,
+          "ucoinPeriodId": 321,
+          "detailPath": "/coin/portugal-2-euro-2018/?tid=78895",
+          "detailUrl": "https://pt.ucoin.net/coin/portugal-2-euro-2018/?tid=78895",
+          "images": {
+            "obverse": "https://i.ucoin.net/coin/19/014/19014959-1s/portugal-2-euro-2018.jpg",
+            "reverse": "https://i.ucoin.net/coin/19/014/19014959-2s/portugal-2-euro-2018.jpg"
+          },
+          "hasVariants": false,
+          "variants": [],
+          "excludedProofOnlyVariants": [],
+          "variantCollectionStatus": "no_multiple_variants"
+        },
+        {
+          "denomination": {
+            "displayName": "2 euro",
+            "value": 2.0,
+            "unit": "euro"
+          },
+          "issuePeriod": {
+            "displayValue": "2019",
+            "startYear": 2019,
+            "endYear": 2019
+          },
+          "imageExampleYear": 2019,
+          "subject": "2019",
+          "composition": "Bimetálica",
+          "weightGrams": 8.5,
+          "diameterMm": 25.75,
+          "catalogue": {
+            "type": "UC",
+            "number": "107",
+            "displayValue": "UC# 107"
+          },
+          "circulationType": "Comemorativa",
+          "ucoinTypeId": 84729,
+          "ucoinPeriodId": 321,
+          "detailPath": "/coin/portugal-2-euro-2019/?tid=84729",
+          "detailUrl": "https://pt.ucoin.net/coin/portugal-2-euro-2019/?tid=84729",
+          "images": {
+            "obverse": "https://i.ucoin.net/coin/34/327/34327355-1s/portugal-2-euro-2019.jpg",
+            "reverse": "https://i.ucoin.net/coin/34/327/34327355-2s/portugal-2-euro-2019.jpg"
+          },
+          "hasVariants": false,
+          "variants": [],
+          "excludedProofOnlyVariants": [],
+          "variantCollectionStatus": "no_multiple_variants"
+        },
+        {
+          "denomination": {
+            "displayName": "2 euro",
+            "value": 2.0,
+            "unit": "euro"
+          },
+          "issuePeriod": {
+            "displayValue": "2019",
+            "startYear": 2019,
+            "endYear": 2019
+          },
+          "imageExampleYear": 2019,
+          "subject": "2019",
+          "composition": "Bimetálica",
+          "weightGrams": 8.5,
+          "diameterMm": 25.75,
+          "catalogue": {
+            "type": "UC",
+            "number": "108",
+            "displayValue": "UC# 108"
+          },
+          "circulationType": "Comemorativa",
+          "ucoinTypeId": 85618,
+          "ucoinPeriodId": 321,
+          "detailPath": "/coin/portugal-2-euro-2019/?tid=85618",
+          "detailUrl": "https://pt.ucoin.net/coin/portugal-2-euro-2019/?tid=85618",
+          "images": {
+            "obverse": "https://i.ucoin.net/coin/34/327/34327061-1s/portugal-2-euro-2019.jpg",
+            "reverse": "https://i.ucoin.net/coin/34/327/34327061-2s/portugal-2-euro-2019.jpg"
+          },
+          "hasVariants": false,
+          "variants": [],
+          "excludedProofOnlyVariants": [],
+          "variantCollectionStatus": "no_multiple_variants"
+        },
+        {
+          "denomination": {
+            "displayName": "2 euro",
+            "value": 2.0,
+            "unit": "euro"
+          },
+          "issuePeriod": {
+            "displayValue": "2020",
+            "startYear": 2020,
+            "endYear": 2020
+          },
+          "imageExampleYear": 2020,
+          "subject": "2020",
+          "composition": "Bimetálica",
+          "weightGrams": 8.5,
+          "diameterMm": 25.75,
+          "catalogue": {
+            "type": "UC",
+            "number": "110",
+            "displayValue": "UC# 110"
+          },
+          "circulationType": "Comemorativa",
+          "ucoinTypeId": 99387,
+          "ucoinPeriodId": 321,
+          "detailPath": "/coin/portugal-2-euro-2020/?tid=99387",
+          "detailUrl": "https://pt.ucoin.net/coin/portugal-2-euro-2020/?tid=99387",
+          "images": {
+            "obverse": "https://i.ucoin.net/coin/38/893/38893283-1s/portugal-2-euro-2020.jpg",
+            "reverse": "https://i.ucoin.net/coin/38/893/38893283-2s/portugal-2-euro-2020.jpg"
+          },
+          "hasVariants": false,
+          "variants": [],
+          "excludedProofOnlyVariants": [],
+          "variantCollectionStatus": "no_multiple_variants"
+        },
+        {
+          "denomination": {
+            "displayName": "2 euro",
+            "value": 2.0,
+            "unit": "euro"
+          },
+          "issuePeriod": {
+            "displayValue": "2020",
+            "startYear": 2020,
+            "endYear": 2020
+          },
+          "imageExampleYear": 2020,
+          "subject": "2020",
+          "composition": "Bimetálica",
+          "weightGrams": 8.5,
+          "diameterMm": 25.75,
+          "catalogue": {
+            "type": "UC",
+            "number": "111",
+            "displayValue": "UC# 111"
+          },
+          "circulationType": "Comemorativa",
+          "ucoinTypeId": 99388,
+          "ucoinPeriodId": 321,
+          "detailPath": "/coin/portugal-2-euro-2020/?tid=99388",
+          "detailUrl": "https://pt.ucoin.net/coin/portugal-2-euro-2020/?tid=99388",
+          "images": {
+            "obverse": "https://i.ucoin.net/coin/38/893/38893292-1s/portugal-2-euro-2020.jpg",
+            "reverse": "https://i.ucoin.net/coin/38/893/38893292-2s/portugal-2-euro-2020.jpg"
+          },
+          "hasVariants": false,
+          "variants": [],
+          "excludedProofOnlyVariants": [],
+          "variantCollectionStatus": "no_multiple_variants"
+        },
+        {
+          "denomination": {
+            "displayName": "2 euro",
+            "value": 2.0,
+            "unit": "euro"
+          },
+          "issuePeriod": {
+            "displayValue": "2021",
+            "startYear": 2021,
+            "endYear": 2021
+          },
+          "imageExampleYear": 2021,
+          "subject": "2021",
+          "composition": "Bimetálica",
+          "weightGrams": 8.5,
+          "diameterMm": 25.75,
+          "catalogue": {
+            "type": "UC",
+            "number": "112",
+            "displayValue": "UC# 112"
+          },
+          "circulationType": "Comemorativa",
+          "ucoinTypeId": 106094,
+          "ucoinPeriodId": 321,
+          "detailPath": "/coin/portugal-2-euro-2021/?tid=106094",
+          "detailUrl": "https://pt.ucoin.net/coin/portugal-2-euro-2021/?tid=106094",
+          "images": {
+            "obverse": "https://i.ucoin.net/coin/39/877/39877544-1s/portugal-2-euro-2021.jpg",
+            "reverse": "https://i.ucoin.net/coin/39/877/39877544-2s/portugal-2-euro-2021.jpg"
+          },
+          "hasVariants": false,
+          "variants": [],
+          "excludedProofOnlyVariants": [],
+          "variantCollectionStatus": "no_multiple_variants"
+        },
+        {
+          "denomination": {
+            "displayName": "2 euro",
+            "value": 2.0,
+            "unit": "euro"
+          },
+          "issuePeriod": {
+            "displayValue": "2021",
+            "startYear": 2021,
+            "endYear": 2021
+          },
+          "imageExampleYear": 2021,
+          "subject": "2021",
+          "composition": "Bimetálica",
+          "weightGrams": 8.5,
+          "diameterMm": 25.75,
+          "catalogue": {
+            "type": "UC",
+            "number": "113",
+            "displayValue": "UC# 113"
+          },
+          "circulationType": "Comemorativa",
+          "ucoinTypeId": 107428,
+          "ucoinPeriodId": 321,
+          "detailPath": "/coin/portugal-2-euro-2021/?tid=107428",
+          "detailUrl": "https://pt.ucoin.net/coin/portugal-2-euro-2021/?tid=107428",
+          "images": {
+            "obverse": "https://i.ucoin.net/coin/44/102/44102576-1s/portugal-2-euro-2021.jpg",
+            "reverse": "https://i.ucoin.net/coin/44/102/44102576-2s/portugal-2-euro-2021.jpg"
+          },
+          "hasVariants": false,
+          "variants": [],
+          "excludedProofOnlyVariants": [],
+          "variantCollectionStatus": "no_multiple_variants"
+        },
+        {
+          "denomination": {
+            "displayName": "2 euro",
+            "value": 2.0,
+            "unit": "euro"
+          },
+          "issuePeriod": {
+            "displayValue": "2022",
+            "startYear": 2022,
+            "endYear": 2022
+          },
+          "imageExampleYear": 2022,
+          "subject": "2022",
+          "composition": "Bimetálica",
+          "weightGrams": 8.5,
+          "diameterMm": 25.75,
+          "catalogue": {
+            "type": "UC",
+            "number": "114",
+            "displayValue": "UC# 114"
+          },
+          "circulationType": "Comemorativa",
+          "ucoinTypeId": 126996,
+          "ucoinPeriodId": 321,
+          "detailPath": "/coin/portugal-2-euro-2022/?tid=126996",
+          "detailUrl": "https://pt.ucoin.net/coin/portugal-2-euro-2022/?tid=126996",
+          "images": {
+            "obverse": "https://i.ucoin.net/coin/60/910/60910382-1s/portugal-2-euro-2022.jpg",
+            "reverse": "https://i.ucoin.net/coin/60/910/60910382-2s/portugal-2-euro-2022.jpg"
+          },
+          "hasVariants": false,
+          "variants": [],
+          "excludedProofOnlyVariants": [],
+          "variantCollectionStatus": "no_multiple_variants"
+        },
+        {
+          "denomination": {
+            "displayName": "2 euro",
+            "value": 2.0,
+            "unit": "euro"
+          },
+          "issuePeriod": {
+            "displayValue": "Jornada Mundial da Juventude 2023 Lisboa",
+            "startYear": 2023,
+            "endYear": 2023
+          },
+          "imageExampleYear": 2023,
+          "subject": "2023",
+          "composition": "Bimetálica",
+          "weightGrams": 8.5,
+          "diameterMm": 25.75,
+          "catalogue": {
+            "type": "UC",
+            "number": "116",
+            "displayValue": "UC# 116"
+          },
+          "circulationType": "Comemorativa",
+          "ucoinTypeId": 145293,
+          "ucoinPeriodId": 321,
+          "detailPath": "/coin/portugal-2-euro-2023/?tid=145293",
+          "detailUrl": "https://pt.ucoin.net/coin/portugal-2-euro-2023/?tid=145293",
+          "images": {
+            "obverse": "https://i.ucoin.net/coin/62/603/62603111-1s/portugal-2-euro-2023.jpg",
+            "reverse": "https://i.ucoin.net/coin/62/603/62603111-2s/portugal-2-euro-2023.jpg"
+          },
+          "hasVariants": false,
+          "variants": [],
+          "excludedProofOnlyVariants": [],
+          "variantCollectionStatus": "no_multiple_variants"
+        },
+        {
+          "denomination": {
+            "displayName": "2 euro",
+            "value": 2.0,
+            "unit": "euro"
+          },
+          "issuePeriod": {
+            "displayValue": "2023",
+            "startYear": 2023,
+            "endYear": 2023
+          },
+          "imageExampleYear": 2023,
+          "subject": "2023",
+          "composition": "Bimetálica",
+          "weightGrams": 8.5,
+          "diameterMm": 25.75,
+          "catalogue": {
+            "type": "UC",
+            "number": "117",
+            "displayValue": "UC# 117"
+          },
+          "circulationType": "Comemorativa",
+          "ucoinTypeId": 145292,
+          "ucoinPeriodId": 321,
+          "detailPath": "/coin/portugal-2-euro-2023/?tid=145292",
+          "detailUrl": "https://pt.ucoin.net/coin/portugal-2-euro-2023/?tid=145292",
+          "images": {
+            "obverse": "https://i.ucoin.net/coin/78/183/78183672-1s/portugal-2-euro-2023.jpg",
+            "reverse": "https://i.ucoin.net/coin/78/183/78183672-2s/portugal-2-euro-2023.jpg"
+          },
+          "hasVariants": false,
+          "variants": [],
+          "excludedProofOnlyVariants": [],
+          "variantCollectionStatus": "no_multiple_variants"
+        },
+        {
+          "denomination": {
+            "displayName": "2 euro",
+            "value": 2.0,
+            "unit": "euro"
+          },
+          "issuePeriod": {
+            "displayValue": "Revolução de 25 de Abril de 1974",
+            "startYear": 1974,
+            "endYear": 1974
+          },
+          "imageExampleYear": 2024,
+          "subject": "2024",
+          "composition": "Bimetálica",
+          "weightGrams": 8.5,
+          "diameterMm": 25.75,
+          "catalogue": {
+            "type": "UC",
+            "number": "118",
+            "displayValue": "UC# 118"
+          },
+          "circulationType": "Comemorativa",
+          "ucoinTypeId": 162970,
+          "ucoinPeriodId": 321,
+          "detailPath": "/coin/portugal-2-euro-2024/?tid=162970",
+          "detailUrl": "https://pt.ucoin.net/coin/portugal-2-euro-2024/?tid=162970",
+          "images": {
+            "obverse": "https://i.ucoin.net/coin/67/682/67682869-1s/portugal-2-euro-2024.jpg",
+            "reverse": "https://i.ucoin.net/coin/67/682/67682869-2s/portugal-2-euro-2024.jpg"
+          },
+          "hasVariants": false,
+          "variants": [],
+          "excludedProofOnlyVariants": [],
+          "variantCollectionStatus": "no_multiple_variants"
+        },
+        {
+          "denomination": {
+            "displayName": "2 euro",
+            "value": 2.0,
+            "unit": "euro"
+          },
+          "issuePeriod": {
+            "displayValue": "2024",
+            "startYear": 2024,
+            "endYear": 2024
+          },
+          "imageExampleYear": 2024,
+          "subject": "2024",
+          "composition": "Bimetálica",
+          "weightGrams": 8.5,
+          "diameterMm": 25.75,
+          "catalogue": {
+            "type": "UC",
+            "number": "119",
+            "displayValue": "UC# 119"
+          },
+          "circulationType": "Comemorativa",
+          "ucoinTypeId": 162971,
+          "ucoinPeriodId": 321,
+          "detailPath": "/coin/portugal-2-euro-2024/?tid=162971",
+          "detailUrl": "https://pt.ucoin.net/coin/portugal-2-euro-2024/?tid=162971",
+          "images": {
+            "obverse": "https://i.ucoin.net/coin/72/589/72589755-1s/portugal-2-euro-2024.jpg",
+            "reverse": "https://i.ucoin.net/coin/72/589/72589755-2s/portugal-2-euro-2024.jpg"
+          },
+          "hasVariants": false,
+          "variants": [],
+          "excludedProofOnlyVariants": [],
+          "variantCollectionStatus": "no_multiple_variants"
+        },
+        {
+          "denomination": {
+            "displayName": "2 euro",
+            "value": 2.0,
+            "unit": "euro"
+          },
+          "issuePeriod": {
+            "displayValue": "2025",
+            "startYear": 2025,
+            "endYear": 2025
+          },
+          "imageExampleYear": 2025,
+          "subject": "2025",
+          "composition": "Bimetálica",
+          "weightGrams": 8.5,
+          "diameterMm": 25.75,
+          "catalogue": {
+            "type": "UC",
+            "number": "120",
+            "displayValue": "UC# 120"
+          },
+          "circulationType": "Comemorativa",
+          "ucoinTypeId": 179417,
+          "ucoinPeriodId": 321,
+          "detailPath": "/coin/portugal-2-euro-2025/?tid=179417",
+          "detailUrl": "https://pt.ucoin.net/coin/portugal-2-euro-2025/?tid=179417",
+          "images": {
+            "obverse": "https://i.ucoin.net/coin/77/156/77156394-1s/portugal-2-euro-2025.jpg",
+            "reverse": "https://i.ucoin.net/coin/77/156/77156394-2s/portugal-2-euro-2025.jpg"
+          },
+          "hasVariants": false,
+          "variants": [],
+          "excludedProofOnlyVariants": [],
+          "variantCollectionStatus": "no_multiple_variants"
+        },
+        {
+          "denomination": {
+            "displayName": "2 euro",
+            "value": 2.0,
+            "unit": "euro"
+          },
+          "issuePeriod": {
+            "displayValue": "2025",
+            "startYear": 2025,
+            "endYear": 2025
+          },
+          "imageExampleYear": 2025,
+          "subject": "2025",
+          "composition": "Bimetálica",
+          "weightGrams": 8.5,
+          "diameterMm": 25.75,
+          "catalogue": {
+            "type": "UC",
+            "number": "121",
+            "displayValue": "UC# 121"
+          },
+          "circulationType": "Comemorativa",
+          "ucoinTypeId": 179418,
+          "ucoinPeriodId": 321,
+          "detailPath": "/coin/portugal-2-euro-2025/?tid=179418",
+          "detailUrl": "https://pt.ucoin.net/coin/portugal-2-euro-2025/?tid=179418",
+          "images": {
+            "obverse": "https://i.ucoin.net/coin/81/833/81833436-1s/portugal-2-euro-2025.jpg",
+            "reverse": "https://i.ucoin.net/coin/81/833/81833436-2s/portugal-2-euro-2025.jpg"
+          },
+          "hasVariants": false,
+          "variants": [],
+          "excludedProofOnlyVariants": [],
+          "variantCollectionStatus": "no_multiple_variants"
+        },
+        {
+          "denomination": {
+            "displayName": "2 euro",
+            "value": 2.0,
+            "unit": "euro"
+          },
+          "issuePeriod": {
+            "displayValue": "2026",
+            "startYear": 2026,
+            "endYear": 2026
+          },
+          "imageExampleYear": 2026,
+          "subject": "2026",
+          "composition": "Bimetálica",
+          "weightGrams": 8.5,
+          "diameterMm": 25.75,
+          "catalogue": {
+            "type": "UC",
+            "number": "122",
+            "displayValue": "UC# 122"
+          },
+          "circulationType": "Comemorativa",
+          "ucoinTypeId": 190708,
+          "ucoinPeriodId": 321,
+          "detailPath": "/coin/portugal-2-euro-2026/?tid=190708",
+          "detailUrl": "https://pt.ucoin.net/coin/portugal-2-euro-2026/?tid=190708",
+          "images": {
+            "obverse": "https://i.ucoin.net/coin/83/298/83298815-1s/portugal-2-euro-2026.jpg",
+            "reverse": "https://i.ucoin.net/coin/83/298/83298815-2s/portugal-2-euro-2026.jpg"
+          },
+          "hasVariants": false,
+          "variants": [],
+          "excludedProofOnlyVariants": [],
+          "variantCollectionStatus": "no_multiple_variants"
+        },
+        {
+          "denomination": {
+            "displayName": "2 euro",
+            "value": 2.0,
+            "unit": "euro"
+          },
+          "issuePeriod": {
+            "displayValue": "2026",
+            "startYear": 2026,
+            "endYear": 2026
+          },
+          "imageExampleYear": 2026,
+          "subject": "2026",
+          "composition": "Bimetálica",
+          "weightGrams": 8.5,
+          "diameterMm": 25.75,
+          "catalogue": {
+            "type": "UC",
+            "number": "123",
+            "displayValue": "UC# 123"
+          },
+          "circulationType": "Comemorativa",
+          "ucoinTypeId": 190709,
+          "ucoinPeriodId": 321,
+          "detailPath": "/coin/portugal-2-euro-2026/?tid=190709",
+          "detailUrl": "https://pt.ucoin.net/coin/portugal-2-euro-2026/?tid=190709",
+          "images": {
+            "obverse": "https://i.ucoin.net/coin/86/622/86622153-1s/portugal-2-euro-2026.jpg",
+            "reverse": "https://i.ucoin.net/coin/86/622/86622153-2s/portugal-2-euro-2026.jpg"
+          },
+          "hasVariants": false,
+          "variants": [],
+          "excludedProofOnlyVariants": [],
+          "variantCollectionStatus": "no_multiple_variants"
+        }
+      ],
+      "sourcePages": [
+        "https://pt.ucoin.net/catalog/?country=portugal&type=2"
+      ]
+    },
+    {
+      "periodId": 126,
+      "fullTitle": "Portugal › República Portuguesa › 1986 - 2001",
+      "country": "Portugal",
+      "rulerOrPeriodName": "República Portuguesa",
+      "startYear": 1986,
+      "endYear": 2001,
+      "currencyDescription": "1 escudo = 100 centavos",
+      "coins": [
+        {
+          "denomination": {
+            "displayName": "10 escudos",
+            "value": 10.0,
+            "unit": "escudos"
+          },
+          "issuePeriod": {
+            "displayValue": "1987",
+            "startYear": 1987,
+            "endYear": 1987
+          },
+          "imageExampleYear": 1987,
+          "subject": "1987",
+          "composition": "Níquel-Latão",
+          "weightGrams": 7.4,
+          "diameterMm": 23.5,
+          "catalogue": {
+            "type": "KM",
+            "number": "638",
+            "displayValue": "KM# 638"
+          },
+          "circulationType": "Comemorativa",
+          "ucoinTypeId": 18264,
+          "ucoinPeriodId": 126,
+          "detailPath": "/coin/portugal-10-escudos-1987/?tid=18264",
+          "detailUrl": "https://pt.ucoin.net/coin/portugal-10-escudos-1987/?tid=18264",
+          "images": {
+            "obverse": "https://i.ucoin.net/coin/12/438/12438186-1s/portugal-10-escudos-1987.jpg",
+            "reverse": "https://i.ucoin.net/coin/12/438/12438186-2s/portugal-10-escudos-1987.jpg"
+          },
+          "hasVariants": false,
+          "variants": [],
+          "excludedProofOnlyVariants": [],
+          "variantCollectionStatus": "no_multiple_variants"
+        },
+        {
+          "denomination": {
+            "displayName": "100 escudos",
+            "value": 100.0,
+            "unit": "escudos"
+          },
+          "issuePeriod": {
+            "displayValue": "Campeonato do Mundo FIFA de 1986, México",
+            "startYear": 1986,
+            "endYear": 1986
+          },
+          "imageExampleYear": 1986,
+          "subject": "1986",
+          "composition": "Cupro-Níquel",
+          "weightGrams": 16.6,
+          "diameterMm": 34.0,
+          "catalogue": {
+            "type": "KM",
+            "number": "637",
+            "displayValue": "KM# 637"
+          },
+          "circulationType": "Comemorativa",
+          "ucoinTypeId": 17202,
+          "ucoinPeriodId": 126,
+          "detailPath": "/coin/portugal-100-escudos-1986/?tid=17202",
+          "detailUrl": "https://pt.ucoin.net/coin/portugal-100-escudos-1986/?tid=17202",
+          "images": {
+            "obverse": "https://i.ucoin.net/coin/63/995/63995009-1s/portugal-100-escudos-1986.jpg",
+            "reverse": "https://i.ucoin.net/coin/63/995/63995009-2s/portugal-100-escudos-1986.jpg"
+          },
+          "hasVariants": false,
+          "variants": [],
+          "excludedProofOnlyVariants": [],
+          "variantCollectionStatus": "no_multiple_variants"
+        },
+        {
+          "denomination": {
+            "displayName": "100 escudos",
+            "value": 100.0,
+            "unit": "escudos"
+          },
+          "issuePeriod": {
+            "displayValue": "1987",
+            "startYear": 1987,
+            "endYear": 1987
+          },
+          "imageExampleYear": 1987,
+          "subject": "1987",
+          "composition": "Cupro-Níquel",
+          "weightGrams": 16.6,
+          "diameterMm": 34.0,
+          "catalogue": {
+            "type": "KM",
+            "number": "639",
+            "displayValue": "KM# 639"
+          },
+          "circulationType": "Comemorativa",
+          "ucoinTypeId": 18263,
+          "ucoinPeriodId": 126,
+          "detailPath": "/coin/portugal-100-escudos-1987/?tid=18263",
+          "detailUrl": "https://pt.ucoin.net/coin/portugal-100-escudos-1987/?tid=18263",
+          "images": {
+            "obverse": "https://i.ucoin.net/coin/77/592/77592112-1s/portugal-100-escudos-1987.jpg",
+            "reverse": "https://i.ucoin.net/coin/77/592/77592112-2s/portugal-100-escudos-1987.jpg"
+          },
+          "hasVariants": false,
+          "variants": [],
+          "excludedProofOnlyVariants": [],
+          "variantCollectionStatus": "no_multiple_variants"
+        },
+        {
+          "denomination": {
+            "displayName": "100 escudos",
+            "value": 100.0,
+            "unit": "escudos"
+          },
+          "issuePeriod": {
+            "displayValue": "1987",
+            "startYear": 1987,
+            "endYear": 1987
+          },
+          "imageExampleYear": 1987,
+          "subject": "1987",
+          "composition": "Cupro-Níquel",
+          "weightGrams": 16.6,
+          "diameterMm": 34.0,
+          "catalogue": {
+            "type": "KM",
+            "number": "640",
+            "displayValue": "KM# 640"
+          },
+          "circulationType": "Comemorativa",
+          "ucoinTypeId": 16896,
+          "ucoinPeriodId": 126,
+          "detailPath": "/coin/portugal-100-escudos-1987/?tid=16896",
+          "detailUrl": "https://pt.ucoin.net/coin/portugal-100-escudos-1987/?tid=16896",
+          "images": {
+            "obverse": "https://i.ucoin.net/coin/55/257/55257072-1s/portugal-100-escudos-1987.jpg",
+            "reverse": "https://i.ucoin.net/coin/55/257/55257072-2s/portugal-100-escudos-1987.jpg"
+          },
+          "hasVariants": false,
+          "variants": [],
+          "excludedProofOnlyVariants": [],
+          "variantCollectionStatus": "no_multiple_variants"
+        },
+        {
+          "denomination": {
+            "displayName": "100 escudos",
+            "value": 100.0,
+            "unit": "escudos"
+          },
+          "issuePeriod": {
+            "displayValue": "1987",
+            "startYear": 1987,
+            "endYear": 1987
+          },
+          "imageExampleYear": 1987,
+          "subject": "1987",
+          "composition": "Cupro-Níquel",
+          "weightGrams": 16.6,
+          "diameterMm": 34.0,
+          "catalogue": {
+            "type": "KM",
+            "number": "641",
+            "displayValue": "KM# 641"
+          },
+          "circulationType": "Comemorativa",
+          "ucoinTypeId": 16897,
+          "ucoinPeriodId": 126,
+          "detailPath": "/coin/portugal-100-escudos-1987/?tid=16897",
+          "detailUrl": "https://pt.ucoin.net/coin/portugal-100-escudos-1987/?tid=16897",
+          "images": {
+            "obverse": "https://i.ucoin.net/coin/52/043/52043231-1s/portugal-100-escudos-1987.jpg",
+            "reverse": "https://i.ucoin.net/coin/52/043/52043231-2s/portugal-100-escudos-1987.jpg"
+          },
+          "hasVariants": false,
+          "variants": [],
+          "excludedProofOnlyVariants": [],
+          "variantCollectionStatus": "no_multiple_variants"
+        },
+        {
+          "denomination": {
+            "displayName": "100 escudos",
+            "value": 100.0,
+            "unit": "escudos"
+          },
+          "issuePeriod": {
+            "displayValue": "1987",
+            "startYear": 1987,
+            "endYear": 1987
+          },
+          "imageExampleYear": 1987,
+          "subject": "1987",
+          "composition": "Cupro-Níquel",
+          "weightGrams": 16.6,
+          "diameterMm": 34.0,
+          "catalogue": {
+            "type": "KM",
+            "number": "644",
+            "displayValue": "KM# 644"
+          },
+          "circulationType": "Comemorativa",
+          "ucoinTypeId": 16899,
+          "ucoinPeriodId": 126,
+          "detailPath": "/coin/portugal-100-escudos-1987/?tid=16899",
+          "detailUrl": "https://pt.ucoin.net/coin/portugal-100-escudos-1987/?tid=16899",
+          "images": {
+            "obverse": "https://i.ucoin.net/coin/55/255/55255567-1s/portugal-100-escudos-1987.jpg",
+            "reverse": "https://i.ucoin.net/coin/55/255/55255567-2s/portugal-100-escudos-1987.jpg"
+          },
+          "hasVariants": false,
+          "variants": [],
+          "excludedProofOnlyVariants": [],
+          "variantCollectionStatus": "no_multiple_variants"
+        },
+        {
+          "denomination": {
+            "displayName": "100 escudos",
+            "value": 100.0,
+            "unit": "escudos"
+          },
+          "issuePeriod": {
+            "displayValue": "1988",
+            "startYear": 1988,
+            "endYear": 1988
+          },
+          "imageExampleYear": 1988,
+          "subject": "1988",
+          "composition": "Cupro-Níquel",
+          "weightGrams": 16.6,
+          "diameterMm": 34.0,
+          "catalogue": {
+            "type": "KM",
+            "number": "642",
+            "displayValue": "KM# 642"
+          },
+          "circulationType": "Comemorativa",
+          "ucoinTypeId": 16898,
+          "ucoinPeriodId": 126,
+          "detailPath": "/coin/portugal-100-escudos-1988/?tid=16898",
+          "detailUrl": "https://pt.ucoin.net/coin/portugal-100-escudos-1988/?tid=16898",
+          "images": {
+            "obverse": "https://i.ucoin.net/coin/52/043/52043295-1s/portugal-100-escudos-1988.jpg",
+            "reverse": "https://i.ucoin.net/coin/52/043/52043295-2s/portugal-100-escudos-1988.jpg"
+          },
+          "hasVariants": false,
+          "variants": [],
+          "excludedProofOnlyVariants": [],
+          "variantCollectionStatus": "no_multiple_variants"
+        },
+        {
+          "denomination": {
+            "displayName": "100 escudos",
+            "value": 100.0,
+            "unit": "escudos"
+          },
+          "issuePeriod": {
+            "displayValue": "1989",
+            "startYear": 1989,
+            "endYear": 1989
+          },
+          "imageExampleYear": 1989,
+          "subject": "1989",
+          "composition": "Cupro-Níquel",
+          "weightGrams": 16.6,
+          "diameterMm": 34.0,
+          "catalogue": {
+            "type": "KM",
+            "number": "646",
+            "displayValue": "KM# 646"
+          },
+          "circulationType": "Comemorativa",
+          "ucoinTypeId": 16900,
+          "ucoinPeriodId": 126,
+          "detailPath": "/coin/portugal-100-escudos-1989/?tid=16900",
+          "detailUrl": "https://pt.ucoin.net/coin/portugal-100-escudos-1989/?tid=16900",
+          "images": {
+            "obverse": "https://i.ucoin.net/coin/55/257/55257297-1s/portugal-100-escudos-1989.jpg",
+            "reverse": "https://i.ucoin.net/coin/55/257/55257297-2s/portugal-100-escudos-1989.jpg"
+          },
+          "hasVariants": false,
+          "variants": [],
+          "excludedProofOnlyVariants": [],
+          "variantCollectionStatus": "no_multiple_variants"
+        },
+        {
+          "denomination": {
+            "displayName": "100 escudos",
+            "value": 100.0,
+            "unit": "escudos"
+          },
+          "issuePeriod": {
+            "displayValue": "1989",
+            "startYear": 1989,
+            "endYear": 1989
+          },
+          "imageExampleYear": 1989,
+          "subject": "1989",
+          "composition": "Cupro-Níquel",
+          "weightGrams": 16.6,
+          "diameterMm": 34.0,
+          "catalogue": {
+            "type": "KM",
+            "number": "647",
+            "displayValue": "KM# 647"
+          },
+          "circulationType": "Comemorativa",
+          "ucoinTypeId": 16901,
+          "ucoinPeriodId": 126,
+          "detailPath": "/coin/portugal-100-escudos-1989/?tid=16901",
+          "detailUrl": "https://pt.ucoin.net/coin/portugal-100-escudos-1989/?tid=16901",
+          "images": {
+            "obverse": "https://i.ucoin.net/coin/55/291/55291300-1s/portugal-100-escudos-1989.jpg",
+            "reverse": "https://i.ucoin.net/coin/55/291/55291300-2s/portugal-100-escudos-1989.jpg"
+          },
+          "hasVariants": false,
+          "variants": [],
+          "excludedProofOnlyVariants": [],
+          "variantCollectionStatus": "no_multiple_variants"
+        },
+        {
+          "denomination": {
+            "displayName": "100 escudos",
+            "value": 100.0,
+            "unit": "escudos"
+          },
+          "issuePeriod": {
+            "displayValue": "1989",
+            "startYear": 1989,
+            "endYear": 1989
+          },
+          "imageExampleYear": 1989,
+          "subject": "1989",
+          "composition": "Cupro-Níquel",
+          "weightGrams": 16.6,
+          "diameterMm": 34.0,
+          "catalogue": {
+            "type": "KM",
+            "number": "648",
+            "displayValue": "KM# 648"
+          },
+          "circulationType": "Comemorativa",
+          "ucoinTypeId": 16902,
+          "ucoinPeriodId": 126,
+          "detailPath": "/coin/portugal-100-escudos-1989/?tid=16902",
+          "detailUrl": "https://pt.ucoin.net/coin/portugal-100-escudos-1989/?tid=16902",
+          "images": {
+            "obverse": "https://i.ucoin.net/coin/52/043/52043560-1s/portugal-100-escudos-1989.jpg",
+            "reverse": "https://i.ucoin.net/coin/52/043/52043560-2s/portugal-100-escudos-1989.jpg"
+          },
+          "hasVariants": false,
+          "variants": [],
+          "excludedProofOnlyVariants": [],
+          "variantCollectionStatus": "no_multiple_variants"
+        },
+        {
+          "denomination": {
+            "displayName": "100 escudos",
+            "value": 100.0,
+            "unit": "escudos"
+          },
+          "issuePeriod": {
+            "displayValue": "1990",
+            "startYear": 1990,
+            "endYear": 1990
+          },
+          "imageExampleYear": 1990,
+          "subject": "1990",
+          "composition": "Cupro-Níquel",
+          "weightGrams": 16.6,
+          "diameterMm": 34.0,
+          "catalogue": {
+            "type": "KM",
+            "number": "649",
+            "displayValue": "KM# 649"
+          },
+          "circulationType": "Comemorativa",
+          "ucoinTypeId": 16903,
+          "ucoinPeriodId": 126,
+          "detailPath": "/coin/portugal-100-escudos-1990/?tid=16903",
+          "detailUrl": "https://pt.ucoin.net/coin/portugal-100-escudos-1990/?tid=16903",
+          "images": {
+            "obverse": "https://i.ucoin.net/coin/52/043/52043628-1s/portugal-100-escudos-1990.jpg",
+            "reverse": "https://i.ucoin.net/coin/52/043/52043628-2s/portugal-100-escudos-1990.jpg"
+          },
+          "hasVariants": false,
+          "variants": [],
+          "excludedProofOnlyVariants": [],
+          "variantCollectionStatus": "no_multiple_variants"
+        },
+        {
+          "denomination": {
+            "displayName": "100 escudos",
+            "value": 100.0,
+            "unit": "escudos"
+          },
+          "issuePeriod": {
+            "displayValue": "1990",
+            "startYear": 1990,
+            "endYear": 1990
+          },
+          "imageExampleYear": 1990,
+          "subject": "1990",
+          "composition": "Cupro-Níquel",
+          "weightGrams": 16.6,
+          "diameterMm": 34.0,
+          "catalogue": {
+            "type": "KM",
+            "number": "651",
+            "displayValue": "KM# 651"
+          },
+          "circulationType": "Comemorativa",
+          "ucoinTypeId": 16909,
+          "ucoinPeriodId": 126,
+          "detailPath": "/coin/portugal-100-escudos-1990/?tid=16909",
+          "detailUrl": "https://pt.ucoin.net/coin/portugal-100-escudos-1990/?tid=16909",
+          "images": {
+            "obverse": "https://i.ucoin.net/coin/83/321/83321080-1s/portugal-100-escudos-1990.jpg",
+            "reverse": "https://i.ucoin.net/coin/83/321/83321080-2s/portugal-100-escudos-1990.jpg"
+          },
+          "hasVariants": false,
+          "variants": [],
+          "excludedProofOnlyVariants": [],
+          "variantCollectionStatus": "no_multiple_variants"
+        },
+        {
+          "denomination": {
+            "displayName": "100 escudos",
+            "value": 100.0,
+            "unit": "escudos"
+          },
+          "issuePeriod": {
+            "displayValue": "1990",
+            "startYear": 1990,
+            "endYear": 1990
+          },
+          "imageExampleYear": 1990,
+          "subject": "1990",
+          "composition": "Cupro-Níquel",
+          "weightGrams": 16.6,
+          "diameterMm": 34.0,
+          "catalogue": {
+            "type": "KM",
+            "number": "656",
+            "displayValue": "KM# 656"
+          },
+          "circulationType": "Comemorativa",
+          "ucoinTypeId": 16910,
+          "ucoinPeriodId": 126,
+          "detailPath": "/coin/portugal-100-escudos-1990/?tid=16910",
+          "detailUrl": "https://pt.ucoin.net/coin/portugal-100-escudos-1990/?tid=16910",
+          "images": {
+            "obverse": "https://i.ucoin.net/coin/64/206/64206575-1s/portugal-100-escudos-1990.jpg",
+            "reverse": "https://i.ucoin.net/coin/64/206/64206575-2s/portugal-100-escudos-1990.jpg"
+          },
+          "hasVariants": false,
+          "variants": [],
+          "excludedProofOnlyVariants": [],
+          "variantCollectionStatus": "no_multiple_variants"
+        },
+        {
+          "denomination": {
+            "displayName": "100 escudos",
+            "value": 100.0,
+            "unit": "escudos"
+          },
+          "issuePeriod": {
+            "displayValue": "1995",
+            "startYear": 1995,
+            "endYear": 1995
+          },
+          "imageExampleYear": 1995,
+          "subject": "1995",
+          "composition": "Bimetálica",
+          "weightGrams": 8.3,
+          "diameterMm": 25.5,
+          "catalogue": {
+            "type": "KM",
+            "number": "678",
+            "displayValue": "KM# 678"
+          },
+          "circulationType": "Comemorativa",
+          "ucoinTypeId": 16911,
+          "ucoinPeriodId": 126,
+          "detailPath": "/coin/portugal-100-escudos-1995/?tid=16911",
+          "detailUrl": "https://pt.ucoin.net/coin/portugal-100-escudos-1995/?tid=16911",
+          "images": {
+            "obverse": "https://i.ucoin.net/coin/32/115/32115323-1s/portugal-100-escudos-1995.jpg",
+            "reverse": "https://i.ucoin.net/coin/32/115/32115323-2s/portugal-100-escudos-1995.jpg"
+          },
+          "hasVariants": false,
+          "variants": [],
+          "excludedProofOnlyVariants": [],
+          "variantCollectionStatus": "no_multiple_variants"
+        },
+        {
+          "denomination": {
+            "displayName": "100 escudos",
+            "value": 100.0,
+            "unit": "escudos"
+          },
+          "issuePeriod": {
+            "displayValue": "1995",
+            "startYear": 1995,
+            "endYear": 1995
+          },
+          "imageExampleYear": 1995,
+          "subject": "1995",
+          "composition": "Cupro-Níquel",
+          "weightGrams": 15.0,
+          "diameterMm": 33.0,
+          "catalogue": {
+            "type": "KM",
+            "number": "680",
+            "displayValue": "KM# 680"
+          },
+          "circulationType": "Comemorativa",
+          "ucoinTypeId": 17246,
+          "ucoinPeriodId": 126,
+          "detailPath": "/coin/portugal-100-escudos-1995/?tid=17246",
+          "detailUrl": "https://pt.ucoin.net/coin/portugal-100-escudos-1995/?tid=17246",
+          "images": {
+            "obverse": "https://i.ucoin.net/coin/64/206/64206569-1s/portugal-100-escudos-1995.jpg",
+            "reverse": "https://i.ucoin.net/coin/64/206/64206569-2s/portugal-100-escudos-1995.jpg"
+          },
+          "hasVariants": false,
+          "variants": [],
+          "excludedProofOnlyVariants": [],
+          "variantCollectionStatus": "no_multiple_variants"
+        },
+        {
+          "denomination": {
+            "displayName": "100 escudos",
+            "value": 100.0,
+            "unit": "escudos"
+          },
+          "issuePeriod": {
+            "displayValue": "1997",
+            "startYear": 1997,
+            "endYear": 1997
+          },
+          "imageExampleYear": 1997,
+          "subject": "1997",
+          "composition": "Bimetálica",
+          "weightGrams": 8.3,
+          "diameterMm": 25.5,
+          "catalogue": {
+            "type": "KM",
+            "number": "693",
+            "displayValue": "KM# 693"
+          },
+          "circulationType": "Comemorativa",
+          "ucoinTypeId": 31998,
+          "ucoinPeriodId": 126,
+          "detailPath": "/coin/portugal-100-escudos-1997/?tid=31998",
+          "detailUrl": "https://pt.ucoin.net/coin/portugal-100-escudos-1997/?tid=31998",
+          "images": {
+            "obverse": "https://i.ucoin.net/coin/36/125/36125171-1s/portugal-100-escudos-1997.jpg",
+            "reverse": "https://i.ucoin.net/coin/36/125/36125171-2s/portugal-100-escudos-1997.jpg"
+          },
+          "hasVariants": false,
+          "variants": [],
+          "excludedProofOnlyVariants": [],
+          "variantCollectionStatus": "no_multiple_variants"
+        },
+        {
+          "denomination": {
+            "displayName": "100 escudos",
+            "value": 100.0,
+            "unit": "escudos"
+          },
+          "issuePeriod": {
+            "displayValue": "1999",
+            "startYear": 1999,
+            "endYear": 1999
+          },
+          "imageExampleYear": 1999,
+          "subject": "1999",
+          "composition": "Bimetálica",
+          "weightGrams": 8.3,
+          "diameterMm": 25.5,
+          "catalogue": {
+            "type": "KM",
+            "number": "722",
+            "displayValue": "KM# 722"
+          },
+          "circulationType": "Comemorativa",
+          "ucoinTypeId": 17782,
+          "ucoinPeriodId": 126,
+          "detailPath": "/coin/portugal-100-escudos-1999/?tid=17782",
+          "detailUrl": "https://pt.ucoin.net/coin/portugal-100-escudos-1999/?tid=17782",
+          "images": {
+            "obverse": "https://i.ucoin.net/coin/17/586/17586554-1s/portugal-100-escudos-1999.jpg",
+            "reverse": "https://i.ucoin.net/coin/17/586/17586554-2s/portugal-100-escudos-1999.jpg"
+          },
+          "hasVariants": false,
+          "variants": [],
+          "excludedProofOnlyVariants": [],
+          "variantCollectionStatus": "no_multiple_variants"
+        },
+        {
+          "denomination": {
+            "displayName": "200 escudos",
+            "value": 200.0,
+            "unit": "escudos"
+          },
+          "issuePeriod": {
+            "displayValue": "1991",
+            "startYear": 1991,
+            "endYear": 1991
+          },
+          "imageExampleYear": 1991,
+          "subject": "1991",
+          "composition": "Cupro-Níquel",
+          "weightGrams": 21.1,
+          "diameterMm": 36.0,
+          "catalogue": {
+            "type": "KM",
+            "number": "658",
+            "displayValue": "KM# 658"
+          },
+          "circulationType": "Comemorativa",
+          "ucoinTypeId": 16928,
+          "ucoinPeriodId": 126,
+          "detailPath": "/coin/portugal-200-escudos-1991/?tid=16928",
+          "detailUrl": "https://pt.ucoin.net/coin/portugal-200-escudos-1991/?tid=16928",
+          "images": {
+            "obverse": "https://i.ucoin.net/coin/55/253/55253646-1s/portugal-200-escudos-1991.jpg",
+            "reverse": "https://i.ucoin.net/coin/55/253/55253646-2s/portugal-200-escudos-1991.jpg"
+          },
+          "hasVariants": false,
+          "variants": [],
+          "excludedProofOnlyVariants": [],
+          "variantCollectionStatus": "no_multiple_variants"
+        },
+        {
+          "denomination": {
+            "displayName": "200 escudos",
+            "value": 200.0,
+            "unit": "escudos"
+          },
+          "issuePeriod": {
+            "displayValue": "1991",
+            "startYear": 1991,
+            "endYear": 1991
+          },
+          "imageExampleYear": 1991,
+          "subject": "1991",
+          "composition": "Cupro-Níquel",
+          "weightGrams": 21.1,
+          "diameterMm": 36.0,
+          "catalogue": {
+            "type": "KM",
+            "number": "659",
+            "displayValue": "KM# 659"
+          },
+          "circulationType": "Comemorativa",
+          "ucoinTypeId": 16929,
+          "ucoinPeriodId": 126,
+          "detailPath": "/coin/portugal-200-escudos-1991/?tid=16929",
+          "detailUrl": "https://pt.ucoin.net/coin/portugal-200-escudos-1991/?tid=16929",
+          "images": {
+            "obverse": "https://i.ucoin.net/coin/64/206/64206500-1s/portugal-200-escudos-1991.jpg",
+            "reverse": "https://i.ucoin.net/coin/64/206/64206500-2s/portugal-200-escudos-1991.jpg"
+          },
+          "hasVariants": false,
+          "variants": [],
+          "excludedProofOnlyVariants": [],
+          "variantCollectionStatus": "no_multiple_variants"
+        },
+        {
+          "denomination": {
+            "displayName": "200 escudos",
+            "value": 200.0,
+            "unit": "escudos"
+          },
+          "issuePeriod": {
+            "displayValue": "1992",
+            "startYear": 1992,
+            "endYear": 1992
+          },
+          "imageExampleYear": 1992,
+          "subject": "1992",
+          "composition": "Cupro-Níquel",
+          "weightGrams": 21.1,
+          "diameterMm": 36.0,
+          "catalogue": {
+            "type": "KM",
+            "number": "660",
+            "displayValue": "KM# 660"
+          },
+          "circulationType": "Comemorativa",
+          "ucoinTypeId": 16930,
+          "ucoinPeriodId": 126,
+          "detailPath": "/coin/portugal-200-escudos-1992/?tid=16930",
+          "detailUrl": "https://pt.ucoin.net/coin/portugal-200-escudos-1992/?tid=16930",
+          "images": {
+            "obverse": "https://i.ucoin.net/coin/64/206/64206502-1s/portugal-200-escudos-1992.jpg",
+            "reverse": "https://i.ucoin.net/coin/64/206/64206502-2s/portugal-200-escudos-1992.jpg"
+          },
+          "hasVariants": false,
+          "variants": [],
+          "excludedProofOnlyVariants": [],
+          "variantCollectionStatus": "no_multiple_variants"
+        },
+        {
+          "denomination": {
+            "displayName": "200 escudos",
+            "value": 200.0,
+            "unit": "escudos"
+          },
+          "issuePeriod": {
+            "displayValue": "1992",
+            "startYear": 1992,
+            "endYear": 1992
+          },
+          "imageExampleYear": 1992,
+          "subject": "1992",
+          "composition": "Cupro-Níquel",
+          "weightGrams": 21.1,
+          "diameterMm": 36.0,
+          "catalogue": {
+            "type": "KM",
+            "number": "661",
+            "displayValue": "KM# 661"
+          },
+          "circulationType": "Comemorativa",
+          "ucoinTypeId": 16931,
+          "ucoinPeriodId": 126,
+          "detailPath": "/coin/portugal-200-escudos-1992/?tid=16931",
+          "detailUrl": "https://pt.ucoin.net/coin/portugal-200-escudos-1992/?tid=16931",
+          "images": {
+            "obverse": "https://i.ucoin.net/coin/17/586/17586518-1s/portugal-200-escudos-1992.jpg",
+            "reverse": "https://i.ucoin.net/coin/17/586/17586518-2s/portugal-200-escudos-1992.jpg"
+          },
+          "hasVariants": false,
+          "variants": [],
+          "excludedProofOnlyVariants": [],
+          "variantCollectionStatus": "no_multiple_variants"
+        },
+        {
+          "denomination": {
+            "displayName": "200 escudos",
+            "value": 200.0,
+            "unit": "escudos"
+          },
+          "issuePeriod": {
+            "displayValue": "Olímpiadas de Barcelona 1992",
+            "startYear": 1992,
+            "endYear": 1992
+          },
+          "imageExampleYear": 1992,
+          "subject": "1992",
+          "composition": "Cupro-Níquel",
+          "weightGrams": 21.1,
+          "diameterMm": 36.0,
+          "catalogue": {
+            "type": "KM",
+            "number": "662",
+            "displayValue": "KM# 662"
+          },
+          "circulationType": "Comemorativa",
+          "ucoinTypeId": 16932,
+          "ucoinPeriodId": 126,
+          "detailPath": "/coin/portugal-200-escudos-1992/?tid=16932",
+          "detailUrl": "https://pt.ucoin.net/coin/portugal-200-escudos-1992/?tid=16932",
+          "images": {
+            "obverse": "https://i.ucoin.net/coin/55/256/55256586-1s/portugal-200-escudos-1992.jpg",
+            "reverse": "https://i.ucoin.net/coin/55/256/55256586-2s/portugal-200-escudos-1992.jpg"
+          },
+          "hasVariants": false,
+          "variants": [],
+          "excludedProofOnlyVariants": [],
+          "variantCollectionStatus": "no_multiple_variants"
+        },
+        {
+          "denomination": {
+            "displayName": "200 escudos",
+            "value": 200.0,
+            "unit": "escudos"
+          },
+          "issuePeriod": {
+            "displayValue": "1992",
+            "startYear": 1992,
+            "endYear": 1992
+          },
+          "imageExampleYear": 1992,
+          "subject": "1992",
+          "composition": "Cupro-Níquel",
+          "weightGrams": 21.1,
+          "diameterMm": 36.0,
+          "catalogue": {
+            "type": "KM",
+            "number": "663",
+            "displayValue": "KM# 663"
+          },
+          "circulationType": "Comemorativa",
+          "ucoinTypeId": 16933,
+          "ucoinPeriodId": 126,
+          "detailPath": "/coin/portugal-200-escudos-1992/?tid=16933",
+          "detailUrl": "https://pt.ucoin.net/coin/portugal-200-escudos-1992/?tid=16933",
+          "images": {
+            "obverse": "https://i.ucoin.net/coin/55/256/55256940-1s/portugal-200-escudos-1992.jpg",
+            "reverse": "https://i.ucoin.net/coin/55/256/55256940-2s/portugal-200-escudos-1992.jpg"
+          },
+          "hasVariants": false,
+          "variants": [],
+          "excludedProofOnlyVariants": [],
+          "variantCollectionStatus": "no_multiple_variants"
+        },
+        {
+          "denomination": {
+            "displayName": "200 escudos",
+            "value": 200.0,
+            "unit": "escudos"
+          },
+          "issuePeriod": {
+            "displayValue": "1993",
+            "startYear": 1993,
+            "endYear": 1993
+          },
+          "imageExampleYear": 1993,
+          "subject": "1993",
+          "composition": "Cupro-Níquel",
+          "weightGrams": 21.1,
+          "diameterMm": 36.0,
+          "catalogue": {
+            "type": "KM",
+            "number": "665",
+            "displayValue": "KM# 665"
+          },
+          "circulationType": "Comemorativa",
+          "ucoinTypeId": 16934,
+          "ucoinPeriodId": 126,
+          "detailPath": "/coin/portugal-200-escudos-1993/?tid=16934",
+          "detailUrl": "https://pt.ucoin.net/coin/portugal-200-escudos-1993/?tid=16934",
+          "images": {
+            "obverse": "https://i.ucoin.net/coin/63/995/63995015-1s/portugal-200-escudos-1993.jpg",
+            "reverse": "https://i.ucoin.net/coin/63/995/63995015-2s/portugal-200-escudos-1993.jpg"
+          },
+          "hasVariants": false,
+          "variants": [],
+          "excludedProofOnlyVariants": [],
+          "variantCollectionStatus": "no_multiple_variants"
+        },
+        {
+          "denomination": {
+            "displayName": "200 escudos",
+            "value": 200.0,
+            "unit": "escudos"
+          },
+          "issuePeriod": {
+            "displayValue": "1993",
+            "startYear": 1993,
+            "endYear": 1993
+          },
+          "imageExampleYear": 1993,
+          "subject": "1993",
+          "composition": "Cupro-Níquel",
+          "weightGrams": 21.1,
+          "diameterMm": 36.0,
+          "catalogue": {
+            "type": "KM",
+            "number": "666",
+            "displayValue": "KM# 666"
+          },
+          "circulationType": "Comemorativa",
+          "ucoinTypeId": 16935,
+          "ucoinPeriodId": 126,
+          "detailPath": "/coin/portugal-200-escudos-1993/?tid=16935",
+          "detailUrl": "https://pt.ucoin.net/coin/portugal-200-escudos-1993/?tid=16935",
+          "images": {
+            "obverse": "https://i.ucoin.net/coin/64/206/64206532-1s/portugal-200-escudos-1993.jpg",
+            "reverse": "https://i.ucoin.net/coin/64/206/64206532-2s/portugal-200-escudos-1993.jpg"
+          },
+          "hasVariants": false,
+          "variants": [],
+          "excludedProofOnlyVariants": [],
+          "variantCollectionStatus": "no_multiple_variants"
+        },
+        {
+          "denomination": {
+            "displayName": "200 escudos",
+            "value": 200.0,
+            "unit": "escudos"
+          },
+          "issuePeriod": {
+            "displayValue": "1993",
+            "startYear": 1993,
+            "endYear": 1993
+          },
+          "imageExampleYear": 1993,
+          "subject": "1993",
+          "composition": "Cupro-Níquel",
+          "weightGrams": 21.1,
+          "diameterMm": 36.0,
+          "catalogue": {
+            "type": "KM",
+            "number": "667",
+            "displayValue": "KM# 667"
+          },
+          "circulationType": "Comemorativa",
+          "ucoinTypeId": 16936,
+          "ucoinPeriodId": 126,
+          "detailPath": "/coin/portugal-200-escudos-1993/?tid=16936",
+          "detailUrl": "https://pt.ucoin.net/coin/portugal-200-escudos-1993/?tid=16936",
+          "images": {
+            "obverse": "https://i.ucoin.net/coin/50/747/50747468-1s/portugal-200-escudos-1993.jpg",
+            "reverse": "https://i.ucoin.net/coin/50/747/50747468-2s/portugal-200-escudos-1993.jpg"
+          },
+          "hasVariants": false,
+          "variants": [],
+          "excludedProofOnlyVariants": [],
+          "variantCollectionStatus": "no_multiple_variants"
+        },
+        {
+          "denomination": {
+            "displayName": "200 escudos",
+            "value": 200.0,
+            "unit": "escudos"
+          },
+          "issuePeriod": {
+            "displayValue": "1993",
+            "startYear": 1993,
+            "endYear": 1993
+          },
+          "imageExampleYear": 1993,
+          "subject": "1993",
+          "composition": "Cupro-Níquel",
+          "weightGrams": 21.1,
+          "diameterMm": 36.0,
+          "catalogue": {
+            "type": "KM",
+            "number": "668",
+            "displayValue": "KM# 668"
+          },
+          "circulationType": "Comemorativa",
+          "ucoinTypeId": 16937,
+          "ucoinPeriodId": 126,
+          "detailPath": "/coin/portugal-200-escudos-1993/?tid=16937",
+          "detailUrl": "https://pt.ucoin.net/coin/portugal-200-escudos-1993/?tid=16937",
+          "images": {
+            "obverse": "https://i.ucoin.net/coin/64/206/64206530-1s/portugal-200-escudos-1993.jpg",
+            "reverse": "https://i.ucoin.net/coin/64/206/64206530-2s/portugal-200-escudos-1993.jpg"
+          },
+          "hasVariants": false,
+          "variants": [],
+          "excludedProofOnlyVariants": [],
+          "variantCollectionStatus": "no_multiple_variants"
+        },
+        {
+          "denomination": {
+            "displayName": "200 escudos",
+            "value": 200.0,
+            "unit": "escudos"
+          },
+          "issuePeriod": {
+            "displayValue": "1994",
+            "startYear": 1994,
+            "endYear": 1994
+          },
+          "imageExampleYear": 1994,
+          "subject": "1994",
+          "composition": "Bimetálica",
+          "weightGrams": 9.8,
+          "diameterMm": 28.0,
+          "catalogue": {
+            "type": "KM",
+            "number": "669",
+            "displayValue": "KM# 669"
+          },
+          "circulationType": "Comemorativa",
+          "ucoinTypeId": 16938,
+          "ucoinPeriodId": 126,
+          "detailPath": "/coin/portugal-200-escudos-1994/?tid=16938",
+          "detailUrl": "https://pt.ucoin.net/coin/portugal-200-escudos-1994/?tid=16938",
+          "images": {
+            "obverse": "https://i.ucoin.net/coin/12/913/12913670-1s/portugal-200-escudos-1994.jpg",
+            "reverse": "https://i.ucoin.net/coin/12/913/12913670-2s/portugal-200-escudos-1994.jpg"
+          },
+          "hasVariants": false,
+          "variants": [],
+          "excludedProofOnlyVariants": [],
+          "variantCollectionStatus": "no_multiple_variants"
+        },
+        {
+          "denomination": {
+            "displayName": "200 escudos",
+            "value": 200.0,
+            "unit": "escudos"
+          },
+          "issuePeriod": {
+            "displayValue": "1994",
+            "startYear": 1994,
+            "endYear": 1994
+          },
+          "imageExampleYear": 1994,
+          "subject": "1994",
+          "composition": "Cupro-Níquel",
+          "weightGrams": 21.1,
+          "diameterMm": 36.0,
+          "catalogue": {
+            "type": "KM",
+            "number": "670",
+            "displayValue": "KM# 670"
+          },
+          "circulationType": "Comemorativa",
+          "ucoinTypeId": 17236,
+          "ucoinPeriodId": 126,
+          "detailPath": "/coin/portugal-200-escudos-1994/?tid=17236",
+          "detailUrl": "https://pt.ucoin.net/coin/portugal-200-escudos-1994/?tid=17236",
+          "images": {
+            "obverse": "https://i.ucoin.net/coin/17/586/17586526-1s/portugal-200-escudos-1994.jpg",
+            "reverse": "https://i.ucoin.net/coin/17/586/17586526-2s/portugal-200-escudos-1994.jpg"
+          },
+          "hasVariants": false,
+          "variants": [],
+          "excludedProofOnlyVariants": [],
+          "variantCollectionStatus": "no_multiple_variants"
+        },
+        {
+          "denomination": {
+            "displayName": "200 escudos",
+            "value": 200.0,
+            "unit": "escudos"
+          },
+          "issuePeriod": {
+            "displayValue": "1994",
+            "startYear": 1994,
+            "endYear": 1994
+          },
+          "imageExampleYear": 1994,
+          "subject": "1994",
+          "composition": "Cupro-Níquel",
+          "weightGrams": 21.1,
+          "diameterMm": 36.0,
+          "catalogue": {
+            "type": "KM",
+            "number": "671",
+            "displayValue": "KM# 671"
+          },
+          "circulationType": "Comemorativa",
+          "ucoinTypeId": 17237,
+          "ucoinPeriodId": 126,
+          "detailPath": "/coin/portugal-200-escudos-1994/?tid=17237",
+          "detailUrl": "https://pt.ucoin.net/coin/portugal-200-escudos-1994/?tid=17237",
+          "images": {
+            "obverse": "https://i.ucoin.net/coin/50/747/50747025-1s/portugal-200-escudos-1994.jpg",
+            "reverse": "https://i.ucoin.net/coin/50/747/50747025-2s/portugal-200-escudos-1994.jpg"
+          },
+          "hasVariants": false,
+          "variants": [],
+          "excludedProofOnlyVariants": [],
+          "variantCollectionStatus": "no_multiple_variants"
+        },
+        {
+          "denomination": {
+            "displayName": "200 escudos",
+            "value": 200.0,
+            "unit": "escudos"
+          },
+          "issuePeriod": {
+            "displayValue": "1994",
+            "startYear": 1994,
+            "endYear": 1994
+          },
+          "imageExampleYear": 1994,
+          "subject": "1994",
+          "composition": "Cupro-Níquel",
+          "weightGrams": 21.1,
+          "diameterMm": 36.0,
+          "catalogue": {
+            "type": "KM",
+            "number": "672",
+            "displayValue": "KM# 672"
+          },
+          "circulationType": "Comemorativa",
+          "ucoinTypeId": 17238,
+          "ucoinPeriodId": 126,
+          "detailPath": "/coin/portugal-200-escudos-1994/?tid=17238",
+          "detailUrl": "https://pt.ucoin.net/coin/portugal-200-escudos-1994/?tid=17238",
+          "images": {
+            "obverse": "https://i.ucoin.net/coin/39/255/39255517-1s/portugal-200-escudos-1994.jpg",
+            "reverse": "https://i.ucoin.net/coin/39/255/39255517-2s/portugal-200-escudos-1994.jpg"
+          },
+          "hasVariants": false,
+          "variants": [],
+          "excludedProofOnlyVariants": [],
+          "variantCollectionStatus": "no_multiple_variants"
+        },
+        {
+          "denomination": {
+            "displayName": "200 escudos",
+            "value": 200.0,
+            "unit": "escudos"
+          },
+          "issuePeriod": {
+            "displayValue": "1995",
+            "startYear": 1995,
+            "endYear": 1995
+          },
+          "imageExampleYear": 1994,
+          "subject": "1995",
+          "composition": "Cupro-Níquel",
+          "weightGrams": 21.1,
+          "diameterMm": 36.0,
+          "catalogue": {
+            "type": "KM",
+            "number": "673",
+            "displayValue": "KM# 673"
+          },
+          "circulationType": "Comemorativa",
+          "ucoinTypeId": 17239,
+          "ucoinPeriodId": 126,
+          "detailPath": "/coin/portugal-200-escudos-1995/?tid=17239",
+          "detailUrl": "https://pt.ucoin.net/coin/portugal-200-escudos-1995/?tid=17239",
+          "images": {
+            "obverse": "https://i.ucoin.net/coin/64/206/64206520-1s/portugal-200-escudos-1994.jpg",
+            "reverse": "https://i.ucoin.net/coin/64/206/64206520-2s/portugal-200-escudos-1994.jpg"
+          },
+          "hasVariants": false,
+          "variants": [],
+          "excludedProofOnlyVariants": [],
+          "variantCollectionStatus": "no_multiple_variants"
+        },
+        {
+          "denomination": {
+            "displayName": "200 escudos",
+            "value": 200.0,
+            "unit": "escudos"
+          },
+          "issuePeriod": {
+            "displayValue": "1995",
+            "startYear": 1995,
+            "endYear": 1995
+          },
+          "imageExampleYear": 1995,
+          "subject": "1995",
+          "composition": "Bimetálica",
+          "weightGrams": 9.8,
+          "diameterMm": 28.0,
+          "catalogue": {
+            "type": "KM",
+            "number": "679",
+            "displayValue": "KM# 679"
+          },
+          "circulationType": "Comemorativa",
+          "ucoinTypeId": 22927,
+          "ucoinPeriodId": 126,
+          "detailPath": "/coin/portugal-200-escudos-1995/?tid=22927",
+          "detailUrl": "https://pt.ucoin.net/coin/portugal-200-escudos-1995/?tid=22927",
+          "images": {
+            "obverse": "https://i.ucoin.net/coin/23/914/23914660-1s/portugal-200-escudos-1995.jpg",
+            "reverse": "https://i.ucoin.net/coin/23/914/23914660-2s/portugal-200-escudos-1995.jpg"
+          },
+          "hasVariants": false,
+          "variants": [],
+          "excludedProofOnlyVariants": [],
+          "variantCollectionStatus": "no_multiple_variants"
+        },
+        {
+          "denomination": {
+            "displayName": "200 escudos",
+            "value": 200.0,
+            "unit": "escudos"
+          },
+          "issuePeriod": {
+            "displayValue": "1995",
+            "startYear": 1995,
+            "endYear": 1995
+          },
+          "imageExampleYear": 1995,
+          "subject": "1995",
+          "composition": "Cupro-Níquel",
+          "weightGrams": 21.1,
+          "diameterMm": 36.0,
+          "catalogue": {
+            "type": "KM",
+            "number": "681",
+            "displayValue": "KM# 681"
+          },
+          "circulationType": "Comemorativa",
+          "ucoinTypeId": 17336,
+          "ucoinPeriodId": 126,
+          "detailPath": "/coin/portugal-200-escudos-1995/?tid=17336",
+          "detailUrl": "https://pt.ucoin.net/coin/portugal-200-escudos-1995/?tid=17336",
+          "images": {
+            "obverse": "https://i.ucoin.net/coin/41/823/41823001-1s/portugal-200-escudos-1995.jpg",
+            "reverse": "https://i.ucoin.net/coin/41/823/41823001-2s/portugal-200-escudos-1995.jpg"
+          },
+          "hasVariants": false,
+          "variants": [],
+          "excludedProofOnlyVariants": [],
+          "variantCollectionStatus": "no_multiple_variants"
+        },
+        {
+          "denomination": {
+            "displayName": "200 escudos",
+            "value": 200.0,
+            "unit": "escudos"
+          },
+          "issuePeriod": {
+            "displayValue": "1995",
+            "startYear": 1995,
+            "endYear": 1995
+          },
+          "imageExampleYear": 1995,
+          "subject": "1995",
+          "composition": "Cupro-Níquel",
+          "weightGrams": 21.1,
+          "diameterMm": 36.0,
+          "catalogue": {
+            "type": "KM",
+            "number": "682",
+            "displayValue": "KM# 682"
+          },
+          "circulationType": "Comemorativa",
+          "ucoinTypeId": 17337,
+          "ucoinPeriodId": 126,
+          "detailPath": "/coin/portugal-200-escudos-1995/?tid=17337",
+          "detailUrl": "https://pt.ucoin.net/coin/portugal-200-escudos-1995/?tid=17337",
+          "images": {
+            "obverse": "https://i.ucoin.net/coin/41/823/41823299-1s/portugal-200-escudos-1995.jpg",
+            "reverse": "https://i.ucoin.net/coin/41/823/41823299-2s/portugal-200-escudos-1995.jpg"
+          },
+          "hasVariants": false,
+          "variants": [],
+          "excludedProofOnlyVariants": [],
+          "variantCollectionStatus": "no_multiple_variants"
+        },
+        {
+          "denomination": {
+            "displayName": "200 escudos",
+            "value": 200.0,
+            "unit": "escudos"
+          },
+          "issuePeriod": {
+            "displayValue": "1995",
+            "startYear": 1995,
+            "endYear": 1995
+          },
+          "imageExampleYear": 1995,
+          "subject": "1995",
+          "composition": "Cupro-Níquel",
+          "weightGrams": 21.1,
+          "diameterMm": 36.0,
+          "catalogue": {
+            "type": "KM",
+            "number": "683",
+            "displayValue": "KM# 683"
+          },
+          "circulationType": "Comemorativa",
+          "ucoinTypeId": 17279,
+          "ucoinPeriodId": 126,
+          "detailPath": "/coin/portugal-200-escudos-1995/?tid=17279",
+          "detailUrl": "https://pt.ucoin.net/coin/portugal-200-escudos-1995/?tid=17279",
+          "images": {
+            "obverse": "https://i.ucoin.net/coin/75/704/75704889-1s/portugal-200-escudos-1995.jpg",
+            "reverse": "https://i.ucoin.net/coin/75/704/75704889-2s/portugal-200-escudos-1995.jpg"
+          },
+          "hasVariants": false,
+          "variants": [],
+          "excludedProofOnlyVariants": [],
+          "variantCollectionStatus": "no_multiple_variants"
+        },
+        {
+          "denomination": {
+            "displayName": "200 escudos",
+            "value": 200.0,
+            "unit": "escudos"
+          },
+          "issuePeriod": {
+            "displayValue": "1995",
+            "startYear": 1995,
+            "endYear": 1995
+          },
+          "imageExampleYear": 1995,
+          "subject": "1995",
+          "composition": "Cupro-Níquel",
+          "weightGrams": 21.1,
+          "diameterMm": 36.0,
+          "catalogue": {
+            "type": "KM",
+            "number": "684",
+            "displayValue": "KM# 684"
+          },
+          "circulationType": "Comemorativa",
+          "ucoinTypeId": 17280,
+          "ucoinPeriodId": 126,
+          "detailPath": "/coin/portugal-200-escudos-1995/?tid=17280",
+          "detailUrl": "https://pt.ucoin.net/coin/portugal-200-escudos-1995/?tid=17280",
+          "images": {
+            "obverse": "https://i.ucoin.net/coin/17/586/17586535-1s/portugal-200-escudos-1995.jpg",
+            "reverse": "https://i.ucoin.net/coin/17/586/17586535-2s/portugal-200-escudos-1995.jpg"
+          },
+          "hasVariants": false,
+          "variants": [],
+          "excludedProofOnlyVariants": [],
+          "variantCollectionStatus": "no_multiple_variants"
+        },
+        {
+          "denomination": {
+            "displayName": "200 escudos",
+            "value": 200.0,
+            "unit": "escudos"
+          },
+          "issuePeriod": {
+            "displayValue": "1996",
+            "startYear": 1996,
+            "endYear": 1996
+          },
+          "imageExampleYear": 1996,
+          "subject": "1996",
+          "composition": "Bimetálica",
+          "weightGrams": 9.8,
+          "diameterMm": 28.0,
+          "catalogue": {
+            "type": "KM",
+            "number": "687",
+            "displayValue": "KM# 687"
+          },
+          "circulationType": "Comemorativa",
+          "ucoinTypeId": 17315,
+          "ucoinPeriodId": 126,
+          "detailPath": "/coin/portugal-200-escudos-1996/?tid=17315",
+          "detailUrl": "https://pt.ucoin.net/coin/portugal-200-escudos-1996/?tid=17315",
+          "images": {
+            "obverse": "https://i.ucoin.net/coin/62/860/62860175-1s/portugal-200-escudos-1996.jpg",
+            "reverse": "https://i.ucoin.net/coin/62/860/62860175-2s/portugal-200-escudos-1996.jpg"
+          },
+          "hasVariants": false,
+          "variants": [],
+          "excludedProofOnlyVariants": [],
+          "variantCollectionStatus": "no_multiple_variants"
+        },
+        {
+          "denomination": {
+            "displayName": "200 escudos",
+            "value": 200.0,
+            "unit": "escudos"
+          },
+          "issuePeriod": {
+            "displayValue": "1996",
+            "startYear": 1996,
+            "endYear": 1996
+          },
+          "imageExampleYear": 1996,
+          "subject": "1996",
+          "composition": "Cupro-Níquel",
+          "weightGrams": 21.1,
+          "diameterMm": 36.0,
+          "catalogue": {
+            "type": "KM",
+            "number": "689",
+            "displayValue": "KM# 689"
+          },
+          "circulationType": "Comemorativa",
+          "ucoinTypeId": 17316,
+          "ucoinPeriodId": 126,
+          "detailPath": "/coin/portugal-200-escudos-1996/?tid=17316",
+          "detailUrl": "https://pt.ucoin.net/coin/portugal-200-escudos-1996/?tid=17316",
+          "images": {
+            "obverse": "https://i.ucoin.net/coin/64/206/64206517-1s/portugal-200-escudos-1996.jpg",
+            "reverse": "https://i.ucoin.net/coin/64/206/64206517-2s/portugal-200-escudos-1996.jpg"
+          },
+          "hasVariants": false,
+          "variants": [],
+          "excludedProofOnlyVariants": [],
+          "variantCollectionStatus": "no_multiple_variants"
+        },
+        {
+          "denomination": {
+            "displayName": "200 escudos",
+            "value": 200.0,
+            "unit": "escudos"
+          },
+          "issuePeriod": {
+            "displayValue": "1996",
+            "startYear": 1996,
+            "endYear": 1996
+          },
+          "imageExampleYear": 1996,
+          "subject": "1996",
+          "composition": "Cupro-Níquel",
+          "weightGrams": 21.1,
+          "diameterMm": 36.0,
+          "catalogue": {
+            "type": "KM",
+            "number": "690",
+            "displayValue": "KM# 690"
+          },
+          "circulationType": "Comemorativa",
+          "ucoinTypeId": 17317,
+          "ucoinPeriodId": 126,
+          "detailPath": "/coin/portugal-200-escudos-1996/?tid=17317",
+          "detailUrl": "https://pt.ucoin.net/coin/portugal-200-escudos-1996/?tid=17317",
+          "images": {
+            "obverse": "https://i.ucoin.net/coin/35/316/35316897-1s/portugal-200-escudos-1996.jpg",
+            "reverse": "https://i.ucoin.net/coin/35/316/35316897-2s/portugal-200-escudos-1996.jpg"
+          },
+          "hasVariants": false,
+          "variants": [],
+          "excludedProofOnlyVariants": [],
+          "variantCollectionStatus": "no_multiple_variants"
+        },
+        {
+          "denomination": {
+            "displayName": "200 escudos",
+            "value": 200.0,
+            "unit": "escudos"
+          },
+          "issuePeriod": {
+            "displayValue": "1996",
+            "startYear": 1996,
+            "endYear": 1996
+          },
+          "imageExampleYear": 1996,
+          "subject": "1996",
+          "composition": "Cupro-Níquel",
+          "weightGrams": 21.1,
+          "diameterMm": 36.0,
+          "catalogue": {
+            "type": "KM",
+            "number": "691",
+            "displayValue": "KM# 691"
+          },
+          "circulationType": "Comemorativa",
+          "ucoinTypeId": 17318,
+          "ucoinPeriodId": 126,
+          "detailPath": "/coin/portugal-200-escudos-1996/?tid=17318",
+          "detailUrl": "https://pt.ucoin.net/coin/portugal-200-escudos-1996/?tid=17318",
+          "images": {
+            "obverse": "https://i.ucoin.net/coin/84/887/84887540-1s/portugal-200-escudos-1996.jpg",
+            "reverse": "https://i.ucoin.net/coin/84/887/84887540-2s/portugal-200-escudos-1996.jpg"
+          },
+          "hasVariants": false,
+          "variants": [],
+          "excludedProofOnlyVariants": [],
+          "variantCollectionStatus": "no_multiple_variants"
+        },
+        {
+          "denomination": {
+            "displayName": "200 escudos",
+            "value": 200.0,
+            "unit": "escudos"
+          },
+          "issuePeriod": {
+            "displayValue": "1996",
+            "startYear": 1996,
+            "endYear": 1996
+          },
+          "imageExampleYear": 1996,
+          "subject": "1996",
+          "composition": "Cupro-Níquel",
+          "weightGrams": 21.1,
+          "diameterMm": 36.0,
+          "catalogue": {
+            "type": "KM",
+            "number": "692",
+            "displayValue": "KM# 692"
+          },
+          "circulationType": "Comemorativa",
+          "ucoinTypeId": 17319,
+          "ucoinPeriodId": 126,
+          "detailPath": "/coin/portugal-200-escudos-1996/?tid=17319",
+          "detailUrl": "https://pt.ucoin.net/coin/portugal-200-escudos-1996/?tid=17319",
+          "images": {
+            "obverse": "https://i.ucoin.net/coin/79/366/79366742-1s/portugal-200-escudos-1996.jpg",
+            "reverse": "https://i.ucoin.net/coin/79/366/79366742-2s/portugal-200-escudos-1996.jpg"
+          },
+          "hasVariants": false,
+          "variants": [],
+          "excludedProofOnlyVariants": [],
+          "variantCollectionStatus": "no_multiple_variants"
+        },
+        {
+          "denomination": {
+            "displayName": "200 escudos",
+            "value": 200.0,
+            "unit": "escudos"
+          },
+          "issuePeriod": {
+            "displayValue": "1997",
+            "startYear": 1997,
+            "endYear": 1997
+          },
+          "imageExampleYear": 1997,
+          "subject": "1997",
+          "composition": "Bimetálica",
+          "weightGrams": 9.8,
+          "diameterMm": 28.0,
+          "catalogue": {
+            "type": "KM",
+            "number": "694",
+            "displayValue": "KM# 694"
+          },
+          "circulationType": "Comemorativa",
+          "ucoinTypeId": 17325,
+          "ucoinPeriodId": 126,
+          "detailPath": "/coin/portugal-200-escudos-1997/?tid=17325",
+          "detailUrl": "https://pt.ucoin.net/coin/portugal-200-escudos-1997/?tid=17325",
+          "images": {
+            "obverse": "https://i.ucoin.net/coin/29/019/29019931-1s/portugal-200-escudos-1997.jpg",
+            "reverse": "https://i.ucoin.net/coin/29/019/29019931-2s/portugal-200-escudos-1997.jpg"
+          },
+          "hasVariants": false,
+          "variants": [],
+          "excludedProofOnlyVariants": [],
+          "variantCollectionStatus": "no_multiple_variants"
+        },
+        {
+          "denomination": {
+            "displayName": "200 escudos",
+            "value": 200.0,
+            "unit": "escudos"
+          },
+          "issuePeriod": {
+            "displayValue": "1997",
+            "startYear": 1997,
+            "endYear": 1997
+          },
+          "imageExampleYear": 1997,
+          "subject": "1997",
+          "composition": "Cupro-Níquel",
+          "weightGrams": 21.1,
+          "diameterMm": 36.0,
+          "catalogue": {
+            "type": "KM",
+            "number": "697",
+            "displayValue": "KM# 697"
+          },
+          "circulationType": "Comemorativa",
+          "ucoinTypeId": 17326,
+          "ucoinPeriodId": 126,
+          "detailPath": "/coin/portugal-200-escudos-1997/?tid=17326",
+          "detailUrl": "https://pt.ucoin.net/coin/portugal-200-escudos-1997/?tid=17326",
+          "images": {
+            "obverse": "https://i.ucoin.net/coin/42/699/42699191-1s/portugal-200-escudos-1997.jpg",
+            "reverse": "https://i.ucoin.net/coin/42/699/42699191-2s/portugal-200-escudos-1997.jpg"
+          },
+          "hasVariants": false,
+          "variants": [],
+          "excludedProofOnlyVariants": [],
+          "variantCollectionStatus": "no_multiple_variants"
+        },
+        {
+          "denomination": {
+            "displayName": "200 escudos",
+            "value": 200.0,
+            "unit": "escudos"
+          },
+          "issuePeriod": {
+            "displayValue": "1997",
+            "startYear": 1997,
+            "endYear": 1997
+          },
+          "imageExampleYear": 1997,
+          "subject": "1997",
+          "composition": "Cupro-Níquel",
+          "weightGrams": 21.1,
+          "diameterMm": 36.0,
+          "catalogue": {
+            "type": "KM",
+            "number": "698",
+            "displayValue": "KM# 698"
+          },
+          "circulationType": "Comemorativa",
+          "ucoinTypeId": 17327,
+          "ucoinPeriodId": 126,
+          "detailPath": "/coin/portugal-200-escudos-1997/?tid=17327",
+          "detailUrl": "https://pt.ucoin.net/coin/portugal-200-escudos-1997/?tid=17327",
+          "images": {
+            "obverse": "https://i.ucoin.net/coin/55/256/55256512-1s/portugal-200-escudos-1997.jpg",
+            "reverse": "https://i.ucoin.net/coin/55/256/55256512-2s/portugal-200-escudos-1997.jpg"
+          },
+          "hasVariants": false,
+          "variants": [],
+          "excludedProofOnlyVariants": [],
+          "variantCollectionStatus": "no_multiple_variants"
+        },
+        {
+          "denomination": {
+            "displayName": "200 escudos",
+            "value": 200.0,
+            "unit": "escudos"
+          },
+          "issuePeriod": {
+            "displayValue": "1997",
+            "startYear": 1997,
+            "endYear": 1997
+          },
+          "imageExampleYear": 1997,
+          "subject": "1997",
+          "composition": "Cupro-Níquel",
+          "weightGrams": 21.1,
+          "diameterMm": 36.0,
+          "catalogue": {
+            "type": "KM",
+            "number": "699",
+            "displayValue": "KM# 699"
+          },
+          "circulationType": "Comemorativa",
+          "ucoinTypeId": 17328,
+          "ucoinPeriodId": 126,
+          "detailPath": "/coin/portugal-200-escudos-1997/?tid=17328",
+          "detailUrl": "https://pt.ucoin.net/coin/portugal-200-escudos-1997/?tid=17328",
+          "images": {
+            "obverse": "https://i.ucoin.net/coin/55/255/55255616-1s/portugal-200-escudos-1997.jpg",
+            "reverse": "https://i.ucoin.net/coin/55/255/55255616-2s/portugal-200-escudos-1997.jpg"
+          },
+          "hasVariants": false,
+          "variants": [],
+          "excludedProofOnlyVariants": [],
+          "variantCollectionStatus": "no_multiple_variants"
+        },
+        {
+          "denomination": {
+            "displayName": "200 escudos",
+            "value": 200.0,
+            "unit": "escudos"
+          },
+          "issuePeriod": {
+            "displayValue": "1997",
+            "startYear": 1997,
+            "endYear": 1997
+          },
+          "imageExampleYear": 1997,
+          "subject": "1997",
+          "composition": "Cupro-Níquel",
+          "weightGrams": 21.1,
+          "diameterMm": 36.0,
+          "catalogue": {
+            "type": "KM",
+            "number": "700",
+            "displayValue": "KM# 700"
+          },
+          "circulationType": "Comemorativa",
+          "ucoinTypeId": 17329,
+          "ucoinPeriodId": 126,
+          "detailPath": "/coin/portugal-200-escudos-1997/?tid=17329",
+          "detailUrl": "https://pt.ucoin.net/coin/portugal-200-escudos-1997/?tid=17329",
+          "images": {
+            "obverse": "https://i.ucoin.net/coin/17/586/17586544-1s/portugal-200-escudos-1997.jpg",
+            "reverse": "https://i.ucoin.net/coin/17/586/17586544-2s/portugal-200-escudos-1997.jpg"
+          },
+          "hasVariants": false,
+          "variants": [],
+          "excludedProofOnlyVariants": [],
+          "variantCollectionStatus": "no_multiple_variants"
+        },
+        {
+          "denomination": {
+            "displayName": "200 escudos",
+            "value": 200.0,
+            "unit": "escudos"
+          },
+          "issuePeriod": {
+            "displayValue": "1998",
+            "startYear": 1998,
+            "endYear": 1998
+          },
+          "imageExampleYear": 1998,
+          "subject": "1998",
+          "composition": "Bimetálica",
+          "weightGrams": 9.8,
+          "diameterMm": 28.0,
+          "catalogue": {
+            "type": "KM",
+            "number": "706",
+            "displayValue": "KM# 706"
+          },
+          "circulationType": "Comemorativa",
+          "ucoinTypeId": 17464,
+          "ucoinPeriodId": 126,
+          "detailPath": "/coin/portugal-200-escudos-1998/?tid=17464",
+          "detailUrl": "https://pt.ucoin.net/coin/portugal-200-escudos-1998/?tid=17464",
+          "images": {
+            "obverse": "https://i.ucoin.net/coin/62/860/62860019-1s/portugal-200-escudos-1998.jpg",
+            "reverse": "https://i.ucoin.net/coin/62/860/62860019-2s/portugal-200-escudos-1998.jpg"
+          },
+          "hasVariants": false,
+          "variants": [],
+          "excludedProofOnlyVariants": [],
+          "variantCollectionStatus": "no_multiple_variants"
+        },
+        {
+          "denomination": {
+            "displayName": "200 escudos",
+            "value": 200.0,
+            "unit": "escudos"
+          },
+          "issuePeriod": {
+            "displayValue": "1998",
+            "startYear": 1998,
+            "endYear": 1998
+          },
+          "imageExampleYear": 1998,
+          "subject": "1998",
+          "composition": "Cupro-Níquel",
+          "weightGrams": 21.1,
+          "diameterMm": 36.0,
+          "catalogue": {
+            "type": "KM",
+            "number": "709",
+            "displayValue": "KM# 709"
+          },
+          "circulationType": "Comemorativa",
+          "ucoinTypeId": 17465,
+          "ucoinPeriodId": 126,
+          "detailPath": "/coin/portugal-200-escudos-1998/?tid=17465",
+          "detailUrl": "https://pt.ucoin.net/coin/portugal-200-escudos-1998/?tid=17465",
+          "images": {
+            "obverse": "https://i.ucoin.net/coin/75/684/75684358-1s/portugal-200-escudos-1998.jpg",
+            "reverse": "https://i.ucoin.net/coin/75/684/75684358-2s/portugal-200-escudos-1998.jpg"
+          },
+          "hasVariants": false,
+          "variants": [],
+          "excludedProofOnlyVariants": [],
+          "variantCollectionStatus": "no_multiple_variants"
+        },
+        {
+          "denomination": {
+            "displayName": "200 escudos",
+            "value": 200.0,
+            "unit": "escudos"
+          },
+          "issuePeriod": {
+            "displayValue": "1998",
+            "startYear": 1998,
+            "endYear": 1998
+          },
+          "imageExampleYear": 1998,
+          "subject": "1998",
+          "composition": "Cupro-Níquel",
+          "weightGrams": 21.1,
+          "diameterMm": 36.0,
+          "catalogue": {
+            "type": "KM",
+            "number": "710",
+            "displayValue": "KM# 710"
+          },
+          "circulationType": "Comemorativa",
+          "ucoinTypeId": 17468,
+          "ucoinPeriodId": 126,
+          "detailPath": "/coin/portugal-200-escudos-1998/?tid=17468",
+          "detailUrl": "https://pt.ucoin.net/coin/portugal-200-escudos-1998/?tid=17468",
+          "images": {
+            "obverse": "https://i.ucoin.net/coin/75/686/75686042-1s/portugal-200-escudos-1998.jpg",
+            "reverse": "https://i.ucoin.net/coin/75/686/75686042-2s/portugal-200-escudos-1998.jpg"
+          },
+          "hasVariants": false,
+          "variants": [],
+          "excludedProofOnlyVariants": [],
+          "variantCollectionStatus": "no_multiple_variants"
+        },
+        {
+          "denomination": {
+            "displayName": "200 escudos",
+            "value": 200.0,
+            "unit": "escudos"
+          },
+          "issuePeriod": {
+            "displayValue": "1998",
+            "startYear": 1998,
+            "endYear": 1998
+          },
+          "imageExampleYear": 1998,
+          "subject": "1998",
+          "composition": "Cupro-Níquel",
+          "weightGrams": 21.1,
+          "diameterMm": 36.0,
+          "catalogue": {
+            "type": "KM",
+            "number": "711",
+            "displayValue": "KM# 711"
+          },
+          "circulationType": "Comemorativa",
+          "ucoinTypeId": 17467,
+          "ucoinPeriodId": 126,
+          "detailPath": "/coin/portugal-200-escudos-1998/?tid=17467",
+          "detailUrl": "https://pt.ucoin.net/coin/portugal-200-escudos-1998/?tid=17467",
+          "images": {
+            "obverse": "https://i.ucoin.net/coin/42/699/42699456-1s/portugal-200-escudos-1998.jpg",
+            "reverse": "https://i.ucoin.net/coin/42/699/42699456-2s/portugal-200-escudos-1998.jpg"
+          },
+          "hasVariants": false,
+          "variants": [],
+          "excludedProofOnlyVariants": [],
+          "variantCollectionStatus": "no_multiple_variants"
+        },
+        {
+          "denomination": {
+            "displayName": "200 escudos",
+            "value": 200.0,
+            "unit": "escudos"
+          },
+          "issuePeriod": {
+            "displayValue": "1998",
+            "startYear": 1998,
+            "endYear": 1998
+          },
+          "imageExampleYear": 1998,
+          "subject": "1998",
+          "composition": "Cupro-Níquel",
+          "weightGrams": 21.1,
+          "diameterMm": 36.0,
+          "catalogue": {
+            "type": "KM",
+            "number": "712",
+            "displayValue": "KM# 712"
+          },
+          "circulationType": "Comemorativa",
+          "ucoinTypeId": 17466,
+          "ucoinPeriodId": 126,
+          "detailPath": "/coin/portugal-200-escudos-1998/?tid=17466",
+          "detailUrl": "https://pt.ucoin.net/coin/portugal-200-escudos-1998/?tid=17466",
+          "images": {
+            "obverse": "https://i.ucoin.net/coin/64/944/64944744-1s/portugal-200-escudos-1998.jpg",
+            "reverse": "https://i.ucoin.net/coin/64/944/64944744-2s/portugal-200-escudos-1998.jpg"
+          },
+          "hasVariants": false,
+          "variants": [],
+          "excludedProofOnlyVariants": [],
+          "variantCollectionStatus": "no_multiple_variants"
+        },
+        {
+          "denomination": {
+            "displayName": "200 escudos",
+            "value": 200.0,
+            "unit": "escudos"
+          },
+          "issuePeriod": {
+            "displayValue": "1999",
+            "startYear": 1999,
+            "endYear": 1999
+          },
+          "imageExampleYear": 1999,
+          "subject": "1999",
+          "composition": "Cupro-Níquel",
+          "weightGrams": 21.1,
+          "diameterMm": 36.0,
+          "catalogue": {
+            "type": "KM",
+            "number": "716",
+            "displayValue": "KM# 716"
+          },
+          "circulationType": "Comemorativa",
+          "ucoinTypeId": 17580,
+          "ucoinPeriodId": 126,
+          "detailPath": "/coin/portugal-200-escudos-1999/?tid=17580",
+          "detailUrl": "https://pt.ucoin.net/coin/portugal-200-escudos-1999/?tid=17580",
+          "images": {
+            "obverse": "https://i.ucoin.net/coin/45/239/45239688-1s/portugal-200-escudos-1999.jpg",
+            "reverse": "https://i.ucoin.net/coin/45/239/45239688-2s/portugal-200-escudos-1999.jpg"
+          },
+          "hasVariants": false,
+          "variants": [],
+          "excludedProofOnlyVariants": [],
+          "variantCollectionStatus": "no_multiple_variants"
+        },
+        {
+          "denomination": {
+            "displayName": "200 escudos",
+            "value": 200.0,
+            "unit": "escudos"
+          },
+          "issuePeriod": {
+            "displayValue": "1999",
+            "startYear": 1999,
+            "endYear": 1999
+          },
+          "imageExampleYear": 1999,
+          "subject": "1999",
+          "composition": "Cupro-Níquel",
+          "weightGrams": 21.1,
+          "diameterMm": 36.0,
+          "catalogue": {
+            "type": "KM",
+            "number": "717",
+            "displayValue": "KM# 717"
+          },
+          "circulationType": "Comemorativa",
+          "ucoinTypeId": 17721,
+          "ucoinPeriodId": 126,
+          "detailPath": "/coin/portugal-200-escudos-1999/?tid=17721",
+          "detailUrl": "https://pt.ucoin.net/coin/portugal-200-escudos-1999/?tid=17721",
+          "images": {
+            "obverse": "https://i.ucoin.net/coin/45/239/45239754-1s/portugal-200-escudos-1999.jpg",
+            "reverse": "https://i.ucoin.net/coin/45/239/45239754-2s/portugal-200-escudos-1999.jpg"
+          },
+          "hasVariants": false,
+          "variants": [],
+          "excludedProofOnlyVariants": [],
+          "variantCollectionStatus": "no_multiple_variants"
+        },
+        {
+          "denomination": {
+            "displayName": "200 escudos",
+            "value": 200.0,
+            "unit": "escudos"
+          },
+          "issuePeriod": {
+            "displayValue": "1999",
+            "startYear": 1999,
+            "endYear": 1999
+          },
+          "imageExampleYear": 1999,
+          "subject": "1999",
+          "composition": "Cupro-Níquel",
+          "weightGrams": 21.1,
+          "diameterMm": 36.0,
+          "catalogue": {
+            "type": "KM",
+            "number": "718",
+            "displayValue": "KM# 718"
+          },
+          "circulationType": "Comemorativa",
+          "ucoinTypeId": 18696,
+          "ucoinPeriodId": 126,
+          "detailPath": "/coin/portugal-200-escudos-1999/?tid=18696",
+          "detailUrl": "https://pt.ucoin.net/coin/portugal-200-escudos-1999/?tid=18696",
+          "images": {
+            "obverse": "https://i.ucoin.net/coin/75/355/75355410-1s/portugal-200-escudos-1999.jpg",
+            "reverse": "https://i.ucoin.net/coin/75/355/75355410-2s/portugal-200-escudos-1999.jpg"
+          },
+          "hasVariants": false,
+          "variants": [],
+          "excludedProofOnlyVariants": [],
+          "variantCollectionStatus": "no_multiple_variants"
+        },
+        {
+          "denomination": {
+            "displayName": "200 escudos",
+            "value": 200.0,
+            "unit": "escudos"
+          },
+          "issuePeriod": {
+            "displayValue": "1999",
+            "startYear": 1999,
+            "endYear": 1999
+          },
+          "imageExampleYear": 1999,
+          "subject": "1999",
+          "composition": "Cupro-Níquel",
+          "weightGrams": 21.1,
+          "diameterMm": 36.0,
+          "catalogue": {
+            "type": "KM",
+            "number": "719",
+            "displayValue": "KM# 719"
+          },
+          "circulationType": "Comemorativa",
+          "ucoinTypeId": 17581,
+          "ucoinPeriodId": 126,
+          "detailPath": "/coin/portugal-200-escudos-1999/?tid=17581",
+          "detailUrl": "https://pt.ucoin.net/coin/portugal-200-escudos-1999/?tid=17581",
+          "images": {
+            "obverse": "https://i.ucoin.net/coin/45/239/45239719-1s/portugal-200-escudos-1999.jpg",
+            "reverse": "https://i.ucoin.net/coin/45/239/45239719-2s/portugal-200-escudos-1999.jpg"
+          },
+          "hasVariants": false,
+          "variants": [],
+          "excludedProofOnlyVariants": [],
+          "variantCollectionStatus": "no_multiple_variants"
+        },
+        {
+          "denomination": {
+            "displayName": "200 escudos",
+            "value": 200.0,
+            "unit": "escudos"
+          },
+          "issuePeriod": {
+            "displayValue": "1999",
+            "startYear": 1999,
+            "endYear": 1999
+          },
+          "imageExampleYear": 1999,
+          "subject": "1999",
+          "composition": "Bimetálica",
+          "weightGrams": 9.8,
+          "diameterMm": 28.0,
+          "catalogue": {
+            "type": "KM",
+            "number": "720",
+            "displayValue": "KM# 720"
+          },
+          "circulationType": "Comemorativa",
+          "ucoinTypeId": 17582,
+          "ucoinPeriodId": 126,
+          "detailPath": "/coin/portugal-200-escudos-1999/?tid=17582",
+          "detailUrl": "https://pt.ucoin.net/coin/portugal-200-escudos-1999/?tid=17582",
+          "images": {
+            "obverse": "https://i.ucoin.net/coin/52/043/52043901-1s/portugal-200-escudos-1999.jpg",
+            "reverse": "https://i.ucoin.net/coin/52/043/52043901-2s/portugal-200-escudos-1999.jpg"
+          },
+          "hasVariants": false,
+          "variants": [],
+          "excludedProofOnlyVariants": [],
+          "variantCollectionStatus": "no_multiple_variants"
+        },
+        {
+          "denomination": {
+            "displayName": "200 escudos",
+            "value": 200.0,
+            "unit": "escudos"
+          },
+          "issuePeriod": {
+            "displayValue": "Olimpíadas Sidney 2000",
+            "startYear": 2000,
+            "endYear": 2000
+          },
+          "imageExampleYear": 2000,
+          "subject": "2000",
+          "composition": "Bimetálica",
+          "weightGrams": 9.8,
+          "diameterMm": 28.0,
+          "catalogue": {
+            "type": "KM",
+            "number": "726",
+            "displayValue": "KM# 726"
+          },
+          "circulationType": "Comemorativa",
+          "ucoinTypeId": 17650,
+          "ucoinPeriodId": 126,
+          "detailPath": "/coin/portugal-200-escudos-2000/?tid=17650",
+          "detailUrl": "https://pt.ucoin.net/coin/portugal-200-escudos-2000/?tid=17650",
+          "images": {
+            "obverse": "https://i.ucoin.net/coin/52/040/52040685-1s/portugal-200-escudos-2000.jpg",
+            "reverse": "https://i.ucoin.net/coin/52/040/52040685-2s/portugal-200-escudos-2000.jpg"
+          },
+          "hasVariants": false,
+          "variants": [],
+          "excludedProofOnlyVariants": [],
+          "variantCollectionStatus": "no_multiple_variants"
+        },
+        {
+          "denomination": {
+            "displayName": "200 escudos",
+            "value": 200.0,
+            "unit": "escudos"
+          },
+          "issuePeriod": {
+            "displayValue": "2000",
+            "startYear": 2000,
+            "endYear": 2000
+          },
+          "imageExampleYear": 2000,
+          "subject": "2000",
+          "composition": "Cupro-Níquel",
+          "weightGrams": 21.1,
+          "diameterMm": 36.0,
+          "catalogue": {
+            "type": "KM",
+            "number": "728",
+            "displayValue": "KM# 728"
+          },
+          "circulationType": "Comemorativa",
+          "ucoinTypeId": 17651,
+          "ucoinPeriodId": 126,
+          "detailPath": "/coin/portugal-200-escudos-2000/?tid=17651",
+          "detailUrl": "https://pt.ucoin.net/coin/portugal-200-escudos-2000/?tid=17651",
+          "images": {
+            "obverse": "https://i.ucoin.net/coin/34/095/34095671-1s/portugal-200-escudos-2000.jpg",
+            "reverse": "https://i.ucoin.net/coin/34/095/34095671-2s/portugal-200-escudos-2000.jpg"
+          },
+          "hasVariants": false,
+          "variants": [],
+          "excludedProofOnlyVariants": [],
+          "variantCollectionStatus": "no_multiple_variants"
+        },
+        {
+          "denomination": {
+            "displayName": "200 escudos",
+            "value": 200.0,
+            "unit": "escudos"
+          },
+          "issuePeriod": {
+            "displayValue": "2000",
+            "startYear": 2000,
+            "endYear": 2000
+          },
+          "imageExampleYear": 2000,
+          "subject": "2000",
+          "composition": "Cupro-Níquel",
+          "weightGrams": 21.1,
+          "diameterMm": 36.0,
+          "catalogue": {
+            "type": "KM",
+            "number": "729",
+            "displayValue": "KM# 729"
+          },
+          "circulationType": "Comemorativa",
+          "ucoinTypeId": 17652,
+          "ucoinPeriodId": 126,
+          "detailPath": "/coin/portugal-200-escudos-2000/?tid=17652",
+          "detailUrl": "https://pt.ucoin.net/coin/portugal-200-escudos-2000/?tid=17652",
+          "images": {
+            "obverse": "https://i.ucoin.net/coin/75/355/75355081-1s/portugal-200-escudos-2000.jpg",
+            "reverse": "https://i.ucoin.net/coin/75/355/75355081-2s/portugal-200-escudos-2000.jpg"
+          },
+          "hasVariants": false,
+          "variants": [],
+          "excludedProofOnlyVariants": [],
+          "variantCollectionStatus": "no_multiple_variants"
+        },
+        {
+          "denomination": {
+            "displayName": "200 escudos",
+            "value": 200.0,
+            "unit": "escudos"
+          },
+          "issuePeriod": {
+            "displayValue": "2000",
+            "startYear": 2000,
+            "endYear": 2000
+          },
+          "imageExampleYear": 2000,
+          "subject": "2000",
+          "composition": "Cupro-Níquel",
+          "weightGrams": 21.1,
+          "diameterMm": 36.0,
+          "catalogue": {
+            "type": "KM",
+            "number": "730",
+            "displayValue": "KM# 730"
+          },
+          "circulationType": "Comemorativa",
+          "ucoinTypeId": 17714,
+          "ucoinPeriodId": 126,
+          "detailPath": "/coin/portugal-200-escudos-2000/?tid=17714",
+          "detailUrl": "https://pt.ucoin.net/coin/portugal-200-escudos-2000/?tid=17714",
+          "images": {
+            "obverse": "https://i.ucoin.net/coin/34/095/34095698-1s/portugal-200-escudos-2000.jpg",
+            "reverse": "https://i.ucoin.net/coin/34/095/34095698-2s/portugal-200-escudos-2000.jpg"
+          },
+          "hasVariants": false,
+          "variants": [],
+          "excludedProofOnlyVariants": [],
+          "variantCollectionStatus": "no_multiple_variants"
+        },
+        {
+          "denomination": {
+            "displayName": "200 escudos",
+            "value": 200.0,
+            "unit": "escudos"
+          },
+          "issuePeriod": {
+            "displayValue": "2000",
+            "startYear": 2000,
+            "endYear": 2000
+          },
+          "imageExampleYear": 2000,
+          "subject": "2000",
+          "composition": "Cupro-Níquel",
+          "weightGrams": 21.1,
+          "diameterMm": 36.0,
+          "catalogue": {
+            "type": "KM",
+            "number": "731",
+            "displayValue": "KM# 731"
+          },
+          "circulationType": "Comemorativa",
+          "ucoinTypeId": 17653,
+          "ucoinPeriodId": 126,
+          "detailPath": "/coin/portugal-200-escudos-2000/?tid=17653",
+          "detailUrl": "https://pt.ucoin.net/coin/portugal-200-escudos-2000/?tid=17653",
+          "images": {
+            "obverse": "https://i.ucoin.net/coin/34/095/34095705-1s/portugal-200-escudos-2000.jpg",
+            "reverse": "https://i.ucoin.net/coin/34/095/34095705-2s/portugal-200-escudos-2000.jpg"
+          },
+          "hasVariants": false,
+          "variants": [],
+          "excludedProofOnlyVariants": [],
+          "variantCollectionStatus": "no_multiple_variants"
+        },
+        {
+          "denomination": {
+            "displayName": "250 escudos",
+            "value": 250.0,
+            "unit": "escudos"
+          },
+          "issuePeriod": {
+            "displayValue": "Jogos Olímpicos de Verão, Seul 1988",
+            "startYear": 1988,
+            "endYear": 1988
+          },
+          "imageExampleYear": 1988,
+          "subject": "1988",
+          "composition": "Cupro-Níquel",
+          "weightGrams": 23.2,
+          "diameterMm": 37.0,
+          "catalogue": {
+            "type": "KM",
+            "number": "643",
+            "displayValue": "KM# 643"
+          },
+          "circulationType": "Comemorativa",
+          "ucoinTypeId": 17240,
+          "ucoinPeriodId": 126,
+          "detailPath": "/coin/portugal-250-escudos-1988/?tid=17240",
+          "detailUrl": "https://pt.ucoin.net/coin/portugal-250-escudos-1988/?tid=17240",
+          "images": {
+            "obverse": "https://i.ucoin.net/coin/52/043/52043363-1s/portugal-250-escudos-1988.jpg",
+            "reverse": "https://i.ucoin.net/coin/52/043/52043363-2s/portugal-250-escudos-1988.jpg"
+          },
+          "hasVariants": false,
+          "variants": [],
+          "excludedProofOnlyVariants": [],
+          "variantCollectionStatus": "no_multiple_variants"
+        },
+        {
+          "denomination": {
+            "displayName": "250 escudos",
+            "value": 250.0,
+            "unit": "escudos"
+          },
+          "issuePeriod": {
+            "displayValue": "1989",
+            "startYear": 1989,
+            "endYear": 1989
+          },
+          "imageExampleYear": 1989,
+          "subject": "1989",
+          "composition": "Cupro-Níquel",
+          "weightGrams": 23.2,
+          "diameterMm": 37.0,
+          "catalogue": {
+            "type": "KM",
+            "number": "650",
+            "displayValue": "KM# 650"
+          },
+          "circulationType": "Comemorativa",
+          "ucoinTypeId": 17241,
+          "ucoinPeriodId": 126,
+          "detailPath": "/coin/portugal-250-escudos-1989/?tid=17241",
+          "detailUrl": "https://pt.ucoin.net/coin/portugal-250-escudos-1989/?tid=17241",
+          "images": {
+            "obverse": "https://i.ucoin.net/coin/71/432/71432012-1s/portugal-250-escudos-1989.jpg",
+            "reverse": "https://i.ucoin.net/coin/71/432/71432012-2s/portugal-250-escudos-1989.jpg"
+          },
+          "hasVariants": false,
+          "variants": [],
+          "excludedProofOnlyVariants": [],
+          "variantCollectionStatus": "no_multiple_variants"
+        }
+      ],
+      "sourcePages": [
+        "https://pt.ucoin.net/catalog/?country=portugal&type=2",
+        "https://pt.ucoin.net/catalog/?country=portugal&page=2&type=2",
+        "https://pt.ucoin.net/catalog/?country=portugal&page=3&type=2"
+      ]
+    },
+    {
+      "periodId": 795,
+      "fullTitle": "Portugal › ECU › 1979 - 2000",
+      "country": "Portugal",
+      "rulerOrPeriodName": "ECU",
+      "startYear": 1979,
+      "endYear": 2000,
+      "currencyDescription": null,
+      "coins": [
+        {
+          "denomination": {
+            "displayName": "2½ ECUs",
+            "value": null,
+            "unit": null
+          },
+          "issuePeriod": {
+            "displayValue": "1991",
+            "startYear": 1991,
+            "endYear": 1991
+          },
+          "imageExampleYear": 1991,
+          "subject": "1991",
+          "composition": "Cupro-Níquel",
+          "weightGrams": 16.5,
+          "diameterMm": 34.2,
+          "catalogue": {
+            "type": "X",
+            "number": "21",
+            "displayValue": "X# 21"
+          },
+          "circulationType": "Comemorativa",
+          "ucoinTypeId": 76446,
+          "ucoinPeriodId": 795,
+          "detailPath": "/coin/portugal-2-1-2-ecu-1991/?tid=76446",
+          "detailUrl": "https://pt.ucoin.net/coin/portugal-2-1-2-ecu-1991/?tid=76446",
+          "images": {
+            "obverse": "https://i.ucoin.net/coin/81/550/81550534-1s/portugal-2-1-2-ecu-1991.jpg",
+            "reverse": "https://i.ucoin.net/coin/81/550/81550534-2s/portugal-2-1-2-ecu-1991.jpg"
+          },
+          "hasVariants": false,
+          "variants": [],
+          "excludedProofOnlyVariants": [],
+          "variantCollectionStatus": "no_multiple_variants"
+        },
+        {
+          "denomination": {
+            "displayName": "2½ ECUs",
+            "value": null,
+            "unit": null
+          },
+          "issuePeriod": {
+            "displayValue": "1992",
+            "startYear": 1992,
+            "endYear": 1992
+          },
+          "imageExampleYear": 1992,
+          "subject": "1992",
+          "composition": "Cupro-Níquel",
+          "weightGrams": 16.5,
+          "diameterMm": 34.2,
+          "catalogue": {
+            "type": "X",
+            "number": "24",
+            "displayValue": "X# 24"
+          },
+          "circulationType": "Comemorativa",
+          "ucoinTypeId": 76454,
+          "ucoinPeriodId": 795,
+          "detailPath": "/coin/portugal-2-1-2-ecu-1992/?tid=76454",
+          "detailUrl": "https://pt.ucoin.net/coin/portugal-2-1-2-ecu-1992/?tid=76454",
+          "images": {
+            "obverse": "https://i.ucoin.net/coin/18/928/18928453-1s/portugal-2-1-2-ecu-1992.jpg",
+            "reverse": "https://i.ucoin.net/coin/18/928/18928453-2s/portugal-2-1-2-ecu-1992.jpg"
+          },
+          "hasVariants": false,
+          "variants": [],
+          "excludedProofOnlyVariants": [],
+          "variantCollectionStatus": "no_multiple_variants"
+        },
+        {
+          "denomination": {
+            "displayName": "2½ ECUs",
+            "value": null,
+            "unit": null
+          },
+          "issuePeriod": {
+            "displayValue": "1993",
+            "startYear": 1993,
+            "endYear": 1993
+          },
+          "imageExampleYear": 1993,
+          "subject": "1993",
+          "composition": "Cupro-Níquel",
+          "weightGrams": 16.5,
+          "diameterMm": 34.2,
+          "catalogue": {
+            "type": "X",
+            "number": "28",
+            "displayValue": "X# 28"
+          },
+          "circulationType": "Comemorativa",
+          "ucoinTypeId": 76577,
+          "ucoinPeriodId": 795,
+          "detailPath": "/coin/portugal-2-1-2-ecu-1993/?tid=76577",
+          "detailUrl": "https://pt.ucoin.net/coin/portugal-2-1-2-ecu-1993/?tid=76577",
+          "images": {
+            "obverse": "https://i.ucoin.net/coin/64/545/64545992-1s/portugal-2-1-2-ecu-1993.jpg",
+            "reverse": "https://i.ucoin.net/coin/64/545/64545992-2s/portugal-2-1-2-ecu-1993.jpg"
+          },
+          "hasVariants": false,
+          "variants": [],
+          "excludedProofOnlyVariants": [],
+          "variantCollectionStatus": "no_multiple_variants"
+        },
+        {
+          "denomination": {
+            "displayName": "2½ ECUs",
+            "value": null,
+            "unit": null
+          },
+          "issuePeriod": {
+            "displayValue": "1994",
+            "startYear": 1994,
+            "endYear": 1994
+          },
+          "imageExampleYear": 1994,
+          "subject": "1994",
+          "composition": "Cupro-Níquel",
+          "weightGrams": 16.5,
+          "diameterMm": 34.2,
+          "catalogue": {
+            "type": "X",
+            "number": "33",
+            "displayValue": "X# 33"
+          },
+          "circulationType": "Comemorativa",
+          "ucoinTypeId": 76456,
+          "ucoinPeriodId": 795,
+          "detailPath": "/coin/portugal-2-1-2-ecu-1994/?tid=76456",
+          "detailUrl": "https://pt.ucoin.net/coin/portugal-2-1-2-ecu-1994/?tid=76456",
+          "images": {
+            "obverse": "https://i.ucoin.net/coin/17/414/17414844-1s/portugal-2-1-2-ecu-1994.jpg",
+            "reverse": "https://i.ucoin.net/coin/17/414/17414844-2s/portugal-2-1-2-ecu-1994.jpg"
+          },
+          "hasVariants": false,
+          "variants": [],
+          "excludedProofOnlyVariants": [],
+          "variantCollectionStatus": "no_multiple_variants"
+        },
+        {
+          "denomination": {
+            "displayName": "2½ ECUs",
+            "value": null,
+            "unit": null
+          },
+          "issuePeriod": {
+            "displayValue": "1995",
+            "startYear": 1995,
+            "endYear": 1995
+          },
+          "imageExampleYear": 1995,
+          "subject": "1995",
+          "composition": "Cupro-Níquel",
+          "weightGrams": 16.5,
+          "diameterMm": 34.2,
+          "catalogue": {
+            "type": "X",
+            "number": "48",
+            "displayValue": "X# 48"
+          },
+          "circulationType": "Comemorativa",
+          "ucoinTypeId": 76250,
+          "ucoinPeriodId": 795,
+          "detailPath": "/coin/portugal-2-1-2-ecu-1995/?tid=76250",
+          "detailUrl": "https://pt.ucoin.net/coin/portugal-2-1-2-ecu-1995/?tid=76250",
+          "images": {
+            "obverse": "https://i.ucoin.net/coin/69/794/69794336-1s/portugal-2-1-2-ecu-1995.jpg",
+            "reverse": "https://i.ucoin.net/coin/69/794/69794336-2s/portugal-2-1-2-ecu-1995.jpg"
+          },
+          "hasVariants": false,
+          "variants": [],
+          "excludedProofOnlyVariants": [],
+          "variantCollectionStatus": "no_multiple_variants"
+        },
+        {
+          "denomination": {
+            "displayName": "2½ ECUs",
+            "value": null,
+            "unit": null
+          },
+          "issuePeriod": {
+            "displayValue": "1996",
+            "startYear": 1996,
+            "endYear": 1996
+          },
+          "imageExampleYear": 1996,
+          "subject": "1996",
+          "composition": "Cupro-Níquel",
+          "weightGrams": 16.5,
+          "diameterMm": 34.2,
+          "catalogue": {
+            "type": "X",
+            "number": "52",
+            "displayValue": "X# 52"
+          },
+          "circulationType": "Comemorativa",
+          "ucoinTypeId": 76238,
+          "ucoinPeriodId": 795,
+          "detailPath": "/coin/portugal-2-1-2-ecu-1996/?tid=76238",
+          "detailUrl": "https://pt.ucoin.net/coin/portugal-2-1-2-ecu-1996/?tid=76238",
+          "images": {
+            "obverse": "https://i.ucoin.net/coin/17/414/17414860-1s/portugal-2-1-2-ecu-1996.jpg",
+            "reverse": "https://i.ucoin.net/coin/17/414/17414860-2s/portugal-2-1-2-ecu-1996.jpg"
+          },
+          "hasVariants": false,
+          "variants": [],
+          "excludedProofOnlyVariants": [],
+          "variantCollectionStatus": "no_multiple_variants"
+        },
+        {
+          "denomination": {
+            "displayName": "2½ ECUs",
+            "value": null,
+            "unit": null
+          },
+          "issuePeriod": {
+            "displayValue": "1997",
+            "startYear": 1997,
+            "endYear": 1997
+          },
+          "imageExampleYear": 1997,
+          "subject": "1997",
+          "composition": "Cupro-Níquel",
+          "weightGrams": 16.5,
+          "diameterMm": 33.2,
+          "catalogue": {
+            "type": "X",
+            "number": "57",
+            "displayValue": "X# 57"
+          },
+          "circulationType": "Comemorativa",
+          "ucoinTypeId": 76237,
+          "ucoinPeriodId": 795,
+          "detailPath": "/coin/portugal-2-1-2-ecu-1997/?tid=76237",
+          "detailUrl": "https://pt.ucoin.net/coin/portugal-2-1-2-ecu-1997/?tid=76237",
+          "images": {
+            "obverse": "https://i.ucoin.net/coin/20/493/20493685-1s/portugal-2-1-2-ecu-1997.jpg",
+            "reverse": "https://i.ucoin.net/coin/20/493/20493685-2s/portugal-2-1-2-ecu-1997.jpg"
+          },
+          "hasVariants": false,
+          "variants": [],
+          "excludedProofOnlyVariants": [],
+          "variantCollectionStatus": "no_multiple_variants"
+        },
+        {
+          "denomination": {
+            "displayName": "2½ ECUs",
+            "value": null,
+            "unit": null
+          },
+          "issuePeriod": {
+            "displayValue": "1998",
+            "startYear": 1998,
+            "endYear": 1998
+          },
+          "imageExampleYear": 1998,
+          "subject": "1998",
+          "composition": "Cupro-Níquel",
+          "weightGrams": 16.5,
+          "diameterMm": 33.2,
+          "catalogue": {
+            "type": "X",
+            "number": "61",
+            "displayValue": "X# 61"
+          },
+          "circulationType": "Comemorativa",
+          "ucoinTypeId": 76251,
+          "ucoinPeriodId": 795,
+          "detailPath": "/coin/portugal-2-1-2-ecu-1998/?tid=76251",
+          "detailUrl": "https://pt.ucoin.net/coin/portugal-2-1-2-ecu-1998/?tid=76251",
+          "images": {
+            "obverse": "https://i.ucoin.net/coin/19/153/19153677-1s/portugal-2-1-2-ecu-1998.jpg",
+            "reverse": "https://i.ucoin.net/coin/19/153/19153677-2s/portugal-2-1-2-ecu-1998.jpg"
+          },
+          "hasVariants": false,
+          "variants": [],
+          "excludedProofOnlyVariants": [],
+          "variantCollectionStatus": "no_multiple_variants"
+        },
+        {
+          "denomination": {
+            "displayName": "2½ ECUs",
+            "value": null,
+            "unit": null
+          },
+          "issuePeriod": {
+            "displayValue": "1998",
+            "startYear": 1998,
+            "endYear": 1998
+          },
+          "imageExampleYear": null,
+          "subject": "1998",
+          "composition": "Cupro-Níquel",
+          "weightGrams": 16.5,
+          "diameterMm": 33.2,
+          "catalogue": {
+            "type": "X",
+            "number": "71",
+            "displayValue": "X# 71"
+          },
+          "circulationType": "Comemorativa",
+          "ucoinTypeId": 108505,
+          "ucoinPeriodId": 795,
+          "detailPath": "/coin/portugal-2-1-2-ecu-1998/?tid=108505",
+          "detailUrl": "https://pt.ucoin.net/coin/portugal-2-1-2-ecu-1998/?tid=108505",
+          "images": {
+            "obverse": null,
+            "reverse": null
+          },
+          "hasVariants": false,
+          "variants": [],
+          "excludedProofOnlyVariants": [],
+          "variantCollectionStatus": "no_multiple_variants"
+        },
+        {
+          "denomination": {
+            "displayName": "5 euro",
+            "value": 5.0,
+            "unit": "euro"
+          },
+          "issuePeriod": {
+            "displayValue": "1996",
+            "startYear": 1996,
+            "endYear": 1996
+          },
+          "imageExampleYear": 1996,
+          "subject": "1996",
+          "composition": "Cupro-Níquel",
+          "weightGrams": 16.0,
+          "diameterMm": 33.2,
+          "catalogue": {
+            "type": "UC",
+            "number": "100",
+            "displayValue": "UC# 100"
+          },
+          "circulationType": "Comemorativa",
+          "ucoinTypeId": 76581,
+          "ucoinPeriodId": 795,
+          "detailPath": "/coin/portugal-5-euro-1996/?tid=76581",
+          "detailUrl": "https://pt.ucoin.net/coin/portugal-5-euro-1996/?tid=76581",
+          "images": {
+            "obverse": "https://i.ucoin.net/coin/32/814/32814362-1s/portugal-5-euro-1996.jpg",
+            "reverse": "https://i.ucoin.net/coin/32/814/32814362-2s/portugal-5-euro-1996.jpg"
+          },
+          "hasVariants": false,
+          "variants": [],
+          "excludedProofOnlyVariants": [],
+          "variantCollectionStatus": "no_multiple_variants"
+        },
+        {
+          "denomination": {
+            "displayName": "5 euro",
+            "value": 5.0,
+            "unit": "euro"
+          },
+          "issuePeriod": {
+            "displayValue": "1997",
+            "startYear": 1997,
+            "endYear": 1997
+          },
+          "imageExampleYear": 1997,
+          "subject": "1997",
+          "composition": "Cupro-Níquel",
+          "weightGrams": 16.0,
+          "diameterMm": 33.2,
+          "catalogue": {
+            "type": "UC",
+            "number": "101",
+            "displayValue": "UC# 101"
+          },
+          "circulationType": "Comemorativa",
+          "ucoinTypeId": 76582,
+          "ucoinPeriodId": 795,
+          "detailPath": "/coin/portugal-5-euro-1997/?tid=76582",
+          "detailUrl": "https://pt.ucoin.net/coin/portugal-5-euro-1997/?tid=76582",
+          "images": {
+            "obverse": "https://i.ucoin.net/coin/24/574/24574958-1s/portugal-5-euro-1997.jpg",
+            "reverse": "https://i.ucoin.net/coin/24/574/24574958-2s/portugal-5-euro-1997.jpg"
+          },
+          "hasVariants": false,
+          "variants": [],
+          "excludedProofOnlyVariants": [],
+          "variantCollectionStatus": "no_multiple_variants"
+        },
+        {
+          "denomination": {
+            "displayName": "5 euro",
+            "value": 5.0,
+            "unit": "euro"
+          },
+          "issuePeriod": {
+            "displayValue": "1998",
+            "startYear": 1998,
+            "endYear": 1998
+          },
+          "imageExampleYear": 1998,
+          "subject": "1998",
+          "composition": "Cupro-Níquel",
+          "weightGrams": 16.0,
+          "diameterMm": 33.2,
+          "catalogue": {
+            "type": "X",
+            "number": "72",
+            "displayValue": "X# 72"
+          },
+          "circulationType": "Comemorativa",
+          "ucoinTypeId": 76583,
+          "ucoinPeriodId": 795,
+          "detailPath": "/coin/portugal-5-euro-1998/?tid=76583",
+          "detailUrl": "https://pt.ucoin.net/coin/portugal-5-euro-1998/?tid=76583",
+          "images": {
+            "obverse": "https://i.ucoin.net/coin/32/817/32817154-1s/portugal-5-euro-1998.jpg",
+            "reverse": "https://i.ucoin.net/coin/32/817/32817154-2s/portugal-5-euro-1998.jpg"
+          },
+          "hasVariants": false,
+          "variants": [],
+          "excludedProofOnlyVariants": [],
+          "variantCollectionStatus": "no_multiple_variants"
+        }
+      ],
+      "sourcePages": [
+        "https://pt.ucoin.net/catalog/?country=portugal&page=3&type=2"
+      ]
+    },
+    {
+      "periodId": 755,
+      "fullTitle": "Região Autónoma dos Açores › Região Autónoma dos Açores › 1980 - 1995",
+      "country": "Região Autónoma dos Açores",
+      "rulerOrPeriodName": "Região Autónoma dos Açores",
+      "startYear": 1980,
+      "endYear": 1995,
+      "currencyDescription": null,
+      "coins": [
+        {
+          "denomination": {
+            "displayName": "25 escudos",
+            "value": 25.0,
+            "unit": "escudos"
+          },
+          "issuePeriod": {
+            "displayValue": "1981",
+            "startYear": 1981,
+            "endYear": 1981
+          },
+          "imageExampleYear": 1981,
+          "subject": "1981",
+          "composition": "Cupro-Níquel",
+          "weightGrams": 11.0,
+          "diameterMm": 28.5,
+          "catalogue": {
+            "type": "KM",
+            "number": "43",
+            "displayValue": "KM# 43"
+          },
+          "circulationType": "Comemorativa",
+          "ucoinTypeId": 21647,
+          "ucoinPeriodId": 755,
+          "detailPath": "/coin/azores-25-escudos-1981/?tid=21647",
+          "detailUrl": "https://pt.ucoin.net/coin/azores-25-escudos-1981/?tid=21647",
+          "images": {
+            "obverse": "https://i.ucoin.net/coin/73/858/73858196-1s/azores-25-escudos-1981.jpg",
+            "reverse": "https://i.ucoin.net/coin/73/858/73858196-2s/azores-25-escudos-1981.jpg"
+          },
+          "hasVariants": false,
+          "variants": [],
+          "excludedProofOnlyVariants": [],
+          "variantCollectionStatus": "no_multiple_variants"
+        },
+        {
+          "denomination": {
+            "displayName": "100 escudos",
+            "value": 100.0,
+            "unit": "escudos"
+          },
+          "issuePeriod": {
+            "displayValue": "1981",
+            "startYear": 1981,
+            "endYear": 1981
+          },
+          "imageExampleYear": 1981,
+          "subject": "1981",
+          "composition": "Cupro-Níquel",
+          "weightGrams": 16.6,
+          "diameterMm": 34.0,
+          "catalogue": {
+            "type": "KM",
+            "number": "44",
+            "displayValue": "KM# 44"
+          },
+          "circulationType": "Comemorativa",
+          "ucoinTypeId": 21512,
+          "ucoinPeriodId": 755,
+          "detailPath": "/coin/azores-100-escudos-1981/?tid=21512",
+          "detailUrl": "https://pt.ucoin.net/coin/azores-100-escudos-1981/?tid=21512",
+          "images": {
+            "obverse": "https://i.ucoin.net/coin/73/858/73858315-1s/azores-100-escudos-1981.jpg",
+            "reverse": "https://i.ucoin.net/coin/73/858/73858315-2s/azores-100-escudos-1981.jpg"
+          },
+          "hasVariants": false,
+          "variants": [],
+          "excludedProofOnlyVariants": [],
+          "variantCollectionStatus": "no_multiple_variants"
+        },
+        {
+          "denomination": {
+            "displayName": "100 escudos",
+            "value": 100.0,
+            "unit": "escudos"
+          },
+          "issuePeriod": {
+            "displayValue": "1986",
+            "startYear": 1986,
+            "endYear": 1986
+          },
+          "imageExampleYear": 1986,
+          "subject": "1986",
+          "composition": "Cupro-Níquel",
+          "weightGrams": 16.6,
+          "diameterMm": 34.0,
+          "catalogue": {
+            "type": "KM",
+            "number": "45",
+            "displayValue": "KM# 45"
+          },
+          "circulationType": "Comemorativa",
+          "ucoinTypeId": 17784,
+          "ucoinPeriodId": 755,
+          "detailPath": "/coin/azores-100-escudos-1986/?tid=17784",
+          "detailUrl": "https://pt.ucoin.net/coin/azores-100-escudos-1986/?tid=17784",
+          "images": {
+            "obverse": "https://i.ucoin.net/coin/80/664/80664376-1s/azores-100-escudos-1986.jpg",
+            "reverse": "https://i.ucoin.net/coin/80/664/80664376-2s/azores-100-escudos-1986.jpg"
+          },
+          "hasVariants": false,
+          "variants": [],
+          "excludedProofOnlyVariants": [],
+          "variantCollectionStatus": "no_multiple_variants"
+        },
+        {
+          "denomination": {
+            "displayName": "100 escudos",
+            "value": 100.0,
+            "unit": "escudos"
+          },
+          "issuePeriod": {
+            "displayValue": "1991",
+            "startYear": 1991,
+            "endYear": 1991
+          },
+          "imageExampleYear": 1991,
+          "subject": "1991",
+          "composition": "Cupro-Níquel",
+          "weightGrams": 14.95,
+          "diameterMm": 33.0,
+          "catalogue": {
+            "type": "KM",
+            "number": "46",
+            "displayValue": "KM# 46"
+          },
+          "circulationType": "Comemorativa",
+          "ucoinTypeId": 16923,
+          "ucoinPeriodId": 755,
+          "detailPath": "/coin/azores-100-escudos-1991/?tid=16923",
+          "detailUrl": "https://pt.ucoin.net/coin/azores-100-escudos-1991/?tid=16923",
+          "images": {
+            "obverse": "https://i.ucoin.net/coin/63/995/63995001-1s/azores-100-escudos-1991.jpg",
+            "reverse": "https://i.ucoin.net/coin/63/995/63995001-2s/azores-100-escudos-1991.jpg"
+          },
+          "hasVariants": false,
+          "variants": [],
+          "excludedProofOnlyVariants": [],
+          "variantCollectionStatus": "no_multiple_variants"
+        },
+        {
+          "denomination": {
+            "displayName": "100 escudos",
+            "value": 100.0,
+            "unit": "escudos"
+          },
+          "issuePeriod": {
+            "displayValue": "1995",
+            "startYear": 1995,
+            "endYear": 1995
+          },
+          "imageExampleYear": 1995,
+          "subject": "1995",
+          "composition": "Cupro-Níquel",
+          "weightGrams": 15.2,
+          "diameterMm": 33.0,
+          "catalogue": {
+            "type": "KM",
+            "number": "47",
+            "displayValue": "KM# 47"
+          },
+          "circulationType": "Comemorativa",
+          "ucoinTypeId": 16924,
+          "ucoinPeriodId": 755,
+          "detailPath": "/coin/azores-100-escudos-1995/?tid=16924",
+          "detailUrl": "https://pt.ucoin.net/coin/azores-100-escudos-1995/?tid=16924",
+          "images": {
+            "obverse": "https://i.ucoin.net/coin/23/647/23647117-1s/azores-100-escudos-1995.jpg",
+            "reverse": "https://i.ucoin.net/coin/23/647/23647117-2s/azores-100-escudos-1995.jpg"
+          },
+          "hasVariants": false,
+          "variants": [],
+          "excludedProofOnlyVariants": [],
+          "variantCollectionStatus": "no_multiple_variants"
+        }
+      ],
+      "sourcePages": [
+        "https://pt.ucoin.net/catalog/?country=portugal&page=3&type=2"
+      ]
+    },
+    {
+      "periodId": 132,
+      "fullTitle": "Portugal › República Portuguesa › 1969 - 1986",
+      "country": "Portugal",
+      "rulerOrPeriodName": "República Portuguesa",
+      "startYear": 1969,
+      "endYear": 1986,
+      "currencyDescription": "1 escudo = 100 centavos",
+      "coins": [
+        {
+          "denomination": {
+            "displayName": "1 escudo",
+            "value": 1.0,
+            "unit": "escudo"
+          },
+          "issuePeriod": {
+            "displayValue": "1982",
+            "startYear": 1982,
+            "endYear": 1982
+          },
+          "imageExampleYear": 1982,
+          "subject": "1982",
+          "composition": "Níquel-Latão",
+          "weightGrams": 3.0,
+          "diameterMm": 18.0,
+          "catalogue": {
+            "type": "KM",
+            "number": "612",
+            "displayValue": "KM# 612"
+          },
+          "circulationType": "Comemorativa",
+          "ucoinTypeId": 16182,
+          "ucoinPeriodId": 132,
+          "detailPath": "/coin/portugal-1-escudo-1982/?tid=16182",
+          "detailUrl": "https://pt.ucoin.net/coin/portugal-1-escudo-1982/?tid=16182",
+          "images": {
+            "obverse": "https://i.ucoin.net/coin/61/761/61761461-1s/portugal-1-escudo-1982.jpg",
+            "reverse": "https://i.ucoin.net/coin/61/761/61761461-2s/portugal-1-escudo-1982.jpg"
+          },
+          "hasVariants": false,
+          "variants": [],
+          "excludedProofOnlyVariants": [],
+          "variantCollectionStatus": "no_multiple_variants"
+        },
+        {
+          "denomination": {
+            "displayName": "2.5 escudos",
+            "value": 2.5,
+            "unit": "escudos"
+          },
+          "issuePeriod": {
+            "displayValue": "1977",
+            "startYear": 1977,
+            "endYear": 1977
+          },
+          "imageExampleYear": 1977,
+          "subject": "1977",
+          "composition": "Cupro-Níquel",
+          "weightGrams": 3.5,
+          "diameterMm": 20.0,
+          "catalogue": {
+            "type": "KM",
+            "number": "605",
+            "displayValue": "KM# 605"
+          },
+          "circulationType": "Comemorativa",
+          "ucoinTypeId": 16241,
+          "ucoinPeriodId": 132,
+          "detailPath": "/coin/portugal-2,5-escudos-1977/?tid=16241",
+          "detailUrl": "https://pt.ucoin.net/coin/portugal-2,5-escudos-1977/?tid=16241",
+          "images": {
+            "obverse": "https://i.ucoin.net/coin/52/040/52040235-1s/portugal-2,5-escudos-1977.jpg",
+            "reverse": "https://i.ucoin.net/coin/52/040/52040235-2s/portugal-2,5-escudos-1977.jpg"
+          },
+          "hasVariants": false,
+          "variants": [],
+          "excludedProofOnlyVariants": [],
+          "variantCollectionStatus": "no_multiple_variants"
+        },
+        {
+          "denomination": {
+            "displayName": "2.5 escudos",
+            "value": 2.5,
+            "unit": "escudos"
+          },
+          "issuePeriod": {
+            "displayValue": "1982",
+            "startYear": 1982,
+            "endYear": 1982
+          },
+          "imageExampleYear": 1982,
+          "subject": "1982",
+          "composition": "Cupro-Níquel",
+          "weightGrams": 3.5,
+          "diameterMm": 20.0,
+          "catalogue": {
+            "type": "KM",
+            "number": "613",
+            "displayValue": "KM# 613"
+          },
+          "circulationType": "Comemorativa",
+          "ucoinTypeId": 16212,
+          "ucoinPeriodId": 132,
+          "detailPath": "/coin/portugal-2,5-escudos-1982/?tid=16212",
+          "detailUrl": "https://pt.ucoin.net/coin/portugal-2,5-escudos-1982/?tid=16212",
+          "images": {
+            "obverse": "https://i.ucoin.net/coin/55/592/55592690-1s/portugal-2,5-escudos-1982.jpg",
+            "reverse": "https://i.ucoin.net/coin/55/592/55592690-2s/portugal-2,5-escudos-1982.jpg"
+          },
+          "hasVariants": false,
+          "variants": [],
+          "excludedProofOnlyVariants": [],
+          "variantCollectionStatus": "no_multiple_variants"
+        },
+        {
+          "denomination": {
+            "displayName": "2.5 escudos",
+            "value": 2.5,
+            "unit": "escudos"
+          },
+          "issuePeriod": {
+            "displayValue": "1983",
+            "startYear": 1983,
+            "endYear": 1983
+          },
+          "imageExampleYear": 1983,
+          "subject": "1983",
+          "composition": "Cupro-Níquel",
+          "weightGrams": 3.5,
+          "diameterMm": 20.0,
+          "catalogue": {
+            "type": "KM",
+            "number": "617",
+            "displayValue": "KM# 617"
+          },
+          "circulationType": "Comemorativa",
+          "ucoinTypeId": 16242,
+          "ucoinPeriodId": 132,
+          "detailPath": "/coin/portugal-2,5-escudos-1983/?tid=16242",
+          "detailUrl": "https://pt.ucoin.net/coin/portugal-2,5-escudos-1983/?tid=16242",
+          "images": {
+            "obverse": "https://i.ucoin.net/coin/52/040/52040508-1s/portugal-2,5-escudos-1983.jpg",
+            "reverse": "https://i.ucoin.net/coin/52/040/52040508-2s/portugal-2,5-escudos-1983.jpg"
+          },
+          "hasVariants": false,
+          "variants": [],
+          "excludedProofOnlyVariants": [],
+          "variantCollectionStatus": "no_multiple_variants"
+        },
+        {
+          "denomination": {
+            "displayName": "5 escudos",
+            "value": 5.0,
+            "unit": "escudos"
+          },
+          "issuePeriod": {
+            "displayValue": "1977",
+            "startYear": 1977,
+            "endYear": 1977
+          },
+          "imageExampleYear": 1977,
+          "subject": "1977",
+          "composition": "Cupro-Níquel",
+          "weightGrams": 7.0,
+          "diameterMm": 24.5,
+          "catalogue": {
+            "type": "KM",
+            "number": "606",
+            "displayValue": "KM# 606"
+          },
+          "circulationType": "Comemorativa",
+          "ucoinTypeId": 16243,
+          "ucoinPeriodId": 132,
+          "detailPath": "/coin/portugal-5-escudos-1977/?tid=16243",
+          "detailUrl": "https://pt.ucoin.net/coin/portugal-5-escudos-1977/?tid=16243",
+          "images": {
+            "obverse": "https://i.ucoin.net/coin/66/926/66926930-1s/portugal-5-escudos-1977.jpg",
+            "reverse": "https://i.ucoin.net/coin/66/926/66926930-2s/portugal-5-escudos-1977.jpg"
+          },
+          "hasVariants": false,
+          "variants": [],
+          "excludedProofOnlyVariants": [],
+          "variantCollectionStatus": "no_multiple_variants"
+        },
+        {
+          "denomination": {
+            "displayName": "5 escudos",
+            "value": 5.0,
+            "unit": "escudos"
+          },
+          "issuePeriod": {
+            "displayValue": "1982",
+            "startYear": 1982,
+            "endYear": 1982
+          },
+          "imageExampleYear": 1982,
+          "subject": "1982",
+          "composition": "Cupro-Níquel",
+          "weightGrams": 7.0,
+          "diameterMm": 24.5,
+          "catalogue": {
+            "type": "KM",
+            "number": "615",
+            "displayValue": "KM# 615"
+          },
+          "circulationType": "Comemorativa",
+          "ucoinTypeId": 16244,
+          "ucoinPeriodId": 132,
+          "detailPath": "/coin/portugal-5-escudos-1982/?tid=16244",
+          "detailUrl": "https://pt.ucoin.net/coin/portugal-5-escudos-1982/?tid=16244",
+          "images": {
+            "obverse": "https://i.ucoin.net/coin/52/040/52040591-1s/portugal-5-escudos-1982.jpg",
+            "reverse": "https://i.ucoin.net/coin/52/040/52040591-2s/portugal-5-escudos-1982.jpg"
+          },
+          "hasVariants": false,
+          "variants": [],
+          "excludedProofOnlyVariants": [],
+          "variantCollectionStatus": "no_multiple_variants"
+        },
+        {
+          "denomination": {
+            "displayName": "5 escudos",
+            "value": 5.0,
+            "unit": "escudos"
+          },
+          "issuePeriod": {
+            "displayValue": "1983",
+            "startYear": 1983,
+            "endYear": 1983
+          },
+          "imageExampleYear": 1983,
+          "subject": "1983",
+          "composition": "Cupro-Níquel",
+          "weightGrams": 7.0,
+          "diameterMm": 24.5,
+          "catalogue": {
+            "type": "KM",
+            "number": "618",
+            "displayValue": "KM# 618"
+          },
+          "circulationType": "Comemorativa",
+          "ucoinTypeId": 16245,
+          "ucoinPeriodId": 132,
+          "detailPath": "/coin/portugal-5-escudos-1983/?tid=16245",
+          "detailUrl": "https://pt.ucoin.net/coin/portugal-5-escudos-1983/?tid=16245",
+          "images": {
+            "obverse": "https://i.ucoin.net/coin/50/618/50618547-1s/portugal-5-escudos-1983.jpg",
+            "reverse": "https://i.ucoin.net/coin/50/618/50618547-2s/portugal-5-escudos-1983.jpg"
+          },
+          "hasVariants": false,
+          "variants": [],
+          "excludedProofOnlyVariants": [],
+          "variantCollectionStatus": "no_multiple_variants"
+        },
+        {
+          "denomination": {
+            "displayName": "25 escudos",
+            "value": 25.0,
+            "unit": "escudos"
+          },
+          "issuePeriod": {
+            "displayValue": "1977",
+            "startYear": 1977,
+            "endYear": 1977
+          },
+          "imageExampleYear": 1977,
+          "subject": "1977",
+          "composition": "Cupro-Níquel",
+          "weightGrams": 9.4,
+          "diameterMm": 26.0,
+          "catalogue": {
+            "type": "KM",
+            "number": "608",
+            "displayValue": "KM# 608"
+          },
+          "circulationType": "Comemorativa",
+          "ucoinTypeId": 16310,
+          "ucoinPeriodId": 132,
+          "detailPath": "/coin/portugal-25-escudos-1977/?tid=16310",
+          "detailUrl": "https://pt.ucoin.net/coin/portugal-25-escudos-1977/?tid=16310",
+          "images": {
+            "obverse": "https://i.ucoin.net/coin/66/939/66939109-1s/portugal-25-escudos-1977.jpg",
+            "reverse": "https://i.ucoin.net/coin/66/939/66939109-2s/portugal-25-escudos-1977.jpg"
+          },
+          "hasVariants": false,
+          "variants": [],
+          "excludedProofOnlyVariants": [],
+          "variantCollectionStatus": "no_multiple_variants"
+        },
+        {
+          "denomination": {
+            "displayName": "25 escudos",
+            "value": 25.0,
+            "unit": "escudos"
+          },
+          "issuePeriod": {
+            "displayValue": "1979",
+            "startYear": 1979,
+            "endYear": 1979
+          },
+          "imageExampleYear": 1979,
+          "subject": "1979",
+          "composition": "Cupro-Níquel",
+          "weightGrams": 11.0,
+          "diameterMm": 28.5,
+          "catalogue": {
+            "type": "KM",
+            "number": "609",
+            "displayValue": "KM# 609"
+          },
+          "circulationType": "Comemorativa",
+          "ucoinTypeId": 16322,
+          "ucoinPeriodId": 132,
+          "detailPath": "/coin/portugal-25-escudos-1979/?tid=16322",
+          "detailUrl": "https://pt.ucoin.net/coin/portugal-25-escudos-1979/?tid=16322",
+          "images": {
+            "obverse": "https://i.ucoin.net/coin/75/793/75793630-1s/portugal-25-escudos-1979.jpg",
+            "reverse": "https://i.ucoin.net/coin/75/793/75793630-2s/portugal-25-escudos-1979.jpg"
+          },
+          "hasVariants": false,
+          "variants": [],
+          "excludedProofOnlyVariants": [],
+          "variantCollectionStatus": "no_multiple_variants"
+        },
+        {
+          "denomination": {
+            "displayName": "25 escudos",
+            "value": 25.0,
+            "unit": "escudos"
+          },
+          "issuePeriod": {
+            "displayValue": "1982",
+            "startYear": 1982,
+            "endYear": 1982
+          },
+          "imageExampleYear": 1982,
+          "subject": "1982",
+          "composition": "Cupro-Níquel",
+          "weightGrams": 11.0,
+          "diameterMm": 28.5,
+          "catalogue": {
+            "type": "KM",
+            "number": "616",
+            "displayValue": "KM# 616"
+          },
+          "circulationType": "Comemorativa",
+          "ucoinTypeId": 16318,
+          "ucoinPeriodId": 132,
+          "detailPath": "/coin/portugal-25-escudos-1982/?tid=16318",
+          "detailUrl": "https://pt.ucoin.net/coin/portugal-25-escudos-1982/?tid=16318",
+          "images": {
+            "obverse": "https://i.ucoin.net/coin/55/472/55472291-1s/portugal-25-escudos-1982.jpg",
+            "reverse": "https://i.ucoin.net/coin/55/472/55472291-2s/portugal-25-escudos-1982.jpg"
+          },
+          "hasVariants": false,
+          "variants": [],
+          "excludedProofOnlyVariants": [],
+          "variantCollectionStatus": "no_multiple_variants"
+        },
+        {
+          "denomination": {
+            "displayName": "25 escudos",
+            "value": 25.0,
+            "unit": "escudos"
+          },
+          "issuePeriod": {
+            "displayValue": "1982",
+            "startYear": 1982,
+            "endYear": 1982
+          },
+          "imageExampleYear": 1982,
+          "subject": "1982",
+          "composition": "Cupro-Níquel",
+          "weightGrams": 11.0,
+          "diameterMm": 28.5,
+          "catalogue": {
+            "type": "KM",
+            "number": "624",
+            "displayValue": "KM# 624"
+          },
+          "circulationType": "Comemorativa",
+          "ucoinTypeId": 16320,
+          "ucoinPeriodId": 132,
+          "detailPath": "/coin/portugal-25-escudos-1982/?tid=16320",
+          "detailUrl": "https://pt.ucoin.net/coin/portugal-25-escudos-1982/?tid=16320",
+          "images": {
+            "obverse": "https://i.ucoin.net/coin/55/472/55472235-1s/portugal-25-escudos-1982.jpg",
+            "reverse": "https://i.ucoin.net/coin/55/472/55472235-2s/portugal-25-escudos-1982.jpg"
+          },
+          "hasVariants": false,
+          "variants": [],
+          "excludedProofOnlyVariants": [],
+          "variantCollectionStatus": "no_multiple_variants"
+        },
+        {
+          "denomination": {
+            "displayName": "25 escudos",
+            "value": 25.0,
+            "unit": "escudos"
+          },
+          "issuePeriod": {
+            "displayValue": "1983",
+            "startYear": 1983,
+            "endYear": 1983
+          },
+          "imageExampleYear": 1983,
+          "subject": "1983",
+          "composition": "Cupro-Níquel",
+          "weightGrams": 11.0,
+          "diameterMm": 28.5,
+          "catalogue": {
+            "type": "KM",
+            "number": "619",
+            "displayValue": "KM# 619"
+          },
+          "circulationType": "Comemorativa",
+          "ucoinTypeId": 16323,
+          "ucoinPeriodId": 132,
+          "detailPath": "/coin/portugal-25-escudos-1983/?tid=16323",
+          "detailUrl": "https://pt.ucoin.net/coin/portugal-25-escudos-1983/?tid=16323",
+          "images": {
+            "obverse": "https://i.ucoin.net/coin/31/363/31363774-1s/portugal-25-escudos-1983.jpg",
+            "reverse": "https://i.ucoin.net/coin/31/363/31363774-2s/portugal-25-escudos-1983.jpg"
+          },
+          "hasVariants": false,
+          "variants": [],
+          "excludedProofOnlyVariants": [],
+          "variantCollectionStatus": "no_multiple_variants"
+        },
+        {
+          "denomination": {
+            "displayName": "25 escudos",
+            "value": 25.0,
+            "unit": "escudos"
+          },
+          "issuePeriod": {
+            "displayValue": "1984",
+            "startYear": 1984,
+            "endYear": 1984
+          },
+          "imageExampleYear": 1984,
+          "subject": "1984",
+          "composition": "Cupro-Níquel",
+          "weightGrams": 11.0,
+          "diameterMm": 28.5,
+          "catalogue": {
+            "type": "KM",
+            "number": "623",
+            "displayValue": "KM# 623"
+          },
+          "circulationType": "Comemorativa",
+          "ucoinTypeId": 16319,
+          "ucoinPeriodId": 132,
+          "detailPath": "/coin/portugal-25-escudos-1984/?tid=16319",
+          "detailUrl": "https://pt.ucoin.net/coin/portugal-25-escudos-1984/?tid=16319",
+          "images": {
+            "obverse": "https://i.ucoin.net/coin/55/472/55472180-1s/portugal-25-escudos-1984.jpg",
+            "reverse": "https://i.ucoin.net/coin/55/472/55472180-2s/portugal-25-escudos-1984.jpg"
+          },
+          "hasVariants": false,
+          "variants": [],
+          "excludedProofOnlyVariants": [],
+          "variantCollectionStatus": "no_multiple_variants"
+        },
+        {
+          "denomination": {
+            "displayName": "25 escudos",
+            "value": 25.0,
+            "unit": "escudos"
+          },
+          "issuePeriod": {
+            "displayValue": "1985",
+            "startYear": 1985,
+            "endYear": 1985
+          },
+          "imageExampleYear": 1985,
+          "subject": "1985",
+          "composition": "Cupro-Níquel",
+          "weightGrams": 11.0,
+          "diameterMm": 28.5,
+          "catalogue": {
+            "type": "KM",
+            "number": "627",
+            "displayValue": "KM# 627"
+          },
+          "circulationType": "Comemorativa",
+          "ucoinTypeId": 16321,
+          "ucoinPeriodId": 132,
+          "detailPath": "/coin/portugal-25-escudos-1985/?tid=16321",
+          "detailUrl": "https://pt.ucoin.net/coin/portugal-25-escudos-1985/?tid=16321",
+          "images": {
+            "obverse": "https://i.ucoin.net/coin/75/783/75783347-1s/portugal-25-escudos-1985.jpg",
+            "reverse": "https://i.ucoin.net/coin/75/783/75783347-2s/portugal-25-escudos-1985.jpg"
+          },
+          "hasVariants": false,
+          "variants": [],
+          "excludedProofOnlyVariants": [],
+          "variantCollectionStatus": "no_multiple_variants"
+        },
+        {
+          "denomination": {
+            "displayName": "25 escudos",
+            "value": 25.0,
+            "unit": "escudos"
+          },
+          "issuePeriod": {
+            "displayValue": "1986",
+            "startYear": 1986,
+            "endYear": 1986
+          },
+          "imageExampleYear": 1986,
+          "subject": "1986",
+          "composition": "Cupro-Níquel",
+          "weightGrams": 11.0,
+          "diameterMm": 28.5,
+          "catalogue": {
+            "type": "KM",
+            "number": "635",
+            "displayValue": "KM# 635"
+          },
+          "circulationType": "Comemorativa",
+          "ucoinTypeId": 19768,
+          "ucoinPeriodId": 132,
+          "detailPath": "/coin/portugal-25-escudos-1986/?tid=19768",
+          "detailUrl": "https://pt.ucoin.net/coin/portugal-25-escudos-1986/?tid=19768",
+          "images": {
+            "obverse": "https://i.ucoin.net/coin/52/040/52040119-1s/portugal-25-escudos-1986.jpg",
+            "reverse": "https://i.ucoin.net/coin/52/040/52040119-2s/portugal-25-escudos-1986.jpg"
+          },
+          "hasVariants": false,
+          "variants": [],
+          "excludedProofOnlyVariants": [],
+          "variantCollectionStatus": "no_multiple_variants"
+        },
+        {
+          "denomination": {
+            "displayName": "100 escudos",
+            "value": 100.0,
+            "unit": "escudos"
+          },
+          "issuePeriod": {
+            "displayValue": "1982",
+            "startYear": 1982,
+            "endYear": 1982
+          },
+          "imageExampleYear": 1982,
+          "subject": "1982",
+          "composition": "Cupro-Níquel",
+          "weightGrams": 16.6,
+          "diameterMm": 33.5,
+          "catalogue": {
+            "type": "KM",
+            "number": "625",
+            "displayValue": "KM# 625"
+          },
+          "circulationType": "Comemorativa",
+          "ucoinTypeId": 20524,
+          "ucoinPeriodId": 132,
+          "detailPath": "/coin/portugal-100-escudos-1982/?tid=20524",
+          "detailUrl": "https://pt.ucoin.net/coin/portugal-100-escudos-1982/?tid=20524",
+          "images": {
+            "obverse": "https://i.ucoin.net/coin/12/796/12796167-1s/portugal-100-escudos-1982.jpg",
+            "reverse": "https://i.ucoin.net/coin/12/796/12796167-2s/portugal-100-escudos-1982.jpg"
+          },
+          "hasVariants": false,
+          "variants": [],
+          "excludedProofOnlyVariants": [],
+          "variantCollectionStatus": "no_multiple_variants"
+        },
+        {
+          "denomination": {
+            "displayName": "100 escudos",
+            "value": 100.0,
+            "unit": "escudos"
+          },
+          "issuePeriod": {
+            "displayValue": "1985",
+            "startYear": 1985,
+            "endYear": 1985
+          },
+          "imageExampleYear": 1985,
+          "subject": "1985",
+          "composition": "Cupro-Níquel",
+          "weightGrams": 16.6,
+          "diameterMm": 33.5,
+          "catalogue": {
+            "type": "KM",
+            "number": "628",
+            "displayValue": "KM# 628"
+          },
+          "circulationType": "Comemorativa",
+          "ucoinTypeId": 21596,
+          "ucoinPeriodId": 132,
+          "detailPath": "/coin/portugal-100-escudos-1985/?tid=21596",
+          "detailUrl": "https://pt.ucoin.net/coin/portugal-100-escudos-1985/?tid=21596",
+          "images": {
+            "obverse": "https://i.ucoin.net/coin/55/255/55255473-1s/portugal-100-escudos-1985.jpg",
+            "reverse": "https://i.ucoin.net/coin/55/255/55255473-2s/portugal-100-escudos-1985.jpg"
+          },
+          "hasVariants": false,
+          "variants": [],
+          "excludedProofOnlyVariants": [],
+          "variantCollectionStatus": "no_multiple_variants"
+        },
+        {
+          "denomination": {
+            "displayName": "100 escudos",
+            "value": 100.0,
+            "unit": "escudos"
+          },
+          "issuePeriod": {
+            "displayValue": "1985",
+            "startYear": 1985,
+            "endYear": 1985
+          },
+          "imageExampleYear": 1985,
+          "subject": "1985",
+          "composition": "Cupro-Níquel",
+          "weightGrams": 16.6,
+          "diameterMm": 33.5,
+          "catalogue": {
+            "type": "KM",
+            "number": "629",
+            "displayValue": "KM# 629"
+          },
+          "circulationType": "Comemorativa",
+          "ucoinTypeId": 20525,
+          "ucoinPeriodId": 132,
+          "detailPath": "/coin/portugal-100-escudos-1985/?tid=20525",
+          "detailUrl": "https://pt.ucoin.net/coin/portugal-100-escudos-1985/?tid=20525",
+          "images": {
+            "obverse": "https://i.ucoin.net/coin/74/044/74044870-1s/portugal-100-escudos-1985.jpg",
+            "reverse": "https://i.ucoin.net/coin/74/044/74044870-2s/portugal-100-escudos-1985.jpg"
+          },
+          "hasVariants": false,
+          "variants": [],
+          "excludedProofOnlyVariants": [],
+          "variantCollectionStatus": "no_multiple_variants"
+        },
+        {
+          "denomination": {
+            "displayName": "100 escudos",
+            "value": 100.0,
+            "unit": "escudos"
+          },
+          "issuePeriod": {
+            "displayValue": "1985",
+            "startYear": 1985,
+            "endYear": 1985
+          },
+          "imageExampleYear": 1985,
+          "subject": "1985",
+          "composition": "Cupro-Níquel",
+          "weightGrams": 16.6,
+          "diameterMm": 33.5,
+          "catalogue": {
+            "type": "KM",
+            "number": "630",
+            "displayValue": "KM# 630"
+          },
+          "circulationType": "Comemorativa",
+          "ucoinTypeId": 20526,
+          "ucoinPeriodId": 132,
+          "detailPath": "/coin/portugal-100-escudos-1985/?tid=20526",
+          "detailUrl": "https://pt.ucoin.net/coin/portugal-100-escudos-1985/?tid=20526",
+          "images": {
+            "obverse": "https://i.ucoin.net/coin/33/552/33552370-1s/portugal-100-escudos-1985.jpg",
+            "reverse": "https://i.ucoin.net/coin/33/552/33552370-2s/portugal-100-escudos-1985.jpg"
+          },
+          "hasVariants": false,
+          "variants": [],
+          "excludedProofOnlyVariants": [],
+          "variantCollectionStatus": "no_multiple_variants"
+        },
+        {
+          "denomination": {
+            "displayName": "250 escudos",
+            "value": 250.0,
+            "unit": "escudos"
+          },
+          "issuePeriod": {
+            "displayValue": "1984",
+            "startYear": 1984,
+            "endYear": 1984
+          },
+          "imageExampleYear": 1984,
+          "subject": "1984",
+          "composition": "Cupro-Níquel",
+          "weightGrams": 23.0,
+          "diameterMm": 37.0,
+          "catalogue": {
+            "type": "KM",
+            "number": "626",
+            "displayValue": "KM# 626"
+          },
+          "circulationType": "Comemorativa",
+          "ucoinTypeId": 29017,
+          "ucoinPeriodId": 132,
+          "detailPath": "/coin/portugal-250-escudos-1984/?tid=29017",
+          "detailUrl": "https://pt.ucoin.net/coin/portugal-250-escudos-1984/?tid=29017",
+          "images": {
+            "obverse": "https://i.ucoin.net/coin/34/200/34200574-1s/portugal-250-escudos-1984.jpg",
+            "reverse": "https://i.ucoin.net/coin/34/200/34200574-2s/portugal-250-escudos-1984.jpg"
+          },
+          "hasVariants": false,
+          "variants": [],
+          "excludedProofOnlyVariants": [],
+          "variantCollectionStatus": "no_multiple_variants"
+        }
+      ],
+      "sourcePages": [
+        "https://pt.ucoin.net/catalog/?country=portugal&page=3&type=2"
+      ]
+    },
+    {
+      "periodId": 1076,
+      "fullTitle": "Região Autónoma da Madeira › Região Autónoma da Madeira › 1981 - 1981",
+      "country": "Região Autónoma da Madeira",
+      "rulerOrPeriodName": "Região Autónoma da Madeira",
+      "startYear": 1981,
+      "endYear": 1981,
+      "currencyDescription": "1 escudo = 100 centavos",
+      "coins": [
+        {
+          "denomination": {
+            "displayName": "25 escudos",
+            "value": 25.0,
+            "unit": "escudos"
+          },
+          "issuePeriod": {
+            "displayValue": "1981",
+            "startYear": 1981,
+            "endYear": 1981
+          },
+          "imageExampleYear": 1981,
+          "subject": "1981",
+          "composition": "Cupro-Níquel",
+          "weightGrams": 11.0,
+          "diameterMm": 28.5,
+          "catalogue": {
+            "type": "KM",
+            "number": "4",
+            "displayValue": "KM# 4"
+          },
+          "circulationType": "Comemorativa",
+          "ucoinTypeId": 29018,
+          "ucoinPeriodId": 1076,
+          "detailPath": "/coin/madeira_islands-25-escudos-1981/?tid=29018",
+          "detailUrl": "https://pt.ucoin.net/coin/madeira_islands-25-escudos-1981/?tid=29018",
+          "images": {
+            "obverse": "https://i.ucoin.net/coin/77/855/77855257-1s/madeira_islands-25-escudos-1981.jpg",
+            "reverse": "https://i.ucoin.net/coin/77/855/77855257-2s/madeira_islands-25-escudos-1981.jpg"
+          },
+          "hasVariants": false,
+          "variants": [],
+          "excludedProofOnlyVariants": [],
+          "variantCollectionStatus": "no_multiple_variants"
+        },
+        {
+          "denomination": {
+            "displayName": "100 escudos",
+            "value": 100.0,
+            "unit": "escudos"
+          },
+          "issuePeriod": {
+            "displayValue": "1981",
+            "startYear": 1981,
+            "endYear": 1981
+          },
+          "imageExampleYear": 1981,
+          "subject": "1981",
+          "composition": "Cupro-Níquel",
+          "weightGrams": 16.6,
+          "diameterMm": 34.0,
+          "catalogue": {
+            "type": "KM",
+            "number": "5",
+            "displayValue": "KM# 5"
+          },
+          "circulationType": "Comemorativa",
+          "ucoinTypeId": 21513,
+          "ucoinPeriodId": 1076,
+          "detailPath": "/coin/madeira_islands-100-escudos-1981/?tid=21513",
+          "detailUrl": "https://pt.ucoin.net/coin/madeira_islands-100-escudos-1981/?tid=21513",
+          "images": {
+            "obverse": "https://i.ucoin.net/coin/77/897/77897089-1s/madeira_islands-100-escudos-1981.jpg",
+            "reverse": "https://i.ucoin.net/coin/77/897/77897089-2s/madeira_islands-100-escudos-1981.jpg"
+          },
+          "hasVariants": false,
+          "variants": [],
+          "excludedProofOnlyVariants": [],
+          "variantCollectionStatus": "no_multiple_variants"
+        }
+      ],
+      "sourcePages": [
+        "https://pt.ucoin.net/catalog/?country=portugal&page=3&type=2"
+      ]
+    },
+    {
+      "periodId": 232,
+      "fullTitle": "Portugal › República Portuguesa › 1910 - 1969",
+      "country": "Portugal",
+      "rulerOrPeriodName": "República Portuguesa",
+      "startYear": 1910,
+      "endYear": 1969,
+      "currencyDescription": "1 escudo = 100 centavos",
+      "coins": [
+        {
+          "denomination": {
+            "displayName": "1 escudo",
+            "value": 1.0,
+            "unit": "escudo"
+          },
+          "issuePeriod": {
+            "displayValue": "1910",
+            "startYear": 1910,
+            "endYear": 1910
+          },
+          "imageExampleYear": 1910,
+          "subject": "1910",
+          "composition": "Prata 0.835",
+          "weightGrams": 25.0,
+          "diameterMm": 37.0,
+          "catalogue": {
+            "type": "KM",
+            "number": "560",
+            "displayValue": "KM# 560"
+          },
+          "circulationType": "Comemorativa",
+          "ucoinTypeId": 31627,
+          "ucoinPeriodId": 232,
+          "detailPath": "/coin/portugal-1-escudo-1910/?tid=31627",
+          "detailUrl": "https://pt.ucoin.net/coin/portugal-1-escudo-1910/?tid=31627",
+          "images": {
+            "obverse": "https://i.ucoin.net/coin/33/478/33478452-1s/portugal-1-escudo-1910.jpg",
+            "reverse": "https://i.ucoin.net/coin/33/478/33478452-2s/portugal-1-escudo-1910.jpg"
+          },
+          "hasVariants": false,
+          "variants": [],
+          "excludedProofOnlyVariants": [],
+          "variantCollectionStatus": "no_multiple_variants"
+        },
+        {
+          "denomination": {
+            "displayName": "5 escudos",
+            "value": 5.0,
+            "unit": "escudos"
+          },
+          "issuePeriod": {
+            "displayValue": "1960",
+            "startYear": 1960,
+            "endYear": 1960
+          },
+          "imageExampleYear": 1960,
+          "subject": "1960",
+          "composition": "Prata 0.650",
+          "weightGrams": 7.0,
+          "diameterMm": 25.0,
+          "catalogue": {
+            "type": "KM",
+            "number": "587",
+            "displayValue": "KM# 587"
+          },
+          "circulationType": "Comemorativa",
+          "ucoinTypeId": 31683,
+          "ucoinPeriodId": 232,
+          "detailPath": "/coin/portugal-5-escudos-1960/?tid=31683",
+          "detailUrl": "https://pt.ucoin.net/coin/portugal-5-escudos-1960/?tid=31683",
+          "images": {
+            "obverse": "https://i.ucoin.net/coin/67/801/67801972-1s/portugal-5-escudos-1960.jpg",
+            "reverse": "https://i.ucoin.net/coin/67/801/67801972-2s/portugal-5-escudos-1960.jpg"
+          },
+          "hasVariants": false,
+          "variants": [],
+          "excludedProofOnlyVariants": [],
+          "variantCollectionStatus": "no_multiple_variants"
+        },
+        {
+          "denomination": {
+            "displayName": "10 escudos",
+            "value": 10.0,
+            "unit": "escudos"
+          },
+          "issuePeriod": {
+            "displayValue": "1928",
+            "startYear": 1928,
+            "endYear": 1928
+          },
+          "imageExampleYear": 1928,
+          "subject": "1928",
+          "composition": "Prata 0.835",
+          "weightGrams": 12.5,
+          "diameterMm": 30.0,
+          "catalogue": {
+            "type": "KM",
+            "number": "579",
+            "displayValue": "KM# 579"
+          },
+          "circulationType": "Comemorativa",
+          "ucoinTypeId": 31690,
+          "ucoinPeriodId": 232,
+          "detailPath": "/coin/portugal-10-escudos-1928/?tid=31690",
+          "detailUrl": "https://pt.ucoin.net/coin/portugal-10-escudos-1928/?tid=31690",
+          "images": {
+            "obverse": "https://i.ucoin.net/coin/5/294/5294803-1s/portugal-10-escudos-1928.jpg",
+            "reverse": "https://i.ucoin.net/coin/5/294/5294803-2s/portugal-10-escudos-1928.jpg"
+          },
+          "hasVariants": false,
+          "variants": [],
+          "excludedProofOnlyVariants": [],
+          "variantCollectionStatus": "no_multiple_variants"
+        },
+        {
+          "denomination": {
+            "displayName": "10 escudos",
+            "value": 10.0,
+            "unit": "escudos"
+          },
+          "issuePeriod": {
+            "displayValue": "1960",
+            "startYear": 1960,
+            "endYear": 1960
+          },
+          "imageExampleYear": 1960,
+          "subject": "1960",
+          "composition": "Prata 0.680",
+          "weightGrams": 12.5,
+          "diameterMm": 30.0,
+          "catalogue": {
+            "type": "KM",
+            "number": "588",
+            "displayValue": "KM# 588"
+          },
+          "circulationType": "Comemorativa",
+          "ucoinTypeId": 31700,
+          "ucoinPeriodId": 232,
+          "detailPath": "/coin/portugal-10-escudos-1960/?tid=31700",
+          "detailUrl": "https://pt.ucoin.net/coin/portugal-10-escudos-1960/?tid=31700",
+          "images": {
+            "obverse": "https://i.ucoin.net/coin/84/571/84571005-1s/portugal-10-escudos-1960.jpg",
+            "reverse": "https://i.ucoin.net/coin/84/571/84571005-2s/portugal-10-escudos-1960.jpg"
+          },
+          "hasVariants": false,
+          "variants": [],
+          "excludedProofOnlyVariants": [],
+          "variantCollectionStatus": "no_multiple_variants"
+        },
+        {
+          "denomination": {
+            "displayName": "20 escudos",
+            "value": 20.0,
+            "unit": "escudos"
+          },
+          "issuePeriod": {
+            "displayValue": "1953",
+            "startYear": 1953,
+            "endYear": 1953
+          },
+          "imageExampleYear": 1953,
+          "subject": "1953",
+          "composition": "Prata 0.800",
+          "weightGrams": 21.0,
+          "diameterMm": 34.0,
+          "catalogue": {
+            "type": "KM",
+            "number": "585",
+            "displayValue": "KM# 585"
+          },
+          "circulationType": "Comemorativa",
+          "ucoinTypeId": 39577,
+          "ucoinPeriodId": 232,
+          "detailPath": "/coin/portugal-20-escudos-1953/?tid=39577",
+          "detailUrl": "https://pt.ucoin.net/coin/portugal-20-escudos-1953/?tid=39577",
+          "images": {
+            "obverse": "https://i.ucoin.net/coin/84/571/84571042-1s/portugal-20-escudos-1953.jpg",
+            "reverse": "https://i.ucoin.net/coin/84/571/84571042-2s/portugal-20-escudos-1953.jpg"
+          },
+          "hasVariants": false,
+          "variants": [],
+          "excludedProofOnlyVariants": [],
+          "variantCollectionStatus": "no_multiple_variants"
+        },
+        {
+          "denomination": {
+            "displayName": "20 escudos",
+            "value": 20.0,
+            "unit": "escudos"
+          },
+          "issuePeriod": {
+            "displayValue": "1960",
+            "startYear": 1960,
+            "endYear": 1960
+          },
+          "imageExampleYear": 1960,
+          "subject": "1960",
+          "composition": "Prata 0.800",
+          "weightGrams": 21.0,
+          "diameterMm": 34.0,
+          "catalogue": {
+            "type": "KM",
+            "number": "589",
+            "displayValue": "KM# 589"
+          },
+          "circulationType": "Comemorativa",
+          "ucoinTypeId": 54433,
+          "ucoinPeriodId": 232,
+          "detailPath": "/coin/portugal-20-escudos-1960/?tid=54433",
+          "detailUrl": "https://pt.ucoin.net/coin/portugal-20-escudos-1960/?tid=54433",
+          "images": {
+            "obverse": "https://i.ucoin.net/coin/84/258/84258242-1s/portugal-20-escudos-1960.jpg",
+            "reverse": "https://i.ucoin.net/coin/84/258/84258242-2s/portugal-20-escudos-1960.jpg"
+          },
+          "hasVariants": false,
+          "variants": [],
+          "excludedProofOnlyVariants": [],
+          "variantCollectionStatus": "no_multiple_variants"
+        },
+        {
+          "denomination": {
+            "displayName": "20 escudos",
+            "value": 20.0,
+            "unit": "escudos"
+          },
+          "issuePeriod": {
+            "displayValue": "1966",
+            "startYear": 1966,
+            "endYear": 1966
+          },
+          "imageExampleYear": 1966,
+          "subject": "1966",
+          "composition": "Prata 0.650",
+          "weightGrams": 10.0,
+          "diameterMm": 30.0,
+          "catalogue": {
+            "type": "KM",
+            "number": "592",
+            "displayValue": "KM# 592"
+          },
+          "circulationType": "Comemorativa",
+          "ucoinTypeId": 39578,
+          "ucoinPeriodId": 232,
+          "detailPath": "/coin/portugal-20-escudos-1966/?tid=39578",
+          "detailUrl": "https://pt.ucoin.net/coin/portugal-20-escudos-1966/?tid=39578",
+          "images": {
+            "obverse": "https://i.ucoin.net/coin/8/283/8283326-1s/portugal-20-escudos-1966.jpg",
+            "reverse": "https://i.ucoin.net/coin/8/283/8283326-2s/portugal-20-escudos-1966.jpg"
+          },
+          "hasVariants": false,
+          "variants": [],
+          "excludedProofOnlyVariants": [],
+          "variantCollectionStatus": "no_multiple_variants"
+        },
+        {
+          "denomination": {
+            "displayName": "50 escudos",
+            "value": 50.0,
+            "unit": "escudos"
+          },
+          "issuePeriod": {
+            "displayValue": "1968",
+            "startYear": 1968,
+            "endYear": 1968
+          },
+          "imageExampleYear": 1968,
+          "subject": "1968",
+          "composition": "Prata 0.650",
+          "weightGrams": 18.0,
+          "diameterMm": 34.0,
+          "catalogue": {
+            "type": "KM",
+            "number": "593",
+            "displayValue": "KM# 593"
+          },
+          "circulationType": "Comemorativa",
+          "ucoinTypeId": 54434,
+          "ucoinPeriodId": 232,
+          "detailPath": "/coin/portugal-50-escudos-1968/?tid=54434",
+          "detailUrl": "https://pt.ucoin.net/coin/portugal-50-escudos-1968/?tid=54434",
+          "images": {
+            "obverse": "https://i.ucoin.net/coin/68/569/68569591-1s/portugal-50-escudos-1968.jpg",
+            "reverse": "https://i.ucoin.net/coin/68/569/68569591-2s/portugal-50-escudos-1968.jpg"
+          },
+          "hasVariants": false,
+          "variants": [],
+          "excludedProofOnlyVariants": [],
+          "variantCollectionStatus": "no_multiple_variants"
+        },
+        {
+          "denomination": {
+            "displayName": "50 escudos",
+            "value": 50.0,
+            "unit": "escudos"
+          },
+          "issuePeriod": {
+            "displayValue": "1969",
+            "startYear": 1969,
+            "endYear": 1969
+          },
+          "imageExampleYear": 1969,
+          "subject": "1969",
+          "composition": "Prata 0.650",
+          "weightGrams": 18.0,
+          "diameterMm": 34.0,
+          "catalogue": {
+            "type": "KM",
+            "number": "599",
+            "displayValue": "KM# 599"
+          },
+          "circulationType": "Comemorativa",
+          "ucoinTypeId": 54435,
+          "ucoinPeriodId": 232,
+          "detailPath": "/coin/portugal-50-escudos-1969/?tid=54435",
+          "detailUrl": "https://pt.ucoin.net/coin/portugal-50-escudos-1969/?tid=54435",
+          "images": {
+            "obverse": "https://i.ucoin.net/coin/16/255/16255949-1s/portugal-50-escudos-1969.jpg",
+            "reverse": "https://i.ucoin.net/coin/16/255/16255949-2s/portugal-50-escudos-1969.jpg"
+          },
+          "hasVariants": false,
+          "variants": [],
+          "excludedProofOnlyVariants": [],
+          "variantCollectionStatus": "no_multiple_variants"
+        }
+      ],
+      "sourcePages": [
+        "https://pt.ucoin.net/catalog/?country=portugal&page=3&type=2",
+        "https://pt.ucoin.net/catalog/?country=portugal&page=4&type=2"
+      ]
+    },
+    {
+      "periodId": 564,
+      "fullTitle": "Portugal › Reino de Portugal › 1836 - 1910",
+      "country": "Portugal",
+      "rulerOrPeriodName": "Reino de Portugal",
+      "startYear": 1836,
+      "endYear": 1910,
+      "currencyDescription": null,
+      "coins": [
+        {
+          "denomination": {
+            "displayName": "500 reis",
+            "value": 500.0,
+            "unit": "reis"
+          },
+          "issuePeriod": {
+            "displayValue": "1910",
+            "startYear": 1910,
+            "endYear": 1910
+          },
+          "imageExampleYear": 1910,
+          "subject": "1910",
+          "composition": "Prata 0.917",
+          "weightGrams": 12.5,
+          "diameterMm": 30.0,
+          "catalogue": {
+            "type": "KM",
+            "number": "556",
+            "displayValue": "KM# 556"
+          },
+          "circulationType": "Comemorativa",
+          "ucoinTypeId": 63929,
+          "ucoinPeriodId": 564,
+          "detailPath": "/coin/portugal-500-reis-1910/?tid=63929",
+          "detailUrl": "https://pt.ucoin.net/coin/portugal-500-reis-1910/?tid=63929",
+          "images": {
+            "obverse": "https://i.ucoin.net/coin/36/051/36051194-1s/portugal-500-reis-1910.jpg",
+            "reverse": "https://i.ucoin.net/coin/36/051/36051194-2s/portugal-500-reis-1910.jpg"
+          },
+          "hasVariants": false,
+          "variants": [],
+          "excludedProofOnlyVariants": [],
+          "variantCollectionStatus": "no_multiple_variants"
+        },
+        {
+          "denomination": {
+            "displayName": "500 reis",
+            "value": 500.0,
+            "unit": "reis"
+          },
+          "issuePeriod": {
+            "displayValue": "1910",
+            "startYear": 1910,
+            "endYear": 1910
+          },
+          "imageExampleYear": 1910,
+          "subject": "1910",
+          "composition": "Prata 0.917",
+          "weightGrams": 12.5,
+          "diameterMm": 30.0,
+          "catalogue": {
+            "type": "KM",
+            "number": "557",
+            "displayValue": "KM# 557"
+          },
+          "circulationType": "Comemorativa",
+          "ucoinTypeId": 66150,
+          "ucoinPeriodId": 564,
+          "detailPath": "/coin/portugal-500-reis-1910/?tid=66150",
+          "detailUrl": "https://pt.ucoin.net/coin/portugal-500-reis-1910/?tid=66150",
+          "images": {
+            "obverse": "https://i.ucoin.net/coin/36/003/36003666-1s/portugal-500-reis-1910.jpg",
+            "reverse": "https://i.ucoin.net/coin/36/003/36003666-2s/portugal-500-reis-1910.jpg"
+          },
+          "hasVariants": false,
+          "variants": [],
+          "excludedProofOnlyVariants": [],
+          "variantCollectionStatus": "no_multiple_variants"
+        },
+        {
+          "denomination": {
+            "displayName": "1000 reis",
+            "value": 1000.0,
+            "unit": "reis"
+          },
+          "issuePeriod": {
+            "displayValue": "1910",
+            "startYear": 1910,
+            "endYear": 1910
+          },
+          "imageExampleYear": 1910,
+          "subject": "1910",
+          "composition": "Prata 0.917",
+          "weightGrams": 25.0,
+          "diameterMm": 37.0,
+          "catalogue": {
+            "type": "KM",
+            "number": "558",
+            "displayValue": "KM# 558"
+          },
+          "circulationType": "Comemorativa",
+          "ucoinTypeId": 64748,
+          "ucoinPeriodId": 564,
+          "detailPath": "/coin/portugal-1000-reis-1910/?tid=64748",
+          "detailUrl": "https://pt.ucoin.net/coin/portugal-1000-reis-1910/?tid=64748",
+          "images": {
+            "obverse": "https://i.ucoin.net/coin/86/505/86505432-1s/portugal-1000-reis-1910.jpg",
+            "reverse": "https://i.ucoin.net/coin/86/505/86505432-2s/portugal-1000-reis-1910.jpg"
+          },
+          "hasVariants": false,
+          "variants": [],
+          "excludedProofOnlyVariants": [],
+          "variantCollectionStatus": "no_multiple_variants"
+        }
+      ],
+      "sourcePages": [
+        "https://pt.ucoin.net/catalog/?country=portugal&page=4&type=2"
+      ]
+    }
+  ],
+  "warnings": [
+    {
+      "pageUrl": "https://pt.ucoin.net/catalog/?country=portugal&page=3&type=2",
+      "coinPath": "/coin/portugal-2-1-2-ecu-1998/?tid=108505",
+      "field": "images.obverse",
+      "message": "Missing obverse image"
+    },
+    {
+      "pageUrl": "https://pt.ucoin.net/catalog/?country=portugal&page=3&type=2",
+      "coinPath": "/coin/portugal-2-1-2-ecu-1998/?tid=108505",
+      "field": "images.reverse",
+      "message": "Missing reverse image"
+    },
+    {
+      "pageUrl": "https://pt.ucoin.net/catalog/?country=portugal&page=4&type=2",
+      "coinPath": "/login/?ref=/coin/portugal-1-2-espadim-1458/?tid=157384",
+      "field": "images.obverse",
+      "message": "Missing obverse image"
+    },
+    {
+      "pageUrl": "https://pt.ucoin.net/catalog/?country=portugal&page=4&type=2",
+      "coinPath": "/login/?ref=/coin/portugal-1-2-espadim-1458/?tid=157384",
+      "field": "images.reverse",
+      "message": "Missing reverse image"
+    },
+    {
+      "pageUrl": "https://pt.ucoin.net/catalog/?country=portugal&page=4&type=2",
+      "coinPath": "/login/?ref=/coin/portugal-1-espadim-1458/?tid=157356",
+      "field": "images.obverse",
+      "message": "Missing obverse image"
+    },
+    {
+      "pageUrl": "https://pt.ucoin.net/catalog/?country=portugal&page=4&type=2",
+      "coinPath": "/login/?ref=/coin/portugal-1-espadim-1458/?tid=157356",
+      "field": "images.reverse",
+      "message": "Missing reverse image"
+    }
+  ],
+  "title": "Comemorativa - Portugal - Catálogo de Moedas - uCoin.net",
+  "final_url": "https://pt.ucoin.net/catalog/?country=portugal&type=2",
+  "startYearFilter": 1910,
+  "coinTypeFilter": {
+    "requested": "commemorative",
+    "requestedLabel": "Comemorativa",
+    "foundByType": {
+      "normal": 0,
+      "commemorative": 147,
+      "collection": 0,
+      "unknown": 5
+    },
+    "found": 152,
+    "selected": 147,
+    "excluded": 5
+  },
+  "pagination": {
+    "initialUrl": "https://pt.ucoin.net/catalog/?country=portugal&type=2",
+    "visitedPages": [
+      "https://pt.ucoin.net/catalog/?country=portugal&type=2",
+      "https://pt.ucoin.net/catalog/?country=portugal&page=2&type=2",
+      "https://pt.ucoin.net/catalog/?country=portugal&page=3&type=2",
+      "https://pt.ucoin.net/catalog/?country=portugal&page=4&type=2"
+    ],
+    "pagesProcessed": 4,
+    "discoveredPages": 4,
+    "failedPages": [],
+    "stoppedEarly": false,
+    "stoppedEarlyReason": null
+  },
+  "count": 147,
+  "variantCollection": {
+    "coinsScanned": 147,
+    "coinsWithVariants": 0,
+    "variants": 0,
+    "proofOnlyExcluded": 0,
+    "proRestricted": 0
+  },
+  "output_path": "info/paises/europa/portugal/ucoin-commemorative-catalog.json"
+}
