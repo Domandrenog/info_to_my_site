@@ -98,6 +98,121 @@ class MainTrackingActionTests(unittest.TestCase):
         )
         self.assertNotIn("scripts.ucoin_pipeline", command)
 
+    @patch("main.run_step", return_value=0)
+    @patch("main.title")
+    @patch("main.ask_continent", return_value="Europa")
+    def test_collection_variant_import_uses_country_from_catalog(
+        self,
+        _continent,
+        _title,
+        run_step,
+    ) -> None:
+        with tempfile.TemporaryDirectory() as temporary:
+            catalog = Path(temporary) / "special-app-catalog.json"
+            catalog.write_text(
+                json.dumps(
+                    {
+                        "siteCountry": "Portugal",
+                        "programmes": [
+                            {
+                                "coins": [
+                                    {"variants": [{"tag": "A"}, {"tag": "B"}]}
+                                ]
+                            }
+                        ],
+                    }
+                ),
+                encoding="utf-8",
+            )
+            with (
+                patch("main.ask_text", side_effect=["Portugal", str(catalog), "2"]),
+                redirect_stdout(io.StringIO()) as output,
+            ):
+                main.action_import_collection_variants()
+
+        command = run_step.call_args.args[1]
+        self.assertNotIn("--country", command)
+        self.assertIn("--apply", command)
+        self.assertIn("País no Site Base44: Portugal", output.getvalue())
+
+    @patch("main.run_step", return_value=0)
+    @patch("main.title")
+    @patch("main.ask_continent", return_value="Europa")
+    def test_collection_variant_import_stops_when_catalog_has_no_variants(
+        self,
+        _continent,
+        _title,
+        run_step,
+    ) -> None:
+        with tempfile.TemporaryDirectory() as temporary:
+            catalog = Path(temporary) / "special-app-catalog.json"
+            catalog.write_text(
+                json.dumps({"siteCountry": "Portugal", "programmes": []}),
+                encoding="utf-8",
+            )
+            with (
+                patch("main.ask_text", side_effect=["Portugal", str(catalog)]),
+                redirect_stdout(io.StringIO()) as output,
+            ):
+                main.action_import_collection_variants()
+
+        run_step.assert_not_called()
+        self.assertIn("não contém moedas com múltiplas variantes", output.getvalue())
+
+    @patch("main.run_step", return_value=0)
+    @patch("main.title")
+    @patch("main.ask_continent", return_value="Europa")
+    def test_collection_variant_import_rejects_catalog_from_another_country(
+        self,
+        _continent,
+        _title,
+        run_step,
+    ) -> None:
+        with tempfile.TemporaryDirectory() as temporary:
+            catalog = Path(temporary) / "special-app-catalog.json"
+            catalog.write_text(
+                json.dumps({"siteCountry": "EUA", "programmes": []}),
+                encoding="utf-8",
+            )
+            with (
+                patch("main.ask_text", side_effect=["Portugal", str(catalog)]),
+                redirect_stdout(io.StringIO()) as output,
+            ):
+                main.action_import_collection_variants()
+
+        run_step.assert_not_called()
+        self.assertIn("pertence a EUA, não a Portugal", output.getvalue())
+
+    @patch("main.run_step", return_value=0)
+    @patch("main.add_browser_mode", side_effect=lambda command: command.append("--attach-cdp"))
+    @patch("main.ask_yes_no", return_value=False)
+    @patch("main.title")
+    @patch("main.ask_continent", return_value="Europa")
+    def test_collection_variant_scrape_uses_selected_country_catalog(
+        self,
+        _continent,
+        _title,
+        _refresh,
+        _browser,
+        run_step,
+    ) -> None:
+        with tempfile.TemporaryDirectory() as temporary:
+            catalog = Path(temporary) / "special-app-catalog.json"
+            catalog.write_text(
+                json.dumps({"siteCountry": "Portugal", "programmes": []}),
+                encoding="utf-8",
+            )
+            with patch(
+                "main.ask_text",
+                side_effect=["Portugal", str(catalog)],
+            ):
+                main.action_collect_collection_variants()
+
+        command = run_step.call_args.args[1]
+        catalog_index = command.index("--catalog")
+        self.assertEqual(command[catalog_index + 1], str(catalog))
+        self.assertIn("--attach-cdp", command)
+
     @patch("main.action_backup_base44")
     @patch("main.title")
     @patch("main.ask_text", side_effect=["4", "0"])

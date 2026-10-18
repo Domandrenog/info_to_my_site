@@ -74,7 +74,14 @@ def parse_args(argv: list[str] | None = None) -> argparse.Namespace:
         choices=("auto", "normal", "special"),
         default="auto",
     )
-    parser.add_argument("--country", default="")
+    parser.add_argument(
+        "--country",
+        default="",
+        help=(
+            "Confirma o país do catálogo. Quando indicado, tem de corresponder "
+            "exatamente a siteCountry/country; não substitui o país do JSON."
+        ),
+    )
     parser.add_argument(
         "--detail-url",
         action="append",
@@ -189,6 +196,17 @@ def catalogue_specs(
     return country, list(specs_by_url.values())
 
 
+def resolve_catalog_country(catalog_country: str, requested_country: str = "") -> str:
+    requested = requested_country.strip()
+    if requested and requested != catalog_country:
+        raise CatalogVariantError(
+            f"O país indicado (--country {requested}) não corresponde ao país "
+            f"do catálogo ({catalog_country}). Nenhuma consulta ou alteração "
+            "foi efetuada."
+        )
+    return catalog_country
+
+
 def fetch_all(client: Any, query: dict[str, Any]) -> list[dict[str, Any]]:
     records: list[dict[str, Any]] = []
     skip = 0
@@ -220,7 +238,7 @@ def build_live_plan(
 ) -> VariantImportPlan:
     selected_type = detect_catalog_type(catalogue, catalog_type)
     catalog_country, specs = catalogue_specs(catalogue, selected_type)
-    selected_country = country.strip() or catalog_country
+    selected_country = resolve_catalog_country(catalog_country, country)
     if allowed_urls is not None:
         specs = [spec for spec in specs if spec.detail_url in allowed_urls]
     parent_entity, variant_entity, parent_field = parent_and_variant_contract(selected_type)
@@ -441,6 +459,7 @@ def run(argv: list[str] | None = None) -> int:
     catalogue = load_catalog(args.catalog)
     selected_type = detect_catalog_type(catalogue, args.catalog_type)
     catalog_country, specs = catalogue_specs(catalogue, selected_type)
+    selected_country = resolve_catalog_country(catalog_country, args.country)
     requested_urls = {value.strip() for value in args.detail_url if value.strip()}
     known_urls = {spec.detail_url for spec in specs}
     unknown_urls = sorted(requested_urls - known_urls)
@@ -454,7 +473,7 @@ def run(argv: list[str] | None = None) -> int:
     if not (args.check_live or args.apply):
         expected = sum(len(spec.variants) for spec in specs)
         print(f"Tipo: {selected_type}")
-        print(f"País: {args.country or catalog_country}")
+        print(f"País: {selected_country}")
         print(f"Moedas com variantes: {len(specs)}")
         print(f"Variantes no catálogo: {expected}")
         print("Modo local: nenhuma chamada ao Site Base44.")

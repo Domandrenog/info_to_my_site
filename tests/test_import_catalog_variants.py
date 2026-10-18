@@ -208,6 +208,23 @@ class ImportCatalogVariantsTests(unittest.TestCase):
         )
         self.assertTrue(store["SpecialCoin"][0]["has_variants"])
 
+    def test_country_override_cannot_escape_catalog_scope(self) -> None:
+        catalogue = {
+            "siteCountry": "EUA",
+            "programmes": [],
+        }
+
+        with self.assertRaisesRegex(
+            importer.CatalogVariantError,
+            r"--country Portugal.*catálogo \(EUA\).*Nenhuma consulta",
+        ):
+            importer.build_live_plan(
+                FakeBaseClient({}),
+                catalogue,
+                catalog_type="special",
+                country="Portugal",
+            )
+
     def test_partial_ambiguous_write_marks_stats_stale_before_stopping(self) -> None:
         store = {
             "Coin": [

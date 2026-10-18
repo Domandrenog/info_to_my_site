@@ -160,6 +160,10 @@ def default_commemorative_catalog_path(country: str, continent: str = "") -> str
     )
 
 
+def default_special_app_catalog_path(country: str, continent: str = "") -> str:
+    return str(country_directory(country, continent) / "special-app-catalog.json")
+
+
 def default_commemorative_variant_scan_path(
     country: str, continent: str = ""
 ) -> str:
@@ -1647,14 +1651,61 @@ def menu_souvenirs() -> None:
             input("\nCarrega Enter para continuar...")
 
 
+def load_collection_catalog_for_country(
+    catalog: str,
+    requested_country: str,
+) -> dict[str, object] | None:
+    try:
+        catalogue = json.loads(Path(catalog).read_text(encoding="utf-8"))
+    except (OSError, UnicodeDecodeError, json.JSONDecodeError) as exc:
+        print(f"Não foi possível ler o catálogo: {exc}")
+        return None
+    if not isinstance(catalogue, dict):
+        print("O catálogo de coleção tem de ser um objeto JSON.")
+        return None
+    catalog_country = str(
+        catalogue.get("siteCountry") or catalogue.get("country") or ""
+    ).strip()
+    if not catalog_country:
+        print("O país está ausente no catálogo.")
+        return None
+    if slugify(catalog_country) != slugify(requested_country):
+        print(
+            f"O catálogo escolhido pertence a {catalog_country}, não a "
+            f"{requested_country}. Nenhuma consulta ou alteração foi efetuada."
+        )
+        return None
+    return catalogue
+
+
+def collection_variant_count(catalogue: dict[str, object]) -> tuple[int, int]:
+    variants_per_coin = [
+        len(coin.get("variants", []))
+        for programme in catalogue.get("programmes", [])
+        if isinstance(programme, dict)
+        for coin in programme.get("coins", [])
+        if isinstance(coin, dict)
+        and isinstance(coin.get("variants"), list)
+        and len(coin["variants"]) >= 2
+    ]
+    return len(variants_per_coin), sum(variants_per_coin)
+
+
 def action_collect_collection_variants() -> None:
     title("Moedas de coleção — recolher variantes do uCoin")
+    country = ask_text("País", "Portugal")
+    if not country:
+        print("País obrigatório.")
+        return
+    continent = ask_continent(country)
     catalog = ask_text(
         "Catálogo de coleção",
-        "info/paises/america/eua/special-app-catalog.json",
+        default_special_app_catalog_path(country, continent),
     )
     if not Path(catalog).is_file():
         print(f"Ficheiro não encontrado: {catalog}")
+        return
+    if load_collection_catalog_for_country(catalog, country) is None:
         return
     command = [
         sys.executable,
@@ -1724,14 +1775,31 @@ def action_collect_commemorative_country() -> None:
 
 def action_import_collection_variants() -> None:
     title("Moedas de coleção — variantes no Site Base44")
+    country = ask_text("País", "Portugal")
+    if not country:
+        print("País obrigatório.")
+        return
+    continent = ask_continent(country)
     catalog = ask_text(
         "Catálogo de coleção",
-        "info/paises/america/eua/special-app-catalog.json",
+        default_special_app_catalog_path(country, continent),
     )
     if not Path(catalog).is_file():
         print(f"Ficheiro não encontrado: {catalog}")
         return
-    country = ask_text("País no Site Base44 (opcional)", "EUA")
+    catalogue = load_collection_catalog_for_country(catalog, country)
+    if catalogue is None:
+        return
+    catalog_country = str(catalogue.get("siteCountry") or catalogue.get("country"))
+    print(f"País no Site Base44: {catalog_country} (definido pelo catálogo)")
+    coin_count, variant_count = collection_variant_count(catalogue)
+    if not coin_count:
+        print(
+            "Este catálogo não contém moedas com múltiplas variantes para "
+            "importar. Nenhuma consulta ou alteração foi efetuada."
+        )
+        return
+    print(f"Variantes disponíveis: {variant_count} em {coin_count} moedas")
     print("1) Verificar o que falta, sem alterar o Site")
     print("2) Criar apenas variantes em falta")
     choice = ask_text("Escolhe uma opção", "1")
@@ -1743,8 +1811,6 @@ def action_import_collection_variants() -> None:
         catalog,
         "--catalog-type",
         "special",
-        "--country",
-        country,
     ]
     if choice == "1":
         command.append("--check-live")
