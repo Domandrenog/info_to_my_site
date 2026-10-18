@@ -357,6 +357,45 @@ class UCoinCatalogueGroupingTests(unittest.TestCase):
 
         self.assertFalse(result["variants"])
 
+    def test_duplicate_mintage_rows_for_same_mark_are_merged(self) -> None:
+        result = finalize_variant_rows(
+            "1999",
+            [
+                {
+                    "year": "1999",
+                    "mark": "INCM",
+                    "unc": "-",
+                    "bu": "140.000",
+                    "proof": "-",
+                },
+                {
+                    "year": "1999",
+                    "mark": "INCM",
+                    "unc": "-",
+                    "bu": "180.000",
+                    "proof": "-",
+                },
+            ],
+            "https://pt.ucoin.net/coin/portugal-100-escudos-1999/?tid=17782",
+        )
+
+        self.assertEqual(result["status"], "no_multiple_variants")
+        self.assertFalse(result["variants"])
+        self.assertFalse(result["excludedProofOnlyVariants"])
+
+    def test_normal_mintage_wins_when_same_mark_also_has_proof_row(self) -> None:
+        result = finalize_variant_rows(
+            "2025",
+            [
+                {"year": "2025", "mark": "P", "unc": "1", "bu": "-", "proof": "-"},
+                {"year": "2025", "mark": "P", "unc": "-", "bu": "-", "proof": "1"},
+            ],
+            "https://pt.ucoin.net/coin/test",
+        )
+
+        self.assertFalse(result["variants"])
+        self.assertFalse(result["excludedProofOnlyVariants"])
+
     def test_multi_year_columns_do_not_shift_unc_into_the_mint_mark(self) -> None:
         parsed = parse_variant_table_cells(
             mode="multi",

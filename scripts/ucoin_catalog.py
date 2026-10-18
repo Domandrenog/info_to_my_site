@@ -388,24 +388,24 @@ def finalize_variant_rows(
     detail_url: str,
 ) -> dict[str, object]:
     single_year = bool(re.fullmatch(r"\d{4}", issue_period.strip()))
-    included: list[tuple[int, tuple[int, str], str]] = []
-    excluded: list[tuple[int, tuple[int, str], str]] = []
+    included: dict[str, tuple[int, tuple[int, str], str]] = {}
+    excluded: dict[str, tuple[int, tuple[int, str], str]] = {}
     for row in rows:
         year = row["year"]
         normalized_mark = normalize_variant_mark(row.get("mark"))
         tag = variant_tag(year=year, mark=normalized_mark, single_year=single_year)
         sort_key = (int(year), variant_sort_key(normalized_mark), tag)
         if has_mintage(row.get("unc")) or has_mintage(row.get("bu")):
-            included.append(sort_key)
+            included.setdefault(tag, sort_key)
         elif has_mintage(row.get("proof")):
-            excluded.append(sort_key)
+            excluded.setdefault(tag, sort_key)
 
-    included_tags = [entry[2] for entry in sorted(included)]
-    proof_only_tags = [entry[2] for entry in sorted(excluded)]
-    if len(included_tags) != len(set(included_tags)):
-        raise RuntimeError(f"Variantes repetidas na tabela de {detail_url}.")
-    if set(included_tags) & set(proof_only_tags):
-        raise RuntimeError(f"Uma variante normal também aparece como Proof em {detail_url}.")
+    included_tags = [entry[2] for entry in sorted(included.values())]
+    proof_only_tags = [
+        entry[2]
+        for tag, entry in sorted(excluded.items(), key=lambda item: item[1])
+        if tag not in included
+    ]
 
     variants = (
         [{"tag": tag, "order": index} for index, tag in enumerate(included_tags)]
