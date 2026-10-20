@@ -164,6 +164,20 @@ def default_special_app_catalog_path(country: str, continent: str = "") -> str:
     return str(country_directory(country, continent) / "special-app-catalog.json")
 
 
+def default_collection_subjects_path(country: str, continent: str = "") -> str:
+    return str(country_directory(country, continent) / "ucoin-detail-subjects.json")
+
+
+def default_special_pending_path(country: str, continent: str = "") -> str:
+    return str(
+        country_directory(country, continent) / "special-app-catalog-pending.json"
+    )
+
+
+def default_special_preview_path(country: str, continent: str = "") -> str:
+    return str(country_directory(country, continent) / "special-app-catalog-preview.html")
+
+
 def default_commemorative_variant_scan_path(
     country: str, continent: str = ""
 ) -> str:
@@ -1691,6 +1705,147 @@ def collection_variant_count(catalogue: dict[str, object]) -> tuple[int, int]:
     return len(variants_per_coin), sum(variants_per_coin)
 
 
+def action_collect_collection_subjects() -> None:
+    title("Moedas de coleção — recolher temas oficiais do uCoin")
+    country = ask_text("País", "Portugal")
+    if not country:
+        print("País obrigatório.")
+        return
+    continent = ask_continent(country)
+    catalog = ask_text(
+        "Catálogo comemorativo técnico",
+        default_commemorative_catalog_path(country, continent),
+    )
+    if not Path(catalog).is_file():
+        print(f"Ficheiro não encontrado: {catalog}")
+        return
+    output = ask_text(
+        "Ficheiro de temas oficiais",
+        default_collection_subjects_path(country, continent),
+    )
+    command = [
+        sys.executable,
+        "-m",
+        "scripts.ucoin_detail_subjects",
+        catalog,
+        "--output",
+        output,
+    ]
+    add_browser_mode(command)
+    if run_step("Recolher temas oficiais das moedas de coleção", command) == 0:
+        print(f"Temas oficiais guardados em: {output}")
+        print("O Site Base44 não foi alterado.")
+
+
+def action_prepare_collection_catalog() -> None:
+    title("Moedas de coleção — preparar e aprovar catálogo")
+    country = ask_text("País", "Portugal")
+    if not country:
+        print("País obrigatório.")
+        return
+    continent = ask_continent(country)
+    catalog = default_commemorative_catalog_path(country, continent)
+    subjects = default_collection_subjects_path(country, continent)
+    approved = default_special_app_catalog_path(country, continent)
+    pending = default_special_pending_path(country, continent)
+    preview = default_special_preview_path(country, continent)
+    missing = [path for path in (catalog, subjects) if not Path(path).is_file()]
+    if missing:
+        print("Ainda faltam ficheiros para preparar o catálogo:")
+        for path in missing:
+            print(f"- {path}")
+        print("Recolhe primeiro o catálogo comemorativo e os temas oficiais.")
+        return
+
+    command = [
+        sys.executable,
+        "-m",
+        "scripts.prepare_special_app_catalog",
+        "--catalog",
+        catalog,
+        "--subjects",
+        subjects,
+        "--existing-catalog",
+        approved,
+        "--pending",
+        pending,
+        "--preview",
+        preview,
+        "--approved-output",
+        approved,
+        "--country",
+        country,
+        "--site-country",
+        country,
+        "--continent",
+        continent,
+    ]
+    if Path(pending).is_file():
+        print(f"Já existe um catálogo pendente: {pending}")
+        print(f"Pré-visualização: {preview}")
+        print("1) Gerar novamente o catálogo pendente")
+        print("2) Aprovar o catálogo pendente já revisto")
+        print("3) Voltar")
+        choice = ask_text("Escolhe uma opção", "1")
+        if choice == "2":
+            run_step(
+                "Aprovar catálogo de moedas de coleção",
+                [*command, "--approve"],
+            )
+            return
+        if choice == "3":
+            return
+        if choice != "1":
+            print("Opção inválida. Cancelado.")
+            return
+    if run_step("Preparar catálogo de moedas de coleção", command) != 0:
+        return
+    print(f"Revê antes de aprovar: {preview}")
+    if not ask_yes_no(
+        "Já confirmaste a pré-visualização e queres aprovar este catálogo?",
+        default=False,
+    ):
+        print("Catálogo mantido como pendente; o Site Base44 não foi alterado.")
+        return
+    run_step("Aprovar catálogo de moedas de coleção", [*command, "--approve"])
+
+
+def action_import_collection_coins() -> None:
+    title("Moedas de coleção — atualizar Site Base44")
+    country = ask_text("País", "Portugal")
+    if not country:
+        print("País obrigatório.")
+        return
+    continent = ask_continent(country)
+    catalog = ask_text(
+        "Catálogo de coleção aprovado",
+        default_special_app_catalog_path(country, continent),
+    )
+    if not Path(catalog).is_file():
+        print(f"Ficheiro não encontrado: {catalog}")
+        return
+    if load_collection_catalog_for_country(catalog, country) is None:
+        return
+    print("1) Verificar o que falta, sem alterar o Site")
+    print("2) Criar apenas moedas de coleção em falta")
+    choice = ask_text("Escolhe uma opção", "1")
+    command = [
+        sys.executable,
+        "-m",
+        "scripts.import_base44_special_coins",
+        "--catalog",
+        catalog,
+    ]
+    if choice == "1":
+        command.append("--check-live")
+    elif choice == "2":
+        command.extend(["--apply", "--yes"])
+    else:
+        print("Opção inválida. Cancelado.")
+        return
+    run_step("Moedas de coleção no Site Base44", command)
+
+
 def action_collect_collection_variants() -> None:
     title("Moedas de coleção — recolher variantes do uCoin")
     country = ask_text("País", "Portugal")
@@ -1798,6 +1953,10 @@ def action_import_collection_variants() -> None:
             "Este catálogo não contém moedas com múltiplas variantes para "
             "importar. Nenhuma consulta ou alteração foi efetuada."
         )
+        print(
+            "Para colocar as próprias moedas de coleção no Site Base44, "
+            "volta ao menu e escolhe a opção 4."
+        )
         return
     print(f"Variantes disponíveis: {variant_count} em {coin_count} moedas")
     print("1) Verificar o que falta, sem alterar o Site")
@@ -1825,18 +1984,27 @@ def action_import_collection_variants() -> None:
 def menu_collection_coins() -> None:
     while True:
         title("Moedas de coleção")
-        print("1) Recolher moedas comemorativas de um país")
-        print("2) Recolher variantes do uCoin para um catálogo")
-        print("3) Verificar/importar variantes para o Site Base44")
-        print("4) Voltar")
+        print("1) Recolher catálogo comemorativo do uCoin")
+        print("2) Recolher temas oficiais das moedas")
+        print("3) Preparar, rever e aprovar catálogo de coleção")
+        print("4) Verificar/importar moedas de coleção para o Site Base44")
+        print("5) Recolher variantes do uCoin para o catálogo aprovado")
+        print("6) Verificar/importar variantes para o Site Base44")
+        print("7) Voltar")
         choice = ask_text("Escolhe uma opção", "1")
         if choice == "1":
             action_collect_commemorative_country()
         elif choice == "2":
-            action_collect_collection_variants()
+            action_collect_collection_subjects()
         elif choice == "3":
-            action_import_collection_variants()
+            action_prepare_collection_catalog()
         elif choice == "4":
+            action_import_collection_coins()
+        elif choice == "5":
+            action_collect_collection_variants()
+        elif choice == "6":
+            action_import_collection_variants()
+        elif choice == "7":
             return
         else:
             print("Opção inválida.")

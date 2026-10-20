@@ -158,6 +158,7 @@ class MainTrackingActionTests(unittest.TestCase):
 
         run_step.assert_not_called()
         self.assertIn("não contém moedas com múltiplas variantes", output.getvalue())
+        self.assertIn("escolhe a opção 4", output.getvalue())
 
     @patch("main.run_step", return_value=0)
     @patch("main.title")
@@ -212,6 +213,106 @@ class MainTrackingActionTests(unittest.TestCase):
         catalog_index = command.index("--catalog")
         self.assertEqual(command[catalog_index + 1], str(catalog))
         self.assertIn("--attach-cdp", command)
+
+    @patch("main.run_step", return_value=0)
+    @patch("main.title")
+    @patch("main.ask_continent", return_value="Europa")
+    def test_collection_coin_import_exposes_create_only_base44_action(
+        self,
+        _continent,
+        _title,
+        run_step,
+    ) -> None:
+        with tempfile.TemporaryDirectory() as temporary:
+            catalog = Path(temporary) / "special-app-catalog.json"
+            catalog.write_text(
+                json.dumps(
+                    {
+                        "catalogType": "special",
+                        "siteCountry": "Portugal",
+                        "country": "Portugal",
+                        "continent": "Europa",
+                        "programmes": [],
+                    }
+                ),
+                encoding="utf-8",
+            )
+            with patch(
+                "main.ask_text",
+                side_effect=["Portugal", str(catalog), "2"],
+            ):
+                main.action_import_collection_coins()
+
+        command = run_step.call_args.args[1]
+        self.assertIn("scripts.import_base44_special_coins", command)
+        self.assertIn("--apply", command)
+        self.assertIn("--yes", command)
+
+    @patch("main.run_step", return_value=0)
+    @patch("main.title")
+    @patch("main.ask_continent", return_value="Europa")
+    def test_collection_catalog_can_approve_existing_reviewed_pending_file(
+        self,
+        _continent,
+        _title,
+        run_step,
+    ) -> None:
+        with tempfile.TemporaryDirectory() as temporary:
+            root = Path(temporary)
+            catalog = root / "ucoin-commemorative-catalog.json"
+            subjects = root / "ucoin-detail-subjects.json"
+            approved = root / "special-app-catalog.json"
+            pending = root / "special-app-catalog-pending.json"
+            preview = root / "special-app-catalog-preview.html"
+            for path in (catalog, subjects, pending, preview):
+                path.write_text("{}", encoding="utf-8")
+            with (
+                patch("main.ask_text", side_effect=["Portugal", "2"]),
+                patch(
+                    "main.default_commemorative_catalog_path",
+                    return_value=str(catalog),
+                ),
+                patch(
+                    "main.default_collection_subjects_path",
+                    return_value=str(subjects),
+                ),
+                patch(
+                    "main.default_special_app_catalog_path",
+                    return_value=str(approved),
+                ),
+                patch(
+                    "main.default_special_pending_path",
+                    return_value=str(pending),
+                ),
+                patch(
+                    "main.default_special_preview_path",
+                    return_value=str(preview),
+                ),
+            ):
+                main.action_prepare_collection_catalog()
+
+        run_step.assert_called_once()
+        self.assertEqual(run_step.call_args.args[1][-1], "--approve")
+
+    @patch("main.action_import_collection_coins")
+    @patch("main.title")
+    def test_collection_menu_option_four_imports_parent_coins(
+        self,
+        _title,
+        import_coins,
+    ) -> None:
+        with (
+            patch("main.ask_text", side_effect=["4", "7"]),
+            patch("builtins.input", return_value=""),
+            redirect_stdout(io.StringIO()) as output,
+        ):
+            main.menu_collection_coins()
+
+        self.assertIn(
+            "4) Verificar/importar moedas de coleção para o Site Base44",
+            output.getvalue(),
+        )
+        import_coins.assert_called_once_with()
 
     @patch("main.action_backup_base44")
     @patch("main.title")

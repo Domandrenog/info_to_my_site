@@ -774,6 +774,33 @@ create-only: não atualiza nem apaga variantes existentes. Por política,
 variantes `S` das moedas de coleção ficam de fora, além das linhas
 exclusivamente Proof.
 
+O fluxo completo de moedas de coleção está disponível no mesmo menu:
+
+1. recolhe o catálogo comemorativo técnico;
+2. visita as páginas de detalhe, em modo retomável, para obter os temas oficiais;
+3. gera `special-app-catalog-pending.json` e uma pré-visualização HTML;
+4. só depois de confirmação promove o ficheiro para `special-app-catalog.json`;
+5. compara o catálogo aprovado com `SpecialCoin` e cria apenas pais em falta;
+6. recolhe e importa variantes separadamente.
+
+O importador de pais `SpecialCoin` nunca atualiza nem apaga moedas existentes.
+Estados de posse, aquisição e restantes dados pessoais são preservados. Cada
+criação é reconciliada por identidade e URL uCoin antes de avançar, e
+`has_variants` só é ativado pelo importador de variantes após os filhos terem
+sido confirmados.
+
+```bash
+# Comparação live sem escrita
+python3 -m scripts.import_base44_special_coins \
+  --catalog info/paises/europa/portugal/special-app-catalog.json \
+  --check-live
+
+# Criação create-only após revisão do plano
+python3 -m scripts.import_base44_special_coins \
+  --catalog info/paises/europa/portugal/special-app-catalog.json \
+  --apply --yes
+```
+
 O `--replace` apaga apenas registos `Coin` com `country` igual ao país do JSON e recria as moedas a partir do ficheiro final.
 
 ### Mapeamento Base44
