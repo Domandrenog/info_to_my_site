@@ -1352,12 +1352,16 @@
               "order": 12
             },
             {
-              "tag": "2000",
+              "tag": "1999",
               "order": 13
             },
             {
-              "tag": "2001",
+              "tag": "2000",
               "order": 14
+            },
+            {
+              "tag": "2001",
+              "order": 15
             }
           ],
           "excludedProofOnlyVariants": [],
@@ -1604,36 +1608,28 @@
               "order": 4
             },
             {
-              "tag": "1974 ↑↑",
+              "tag": "1974",
               "order": 5
             },
             {
-              "tag": "1974 ↑↓",
+              "tag": "1975",
               "order": 6
             },
             {
-              "tag": "1975",
+              "tag": "1976",
               "order": 7
             },
             {
-              "tag": "1976 ↑↑",
+              "tag": "1977",
               "order": 8
             },
             {
-              "tag": "1976 ↑↓",
+              "tag": "1978",
               "order": 9
             },
             {
-              "tag": "1977",
-              "order": 10
-            },
-            {
-              "tag": "1978",
-              "order": 11
-            },
-            {
               "tag": "1979",
-              "order": 12
+              "order": 10
             }
           ],
           "excludedProofOnlyVariants": [],
@@ -1873,8 +1869,80 @@
               "order": 3
             },
             {
-              "tag": "1968",
+              "tag": "1967",
               "order": 4
+            },
+            {
+              "tag": "1968",
+              "order": 5
+            },
+            {
+              "tag": "1969",
+              "order": 6
+            },
+            {
+              "tag": "1970",
+              "order": 7
+            },
+            {
+              "tag": "1971",
+              "order": 8
+            },
+            {
+              "tag": "1972",
+              "order": 9
+            },
+            {
+              "tag": "1973",
+              "order": 10
+            },
+            {
+              "tag": "1974",
+              "order": 11
+            },
+            {
+              "tag": "1975",
+              "order": 12
+            },
+            {
+              "tag": "1976",
+              "order": 13
+            },
+            {
+              "tag": "1977",
+              "order": 14
+            },
+            {
+              "tag": "1978",
+              "order": 15
+            },
+            {
+              "tag": "1979",
+              "order": 16
+            },
+            {
+              "tag": "1980",
+              "order": 17
+            },
+            {
+              "tag": "1981",
+              "order": 18
+            },
+            {
+              "tag": "1982",
+              "order": 19
+            },
+            {
+              "tag": "1983",
+              "order": 20
+            },
+            {
+              "tag": "1984",
+              "order": 21
+            },
+            {
+              "tag": "1985",
+              "order": 22
             }
           ],
           "excludedProofOnlyVariants": [],
@@ -1894,24 +1962,100 @@
           "hasVariants": true,
           "variants": [
             {
-              "tag": "1964",
+              "tag": "1963",
               "order": 0
             },
             {
-              "tag": "1965",
+              "tag": "1964",
               "order": 1
             },
             {
-              "tag": "1966",
+              "tag": "1965",
               "order": 2
             },
             {
-              "tag": "1967",
+              "tag": "1966",
               "order": 3
             },
             {
-              "tag": "1968",
+              "tag": "1967",
               "order": 4
+            },
+            {
+              "tag": "1968",
+              "order": 5
+            },
+            {
+              "tag": "1969",
+              "order": 6
+            },
+            {
+              "tag": "1970",
+              "order": 7
+            },
+            {
+              "tag": "1971",
+              "order": 8
+            },
+            {
+              "tag": "1972",
+              "order": 9
+            },
+            {
+              "tag": "1973",
+              "order": 10
+            },
+            {
+              "tag": "1974",
+              "order": 11
+            },
+            {
+              "tag": "1975",
+              "order": 12
+            },
+            {
+              "tag": "1976",
+              "order": 13
+            },
+            {
+              "tag": "1977",
+              "order": 14
+            },
+            {
+              "tag": "1978",
+              "order": 15
+            },
+            {
+              "tag": "1979",
+              "order": 16
+            },
+            {
+              "tag": "1980",
+              "order": 17
+            },
+            {
+              "tag": "1981",
+              "order": 18
+            },
+            {
+              "tag": "1982",
+              "order": 19
+            },
+            {
+              "tag": "1983",
+              "order": 20
+            },
+            {
+              "tag": "1984",
+              "order": 21
+            },
+            {
+              "tag": "1985",
+              "order": 22
+            },
+            {
+              "tag": "1986",
+              "order": 23
             }
           ],
           "excludedProofOnlyVariants": [],
@@ -2054,8 +2198,12 @@
               "order": 2
             },
             {
-              "tag": "1922",
+              "tag": "1921",
               "order": 3
+            },
+            {
+              "tag": "1922",
+              "order": 4
             }
           ],
           "excludedProofOnlyVariants": [],
@@ -2097,6 +2245,10 @@
             {
               "tag": "1920",
               "order": 1
+            },
+            {
+              "tag": "1921",
+              "order": 2
             }
           ],
           "excludedProofOnlyVariants": [],
@@ -2138,10 +2290,23 @@
           "detailUrl": "https://pt.ucoin.net/coin/portugal-5-centavos-1920-1922/?tid=31591",
           "obverseImage": "https://i.ucoin.net/coin/84/220/84220216-1s/portugal-5-centavos-1921.jpg",
           "reverseImage": "https://i.ucoin.net/coin/84/220/84220216-2s/portugal-5-centavos-1921.jpg",
-          "hasVariants": false,
-          "variants": [],
+          "hasVariants": true,
+          "variants": [
+            {
+              "tag": "1920",
+              "order": 0
+            },
+            {
+              "tag": "1921",
+              "order": 1
+            },
+            {
+              "tag": "1922",
+              "order": 2
+            }
+          ],
           "excludedProofOnlyVariants": [],
-          "variantCollectionStatus": "no_multiple_variants"
+          "variantCollectionStatus": "collected"
         },
         {
           "denomination": "5 centavos",
@@ -2154,10 +2319,23 @@
           "detailUrl": "https://pt.ucoin.net/coin/portugal-5-centavos-1924-1927/?tid=31594",
           "obverseImage": "https://i.ucoin.net/coin/65/272/65272840-1s/portugal-5-centavos-1924.jpg",
           "reverseImage": "https://i.ucoin.net/coin/65/272/65272840-2s/portugal-5-centavos-1924.jpg",
-          "hasVariants": false,
-          "variants": [],
+          "hasVariants": true,
+          "variants": [
+            {
+              "tag": "1924",
+              "order": 0
+            },
+            {
+              "tag": "1925",
+              "order": 1
+            },
+            {
+              "tag": "1927",
+              "order": 2
+            }
+          ],
           "excludedProofOnlyVariants": [],
-          "variantCollectionStatus": "no_multiple_variants"
+          "variantCollectionStatus": "collected"
         },
         {
           "denomination": "10 centavos",
@@ -2186,10 +2364,19 @@
           "detailUrl": "https://pt.ucoin.net/coin/portugal-10-centavos-1920-1921/?tid=31597",
           "obverseImage": "https://i.ucoin.net/coin/35/723/35723394-1s/portugal-10-centavos-1920.jpg",
           "reverseImage": "https://i.ucoin.net/coin/35/723/35723394-2s/portugal-10-centavos-1920.jpg",
-          "hasVariants": false,
-          "variants": [],
+          "hasVariants": true,
+          "variants": [
+            {
+              "tag": "1920",
+              "order": 0
+            },
+            {
+              "tag": "1921",
+              "order": 1
+            }
+          ],
           "excludedProofOnlyVariants": [],
-          "variantCollectionStatus": "no_multiple_variants"
+          "variantCollectionStatus": "collected"
         },
         {
           "denomination": "10 centavos",
@@ -2202,10 +2389,35 @@
           "detailUrl": "https://pt.ucoin.net/coin/portugal-10-centavos-1924-1940/?tid=31599",
           "obverseImage": "https://i.ucoin.net/coin/58/416/58416337-1s/portugal-10-centavos-1924.jpg",
           "reverseImage": "https://i.ucoin.net/coin/58/416/58416337-2s/portugal-10-centavos-1924.jpg",
-          "hasVariants": false,
-          "variants": [],
+          "hasVariants": true,
+          "variants": [
+            {
+              "tag": "1924",
+              "order": 0
+            },
+            {
+              "tag": "1925",
+              "order": 1
+            },
+            {
+              "tag": "1926",
+              "order": 2
+            },
+            {
+              "tag": "1930",
+              "order": 3
+            },
+            {
+              "tag": "1938",
+              "order": 4
+            },
+            {
+              "tag": "1940",
+              "order": 5
+            }
+          ],
           "excludedProofOnlyVariants": [],
-          "variantCollectionStatus": "no_multiple_variants"
+          "variantCollectionStatus": "collected"
         },
         {
           "denomination": "10 centavos",
@@ -2221,189 +2433,11 @@
           "hasVariants": true,
           "variants": [
             {
-              "tag": "1949",
+              "tag": "1942",
               "order": 0
             },
             {
-              "tag": "1953",
-              "order": 1
-            },
-            {
-              "tag": "1956",
-              "order": 2
-            },
-            {
-              "tag": "1959",
-              "order": 3
-            },
-            {
-              "tag": "1962",
-              "order": 4
-            },
-            {
-              "tag": "1964",
-              "order": 5
-            },
-            {
-              "tag": "1967",
-              "order": 6
-            },
-            {
-              "tag": "1968",
-              "order": 7
-            }
-          ],
-          "excludedProofOnlyVariants": [],
-          "variantCollectionStatus": "collected"
-        },
-        {
-          "denomination": "20 centavos",
-          "value": 20.0,
-          "unit": "centavos",
-          "issuePeriod": "1913 - 1916",
-          "startYear": 1913,
-          "endYear": 1916,
-          "availability": "historical",
-          "detailUrl": "https://pt.ucoin.net/coin/portugal-20-centavos-1913-1916/?tid=31605",
-          "obverseImage": "https://i.ucoin.net/coin/5/905/5905412-1s/portugal-20-centavos-1916.jpg",
-          "reverseImage": "https://i.ucoin.net/coin/5/905/5905412-2s/portugal-20-centavos-1916.jpg",
-          "hasVariants": false,
-          "variants": [],
-          "excludedProofOnlyVariants": [],
-          "variantCollectionStatus": "no_multiple_variants"
-        },
-        {
-          "denomination": "20 centavos",
-          "value": 20.0,
-          "unit": "centavos",
-          "issuePeriod": "1920 - 1922",
-          "startYear": 1920,
-          "endYear": 1922,
-          "availability": "historical",
-          "detailUrl": "https://pt.ucoin.net/coin/portugal-20-centavos-1920-1922/?tid=31607",
-          "obverseImage": "https://i.ucoin.net/coin/72/879/72879525-1s/portugal-20-centavos-1922.jpg",
-          "reverseImage": "https://i.ucoin.net/coin/72/879/72879525-2s/portugal-20-centavos-1922.jpg",
-          "hasVariants": false,
-          "variants": [],
-          "excludedProofOnlyVariants": [],
-          "variantCollectionStatus": "no_multiple_variants"
-        },
-        {
-          "denomination": "20 centavos",
-          "value": 20.0,
-          "unit": "centavos",
-          "issuePeriod": "1924 - 1925",
-          "startYear": 1924,
-          "endYear": 1925,
-          "availability": "historical",
-          "detailUrl": "https://pt.ucoin.net/coin/portugal-20-centavos-1924-1925/?tid=31610",
-          "obverseImage": "https://i.ucoin.net/coin/35/767/35767694-1s/portugal-20-centavos-1924.jpg",
-          "reverseImage": "https://i.ucoin.net/coin/35/767/35767694-2s/portugal-20-centavos-1924.jpg",
-          "hasVariants": false,
-          "variants": [],
-          "excludedProofOnlyVariants": [],
-          "variantCollectionStatus": "no_multiple_variants"
-        },
-        {
-          "denomination": "20 centavos",
-          "value": 20.0,
-          "unit": "centavos",
-          "issuePeriod": "1942 - 1969",
-          "startYear": 1942,
-          "endYear": 1969,
-          "availability": "historical",
-          "detailUrl": "https://pt.ucoin.net/coin/portugal-20-centavos-1942-1969/?tid=31430",
-          "obverseImage": "https://i.ucoin.net/coin/48/481/48481963-1s/portugal-20-centavos-1964.jpg",
-          "reverseImage": "https://i.ucoin.net/coin/48/481/48481963-2s/portugal-20-centavos-1964.jpg",
-          "hasVariants": true,
-          "variants": [
-            {
-              "tag": "1949",
-              "order": 0
-            },
-            {
-              "tag": "1956",
-              "order": 1
-            },
-            {
-              "tag": "1958",
-              "order": 2
-            },
-            {
-              "tag": "1959",
-              "order": 3
-            },
-            {
-              "tag": "1962",
-              "order": 4
-            },
-            {
-              "tag": "1963",
-              "order": 5
-            },
-            {
-              "tag": "1964",
-              "order": 6
-            },
-            {
-              "tag": "1968",
-              "order": 7
-            }
-          ],
-          "excludedProofOnlyVariants": [],
-          "variantCollectionStatus": "collected"
-        },
-        {
-          "denomination": "50 centavos",
-          "value": 50.0,
-          "unit": "centavos",
-          "issuePeriod": "1912 - 1916",
-          "startYear": 1912,
-          "endYear": 1916,
-          "availability": "historical",
-          "detailUrl": "https://pt.ucoin.net/coin/portugal-50-centavos-1912-1916/?tid=31612",
-          "obverseImage": "https://i.ucoin.net/coin/5/905/5905200-1s/portugal-50-centavos-1913.jpg",
-          "reverseImage": "https://i.ucoin.net/coin/5/905/5905200-2s/portugal-50-centavos-1913.jpg",
-          "hasVariants": false,
-          "variants": [],
-          "excludedProofOnlyVariants": [],
-          "variantCollectionStatus": "no_multiple_variants"
-        },
-        {
-          "denomination": "50 centavos",
-          "value": 50.0,
-          "unit": "centavos",
-          "issuePeriod": "1924 - 1926",
-          "startYear": 1924,
-          "endYear": 1926,
-          "availability": "historical",
-          "detailUrl": "https://pt.ucoin.net/coin/portugal-50-centavos-1924-1926/?tid=31616",
-          "obverseImage": "https://i.ucoin.net/coin/35/794/35794487-1s/portugal-50-centavos-1924.jpg",
-          "reverseImage": "https://i.ucoin.net/coin/35/794/35794487-2s/portugal-50-centavos-1924.jpg",
-          "hasVariants": false,
-          "variants": [],
-          "excludedProofOnlyVariants": [],
-          "variantCollectionStatus": "no_multiple_variants"
-        },
-        {
-          "denomination": "50 centavos",
-          "value": 50.0,
-          "unit": "centavos",
-          "issuePeriod": "1927 - 1968",
-          "startYear": 1927,
-          "endYear": 1968,
-          "availability": "historical",
-          "detailUrl": "https://pt.ucoin.net/coin/portugal-50-centavos-1927-1968/?tid=31453",
-          "obverseImage": "https://i.ucoin.net/coin/22/983/22983398-1s/portugal-50-centavos-1962.jpg",
-          "reverseImage": "https://i.ucoin.net/coin/22/983/22983398-2s/portugal-50-centavos-1962.jpg",
-          "hasVariants": true,
-          "variants": [
-            {
-              "tag": "1927",
-              "order": 0
-            },
-            {
-              "tag": "1929",
+              "tag": "1943",
               "order": 1
             },
             {
@@ -2420,6 +2454,214 @@
             },
             {
               "tag": "1947",
+              "order": 5
+            },
+            {
+              "tag": "1948",
+              "order": 6
+            },
+            {
+              "tag": "1949",
+              "order": 7
+            },
+            {
+              "tag": "1950",
+              "order": 8
+            },
+            {
+              "tag": "1951",
+              "order": 9
+            },
+            {
+              "tag": "1952",
+              "order": 10
+            },
+            {
+              "tag": "1953",
+              "order": 11
+            },
+            {
+              "tag": "1954",
+              "order": 12
+            },
+            {
+              "tag": "1955",
+              "order": 13
+            },
+            {
+              "tag": "1956",
+              "order": 14
+            },
+            {
+              "tag": "1957",
+              "order": 15
+            },
+            {
+              "tag": "1958",
+              "order": 16
+            },
+            {
+              "tag": "1959",
+              "order": 17
+            },
+            {
+              "tag": "1960",
+              "order": 18
+            },
+            {
+              "tag": "1961",
+              "order": 19
+            },
+            {
+              "tag": "1962",
+              "order": 20
+            },
+            {
+              "tag": "1963",
+              "order": 21
+            },
+            {
+              "tag": "1964",
+              "order": 22
+            },
+            {
+              "tag": "1965",
+              "order": 23
+            },
+            {
+              "tag": "1966",
+              "order": 24
+            },
+            {
+              "tag": "1967",
+              "order": 25
+            },
+            {
+              "tag": "1968",
+              "order": 26
+            },
+            {
+              "tag": "1969",
+              "order": 27
+            }
+          ],
+          "excludedProofOnlyVariants": [],
+          "variantCollectionStatus": "collected"
+        },
+        {
+          "denomination": "20 centavos",
+          "value": 20.0,
+          "unit": "centavos",
+          "issuePeriod": "1913 - 1916",
+          "startYear": 1913,
+          "endYear": 1916,
+          "availability": "historical",
+          "detailUrl": "https://pt.ucoin.net/coin/portugal-20-centavos-1913-1916/?tid=31605",
+          "obverseImage": "https://i.ucoin.net/coin/5/905/5905412-1s/portugal-20-centavos-1916.jpg",
+          "reverseImage": "https://i.ucoin.net/coin/5/905/5905412-2s/portugal-20-centavos-1916.jpg",
+          "hasVariants": true,
+          "variants": [
+            {
+              "tag": "1913",
+              "order": 0
+            },
+            {
+              "tag": "1916",
+              "order": 1
+            }
+          ],
+          "excludedProofOnlyVariants": [],
+          "variantCollectionStatus": "collected"
+        },
+        {
+          "denomination": "20 centavos",
+          "value": 20.0,
+          "unit": "centavos",
+          "issuePeriod": "1920 - 1922",
+          "startYear": 1920,
+          "endYear": 1922,
+          "availability": "historical",
+          "detailUrl": "https://pt.ucoin.net/coin/portugal-20-centavos-1920-1922/?tid=31607",
+          "obverseImage": "https://i.ucoin.net/coin/72/879/72879525-1s/portugal-20-centavos-1922.jpg",
+          "reverseImage": "https://i.ucoin.net/coin/72/879/72879525-2s/portugal-20-centavos-1922.jpg",
+          "hasVariants": true,
+          "variants": [
+            {
+              "tag": "1920",
+              "order": 0
+            },
+            {
+              "tag": "1921",
+              "order": 1
+            },
+            {
+              "tag": "1922",
+              "order": 2
+            }
+          ],
+          "excludedProofOnlyVariants": [],
+          "variantCollectionStatus": "collected"
+        },
+        {
+          "denomination": "20 centavos",
+          "value": 20.0,
+          "unit": "centavos",
+          "issuePeriod": "1924 - 1925",
+          "startYear": 1924,
+          "endYear": 1925,
+          "availability": "historical",
+          "detailUrl": "https://pt.ucoin.net/coin/portugal-20-centavos-1924-1925/?tid=31610",
+          "obverseImage": "https://i.ucoin.net/coin/35/767/35767694-1s/portugal-20-centavos-1924.jpg",
+          "reverseImage": "https://i.ucoin.net/coin/35/767/35767694-2s/portugal-20-centavos-1924.jpg",
+          "hasVariants": true,
+          "variants": [
+            {
+              "tag": "1924",
+              "order": 0
+            },
+            {
+              "tag": "1925",
+              "order": 1
+            }
+          ],
+          "excludedProofOnlyVariants": [],
+          "variantCollectionStatus": "collected"
+        },
+        {
+          "denomination": "20 centavos",
+          "value": 20.0,
+          "unit": "centavos",
+          "issuePeriod": "1942 - 1969",
+          "startYear": 1942,
+          "endYear": 1969,
+          "availability": "historical",
+          "detailUrl": "https://pt.ucoin.net/coin/portugal-20-centavos-1942-1969/?tid=31430",
+          "obverseImage": "https://i.ucoin.net/coin/48/481/48481963-1s/portugal-20-centavos-1964.jpg",
+          "reverseImage": "https://i.ucoin.net/coin/48/481/48481963-2s/portugal-20-centavos-1964.jpg",
+          "hasVariants": true,
+          "variants": [
+            {
+              "tag": "1942",
+              "order": 0
+            },
+            {
+              "tag": "1943",
+              "order": 1
+            },
+            {
+              "tag": "1944",
+              "order": 2
+            },
+            {
+              "tag": "1945",
+              "order": 3
+            },
+            {
+              "tag": "1948",
+              "order": 4
+            },
+            {
+              "tag": "1949",
               "order": 5
             },
             {
@@ -2443,52 +2685,247 @@
               "order": 10
             },
             {
-              "tag": "1957",
+              "tag": "1958",
               "order": 11
             },
             {
-              "tag": "1958",
+              "tag": "1959",
               "order": 12
             },
             {
-              "tag": "1959",
+              "tag": "1960",
               "order": 13
             },
             {
-              "tag": "1960",
+              "tag": "1961",
               "order": 14
             },
             {
-              "tag": "1961",
+              "tag": "1962",
               "order": 15
             },
             {
-              "tag": "1962",
+              "tag": "1963",
               "order": 16
             },
             {
-              "tag": "1963",
+              "tag": "1964",
               "order": 17
             },
             {
-              "tag": "1964",
+              "tag": "1965",
               "order": 18
             },
             {
-              "tag": "1965",
+              "tag": "1966",
               "order": 19
             },
             {
-              "tag": "1966",
+              "tag": "1967",
               "order": 20
             },
             {
-              "tag": "1967",
+              "tag": "1968",
               "order": 21
             },
             {
-              "tag": "1968",
+              "tag": "1969",
               "order": 22
+            }
+          ],
+          "excludedProofOnlyVariants": [],
+          "variantCollectionStatus": "collected"
+        },
+        {
+          "denomination": "50 centavos",
+          "value": 50.0,
+          "unit": "centavos",
+          "issuePeriod": "1912 - 1916",
+          "startYear": 1912,
+          "endYear": 1916,
+          "availability": "historical",
+          "detailUrl": "https://pt.ucoin.net/coin/portugal-50-centavos-1912-1916/?tid=31612",
+          "obverseImage": "https://i.ucoin.net/coin/5/905/5905200-1s/portugal-50-centavos-1913.jpg",
+          "reverseImage": "https://i.ucoin.net/coin/5/905/5905200-2s/portugal-50-centavos-1913.jpg",
+          "hasVariants": true,
+          "variants": [
+            {
+              "tag": "1912",
+              "order": 0
+            },
+            {
+              "tag": "1913",
+              "order": 1
+            },
+            {
+              "tag": "1914",
+              "order": 2
+            },
+            {
+              "tag": "1916",
+              "order": 3
+            }
+          ],
+          "excludedProofOnlyVariants": [],
+          "variantCollectionStatus": "collected"
+        },
+        {
+          "denomination": "50 centavos",
+          "value": 50.0,
+          "unit": "centavos",
+          "issuePeriod": "1924 - 1926",
+          "startYear": 1924,
+          "endYear": 1926,
+          "availability": "historical",
+          "detailUrl": "https://pt.ucoin.net/coin/portugal-50-centavos-1924-1926/?tid=31616",
+          "obverseImage": "https://i.ucoin.net/coin/35/794/35794487-1s/portugal-50-centavos-1924.jpg",
+          "reverseImage": "https://i.ucoin.net/coin/35/794/35794487-2s/portugal-50-centavos-1924.jpg",
+          "hasVariants": true,
+          "variants": [
+            {
+              "tag": "1924",
+              "order": 0
+            },
+            {
+              "tag": "1925",
+              "order": 1
+            },
+            {
+              "tag": "1926",
+              "order": 2
+            }
+          ],
+          "excludedProofOnlyVariants": [],
+          "variantCollectionStatus": "collected"
+        },
+        {
+          "denomination": "50 centavos",
+          "value": 50.0,
+          "unit": "centavos",
+          "issuePeriod": "1927 - 1968",
+          "startYear": 1927,
+          "endYear": 1968,
+          "availability": "historical",
+          "detailUrl": "https://pt.ucoin.net/coin/portugal-50-centavos-1927-1968/?tid=31453",
+          "obverseImage": "https://i.ucoin.net/coin/22/983/22983398-1s/portugal-50-centavos-1962.jpg",
+          "reverseImage": "https://i.ucoin.net/coin/22/983/22983398-2s/portugal-50-centavos-1962.jpg",
+          "hasVariants": true,
+          "variants": [
+            {
+              "tag": "1927",
+              "order": 0
+            },
+            {
+              "tag": "1928",
+              "order": 1
+            },
+            {
+              "tag": "1929",
+              "order": 2
+            },
+            {
+              "tag": "1930",
+              "order": 3
+            },
+            {
+              "tag": "1931",
+              "order": 4
+            },
+            {
+              "tag": "1935",
+              "order": 5
+            },
+            {
+              "tag": "1938",
+              "order": 6
+            },
+            {
+              "tag": "1940",
+              "order": 7
+            },
+            {
+              "tag": "1944",
+              "order": 8
+            },
+            {
+              "tag": "1945",
+              "order": 9
+            },
+            {
+              "tag": "1946",
+              "order": 10
+            },
+            {
+              "tag": "1947",
+              "order": 11
+            },
+            {
+              "tag": "1951",
+              "order": 12
+            },
+            {
+              "tag": "1952",
+              "order": 13
+            },
+            {
+              "tag": "1953",
+              "order": 14
+            },
+            {
+              "tag": "1955",
+              "order": 15
+            },
+            {
+              "tag": "1956",
+              "order": 16
+            },
+            {
+              "tag": "1957",
+              "order": 17
+            },
+            {
+              "tag": "1958",
+              "order": 18
+            },
+            {
+              "tag": "1959",
+              "order": 19
+            },
+            {
+              "tag": "1960",
+              "order": 20
+            },
+            {
+              "tag": "1961",
+              "order": 21
+            },
+            {
+              "tag": "1962",
+              "order": 22
+            },
+            {
+              "tag": "1963",
+              "order": 23
+            },
+            {
+              "tag": "1964",
+              "order": 24
+            },
+            {
+              "tag": "1965",
+              "order": 25
+            },
+            {
+              "tag": "1966",
+              "order": 26
+            },
+            {
+              "tag": "1967",
+              "order": 27
+            },
+            {
+              "tag": "1968",
+              "order": 28
             }
           ],
           "excludedProofOnlyVariants": [],
@@ -2505,10 +2942,19 @@
           "detailUrl": "https://pt.ucoin.net/coin/portugal-1-escudo-1915-1916/?tid=31628",
           "obverseImage": "https://i.ucoin.net/coin/5/905/5905086-1s/portugal-1-escudo-1916.jpg",
           "reverseImage": "https://i.ucoin.net/coin/5/905/5905086-2s/portugal-1-escudo-1916.jpg",
-          "hasVariants": false,
-          "variants": [],
+          "hasVariants": true,
+          "variants": [
+            {
+              "tag": "1915",
+              "order": 0
+            },
+            {
+              "tag": "1916",
+              "order": 1
+            }
+          ],
           "excludedProofOnlyVariants": [],
-          "variantCollectionStatus": "no_multiple_variants"
+          "variantCollectionStatus": "collected"
         },
         {
           "denomination": "1 escudo",
@@ -2521,10 +2967,19 @@
           "detailUrl": "https://pt.ucoin.net/coin/portugal-1-escudo-1924-1926/?tid=31651",
           "obverseImage": "https://i.ucoin.net/coin/35/858/35858071-1s/portugal-1-escudo-1924.jpg",
           "reverseImage": "https://i.ucoin.net/coin/35/858/35858071-2s/portugal-1-escudo-1924.jpg",
-          "hasVariants": false,
-          "variants": [],
+          "hasVariants": true,
+          "variants": [
+            {
+              "tag": "1924",
+              "order": 0
+            },
+            {
+              "tag": "1926",
+              "order": 1
+            }
+          ],
           "excludedProofOnlyVariants": [],
-          "variantCollectionStatus": "no_multiple_variants"
+          "variantCollectionStatus": "collected"
         },
         {
           "denomination": "1 escudo",
@@ -2540,44 +2995,92 @@
           "hasVariants": true,
           "variants": [
             {
-              "tag": "1951",
+              "tag": "1927",
               "order": 0
             },
             {
-              "tag": "1957",
+              "tag": "1928",
               "order": 1
             },
             {
-              "tag": "1958",
+              "tag": "1929",
               "order": 2
             },
             {
-              "tag": "1959",
+              "tag": "1930",
               "order": 3
             },
             {
-              "tag": "1961",
+              "tag": "1931",
               "order": 4
             },
             {
-              "tag": "1962",
+              "tag": "1935",
               "order": 5
             },
             {
-              "tag": "1964",
+              "tag": "1939",
               "order": 6
             },
             {
-              "tag": "1965",
+              "tag": "1940",
               "order": 7
             },
             {
-              "tag": "1966",
+              "tag": "1944",
               "order": 8
             },
             {
-              "tag": "1968",
+              "tag": "1945",
               "order": 9
+            },
+            {
+              "tag": "1946",
+              "order": 10
+            },
+            {
+              "tag": "1951",
+              "order": 11
+            },
+            {
+              "tag": "1952",
+              "order": 12
+            },
+            {
+              "tag": "1957",
+              "order": 13
+            },
+            {
+              "tag": "1958",
+              "order": 14
+            },
+            {
+              "tag": "1959",
+              "order": 15
+            },
+            {
+              "tag": "1961",
+              "order": 16
+            },
+            {
+              "tag": "1962",
+              "order": 17
+            },
+            {
+              "tag": "1964",
+              "order": 18
+            },
+            {
+              "tag": "1965",
+              "order": 19
+            },
+            {
+              "tag": "1966",
+              "order": 20
+            },
+            {
+              "tag": "1968",
+              "order": 21
             }
           ],
           "excludedProofOnlyVariants": [],
@@ -2597,28 +3100,52 @@
           "hasVariants": true,
           "variants": [
             {
-              "tag": "1943",
+              "tag": "1932",
               "order": 0
             },
             {
-              "tag": "1944",
+              "tag": "1933",
               "order": 1
             },
             {
-              "tag": "1945",
+              "tag": "1937",
               "order": 2
             },
             {
-              "tag": "1946",
+              "tag": "1940",
               "order": 3
             },
             {
-              "tag": "1947",
+              "tag": "1942",
               "order": 4
             },
             {
-              "tag": "1951",
+              "tag": "1943",
               "order": 5
+            },
+            {
+              "tag": "1944",
+              "order": 6
+            },
+            {
+              "tag": "1945",
+              "order": 7
+            },
+            {
+              "tag": "1946",
+              "order": 8
+            },
+            {
+              "tag": "1947",
+              "order": 9
+            },
+            {
+              "tag": "1948",
+              "order": 10
+            },
+            {
+              "tag": "1951",
+              "order": 11
             }
           ],
           "excludedProofOnlyVariants": [],
@@ -2638,16 +3165,48 @@
           "hasVariants": true,
           "variants": [
             {
-              "tag": "1942",
+              "tag": "1932",
               "order": 0
             },
             {
-              "tag": "1948",
+              "tag": "1933",
               "order": 1
             },
             {
-              "tag": "1951",
+              "tag": "1934",
               "order": 2
+            },
+            {
+              "tag": "1937",
+              "order": 3
+            },
+            {
+              "tag": "1940",
+              "order": 4
+            },
+            {
+              "tag": "1942",
+              "order": 5
+            },
+            {
+              "tag": "1943",
+              "order": 6
+            },
+            {
+              "tag": "1946",
+              "order": 7
+            },
+            {
+              "tag": "1947",
+              "order": 8
+            },
+            {
+              "tag": "1948",
+              "order": 9
+            },
+            {
+              "tag": "1951",
+              "order": 10
             }
           ],
           "excludedProofOnlyVariants": [],
@@ -2664,10 +3223,39 @@
           "detailUrl": "https://pt.ucoin.net/coin/portugal-10-escudos-1932-1948/?tid=31691",
           "obverseImage": "https://i.ucoin.net/coin/61/136/61136179-1s/portugal-10-escudos-1948.jpg",
           "reverseImage": "https://i.ucoin.net/coin/61/136/61136179-2s/portugal-10-escudos-1948.jpg",
-          "hasVariants": false,
-          "variants": [],
+          "hasVariants": true,
+          "variants": [
+            {
+              "tag": "1932",
+              "order": 0
+            },
+            {
+              "tag": "1933",
+              "order": 1
+            },
+            {
+              "tag": "1934",
+              "order": 2
+            },
+            {
+              "tag": "1937",
+              "order": 3
+            },
+            {
+              "tag": "1940",
+              "order": 4
+            },
+            {
+              "tag": "1942",
+              "order": 5
+            },
+            {
+              "tag": "1948",
+              "order": 6
+            }
+          ],
           "excludedProofOnlyVariants": [],
-          "variantCollectionStatus": "no_multiple_variants"
+          "variantCollectionStatus": "collected"
         },
         {
           "denomination": "10 escudos",

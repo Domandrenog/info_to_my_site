@@ -2,6 +2,7 @@ from __future__ import annotations
 
 import copy
 import unittest
+from urllib.parse import unquote, urlparse
 from unittest.mock import patch
 
 from scripts import import_base44_special_coins as importer
@@ -28,6 +29,30 @@ class FakeEntityClient:
                     "id": f"special-{len(self.store[self.entity]) + 1}",
                 }
             )
+
+    def update(self, record_id, payload):
+        for record in self.store[self.entity]:
+            if record.get("id") == record_id:
+                record.update(copy.deepcopy(payload))
+                return copy.deepcopy(record)
+        raise AssertionError(f"missing record {record_id}")
+
+    @property
+    def base_url(self):
+        return f"https://example.test/{self.entity}"
+
+    def request(self, method, url, payload=None):
+        self.assert_method(method, "GET")
+        record_id = unquote(urlparse(url).path.rsplit("/", 1)[-1])
+        for record in self.store[self.entity]:
+            if record.get("id") == record_id:
+                return copy.deepcopy(record)
+        return None
+
+    @staticmethod
+    def assert_method(actual, expected):
+        if actual != expected:
+            raise AssertionError(f"expected {expected}, got {actual}")
 
 
 class FakeBaseClient:
@@ -147,6 +172,42 @@ class ImportBase44SpecialCoinsTests(unittest.TestCase):
             "ainda não foi aprovado",
         ):
             importer.catalogue_payloads(pending)
+
+    def test_sync_year_order_repairs_only_those_fields(self) -> None:
+        original = existing_first()
+        original["year"] = "1974"
+        original["ordem"] = 9
+        store = {"SpecialCoin": [copy.deepcopy(original)], "AdminStats": []}
+        plan = importer.build_plan(
+            catalog(), store["SpecialCoin"], sync_year_order=True
+        )
+
+        self.assertEqual(len(plan.updates), 1)
+        self.assertEqual(plan.updates[0][2], {"year": "2000", "ordem": 1})
+        with (
+            patch.object(
+                importer,
+                "no_retry_entity_client",
+                side_effect=lambda client, entity: client.for_entity(entity),
+            ),
+            patch.object(importer, "mark_numisvault_stats_stale"),
+        ):
+            updated = importer.apply_catalog_updates(FakeBaseClient(store), plan)
+
+        self.assertEqual(updated, 1)
+        self.assertEqual(store["SpecialCoin"][0]["year"], "2000")
+        self.assertEqual(store["SpecialCoin"][0]["ordem"], 1)
+        self.assertEqual(store["SpecialCoin"][0]["condition"], "Tenho")
+        self.assertEqual(store["SpecialCoin"][0]["adquirida_por"], "Eu")
+
+    def test_year_difference_is_rejected_without_explicit_sync(self) -> None:
+        live = [existing_first()]
+        live[0]["year"] = "1974"
+
+        with self.assertRaisesRegex(
+            importer.MigrationExecutionError, "diverge do catálogo"
+        ):
+            importer.build_plan(catalog(), live)
 
 
 if __name__ == "__main__":

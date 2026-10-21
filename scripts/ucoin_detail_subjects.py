@@ -12,6 +12,7 @@ from __future__ import annotations
 
 import argparse
 import json
+import re
 import subprocess
 import time
 from pathlib import Path
@@ -25,12 +26,46 @@ from scripts.ucoin_catalog import (
 )
 
 
+class UCoinRateLimitError(RuntimeError):
+    """Raised when uCoin asks this IP to wait before making more requests."""
+
+
+IGNORED_HEADING_LABELS = {
+    "collection",
+    "offers",
+    "language",
+    "popular in catalog",
+    "varieties",
+    "mintage, rarity, worth",
+    "mintage",
+    "configurações da conta",
+    "coleção",
+    "língua",
+    "ofertas",
+    "variedades",
+    "cunhagem",
+    "cunhagem, raridade, valor",
+    "notificações",
+    "adicionar nova moeda",
+    "moeda",
+    "to: ucoin team",
+}
+
+
 def parse_args(argv: list[str] | None = None) -> argparse.Namespace:
     parser = argparse.ArgumentParser(
         description="Recolhe os temas oficiais das páginas de detalhe uCoin."
     )
     parser.add_argument("catalog", type=Path)
     parser.add_argument("--output", type=Path, required=True)
+    parser.add_argument(
+        "--preserve-catalog",
+        type=Path,
+        help=(
+            "Não volta a visitar URLs já aprovados neste special-app-catalog; "
+            "os respetivos nomes serão preservados pelo preparador."
+        ),
+    )
     browser_mode = parser.add_mutually_exclusive_group()
     browser_mode.add_argument("--attach-cdp", action="store_true")
     browser_mode.add_argument("--incognito", action="store_true")
@@ -45,10 +80,10 @@ def parse_args(argv: list[str] | None = None) -> argparse.Namespace:
         default=0,
         help="Por defeito para ao primeiro bloqueio; ativa retentativas apenas manualmente.",
     )
-    parser.add_argument("--delay", type=float, default=5.0)
+    parser.add_argument("--delay", type=float, default=10.0)
     parser.add_argument("--retry-backoff", type=float, default=30.0)
-    parser.add_argument("--batch-size", type=int, default=20)
-    parser.add_argument("--batch-pause", type=float, default=60.0)
+    parser.add_argument("--batch-size", type=int, default=10)
+    parser.add_argument("--batch-pause", type=float, default=120.0)
     parser.add_argument(
         "--max-items",
         type=int,
@@ -84,6 +119,27 @@ def read_catalog(path: Path) -> list[dict[str, Any]]:
     return coins
 
 
+def preserved_detail_urls(path: Path | None) -> set[str]:
+    if path is None or not path.is_file():
+        return set()
+    payload = json.loads(path.read_text(encoding="utf-8"))
+    programmes = payload.get("programmes") if isinstance(payload, dict) else None
+    if not isinstance(programmes, list):
+        raise RuntimeError(f"Catálogo preservado sem programmes: {path}")
+    result: set[str] = set()
+    for programme in programmes:
+        if not isinstance(programme, dict):
+            continue
+        for coin in programme.get("coins", []):
+            if not isinstance(coin, dict):
+                continue
+            url = str(coin.get("detailUrl") or "").strip()
+            if not url or url in result:
+                raise RuntimeError(f"URL ausente ou repetido no catálogo preservado: {path}")
+            result.add(url)
+    return result
+
+
 def expected_tid(url: str) -> int | None:
     values = parse_qs(urlparse(url).query).get("tid", [])
     try:
@@ -98,6 +154,7 @@ def valid_detail_item(
     url = str(item.get("detailUrl") or "")
     tid = expected_tid(url)
     h1 = str(item.get("h1") or "").strip().casefold()
+    subject = str(item.get("subject") or "").strip()
     expected_countries = {
         str(value or "").strip().casefold()
         for value in (
@@ -117,8 +174,44 @@ def valid_detail_item(
         and item.get("ucoinTypeId") == tid
         and bool(expected_countries)
         and country_matches
-        and bool(str(item.get("subject") or "").strip())
+        and bool(subject)
+        and subject.casefold() not in IGNORED_HEADING_LABELS
     )
+
+
+def subject_from_document_title(
+    document_title: object, source_coin: dict[str, Any]
+) -> str:
+    title = " ".join(str(document_title or "").split())
+    trailer = " - uCoin.net"
+    if not title.endswith(trailer):
+        return ""
+    _coin_label, separator, remainder = title[: -len(trailer)].partition(" - ")
+    if not separator:
+        return ""
+    countries = {
+        str(value or "").strip()
+        for value in (
+            source_coin.get("_catalogCountry"),
+            source_coin.get("_periodCountry"),
+        )
+        if str(value or "").strip()
+    }
+    for country in sorted(countries, key=len, reverse=True):
+        suffix = f", {country}"
+        if remainder.endswith(suffix):
+            return remainder[: -len(suffix)].strip()
+    return ""
+
+
+def subject_from_headings(headings: object) -> str:
+    if not isinstance(headings, list):
+        return ""
+    for value in headings:
+        heading = " ".join(str(value or "").split())
+        if heading and heading.casefold() not in IGNORED_HEADING_LABELS:
+            return heading
+    return ""
 
 
 def read_existing(
@@ -136,6 +229,9 @@ def read_existing(
         if not isinstance(item, dict) or not item.get("detailUrl"):
             raise RuntimeError("Output existente contém um item inválido.")
         source_coin = coins_by_url.get(str(item["detailUrl"]))
+        canonical_subject = subject_from_headings(item.get("headings"))
+        if canonical_subject:
+            item = {**item, "subject": canonical_subject}
         if source_coin is None or not valid_detail_item(item, source_coin):
             rejected += 1
             continue
@@ -175,7 +271,8 @@ def extract_metadata(page: Any) -> dict[str, Any]:
             'Collection', 'Offers', 'Language', 'Popular in Catalog',
             'Varieties', 'Mintage, Rarity, Worth', 'Mintage',
             'Configurações da conta', 'Coleção', 'Língua', 'Ofertas',
-            'Variedades', 'Cunhagem', 'Cunhagem, Raridade, Valor'
+            'Variedades', 'Cunhagem', 'Cunhagem, Raridade, Valor',
+            'Notificações', 'Adicionar nova moeda', 'Moeda', 'To: uCoin Team'
           ]);
           const h1 = clean(document.querySelector('h1')?.textContent);
           const subject = headings.find((value) =>
@@ -185,6 +282,15 @@ def extract_metadata(page: Any) -> dict[str, Any]:
         }
         """
     )
+
+
+def rate_limit_wait(body_text: object) -> str:
+    text = " ".join(str(body_text or "").split())
+    lowered = text.casefold()
+    if "your ip" not in lowered or "blocked" not in lowered or "wait" not in lowered:
+        return ""
+    match = re.search(r"\b\d{2}:\d{2}:\d{2}\b", text)
+    return match.group(0) if match else "o tempo indicado no browser"
 
 
 def collect_one(
@@ -200,7 +306,20 @@ def collect_one(
             status = response.status if response is not None else None
             if status is not None and status >= 400:
                 raise RuntimeError(f"HTTP {status}")
+            wait = rate_limit_wait(page.locator("body").inner_text(timeout=2_000))
+            if wait:
+                raise UCoinRateLimitError(
+                    "uCoin bloqueou temporariamente este IP. Espera "
+                    f"{wait}; o progresso foi guardado e não haverá retentativa."
+                )
             metadata = extract_metadata(page)
+            heading_subject = subject_from_headings(metadata.get("headings"))
+            title_subject = subject_from_document_title(
+                metadata.get("documentTitle"), coin
+            )
+            metadata["subject"] = (
+                heading_subject or str(metadata.get("subject") or "") or title_subject
+            )
             if not metadata.get("subject"):
                 raise RuntimeError("Tema ausente na página de detalhe.")
             result = {
@@ -219,6 +338,8 @@ def collect_one(
             return result
         except Exception as exc:  # noqa: BLE001 - bounded browser retry
             last_error = exc
+            if isinstance(exc, UCoinRateLimitError):
+                raise
             if attempt < args.retries:
                 delay = min(60.0, args.retry_backoff * (2**attempt))
                 print(
@@ -236,18 +357,28 @@ def run(args: argparse.Namespace) -> int:
         raise RuntimeError("Playwright não está instalado.") from exc
 
     coins = read_catalog(args.catalog)
-    selected = coins[: args.max_items] if args.max_items > 0 else coins
+    preserved_urls = preserved_detail_urls(args.preserve_catalog)
+    selectable = [
+        coin
+        for coin in coins
+        if str(coin.get("detailUrl") or "").strip() not in preserved_urls
+    ]
+    selected = selectable[: args.max_items] if args.max_items > 0 else selectable
     coins_by_url = {
         str(coin.get("detailUrl") or "").strip(): coin
         for coin in coins
         if str(coin.get("detailUrl") or "").strip()
     }
     existing, rejected = read_existing(args.output, coins_by_url)
+    selected_urls = {
+        str(coin.get("detailUrl") or "").strip() for coin in selectable
+    }
+    existing = {url: item for url, item in existing.items() if url in selected_urls}
     if rejected:
         print(
             f"Descartadas {rejected} respostas inválidas/bloqueadas do progresso anterior."
         )
-        write_output(args.output, args.catalog, len(coins), existing)
+        write_output(args.output, args.catalog, len(selectable), existing)
     incognito_process: subprocess.Popen[bytes] | None = None
     with sync_playwright() as playwright:
         browser = None
@@ -292,7 +423,7 @@ def run(args: argparse.Namespace) -> int:
                         "issuePeriod": coin.get("issuePeriod"),
                         **metadata,
                     }
-                    write_output(args.output, args.catalog, len(coins), existing)
+                    write_output(args.output, args.catalog, len(selectable), existing)
                     collected_this_run += 1
                     if args.delay:
                         page.wait_for_timeout(int(args.delay * 1000))
@@ -315,13 +446,20 @@ def run(args: argparse.Namespace) -> int:
                 context.close()
             if incognito_process is not None and incognito_process.poll() is None:
                 incognito_process.terminate()
-    print(f"Guardado: {args.output} — {len(existing)}/{len(coins)} páginas")
+    print(
+        f"Guardado: {args.output} — {len(existing)}/{len(selectable)} páginas "
+        f"novas; {len(preserved_urls)} já aprovadas preservadas"
+    )
     print("Site uCoin: apenas leitura. Site Base44: nenhuma alteração efetuada.")
     return 0
 
 
 def main(argv: list[str] | None = None) -> int:
-    return run(parse_args(argv))
+    try:
+        return run(parse_args(argv))
+    except RuntimeError as exc:
+        print(f"Erro: {exc}")
+        return 1
 
 
 if __name__ == "__main__":

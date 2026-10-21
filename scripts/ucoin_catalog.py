@@ -129,8 +129,8 @@ def parse_args() -> argparse.Namespace:
         "--include-variants",
         action="store_true",
         help=(
-            "Visita cada moeda e recolhe variantes UNC/BU; linhas exclusivamente "
-            "Proof ficam excluídas."
+            "Visita cada moeda e recolhe variantes de circulação e de set "
+            "(UNC/BU); linhas exclusivamente Proof ficam excluídas."
         ),
     )
     parser.add_argument(

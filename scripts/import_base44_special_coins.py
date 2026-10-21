@@ -9,6 +9,7 @@ import time
 from dataclasses import dataclass
 from pathlib import Path
 from typing import Any
+from urllib.parse import quote
 
 from scripts.admin_stats_sync import MutationRun, mark_numisvault_stats_stale
 from scripts.execute_eua_commemorative_migration import (
@@ -53,6 +54,7 @@ class SpecialCoinPlan:
     country: str
     expected: int
     existing: list[tuple[dict[str, Any], dict[str, Any]]]
+    updates: list[tuple[dict[str, Any], dict[str, Any], dict[str, Any]]]
     pending: list[dict[str, Any]]
     untracked_live: int
 
@@ -69,6 +71,14 @@ def parse_args(argv: list[str] | None = None) -> argparse.Namespace:
     modes.add_argument("--check-live", action="store_true")
     modes.add_argument("--apply", action="store_true")
     parser.add_argument("--yes", action="store_true")
+    parser.add_argument(
+        "--sync-year-order",
+        action="store_true",
+        help=(
+            "Permite corrigir exclusivamente year/ordem em registos já "
+            "associados pelo mesmo URL uCoin; todos os outros campos são preservados."
+        ),
+    )
     parser.add_argument("--request-delay", type=float, default=DEFAULT_REQUEST_DELAY_SECONDS)
     parser.add_argument(
         "--rate-limit-delay", type=float, default=DEFAULT_RATE_LIMIT_DELAY_SECONDS
@@ -137,7 +147,10 @@ def catalog_differences(
 
 
 def build_plan(
-    catalogue: dict[str, Any], live_records: list[dict[str, Any]]
+    catalogue: dict[str, Any],
+    live_records: list[dict[str, Any]],
+    *,
+    sync_year_order: bool = False,
 ) -> SpecialCoinPlan:
     payloads = catalogue_payloads(catalogue)
     country = str(catalogue["siteCountry"])
@@ -154,6 +167,7 @@ def build_plan(
         by_identity.setdefault(identity, []).append(record)
 
     existing: list[tuple[dict[str, Any], dict[str, Any]]] = []
+    updates: list[tuple[dict[str, Any], dict[str, Any], dict[str, Any]]] = []
     pending: list[dict[str, Any]] = []
     tracked_ids: set[str] = set()
     for payload in payloads:
@@ -172,16 +186,23 @@ def build_plan(
                 raise MigrationExecutionError(
                     f"O URL {url} já pertence ao país {actual.get('country')}."
                 )
-            if identity_matches != url_matches:
+            if identity_matches and identity_matches != url_matches:
                 raise MigrationExecutionError(
                     f"O URL {url} está associado a outra identidade no Site."
                 )
             differences = catalog_differences(payload, actual)
             if differences:
-                raise MigrationExecutionError(
-                    f"A moeda existente {url} diverge do catálogo: "
-                    + json.dumps(differences, ensure_ascii=False, sort_keys=True)
-                )
+                allowed = {"year", "ordem"}
+                if not sync_year_order or not set(differences).issubset(allowed):
+                    raise MigrationExecutionError(
+                        f"A moeda existente {url} diverge do catálogo: "
+                        + json.dumps(differences, ensure_ascii=False, sort_keys=True)
+                    )
+                patch = {
+                    field: difference["expected"]
+                    for field, difference in differences.items()
+                }
+                updates.append((payload, actual, patch))
             existing.append((payload, actual))
             tracked_ids.add(str(actual.get("id") or ""))
             continue
@@ -197,7 +218,9 @@ def build_plan(
         if record.get("country") == country
         and str(record.get("id") or "") not in tracked_ids
     )
-    return SpecialCoinPlan(country, len(payloads), existing, pending, untracked_live)
+    return SpecialCoinPlan(
+        country, len(payloads), existing, updates, pending, untracked_live
+    )
 
 
 def print_plan(plan: SpecialCoinPlan) -> None:
@@ -208,8 +231,19 @@ def print_plan(plan: SpecialCoinPlan) -> None:
     print(f"Já existentes e preservadas: {len(plan.existing)}")
     print(f"Novas a criar: {len(plan.pending)}")
     print(f"Outras moedas live fora deste catálogo: {plan.untracked_live}")
-    print("Atualizações: 0")
+    print(f"Atualizações limitadas a year/ordem: {len(plan.updates)}")
     print("Eliminações: 0")
+    if plan.updates:
+        print("\nCorreções year/ordem:")
+        for payload, actual, patch in plan.updates:
+            changes = ", ".join(
+                f"{field}: {actual.get(field)!r} -> {value!r}"
+                for field, value in patch.items()
+            )
+            print(
+                f"- {payload['name']} — {payload['commemorative_name']} "
+                f"({payload['url_ucoin']}): {changes}"
+            )
     if plan.pending:
         grouped: dict[str, int] = {}
         for payload in plan.pending:
@@ -262,6 +296,65 @@ def apply_plan(base_client: Any, plan: SpecialCoinPlan) -> int:
     return created
 
 
+def get_record(client: Any, record_id: str) -> dict[str, Any]:
+    result = client.request("GET", f"{client.base_url}/{quote(record_id)}")
+    if not isinstance(result, dict):
+        raise MigrationExecutionError(
+            f"GET de {record_id} não devolveu um registo: {result!r}"
+        )
+    return result
+
+
+def protected_fields(record: dict[str, Any], patch: dict[str, Any]) -> dict[str, Any]:
+    ignored = set(patch) | {"updated_date", "updatedAt", "updated_at"}
+    return {field: value for field, value in record.items() if field not in ignored}
+
+
+def apply_catalog_updates(base_client: Any, plan: SpecialCoinPlan) -> int:
+    if not plan.updates:
+        return 0
+    read_client = base_client.for_entity("SpecialCoin")
+    write_client = no_retry_entity_client(base_client, "SpecialCoin")
+    updated = 0
+    with MutationRun(
+        lambda: mark_numisvault_stats_stale(base_client),
+        mutation_label="SpecialCoin year/order repair",
+    ) as mutations:
+        for position, (payload, before, patch) in enumerate(plan.updates, start=1):
+            record_id = str(before.get("id") or "").strip()
+            if not record_id or not set(patch).issubset({"year", "ordem"}):
+                raise MigrationExecutionError("Correção year/ordem inválida.")
+            update_error: Exception | None = None
+            try:
+                write_client.update(record_id, patch)
+                mutations.record_success()
+            except Exception as exc:  # noqa: BLE001 - reconcile ambiguous PUT
+                update_error = exc
+            after = get_record(read_client, record_id)
+            if any(after.get(field) != value for field, value in patch.items()):
+                if update_error is not None:
+                    raise MigrationExecutionError(
+                        f"PUT de {record_id} falhou e a correção não foi confirmada: "
+                        f"{update_error}"
+                    ) from update_error
+                raise MigrationExecutionError(
+                    f"A correção year/ordem não ficou confirmada em {record_id}."
+                )
+            if protected_fields(after, patch) != protected_fields(before, patch):
+                raise MigrationExecutionError(
+                    f"Um campo protegido mudou durante a correção de {record_id}."
+                )
+            if update_error is not None:
+                mutations.record_success()
+            updated += 1
+            print(
+                f"Corrigido: {position}/{len(plan.updates)} — {payload['name']} — "
+                f"{payload['commemorative_name']} — {', '.join(patch)}",
+                flush=True,
+            )
+    return updated
+
+
 def run(args: argparse.Namespace) -> int:
     if args.apply and not args.yes:
         raise MigrationExecutionError(
@@ -280,23 +373,40 @@ def run(args: argparse.Namespace) -> int:
 
     base_client = create_client(args)
     live = fetch_all(base_client.for_entity("SpecialCoin"), {})
-    plan = build_plan(catalogue, live)
+    plan = build_plan(
+        catalogue, live, sync_year_order=args.sync_year_order
+    )
     print_plan(plan)
     if args.check_live:
         print("Site Base44: nenhuma alteração efetuada.")
         return 0
 
+    updated = apply_catalog_updates(base_client, plan)
+    if updated:
+        plan = build_plan(
+            catalogue,
+            fetch_all(base_client.for_entity("SpecialCoin"), {}),
+            sync_year_order=args.sync_year_order,
+        )
+        if plan.updates:
+            raise MigrationExecutionError(
+                f"A verificação encontrou {len(plan.updates)} correções pendentes."
+            )
     created = apply_plan(base_client, plan)
     verified = build_plan(
         catalogue,
         fetch_all(base_client.for_entity("SpecialCoin"), {}),
+        sync_year_order=args.sync_year_order,
     )
-    if verified.pending:
+    if verified.pending or verified.updates:
         raise MigrationExecutionError(
-            f"A verificação final encontrou {len(verified.pending)} moedas em falta."
+            "A verificação final encontrou "
+            f"{len(verified.pending)} moedas e {len(verified.updates)} correções em falta."
         )
-    print(f"Concluído: {created} SpecialCoin criadas e verificadas.")
-    print("SpecialCoin atualizadas ou apagadas: 0")
+    print(
+        f"Concluído: {created} SpecialCoin criadas e {updated} corrigidas/verificadas."
+    )
+    print("SpecialCoin apagadas: 0")
     return 0
 
 

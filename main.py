@@ -294,7 +294,10 @@ def action_pipeline() -> None:
         default=False,
     )
     if include_variants:
-        print("Serão incluídas variantes UNC/BU; emissões exclusivamente Proof ficam de fora.")
+        print(
+            "Serão incluídas variantes de circulação e de set (UNC/BU); "
+            "emissões exclusivamente Proof ficam de fora."
+        )
         command.append("--include-variants")
 
     add_browser_mode(command)
@@ -343,7 +346,10 @@ def action_collect_country_pending() -> None:
         command.extend(["--start-year", str(start_year)])
 
     if ask_yes_no("Recolher também as variantes do uCoin?", default=False):
-        print("Serão incluídas variantes UNC/BU; emissões exclusivamente Proof ficam de fora.")
+        print(
+            "Serão incluídas variantes de circulação e de set (UNC/BU); "
+            "emissões exclusivamente Proof ficam de fora."
+        )
         command.append("--include-variants")
 
     add_browser_mode(command)
@@ -1731,6 +1737,9 @@ def action_collect_collection_subjects() -> None:
         "--output",
         output,
     ]
+    approved = default_special_app_catalog_path(country, continent)
+    if Path(approved).is_file():
+        command.extend(["--preserve-catalog", approved])
     add_browser_mode(command)
     if run_step("Recolher temas oficiais das moedas de coleção", command) == 0:
         print(f"Temas oficiais guardados em: {output}")
@@ -1913,7 +1922,10 @@ def action_collect_commemorative_country() -> None:
         command.extend(["--start-year", str(start_year)])
 
     if ask_yes_no("Recolher também as variantes do uCoin?", default=False):
-        print("Serão incluídas variantes UNC/BU; emissões exclusivamente Proof ficam de fora.")
+        print(
+            "Serão incluídas variantes de circulação e de set (UNC/BU); "
+            "emissões exclusivamente Proof ficam de fora."
+        )
         command.extend(
             [
                 "--include-variants",

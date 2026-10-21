@@ -1,9 +1,11 @@
 #!/usr/bin/env python3
 """Create missing CoinVariant or SpecialCoinVariant records from a catalogue.
 
-The flow is deliberately create-only for variants. Existing variants are never
-updated or deleted, and a parent is marked with ``has_variants=true`` only after
-all requested tags have been confirmed.
+The flow is deliberately create-only for variant identities. Existing variants
+are never deleted and their collection data is preserved.  An explicit
+``--sync-order`` may align only their display order with the catalogue.  A
+parent is marked with ``has_variants=true`` only after all requested tags have
+been confirmed.
 """
 
 from __future__ import annotations
@@ -35,6 +37,7 @@ class ParentVariantPlan:
     parent: dict[str, Any]
     existing_by_tag: dict[str, dict[str, Any]] = field(default_factory=dict)
     missing: list[tuple[str, int]] = field(default_factory=list)
+    order_updates: list[tuple[dict[str, Any], int]] = field(default_factory=list)
     flag_pending: bool = False
 
 
@@ -59,6 +62,10 @@ class VariantImportPlan:
     @property
     def flags_pending(self) -> int:
         return sum(parent.flag_pending for parent in self.parents)
+
+    @property
+    def order_updates(self) -> int:
+        return sum(len(parent.order_updates) for parent in self.parents)
 
 
 def parse_args(argv: list[str] | None = None) -> argparse.Namespace:
@@ -92,6 +99,14 @@ def parse_args(argv: list[str] | None = None) -> argparse.Namespace:
     modes.add_argument("--check-live", action="store_true")
     modes.add_argument("--apply", action="store_true")
     parser.add_argument("--yes", action="store_true", help="Confirma explicitamente --apply.")
+    parser.add_argument(
+        "--sync-order",
+        action="store_true",
+        help=(
+            "Alinha apenas o campo ordem das variantes existentes; condição, "
+            "posse e restantes campos são preservados."
+        ),
+    )
     parser.add_argument("--batch-size", type=int, default=25)
     parser.add_argument("--request-delay", type=float, default=1.5)
     parser.add_argument("--rate-limit-delay", type=float, default=30.0)
@@ -235,6 +250,7 @@ def build_live_plan(
     catalog_type: str = "auto",
     country: str = "",
     allowed_urls: set[str] | None = None,
+    sync_order: bool = False,
 ) -> VariantImportPlan:
     selected_type = detect_catalog_type(catalogue, catalog_type)
     catalog_country, specs = catalogue_specs(catalogue, selected_type)
@@ -271,12 +287,20 @@ def build_live_plan(
                 raise CatalogVariantError(f"{spec.label}: tag Base44 vazia ou repetida.")
             existing_by_tag[tag] = live
         missing = [item for item in spec.variants if item[0] not in existing_by_tag]
+        order_updates = []
+        if sync_order:
+            order_updates = [
+                (existing_by_tag[tag], order)
+                for tag, order in spec.variants
+                if tag in existing_by_tag and existing_by_tag[tag].get("ordem") != order
+            ]
         plans.append(
             ParentVariantPlan(
                 spec=spec,
                 parent=parent,
                 existing_by_tag=existing_by_tag,
                 missing=missing,
+                order_updates=order_updates,
                 flag_pending=parent.get("has_variants") is not True,
             )
         )
@@ -288,12 +312,17 @@ def print_plan(plan: VariantImportPlan) -> None:
     complete = [
         parent
         for parent in plan.parents
-        if not parent.missing and not parent.flag_pending
+        if not parent.missing and not parent.flag_pending and not parent.order_updates
     ]
     selector_only = [
         parent
         for parent in plan.parents
-        if not parent.missing and parent.flag_pending
+        if not parent.missing and parent.flag_pending and not parent.order_updates
+    ]
+    order_only = [
+        parent
+        for parent in plan.parents
+        if not parent.missing and not parent.flag_pending and parent.order_updates
     ]
     variants_and_selector = [parent for parent in plan.parents if parent.missing]
     print(f"Variantes — {label} — {plan.country}")
@@ -301,14 +330,19 @@ def print_plan(plan: VariantImportPlan) -> None:
     print(f"Variantes pedidas: {plan.expected}")
     print(f"Já existentes e preservadas: {plan.existing}")
     print(f"Em falta para criar: {plan.missing}")
+    print(f"Ordens existentes a alinhar: {plan.order_updates}")
     print(f"Pais a marcar com has_variants: {plan.flags_pending}")
     print(f"Já completamente corretas: {len(complete)}")
-    print("Atualizações/remoções de variantes existentes: 0")
+    print("Outras atualizações/remoções de variantes existentes: 0")
 
     if selector_only:
         print("\nApenas ativar o seletor (todas as variantes já existem):")
         for parent in selector_only:
             print(f"- {parent.spec.label}: {len(parent.spec.variants)} variantes")
+    if order_only:
+        print("\nApenas alinhar a ordem (restantes dados ficam iguais):")
+        for parent in order_only:
+            print(f"- {parent.spec.label}: {len(parent.order_updates)} ordens")
     if variants_and_selector:
         print("\nCriar variantes em falta:")
         for parent in variants_and_selector:
@@ -330,7 +364,9 @@ def chunk(values: list[tuple[str, int]], size: int) -> list[list[tuple[str, int]
     return [values[index : index + size] for index in range(0, len(values), size)]
 
 
-def apply_plan(base_client: Any, plan: VariantImportPlan, *, batch_size: int = 25) -> tuple[int, int]:
+def apply_plan(
+    base_client: Any, plan: VariantImportPlan, *, batch_size: int = 25
+) -> tuple[int, int, int]:
     if batch_size < 1 or batch_size > 50:
         raise CatalogVariantError("--batch-size tem de estar entre 1 e 50.")
     parent_entity, variant_entity, parent_field = parent_and_variant_contract(plan.catalog_type)
@@ -344,6 +380,7 @@ def apply_plan(base_client: Any, plan: VariantImportPlan, *, batch_size: int = 2
     variant_write.max_retries = 0
     created = 0
     flags_updated = 0
+    orders_updated = 0
 
     with MutationRun(
         lambda: mark_numisvault_stats_stale(base_client),
@@ -401,6 +438,45 @@ def apply_plan(base_client: Any, plan: VariantImportPlan, *, batch_size: int = 2
                     mutations.record_success(len(payloads))
                 created += len(payloads)
 
+            for existing_variant, expected_order in parent_plan.order_updates:
+                variant_id = str(existing_variant.get("id") or "").strip()
+                if not variant_id:
+                    raise CatalogVariantError(
+                        f"{parent_plan.spec.label}: variante existente sem ID."
+                    )
+                before_variant = get_record(variant_client, variant_id)
+                update_error: Exception | None = None
+                update_succeeded = False
+                try:
+                    variant_write.update(variant_id, {"ordem": expected_order})
+                    update_succeeded = True
+                    mutations.record_success()
+                except Exception as exc:  # noqa: BLE001 - reconcile ambiguous PUT
+                    update_error = exc
+                after_variant = get_record(variant_client, variant_id)
+                if after_variant.get("ordem") != expected_order:
+                    raise CatalogVariantError(
+                        f"{parent_plan.spec.label}: ordem da variante não foi "
+                        f"confirmada: {update_error}."
+                    ) from update_error
+                if not update_succeeded:
+                    mutations.record_success()
+                protected_before = {
+                    key: value
+                    for key, value in before_variant.items()
+                    if key not in {"ordem", "updated_date"}
+                }
+                protected_after = {
+                    key: value
+                    for key, value in after_variant.items()
+                    if key not in {"ordem", "updated_date"}
+                }
+                if protected_before != protected_after:
+                    raise CatalogVariantError(
+                        f"{parent_plan.spec.label}: outro campo da variante mudou."
+                    )
+                orders_updated += 1
+
             confirmed = fetch_all(variant_client, {parent_field: parent_id})
             confirmed_by_tag = {
                 str(item.get("tag") or "").strip(): item for item in confirmed
@@ -446,10 +522,11 @@ def apply_plan(base_client: Any, plan: VariantImportPlan, *, batch_size: int = 2
                 flags_updated += 1
             print(
                 f"Variantes {position}/{len(plan.parents)} — {plan.country} — "
-                f"{parent_plan.spec.label} — criadas {len(parent_plan.missing)}",
+                f"{parent_plan.spec.label} — criadas {len(parent_plan.missing)} · "
+                f"ordens alinhadas {len(parent_plan.order_updates)}",
                 flush=True,
             )
-    return created, flags_updated
+    return created, flags_updated, orders_updated
 
 
 def run(argv: list[str] | None = None) -> int:
@@ -488,13 +565,17 @@ def run(argv: list[str] | None = None) -> int:
         catalog_type=selected_type,
         country=args.country,
         allowed_urls=requested_urls or None,
+        sync_order=args.sync_order,
     )
     print_plan(plan)
     if args.check_live:
         print("Site Base44: nenhuma alteração efetuada.")
         return 0
-    created, flags = apply_plan(base_client, plan, batch_size=args.batch_size)
-    print(f"Concluído: {created} variantes criadas; {flags} pais atualizados.")
+    created, flags, orders = apply_plan(base_client, plan, batch_size=args.batch_size)
+    print(
+        f"Concluído: {created} variantes criadas; {orders} ordens alinhadas; "
+        f"{flags} pais atualizados."
+    )
     return 0
 
 

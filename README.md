@@ -774,6 +774,19 @@ create-only: não atualiza nem apaga variantes existentes. Por política,
 variantes `S` das moedas de coleção ficam de fora, além das linhas
 exclusivamente Proof.
 
+Nas moedas normais, a recolha de variantes inclui anos de circulação (`UNC`)
+e emissões disponibilizadas apenas em set (`BU`). Linhas exclusivamente Proof
+continuam excluídas. Quando um catálogo é ampliado depois de já existirem
+variantes no Site, `--sync-order` alinha somente o campo `ordem` com o catálogo;
+condição, posse, aquisição e os restantes campos existentes são preservados.
+
+```bash
+python3 -m scripts.import_catalog_variants \
+  --catalog info/paises/europa/portugal/app-catalog.json \
+  --catalog-type normal --country Portugal \
+  --check-live --sync-order
+```
+
 O fluxo completo de moedas de coleção está disponível no mesmo menu:
 
 1. recolhe o catálogo comemorativo técnico;

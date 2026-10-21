@@ -168,19 +168,29 @@ class GenerateSpecialAppCatalogTests(unittest.TestCase):
         self.assertEqual(catalog["country"], "Portugal")
         self.assertEqual(catalog["siteCountry"], "Portugal")
         self.assertEqual(catalog["continent"], "Europa")
-        self.assertEqual(
-            catalog["summary"], {"programmes": 3, "coins": 19, "variants": 0}
-        )
+        self.assertEqual(catalog["summary"]["programmes"], 6)
+        self.assertEqual(catalog["summary"]["coins"], 147)
+        self.assertEqual(catalog["summary"]["catalogCoins"], 147)
+        self.assertEqual(catalog["summary"]["remainingCoins"], 0)
+        self.assertTrue(catalog["summary"]["complete"])
+        self.assertEqual(catalog["summary"]["variants"], 0)
         self.assertEqual(
             [programme["title"] for programme in catalog["programmes"]],
-            ["ECU", "Região Autónoma dos Açores", "Região Autónoma da Madeira"],
+            [
+                "ECU",
+                "Região Autónoma dos Açores",
+                "Região Autónoma da Madeira",
+                "União Europeia (Euro)",
+                "República Portuguesa",
+                "Reino de Portugal",
+            ],
         )
         coins = [
             coin
             for programme in catalog["programmes"]
             for coin in programme["coins"]
         ]
-        self.assertEqual([coin["order"] for coin in coins], list(range(1, 20)))
+        self.assertEqual([coin["order"] for coin in coins], list(range(1, 148)))
         self.assertEqual(
             sum(not coin["obverseImage"] or not coin["reverseImage"] for coin in coins),
             1,

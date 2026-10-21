@@ -151,9 +151,9 @@ class ImportCatalogVariantsTests(unittest.TestCase):
 
         self.assertEqual(plan.existing, 1)
         self.assertEqual(plan.missing, 1)
-        created, flags = importer.apply_plan(base, plan)
+        created, flags, orders = importer.apply_plan(base, plan)
 
-        self.assertEqual((created, flags), (1, 1))
+        self.assertEqual((created, flags, orders), (1, 1, 0))
         self.assertEqual(store["CoinVariant"][0]["condition"], "Tenho")
         self.assertEqual(store["CoinVariant"][0]["ordem"], 99)
         created_variant = next(
@@ -161,6 +161,54 @@ class ImportCatalogVariantsTests(unittest.TestCase):
         )
         self.assertEqual(created_variant["condition"], "Não Tenho")
         self.assertTrue(store["Coin"][0]["has_variants"])
+
+    def test_explicit_order_sync_changes_only_variant_display_order(self) -> None:
+        store = {
+            "Coin": [
+                {
+                    "id": "coin-1",
+                    "country": "Portugal",
+                    "url_ucoin": "https://pt.ucoin.net/coin/portugal-1-euro/?tid=1",
+                    "has_variants": True,
+                }
+            ],
+            "CoinVariant": [
+                {
+                    "id": "variant-1",
+                    "coin_id": "coin-1",
+                    "tag": "2020",
+                    "condition": "Tenho",
+                    "adquirida_por": "Eu",
+                    "ordem": 99,
+                },
+                {
+                    "id": "variant-2",
+                    "coin_id": "coin-1",
+                    "tag": "2021",
+                    "condition": "Não Tenho",
+                    "ordem": 98,
+                },
+            ],
+            "SpecialCoin": [],
+            "SpecialCoinVariant": [],
+            "AdminStats": [{"id": "stats", "needs_rebuild": True}],
+        }
+        base = FakeBaseClient(store)
+        plan = importer.build_live_plan(
+            base,
+            normal_catalog(),
+            catalog_type="normal",
+            sync_order=True,
+        )
+
+        self.assertEqual(plan.order_updates, 2)
+        created, flags, orders = importer.apply_plan(base, plan)
+
+        self.assertEqual((created, flags, orders), (0, 0, 2))
+        self.assertEqual(store["CoinVariant"][0]["ordem"], 0)
+        self.assertEqual(store["CoinVariant"][0]["condition"], "Tenho")
+        self.assertEqual(store["CoinVariant"][0]["adquirida_por"], "Eu")
+        self.assertEqual(store["CoinVariant"][1]["ordem"], 1)
 
     def test_special_catalog_uses_special_parent_relationship(self) -> None:
         catalogue = {
@@ -199,9 +247,9 @@ class ImportCatalogVariantsTests(unittest.TestCase):
         base = FakeBaseClient(store)
 
         plan = importer.build_live_plan(base, catalogue, catalog_type="special")
-        created, flags = importer.apply_plan(base, plan)
+        created, flags, orders = importer.apply_plan(base, plan)
 
-        self.assertEqual((created, flags), (2, 1))
+        self.assertEqual((created, flags, orders), (2, 1, 0))
         self.assertEqual(
             {item["special_coin_id"] for item in store["SpecialCoinVariant"]},
             {"special-1"},

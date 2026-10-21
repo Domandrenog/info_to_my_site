@@ -357,6 +357,23 @@ class UCoinCatalogueGroupingTests(unittest.TestCase):
 
         self.assertFalse(result["variants"])
 
+    def test_multi_year_set_only_bu_row_is_kept_as_a_variant(self) -> None:
+        result = finalize_variant_rows(
+            "1940 - 1942",
+            [
+                {"year": "1940", "mark": "", "unc": "1 000", "bu": "-", "proof": "-"},
+                {"year": "1941", "mark": "", "unc": "-", "bu": "+", "proof": "-"},
+                {"year": "1942", "mark": "", "unc": "-", "bu": "-", "proof": "500"},
+            ],
+            "https://pt.ucoin.net/coin/portugal-test",
+        )
+
+        self.assertEqual(
+            result["variants"],
+            [{"tag": "1940", "order": 0}, {"tag": "1941", "order": 1}],
+        )
+        self.assertEqual(result["excludedProofOnlyVariants"], ["1942"])
+
     def test_duplicate_mintage_rows_for_same_mark_are_merged(self) -> None:
         result = finalize_variant_rows(
             "1999",

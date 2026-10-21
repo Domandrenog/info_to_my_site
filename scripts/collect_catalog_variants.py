@@ -7,7 +7,9 @@ import argparse
 from copy import deepcopy
 import json
 from pathlib import Path
+import re
 from typing import Any
+from urllib.parse import parse_qs, urlparse
 
 from scripts.import_catalog_variants import CatalogVariantError, detect_catalog_type
 from scripts.ucoin_catalog import (
@@ -25,7 +27,7 @@ def parse_args(argv: list[str] | None = None) -> argparse.Namespace:
     parser = argparse.ArgumentParser(
         description=(
             "Visita os URLs uCoin de um catálogo normal ou de coleção e guarda "
-            "as variantes UNC/BU no próprio catálogo."
+            "as variantes de circulação e de set (UNC/BU) no próprio catálogo."
         )
     )
     parser.add_argument("--catalog", type=Path, required=True)
@@ -41,9 +43,9 @@ def parse_args(argv: list[str] | None = None) -> argparse.Namespace:
     parser.add_argument("--timeout", type=int, default=60)
     parser.add_argument("--manual-session", action="store_true")
     parser.add_argument("--no-manual-session", action="store_true")
-    parser.add_argument("--delay", type=float, default=5.0)
-    parser.add_argument("--batch-size", type=int, default=10)
-    parser.add_argument("--batch-pause", type=float, default=20.0)
+    parser.add_argument("--delay", type=float, default=20.0)
+    parser.add_argument("--batch-size", type=int, default=3)
+    parser.add_argument("--batch-pause", type=float, default=120.0)
     parser.add_argument(
         "--login-retries",
         type=int,
@@ -64,6 +66,15 @@ def parse_args(argv: list[str] | None = None) -> argparse.Namespace:
         default=[],
         help="Limita a recolha ao URL uCoin exato; pode ser repetido.",
     )
+    parser.add_argument(
+        "--group-title",
+        action="append",
+        default=[],
+        help=(
+            "Limita a recolha ao título exato de um período/programa; pode ser "
+            "repetido."
+        ),
+    )
     return parser.parse_args(argv)
 
 
@@ -77,12 +88,36 @@ def load_catalog(path: Path) -> dict[str, Any]:
     return value
 
 
-def catalog_coins(catalogue: dict[str, Any], catalog_type: str) -> list[dict[str, Any]]:
+def catalog_coins(
+    catalogue: dict[str, Any],
+    catalog_type: str,
+    group_titles: list[str] | None = None,
+) -> list[dict[str, Any]]:
     group_key = "periods" if catalog_type == "normal" else "programmes"
+    groups = [
+        group for group in catalogue.get(group_key, []) if isinstance(group, dict)
+    ]
+    requested_titles = {
+        title.strip() for title in (group_titles or []) if title.strip()
+    }
+    if requested_titles:
+        available_titles = {
+            str(group.get("title") or "").strip() for group in groups
+        }
+        unknown_titles = sorted(requested_titles - available_titles)
+        if unknown_titles:
+            raise CatalogVariantError(
+                "Os seguintes períodos/programas não existem no catálogo: "
+                + ", ".join(unknown_titles)
+            )
+        groups = [
+            group
+            for group in groups
+            if str(group.get("title") or "").strip() in requested_titles
+        ]
     result = [
         coin
-        for group in catalogue.get(group_key, [])
-        if isinstance(group, dict)
+        for group in groups
         for coin in group.get("coins", [])
         if isinstance(coin, dict)
     ]
@@ -162,12 +197,72 @@ def is_s_variant(tag: str) -> bool:
     return normalized == "S" or normalized.endswith(" S")
 
 
+def detail_page_identity_error(
+    *,
+    detail_url: str,
+    final_url: str,
+    document_title: str,
+    h1: str,
+    body_text: str,
+    country: str,
+) -> str:
+    normalized_body = " ".join(body_text.split()).casefold()
+    if "your ip" in normalized_body and "blocked" in normalized_body:
+        countdown = re.search(r"\b\d{2}:\d{2}:\d{2}\b", normalized_body)
+        wait = countdown.group(0) if countdown else "o tempo indicado no browser"
+        return f"uCoin bloqueou temporariamente este IP; espera {wait}"
+
+    expected_tid = parse_qs(urlparse(detail_url).query).get("tid", [])
+    actual_tid = parse_qs(urlparse(final_url).query).get("tid", [])
+    if not expected_tid or actual_tid != expected_tid:
+        return f"tid/URL final inesperado: {final_url}"
+
+    normalized_country = " ".join(country.split()).casefold()
+    normalized_title = " ".join(document_title.split()).casefold()
+    normalized_h1 = " ".join(h1.split()).casefold()
+    if not normalized_title.endswith(f", {normalized_country} - ucoin.net"):
+        return f"título de outro país ou página inesperada: {document_title!r}"
+    if normalized_h1 and not (
+        normalized_h1 == normalized_country
+        or normalized_h1.startswith(f"{normalized_country} ")
+    ):
+        return f"cabeçalho de outro país: {h1!r}"
+    return ""
+
+
+def validate_loaded_coin_page(page: Any, detail_url: str, country: str) -> None:
+    try:
+        h1 = page.locator("h1").first.inner_text(timeout=2_000)
+    except Exception:  # noqa: BLE001 - title remains the stable fallback
+        h1 = ""
+    try:
+        body_text = page.locator("body").inner_text(timeout=2_000)
+    except Exception:  # noqa: BLE001 - title and URL are still checked
+        body_text = ""
+    error = detail_page_identity_error(
+        detail_url=detail_url,
+        final_url=str(page.url),
+        document_title=str(page.title()),
+        h1=h1,
+        body_text=body_text,
+        country=country,
+    )
+    if error:
+        raise CatalogVariantError(
+            f"Página uCoin rejeitada para {detail_url}: {error}. "
+            "O progresso anterior continua guardado."
+        )
+
+
 def run(argv: list[str] | None = None) -> int:
     args = parse_args(argv)
     catalogue = load_catalog(args.catalog)
+    country = str(catalogue.get("country") or "").strip()
+    if not country:
+        raise CatalogVariantError("O catálogo não identifica o país.")
     catalog_type = detect_catalog_type(catalogue, args.catalog_type)
     coins = select_catalog_coins(
-        catalog_coins(catalogue, catalog_type), args.detail_url
+        catalog_coins(catalogue, catalog_type, args.group_title), args.detail_url
     )
 
     incognito_process = None
@@ -236,6 +331,7 @@ def run(argv: list[str] | None = None) -> int:
                 }
             else:
                 page.wait_for_timeout(1000)
+                validate_loaded_coin_page(page, detail_url, country)
                 result = extract_coin_variants(page, years, detail_url)
             variants = result["variants"]
             excluded_by_policy: list[dict[str, Any]] = []

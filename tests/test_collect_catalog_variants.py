@@ -8,6 +8,45 @@ from scripts.import_catalog_variants import CatalogVariantError
 
 
 class CollectCatalogVariantsTests(unittest.TestCase):
+    def test_safe_request_pacing_defaults_are_conservative(self) -> None:
+        args = collector.parse_args(
+            ["--catalog", "catalog.json", "--attach-cdp"]
+        )
+
+        self.assertEqual(args.delay, 20.0)
+        self.assertEqual(args.batch_size, 3)
+        self.assertEqual(args.batch_pause, 120.0)
+
+    def test_detail_page_identity_rejects_wrong_country_and_ip_block(self) -> None:
+        common = {
+            "detail_url": "https://pt.ucoin.net/coin/portugal-1-escudo/?tid=1",
+            "final_url": "https://pt.ucoin.net/coin/portugal-1-escudo/?tid=1",
+            "h1": "Portugal 1 escudo, 1927 - 1968",
+            "body_text": "Portugal",
+            "country": "Portugal",
+        }
+        self.assertEqual(
+            collector.detail_page_identity_error(
+                **common,
+                document_title="1 escudo 1927-1968, Portugal - uCoin.net",
+            ),
+            "",
+        )
+        self.assertIn(
+            "outro país",
+            collector.detail_page_identity_error(
+                **common,
+                document_title="10 cents 2007-2026, Irlanda - uCoin.net",
+            ),
+        )
+        self.assertIn(
+            "00:09:20",
+            collector.detail_page_identity_error(
+                **{**common, "body_text": "Your IP is blocked. Wait 00:09:20"},
+                document_title="uCoin.net",
+            ),
+        )
+
     def test_identical_duplicate_urls_are_collected_once(self) -> None:
         coin = {
             "denomination": "5 escudos",
@@ -87,6 +126,50 @@ class CollectCatalogVariantsTests(unittest.TestCase):
             collector.select_catalog_coins(
                 [{"detailUrl": "https://ucoin.test/one"}],
                 ["https://ucoin.test/missing"],
+            )
+
+    def test_catalog_coins_can_limit_refresh_to_exact_period_titles(self) -> None:
+        catalogue = {
+            "periods": [
+                {
+                    "title": "Portugal › República Portuguesa › 1910 - 1969",
+                    "coins": [
+                        {
+                            "denomination": "1 escudo",
+                            "issuePeriod": "1927 - 1968",
+                            "detailUrl": "https://ucoin.test/escudo",
+                        }
+                    ],
+                },
+                {
+                    "title": "Portugal › Reino de Portugal › 1836 - 1910",
+                    "coins": [
+                        {
+                            "denomination": "100 reis",
+                            "issuePeriod": "1838 - 1843",
+                            "detailUrl": "https://ucoin.test/reis",
+                        }
+                    ],
+                },
+            ]
+        }
+
+        selected = collector.catalog_coins(
+            catalogue,
+            "normal",
+            ["Portugal › República Portuguesa › 1910 - 1969"],
+        )
+
+        self.assertEqual([coin["denomination"] for coin in selected], ["1 escudo"])
+
+    def test_catalog_coins_rejects_unknown_period_title(self) -> None:
+        with self.assertRaisesRegex(
+            CatalogVariantError, "períodos/programas não existem"
+        ):
+            collector.catalog_coins(
+                {"periods": [{"title": "Período conhecido", "coins": []}]},
+                "normal",
+                ["Período errado"],
             )
 
 

@@ -8,10 +8,12 @@ import hashlib
 import html
 import json
 import os
+import re
 import tempfile
 from collections import defaultdict
 from pathlib import Path
 from typing import Any, Iterator
+from urllib.parse import urlparse
 
 from scripts import ucoin_detail_subjects
 
@@ -40,6 +42,22 @@ def parse_args(argv: list[str] | None = None) -> argparse.Namespace:
         "--approve",
         action="store_true",
         help="Promove o catálogo pendente validado para special-app-catalog.json.",
+    )
+    parser.add_argument(
+        "--allow-partial",
+        action="store_true",
+        help=(
+            "Permite preparar/aprovar apenas as moedas cujos temas oficiais já "
+            "foram validados; as restantes ficam explicitamente pendentes."
+        ),
+    )
+    parser.add_argument(
+        "--resequence",
+        action="store_true",
+        help=(
+            "Recalcula a ordem cronológica dentro de cada programa, sem "
+            "alterar os restantes campos das moedas preservadas."
+        ),
     )
     return parser.parse_args(argv)
 
@@ -175,16 +193,57 @@ def denomination_text(coin: dict[str, Any]) -> str:
 
 
 def single_year(coin: dict[str, Any]) -> str:
+    detail_url = str(coin.get("detailUrl") or "").strip()
+    match = re.search(r"-(\d{4})/?$", urlparse(detail_url).path)
+    if not match:
+        raise SpecialCatalogPreparationError(
+            f"URL da moeda comemorativa sem ano de emissão: {detail_url!r}."
+        )
+    url_year = match.group(1)
     period = coin.get("issuePeriod")
     if not isinstance(period, dict):
         raise SpecialCatalogPreparationError("Moeda técnica sem issuePeriod.")
     start = period.get("startYear")
     end = period.get("endYear")
-    if not isinstance(start, int) or start != end:
+    if not isinstance(start, int) or not isinstance(end, int) or start != end:
         raise SpecialCatalogPreparationError(
             f"Moeda comemorativa sem ano único: {period!r}."
         )
-    return str(start)
+    # Algumas linhas do catálogo usam no texto o ano do acontecimento
+    # comemorado (por exemplo, 1974) em vez do ano da emissão (2024). O slug
+    # do URL oficial identifica a emissão e é também o que distingue a moeda.
+    return url_year
+
+
+def collection_coin_sort_key(coin: dict[str, Any]) -> tuple[int, float, str, str]:
+    try:
+        year = int(str(coin.get("year") or ""))
+    except ValueError:
+        year = 10**9
+    denomination = str(coin.get("denomination") or "")
+    number_match = re.search(r"\d+(?:[.,]\d+)?", denomination)
+    number = (
+        float(number_match.group(0).replace(",", "."))
+        if number_match
+        else float("inf")
+    )
+    return (
+        year,
+        number,
+        denomination.casefold(),
+        str(coin.get("commemorativeName") or "").casefold(),
+    )
+
+
+def resequence_programmes(
+    programme_order: list[str], programmes: dict[str, list[dict[str, Any]]]
+) -> None:
+    next_order = 1
+    for title in programme_order:
+        programmes[title].sort(key=collection_coin_sort_key)
+        for coin in programmes[title]:
+            coin["order"] = next_order
+            next_order += 1
 
 
 def build_catalog(
@@ -195,6 +254,8 @@ def build_catalog(
     country: str,
     site_country: str,
     continent: str,
+    allow_partial: bool = False,
+    resequence: bool = False,
 ) -> dict[str, Any]:
     raw = read_json(raw_path)
     if not isinstance(raw, dict) or raw.get("country") != country:
@@ -207,13 +268,6 @@ def build_catalog(
     }
     if len(raw_by_url) != len(raw_coins) or "" in raw_by_url:
         raise SpecialCatalogPreparationError("URLs técnicas ausentes ou repetidas.")
-    subjects, rejected = ucoin_detail_subjects.read_existing(subjects_path, raw_by_url)
-    if rejected or set(subjects) != set(raw_by_url):
-        raise SpecialCatalogPreparationError(
-            "Os temas oficiais ainda não estão completos: "
-            f"{len(subjects)}/{len(raw_by_url)} válidos, {rejected} rejeitados."
-        )
-
     if existing_path.is_file():
         existing = read_json(existing_path)
         if not isinstance(existing, dict):
@@ -236,14 +290,41 @@ def build_catalog(
             "programmes": [],
         }
 
+    existing_urls = {
+        str(coin.get("detailUrl") or "").strip()
+        for _programme, coin in iter_special_coins(existing)
+    }
+    subjects, rejected = ucoin_detail_subjects.read_existing(subjects_path, raw_by_url)
+    required_subject_urls = set(raw_by_url) - existing_urls
+    valid_required_subjects = required_subject_urls & set(subjects)
+    missing_subject_urls = required_subject_urls - valid_required_subjects
+    if rejected or (missing_subject_urls and not allow_partial):
+        raise SpecialCatalogPreparationError(
+            "Os temas oficiais das moedas novas ainda não estão completos: "
+            f"{len(valid_required_subjects)}/{len(required_subject_urls)} válidos, "
+            f"{rejected} rejeitados."
+        )
+
     programmes: dict[str, list[dict[str, Any]]] = defaultdict(list)
     programme_order: list[str] = []
-    existing_urls: set[str] = set()
+    existing_urls = set()
     max_order = 0
     for programme, coin in iter_special_coins(existing):
         if programme not in programme_order:
             programme_order.append(programme)
         copied = json.loads(json.dumps(coin, ensure_ascii=False))
+        detail_url = str(copied["detailUrl"])
+        source_coin = raw_by_url.get(detail_url)
+        if source_coin is None:
+            raise SpecialCatalogPreparationError(
+                f"Moeda preservada já não existe no catálogo técnico: {detail_url}."
+            )
+        expected_year = single_year(source_coin)
+        if str(copied.get("year") or "") != expected_year:
+            raise SpecialCatalogPreparationError(
+                f"Ano preservado incoerente com o URL oficial em {detail_url}: "
+                f"{copied.get('year')!r} != {expected_year!r}."
+            )
         programmes[programme].append(copied)
         existing_urls.add(str(copied["detailUrl"]))
         max_order = max(max_order, int(copied["order"]))
@@ -266,6 +347,8 @@ def build_catalog(
     pending: list[tuple[int, str, int, str, str, str, dict[str, Any]]] = []
     for url, (period_index, coin) in technical_programmes.items():
         if url in existing_urls:
+            continue
+        if url not in valid_required_subjects:
             continue
         programme = str(coin["_programme"])
         subject = str(subjects[url].get("subject") or "").strip()
@@ -311,6 +394,9 @@ def build_catalog(
         next_order += 1
         programmes[programme].append(coin)
 
+    if resequence:
+        resequence_programmes(programme_order, programmes)
+
     result = {
         "formatVersion": 1,
         "catalogType": "special",
@@ -328,6 +414,10 @@ def build_catalog(
                 sha256_file(existing_path) if existing_path.is_file() else None
             ),
             "preservedCoins": len(existing_urls),
+            "partial": bool(missing_subject_urls),
+            "validatedNewCoins": len(valid_required_subjects),
+            "remainingCoins": len(missing_subject_urls),
+            "resequence": resequence,
         },
         "programmes": [
             {
@@ -338,9 +428,12 @@ def build_catalog(
         ],
         "summary": {
             "programmes": len(programme_order),
-            "coins": len(raw_by_url),
+            "coins": len(existing_urls) + len(valid_required_subjects),
             "preservedCoins": len(existing_urls),
-            "newCoins": len(raw_by_url) - len(existing_urls),
+            "newCoins": len(valid_required_subjects),
+            "catalogCoins": len(raw_by_url),
+            "remainingCoins": len(missing_subject_urls),
+            "complete": not missing_subject_urls,
             "variants": sum(
                 len(coin.get("variants", []))
                 for coins in programmes.values()
@@ -397,6 +490,10 @@ def approve_pending(args: argparse.Namespace) -> int:
     source = pending.get("source")
     if not isinstance(source, dict):
         raise SpecialCatalogPreparationError("Metadados de origem ausentes.")
+    if source.get("partial") and not getattr(args, "allow_partial", False):
+        raise SpecialCatalogPreparationError(
+            "O catálogo é parcial; repete a aprovação com --allow-partial."
+        )
     if (
         pending.get("country") != args.country
         or pending.get("siteCountry") != args.site_country
@@ -440,6 +537,8 @@ def run(args: argparse.Namespace) -> int:
         country=args.country,
         site_country=args.site_country,
         continent=args.continent,
+        allow_partial=args.allow_partial,
+        resequence=args.resequence,
     )
     write_atomic(args.pending, json_bytes(catalogue))
     write_atomic(args.preview, preview_html(catalogue))
@@ -448,6 +547,11 @@ def run(args: argparse.Namespace) -> int:
         f"Catálogo pendente: {args.pending} — {summary['coins']} moedas "
         f"({summary['preservedCoins']} preservadas; {summary['newCoins']} novas)"
     )
+    if summary["remainingCoins"]:
+        print(
+            f"Progresso parcial: {summary['remainingCoins']} moedas continuam "
+            "pendentes de validação no uCoin."
+        )
     print(f"Pré-visualização: {args.preview}")
     print("Site Base44: nenhuma alteração efetuada.")
     return 0
