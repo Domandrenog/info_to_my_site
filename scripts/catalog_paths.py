@@ -61,6 +61,7 @@ COUNTRY_CONTINENTS = {
     "taiwan": "asia",
     "tunisia": "africa",
     "turquia": "asia",
+    "zimbabue": "africa",
 }
 
 # Some existing catalogue folders use a historic or English spelling. Keep
