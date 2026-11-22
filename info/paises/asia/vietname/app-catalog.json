@@ -1,4 +1,6 @@
 {
+  "catalogType": "normal",
+  "ucoinCoinType": "normal",
   "country": "Vietnam",
   "periods": [
     {
@@ -114,6 +116,334 @@
           "detailUrl": "https://pt.ucoin.net/coin/vietnam-5000-dong-2003/?tid=24734",
           "obverseImage": "https://i.ucoin.net/coin/37/880/37880350-1s/vietnam-5000-dong-2003.jpg",
           "reverseImage": "https://i.ucoin.net/coin/37/880/37880350-2s/vietnam-5000-dong-2003.jpg"
+        }
+      ]
+    },
+    {
+      "title": "Vietnam do Sul › Vietnã do Sul › 1953 - 1975",
+      "ruler": "Vietnã do Sul",
+      "startYear": 1953,
+      "endYear": 1975,
+      "coins": [
+        {
+          "denomination": "1 xu",
+          "value": 1.0,
+          "unit": "xu",
+          "issuePeriod": "1975",
+          "startYear": 1975,
+          "endYear": 1975,
+          "availability": "historical",
+          "detailUrl": "https://pt.ucoin.net/coin/south_vietnam-1-xu-1975/?tid=75207",
+          "obverseImage": "https://i.ucoin.net/coin/7/780/7780538-1s/south_vietnam-1-xu-1975.jpg",
+          "reverseImage": "https://i.ucoin.net/coin/7/780/7780538-2s/south_vietnam-1-xu-1975.jpg"
+        },
+        {
+          "denomination": "2 xu",
+          "value": 2.0,
+          "unit": "xu",
+          "issuePeriod": "1975",
+          "startYear": 1975,
+          "endYear": 1975,
+          "availability": "historical",
+          "detailUrl": "https://pt.ucoin.net/coin/south_vietnam-2-xu-1975/?tid=62277",
+          "obverseImage": "https://i.ucoin.net/coin/79/900/79900847-1s/south_vietnam-2-xu-1975.jpg",
+          "reverseImage": "https://i.ucoin.net/coin/79/900/79900847-2s/south_vietnam-2-xu-1975.jpg"
+        },
+        {
+          "denomination": "5 xu",
+          "value": 5.0,
+          "unit": "xu",
+          "issuePeriod": "1975",
+          "startYear": 1975,
+          "endYear": 1975,
+          "availability": "historical",
+          "detailUrl": "https://pt.ucoin.net/coin/south_vietnam-5-xu-1975/?tid=75208",
+          "obverseImage": "https://i.ucoin.net/coin/77/160/77160629-1s/south_vietnam-5-xu-1975.jpg",
+          "reverseImage": "https://i.ucoin.net/coin/77/160/77160629-2s/south_vietnam-5-xu-1975.jpg"
+        },
+        {
+          "denomination": "10 su",
+          "value": 10.0,
+          "unit": "su",
+          "issuePeriod": "1953",
+          "startYear": 1953,
+          "endYear": 1953,
+          "availability": "historical",
+          "detailUrl": "https://pt.ucoin.net/coin/south_vietnam-10-su-1953/?tid=62257",
+          "obverseImage": "https://i.ucoin.net/coin/58/370/58370455-1s/south_vietnam-10-su-1953.jpg",
+          "reverseImage": "https://i.ucoin.net/coin/58/370/58370455-2s/south_vietnam-10-su-1953.jpg"
+        },
+        {
+          "denomination": "20 su",
+          "value": 20.0,
+          "unit": "su",
+          "issuePeriod": "1953",
+          "startYear": 1953,
+          "endYear": 1953,
+          "availability": "historical",
+          "detailUrl": "https://pt.ucoin.net/coin/south_vietnam-20-su-1953/?tid=62258",
+          "obverseImage": "https://i.ucoin.net/coin/45/664/45664771-1s/south_vietnam-20-su-1953.jpg",
+          "reverseImage": "https://i.ucoin.net/coin/45/664/45664771-2s/south_vietnam-20-su-1953.jpg"
+        },
+        {
+          "denomination": "50 xu",
+          "value": 50.0,
+          "unit": "xu",
+          "issuePeriod": "1953",
+          "startYear": 1953,
+          "endYear": 1953,
+          "availability": "historical",
+          "detailUrl": "https://pt.ucoin.net/coin/south_vietnam-50-xu-1953/?tid=62259",
+          "obverseImage": "https://i.ucoin.net/coin/30/711/30711888-1s/south_vietnam-50-xu-1953.jpg",
+          "reverseImage": "https://i.ucoin.net/coin/30/711/30711888-2s/south_vietnam-50-xu-1953.jpg"
+        },
+        {
+          "denomination": "50 su",
+          "value": 50.0,
+          "unit": "su",
+          "issuePeriod": "1960",
+          "startYear": 1960,
+          "endYear": 1960,
+          "availability": "historical",
+          "detailUrl": "https://pt.ucoin.net/coin/south_vietnam-50-su-1960/?tid=62260",
+          "obverseImage": "https://i.ucoin.net/coin/77/160/77160703-1s/south_vietnam-50-su-1960.jpg",
+          "reverseImage": "https://i.ucoin.net/coin/77/160/77160703-2s/south_vietnam-50-su-1960.jpg"
+        },
+        {
+          "denomination": "50 xu",
+          "value": 50.0,
+          "unit": "xu",
+          "issuePeriod": "1963",
+          "startYear": 1963,
+          "endYear": 1963,
+          "availability": "historical",
+          "detailUrl": "https://pt.ucoin.net/coin/south_vietnam-50-xu-1963/?tid=62261",
+          "obverseImage": "https://i.ucoin.net/coin/77/160/77160757-1s/south_vietnam-50-xu-1963.jpg",
+          "reverseImage": "https://i.ucoin.net/coin/77/160/77160757-2s/south_vietnam-50-xu-1963.jpg"
+        },
+        {
+          "denomination": "1 dong",
+          "value": 1.0,
+          "unit": "dong",
+          "issuePeriod": "1960",
+          "startYear": 1960,
+          "endYear": 1960,
+          "availability": "historical",
+          "detailUrl": "https://pt.ucoin.net/coin/south_vietnam-1-dong-1960/?tid=62262",
+          "obverseImage": "https://i.ucoin.net/coin/79/900/79900609-1s/south_vietnam-1-dong-1960.jpg",
+          "reverseImage": "https://i.ucoin.net/coin/79/900/79900609-2s/south_vietnam-1-dong-1960.jpg"
+        },
+        {
+          "denomination": "1 dong",
+          "value": 1.0,
+          "unit": "dong",
+          "issuePeriod": "1964",
+          "startYear": 1964,
+          "endYear": 1964,
+          "availability": "historical",
+          "detailUrl": "https://pt.ucoin.net/coin/south_vietnam-1-dong-1964/?tid=62263",
+          "obverseImage": "https://i.ucoin.net/coin/80/555/80555277-1s/south_vietnam-1-dong-1964.jpg",
+          "reverseImage": "https://i.ucoin.net/coin/80/555/80555277-2s/south_vietnam-1-dong-1964.jpg"
+        },
+        {
+          "denomination": "1 dong",
+          "value": 1.0,
+          "unit": "dong",
+          "issuePeriod": "1971",
+          "startYear": 1971,
+          "endYear": 1971,
+          "availability": "historical",
+          "detailUrl": "https://pt.ucoin.net/coin/south_vietnam-1-dong-1971/?tid=62265",
+          "obverseImage": "https://i.ucoin.net/coin/67/550/67550504-1s/south_vietnam-1-dong-1971.jpg",
+          "reverseImage": "https://i.ucoin.net/coin/67/550/67550504-2s/south_vietnam-1-dong-1971.jpg"
+        },
+        {
+          "denomination": "5 dong",
+          "value": 5.0,
+          "unit": "dong",
+          "issuePeriod": "1966",
+          "startYear": 1966,
+          "endYear": 1966,
+          "availability": "historical",
+          "detailUrl": "https://pt.ucoin.net/coin/south_vietnam-5-dong-1966/?tid=62266",
+          "obverseImage": "https://i.ucoin.net/coin/79/900/79900673-1s/south_vietnam-5-dong-1966.jpg",
+          "reverseImage": "https://i.ucoin.net/coin/79/900/79900673-2s/south_vietnam-5-dong-1966.jpg"
+        },
+        {
+          "denomination": "5 dong",
+          "value": 5.0,
+          "unit": "dong",
+          "issuePeriod": "1971",
+          "startYear": 1971,
+          "endYear": 1971,
+          "availability": "historical",
+          "detailUrl": "https://pt.ucoin.net/coin/south_vietnam-5-dong-1971/?tid=62267",
+          "obverseImage": "https://i.ucoin.net/coin/79/900/79900413-1s/south_vietnam-5-dong-1971.jpg",
+          "reverseImage": "https://i.ucoin.net/coin/79/900/79900413-2s/south_vietnam-5-dong-1971.jpg"
+        },
+        {
+          "denomination": "10 dong",
+          "value": 10.0,
+          "unit": "dong",
+          "issuePeriod": "1964",
+          "startYear": 1964,
+          "endYear": 1964,
+          "availability": "historical",
+          "detailUrl": "https://pt.ucoin.net/coin/south_vietnam-10-dong-1964/?tid=62268",
+          "obverseImage": "https://i.ucoin.net/coin/58/395/58395488-1s/south_vietnam-10-dong-1964.jpg",
+          "reverseImage": "https://i.ucoin.net/coin/58/395/58395488-2s/south_vietnam-10-dong-1964.jpg"
+        },
+        {
+          "denomination": "10 dong",
+          "value": 10.0,
+          "unit": "dong",
+          "issuePeriod": "1968 - 1970",
+          "startYear": 1968,
+          "endYear": 1970,
+          "availability": "historical",
+          "detailUrl": "https://pt.ucoin.net/coin/south_vietnam-10-dong-1968-1970/?tid=62269",
+          "obverseImage": "https://i.ucoin.net/coin/86/208/86208306-1s/south_vietnam-10-dong-1968.jpg",
+          "reverseImage": "https://i.ucoin.net/coin/86/208/86208306-2s/south_vietnam-10-dong-1968.jpg"
+        },
+        {
+          "denomination": "10 dong",
+          "value": 10.0,
+          "unit": "dong",
+          "issuePeriod": "1974",
+          "startYear": 1974,
+          "endYear": 1974,
+          "availability": "historical",
+          "detailUrl": "https://pt.ucoin.net/coin/south_vietnam-10-dong-1974/?tid=62271",
+          "obverseImage": "https://i.ucoin.net/coin/54/007/54007627-1s/south_vietnam-10-dong-1974.jpg",
+          "reverseImage": "https://i.ucoin.net/coin/54/007/54007627-2s/south_vietnam-10-dong-1974.jpg"
+        },
+        {
+          "denomination": "20 dong",
+          "value": 20.0,
+          "unit": "dong",
+          "issuePeriod": "1968",
+          "startYear": 1968,
+          "endYear": 1968,
+          "availability": "historical",
+          "detailUrl": "https://pt.ucoin.net/coin/south_vietnam-20-dong-1968/?tid=62274",
+          "obverseImage": "https://i.ucoin.net/coin/73/861/73861875-1s/south_vietnam-20-dong-1968.jpg",
+          "reverseImage": "https://i.ucoin.net/coin/73/861/73861875-2s/south_vietnam-20-dong-1968.jpg"
+        },
+        {
+          "denomination": "20 dong",
+          "value": 20.0,
+          "unit": "dong",
+          "issuePeriod": "1968",
+          "startYear": 1968,
+          "endYear": 1968,
+          "availability": "historical",
+          "detailUrl": "https://pt.ucoin.net/coin/south_vietnam-20-dong-1968/?tid=62272",
+          "obverseImage": "https://i.ucoin.net/coin/32/011/32011278-1s/south_vietnam-20-dong-1968.jpg",
+          "reverseImage": "https://i.ucoin.net/coin/32/011/32011278-2s/south_vietnam-20-dong-1968.jpg"
+        },
+        {
+          "denomination": "50 dong",
+          "value": 50.0,
+          "unit": "dong",
+          "issuePeriod": "1975",
+          "startYear": 1975,
+          "endYear": 1975,
+          "availability": "historical",
+          "detailUrl": "https://pt.ucoin.net/coin/south_vietnam-50-dong-1975/?tid=62273",
+          "obverseImage": "https://i.ucoin.net/coin/68/888/68888232-1s/south_vietnam-50-dong-1975.jpg",
+          "reverseImage": "https://i.ucoin.net/coin/68/888/68888232-2s/south_vietnam-50-dong-1975.jpg"
+        }
+      ]
+    },
+    {
+      "title": "Vietnam › Vietnã do Norte › 1945 - 1975",
+      "ruler": "Vietnã do Norte",
+      "startYear": 1945,
+      "endYear": 1975,
+      "coins": [
+        {
+          "denomination": "1 xu",
+          "value": 1.0,
+          "unit": "xu",
+          "issuePeriod": "1958",
+          "startYear": 1958,
+          "endYear": 1958,
+          "availability": "historical",
+          "detailUrl": "https://pt.ucoin.net/coin/vietnam-1-xu-1958/?tid=62250",
+          "obverseImage": "https://i.ucoin.net/coin/28/162/28162232-1s/vietnam-1-xu-1958.jpg",
+          "reverseImage": "https://i.ucoin.net/coin/28/162/28162232-2s/vietnam-1-xu-1958.jpg"
+        },
+        {
+          "denomination": "2 xu",
+          "value": 2.0,
+          "unit": "xu",
+          "issuePeriod": "1958",
+          "startYear": 1958,
+          "endYear": 1958,
+          "availability": "historical",
+          "detailUrl": "https://pt.ucoin.net/coin/vietnam-2-xu-1958/?tid=62251",
+          "obverseImage": "https://i.ucoin.net/coin/28/162/28162210-1s/vietnam-2-xu-1958.jpg",
+          "reverseImage": "https://i.ucoin.net/coin/28/162/28162210-2s/vietnam-2-xu-1958.jpg"
+        },
+        {
+          "denomination": "2 xu",
+          "value": 2.0,
+          "unit": "xu",
+          "issuePeriod": "1975",
+          "startYear": 1975,
+          "endYear": 1975,
+          "availability": "historical",
+          "detailUrl": "https://pt.ucoin.net/coin/vietnam-2-xu-1975/?tid=62252",
+          "obverseImage": "https://i.ucoin.net/coin/73/141/73141347-1s/south_vietnam-2-xu-1975.jpg",
+          "reverseImage": "https://i.ucoin.net/coin/73/141/73141347-2s/south_vietnam-2-xu-1975.jpg"
+        },
+        {
+          "denomination": "5 xu",
+          "value": 5.0,
+          "unit": "xu",
+          "issuePeriod": "1958",
+          "startYear": 1958,
+          "endYear": 1958,
+          "availability": "historical",
+          "detailUrl": "https://pt.ucoin.net/coin/vietnam-5-xu-1958/?tid=62279",
+          "obverseImage": "https://i.ucoin.net/coin/28/076/28076980-1s/vietnam-5-xu-1958.jpg",
+          "reverseImage": "https://i.ucoin.net/coin/28/076/28076980-2s/vietnam-5-xu-1958.jpg"
+        },
+        {
+          "denomination": "5 hao",
+          "value": 5.0,
+          "unit": "hao",
+          "issuePeriod": "1946",
+          "startYear": 1946,
+          "endYear": 1946,
+          "availability": "historical",
+          "detailUrl": "https://pt.ucoin.net/coin/vietnam-5-hao-1946/?tid=62254",
+          "obverseImage": "https://i.ucoin.net/coin/70/741/70741047-1s/vietnam-5-hao-1946.jpg",
+          "reverseImage": "https://i.ucoin.net/coin/70/741/70741047-2s/vietnam-5-hao-1946.jpg"
+        },
+        {
+          "denomination": "1 dong",
+          "value": 1.0,
+          "unit": "dong",
+          "issuePeriod": "1946",
+          "startYear": 1946,
+          "endYear": 1946,
+          "availability": "historical",
+          "detailUrl": "https://pt.ucoin.net/coin/vietnam-1-dong-1946/?tid=62255",
+          "obverseImage": "https://i.ucoin.net/coin/7/780/7780625-1s/vietnam-1-dong-1946.jpg",
+          "reverseImage": "https://i.ucoin.net/coin/7/780/7780625-2s/vietnam-1-dong-1946.jpg"
+        },
+        {
+          "denomination": "2 dong",
+          "value": 2.0,
+          "unit": "dong",
+          "issuePeriod": "1946",
+          "startYear": 1946,
+          "endYear": 1946,
+          "availability": "historical",
+          "detailUrl": "https://pt.ucoin.net/coin/vietnam-2-dong-1946/?tid=62256",
+          "obverseImage": "https://i.ucoin.net/coin/11/322/11322967-1s/vietnam-2-dong-1946.jpg",
+          "reverseImage": "https://i.ucoin.net/coin/11/322/11322967-2s/vietnam-2-dong-1946.jpg"
         }
       ]
     }

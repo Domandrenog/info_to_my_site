@@ -17,8 +17,8 @@
         "latestIssueYear": null
       },
       "historical": {
-        "count": 4,
-        "earliestIssueYear": 1976,
+        "count": 30,
+        "earliestIssueYear": 1946,
         "latestIssueYear": 1976
       }
     }
